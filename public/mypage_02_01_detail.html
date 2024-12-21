@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    주문 상세보기
+                </p>
+            </div>
+
+            <div class="mypage mypage_order">
+                <div class="mypage-container">
+                    <div id="mp_nav" class="mp-nav"></div>
+                    <div class="mp-content">
+                        <div class="mp-sub-section-wrap row-group">
+                            <div class="plan-nav col-group">
+                                <h2 class="plan-nav-title">
+                                    주문내역
+                                </h2>
+                            </div>
+
+                            <!-- 결제대기 -->
+                            <div class="mp-order-wrap mp-order-detail-wrap">
+                                <div class="mp-order-title-wrap">
+                                    <p class="mp-order-title">
+                                        2025.12.12 주문
+                                    </p>
+                                    <p class="mp-order-num">
+                                        주문번호 : A12345678910
+                                    </p>
+                                </div>
+                                <div class="mp-order-list prod-table row-group">
+                                    <div class="mp-order-item">
+                                        <div class="prod-table-item col-group">
+                                            <div class="img-box">
+                                                <img src="images/delivery_schedule_img.png" alt="">
+                                            </div>
+                                            <div class="txt-wrap row-group">
+                                                <p class="state red">
+                                                    결제대기
+                                                </p>
+                                                <p class="title">
+                                                    국내산 무농약 신비복숭아 1kg
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-list row-group">
+                                        <div class="mp-order-detail-item col-group">
+                                            <div class="item-default">
+                                                상품옵션
+                                            </div>
+                                            <div class="item-user">
+                                                <div class="toggle-title col-group">
+                                                    <div class="txt-group col-group">
+                                                        <p class="txt">
+                                                            천도복숭아 1kg
+                                                        </p>
+                                                        <p class="txt">
+                                                            1개
+                                                        </p>
+                                                    </div>
+                                                    <i class="icon xi-angle-down"></i>
+                                                </div>
+                                                <div class="toggle-content">
+                                                    <div class="mp-order-sub-detail-list row-group">
+                                                        <div class="mp-order-sub-detail-item">
+                                                            <p class="title">
+                                                                천도복숭아 1kg
+                                                            </p>
+                                                            <p class="amount">
+                                                                1개
+                                                            </p>
+                                                            <p class="price">
+                                                                50,000원
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mp-order-detail-item col-group">
+                                            <div class="item-default">
+                                                택배 정보
+                                            </div>
+                                            <div class="item-user">
+                                                <div class="txt-group col-group">
+                                                    <p class="txt">
+                                                        CJ 대한통운
+                                                    </p>
+                                                    <p class="txt">
+                                                        12345678910
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mp-footer-btn-wrap">
+                                    <a href="inquiry_create.html" class="mp-footer-btn half green">
+                                        문의하기
+                                    </a>
+                                    <button class="mp-footer-btn half" onclick="document.querySelector('.report_modal').classList.add('active')">
+                                        주문취소
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 배송 중 -->
+                            <div class="mp-order-wrap mp-order-detail-wrap">
+                                <div class="mp-order-title-wrap">
+                                    <p class="mp-order-title">
+                                        2025.12.12 주문
+                                    </p>
+                                    <p class="mp-order-num">
+                                        주문번호 : A12345678910
+                                    </p>
+                                </div>
+                                <div class="mp-order-list prod-table row-group">
+                                    <div class="mp-order-item">
+                                        <div class="prod-table-item col-group">
+                                            <div class="img-box">
+                                                <img src="images/delivery_schedule_img.png" alt="">
+                                            </div>
+                                            <div class="txt-wrap row-group">
+                                                <p class="state green">
+                                                    배송 중
+                                                </p>
+                                                <p class="title">
+                                                    국내산 무농약 신비복숭아 1kg
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-list row-group">
+                                        <div class="mp-order-detail-item col-group">
+                                            <div class="item-default">
+                                                상품옵션
+                                            </div>
+                                            <div class="item-user">
+                                                <div class="toggle-title col-group">
+                                                    <div class="txt-group col-group">
+                                                        <p class="txt">
+                                                            천도복숭아 1kg
+                                                        </p>
+                                                        <p class="txt">
+                                                            1개
+                                                        </p>
+                                                    </div>
+                                                    <i class="icon xi-angle-down"></i>
+                                                </div>
+                                                <div class="toggle-content">
+                                                    <div class="mp-order-sub-detail-list row-group">
+                                                        <div class="mp-order-sub-detail-item">
+                                                            <p class="title">
+                                                                천도복숭아 1kg
+                                                            </p>
+                                                            <p class="amount">
+                                                                1개
+                                                            </p>
+                                                            <p class="price">
+                                                                50,000원
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mp-order-detail-item col-group">
+                                            <div class="item-default">
+                                                택배 정보
+                                            </div>
+                                            <div class="item-user">
+                                                <div class="txt-group col-group">
+                                                    <p class="txt">
+                                                        CJ 대한통운
+                                                    </p>
+                                                    <p class="txt">
+                                                        12345678910
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mp-footer-btn-wrap">
+                                    <button class="mp-footer-btn half" onclick="document.querySelector('.deli_state_modal').classList.add('active')">
+                                        배송조회
+                                    </button>
+                                    <a href="inquiry_create.html" class="mp-footer-btn half green">
+                                        문의하기
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 배송완료 -->
+                            <div class="mp-order-wrap mp-order-detail-wrap">
+                                <div class="mp-order-title-wrap">
+                                    <p class="mp-order-title">
+                                        2025.12.12 주문
+                                    </p>
+                                    <p class="mp-order-num">
+                                        주문번호 : A12345678910
+                                    </p>
+                                </div>
+                                <div class="mp-order-list prod-table row-group">
+                                    <div class="mp-order-item">
+                                        <div class="prod-table-item col-group">
+                                            <div class="img-box">
+                                                <img src="images/delivery_schedule_img.png" alt="">
+                                            </div>
+                                            <div class="txt-wrap row-group">
+                                                <p class="state">
+                                                    배송완료
+                                                </p>
+                                                <p class="title">
+                                                    국내산 무농약 신비복숭아 1kg
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-list row-group">
+                                        <div class="mp-order-detail-item col-group">
+                                            <div class="item-default">
+                                                상품옵션
+                                            </div>
+                                            <div class="item-user">
+                                                <div class="toggle-title col-group">
+                                                    <div class="txt-group col-group">
+                                                        <p class="txt">
+                                                            천도복숭아 1kg
+                                                        </p>
+                                                        <p class="txt">
+                                                            1개
+                                                        </p>
+                                                    </div>
+                                                    <i class="icon xi-angle-down"></i>
+                                                </div>
+                                                <div class="toggle-content">
+                                                    <div class="mp-order-sub-detail-list row-group">
+                                                        <div class="mp-order-sub-detail-item">
+                                                            <p class="title">
+                                                                천도복숭아 1kg
+                                                            </p>
+                                                            <p class="amount">
+                                                                1개
+                                                            </p>
+                                                            <p class="price">
+                                                                50,000원
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mp-order-detail-item col-group">
+                                            <div class="item-default">
+                                                택배 정보
+                                            </div>
+                                            <div class="item-user">
+                                                <div class="txt-group col-group">
+                                                    <p class="txt">
+                                                        CJ 대한통운
+                                                    </p>
+                                                    <p class="txt">
+                                                        12345678910
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mp-footer-btn-wrap">
+                                    <a href="inquiry_create.html" class="mp-footer-btn half">
+                                        문의하기
+                                    </a>
+                                    <button class="mp-footer-btn half green" onclick="document.querySelector('.review_alert_modal').classList.add('active')">
+                                        후기작성
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 구매확정 / 후기완료 -->
+                            <div class="mp-order-wrap mp-order-detail-wrap">
+                                <div class="mp-order-title-wrap">
+                                    <p class="mp-order-title">
+                                        2025.12.12 주문
+                                    </p>
+                                    <p class="mp-order-num">
+                                        주문번호 : A12345678910
+                                    </p>
+                                </div>
+                                <div class="mp-order-list prod-table row-group">
+                                    <div class="mp-order-item">
+                                        <div class="prod-table-item col-group">
+                                            <div class="img-box">
+                                                <img src="images/delivery_schedule_img.png" alt="">
+                                            </div>
+                                            <div class="txt-wrap row-group">
+                                                <p class="state">
+                                                    구매확정
+                                                </p>
+                                                <p class="title">
+                                                    국내산 무농약 신비복숭아 1kg
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-list row-group">
+                                        <div class="mp-order-detail-item col-group">
+                                            <div class="item-default">
+                                                상품옵션
+                                            </div>
+                                            <div class="item-user">
+                                                <div class="toggle-title col-group">
+                                                    <div class="txt-group col-group">
+                                                        <p class="txt">
+                                                            천도복숭아 1kg
+                                                        </p>
+                                                        <p class="txt">
+                                                            1개
+                                                        </p>
+                                                    </div>
+                                                    <i class="icon xi-angle-down"></i>
+                                                </div>
+                                                <div class="toggle-content">
+                                                    <div class="mp-order-sub-detail-list row-group">
+                                                        <div class="mp-order-sub-detail-item">
+                                                            <p class="title">
+                                                                천도복숭아 1kg
+                                                            </p>
+                                                            <p class="amount">
+                                                                1개
+                                                            </p>
+                                                            <p class="price">
+                                                                50,000원
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mp-order-detail-item col-group">
+                                            <div class="item-default">
+                                                택배 정보
+                                            </div>
+                                            <div class="item-user">
+                                                <div class="txt-group col-group">
+                                                    <p class="txt">
+                                                        CJ 대한통운
+                                                    </p>
+                                                    <p class="txt">
+                                                        12345678910
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mp-footer-btn-wrap">
+                                    <a href="inquiry_create.html" class="mp-footer-btn green">
+                                        문의하기
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="mp-sub-section mp-order-payment-detail">
+                                <div class="mp-sub-section-title-wrap border">
+                                    <p class="mp-sub-section-title">
+                                        결제정보
+                                    </p>
+                                </div>
+                                <div class="mp-order-detail-list row-group">
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            상품 합계
+                                        </div>
+                                        <div class="item-user">
+                                            142,600원
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            배송비 합계
+                                        </div>
+                                        <div class="item-user">
+                                            <strong class="green">
+                                                무료배송
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            <strong class="red">
+                                                할인 합계
+                                            </strong>
+                                        </div>
+                                        <div class="item-user">
+                                            <div class="toggle-title col-group">
+                                                <strong class="red">
+                                                    - 54,870원
+                                                </strong>
+                                                <i class="icon xi-angle-down"></i>
+                                            </div>
+                                            <div class="toggle-content">
+                                                <div class="mp-order-sub-detail-list row-group">
+                                                    <div class="mp-order-sub-detail-item mp-order-detail-item col-group">
+                                                        <div class="item-default">
+                                                            상품 할인
+                                                        </div>
+                                                        <div class="item-user">
+                                                            -49,900‬원
+                                                        </div>
+                                                    </div>
+                                                    <div class="mp-order-sub-detail-item mp-order-detail-item col-group">
+                                                        <div class="item-default">
+                                                            쿠폰 할인
+                                                        </div>
+                                                        <div class="item-user">
+                                                            -4,970‬원
+                                                        </div>
+                                                    </div>
+                                                    <div class="mp-order-sub-detail-item mp-order-detail-item col-group">
+                                                        <div class="item-default">
+                                                            적립금 사용
+                                                        </div>
+                                                        <div class="item-user">
+                                                            -4,970‬원
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            최종 결제 금액
+                                        </div>
+                                        <div class="item-user">
+                                            <strong class="green total-price">
+                                                87,730원
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            결제 수단
+                                        </div>
+                                        <div class="item-user">
+                                            무통장입금 <br>
+                                            (국민 <span class="sub-txt">123456789123456</span>)
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            결제일
+                                        </div>
+                                        <div class="item-user">
+                                            2025.01.01 12:00
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mp-sub-section">
+                                <div class="mp-sub-section-title-wrap border">
+                                    <p class="mp-sub-section-title">
+                                        배송지 정보
+                                    </p>
+                                </div>
+                                <div class="mp-order-detail-list row-group">
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            수령인
+                                        </div>
+                                        <div class="item-user">
+                                            코워커넷
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            연락처
+                                        </div>
+                                        <div class="item-user">
+                                            010-1234-1234
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            주소
+                                        </div>
+                                        <div class="item-user">
+                                            (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                        </div>
+                                    </div>
+                                    <div class="mp-order-detail-item col-group">
+                                        <div class="item-default">
+                                            배송 요청사항
+                                        </div>
+                                        <div class="item-user">
+                                            부재시 문앞에 놔주세요
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 취소요청 -->
+<div class="modal-container report_modal">
+    <div class="modal-wrap">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap row-group">
+            <p class="modal-title">
+                취소요청
+            </p>
+        </div>
+
+        <div class="modal-scroll-wrap">
+            <textarea name="" id="" class="form-input form-textarea" placeholder="자세한 내용을 입력해 주세요(필수)"></textarea>
+
+            <div class="guide-txt-wrap">
+                <p class="guide-txt">
+                    <i class="xi-info-o"></i>
+                    취소요청은 다양한 사유로 반려될 수 있습니다.
+                </p>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="modal-footer-btn cancel-btn" onclick="document.querySelector('.cancel_modal').classList.add('active')">
+                취소요청
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 주문 취소 -->
+<div class="modal-container cancel_modal">
+    <div class="modal-wrap modal-alert">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap row-group">
+            <i class="xi-warning icon red"></i>
+            <h2 class="modal-title">
+                주문취소
+            </h2>
+        </div>
+
+        <p class="modal-alert-txt">
+            선택하신 상품을 <br>
+            정말 주문취소하시겠습니까?
+        </p>
+
+        <div class="modal-footer">
+            <button class="modal-footer-btn cancel-btn">
+                주문취소
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 후기 작성 -->
+<div class="modal-container review_alert_modal">
+    <div class="modal-wrap modal-alert">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap row-group">
+            <i class="xi-check icon green"></i>
+            <h2 class="modal-title">
+                후기를 작성해주세요!
+            </h2>
+        </div>
+
+        <p class="modal-alert-txt">
+            채소이야기 작성 시 최대 적립금 300원 지급! <br>
+            포토리뷰 작성 시 적립금 70원 지급!
+        </p>
+
+        <div class="modal-footer row-group">
+            <a href="community_2_create.html" class="modal-footer-btn write-btn">
+                채소이야기 작성하기
+            </a>
+            <a href="review_create.html" class="modal-footer-btn write-btn">
+                이용후기 작성하기
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 배송 조회 -->
+<div class="modal-container deli_state_modal">
+    <div class="modal-wrap">
+        <i class="xi-close close-btn"></i>
+        <div class="modal-title-wrap center row-group">
+            <p class="modal-title">
+                배송 조회
+            </p>
+            <p class="modal-sub-title">
+                <span class="green">8/7(수)</span> 상품 배송이 완료되었어요
+            </p>
+        </div>
+
+        <div class="deli-state-container row-group">
+            <div class="deli-state-wrap">
+                <div class="deli-state-item">
+                    <div class="img img-1"></div>
+                    <p class="txt">
+                        배송 대기
+                    </p>
+                </div>
+                <i class="icon xi-ellipsis-h"></i>
+                <div class="deli-state-item">
+                    <div class="img img-2"></div>
+                    <p class="txt">
+                        배송 중
+                    </p>
+                </div>
+                <i class="icon xi-ellipsis-h"></i>
+                <div class="deli-state-item active">
+                    <div class="img img-3"></div>
+                    <p class="txt">
+                        배송 완료
+                    </p>
+                </div>
+            </div>
+    
+            <div class="modal-scroll-wrap">
+                <div class="deli-state-detail-wrap">
+                    <div class="deli-state-top">
+                        <div class="img-container">
+                            <img src="images/about_slide_1.png" alt="">
+                        </div>
+                        <div class="txt-group row-group">
+                            <p class="txt">
+                                운송장 번호
+                            </p>
+                            <div class="txt-group col-group">
+                                <p class="txt">
+                                    123412341234
+                                </p>
+                                <button class="mp-sub-btn border">
+                                    복사
+                                </button>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="deli-state-detail-list row-group">
+                        <div class="deli-state-detail-item active">
+                            <div class="txt-group col-group">
+                                <p class="txt">
+                                    서울은평역촌
+                                </p>
+                                <p class="txt green">
+                                    배송완료
+                                </p>
+                            </div>
+                            <p class="sub-txt">
+                                08/07(수) 12:34
+                            </p>
+                        </div>
+                        <div class="deli-state-detail-item">
+                            <div class="txt-group col-group">
+                                <p class="txt">
+                                    서울은평역촌
+                                </p>
+                                <p class="txt green">
+                                    배송출발 (배달 예정 시간:13~15시)
+                                </p>
+                            </div>
+                            <p class="sub-txt">
+                                08/07(수) 12:34
+                            </p>
+                        </div>
+                        <div class="deli-state-detail-item">
+                            <div class="txt-group col-group">
+                                <p class="txt">
+                                    은평B
+                                </p>
+                                <p class="txt">
+                                    간선하차
+                                </p>
+                            </div>
+                            <p class="sub-txt">
+                                08/07(수) 12:34
+                            </p>
+                        </div>
+                        <div class="deli-state-detail-item">
+                            <div class="txt-group col-group">
+                                <p class="txt">
+                                    은평B
+                                </p>
+                                <p class="txt">
+                                    간선하차
+                                </p>
+                            </div>
+                            <p class="sub-txt">
+                                08/07(수) 12:34
+                            </p>
+                        </div>
+                        <div class="deli-state-detail-item">
+                            <div class="txt-group col-group">
+                                <p class="txt">
+                                    안성MPHub
+                                </p>
+                                <p class="txt">
+                                    간선하차
+                                </p>
+                            </div>
+                            <p class="sub-txt">
+                                08/07(수) 12:34
+                            </p>
+                        </div>
+                        <div class="deli-state-detail-item">
+                            <div class="txt-group col-group">
+                                <p class="txt">
+                                    안성MPHub
+                                </p>
+                                <p class="txt">
+                                    간선하차
+                                </p>
+                            </div>
+                            <p class="sub-txt">
+                                08/07(수) 12:34
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="guide-txt-wrap row-group">
+            <p class="guide-txt">
+                <i class="xi-info-o"></i>
+                <strong>
+                    확인해주세요.
+                </strong>
+            </p>
+            <p class="guide-txt dot">
+                본 배송정보는 배송 추적 서비스를 통해 제공받는 정보로, 데이터 연동상황에 따라 실제 배송상태와 일부 다를 수 있습니다.
+            </p>
+        </div>
+   
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>

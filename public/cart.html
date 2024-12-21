@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    장바구니
+                </p>
+            </div>
+
+            <div class="routeBox">
+                <div class="container">
+                    <div class="le-wrap">
+                        <img class="route-check-icon" src="/images/icon_cart_w.png" alt="NOMONEYMARKET">
+                        <p class="title">장바구니</p>
+                    </div>
+                    <div class="ri-wrap">
+                        <p class="route-title active">장바구니</p>
+                        <i class="xi-angle-right-min route-icon"></i>
+                        <p class="route-title">주문/결제</p>
+                        <i class="xi-angle-right-min route-icon"></i>
+                        <p class="route-title">완료</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart">
+                <div class="container">
+                    <div class="choice-group col-group">
+                        <label for="check_all">
+                            <input type="checkbox" id="check_all" class="form-checkbox">
+                            <div class="checked-item col-group">
+                                <div class="icon">
+                                    <i class="xi-check"></i>
+                                </div>
+                                <p class="txt">전체선택</p>
+                            </div>
+                        </label>
+
+                        <button class="choice-del-btn">
+                            선택 삭제
+                        </button>
+                    </div>
+
+                    <div class="prod-table-wrap cart-table-wrap">
+                        <table class="prod-table cart-table">
+                            <colgroup>
+                                <col width="40px">
+                                <col width="38%">
+                                <col width="28%">
+                            </colgroup>
+                            <thead>
+                                <th></th>
+                                <th>
+                                    상품정보
+                                </th>
+                                <th>
+                                    옵션/수량
+                                </th>
+                                <th>
+                                    상품금액
+                                </th>
+                                <th>
+                                    배송비
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="prod-table-item col-group">
+                                            <div class="img-box">
+                                                <img src="images/about_slide_1.png" alt="">
+                                            </div>
+                                            <div class="txt-wrap row-group">
+                                                <p class="title">
+                                                    국내산 무농약 신비복숭아 1kg
+                                                </p>
+                                                <div class="txt-group hide">
+                                                    <p class="price">
+                                                        <strong>25,000</strong>원
+                                                    </p>
+                                                    <p class="price-before">
+                                                        50,000원
+                                                    </p>
+                                                </div>
+                                                <div class="txt-group row-group">
+                                                    <div class="txt-list row-group">
+                                                        <div class="txt-group">
+                                                            <p class="txt">
+                                                                천도복숭아 1kg (+ 0원)
+                                                            </p>
+                                                            <p class="txt">
+                                                                1개
+                                                            </p>
+                                                        </div>
+                                                        <div class="txt-group">
+                                                            <p class="txt">
+                                                                천도복숭아 5kg (+ 50,000원)
+                                                            </p>
+                                                            <p class="txt">
+                                                                1개
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <button class="option-change-btn" onclick="document.querySelector('.option_modal').classList.add('active')">
+                                                        주문수정
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="hide">
+                                        <div class="txt-group row-group">
+                                            <div class="txt-list row-group">
+                                                <div class="txt-group">
+                                                    <p class="txt">
+                                                        천도복숭아 1kg (+ 0원)
+                                                    </p>
+                                                    <p class="txt">
+                                                        1개
+                                                    </p>
+                                                </div>
+                                                <div class="txt-group">
+                                                    <p class="txt">
+                                                        천도복숭아 5kg (+ 50,000원)
+                                                    </p>
+                                                    <p class="txt">
+                                                        1개
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <button class="option-change-btn" onclick="document.querySelector('.option_modal').classList.add('active')">
+                                                주문수정
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="padding">
+                                        <p class="mb-prod-item-title">
+                                            상품금액
+                                        </p>
+                                        <p class="price">
+                                            <span class="price-before">
+                                                50,000원
+                                            </span>
+                                            <strong>25,000</strong>원
+                                        </p>
+                                    </td>
+                                    <td class="padding">
+                                        <p class="mb-prod-item-title">
+                                            배송비
+                                        </p>
+                                        <p class="title red">
+                                            무료배송
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_2">
+                                            <input type="checkbox" id="check_2" class="form-checkbox">
+                                            <div class="checked-item">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="prod-table-item col-group">
+                                            <div class="img-box">
+                                                <img src="images/about_slide_1.png" alt="">
+                                            </div>
+                                            <div class="txt-wrap row-group">
+                                                <p class="title">
+                                                    신비복숭아 납작복숭아 대극천 천도 백도 딱딱이 
+                                                    거반도 신선 복숭아
+                                                </p>
+                                                <div class="txt-group hide">
+                                                    <p class="price">
+                                                        <strong>50,000</strong>원
+                                                    </p>
+                                                    <p class="price-before">
+                                                        100,000원
+                                                    </p>
+                                                </div>
+                                                <div class="txt-group row-group">
+                                                    <div class="txt-list row-group">
+                                                        <div class="txt-group">
+                                                            <p class="txt">
+                                                                천도복숭아 3kg (+ 20,000원)
+                                                            </p>
+                                                            <p class="txt">
+                                                                1개
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <button class="option-change-btn" onclick="document.querySelector('.option_modal').classList.add('active')">
+                                                        주문수정
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="hide">
+                                        <div class="txt-group row-group">
+                                            <div class="txt-list row-group">
+                                                <div class="txt-group">
+                                                    <p class="txt">
+                                                        천도복숭아 3kg (+ 20,000원)
+                                                    </p>
+                                                    <p class="txt">
+                                                        1개
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <button class="option-change-btn" onclick="document.querySelector('.option_modal').classList.add('active')">
+                                                주문수정
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="padding">
+                                        <p class="mb-prod-item-title">
+                                            상품금액
+                                        </p>
+                                        <p class="price">
+                                            <span class="price-before">
+                                                50,000원
+                                            </span>
+                                            <strong>140,000</strong>원
+                                        </p>
+                                    </td>
+                                    <td class="padding">
+                                        <p class="mb-prod-item-title">
+                                            배송비
+                                        </p>
+                                        <p class="price">
+                                            <strong>3,000</strong>원
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="cart-total-price-wrap col-group">
+                            <p class="cart-total-amount">
+                                총 <strong>7</strong>개의 상품
+                            </p>
+                            <div class="cart-total-price-group col-group">
+                                <div class="cart-total-price-calc-group col-group">
+                                    <div class="cart-total-price-calc-item row-group">
+                                        <p class="item-title">
+                                            선택상품금액
+                                        </p>
+                                        <p class="prod-item-price">
+                                            <strong>245,000</strong>원
+                                        </p>
+                                    </div>
+                                    <i class="xi-minus icon"></i>
+                                    <div class="cart-total-price-calc-item row-group">
+                                        <p class="item-title">
+                                            할인예상금액
+                                        </p>
+                                        <p class="prod-item-price sale">
+                                            <strong>75,000</strong>원
+                                        </p>
+                                    </div>
+                                    <i class="xi-plus icon"></i>
+                                    <div class="cart-total-price-calc-item row-group">
+                                        <p class="item-title">
+                                            총 배송비
+                                        </p>
+                                        <p class="prod-item-price">
+                                            <strong>3,000</strong>원
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="cart-total-price-box col-group">
+                                    <p class="cart-total-price-txt">
+                                        주문금액
+                                    </p>
+                                    <p class="cart-total-price">
+                                        <strong>168,000</strong>원
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-guide-wrap row-group">
+                        <p class="cart-guide-txt">
+                            쇼핑백은 최대 100개의 상품을 담을 수 있고, <strong>최대 보관기간은 30일</strong>입니다.
+                        </p>
+                        <p class="cart-guide-txt">
+                            판매 종료된 상품은 쇼핑백에 담긴 지 14일 이후 자동삭제 됩니다.
+                        </p>
+                        <p class="cart-guide-txt">
+                            보유 쿠폰은 주문/결제에서 사용 가능합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="orderBox">
+                <div class="container col-group">
+                    <div class="cart-total-price-box col-group">
+                        <p class="cart-total-price-txt">
+                            총
+                            <span class="yellow">7</span>
+                            개의 상품 주문금액
+                        </p>
+                        <p class="cart-total-price">
+                            <strong>168,000</strong>원
+                        </p>
+                    </div>
+                    <a href="order.html" class="cart-order-btn col-group">
+                        주문하기
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <!-- <div id="top_menu"></div> -->
+
+    </div>
+</body>
+
+<!-- 옵션변경 버튼 클릭 시 -->
+<div class="modal-container option_modal">
+    <div class="modal-wrap w400">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap center border col-group">
+            <h2 class="modal-title">
+                주문수정
+            </h2>
+        </div>
+
+        <div class="modal-con-wrap">
+            <div class="prod-detail-sticky-wrap product-detail-txt-group">
+                <div class="prod-table-item col-group">
+                    <div class="img-box">
+                        <img src="images/about_slide_1.png" alt="">
+                    </div>
+                    <div class="prod-detail-top-group">
+                        <p class="prod-item-title">
+                            국내산 무농약 신비복숭아 1kg
+                        </p>
+                        <div class="prod-item-price-group col-group">
+                            <p class="prod-item-price">
+                                <strong>50,000</strong>원
+                            </p>
+                            <p class="prod-item-price-before">
+                                100,000‬원
+                            </p>
+                        </div>
+                    </div>
+                </div>
+          
+                <div class="prod-detail-wrap">
+                    <div class="prod-detail-group row-group">
+                        <div class="prod-detail-item col-group">
+                            <p class="item-default">
+                                상품 옵션
+                            </p>
+                            <div class="item-user">
+                                <div class="option-select-wrap">
+                                    <div class="option-select col-group">
+                                        <div class="select-value">상품 옵션</div>
+                                    </div>
+                                    <div class="option-list row-group">
+                                        <div class="option-item">
+                                            천도복숭아 1kg (+ 0원)
+                                        </div>
+                                        <div class="option-item">
+                                            천도복숭아 2kg (+ 7,900원)
+                                        </div>
+                                        <div class="option-item">
+                                            딱딱이복숭아 1.5kg (+ 8,000원)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 옵션 선택시 나타나는 상품 목록 -->
+                    <div class="prod-option-list row-group">
+                        <div class="prod-option-item row-group">
+                            <i class="xi-close-thin del-btn"></i>
+                            <p class="prod-option-title">
+                                천도복숭아 1kg
+                            </p>
+                            <div class="prod-option-group col-group">
+                                <div class="prod-option-amount-group col-group">
+                                    <button class="prod-option-amount-btn amount-minus">
+                                        <i class="xi-minus"></i>
+                                    </button>
+                                    <span class="prod-option-amount-count">
+                                        1
+                                    </span>
+                                    <button class="prod-option-amount-btn amount-plus">
+                                        <i class="xi-plus"></i>
+                                    </button>
+                                </div>
+                                <p class="prod-option-price">
+                                    <strong>50,000</strong>원
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //옵션 선택시 나타나는 상품 목록 -->
+
+                    <div class="prod-total-price-wrap col-group">
+                        <p class="prod-total-price-txt">
+                            총 상품금액
+                        </p>
+                        <p class="prod-total-price">
+                            <strong>50,000</strong>원
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer col-group">
+            <button class="modal-footer-btn cancel-btn">주문수정</button>
+        </div>
+    </div>
+</div>
+<!-- //옵션변경 버튼 클릭 시 -->
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+<script>
+    //옵션 셀렉트 박스
+    const selectBoxElements = document.querySelectorAll(".option-select-wrap");
+
+    function toggleSelectBox(selectBox) {
+        selectBox.classList.toggle("active");
+    }
+
+    function selectOption(optionElement) {
+        const selectBox = optionElement.closest(".option-select-wrap");
+        const selectedElement = selectBox.querySelector(".select-value");
+        selectedElement.textContent = optionElement.textContent;
+    }
+
+    selectBoxElements.forEach(selectBoxElement => {
+        selectBoxElement.addEventListener("click", function (e) {
+            const targetElement = e.target;
+            const isOptionElement = targetElement.classList.contains("option-item");
+
+            if (isOptionElement) {
+                selectOption(targetElement);
+            }
+
+            toggleSelectBox(selectBoxElement);
+        });
+    });
+
+    document.addEventListener("click", function (e) {
+        const targetElement = e.target;
+        const isSelect = targetElement.classList.contains("option-select-wrap") || targetElement.closest(".option-select-wrap");
+
+        if (isSelect) {
+            return;
+        }
+
+        const allSelectBoxElements = document.querySelectorAll(".option-select-wrap");
+
+        allSelectBoxElements.forEach(boxElement => {
+            boxElement.classList.remove("active");
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap col-group sp-bt al-en">
+                    <h2 class="main-title">
+                        댓글
+                    </h2>
+                    <div class="col-group gap16">
+                        <div class="col-group gap8">
+                            <select name="" id="" class="form-input quarter">
+                                <option value="">상태</option>
+                            </select>
+                            <div class="col-group">
+                                <input type="search" class="search-input" placeholder="주문번호 / 내용">
+                                <button type="submit" class="search-btn">
+                                    <i class="xi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="btn gray">
+                            선택 삭제
+                        </button>
+                    </div>
+                 
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <colgroup>
+                                <col width="48px">
+                            </colgroup>
+                            <thead>
+                                <tr><th>
+                                    <label for="check_all">
+                                        <input type="checkbox" id="check_all" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </th>
+                                <th>
+                                    회원명(등급)
+                                </th>
+                                <th>
+                                    내용
+                                </th>
+                                <th>
+                                    좋아요
+                                </th>
+                                <th>
+                                    신고
+                                </th>
+                                <th>
+                                    작성일
+                                </th>
+                                <th>
+                                    관리
+                                </th>
+                            </tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            김지은(Lv.7)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        너무 맛있겠어요. 저도 꼭 해보려구요!
+                                    </td>
+                                    <td>
+                                        8
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        24-05-04 12:00
+                                    </td>
+                                    <td>
+                                        <a href="review_story_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            김지은(Lv.7)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        너무 맛있겠어요. 저도 꼭 해보려구요!
+                                    </td>
+                                    <td>
+                                        8
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        24-05-04 12:00
+                                    </td>
+                                    <td>
+                                        <a href="review_story_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

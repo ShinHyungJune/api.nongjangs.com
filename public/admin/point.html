@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap col-group sp-bt al-en">
+                    <h2 class="main-title">
+                        적립금
+                    </h2>
+                    <div class="col-group gap16">
+                        <div class="col-group">
+                            <input type="search" class="search-input" placeholder="회원명">
+                            <button type="submit" class="search-btn">
+                                <i class="xi-search"></i>
+                            </button>
+                        </div>
+                        <div class="col-group gap8">
+                            <button class="btn gray">
+                                선택 삭제
+                            </button>
+                            <button class="btn blue">
+                                적립금 지급
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <colgroup>
+                                <col width="48px">
+                            </colgroup>
+                            <thead>
+                                <tr><th>
+                                    <label for="check_all">
+                                        <input type="checkbox" id="check_all" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </th>
+                                <th>
+                                    회원명
+                                </th>
+                                <th>
+                                    지급일
+                                </th>
+                                <th>
+                                    적립금
+                                </th>
+                                <th>
+                                    사유
+                                </th>
+                                <th>
+                                    유효기간
+                                </th>
+                                <th>
+                                    처리자
+                                </th>
+                                <th>
+                                    관리
+                                </th>
+                            </tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button class="blue underline">
+                                            홍길동(코랑둥이)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <span class="blue">
+                                            (+) 
+                                        </span>
+                                        1,000
+                                    </td>
+                                    <td>
+                                        상품 품질 불만
+                                    </td>
+                                    <td>
+                                        24-05-01 - 24-05-30
+                                    </td>
+                                    <td>
+                                        관리자1
+                                    </td>
+                                    <td>
+                                        <button class="blue" onclick="document.getElementById('point_list').style.display='block'">
+                                            상세
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_2">
+                                            <input type="checkbox" id="check_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button class="blue underline">
+                                            홍길동(코랑둥이)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <span class="red">
+                                            (-) 
+                                        </span>
+                                        1,000
+                                    </td>
+                                    <td>
+                                        결제 차감
+                                    </td>
+                                    <td>
+                                        24-05-01 - 24-05-30
+                                    </td>
+                                    <td>
+                                        자동
+                                    </td>
+                                    <td>
+                                        <button class="blue" onclick="document.getElementById('point_list').style.display='block'">
+                                            상세
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- 적립금 -->
+<div class="modal-container" id="point_list" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                적립금
+            </p>
+        </div>
+
+        <div class="modal-scroll-wrap">
+            <div class="form-wrap row-group">
+                <div class="form-item">
+                    <div class="col-group">
+                        <input type="search" class="search-input" placeholder="아이디(이메일)">
+                        <button type="submit" class="search-btn">
+                            <i class="xi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="review-reply-wrap row-group al-ce">
+                        <p class="fs18 fw500 txt-center">
+                            <span class="fs18 fw800">김지은</span> 회원님이 <br>
+                            보유한 마일리지는 <span class="fs18 fw800">10,002원</span> 입니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-item row-group">
+                    <div class="item-default">
+                        적립금
+                    </div>
+                    <div class="item-user">
+                        <div class="col-group gap8 al-ce">
+                            <select name="" id="" class="form-input quarter">
+                                <option value="">지급</option>
+                            </select>
+                            <input type="text" class="form-input" placeholder="적립금 입력">
+                            원
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item row-group">
+                    <div class="item-default">
+                        유효기간
+                    </div>
+                    <div class="item-user">
+                        <div class="col-group gap8 al-ce">
+                            <input type="date" class="form-input half">
+                            -
+                            <input type="date" class="form-input half">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item row-group">
+                    <div class="item-default">
+                        사유
+                    </div>
+                    <div class="item-user">
+                        <input type="text" class="form-input" placeholder="내용 입력">
+                    </div>
+                </div>
+                <div class="btn-wrap col-group">
+                    <button class="btn btn-m blue">
+                        저장
+                    </button>
+                </div>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <colgroup>
+                        <col width="48px">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>
+                                지급일
+                            </th>
+                            <th>
+                                적립금
+                            </th>
+                            <th>
+                                사유
+                            </th>
+                            <th>
+                                유효기간
+                            </th>
+                            <th>
+                                처리자
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                24-05-01 12:00
+                            </td>
+                            <td>
+                                <span class="blue">
+                                    (+) 
+                                </span>
+                                1,000
+                            </td>
+                            <td>
+                                상품 품질 불만
+                            </td>
+                            <td>
+                                24-05-01 - 24-05-30
+                            </td>
+                            <td>
+                                관리자1
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24-05-01 12:00
+                            </td>
+                            <td>
+                                <span class="red">
+                                    (-) 
+                                </span>
+                                1,000
+                            </td>
+                            <td>
+                                결제 차감
+                            </td>
+                            <td>
+                                24-05-01 - 24-05-30
+                            </td>
+                            <td>
+                                자동
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+     
+        <div class="pagination col-group">
+            <a href="" class="page-btn prev-btn">
+                <i class="xi-angle-left"></i>
+            </a>
+            <a href="" class="page-btn active">
+                1
+            </a>
+            <a href="" class="page-btn">
+                2
+            </a>
+            <a href="" class="page-btn">
+                3
+            </a>
+            <a href="" class="page-btn">
+                4
+            </a>
+            <a href="" class="page-btn">
+                5
+            </a>
+            <a href="" class="page-btn next-btn">
+                <i class="xi-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    농장스 꾸러미
+                </p>
+            </div>
+            <div class="plan">
+                <div class="container row-group w1280">
+                    <nav class="plan-nav col-group">
+                        <h2 class="plan-nav-title">
+                            농장스 꾸러미
+                        </h2>
+                        <div class="plan-nav-step-list col-group">
+                            <div class="plan-nav-step col-group">
+                                <i class="icon"></i>
+                                <p class="txt">꾸러미 구성</p>
+                                <i class="txt xi-angle-right"></i>
+                            </div>
+                            <div class="plan-nav-step col-group">
+                                <i class="icon"></i>
+                                <p class="txt">배송/결제 정보</p>
+                                <i class="txt xi-angle-right"></i>
+                            </div>
+                            <div class="plan-nav-step active col-group">
+                                <i class="icon"></i>
+                                <p class="txt">완료</p>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <section class="col-group plan-section">
+                        <div class="plan-side">
+                            <div class="img-container">
+                                <img src="images/package_01.png" alt="">
+                            </div>
+                            <div class="plan-step-group">
+                                <div class="plan-step-item active"> <!-- 선택 완료 시 active 클래스 -->
+                                    <div class="item-title">
+                                        싱글 꾸러미
+                                    </div>
+                                    <div class="item-sub-txt">
+                                        1~2인 가구에게 적합해요.
+                                    </div>
+                                </div>
+                                <div class="plan-step-item active"> <!-- 선택 완료 시 active 클래스 -->
+                                    <div class="item-sub-title">
+                                        배송 주기
+                                    </div>
+                                    <div class="item-title">
+                                        2주
+                                    </div>
+                                    <div class="item-txt">
+                                        <strong>첫 배송 :</strong>
+                                        2024.12.12(금) 예정
+                                    </div>
+                                </div>
+                                <div class="plan-step-item active"> <!-- 선택 완료 시 active 클래스 -->
+                                    <div class="item-sub-title">
+                                        비선호 품목
+                                    </div>
+                                    <div class="item-title">
+                                        4가지
+                                    </div>
+                                    <div class="item-txt">
+                                        당근, 콜라비, 브로콜리, 비트잎
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="plan-content">
+                            <div class="plan-title-wrap col-group">
+                                <div class="plan-title-group col-group">
+                                    <p class="txt green">Step 03</p>
+                                    <p class="txt">완료</p>
+                                </div>
+                                <div class="page col-group">
+                                    <p class="txt bold">3</p>
+                                    <p class="txt">/</p>
+                                    <p class="txt">3</p>
+                                </div>
+                                <div class="gauge">
+                                    <div class="gauge-bar" style="width: calc( ( 100% / 3 ) * 3 );"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="plan-content-wrap">
+                                <div class="plan-done-wrap">
+                                    <img src="images/plan_done.png" alt="" class="img">
+                                    <p class="txt">
+                                        꾸러미 신청이 완료되었습니다. <br>
+                                        <strong class="green">2024년 01월 19일 금요일</strong>에 만나요!
+                                    </p>
+                                </div>
+                                <div class="form-footer-wrap">
+                                    <a href="mypage_01_01.html" class="form-submit-btn">
+                                        내 꾸러미 보러가기
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+<script>
+var card_slide = new Swiper(".payment-card-slide", {
+        spaceBetween: 16,
+        slidesPerView : 1,
+        breakpoints: {
+            560: {
+                slidesPerView : 2,
+            },
+            1024: {
+                slidesPerView : 3,
+            },
+            1280: {
+                slidesPerView : 2,
+            },
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <!-- 컬러피커 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <h2 class="main-title">
+                        관리자 등록
+                    </h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-list per2 col-group">
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                이메일(아이디)
+                                <span class="red">*</span>
+                            </p>
+                            <div class="item-user">
+                                <input 
+                                    type="text" 
+                                    class="form-input" 
+                                    placeholder='이메일을 입력하세요' 
+                                >
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                이름
+                                <span class="red">*</span>
+                            </p>
+                            <div class="item-user">
+                                <input 
+                                    type="text" 
+                                    class="form-input" 
+                                    placeholder='이름을 입력하세요' 
+                                >
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                비밀번호
+                                <span class="red">*</span>
+                            </p>
+                            <div class="item-user">
+                                <input 
+                                    type="password" 
+                                    class="form-input" 
+                                    placeholder='비밀번호를 입력하세요' 
+                                >
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                전화번호
+                            </p>
+                            <div class="item-user">
+                                <input 
+                                    type="tel" 
+                                    class="form-input" 
+                                    placeholder='전화번호를 입력하세요' 
+                                >
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                최고관리자
+                                <span class="red">*</span>
+                            </p>
+                            <div class="item-user col-group">
+                                <label for="switch_1" class="form-switch">
+                                    <input type="checkbox" id="switch_1" checked="">
+                                    <div class="switch-item col-group">
+                                        <div class="switch">
+                                            <div class="switch-core">
+                                                <i class="icon xi-close"></i>
+                                                <i class="icon xi-check"></i>
+                                            </div>
+                                        </div>
+                                        <p class="title check">
+                                            Y
+                                        </p>
+                                        <p class="title uncheck">
+                                            N
+                                        </p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script> <!-- 컬러피커 -->
+
+</html>

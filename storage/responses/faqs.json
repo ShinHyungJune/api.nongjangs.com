@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "faq_category_id": "카테고리 고유번호",
+      "faqCategory": {
+        "id": "고유번호",
+        "title": "제목"
+      },
+      "title": "제목",
+      "description": "내용",
+      "format_created_at": "표시용 생성일자"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

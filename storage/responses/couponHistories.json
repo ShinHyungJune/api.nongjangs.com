@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "type" : "유형 (1 - 주문 ORDER_CREATED | 2 - 주문취소 ORDER_CANCELED | 3 - 쿠폰발급 CREATED",
+      "format_type" : "표시용 유형",
+      "increase" : "증감여부 (1 - 증가 | 0 - 감소)",
+      "format_increase" : "화면표시용 증감여부",
+      "coupon" : {
+        "id" : "고유번호",
+        "title" : "제목",
+        "ratio_discount" : "할인률",
+        "will_finished_at" : "만료일자",
+      },
+      "order 주문정보" : {
+        "id" : "고유번호",
+        "merchant_uid" : "주문번호",
+        "format_created_at" : "주문일자"
+      },
+      "format_created_at" : "표시용 생성일자",
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

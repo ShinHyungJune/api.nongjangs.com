@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+
+            <div class="subpage create">
+                <div class="container">
+                    <div class="subpage-title-wrap center row-group">
+                        <a href="javascript:history.back();" class="prev-btn">
+                            <i class="xi-arrow-left"></i>
+                        </a>
+                        <h2 class="subpage-title">
+                            후기 작성
+                        </h2>
+                    </div>
+                    
+                    <div class="form-wrap row-group">
+                        <div class="form-list row-group">
+                            <div class="form-item row-group">
+                                <div class="item-default col-group">
+                                    이용선택
+                                    <div class="label">
+                                        적립금 적립 예정
+                                    </div>
+                                </div>
+                                <div class="item-user">
+                                    <div class="form-input-wrap row-group">
+                                        <select name="" id="" class="form-input">
+                                            <option value="">이용선택</option>
+                                        </select>
+                                        <div class="select-preview-wrap">
+                                            <p class="title">
+                                                [31회차 홍길동의 꾸러미] 싱글 꾸러미
+                                            </p>
+                                            <button class="del-btn">
+                                                <i class="xi-close"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default col-group">
+                                    이번 꾸러미는 어떠셨나요?
+                                </div>
+                                <div class="item-user">
+                                    <div class="review-score-btn-wrap col-group">
+                                        <button class="review-score-btn sc1" role="radio" aria-checked="false" data-value="1"></button>
+                                        <button class="review-score-btn sc2" role="radio" aria-checked="false" data-value="2"></button>
+                                        <button class="review-score-btn sc3" role="radio" aria-checked="false" data-value="3"></button>
+                                        <button class="review-score-btn sc4" role="radio" aria-checked="false" data-value="4"></button>
+                                        <button class="review-score-btn sc5" role="radio" aria-checked="false" data-value="5"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default col-group">
+                                    후기 내용
+                                </div>
+                                <div class="item-user">
+                                    <textarea name="" id="" class="form-input form-textarea" placeholder="후기내용을 작성해주세요.(공백포함 최소 10자 이상)"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default col-group">
+                                    이미지 업로드
+                                    <span class="sub-txt">
+                                        최대 3장
+                                    </span>
+                                </div>
+                                <div class="item-user">
+                                    <div class="form-input-wrap row-group">
+                                        <div class="file-upload-wrap col-group">
+                                            <input class="form-input" type='file' id='list_file' multiple
+                                                accept="image/*">
+                                            <label class="file-upload-btn" htmlFor="list_file">
+                                                <i class='xi-plus icon'></i>
+                                            </label>
+                
+                                            <div class="file-preview-wrap col-group">
+                                                <div class="file-preview">
+                                                    <img class="file-preview-img" alt="" src="images/about_slide_1.png" />
+                                                    <i class="xi-trash del-btn"></i>
+                                                </div>
+                                                <div class="file-preview">
+                                                    <img class="file-preview-img" alt="" src="images/about_slide_1.png" />
+                                                    <i class="xi-trash del-btn"></i>
+                                                </div>
+                                                <div class="file-preview">
+                                                    <img class="file-preview-img" alt="" src="images/about_slide_1.png" />
+                                                    <i class="xi-trash del-btn"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="file-preview-full img-container">
+                                            <img class="file-preview-img" alt="" src="images/about_slide_1.png" />
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-footer-wrap">
+                            <button class="form-submit-btn">
+                                등록
+                            </button>
+                        </div>
+                    
+                        <div class="guide-txt-wrap">
+                            <p class="guide-txt dot">
+                                포토후기는 70원, 일반 후기는 50원 지급됩니다.
+                            </p>
+                            <p class="guide-txt dot">
+                                BEST 후기 선정시 200원이 지급됩니다.
+                            </p>
+                            <p class="guide-txt dot">
+                                첫번째 첨부된 이미지가 대표이미지로 선정됩니다.
+                            </p>
+                            <p class="guide-txt dot">
+                                리뷰에 상품과 무관한 사진 또는 욕설, 비속어 등이 포함된 경우 고지 없이 삭제될 수 있습니다. 적립금 자동 회수됩니다.
+                            </p>
+                            <p class="guide-txt dot">
+                                반품·취소 시, 이용후기 삭제 및 작성 적립금이 회수됩니다.
+                            </p>
+                            <p class="guide-txt dot">
+                                후기는 농장스의 콘텐츠로 사용될 수 있습니다 :)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+<script>
+    //리뷰 점수
+    $('.review-score-btn').mouseover(function(){
+        var score_value = $(this).attr('data-value');
+        $('.review-score-btn:lt('+score_value+')').css({
+            "background": "url(../images/review_score_active.png) no-repeat",
+            "background-position" : "center",
+            "background-size" : "cover",
+        });
+    });
+
+    $('.review-score-btn').mouseleave(function(){
+        var score_value = $(this).attr('data-value');
+        $('.review-score-btn').css({
+            "background": "url(../images/review_score.png) no-repeat",
+            "background-position" : "center",
+            "background-size" : "cover",
+        });
+    });
+
+    $('.review-score-btn').click(function(){
+        var score_value = $(this).attr('data-value');
+        $('.review-score-btn').removeClass('active');
+        $('.review-score-btn').attr('aria-checked', 'false');
+        $(this).attr('aria-checked', 'true');
+        $('.review-score-btn:lt('+score_value+')').addClass('active');
+        
+    });
+</script>
+</html>

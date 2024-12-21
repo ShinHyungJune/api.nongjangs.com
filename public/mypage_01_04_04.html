@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    배송지 관리
+                </p>
+            </div>
+
+            <div class="mypage">
+                <div class="mypage-container">
+                    <div id="mp_nav" class="mp-nav"></div>
+                    <div class="mp-content">
+                        <div class="mp-sub-section-wrap row-group">
+                            <div class="plan-nav col-group">
+                                <h2 class="plan-nav-title">
+                                    구독 정보 변경
+                                </h2>
+                            </div>
+                            
+                            <div class="mp-sub-section mb-wide">
+                                <a href="mypage_01_04.html" class="mp-sub-section-title-wrap col-group over-border">
+                                    <i class="xi-arrow-left prev-btn"></i>
+                                    <p class="mp-sub-section-title">
+                                        배송지 관리
+                                    </p>
+                                </a>
+
+                                <div class="mp-order-btn-wrap col-group border">
+                                    <button class="mp-order-btn white">
+                                        기본 배송지 설정
+                                    </button>
+                                    <button class="mp-order-btn black" onclick="document.querySelector('.addr_create_modal').classList.add('active')">
+                                        배송지 등록
+                                    </button>
+                                </div>
+
+                                <div class="addr-list row-group">
+                                    <div class="addr-item active">
+                                        <label for="radio_1">
+                                            <div class="user-info-wrap">
+                                                <input type="radio" id="radio_1" class="form-radio" name="radio_adr" checked="">
+                                                <div class="checked-item">
+                                                    <div class="icon"></div>
+                                                </div>
+                                                <div class="user-info-wrap">
+                                                    <div class="user-title-info item-2">
+                                                        <p class="name">김지은</p>
+                                                        <p class="addr-type">집 (기본배송지)</p>
+                                                    </div>
+                                                    <div class="user-detail-info item-3">
+                                                        <p class="info-txt adr">(03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층</p>
+                                                        <p class="info-txt phone">010-1234-1234</p>
+                                                    </div>
+                                                </div>
+                                                <div class="user-set-wrap item-4">
+                                                    <button class="set-btn">수정</button>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="addr-item">
+                                        <div class="radio-wrap item-1">
+                                            <label for="radio_2" class="radio-item">
+                                                <div class="user-info-wrap">
+                                                    <input type="radio" id="radio_2" class="form-radio" name="radio_adr">
+                                                    <div class="checked-item">
+                                                        <div class="icon"></div>
+                                                    </div>
+                                                    <div class="user-title-info item-2">
+                                                        <p class="name">김지은</p>
+                                                        <p class="addr-type">회사</p>
+                                                    </div>
+                                                    <div class="user-detail-info item-3">
+                                                        <p class="info-txt adr">(03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층 은평구 진흥로 은평구 진흥로 은평구 진흥로</p>
+                                                        <p class="info-txt phone">010-1234-1234</p>
+                                                    </div>
+                                                    <div class="user-set-wrap item-4">
+                                                        <button class="set-btn">수정</button>
+                                                        <button class="set-btn del-btn">삭제</button>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+                                <div class="mp-footer-btn-wrap">
+                                    <button class="mp-footer-btn green">
+                                        저장
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 배송지 등록 -->
+<div class="modal-container addr_create_modal">
+    <div class="modal-wrap">
+        <i class="xi-close close-btn"></i>
+        <div class="modal-title-wrap border">
+            <p class="modal-title">
+                배송지 등록
+            </p>
+        </div>
+        <div class="modal-scroll-wrap">
+            <div class="form-list row-group border">
+                <div class="form-item">
+                    <input type="text" class="form-input" placeholder="배송지명(선택)">
+                </div>
+                <div class="form-item">
+                    <input type="text" class="form-input" placeholder="받으시는 분">
+                </div>
+                <div class="form-item">
+                    <input type="text" class="form-input" placeholder="휴대폰 번호">
+                </div>
+            </div>
+            <div class="form-list row-group">
+                <div class="form-item">
+                    <div class="form-btn-wrap col-group">
+                        <input type="text" class="form-input" placeholder="우편번호">
+                        <button class="form-btn">
+                            우편번호 검색
+                        </button>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <input type="text" class="form-input" placeholder="기본주소">
+                </div>
+                <div class="form-item">
+                    <input type="text" class="form-input" placeholder="상세주소">
+                </div>
+            </div>
+            <label for="default">
+                <input type="checkbox" class="form-checkbox" id="default">
+                <div class="checked-item col-group">
+                    <div class="icon">
+                        <i class="xi-check"></i>
+                    </div>
+                    <p class="txt">
+                        기본 배송지로 설정
+                    </p>
+                </div>
+            </label>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn disable">
+                저장
+            </button>
+            <button class="modal-footer-btn submit-btn">
+                저장
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>

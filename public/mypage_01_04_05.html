@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    결제 수단
+                </p>
+            </div>
+
+            <div class="mypage">
+                <div class="mypage-container">
+                    <div id="mp_nav" class="mp-nav"></div>
+                    <div class="mp-content">
+                        <div class="mp-sub-section-wrap row-group">
+                            <div class="plan-nav col-group">
+                                <h2 class="plan-nav-title">
+                                    구독 정보 변경
+                                </h2>
+                            </div>
+                            
+                            <div class="mp-sub-section mb-wide">
+                                <a href="mypage_01_04.html" class="mp-sub-section-title-wrap col-group over-border">
+                                    <i class="xi-arrow-left prev-btn"></i>
+                                    <p class="mp-sub-section-title">
+                                        결제 수단
+                                    </p>
+                                </a>
+
+                                <div class="payment-tab-content active"> <!-- 간편결제 선택 시 -->
+                                    <div class="payment-item active"><!-- 수단 선택 시 active 큺래스 -->
+                                        <div class="payment-title">
+                                            <div class="icon"></div>
+                                            농장스 간편결제
+                                        </div>
+                                        <div class="payment-card-slide swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+                                            <div class="swiper-wrapper" id="swiper-wrapper-e9ae866961010510e73" aria-live="polite">
+                                                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 2" style="width: 347.2px; margin-right: 16px;">
+                                                    <div class="payment-card-item active"> <!-- 카드 선택 시 active 큺래스 -->
+                                                        <img src="" alt="" class="item-img" style="background: #484848;">
+                                                        <div class="item-title">
+                                                            <i class="icon xi-check"></i>
+                                                            롯데카드
+                                                        </div>
+                                                        <div class="item-num">
+                                                            9409 12** **** 7777
+                                                        </div>
+                                                        <div class="item-ic">
+                                                            <img src="images/card_ic.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 2" style="width: 347.2px; margin-right: 16px;">
+                                                    <div class="payment-card-item">
+                                                        <div class="null-txt-wrap">
+                                                            <i class="icon xi-plus"></i>
+                                                            <p class="title">
+                                                                카드 등록
+                                                            </p>
+                                                            <p class="txt">
+                                                                카드를 등록하고 빠르게 결제하세요!
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                                    </div>
+                                    <div class="payment-item">
+                                        <div class="payment-title">
+                                            <div class="icon"></div>
+                                            <img src="images/icon_kakaopay.png" alt="" class="img">
+                                            카카오페이
+                                        </div>
+                                    </div>
+                                    <div class="payment-item">
+                                        <div class="payment-title">
+                                            <div class="icon"></div>
+                                            <img src="images/icon_naverpay.png" alt="" class="img">
+                                            네이버페이
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mp-footer-btn-wrap">
+                                    <button class="mp-footer-btn green">
+                                        저장
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+<script>
+    var card_slide = new Swiper(".payment-card-slide", {
+        spaceBetween: 16,
+        slidesPerView : 1,
+        breakpoints: {
+            560: {
+                slidesPerView : 2,
+            },
+            1024: {
+                slidesPerView : 3,
+            },
+            1280: {
+                slidesPerView : 2,
+            },
+        }
+    });
+</script>
+</html>

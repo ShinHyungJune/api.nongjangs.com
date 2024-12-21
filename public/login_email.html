@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    로그인
+                </p>
+            </div>
+            <div class="subpage login">
+                <div class="login-form-container">
+                    <div class="subpage-title-wrap center">
+                        <h2 class="subpage-title">
+                            로그인
+                        </h2>
+                    </div>
+                    
+                    <div class="login-form-list form-list border">
+                        <div class="account-form row-group">
+                            <input type="text" class="form-input" placeholder="이메일(아이디)">
+                            <input type="password" class="form-input" placeholder="비밀번호">
+                            <button class="form-submit-btn disable"> <!-- 아이디/비밀번호 입력 시 disable 삭제 -->
+                                로그인
+                            </button>
+                            <div class="login-footer-btn-wrap col-group">
+                                <a href="find_id.html" class="login-footer-btn">아이디 찾기</a>
+                                <a href="find_pw.html" class="login-footer-btn">비밀번호 찾기</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="account-form row-group">
+                        <p class="login-footer-title">
+                            아직 <span class="green">농장스</span>의 회원이 아니신가요?
+                        </p>
+                        <a href="join.html" class="form-submit-btn">
+                            회원가입
+                        </a>
+                        <a href="" class="sns-login-item kakao">
+                            <img src="images/icon_kakao.png" alt="" class="icon">
+                            <p class="txt">
+                                카카오 1초 로그인/회원가입
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 아이디(이메일) 잘못 입력되었을 때 -->
+<div class="modal-container id_error_modal">
+    <div class="modal-wrap modal-alert">
+        <div class="modal-title-wrap">
+            <i class="icon xi-warning red"></i>
+        </div>
+        <p class="modal-alert-txt">
+            아이디(이메일) 형식을 확인해주세요.
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                확인
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 아이디와 비밀번호의 조합 로그인 정보가 없을 때 -->
+<div class="modal-container login_error_modal">
+    <div class="modal-wrap modal-alert">
+        <div class="modal-title-wrap">
+            <i class="icon xi-warning red"></i>
+        </div>
+        <p class="modal-alert-txt">
+            확인되는 가입 정보가 없습니다. <br>
+            회원가입을 진행해 주세요.
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                확인
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>

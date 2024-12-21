@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> <!-- 회원 등급 애니메이션 -->
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    회원 등급
+                </p>
+            </div>
+            
+            <div class="mypage">
+                <div class="mypage-container">
+                    <div id="mp_nav" class="mp-nav"></div>
+                    <div class="mp-content">
+                        <div class="mp-sub-section-wrap row-group">
+                            <div class="plan-nav col-group">
+                                <h2 class="plan-nav-title">
+                                    회원 등급
+                                </h2>
+                            </div>
+                            
+                            <div class="mp-sub-section-wrap row-group">
+                                <div class="mp-sub-section">
+                                    <div class="mp-section-wrap row-group">
+                                        <div class="mp-subscript-detail-item col-group">
+                                            <div class="img-wrap">
+                                                <div class="img-box">
+                                                    <img src="images/lv-2.png" alt="" class="img animate__animated animate__bounce animate__infinite animate__slow">
+                                                </div>
+                                            </div>
+                                            <div class="txt-wrap row-group">
+                                                <div class="label">
+                                                    꾸러미 3회차 완료
+                                                </div>
+                                                <p class="title">
+                                                    <strong>
+                                                        당근사랑
+                                                    </strong>
+                                                    님은 <br>
+                                                    <strong class="green">
+                                                        새싹 꾸러기
+                                                    </strong>
+                                                    레벨이에요
+                                                </p>
+                                                <p class="txt">
+                                                    다음 레벨까지 <br>
+                                                    <strong>
+                                                        꾸러미 1회차
+                                                    </strong>
+                                                    <br>
+                                                    <strong>
+                                                        (또는 구매 금액 22,000원)
+                                                    </strong>
+                                                    이 남았어요
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mp-subscript-next">
+                                            <p class="label">
+                                                줄기 꾸러기 혜택
+                                            </p>
+                                            <div class="guide-txt-wrap row-group">
+                                                <p class="guide-txt dot">
+                                                    <strong class="green">2,500원 할인 쿠폰</strong> 증정
+                                                </p>
+                                                <p class="guide-txt dot">
+                                                    결제 금액의 <strong class="green">0.3%</strong> 적립
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+
+                                <button class="footer-more-btn" onclick="document.querySelector('.level_modal').classList.add('active')">
+                                    레벨 안내
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 레벨 안내 팝업 -->
+<div class="modal-container level_modal">
+    <div class="modal-wrap">
+        <i class="xi-close close-btn"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                레벨 안내
+            </p>
+        </div>
+
+        <div class="modal-scroll-wrap">
+            <div class="mp-level-list row-group">
+                <div class="mp-level-item row-group">
+                    <p class="item-title">
+                        Lv1. 씨앗 꾸러기
+                    </p>
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            꾸러미 1회차 이상 or 구매금액 30,000원 이상
+                        </p>
+                        <p class="guide-txt dot">
+                            쿠폰 1,000원 / 적립 0.1%
+                        </p>
+                    </div>
+                </div>
+                <div class="mp-level-item row-group">
+                    <p class="item-title">
+                        Lv2. 새싹 꾸러기
+                    </p>
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            꾸러미 2회차 이상 or 구매금액 80,000원 이상
+                        </p>
+                        <p class="guide-txt dot">
+                            쿠폰 2,000원 / 적립 0.2%
+                        </p>
+                    </div>
+                </div>
+                <div class="mp-level-item row-group">
+                    <p class="item-title">
+                        Lv3. 줄기 꾸러기
+                    </p>
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            꾸러미 5회차 이상 or 구매 금액 150,000원 이상
+                        </p>
+                        <p class="guide-txt dot">
+                            쿠폰 2,500원 / 적립 0.3%
+                        </p>
+                    </div>
+                </div>
+                <div class="mp-level-item row-group">
+                    <p class="item-title">
+                        Lv4. 잎새 꾸러기
+                    </p>
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            꾸러미 9회차 이상 or 구매 금액 300,000원 이상
+                        </p>
+                        <p class="guide-txt dot">
+                            3,000원 쿠폰 / 1% 적립
+                        </p>
+                    </div>
+                </div>
+                <div class="mp-level-item row-group">
+                    <p class="item-title">
+                        Lv5. 꽃잎 꾸러기
+                    </p>
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            꾸러미 14회차 이상 or 구매 금액 500,000원 이상
+                        </p>
+                        <p class="guide-txt dot">
+                            4,000원 쿠폰 / 1.5% 적립
+                        </p>
+                    </div>
+                </div>
+                <div class="mp-level-item row-group">
+                    <p class="item-title">
+                        Lv6. 열매 꾸러기
+                    </p>
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            꾸러미 26회차 이상 or 구매 금액 700,000원 이상
+                        </p>
+                        <p class="guide-txt dot">
+                            5,000원 쿠폰 / 2% 적립
+                        </p>
+                    </div>
+                </div>
+                <div class="mp-level-item row-group">
+                    <p class="item-title">
+                        Lv7. 풍요 꾸러기
+                    </p>
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            꾸러미 38회차 이상 or 구매 금액 1,000,000원 이상
+                        </p>
+                        <p class="guide-txt dot">
+                            10,000원 쿠폰 / 2.5% 적립
+                        </p>
+                    </div>
+                </div>
+                <div class="mp-level-item row-group">
+                    <p class="item-title">
+                        Lv8. 영광 꾸러기
+                    </p>
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            꾸러미 48회차 이상 or 구매 금액 1,500,000원 이상
+                        </p>
+                        <p class="guide-txt dot">
+                            15,000원 쿠폰 / 3% 적립
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>

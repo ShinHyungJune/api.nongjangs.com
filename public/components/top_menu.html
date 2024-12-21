@@ -1,0 +1,62 @@
+<div class="top-btn-wrap">
+    <a href="subscript_plan_0.html" class="btn subscript-btn">
+        <div class="hover-btn">
+            <p>정기구독</p>
+        </div>
+        <div class="basic-btn">
+            <img src="images/icon_subscript.png" alt="">
+        </div>
+    </a>
+    <a href="" target="_blank" class="btn inquiry-btn">
+        <div class="hover-btn">
+            <p>문의하기</p>
+        </div>
+        <div class="basic-btn">
+            <img src="images/icon_inquiry.png" alt="">
+        </div>
+    </a>
+    <button class="Top_Scroll_btn">
+        <i class="xi-arrow-up"></i>
+        <div class="progress_bar"></div>
+    </button>
+</div>
+
+<script>
+    $('.top-btn-wrap .btn').click(function(){
+        $(this).toggleClass('active');
+    });
+
+    $('.Top_Scroll_btn').click(function () {
+        $('html').scrollTop(0);
+    });
+
+    $(document).scroll(function () {
+        if ($(document).scrollTop() > 88) {
+            $('.Top_Scroll_btn').addClass('active');
+        } else {
+            $('.Top_Scroll_btn').removeClass('active');
+        }
+    });
+
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            var scrollPercent = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+            var color = getColorFromPercentage(scrollPercent);
+
+            $('.Top_Scroll_btn .progress_bar').css('background', 'conic-gradient(' + color + ' 0% ' + scrollPercent + '%, #fff ' + scrollPercent + '% 100%)');
+        });
+
+        function getColorFromPercentage(percentage) {
+
+            var startColor = [48, 137, 41]; // RGB 값으로 작성해야함!
+            var endColor = [48, 137, 41];
+
+            var color = [];
+            for (var i = 0; i < 3; i++) {
+                color[i] = Math.round(startColor[i] + (endColor[i] - startColor[i]) * (percentage / 100));
+            }
+
+            return 'rgb(' + color.join(',') + ')';
+        }
+    });
+</script>

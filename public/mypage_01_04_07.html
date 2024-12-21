@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    정기구독 중지
+                </p>
+            </div>
+
+            <div class="mypage">
+                <div class="mypage-container">
+                    <div id="mp_nav" class="mp-nav"></div>
+                    <div class="mp-content">
+                        <div class="mp-sub-section-wrap row-group">
+                            <div class="plan-nav col-group">
+                                <h2 class="plan-nav-title">
+                                    정기구독 중지
+                                </h2>
+                            </div>
+                            
+                            <div class="mp-sub-section-wrap row-group">
+                                <div class="mp-sub-section">
+                                    <div class="mp-subscript-detail mp-nav">
+                                        <div class="mp-profile-wrap">
+                                            <div class="mp-profile-img">
+                                                <img src="images/lv-8.png" alt="">
+                                            </div>
+                                            <div class="mp-profile-txt">
+                                                <div class="mp-profile-label">
+                                                    Lv7. OO 꾸러기
+                                                </div>
+                                                <div class="mp-profile-name">
+                                                    <strong>당근사랑</strong>님
+                                                </div>
+                                            </div>
+                                            <div class="txt">
+                                                지금 정기구독을 중지하시면 다음 혜택을 놓칠 수 있어요😢
+                                            </div>
+                                            <div class="txt green highlight">
+                                                OO 꾸러기 까지 <strong>12,000원</strong> 또는 <strong>꾸러미 2회차</strong> 남았어요
+                                            </div>
+                                        </div>
+                                        <div class="mp-subscript-next">
+                                            <p class="label">
+                                                Lv8. OO 꾸러기 혜택
+                                            </p>
+                                            <div class="guide-txt-wrap row-group">
+                                                <p class="guide-txt dot">
+                                                    등급 승급 시 <strong class="green">25,000원 할인 쿠폰</strong> 증정
+                                                </p>
+                                                <p class="guide-txt dot">
+                                                    결제 금액의 <strong class="green">3%</strong> 적립
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="mypage_01_02.html" class="mp-subscript-btn green">
+                                    <p class="txt">
+                                        아직 채소가 많이 남았다면?
+                                    </p>
+                                    <p class="title">
+                                        꾸러미를 최대 <br class="mb"> 
+                                        <span class="yellow">4주</span>까지 미루실 수 있어요
+                                        <i class="icon xi-arrow-right"></i>
+                                    </p>
+                                </a>
+                                <a href="inquiry_create.html" class="mp-subscript-btn white">
+                                    <p class="txt">
+                                        품질 문제가 있으셨나요?
+                                    </p>
+                                    <p class="title">
+                                        품질 최우선, <br class="mb">
+                                        빠른 보상해 드려요
+                                        <i class="icon xi-arrow-right"></i>
+                                    </p>
+                                </a>
+
+                                <button class="mp-leave-btn" onclick="document.querySelector('.report_modal').classList.add('active')">
+                                    그래도 정지할게요
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 중지 사유 -->
+<div class="modal-container report_modal">
+    <div class="modal-wrap">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap border row-group">
+            <p class="modal-title">
+                정기구독 중지
+            </p>
+            <p class="modal-sub-title">
+                의견을 남겨주시면 소중히 새겨듣고 <br>
+                오래 이용할 수 있는 서비스로 개선하겠습니다.
+            </p>
+        </div>
+
+        <div class="modal-scroll-wrap">
+            <div class="report-list row-group">
+                <label for="report_1" class="report-item">
+                    <input type="radio" id="report_1" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            더 이상 서비스가 필요하지 않아요.
+                        </p>
+                    </div>
+                </label>
+                <label for="report_2" class="report-item">
+                    <input type="radio" id="report_2" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            꾸러미 이용 비용이 부담스러워요.
+                        </p>
+                    </div>
+                </label>
+                <label for="report_3" class="report-item">
+                    <input type="radio" id="report_3" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            꾸러미 품목이 다양하지 않아요.
+                        </p>
+                    </div>
+                </label>
+                <label for="report_4" class="report-item">
+                    <input type="radio" id="report_4" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            품질이 불만족스러워요.
+                        </p>
+                    </div>
+                </label>
+                <label for="report_5" class="report-item">
+                    <input type="radio" id="report_5" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            기타
+                        </p>
+                    </div>
+                </label>
+                <!-- 기타 선택시 활성화 -->
+                <textarea name="" id="" class="form-input form-textarea disable" readonly placeholder="간단한 사유 입력"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="modal-footer-btn cancel-btn" onclick="document.querySelector('.leave_done_modal').classList.add('active')">
+                중지하기
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 중지 완료 -->
+<div class="modal-container leave_done_modal">
+    <div class="modal-wrap modal-alert">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap row-group">
+            <i class="xi-check icon green"></i>
+            <h2 class="modal-title">
+                중지완료
+            </h2>
+        </div>
+
+        <p class="modal-alert-txt">
+            꾸러미 이용 중지가 완료되었습니다. <br>
+            감사합니다.
+        </p>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/> <!-- 컬러피커 -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <h2 class="main-title">
+                        쿠폰 등록
+                    </h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-wrap row-group">
+                        <div class="form-item row-group">
+                            <div class="item-default">
+                                쿠폰명
+                            </div>
+                            <div class="item-user">
+                                <input type="text" class="form-input" placeholder='쿠폰명을 입력하세요'>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <div class="item-default">
+                                유형
+                            </div>
+                            <div class="item-user">
+                                <div class="row-group gap16">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="type_1">
+                                            <input type="radio" id="type_1" name="type" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    모든상품
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="type_2">
+                                            <input type="radio" id="type_2" name="type" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    꾸러미
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="type_3">
+                                            <input type="radio" id="type_3" name="type" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    직거래 상품
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="type_4">
+                                            <input type="radio" id="type_4" name="type" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    배송비
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <!-- 꾸러미 선택 시 -->
+                                    <div class="review-reply-wrap">
+                                        <div class="form-label-wrap col-group">
+                                            <label for="package_1">
+                                                <input type="checkbox" id="package_1" name="package" class="form-checkbox">
+                                                <div class="checked-item col-group">
+                                                    <div class="icon">
+                                                        <i class="xi-check"></i>
+                                                    </div>
+                                                    <p class="txt">
+                                                        싱글
+                                                    </p>
+                                                </div>
+                                            </label>
+                                            <label for="package_2">
+                                                <input type="checkbox" id="package_2" name="package" class="form-checkbox">
+                                                <div class="checked-item col-group">
+                                                    <div class="icon">
+                                                        <i class="xi-check"></i>
+                                                    </div>
+                                                    <p class="txt">
+                                                        벙글
+                                                    </p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- 직거래 상품 선택 시 -->
+                                    <div class="row-group gap16">
+                                    <div class="col-group gap8 al-ce">
+                                        <button class="btn btn-m gray">
+                                            적용 상품 선택
+                                            <i class="xi-search"></i>
+                                        </button>
+                                        <label for="check">
+                                            <input type="checkbox" id="check" name="check" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                                <p class="txt">
+                                                    전체
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="tag-list">
+                                        <div class="tag-item">
+                                            <div class="img">
+                                                <img src="images/about_slide_1.png" alt="">
+                                            </div>
+                                            <p class="txt">
+                                                포슬포슬 햇 수미감자 1kg
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                        <div class="tag-item">
+                                            <div class="img">
+                                                <img src="images/about_slide_1.png" alt="">
+                                            </div>
+                                            <p class="txt">
+                                                포슬포슬 햇 수미감자 1kg
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <div class="item-default">
+                                대상
+                            </div>
+                            <div class="item-user">
+                                <div class="row-group gap16">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="target_1">
+                                            <input type="radio" id="target_1" name="target" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    전체회원
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="target_2">
+                                            <input type="radio" id="target_2" name="target" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    고객등급
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="target_3">
+                                            <input type="radio" id="target_3" name="target" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    구매 이력
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="target_4">
+                                            <input type="radio" id="target_4" name="target" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    고객등급
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <!-- 고객등급 선택 시 -->
+                                    <select name="" id="" class="form-input half">
+                                        <option value="">Lv.1 씨앗 꾸러기</option>
+                                    </select>
+
+                                    <!-- 구매 이력 선택 시 -->
+                                    <div class="col-group gap8 al-ce">
+                                        <input type="text" class="form-input half" placeholder="구매 이력">
+                                        회 (최근 3개월 이내)
+                                    </div>
+
+                                    <!-- 개인회원 선택 시 -->
+                                    <div class="row-group gap16">
+                                        <div class="col-group">
+                                            <input type="search" class="search-input" placeholder="아이디(이메일)">
+                                            <button type="submit" class="search-btn">
+                                                <i class="xi-search"></i>
+                                            </button>
+                                        </div>
+                                        <div class="tag-list">
+                                            <div class="tag-item">
+                                                <p class="txt">
+                                                    김지은(aaa1234@gmail.com)
+                                                </p>
+                                                <i class="xi-close del-btn"></i>
+                                            </div>
+                                            <div class="tag-item">
+                                                <p class="txt">
+                                                    김지은(aaa1234@gmail.com)
+                                                </p>
+                                                <i class="xi-close del-btn"></i>
+                                            </div>
+                                            <div class="tag-item">
+                                                <p class="txt">
+                                                    김지은(aaa1234@gmail.com)
+                                                </p>
+                                                <i class="xi-close del-btn"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <div class="item-default">
+                                혜택
+                            </div>
+                            <div class="item-user">
+                                <div class="row-group gap16">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="won">
+                                            <input type="radio" id="won" name="discount" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    원
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="percent">
+                                            <input type="radio" id="percent" name="discount" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    %
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-group gap24">
+                                        <div class="col-group gap8 al-ce">
+                                            <input type="text" class="form-input half">
+                                            %
+                                        </div>
+                                        <div class="col-group gap8 al-ce">
+                                            최대
+                                            <input type="text" class="form-input half">
+                                            원 할인
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <div class="item-default">
+                                최소 주문금액(할인가 기준)
+                            </div>
+                            <div class="item-user">
+                                <div class="col-group gap8 al-ce">
+                                    <input type="text" class="form-input half">
+                                    원 이상 구매 시 사용 가능
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <div class="item-default">
+                                유효기간
+                            </div>
+                            <div class="item-user">
+                                <div class="row-group gap16">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="date_1">
+                                            <input type="radio" id="date_1" name="date" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    날짜지정
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="date_2">
+                                            <input type="radio" id="date_2" name="date" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    다운로드일 기준
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <!-- 날짜 지정 선택 시 -->
+                                    <div class="col-group gap16 al-ce">
+                                        <div class="col-group gap8">
+                                            <input type="date" class="form-input half">
+                                            <input type="time" class="form-input quarter">
+                                        </div>
+                                        -
+                                        <div class="col-group gap8">
+                                            <input type="date" class="form-input half">
+                                            <input type="time" class="form-input quarter">
+                                        </div>
+                                    </div>
+
+                                    <!-- 다운로드일 기준 선택 시 -->
+                                    <div class="col-group gap8 al-ce">
+                                        <input type="text" class="form-input half">
+                                        일 후 까지 사용 가능
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script> <!-- 컬러피커 -->
+<script>
+    Coloris.setInstance('.coloris', { theme: 'polaroid' });
+</script>
+</html>

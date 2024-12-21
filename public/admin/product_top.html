@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap col-group sp-bt al-en">
+                    <h2 class="main-title">
+                        소농살리기 프로젝트
+                    </h2>
+                    <div class="col-group gap16">
+                        <div class="col-group gap8">
+                            <select name="" id="" class="form-input quarter">
+                                <option value="">구독상태</option>
+                            </select>
+                            <div class="col-group">
+                                <input type="search" class="search-input" placeholder="생산자 / 상품명 / 상품번호">
+                                <button type="submit" class="search-btn">
+                                    <i class="xi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-group gap8">
+                            <button class="btn white">
+                                배너등록
+                            </button>
+                            <button class="btn gray">
+                                선택 삭제
+                            </button>
+                            <a href="product_top_create.html" class="btn blue">
+                                등록
+                            </a>
+                        </div>
+                    </div>
+                 
+                </div>
+
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <colgroup>
+                            <col width="48px">
+                        </colgroup>
+                        <thead>
+                            <tr><th>
+                                <label for="check_all">
+                                    <input type="checkbox" id="check_all" class="form-checkbox">
+                                    <div class="checked-item col-group">
+                                        <div class="icon">
+                                            <i class="xi-check"></i>
+                                        </div>
+                                    </div>
+                                </label>
+                            </th>
+                            <th>
+                                상품명
+                            </th>
+                            <th>
+                                프로젝트 기간
+                            </th>
+                            <th>
+                                목표인원
+                            </th>
+                            <th>
+                                진행률
+                            </th>
+                            <th>
+                                상태
+                            </th>
+                            <th>
+                                관리
+                            </th>
+                        </tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="check_1">
+                                        <input type="checkbox" id="check_1" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <div class="user-content-wrap col-group gap16">
+                                        <div class="img-container">
+                                            <img src="" alt="">
+                                        </div>
+                                        <div class="txt">
+                                            포슬포슬 햇 수미감자 1kg
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    24-12-12 00:00 - 25-01-12 00:00
+                                </td>
+                                <td>
+                                    643 / 2000
+                                </td>
+                                <td>
+                                    60%
+                                </td>
+                                <td>
+                                    <div class="order-state state_1">
+                                        진행중
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="blue">
+                                        상세
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="check_2">
+                                        <input type="checkbox" id="check_2" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <div class="user-content-wrap col-group gap16">
+                                        <div class="img-container">
+                                            <img src="" alt="">
+                                        </div>
+                                        <div class="txt">
+                                            포슬포슬 햇 수미감자 1kg
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    24-12-12 00:00 - 25-01-12 00:00
+                                </td>
+                                <td>
+                                    643 / 2000
+                                </td>
+                                <td>
+                                    60%
+                                </td>
+                                <td>
+                                    <div class="order-state">
+                                        종료
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="blue">
+                                        상세
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

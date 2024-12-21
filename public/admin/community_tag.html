@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/> <!-- 컬러피커 -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap row-group">
+                    <div class="col-group sp-bt al-en">
+                        <h2 class="main-title">
+                            태그관리
+                        </h2>
+                        <div class="col-group gap16">
+                            <div class="col-group">
+                                <input type="search" class="search-input" placeholder="제목/색상코드">
+                                <button type="submit" class="search-btn">
+                                    <i class="xi-search"></i>
+                                </button>
+                            </div>
+                            <div class="col-group gap8">
+                                <button class="btn white">
+                                    선택 노출
+                                </button>
+                                <button class="btn gray">
+                                    선택 삭제
+                                </button>
+                                <button class="btn blue" onclick="document.getElementById('tag_create').style.display='block'">
+                                    등록
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-group gap8">
+                        <a href="community_tag.html" class="btn btn-m tab-btn active">
+                            농가이야기(25)
+                        </a>
+                        <a href="community_tag.html" class="btn btn-m tab-btn">
+                            레시피(105)
+                        </a>
+                        <a href="community_tag.html" class="btn btn-m tab-btn">
+                            채소이야기(2,305)
+                        </a>
+                        <a href="community_tag.html" class="btn btn-m tab-btn">
+                            직거래 장터(105)
+                        </a>
+                        <a href="community_tag.html" class="btn btn-m tab-btn">
+                            꾸러미(305)
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <colgroup>
+                                <col width="48px">
+                            </colgroup>
+                            <thead>
+                                <tr><th>
+                                    <label for="check_all">
+                                        <input type="checkbox" id="check_all" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </th>
+                                <th>
+                                    NO
+                                </th>
+                                <th>
+                                    태그색상
+                                </th>
+                                <th>
+                                    태그명
+                                </th>
+                                <th>
+                                    노출여부
+                                </th>
+                                <th>
+                                    순서
+                                </th>
+                                <th>
+                                    관리
+                                </th>
+                            </tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        <div class="tag-item">
+                                            <div class="color" style="background-color: #E92C2C;"></div>
+                                            <p class="txt">
+                                                #E92C2C
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        무농약
+                                    </td>
+                                    <td>
+                                        <span class="blue">
+                                            Y
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="col-group align-btn-wrap">
+                                            <button class="align-btn">
+                                                <i class="xi-arrow-up"></i>
+                                            </button>
+                                            <button class="align-btn">
+                                                <i class="xi-arrow-down"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="blue">
+                                            상세
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        <div class="tag-item">
+                                            <div class="color" style="background-color: #308929;"></div>
+                                            <p class="txt">
+                                                #308929
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        무농약
+                                    </td>
+                                    <td>
+                                        <span>
+                                            N
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="col-group align-btn-wrap">
+                                            <button class="align-btn">
+                                                <i class="xi-arrow-up"></i>
+                                            </button>
+                                            <button class="align-btn">
+                                                <i class="xi-arrow-down"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="blue">
+                                            상세
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- 태그 -->
+<div class="modal-container" id="tag_create" style="display: none;">
+    <div class="modal-wrap w480">
+        <i class="xi-close close-btn"></i>
+        <div class="modal-title-wrap border">
+            <p class="modal-title">
+                태그
+            </p>
+        </div>
+
+        <div class="form-list row-group">
+            <div class="form-item">
+                <div class="form-label-wrap col-group">
+                    <label for="type_1">
+                        <input type="radio" id="type_1" name="type" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                농가이야기
+                            </p>
+                        </div>
+                    </label>
+                    <label for="type_2">
+                        <input type="radio" id="type_2" name="type" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                레시피
+                            </p>
+                        </div>
+                    </label>
+                    <label for="type_3">
+                        <input type="radio" id="type_3" name="type" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                채소이야기
+                            </p>
+                        </div>
+                    </label>
+                    <label for="type_4">
+                        <input type="radio" id="type_4" name="type" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                직거래 장터
+                            </p>
+                        </div>
+                    </label>
+                    <label for="type_5">
+                        <input type="radio" id="type_5" name="type" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                꾸러미
+                            </p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="form-item row-group">
+                <div class="item-default">
+                    태그명
+                </div>
+                <div class="item-user">
+                    <input type="text" class="form-input" placeholder="태그명을 입력하세요">
+                </div>
+            </div>
+            <div class="form-item row-group"> <!-- 농가이야기 / 꾸러미 선택 시에만 나타남 -->
+                <p class="item-default">
+                    태그색상
+                </p>
+                <div class="item-user col-group">
+                    <input type="text" class="form-color coloris" data-coloris>
+                </div>
+            </div>
+            <div class="form-item row-group">
+                <p class="item-default">
+                    노출
+                </p>
+                <div class="item-user">
+                    <label for="switch_1" class="form-switch">
+                        <input type="checkbox" id="switch_1" checked>
+                        <div class="switch-item col-group">
+                            <div class="switch">
+                                <div class="switch-core">
+                                    <i class="icon xi-close"></i>
+                                    <i class="icon xi-check"></i>
+                                </div>
+                            </div>
+                            <p class="title check">
+                                노출
+                            </p>
+                            <p class="title uncheck">
+                                노출안함
+                            </p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script> <!-- 컬러피커 -->
+<script>
+    Coloris.setInstance('.coloris', { theme: 'polaroid' });
+</script>
+</html>

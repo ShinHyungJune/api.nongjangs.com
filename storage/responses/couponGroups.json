@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "title" : "제목",
+      "ratio_discount" : "할인률",
+      "duration" : "유효기간"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

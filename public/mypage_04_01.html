@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    회원 정보 관리
+                </p>
+            </div>
+
+            <div class="mypage">
+                <div class="mypage-container">
+                    <div id="mp_nav" class="mp-nav"></div>
+                    <div class="mp-content">
+                        <div class="mp-sub-section-wrap row-group">
+                            <div class="plan-nav col-group">
+                                <h2 class="plan-nav-title">
+                                    회원 정보 관리
+                                </h2>
+                            </div>
+
+                            <!-- 이메일가입 -->
+                            <div class="mp-sub-section">
+                                <div class="form-wrap account-form row-group">
+                                    <div class="form-list row-group border">
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                이메일
+                                                <span class="red">*</span>
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input disable" disabled value="email@email.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                비밀번호
+                                                <span class="red">*</span>
+                                            </p>
+                                            <div class="item-user">
+                                                <div class="form-btn-wrap col-group">
+                                                    <input type="password" class="form-input disable" disabled value="●●●●●●●●●●●●●">
+                                                    <a href="mypage_04_01_change.html" class="form-btn">
+                                                        비밀번호 변경
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-list row-group border">
+                                        <div class="account-guide-txt">
+                                            <div class="txt-group col-group">
+                                                <i class="icon xi-info green"></i>
+                                                <div class="txt-group row-group">
+                                                    <p class="title">
+                                                        지금 아래 추가정보를 입력하시면 <span class="green">1,000원 할인쿠폰</span>을 드려요!
+                                                    </p>
+                                                    <p class="txt">
+                                                        생년월일과 가구원 수는 농장스 이용 통계를 위해서만 사용되며, 다른 회원에게 공개되지 않습니다.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                닉네임
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input" placeholder="닉네임" value="당근1234">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                프로필 메세지
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input" placeholder="프로필 메세지">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                생년월일
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="date" class="form-input" value="2002-12-12">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                가구원 수
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input" placeholder="가구원 수">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="policy-agree-wrap row-group">
+                                        <label for="agree_1" class="checked-all-item">
+                                            <input type="checkbox" id="agree_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <i class="icon">
+                                                    <i class="xi-check-thin"></i>
+                                                </i>
+                                                <p class="txt">
+                                                    [필수] 개인정보 수집 및 이용 동의
+                                                </p>
+                                                <a href="" class="link">보기</a>
+                                            </div>
+                                        </label>
+                                        <label for="agree_2" class="checked-all-item">
+                                            <input type="checkbox" id="agree_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <i class="icon">
+                                                    <i class="xi-check-thin"></i>
+                                                </i>
+                                                <p class="txt">
+                                                    [선택] 긴급할인 등 정보·혜택 수신 동의
+                                                </p>
+                                                <a href="" class="link">보기</a>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-footer-wrap">
+                                        <button class="form-submit-btn">
+                                            저장
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SNS가입 -->
+                            <div class="mp-sub-section">
+                                <div class="form-wrap account-form row-group">
+                                    <div class="form-list row-group border">
+                                        <div class="account-sns-item kakao"></div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                이메일
+                                                <span class="red">*</span>
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input disable" disabled value="email@email.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                이름
+                                                <span class="red">*</span>
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input disable" disabled value="김지은">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                휴대폰 번호
+                                                <span class="red">*</span>
+                                            </p>
+                                            <div class="item-user">
+                                                <div class="form-btn-wrap col-group">
+                                                    <input type="text" class="form-input disable" disabled value="01012341234">
+                                                    <button class="form-btn green">
+                                                        재인증
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-list row-group border">
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                닉네임
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input" placeholder="닉네임" value="당근1234">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                프로필 메세지
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input" placeholder="프로필 메세지">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                생년월일
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="date" class="form-input" value="2002-12-12">
+                                            </div>
+                                        </div>
+                                        <div class="form-item row-group">
+                                            <p class="item-default">
+                                                가구원 수
+                                            </p>
+                                            <div class="item-user">
+                                                <input type="text" class="form-input" placeholder="가구원 수">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="policy-agree-wrap row-group">
+                                        <label for="agree_1" class="checked-all-item">
+                                            <input type="checkbox" id="agree_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <i class="icon">
+                                                    <i class="xi-check-thin"></i>
+                                                </i>
+                                                <p class="txt">
+                                                    [필수] 개인정보 수집 및 이용 동의
+                                                </p>
+                                                <a href="" class="link">보기</a>
+                                            </div>
+                                        </label>
+                                        <label for="agree_2" class="checked-all-item">
+                                            <input type="checkbox" id="agree_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <i class="icon">
+                                                    <i class="xi-check-thin"></i>
+                                                </i>
+                                                <p class="txt">
+                                                    [선택] 긴급할인 등 정보·혜택 수신 동의
+                                                </p>
+                                                <a href="" class="link">보기</a>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-footer-wrap">
+                                        <button class="form-submit-btn">
+                                            저장
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="mp-leave-btn" onclick="document.querySelector('.leave_intro_modal.member').classList.add('active')">
+                                회원탈퇴
+                            </button>
+                            <button class="mp-leave-btn" onclick="document.querySelector('.leave_intro_modal.non-member').classList.add('active')">
+                                회원탈퇴
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 프로필 등록 팝업 -->
+<div class="modal-container profile_modal">
+    <div class="modal-wrap">
+        <i class="xi-close close-btn"></i>
+        <div class="modal-title-wrap border row-group">
+            <p class="modal-title">
+                프로필 등록
+            </p>
+            <p class="modal-sub-title">
+                지금 추가 정보를 입력하시면 1,000원 할인쿠폰을 드려요!
+            </p>
+        </div>
+
+        <div class="modal-scroll-wrap">
+            <div class="form-wrap account-form">
+                <div class="form-list border row-group">
+                    <div class="form-item row-group">
+                        <div class="item-default">
+                            닉네임
+                        </div>
+                        <div class="item-user">
+                            <div class="form-sticker-wrap">
+                                <input type="text" class="form-input" placeholder="닉네임">
+                                <p class="form-sticker">
+                                    <strong>6</strong>
+                                    / 15
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item row-group">
+                        <div class="item-default">
+                            프로필 메세지
+                        </div>
+                        <div class="item-user">
+                            <div class="form-sticker-wrap">
+                                <input type="text" class="form-input" placeholder="프로필 메세지">
+                                <p class="form-sticker">
+                                    <strong>0</strong>
+                                    / 40
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-list border row-group">
+                    <div class="account-guide-txt">
+                        <div class="txt-group col-group">
+                            <i class="icon xi-info green"></i>
+                            <div class="txt-group row-group">
+                                <p class="title">
+                                    생년월일과 가구원 수는 농장스 이용 통계를 위해서만 사용되며, <br class="pc">
+                                    다른 회원에게 공개되지 않습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item row-group">
+                        <div class="item-default">
+                            생년월일
+                        </div>
+                        <div class="item-user">
+                            <input type="date" class="form-input" value="2002-12-12">
+                        </div>
+                    </div>
+                    <div class="form-item row-group">
+                        <p class="item-default">
+                            가구원 수
+                        </p>
+                        <div class="item-user">
+                            <input type="text" class="form-input" placeholder="가구원 수">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="policy-agree-wrap row-group">
+                    <label for="agree_1" class="checked-all-item">
+                        <input type="checkbox" id="agree_1" class="form-checkbox">
+                        <div class="checked-item col-group">
+                            <i class="icon">
+                                <i class="xi-check-thin"></i>
+                            </i>
+                            <p class="txt">
+                                [필수] 개인정보 수집 및 이용 동의
+                            </p>
+                            <a href="" class="link">보기</a>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn disable">
+                저장
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 탈퇴 전 팝업 / 구독 중 회원 -->
+<div class="modal-container leave_intro_modal member">
+    <div class="modal-wrap">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap row-group">
+            <p class="modal-title">
+                정기구독을 정지하고 싶으신가요?
+            </p>
+            <p class="modal-sub-title">
+                지금 탈퇴하시면 지금까지의 모든 혜택이 사라져요. <br>
+                회원 정보는 유지하고, 정기배송만 정지할 수 있어요.
+            </p>
+        </div>
+        
+        <p class="modal-txt">
+            32회차 홍길동의 꾸러미
+        </p>
+
+        <div class="modal-footer col-group">
+            <button class="modal-footer-btn cancel-btn" onclick="document.querySelector('.leave_modal').classList.add('active')">
+                회원탈퇴
+            </button>
+            <button class="modal-footer-btn submit-btn" onclick="document.querySelector('.report_modal').classList.add('active')">
+                정기구독 정지
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 중지 사유 -->
+<div class="modal-container report_modal">
+    <div class="modal-wrap">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap border row-group">
+            <p class="modal-title">
+                정기구독 중지
+            </p>
+            <p class="modal-sub-title">
+                의견을 남겨주시면 소중히 새겨듣고 <br>
+                오래 이용할 수 있는 서비스로 개선하겠습니다.
+            </p>
+        </div>
+
+        <div class="modal-scroll-wrap">
+            <div class="report-list row-group">
+                <label for="report_1" class="report-item">
+                    <input type="radio" id="report_1" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            더 이상 서비스가 필요하지 않아요.
+                        </p>
+                    </div>
+                </label>
+                <label for="report_2" class="report-item">
+                    <input type="radio" id="report_2" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            꾸러미 이용 비용이 부담스러워요.
+                        </p>
+                    </div>
+                </label>
+                <label for="report_3" class="report-item">
+                    <input type="radio" id="report_3" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            꾸러미 품목이 다양하지 않아요.
+                        </p>
+                    </div>
+                </label>
+                <label for="report_4" class="report-item">
+                    <input type="radio" id="report_4" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            품질이 불만족스러워요.
+                        </p>
+                    </div>
+                </label>
+                <label for="report_5" class="report-item">
+                    <input type="radio" id="report_5" name="report" class="form-radio">
+                    <div class="checked-item col-group">
+                        <div class="icon"></div>
+                        <p class="txt">
+                            기타
+                        </p>
+                    </div>
+                </label>
+                <!-- 기타 선택시 활성화 -->
+                <textarea name="" id="" class="form-input form-textarea disable" readonly placeholder="간단한 사유 입력"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="modal-footer-btn cancel-btn" onclick="document.querySelector('.leave_done_modal').classList.add('active')">
+                중지하기
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 중지 완료 -->
+<div class="modal-container leave_done_modal">
+    <div class="modal-wrap modal-alert">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap row-group">
+            <i class="xi-check icon green"></i>
+            <h2 class="modal-title">
+                중지완료
+            </h2>
+        </div>
+
+        <p class="modal-alert-txt">
+            꾸러미 이용 중지가 완료되었습니다. <br>
+            감사합니다.
+        </p>
+    </div>
+</div>
+
+<!-- 탈퇴 전 팝업 / 구독 X 회원 -->
+<div class="modal-container leave_intro_modal non-member">
+    <div class="modal-wrap">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap row-group">
+            <p class="modal-title">
+                지금 탈퇴하면 <br>
+                영원히 내 혜택은 사라져요
+            </p>
+            <p class="modal-sub-title">
+                회원 탈퇴 시, 정기구독 및 회원 정보가 모두 사라져요. <br>
+                보유하고 있는 쿠폰, 적립금 등 모든 혜택 정보도 영원히
+                사라지며 복구가 불가능해요. <br>
+                정말 탈퇴하시겠어요?
+            </p>
+        </div>
+
+        <div class="modal-footer col-group">
+            <button class="modal-footer-btn cancel-btn" onclick="document.querySelector('.leave_modal').classList.add('active')">
+                회원탈퇴
+            </button>
+            <button class="modal-footer-btn submit-btn" onclick="document.querySelector('.leave_intro_modal.non-member').classList.remove('active')">
+                계속 이용하기
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 탈퇴 사유 -->
+<div class="modal-container leave_modal">
+    <div class="modal-wrap">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap border row-group">
+            <p class="modal-title">
+                회원탈퇴
+            </p>
+            <p class="modal-sub-title">
+                의견을 남겨주시면 소중히 새겨듣고 <br>
+                오래 이용할 수 있는 서비스로 개선하겠습니다.
+            </p>
+        </div>
+
+        <div class="modal-scroll-wrap">
+            <div class="account-form">
+                <div class="report-list form-list border row-group">
+                    <div class="report-title">
+                        탈퇴 사유 선택
+                    </div>
+                    <label for="reason_1" class="report-item">
+                        <input type="radio" id="reason_1" name="reason" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                더 이상 서비스가 필요하지 않음
+                            </p>
+                        </div>
+                    </label>
+                    <label for="reason_2" class="report-item">
+                        <input type="radio" id="reason_2" name="reason" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                서비스가 마음에 들지 않음
+                            </p>
+                        </div>
+                    </label>
+                    <label for="reason_3" class="report-item">
+                        <input type="radio" id="reason_3" name="reason" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                정기구독 비용이 부담스러움
+                            </p>
+                        </div>
+                    </label>
+                    <label for="reason_4" class="report-item">
+                        <input type="radio" id="reason_4" name="reason" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                꾸러미의 다양성/품질 불만
+                            </p>
+                        </div>
+                    </label>
+                    <label for="reason_5" class="report-item">
+                        <input type="radio" id="reason_5" name="reason" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                직거래 상품 가격 불만
+                            </p>
+                        </div>
+                    </label>
+                    <label for="reason_6" class="report-item">
+                        <input type="radio" id="reason_6" name="reason" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                환불 불만
+                            </p>
+                        </div>
+                    </label>
+                    <label for="reason_7" class="report-item">
+                        <input type="radio" id="reason_7" name="reason" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                사후조치 불만
+                            </p>
+                        </div>
+                    </label>
+                    <label for="reason_8" class="report-item">
+                        <input type="radio" id="reason_8" name="reason" class="form-radio">
+                        <div class="checked-item col-group">
+                            <div class="icon"></div>
+                            <p class="txt">
+                                기타(직접입력)
+                            </p>
+                        </div>
+                    </label>
+                    <!-- 기타 선택시 활성화 -->
+                    <textarea name="" id="" class="form-input form-textarea disable" readonly placeholder="탈퇴 사유를 입력해주세요"></textarea>
+                </div>
+                <div class="form-list border">
+                    <div class="guide-txt-wrap row-group">
+                        <p class="guide-txt dot">
+                            보유하고 있던 구매 이력, 회원등급, 쿠폰, 적립금 등은 모두 소멸되고 복구가 불가능합니다. 단, [개인정보보호법, 전자상거래법] 등 기타 법령에서 요구하는 정보는 해당 법령에서 요구하는 기간 동안 보존합니다.
+                        </p>
+                        <p class="guide-txt dot">
+                            연동된 SNS 계정이 있는 경우 함께 탈퇴됩니다.
+                        </p>
+                        <p class="guide-txt dot">
+                            탈퇴 후 농장스에 입력하신 1:1문의내용은 삭제되지 않으며, 
+                            회원정보 삭제로 인해 작성자 본인을 확인할 수 없어 편집 및 삭제 
+                            처리가 원천적으로 불가능합니다. 1:1문의 삭제를 원하시는 경우에는
+                            먼저 해당 게시물을 삭제하신 후 탈퇴를 신청해 주시길 바랍니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="policy-agree-wrap row-group">
+                    <label for="leave_agree" class="checked-all-item">
+                        <input type="checkbox" id="leave_agree" class="form-checkbox">
+                        <div class="checked-item col-group">
+                            <i class="icon">
+                                <i class="xi-check-thin"></i>
+                            </i>
+                            <p class="txt">
+                                (필수) 위 내용을 모두 확인했습니다.
+                            </p>
+                            <a href="" class="link">보기</a>
+                        </div>
+                    </label>
+                </div>
+            </div>
+           
+        </div>
+
+        <div class="modal-footer col-group">
+            <button class="modal-footer-btn cancel-btn" onclick="document.querySelector('.leave_done_modal').classList.add('active')">
+                회원탈퇴
+            </button>
+            <button class="modal-footer-btn submit-btn">
+                계속 이용하기
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 탈퇴 완료 -->
+<div class="modal-container leave_done_modal">
+    <div class="modal-wrap modal-alert">
+        <i class="xi-close-thin close-btn"></i>
+        <div class="modal-title-wrap row-group">
+            <i class="xi-check icon green"></i>
+            <h2 class="modal-title">
+                탈퇴완료
+            </h2>
+        </div>
+
+        <p class="modal-alert-txt">
+            회원탈퇴 신청이 완료되었습니다. <br>
+            감사합니다.
+        </p>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>

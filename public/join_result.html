@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    회원가입
+                </p>
+            </div>
+            <div class="subpage login join_result">
+                <div class="login-form-container">
+                    <div class="subpage-title-wrap row-group center">
+                        <img src="images/logo_img.png" alt="" class="result-logo">
+                        <h2 class="subpage-title">
+                            <strong class="green">홍길동</strong>님 <br>
+                            농장스 가입을 축하드려요!
+                        </h2>
+                        <p class="subpage-txt">
+                            모든 회원가입 절차가 완료되었습니다.
+                        </p>
+                    </div>
+
+                    <div class="account-form row-group">
+                        <div class="join-result-wrap">
+                            <p class="title">
+                                추천인 코드입력
+                            </p>
+                            <div class="code">
+                                내 추천인 코드 : A123B456
+                            </div>
+                            <p class="txt">
+                                친구의 추천인 코드를 알려주세요! <br>
+                                나와 친구 모두에게 <strong>적립금 2,000P</strong>가 즉시 지급됩니다.
+                            </p>
+                            <div class="form-input-wrap row-group">
+                                <div class="form-btn-wrap col-group">
+                                    <input type="text" class="form-input" placeholder="추천인 코드">
+                                    <button class="form-btn submit disable">
+                                        확인
+                                    </button>
+                                </div>
+                                <div class="guide-txt-wrap row-group">
+                                    <p class="guide-txt dot">
+                                        추천인 코드 입력 적립금(2,000원)은 1회만 지급됩니다.
+                                    </p>
+                                    <p class="guide-txt dot">
+                                        적립금 내역은 마이페이지>나의 적립금에서 확인하실 수 있습니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="index.html" class="form-submit-btn">
+                            메인 화면으로
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 이메일 아이디 입력시 이메일 형식이 아니면 -->
+<div class="modal-container id_error_modal">
+    <div class="modal-wrap modal-alert">
+        <div class="modal-title-wrap">
+            <i class="icon xi-warning red"></i>
+        </div>
+        <p class="modal-alert-txt">
+            아이디(이메일) 형식을 확인해주세요.
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                확인
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 인증번호 입력 후 틀릴 경우 -->
+<div class="modal-container id_error_modal">
+    <div class="modal-wrap modal-alert">
+        <div class="modal-title-wrap">
+            <i class="icon xi-warning red"></i>
+        </div>
+        <p class="modal-alert-txt">
+            입력한 인증번호가 올바르지 않습니다.
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                확인
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 회원가입 이미 진행된 번호 -->
+<div class="modal-container id_error_modal">
+    <div class="modal-wrap modal-alert">
+        <div class="modal-title-wrap">
+            <i class="icon xi-warning red"></i>
+        </div>
+        <p class="modal-alert-txt">
+            이미 가입이 완료된 번호 입니다.
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                확인
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>

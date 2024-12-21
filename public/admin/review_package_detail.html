@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+                <div class="main-title-wrap">
+                    <h2 class="main-title">
+                        꾸러미 후기 상세
+                    </h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-wrap row-group">
+                        <div class="member-detail-wrap">
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        이름(닉네임)
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline">
+                                            김지은(당근12345)
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        상태
+                                    </div>
+                                    <div class="item-user">
+                                        활동중
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        누적신고
+                                    </div>
+                                    <div class="item-user">
+                                        3
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        주문번호
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline">
+                                            2024070314461217530
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        상품명
+                                    </div>
+                                    <div class="item-user">
+                                        32회차 홍길동의 꾸러미
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        옵션
+                                    </div>
+                                    <div class="item-user">
+                                        벙글
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        별점
+                                    </div>
+                                    <div class="item-user">
+                                        5점
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        주문일
+                                    </div>
+                                    <div class="item-user">
+                                        25-01-01 22:00
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        작성일
+                                    </div>
+                                    <div class="item-user">
+                                        2025-01-01 14:01
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="mp-inquiry-content row-group gap24">
+                            <div class="mp-img-list col-group gap8">
+                                <div class="mp-img-item" onclick="document.querySelector('.modal_slide').classList.add('active')">
+                                    <div class="img-container">
+                                        <img src="images/about_slide_1.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mp-img-item" onclick="document.querySelector('.modal_slide').classList.add('active')">
+                                    <div class="img-container">
+                                        <img src="images/about_slide_1.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="mp-img-item" onclick="document.querySelector('.modal_slide').classList.add('active')">
+                                    <div class="img-container">
+                                        <img src="images/about_slide_1.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mp-inquiry-content-txt">
+                                <!-- 작성한 내용 -->
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+
+                            <div class="review-reply-wrap">     <!-- 답변 등록 후 보임 -->
+                                <div class="row-group gap16">
+                                    <strong class="title fs20">
+                                        농장스
+                                    </strong>
+                                    <p class="txt">
+                                        안녕하세요 농장스 입니다! 꾸러미 한주 건너뛰기에 대해 문의주셨는데요.
+                                        꾸러미 한주 건너뛰기는 마이페이지&gt;미루기에서 신청하실 수 있습니다.
+                                        다만, 당기기나 미루기를 선택할 시 구성한 야채가 소진될 수 있으며, 배송일정이 달라지니
+                                        신청 전 꼭 내용 확인 해주시길 바랍니다.
+                                        오늘도 농장스를 이용해주셔서 감사합니다.😊
+                                    </p>
+                                    <p class="date">
+                                        2025-01-01 15:00
+                                    </p>
+                                    <button class="blue underline del-btn">
+                                        삭제
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-list row-group">
+                            <div class="form-item row-group">  <!-- 답변 등록 후 숨김 -->
+                                <textarea name="" id="" class="form-textarea wide" placeholder="내용을 입력하세요"></textarea>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    베스트 후기
+                                </p>
+                                <div class="item-user">
+                                    <label for="switch_1" class="form-switch">
+                                        <input type="checkbox" id="switch_1" checked="">
+                                        <div class="switch-item col-group">
+                                            <div class="switch">
+                                                <div class="switch-core">
+                                                    <i class="icon xi-close"></i>
+                                                    <i class="icon xi-check"></i>
+                                                </div>
+                                            </div>
+                                            <p class="title check">
+                                                Y
+                                            </p>
+                                            <p class="title uncheck">
+                                                N
+                                            </p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-wrap col-group">
+                    <button class="btn btn-m gray">
+                        삭제
+                    </button>
+                    <button class="btn btn-m blue">
+                        저장
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

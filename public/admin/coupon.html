@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap col-group sp-bt al-en">
+                    <h2 class="main-title">
+                        쿠폰
+                    </h2>
+                    <div class="col-group gap16">
+                        <div class="col-group">
+                            <input type="search" class="search-input" placeholder="쿠폰명">
+                            <button type="submit" class="search-btn">
+                                <i class="xi-search"></i>
+                            </button>
+                        </div>
+                        <div class="col-group gap8">
+                            <button class="btn gray">
+                                선택 삭제
+                            </button>
+                            <a href="coupon_create.html" class="btn blue">
+                                등록
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <colgroup>
+                                <col width="48px">
+                            </colgroup>
+                            <thead>
+                                <tr><th>
+                                    <label for="check_all">
+                                        <input type="checkbox" id="check_all" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </th>
+                                <th>
+                                    유형
+                                </th>
+                                <th>
+                                    대상
+                                </th>
+                                <th>
+                                    쿠폰명
+                                </th>
+                                <th>
+                                    혜택
+                                </th>
+                                <th>
+                                    사용/발행
+                                </th>
+                                <th>
+                                    유효기간
+                                </th>
+                                <th>
+                                    상태
+                                </th>
+                                <th>
+                                    관리
+                                </th>
+                            </tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        꾸러미
+                                    </td>
+                                    <td>
+                                        전체회원
+                                    </td>
+                                    <td>
+                                        쿠폰명이 들어가는 자리입니다.
+                                    </td>
+                                    <td>
+                                        10%할인 (최대 10,000)
+                                    </td>
+                                    <td>
+                                        <button class="underline" onclick="document.getElementById('coupon_list').style.display='block'">
+                                            200 / 2000
+                                        </button>
+                                    </td>
+                                    <td>
+                                        24-05-01 - 24-05-30
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_4">
+                                            진행중
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="coupon_create.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_2">
+                                            <input type="checkbox" id="check_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        모든상품
+                                    </td>
+                                    <td>
+                                        구독 횟수
+                                    </td>
+                                    <td>
+                                        쿠폰명이 들어가는 자리입니다.
+                                    </td>
+                                    <td>
+                                        5,000
+                                    </td>
+                                    <td>
+                                        <button class="underline" onclick="document.getElementById('coupon_list').style.display='block'">
+                                            2 / 2
+                                        </button>
+                                    </td>
+                                    <td>
+                                        발급일로부터 30일
+                                    </td>
+                                    <td>
+                                        <div class="order-state">
+                                            종료
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="coupon_create.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- 쿠폰 발급 내역 -->
+<div class="modal-container" id="coupon_list" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                쿠폰 사용/발행 현황
+            </p>
+        </div>
+
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>
+                            회원명(닉네임)
+                        </th>
+                        <th>
+                            발행일
+                        </th>
+                        <th>
+                            만료일
+                        </th>
+                        <th>
+                            사용일
+                        </th>
+                        <th>
+                            사용주문
+                        </th>
+                        <th>
+                            할인금액
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="member_detail_1.html" class="blue underline">
+                                홍길동(코랑둥이)
+                            </a>
+                        </td>
+                        <td>
+                            24-12-01
+                        </td>
+                        <td>
+                            24-12-30
+                        </td>
+                        <td>
+                            24-12-30
+                        </td>
+                        <td>
+                            <a href="order_package_detail.html" class="blue underline">
+                                123456789456123
+                            </a>
+                        </td>
+                        <td>
+                            4,000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="member_detail_1.html" class="blue underline">
+                                홍길동(코랑둥이)
+                            </a>
+                        </td>
+                        <td>
+                            24-12-01
+                        </td>
+                        <td>
+                            24-12-30
+                        </td>
+                        <td>
+                            24-12-30
+                        </td>
+                        <td>
+                            <a href="order_package_detail.html" class="blue underline">
+                                123456789456123
+                            </a>
+                        </td>
+                        <td>
+                            4,000
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination col-group">
+            <a href="" class="page-btn prev-btn">
+                <i class="xi-angle-left"></i>
+            </a>
+            <a href="" class="page-btn active">
+                1
+            </a>
+            <a href="" class="page-btn">
+                2
+            </a>
+            <a href="" class="page-btn">
+                3
+            </a>
+            <a href="" class="page-btn">
+                4
+            </a>
+            <a href="" class="page-btn">
+                5
+            </a>
+            <a href="" class="page-btn next-btn">
+                <i class="xi-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

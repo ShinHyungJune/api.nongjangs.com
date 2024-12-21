@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/> <!-- 컬러피커 -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <h2 class="main-title">
+                        상품 등록
+                    </h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-wrap row-group">
+                        <div class="form-list row-group border">
+                            <div class="form-title">
+                                상품 기본 정보
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    품목
+                                </p>
+                                <div class="item-user">
+                                    <div class="col-group gap16">
+                                        <select name="" id="" class="form-input half">
+                                            <option value="">대분류</option>
+                                        </select>
+                                        <select name="" id="" class="form-input half">
+                                            <option value="">소분류</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    상품사진
+                                    <span class="guide-txt fw300">
+                                        첫번째 사진이 대표사진으로 설정되며 최대 10장까지 등록가능합니다.( 파일형식 : jpg,jpeg,gif,png,bmp ) / 1:1 정방형 고화질로 등록하세요(장당 최대 2M)
+                                    </span>
+                                </p>
+                                <div class="item-user">
+                                    <div class="img-upload-wrap col-group">
+                                        <input class="form-input" type='file' id='list_file' multiple
+                                            accept="image/*">
+                                        <label class="img-upload-btn" htmlFor="list_file">
+                                            <i class='xi-plus'></i>
+                                            사진등록
+                                        </label>
+            
+                                        <div class="img-preview-wrap col-group">
+                                            <div class="img-preview">
+                                                <img class="img-preview-img" alt="" src="" />
+                                                <i class="xi-close"></i>
+                                                <div class="img-preview-label">
+                                                    대표
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    상품명
+                                </p>
+                                <div class="item-user">
+                                    <input type="text" class="form-input" placeholder="상품명을 입력하세요">
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    생산자(농가)
+                                    <span class="guide-txt fw300">
+                                        생산자는 '상품 관리>농가 관리'에서 설정하실 수 있습니다.
+                                    </span>
+                                </p>
+                                <div class="item-user">
+                                    <div class="col-group">
+                                        <input type="search" class="search-input" placeholder="생산자 검색">
+                                        <button type="submit" class="search-btn">
+                                            <i class="xi-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    원산지
+                                </p>
+                                <div class="item-user">
+                                    <div class="col-group gap16">
+                                        <select name="" id="" class="form-input half">
+                                            <option value="">시/도</option>
+                                        </select>
+                                        <select name="" id="" class="form-input half">
+                                            <option value="">구/군</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    태그
+                                    <span class="guide-txt fw300">
+                                        태그는 '커뮤니티 관리>태그관리'에서 관리하실 수 있습니다.
+                                    </span>
+                                </p>
+                                <div class="item-user">
+                                    <div class="row-group gap16">
+                                        <div class="col-group">
+                                            <input type="search" class="search-input" placeholder="생산자 검색">
+                                            <button type="submit" class="search-btn">
+                                                <i class="xi-search"></i>
+                                            </button>
+                                        </div>
+                                        <div class="tag-list">
+                                            <div class="tag-item">
+                                                <div class="color" style="background-color: #484848;"></div>
+                                                <p class="txt">
+                                                    충남
+                                                </p>
+                                                <i class="xi-close del-btn"></i>
+                                            </div>
+                                            <div class="tag-item">
+                                                <div class="color" style="background-color: #308929;"></div>
+                                                <p class="txt">
+                                                    표고버섯
+                                                </p>
+                                                <i class="xi-close del-btn"></i>
+                                            </div>
+                                            <div class="tag-item">
+                                                <div class="color" style="background-color: #E92C2C;"></div>
+                                                <p class="txt">
+                                                    GAP
+                                                </p>
+                                                <i class="xi-close del-btn"></i>
+                                            </div>
+                                            <div class="tag-item">
+                                                <div class="color" style="background-color: #E92C2C;"></div>
+                                                <p class="txt">
+                                                    무농약
+                                                </p>
+                                                <i class="xi-close del-btn"></i>
+                                            </div>
+                                            <div class="tag-item">
+                                                <div class="color" style="background-color: #E92C2C;"></div>
+                                                <p class="txt">
+                                                    유기농
+                                                </p>
+                                                <i class="xi-close del-btn"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group border">
+                            <div class="form-title">
+                                상품가격/재고
+                            </div>
+                            <div class="form-label-wrap col-group">
+                                <label for="discount_1">
+                                    <input type="radio" id="discount_1" name="discount" class="form-radio">
+                                    <div class="checked-item col-group">
+                                        <div class="icon"></div>
+                                        <p class="txt">
+                                            할인없음
+                                        </p>
+                                    </div>
+                                </label>
+                                <label for="discount_2">
+                                    <input type="radio" id="discount_2" name="discount" class="form-radio" checked="">
+                                    <div class="checked-item col-group">
+                                        <div class="icon"></div>
+                                        <p class="txt">
+                                            할인설정
+                                        </p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    판매가
+                                </p>
+                                <div class="item-user">
+                                    <input type="text" class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    정가
+                                </p>
+                                <div class="item-user">
+                                    <div class="col-group gap16 al-ce">
+                                        <input type="text" class="form-input">
+                                        <strong class="blue">
+                                            20% 할인
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-label-wrap col-group">
+                                <label for="tax_1">
+                                    <input type="radio" id="tax_1" name="tax" class="form-radio" checked="">
+                                    <div class="checked-item col-group">
+                                        <div class="icon"></div>
+                                        <p class="txt">
+                                            과세
+                                        </p>
+                                    </div>
+                                </label>
+                                <label for="tax_2">
+                                    <input type="radio" id="tax_2" name="tax" class="form-radio">
+                                    <div class="checked-item col-group">
+                                        <div class="icon"></div>
+                                        <p class="txt">
+                                            면세
+                                        </p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    적용 가능 할인
+                                </p>
+                                <div class="item-user">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="coupon">
+                                            <input type="checkbox" id="coupon" class="form-checkbox" checked="">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                                <p class="txt">
+                                                    쿠폰 사용
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="point">
+                                            <input type="checkbox" id="point" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                                <p class="txt">
+                                                    적립금 사용
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    상품 재고
+                                </p>
+                                <div class="item-user">
+                                    <div class="row-group gap16">
+                                        <input type="text" class="form-input" placeholder="재고 수량을 입력하세요(숫자)">
+                                        <p class="guide-txt">
+                                            · 재고가 모두 소진되면 상품의 상태가 '품절'로 자동 변경됩니다. <br>
+                                            · 옵션 재고수량을 사용하면, 옵션의 재고수량으로 적용되어 자동으로 입력됩니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group border">
+                            <div class="form-title">
+                                옵션설정
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="form-label-wrap col-group">
+                                    <label for="option_1">
+                                        <input type="radio" id="option_1" name="option" class="form-radio">
+                                        <div class="checked-item col-group">
+                                            <div class="icon"></div>
+                                            <p class="txt">
+                                                상품옵션 없음
+                                            </p>
+                                        </div>
+                                    </label>
+                                    <label for="option_2">
+                                        <input type="radio" id="option_2" name="option" class="form-radio" checked="">
+                                        <div class="checked-item col-group">
+                                            <div class="icon"></div>
+                                            <p class="txt">
+                                                상품옵션 설정
+                                            </p>
+                                        </div>
+                                    </label>
+                                </div>
+                                <p class="guide-txt">
+                                    · 옵션은 상품 옵션(필수)과 추가 옵션(선택)으로 최대 2개를 설정하실 수 있습니다. <br>
+                                    · 상품옵션(필수)은 구매자가 필수로 선택해야 구매 가능한 옵션입니다. <br>
+                                    · 추가옵션(선택)은 구매자의 선택에 따라 구매할 수 있는 추가상품 개념의 옵션입니다. 구매자는 추가옵션을 선택하지 않아도 구매 가능합니다. <br>
+                                    · 옵션 가격은 -로 설정 가능합니다.
+                                </p>
+                                <div class="admin-table-wrap create-table-wrap">
+                                    <div class="create-table-top col-group gap8 al-bl">
+                                        <p class="title fs18 fw600">
+                                            추가옵션(선택)
+                                        </p>
+                                        <p class="fs14 fw600">
+                                            (총 
+                                            <span class="yellow">
+                                                6
+                                            </span> 
+                                            개)
+                                        </p>
+                                    </div>
+    
+                                    <table class="admin-table create-table">
+                                        <colgroup>
+                                            <col width="36%">
+                                            <col width="24%">
+                                            <col width="24%">
+                                            <col width="12%">
+                                            <col width="4%">
+                                        </colgroup>
+                                        <thead>
+                                            <th>옵션명</th>
+                                            <th>옵션가격(추가금액)</th>
+                                            <th>재고수량</th>
+                                            <th>상태</th>
+                                            <th>삭제</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션명" value="천도복숭아 1kg">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션가격(추가금액)" value="7,000">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="재고수량" value="0">
+                                                </td>
+                                                <td>
+                                                    <select name="" id="" class="form-input">
+                                                        <option value="">판매중</option>
+                                                        <option value="">품절</option>
+                                                        <option value="">숨김</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션명" value="천도복숭아 1kg">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션가격(추가금액)" value="7,000">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="재고수량" value="0">
+                                                </td>
+                                                <td>
+                                                    <select name="" id="" class="form-input">
+                                                        <option value="">판매중</option>
+                                                        <option value="">품절</option>
+                                                        <option value="">숨김</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션명" value="천도복숭아 1kg">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션가격(추가금액)" value="7,000">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="재고수량" value="0">
+                                                </td>
+                                                <td>
+                                                    <select name="" id="" class="form-input">
+                                                        <option value="">판매중</option>
+                                                        <option value="">품절</option>
+                                                        <option value="">숨김</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+    
+                                    <button class="add-btn btn btn-m gray">
+                                        <i class="xi-plus"></i>
+                                        추가
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="form-label-wrap col-group">
+                                    <label for="add_option_1">
+                                        <input type="radio" id="add_option_1" name="add_option" class="form-radio">
+                                        <div class="checked-item col-group">
+                                            <div class="icon"></div>
+                                            <p class="txt">
+                                                추가옵션 없음
+                                            </p>
+                                        </div>
+                                    </label>
+                                    <label for="add_option_2">
+                                        <input type="radio" id="add_option_2" name="add_option" class="form-radio" checked="">
+                                        <div class="checked-item col-group">
+                                            <div class="icon"></div>
+                                            <p class="txt">
+                                                추가옵션 설정
+                                            </p>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="admin-table-wrap create-table-wrap">
+                                    <div class="create-table-top col-group gap8 al-bl">
+                                        <p class="title fs18 fw600">
+                                            추가옵션(선택)
+                                        </p>
+                                        <p class="fs14 fw600">
+                                            (총 
+                                            <span class="yellow">
+                                                6
+                                            </span> 
+                                            개)
+                                        </p>
+                                    </div>
+                                    <table class="admin-table create-table">
+                                        <colgroup>
+                                            <col width="36%">
+                                            <col width="24%">
+                                            <col width="24%">
+                                            <col width="12%">
+                                            <col width="4%">
+                                        </colgroup>
+                                        <thead>
+                                            <th>옵션명</th>
+                                            <th>옵션가격(추가금액)</th>
+                                            <th>재고수량</th>
+                                            <th>상태</th>
+                                            <th>삭제</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션명" value="천도복숭아 1kg">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션가격(추가금액)" value="7,000">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="재고수량" value="0">
+                                                </td>
+                                                <td>
+                                                    <select name="" id="" class="form-input">
+                                                        <option value="">판매중</option>
+                                                        <option value="">품절</option>
+                                                        <option value="">숨김</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션명" value="천도복숭아 1kg">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션가격(추가금액)" value="7,000">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="재고수량" value="0">
+                                                </td>
+                                                <td>
+                                                    <select name="" id="" class="form-input">
+                                                        <option value="">판매중</option>
+                                                        <option value="">품절</option>
+                                                        <option value="">숨김</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션명" value="천도복숭아 1kg">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="옵션가격(추가금액)" value="7,000">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-input half" placeholder="재고수량" value="0">
+                                                </td>
+                                                <td>
+                                                    <select name="" id="" class="form-input">
+                                                        <option value="">판매중</option>
+                                                        <option value="">품절</option>
+                                                        <option value="">숨김</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+    
+                                    <button class="add-btn btn btn-m gray">
+                                        <i class="xi-plus"></i>
+                                        추가
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group border">
+                            <div class="form-title">
+                                배송설정
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    배송유형
+                                </p>
+                                <div class="item-user">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="deli_1">
+                                            <input type="radio" id="deli_1" name="deli" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    배송 기본 설정 사용
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="deli_2">
+                                            <input type="radio" id="deli_2" name="deli" class="form-radio" checked="">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    무료배송
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="deli_3">
+                                            <input type="radio" id="deli_3" name="deli" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    개별배송
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    택배사
+                                </p>
+                                <div class="item-user">
+                                    <select name="" id="" class="form-input">
+                                        <option value="">CJ 대한통운</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    배송비
+                                </p>
+                                <div class="item-user">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="deli_fee_1">
+                                            <input type="radio" id="deli_fee_1" name="deli_fee" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    고정 배송비
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="deli_fee_2">
+                                            <input type="radio" id="deli_fee_2" name="deli_fee" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    고정 배송비
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="deli_fee_3">
+                                            <input type="radio" id="deli_fee_3" name="deli_fee" class="form-radio" checked="">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    수량별 차등 배송비
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 수량별 차등 배송비 선택시 나타남 -->
+                            <div class="form-item row-group">
+                                <table class="table">
+                                    <thead>
+                                        <th>구매수량</th>
+                                        <th>배송비</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input half">
+                                                    이상
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input">
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input half">
+                                                    이상
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input">
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-group">
+                                    <button class="add-btn btn btn-m gray">
+                                        <i class="xi-plus"></i>
+                                        추가
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    제주/도서산간 배송
+                                </p>
+                                <div class="item-user">
+                                    <div class="row-group gap16">
+                                        <div class="form-label-wrap col-group">
+                                            <label for="deli_other_1">
+                                                <input type="radio" id="deli_other_1" name="deli_other" class="form-radio">
+                                                <div class="checked-item col-group">
+                                                    <div class="icon"></div>
+                                                    <p class="txt">
+                                                        배송가능
+                                                    </p>
+                                                </div>
+                                            </label>
+                                            <label for="deli_other_2">
+                                                <input type="radio" id="deli_other_2" name="deli_other" class="form-radio">
+                                                <div class="checked-item col-group">
+                                                    <div class="icon"></div>
+                                                    <p class="txt">
+                                                        배송불가
+                                                    </p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <input type="text" class="form-input" placeholder="배송비">
+                                    </div>
+                               
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group border">
+                            <div class="form-title">
+                                교환&반품
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    택배사
+                                </p>
+                                <div class="item-user">
+                                    <select name="" id="" class="form-input">
+                                        <option value="">CJ 대한통운</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    반품 배송비
+                                </p>
+                                <div class="item-user">
+                                    <input type="text" class="form-input" placeholder="내용을 입력하세요">
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    교환/반품 배송지
+                                </p>
+                                <div class="item-user">
+                                    <input type="text" class="form-input" placeholder="내용을 입력하세요">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group">
+                            <div class="form-title">
+                                상품 상세
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-user">
+                                    <textarea name="" id="">에디터</textarea>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    상태
+                                </p>
+                                <div class="item-user">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="state_1">
+                                            <input type="radio" id="state_1" name="state" class="form-radio" checked>
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    판매중
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="state_2">
+                                            <input type="radio" id="state_2" name="state" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    숨김
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="state_3">
+                                            <input type="radio" id="state_3" name="state" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    품절
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script> <!-- 컬러피커 -->
+<script>
+    Coloris.setInstance('.coloris', { theme: 'polaroid' });
+</script>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap">
+                    <div class="row-group gap24">
+                        <h2 class="main-title">
+                            회원 상세
+                        </h2>
+
+                        <div class="col-group gap8">
+                            <a href="member_detail_1.html" class="btn btn-m tab-btn">
+                                회원정보
+                            </a>
+                            <a href="member_detail_2.html" class="btn btn-m tab-btn">
+                                주문내역
+                            </a>
+                            <a href="member_detail_3.html" class="btn btn-m tab-btn">
+                                취소/환불내역
+                            </a>
+                            <a href="member_detail_4_1.html" class="btn btn-m tab-btn">
+                                후기/채소이야기
+                            </a>
+                            <a href="member_detail_5.html" class="btn btn-m tab-btn">
+                                1:1 문의
+                            </a>
+                            <a href="member_detail_6.html" class="btn btn-m tab-btn active">
+                                북마크
+                            </a>
+                        </div>
+
+                        <div class="col-group gap8">
+                            <a href="member_detail_6.html" class="btn tab-btn">
+                                레시피
+                            </a>
+                            <a href="member_detail_6.html" class="btn tab-btn">
+                                채소이야기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        번호
+                                    </th>
+                                    <th>
+                                        내용
+                                    </th>
+                                    <th>
+                                        작성자
+                                    </th>
+                                    <th>
+                                        작성일
+                                    </th>
+                                    <th>
+                                        관리
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        25
+                                    </td>
+                                    <td>
+                                        <div class="user-content-wrap col-group gap16">
+                                            <div class="img-container w72">
+                                                <img src="" alt="">
+                                            </div>
+                                            <div class="txt">
+                                                이국적인 맛의 향연, 마살라 커리우동
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        관리자1
+                                    </td>
+                                    <td>
+                                        24-05-04 12:00
+                                    </td>
+                                    <td>
+                                        <button class="blue">
+                                            상세
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

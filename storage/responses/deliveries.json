@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "main": "메인여부 (1이면 메인)",
+      "name": "이름",
+      "contact": "연락처",
+      "address": "주소",
+      "address_detail": "상세주소",
+      "address_zipcode": "우편번호",
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

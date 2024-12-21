@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border col-group sp-bt al-en">
+                    <h2 class="main-title">
+                        팝업 관리
+                    </h2>
+
+                    <a href="homepage_popup_create.html" class="btn btn-m blue">
+                        등록
+                    </a>
+                </div>
+
+                <div class="board-wrap col-group">
+                    <div class="board-item">
+                        <div class="img-box">
+                            <img src="images/about_slide_1.png" alt="">
+                        </div>
+                        <p class="label use"> <!-- 사용 중 일 때 use 클래스 추가 -->
+                            진행
+                        </p>
+                        <div class="txt-box row-group">
+                            <p class="title">
+                                팝업제목
+                            </p>
+                            <div class="sub-btn-wrap col-group gap16">
+                                <button class="sub-btn blue">
+                                    상세
+                                </button>
+                                <button class="sub-btn blue">
+                                    삭제
+                                </button>
+                            </div>
+                            <div class="col-group align-btn-wrap">
+                                <button class="align-btn">
+                                    <i class="xi-arrow-left"></i>
+                                </button>
+                                <button class="align-btn">
+                                    <i class="xi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="img-box">
+                            <img src="images/about_slide_1.png" alt="">
+                        </div>
+                        <p class="label disuse"> <!-- 팝업 기간이 종료 됐을 때 disuse 클래스 추가 -->
+                            마감
+                        </p>
+                        <div class="txt-box row-group">
+                            <p class="title">
+                                팝업제목
+                            </p>
+                            <div class="sub-btn-wrap col-group gap16">
+                                <button class="sub-btn blue">
+                                    상세
+                                </button>
+                                <button class="sub-btn blue">
+                                    삭제
+                                </button>
+                            </div>
+                            <div class="col-group align-btn-wrap">
+                                <button class="align-btn">
+                                    <i class="xi-arrow-left"></i>
+                                </button>
+                                <button class="align-btn">
+                                    <i class="xi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="img-box">
+                            <img src="images/about_slide_1.png" alt="">
+                        </div>
+                        <p class="label disuse"> <!-- 팝업 기간이 종료 됐을 때 disuse 클래스 추가 -->
+                            마감
+                        </p>
+                        <div class="txt-box row-group">
+                            <p class="title">
+                                팝업제목
+                            </p>
+                            <div class="sub-btn-wrap col-group gap16">
+                                <button class="sub-btn blue">
+                                    상세
+                                </button>
+                                <button class="sub-btn blue">
+                                    삭제
+                                </button>
+                            </div>
+                            <div class="col-group align-btn-wrap">
+                                <button class="align-btn">
+                                    <i class="xi-arrow-left"></i>
+                                </button>
+                                <button class="align-btn">
+                                    <i class="xi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="null-txt">
+                        등록한 팝업이 없습니다.
+                    </div>
+                </div>
+
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

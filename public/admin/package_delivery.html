@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap col-group sp-bt al-en">
+                    <h2 class="main-title">
+                        배송일정
+                    </h2>
+                    <div class="col-group gap8">
+                        <button class="btn gray">
+                            선택 삭제
+                        </button>
+                        <a href="package_delivery_create.html" class="btn blue">
+                            등록
+                        </a>
+                    </div>
+                 
+                </div>
+
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <colgroup>
+                            <col width="48px">
+                        </colgroup>
+                        <thead>
+                            <tr><th>
+                                <label for="check_all">
+                                    <input type="checkbox" id="check_all" class="form-checkbox">
+                                    <div class="checked-item col-group">
+                                        <div class="icon">
+                                            <i class="xi-check"></i>
+                                        </div>
+                                    </div>
+                                </label>
+                            </th>
+                            <th>
+                                누적회차
+                            </th>
+                            <th>
+                                구성대기
+                            </th>
+                            <th>
+                                품목구성
+                            </th>
+                            <th>
+                                배송준비
+                            </th>
+                            <th>
+                                출고예정
+                            </th>
+                            <th>
+                                관리
+                            </th>
+                        </tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="check_1">
+                                        <input type="checkbox" id="check_1" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    344
+                                </td>
+                                <td>
+                                    24-09-30 월 16:00
+                                </td>
+                                <td>
+                                    24-10-02 수 06:00
+                                </td>
+                                <td>
+                                    24-10-10 목 00:00
+                                </td>
+                                <td>
+                                    24-10-10 목 07:00
+                                </td>
+                                <td>
+                                    <a href="package_delivery_create.html" class="blue">상세</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

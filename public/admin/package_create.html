@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <!-- 컬러피커 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <h2 class="main-title">
+                        꾸러미 관리 상세
+                    </h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-wrap row-group">
+                        <div class="form-list row-group border">
+                            <div class="form-list per2 col-group">
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        꾸러미 회차
+                                    </p>
+                                    <div class="item-user">
+                                        <select name="" id="" class="form-input">
+                                            <option value="">324</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        도착 예정일
+                                    </p>
+                                    <div class="item-user">
+                                       <input type="text" class="form-input disable" readonly value="2024-12-12">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <div class="form-label-wrap col-group">
+                                    <label for="type_1">
+                                        <input type="radio" id="type_1" name="type" class="form-radio">
+                                        <div class="checked-item col-group">
+                                            <div class="icon"></div>
+                                            <p class="txt">
+                                                과세
+                                            </p>
+                                        </div>
+                                    </label>
+                                    <label for="type_2">
+                                        <input type="radio" id="type_2" name="type" class="form-radio">
+                                        <div class="checked-item col-group">
+                                            <div class="icon"></div>
+                                            <p class="txt">
+                                                면세
+                                            </p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group border">
+                            <p class="form-title">
+                                싱글 꾸러미 기본 품목
+                            </p>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    품목 검색
+                                    <span class="guide-txt">
+                                        품목은 '꾸러미 관리>꾸러미 품목 관리'에서 관리하실 수 있습니다.
+                                    </span>
+                                </div>
+                                <div class="item-user">
+                                    <div class="row-group gap32">
+                                        <div class="col-group">
+                                            <input type="search" class="search-input" placeholder="품목 검색">
+                                            <button type="submit" class="search-btn">
+                                                <i class="xi-search"></i>
+                                            </button>
+                                        </div>
+    
+                                        <div class="admin-table-wrap create-table-wrap">
+                                            <div class="create-table-top col-group gap8 al-bl">
+                                                <p class="title fs18 fw600">
+                                                    싱글 꾸러미 기본 품목
+                                                </p>
+                                                <p class="fs14 fw600">
+                                                    (총 
+                                                    <span class="yellow">
+                                                        6
+                                                    </span> 
+                                                    개)
+                                                </p>
+                                                <p>
+                                                    판매가를 안적으면 할인없이 정가로 노출됩니다.
+                                                </p>
+                                            </div>
+    
+                                            <table class="admin-table create-table">
+                                                <colgroup>
+                                                    <col width="24%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="24%">
+                                                    <col width="4%">
+                                                </colgroup>
+                                                <thead>
+                                                    <th>품목</th>
+                                                    <th>수량</th>
+                                                    <th>단위</th>
+                                                    <th>정가</th>
+                                                    <th>판매가</th>
+                                                    <th>태그</th>
+                                                    <th>삭제</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="브로콜리">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="베이비 청경채">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="시크릿 유럽상추">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+    
+    
+                                            <div class="create-table-btm col-group sp-bt al-bl">
+                                                <p class="title fs18 fw600">
+                                                    합계
+                                                </p>
+                                                <p class="title fs18 fw600">
+                                                    19,800원
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group border">
+                            <p class="form-title">
+                                벙글 꾸러미 기본 품목
+                            </p>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    품목 검색
+                                    <span class="guide-txt">
+                                        품목은 '꾸러미 관리>꾸러미 품목 관리'에서 관리하실 수 있습니다.
+                                    </span>
+                                </div>
+                                <div class="item-user">
+                                    <div class="row-group gap32">
+                                        <div class="col-group">
+                                            <input type="search" class="search-input" placeholder="품목 검색">
+                                            <button type="submit" class="search-btn">
+                                                <i class="xi-search"></i>
+                                            </button>
+                                        </div>
+    
+                                        <div class="admin-table-wrap create-table-wrap">
+                                            <div class="create-table-top col-group gap8 al-bl">
+                                                <p class="title fs18 fw600">
+                                                    벙글 꾸러미 기본 품목
+                                                </p>
+                                                <p class="fs14 fw600">
+                                                    (총 
+                                                    <span class="yellow">
+                                                        6
+                                                    </span> 
+                                                    개)
+                                                </p>
+                                                <p>
+                                                    판매가를 안적으면 할인없이 정가로 노출됩니다.
+                                                </p>
+                                            </div>
+    
+                                            <table class="admin-table create-table">
+                                                <colgroup>
+                                                    <col width="24%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="24%">
+                                                    <col width="4%">
+                                                </colgroup>
+                                                <thead>
+                                                    <th>품목</th>
+                                                    <th>수량</th>
+                                                    <th>단위</th>
+                                                    <th>정가</th>
+                                                    <th>판매가</th>
+                                                    <th>태그</th>
+                                                    <th>삭제</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="브로콜리">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input half" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="베이비 청경채">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input half" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="시크릿 유럽상추">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input half" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+    
+    
+                                            <div class="create-table-btm col-group sp-bt al-bl">
+                                                <p class="title fs18 fw600">
+                                                    합계
+                                                </p>
+                                                <p class="title fs18 fw600">
+                                                    19,800원
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group border">
+                            <p class="form-title">
+                                선택 가능 품목
+                            </p>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    품목 검색
+                                    <span class="guide-txt">
+                                        품목은 '꾸러미 관리>꾸러미 품목 관리'에서 관리하실 수 있습니다.
+                                    </span>
+                                </div>
+                                <div class="item-user">
+                                    <div class="row-group gap32">
+                                        <div class="col-group">
+                                            <input type="search" class="search-input" placeholder="품목 검색">
+                                            <button type="submit" class="search-btn">
+                                                <i class="xi-search"></i>
+                                            </button>
+                                        </div>
+    
+                                        <div class="admin-table-wrap create-table-wrap">
+                                            <div class="create-table-top col-group gap8 al-bl">
+                                                <p class="title fs18 fw600">
+                                                    선택 가능 품목
+                                                </p>
+                                                <p class="fs14 fw600">
+                                                    (총 
+                                                    <span class="yellow">
+                                                        6
+                                                    </span> 
+                                                    개)
+                                                </p>
+                                                <p>
+                                                    판매가를 안적으면 할인없이 정가로 노출됩니다.
+                                                </p>
+                                            </div>
+    
+                                            <table class="admin-table create-table">
+                                                <colgroup>
+                                                    <col width="24%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="12%">
+                                                    <col width="24%">
+                                                    <col width="4%">
+                                                </colgroup>
+                                                <thead>
+                                                    <th>품목</th>
+                                                    <th>수량</th>
+                                                    <th>단위</th>
+                                                    <th>정가</th>
+                                                    <th>판매가</th>
+                                                    <th>태그</th>
+                                                    <th>삭제</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="브로콜리">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input half" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="베이비 청경채">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input half" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-input disable" disabled value="시크릿 유럽상추">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" class="form-input half" placeholder="수량" value="1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="단위" value="개">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="정가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input half" placeholder="판매가" value="3,000">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-input" placeholder="태그" value="무농약, GAP">
+                                                        </td>
+                                                        <td>
+                                                            <button class="create-table-btn">
+                                                                <i class="xi-close"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+    
+    
+                                            <div class="create-table-btm col-group sp-bt al-bl">
+                                                <p class="title fs18 fw600">
+                                                    합계
+                                                </p>
+                                                <p class="title fs18 fw600">
+                                                    19,800원
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <div class="item-default">
+                                레시피
+                                <span class="guide-txt">
+                                    처음 등록한 3개의 레시피는 커뮤니티 목록에서 이번주 꾸러미 레시피로 보여집니다
+                                </span>
+                            </div>
+                            <div class="item-user">
+                                <div class="row-group gap16">
+                                    <div class="col-group">
+                                        <input type="search" class="search-input" placeholder="품목 검색">
+                                        <button type="submit" class="search-btn">
+                                            <i class="xi-search"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="tag-list">
+                                        <div class="tag-item">
+                                            <p class="txt">
+                                                초록초록 색감이 매력적인 청경채볶음밥
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                        <div class="tag-item">
+                                            <p class="txt">
+                                                초록초록 색감이 매력적인 청경채볶음밥
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                        <div class="tag-item">
+                                            <p class="txt">
+                                                브런치 한상! 당근라페샌드위치
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                        <div class="tag-item">
+                                            <p class="txt">
+                                                브런치 한상! 당근라페샌드위치
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<!-- 태그 -->
+<div class="modal-container" style="display: none;">
+    <div class="modal-wrap w480">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                태그등록
+            </p>
+            <p class="modal-sub-title">
+                최대 4개까지 등록가능합니다.
+            </p>
+        </div>
+
+        <div class="row-group gap16">
+            <div class="col-group">
+                <input type="search" class="search-input" placeholder="생산자 검색">
+                <button type="submit" class="search-btn">
+                    <i class="xi-search"></i>
+                </button>
+            </div>
+            <div class="tag-list">
+                <div class="tag-item">
+                    <div class="color" style="background-color: #484848;"></div>
+                    <p class="txt">
+                        충남
+                    </p>
+                    <i class="xi-close del-btn"></i>
+                </div>
+                <div class="tag-item">
+                    <div class="color" style="background-color: #308929;"></div>
+                    <p class="txt">
+                        표고버섯
+                    </p>
+                    <i class="xi-close del-btn"></i>
+                </div>
+                <div class="tag-item">
+                    <div class="color" style="background-color: #E92C2C;"></div>
+                    <p class="txt">
+                        GAP
+                    </p>
+                    <i class="xi-close del-btn"></i>
+                </div>
+                <div class="tag-item">
+                    <div class="color" style="background-color: #E92C2C;"></div>
+                    <p class="txt">
+                        무농약
+                    </p>
+                    <i class="xi-close del-btn"></i>
+                </div>
+                <div class="tag-item">
+                    <div class="color" style="background-color: #E92C2C;"></div>
+                    <p class="txt">
+                        유기농
+                    </p>
+                    <i class="xi-close del-btn"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-m gray">
+                취소완료
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script> <!-- 컬러피커 -->
+
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    회원가입
+                </p>
+            </div>
+            <div class="subpage login">
+                <div class="login-form-container">
+                    <div class="subpage-title-wrap center border">
+                        <h2 class="subpage-title">
+                            회원가입
+                        </h2>
+                    </div>
+                    
+                    <div class="login-form-wrap">
+                        <div class="account-form form-wrap row-group">
+                            <div class="form-list border row-group">
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        이메일
+                                        <span class="red">*</span>
+                                    </p>
+                                    <div class="item-user">
+                                        <input type="text" class="form-input" placeholder="이메일(아이디)">
+                                    </div>
+                                </div>
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        비밀번호
+                                        <span class="red">*</span>
+                                    </p>
+                                    <div class="item-user">
+                                        <div class="form-input-wrap row-group">
+                                            <input type="password" class="form-input" placeholder="비밀번호">
+                                            <input type="password" class="form-input" placeholder="비밀번호 재확인">
+                                            <p class="guide-txt">
+                                                <span class="red">
+                                                    숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요.
+                                                </span>
+                                            </p>
+                                            <p class="guide-txt">
+                                                <span class="blue">
+                                                    비밀번호가 일치합니다.
+                                                </span>
+                                            </p>
+                                            <p class="guide-txt">
+                                                <span class="red">
+                                                    비밀번호가 일치하지 않습니다.
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        이름
+                                        <span class="red">*</span>
+                                    </p>
+                                    <div class="item-user">
+                                        <input type="text" class="form-input" placeholder="이름">
+                                    </div>
+                                </div>
+
+                                <!--  입력 전 상태 -->
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        휴대폰 번호
+                                        <span class="red">*</span>
+                                    </p>
+                                    <div class="item-user">
+                                        <div class="form-input-wrap row-group">
+                                            <div class="form-btn-wrap col-group">
+                                                <input type="text" class="form-input" placeholder="휴대폰 번호">
+                                                <button class="form-btn green disable">
+                                                    인증번호 받기
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--  입력 후 상태 -->
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        휴대폰 번호
+                                        <span class="red">*</span>
+                                    </p>
+                                    <div class="item-user">
+                                        <div class="form-input-wrap row-group">
+                                            <div class="form-btn-wrap col-group">
+                                                <input type="text" class="form-input" placeholder="휴대폰 번호" value="01012341234">
+                                                <button class="form-btn submit">
+                                                    인증번호 받기
+                                                </button>
+                                            </div>
+                                            <div class="form-btn-wrap col-group">
+                                                <input type="text" class="form-input" placeholder="인증번호">
+                                                <button class="form-btn submit disable">
+                                                    인증확인
+                                                </button>
+                                            </div>
+                                            <p class="guide-txt">
+                                                <span class="red">
+                                                    휴대폰으로 발송된 인증번호를 입력해주세요.
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--  인증번호 받기시 인증번호 재발송 버튼 활성화 -->
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        휴대폰 번호
+                                        <span class="red">*</span>
+                                    </p>
+                                    <div class="item-user">
+                                        <div class="form-input-wrap row-group">
+                                            <div class="form-btn-wrap col-group">
+                                                <input type="text" class="form-input" placeholder="휴대폰 번호" value="01012341234">
+                                                <button class="form-btn">
+                                                    인증번호 재발송
+                                                </button>
+                                            </div>
+                                            <div class="form-btn-wrap col-group">
+                                                <input type="text" class="form-input" placeholder="인증번호" value="123456">
+                                                <button class="form-btn submit">
+                                                    인증확인
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--  인증 완료 -->
+                                <div class="form-item row-group">
+                                    <p class="item-default">
+                                        휴대폰 번호
+                                        <span class="red">*</span>
+                                    </p>
+                                    <div class="item-user">
+                                        <div class="form-input-wrap row-group">
+                                            <div class="form-btn-wrap col-group">
+                                                <input type="text" class="form-input" placeholder="휴대폰 번호" value="01012341234">
+                                                <button class="form-btn done" disabled>
+                                                    인증완료
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="policy-agree-wrap row-group">
+                                    <label for="agree_all">
+                                        <input type="checkbox" id="agree_all" class="form-checkbox">
+                                        <div class="checked-all-item checked-item col-group">
+                                            <i class="icon">
+                                                <i class="xi-check-thin"></i>
+                                            </i>
+                                            <p class="txt">
+                                                모두 동의합니다.
+                                            </p>
+                                            <a href="" class="link">보기</a>
+                                        </div>
+                                    </label>
+                                    <label for="agree_1">
+                                        <input type="checkbox" id="agree_1" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <i class="icon">
+                                                <i class="xi-check-thin"></i>
+                                            </i>
+                                            <p class="txt">
+                                                [필수] 서비스이용약관에 동의합니다.
+                                            </p>
+                                            <a href="" class="link">보기</a>
+                                        </div>
+                                    </label>
+                                    <label for="agree_2">
+                                        <input type="checkbox" id="agree_2" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <i class="icon">
+                                                <i class="xi-check-thin"></i>
+                                            </i>
+                                            <p class="txt">
+                                                [필수] 개인정보처리방침 약관에 동의합니다.
+                                            </p>
+                                            <a href="" class="link">보기</a>
+                                        </div>
+                                    </label>
+                                    <label for="agree_3">
+                                        <input type="checkbox" id="agree_3" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <i class="icon">
+                                                <i class="xi-check-thin"></i>
+                                            </i>
+                                            <p class="txt">
+                                                [선택] 긴급할인 등 정보·혜택 수신 동의
+                                            </p>
+                                            <a href="" class="link">보기</a>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <a href="join_result.html" class="form-submit-btn disable">
+                                회원가입
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 이메일 아이디 입력시 이메일 형식이 아니면 -->
+<div class="modal-container id_error_modal">
+    <div class="modal-wrap modal-alert">
+        <div class="modal-title-wrap">
+            <i class="icon xi-warning red"></i>
+        </div>
+        <p class="modal-alert-txt">
+            아이디(이메일) 형식을 확인해주세요.
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                확인
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 인증번호 입력 후 틀릴 경우 -->
+<div class="modal-container id_error_modal">
+    <div class="modal-wrap modal-alert">
+        <div class="modal-title-wrap">
+            <i class="icon xi-warning red"></i>
+        </div>
+        <p class="modal-alert-txt">
+            입력한 인증번호가 올바르지 않습니다.
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                확인
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 회원가입 이미 진행된 번호 -->
+<div class="modal-container id_error_modal">
+    <div class="modal-wrap modal-alert">
+        <div class="modal-title-wrap">
+            <i class="icon xi-warning red"></i>
+        </div>
+        <p class="modal-alert-txt">
+            이미 가입이 완료된 번호 입니다.
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                확인
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <h2 class="main-title">
+                        대시보드
+                    </h2>
+                </div>
+                
+                <div class="dashboard-section-wrap row-group gap24">
+                    <div class="dashboard-item-group col-group gap16">
+                        <div class="dashboard-item">
+                            <p class="item-title">
+                                오늘 배송준비
+                            </p>
+                            <div class="item-txt">
+                                5
+                            </div>
+                        </div>
+                        <div class="dashboard-item">
+                            <p class="item-title">
+                                오늘 결제대기
+                            </p>
+                            <div class="item-txt">
+                                4
+                            </div>
+                        </div>
+                        <div class="dashboard-item">
+                            <p class="item-title">
+                                취소요청
+                            </p>
+                            <div class="item-txt">
+                                0
+                            </div>
+                        </div>
+                        <div class="dashboard-item">
+                            <p class="item-title">
+                                1:1 문의
+                            </p>
+                            <div class="item-txt">
+                                2
+                            </div>
+                        </div>
+                        <div class="dashboard-item">
+                            <p class="item-title">
+                                후기
+                            </p>
+                            <div class="item-txt">
+                                24
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <div class="row-group gap16">
+                            <div class="dashboard-section-title-wrap col-group sp-bt al-st">
+                                <div class="title-group row-group gap16 fl-st">
+                                    <p class="title fs24 fw600">
+                                        방문자 현황
+                                    </p>
+                                    <div class="row-group gap4">
+                                        <p class="txt fs16 gray">
+                                            동일한 PC에서 하루에 여러번 방문해도 1회로 체크됩니다.
+                                        </p>
+                                        <p class="txt fs14 gray">
+                                            (단 해당 PC 에 쿠키로 정보를 남기는데 쿠키가 삭제되면 그날 처음 들어온 걸로 간주해서 방문자수가 증가합니다. )
+                                        </p>
+                                    </div>
+                                 
+                                </div>
+                                <div class="btn-wrap col-group">
+                                    <button class="btn btn-s tab-btn active">
+                                        일별
+                                    </button>
+                                    <button class="btn btn-s tab-btn">
+                                        월별
+                                    </button>
+                                </div>
+                            </div>
+    
+                            <div class="chart-wrap">
+                                <canvas id="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <div class="row-group gap40">
+                            <p class="title fs24 fw600">
+                                기간별 분석
+                            </p>
+
+                            <div class="admin-table-wrap">
+                                <table class="admin-table">
+                                    <thead>
+                                        <th>
+                                            일자
+                                        </th>
+                                        <th>
+                                            주문수
+                                        </th>
+                                        <th>
+                                            매출액
+                                        </th>
+                                        <th>
+                                            방문자
+                                        </th>
+                                        <th>
+                                            가입
+                                        </th>
+                                        <th>
+                                            신규 구독
+                                        </th>
+                                        <th>
+                                            구독 취소
+                                        </th>
+                                        <th>
+                                            취소요청
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                24-12-12
+                                            </td>
+                                            <td>
+                                                54
+                                            </td>
+                                            <td>
+                                                5,230,000원
+                                            </td>
+                                            <td>
+                                                420
+                                            </td>
+                                            <td>
+                                                23
+                                            </td>
+                                            <td>
+                                                13
+                                            </td>
+                                            <td>
+                                                0
+                                            </td>
+                                            <td>
+                                                4
+                                            </td>
+                                        </tr>
+                                        <tr class="light-blue">
+                                            <td>
+                                                최근 7일 합계
+                                            </td>
+                                            <td>
+                                                321
+                                            </td>
+                                            <td>
+                                                23,000,000원
+                                            </td>
+                                            <td>
+                                                25,012
+                                            </td>
+                                            <td>
+                                                230
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                23
+                                            </td>
+                                        </tr>
+                                        <tr class="blue">
+                                            <td>
+                                                최근 7일 합계
+                                            </td>
+                                            <td>
+                                                321
+                                            </td>
+                                            <td>
+                                                23,000,000원
+                                            </td>
+                                            <td>
+                                                25,012
+                                            </td>
+                                            <td>
+                                                230
+                                            </td>
+                                            <td>
+                                                8
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                23
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('chart');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['05.01(수)', '05.02(목)', '05.03(금)', '05.04(토)', '05.05(일)', '05.06(월)', '05.07(화)'],
+            datasets: [
+                {
+                    label: '방문자',
+                    data: [220, 330, 300, 120, 500, 80, 420,],
+                    borderColor: '#2f83f7',
+                    backgroundColor: '#fff',
+                    borderWidth: 1,
+                    pointRadius: 6,
+                    pointBorderWidth: 4,
+                },
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                    position: 'bottom',
+                },
+                title: {
+                    display: false,
+                    text: '2024.04.01 ~ 2024.04.30',
+                    font: {
+                        size: 24,
+                        weight: 400,
+                        family: 'Pretendard'
+                    }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false,
+                    },
+                    type: 'category', // x축이 범주형 데이터일 경우 설정
+                    offset: true, // 데이터 포인트 간에 여백 추가
+                    ticks: {
+                        font: {
+                            size: 16,
+                            weight: 600,
+                            family: 'Pretendard'
+                        }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            size: 14,
+                            family: 'Pretendard',
+                        },
+                        stepSize: 100
+                    },
+                },
+            },
+        },
+    });
+</script>
+</html>

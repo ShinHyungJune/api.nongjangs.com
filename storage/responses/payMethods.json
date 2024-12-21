@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "pg" : "pg코드",
+      "method" : "결제수단",
+      "name": "결제수단명",
+      "ratio_discount" : "할인률",
+      "will_finished_at" : "만료일자"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

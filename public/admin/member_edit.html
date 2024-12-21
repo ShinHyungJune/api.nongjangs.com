@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <div class="row-group gap24">
+                        <h2 class="main-title">
+                            회원 상세
+                        </h2>
+
+                        <div class="col-group gap8">
+                            <a href="member_detail_1.html" class="btn btn-m tab-btn active">
+                                회원정보
+                            </a>
+                            <a href="member_detail_2.html" class="btn btn-m tab-btn">
+                                주문내역
+                            </a>
+                            <a href="member_detail_3.html" class="btn btn-m tab-btn">
+                                취소/환불내역
+                            </a>
+                            <a href="member_detail_4_1.html" class="btn btn-m tab-btn">
+                                후기/채소이야기
+                            </a>
+                            <a href="member_detail_5.html" class="btn btn-m tab-btn">
+                                1:1 문의
+                            </a>
+                            <a href="member_detail_6.html" class="btn btn-m tab-btn">
+                                북마크
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-wrap">
+                        <div class="form-list col-group border">
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    이메일
+                                </div>
+                                <div class="item-user">
+                                    <div class="col-group gap8">
+                                        <input type="text" class="form-input disable" placeholder="이메일" value="aaaaaa234@naver.com" disabled>
+                                        <div class="sns-item kakao"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    이름
+                                </div>
+                                <div class="item-user">
+                                    <input type="text" class="form-input disable" placeholder="이름" value="김지은" disabled>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    휴대폰 번호
+                                </div>
+                                <div class="item-user">
+                                    <input type="tel" class="form-input disable" placeholder="휴대폰 번호" disabled value="01012341234">
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    닉네임
+                                </div>
+                                <div class="item-user">
+                                    <input type="text" class="form-input" placeholder="닉네임" value="초롱이">
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    생년월일
+                                </div>
+                                <div class="item-user">
+                                    <input type="date" class="form-input" value="2000-01-01">
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    가구원 수
+                                </div>
+                                <div class="item-user">
+                                    <input type="number" class="form-input" value="2">
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    비선호 품목
+                                </div>
+                                <div class="item-user">
+                                    <input type="text" class="form-input disable" value="당근, 콜라비, 브로콜리, 비트잎" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list col-group">
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    환불계좌
+                                </div>
+                                <div class="item-user">
+                                    <div class="col-group gap8">
+                                        <select name="" id="" class="form-input quarter">
+                                            <option value="">신한은행</option>
+                                        </select>
+                                        <input type="text" class="form-input" placeholder="계좌번호" value="123412312345">
+                                        <input type="text" class="form-input quarter" placeholder="이름" value="김지은">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    마케팅동의
+                                </div>
+                                <div class="item-user">
+                                    <div class="col-group gap8">
+                                        <select name="" id="" class="form-input quarter">
+                                            <option value="">Y</option>
+                                            <option value="">N</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    가입일
+                                </div>
+                                <div class="item-user">
+                                    <input type="text" class="form-input half disable" value="2025-01-01 14:01" disabled>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <div class="item-default">
+                                    상태변경
+                                </div>
+                                <div class="item-user">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="state_1">
+                                            <input type="radio" id="state_1" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    활동중
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="state_2">
+                                            <input type="radio" id="state_2" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    활동정지
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="state_3" onclick="document.getElementById('member_leave').style.display='block'">
+                                            <input type="radio" id="state_3" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    탈퇴
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-wrap col-group">
+                    <button class="btn btn-m darkgray" onclick="document.getElementById('member_delete').style.display='block'"> <!-- 탈퇴 회원에만 보이기 -->
+                        회원삭제
+                    </button>
+                    <button class="btn btn-m blue">
+                        저장
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- 회원탈퇴 -->
+<div class="modal-container" id="member_leave" style="display: none;">
+    <div class="modal-wrap modal-alert warning">
+        <i class="xi-close close-btn"></i>
+
+        <div class="modal-title-wrap border">
+            <i class="icon red xi-warning"></i>
+            <p class="modal-title red">
+                회원탈퇴
+            </p>
+        </div>
+
+        <p class="modal-alert-txt">
+            정말 '김지은' 회원을 탈퇴처리하시겠습니까?
+        </p>
+
+        <div class="modal-footer">
+            <button class="btn btn-m gray">
+                회원탈퇴
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 회원삭제 -->
+<div class="modal-container" id="member_delete" style="display: none;">
+    <div class="modal-wrap modal-alert warning">
+        <i class="xi-close close-btn"></i>
+
+        <div class="modal-title-wrap border">
+            <i class="icon red xi-warning"></i>
+            <p class="modal-title red">
+                회원삭제
+            </p>
+        </div>
+
+        <p class="modal-alert-txt">
+            회원삭제는 되돌릴 수 없습니다. <br>
+            정말 '김지은' 회원을 삭제처리하시겠습니까?
+        </p>
+
+        <div class="modal-footer">
+            <button class="btn btn-m gray">
+                회원삭제
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

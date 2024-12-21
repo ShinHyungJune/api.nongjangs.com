@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/> <!-- 컬러피커 -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <h2 class="main-title">
+                        소농살리기 프로젝트 등록
+                    </h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-wrap row-group">
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                상품검색
+                            </p>
+                            <div class="item-user">
+                                <div class="col-group">
+                                    <input type="search" class="search-input" placeholder="상품검색">
+                                    <button type="submit" class="search-btn">
+                                        <i class="xi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                대표사진
+                            </p>
+                            <div class="file-upload-wrap">
+                                <input type="file" id="popup_file" accept="image/gif, image/jpg, image/jpeg, image/png, image/*">
+                                <label for="popup_file" class="file-upload-btn">
+                                    파일 업로드
+                                </label>
+                                <span class="guide-txt">
+                                    최소 1200*1200px 비율 고해상도 이미지 등록
+                                </span>
+
+                                <div class="file-preview">
+                                    <p class="file-name">파일이름</p>
+                                    <button type="button" class="file-del-btn">
+                                        <i class="xi-close"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                프로젝트 기간
+                            </p>
+                            <div class="item-user">
+                                <div class="col-group gap16 al-ce">
+                                    <div class="col-group gap8">
+                                        <input type="date" class="form-input half">
+                                        <input type="time" class="form-input quarter">
+                                    </div>
+                                    -
+                                    <div class="col-group gap8">
+                                        <input type="date" class="form-input half">
+                                        <input type="time" class="form-input quarter">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                목표인원
+                            </p>
+                            <div class="item-user">
+                                <input type="text" class="form-input" placeholder="목표인원을 입력해주세요.">
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                참여인원
+                            </p>
+                            <div class="item-user">
+                                <input type="text" class="form-input" placeholder="참여인원을 입력해주세요.">
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                태그
+                                <span class="guide-txt fw300">
+                                    태그는 '커뮤니티 관리>태그관리'에서 관리하실 수 있습니다.
+                                </span>
+                            </p>
+                            <div class="item-user">
+                                <div class="row-group gap16">
+                                    <div class="col-group">
+                                        <input type="search" class="search-input" placeholder="생산자 검색">
+                                        <button type="submit" class="search-btn">
+                                            <i class="xi-search"></i>
+                                        </button>
+                                    </div>
+                                    <div class="tag-list">
+                                        <div class="tag-item">
+                                            <div class="color" style="background-color: #484848;"></div>
+                                            <p class="txt">
+                                                충남
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                        <div class="tag-item">
+                                            <div class="color" style="background-color: #308929;"></div>
+                                            <p class="txt">
+                                                표고버섯
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                        <div class="tag-item">
+                                            <div class="color" style="background-color: #E92C2C;"></div>
+                                            <p class="txt">
+                                                GAP
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                        <div class="tag-item">
+                                            <div class="color" style="background-color: #E92C2C;"></div>
+                                            <p class="txt">
+                                                무농약
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                        <div class="tag-item">
+                                            <div class="color" style="background-color: #E92C2C;"></div>
+                                            <p class="txt">
+                                                유기농
+                                            </p>
+                                            <i class="xi-close del-btn"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script> <!-- 컬러피커 -->
+<script>
+    Coloris.setInstance('.coloris', { theme: 'polaroid' });
+</script>
+</html>

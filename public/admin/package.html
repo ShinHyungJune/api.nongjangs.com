@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap col-group sp-bt al-en">
+                    <h2 class="main-title">
+                        꾸러미 관리
+                    </h2>
+                    <div class="col-group gap16">
+                        <div class="col-group">
+                            <input type="search" class="search-input" placeholder="품목">
+                            <button type="submit" class="search-btn">
+                                <i class="xi-search"></i>
+                            </button>
+                        </div>
+                        <div class="col-group gap8">
+                            <button class="btn gray">
+                                선택 삭제
+                            </button>
+                            <a href="package_create.html" class="btn blue">
+                                등록
+                            </a>
+                        </div>
+                    </div>
+                 
+                </div>
+
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <colgroup>
+                            <col width="48px">
+                        </colgroup>
+                        <thead>
+                            <tr><th>
+                                <label for="check_all">
+                                    <input type="checkbox" id="check_all" class="form-checkbox">
+                                    <div class="checked-item col-group">
+                                        <div class="icon">
+                                            <i class="xi-check"></i>
+                                        </div>
+                                    </div>
+                                </label>
+                            </th>
+                            <th>
+                                누적회차
+                            </th>
+                            <th>
+                                기본품목
+                            </th>
+                            <th>
+                                선택 가능 품목
+                            </th>
+                            <th>
+                                판매가
+                            </th>
+                            <th>
+                                도착 예정일
+                            </th>
+                            <th>
+                                관리
+                            </th>
+                        </tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="check_1">
+                                        <input type="checkbox" id="check_1" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    334
+                                </td>
+                                <td>
+                                    느타리버섯, 유럽상추 레드, 가지, 홍감자(홍선), 완숙토마토, 적양배추, 청경채
+                                </td>
+                                <td>
+                                    대파, 마늘, 두부, 대파, 마늘, 두부
+                                </td>
+                                <td>
+                                    19,900 / 28,900
+                                </td>
+                                <td>
+                                    <button class="underline">
+                                        24-12-25
+                                    </button>
+                                </td>
+                                <td>
+                                    <a href="package_create.html" class="blue">상세</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

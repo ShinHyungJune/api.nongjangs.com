@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap">
+                    <div class="col-group sp-bt al-en">
+                        <div class="col-group al-bl gap16">
+                            <h2 class="main-title">
+                                회원 관리
+                            </h2>
+                            <strong class="fs16 blue">
+                                340,035
+                            </strong>
+                        </div>
+    
+                        <div class="col-group gap16">
+                            <select name="" id="" class="form-input quarter">
+                                <option value="">구독상태</option>
+                                <option value="">구독중</option>
+                                <option value="">구독안함</option>
+                            </select>
+                            <select name="" id="" class="form-input quarter">
+                                <option value="">마케팅</option>
+                            </select>
+                            <div class="col-group">
+                                <input type="search" class="search-input" placeholder="회원명/이메일/전화번호">
+                                <button type="submit" class="search-btn">
+                                    <i class="xi-search"></i>
+                                </button>
+                            </div>
+                            <button class="btn darkgray">
+                                선택 엑셀 다운로드
+                                <i class="xi-download"></i>
+                            </button>
+                            <button class="btn darkgray">
+                                전체 엑셀 다운로드
+                                <i class="xi-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <colgroup>
+                                <col width="48px">
+                                <col width="64px">
+                            </colgroup>
+                            <thead>
+                                <th>
+                                    <label for="check_all">
+                                        <input type="checkbox" id="check_all" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </th>
+                                <th>
+                                    SNS
+                                </th>
+                                <th>
+                                    이메일
+                                </th>
+                                <th>
+                                    회원명(닉네임)
+                                </th>
+                                <th>
+                                    휴대폰 번호
+                                </th>
+                                <th>
+                                    등급
+                                </th>
+                                <th>
+                                    누적 결제금액
+                                </th>
+                                <th>
+                                    적립금
+                                </th>
+                                <th>
+                                    쿠폰
+                                </th>
+                                <th>
+                                    마케팅
+                                </th>
+                                <th>
+                                    가입일
+                                </th>
+                                <th>
+                                    관리
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="sns-item kakao"></div>
+                                    </td>
+                                    <td>
+                                        aaaaaaa1234@naver.com
+                                    </td>
+                                    <td>
+                                        김지은(코랑둥이)
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        Lv.7
+                                    </td>
+                                    <td>
+                                        <span class="underline">
+                                            1,220,000
+                                        </span>
+                                    </td>
+                                    <td>
+                                        10,002
+                                    </td>
+                                    <td>
+                                        0 / 2
+                                    </td>
+                                    <td>
+                                        Y
+                                    </td>
+                                    <td>
+                                        25-05-01
+                                    </td>
+                                    <td>
+                                        <a href="member_detail_1.html" class="blue">상세</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_2">
+                                            <input type="checkbox" id="check_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="sns-item naver"></div>
+                                    </td>
+                                    <td>
+                                        aaaaaaa1234@naver.com
+                                    </td>
+                                    <td>
+                                        김지은(코랑둥이)
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        Lv.7
+                                    </td>
+                                    <td>
+                                        <span class="underline">
+                                            1,220,000
+                                        </span>
+                                    </td>
+                                    <td>
+                                        10,002
+                                    </td>
+                                    <td>
+                                        0 / 2
+                                    </td>
+                                    <td>
+                                        <span class="red">
+                                            N
+                                        </span>
+                                    </td>
+                                    <td>
+                                        25-05-01
+                                    </td>
+                                    <td>
+                                        <a href="member_detail_1.html" class="blue">상세</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_2">
+                                            <input type="checkbox" id="check_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="sns-item google"></div>
+                                    </td>
+                                    <td>
+                                        aaaaaaa1234@naver.com
+                                    </td>
+                                    <td>
+                                        김지은(코랑둥이)
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        Lv.7
+                                    </td>
+                                    <td>
+                                        <span class="underline">
+                                            1,220,000
+                                        </span>
+                                    </td>
+                                    <td>
+                                        10,002
+                                    </td>
+                                    <td>
+                                        0 / 2
+                                    </td>
+                                    <td>
+                                        <span class="red">
+                                            N
+                                        </span>
+                                    </td>
+                                    <td>
+                                        25-05-01
+                                    </td>
+                                    <td>
+                                        <a href="member_detail_1.html" class="blue">상세</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+    
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

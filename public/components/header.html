@@ -1,0 +1,200 @@
+<div class="header-wrap">
+    <h1 class="logo">
+        <a href="index.html"></a>
+    </h1>
+
+    <div class="header-menu-wrap">
+        <a href="story.html" class="header-menu-item">
+            농가 이야기
+        </a>
+        <a href="subscript.html" class="header-menu-item">
+            정기구독
+        </a>
+        <a href="market.html" class="header-menu-item">
+            직거래 장터
+        </a>
+        <a href="community_1.html" class="header-menu-item">
+            커뮤니티
+        </a>
+    </div>
+
+    <div class="header-btn-wrap">
+        <a href="login.html" class="header-account-btn">로그인</a>
+        <a href="join.html" class="header-account-btn">회원가입</a>
+        <a href="mypage_01_01.html" class="ggorumi-btn">
+            <img src="/images/icon_ggorumi_w.png" alt="" class="icon">
+            나의 꾸러미
+        </a>
+        <a href="mypage_index.html" class="header-btn header-mypage-btn"></a>
+        <a href="cart.html" class="header-btn header-cart-btn">
+            <div class="badge">0</div>
+        </a>
+        <button class="header-btn header-alert-btn" onclick="document.querySelector('.header-alert-wrap').style.display='block'">
+            <div class="badge"></div>
+        </button>
+    </div>
+
+    <button class="mb-toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
+
+<!-- 모바일 전체 메뉴 -->
+<div class="site-map">
+    <div class="site-map-top">
+        <div class="site-map-top-group">
+            <p class="name">
+                <strong>
+                    농장스
+                </strong>
+                님
+            </p>
+            <div class="btn-group col-group">
+                <a href="mypage_04_01.html" class="setting-btn">
+                    <i class="xi-cog icon"></i>
+                </a>
+                <i class="xi-close close-btn"></i>
+            </div>
+        </div>
+        <div class="menu-wrap">
+            <a href="" class="menu-item">
+                <img src="../images/icon_mp_inquiry.png" alt="" class="img">
+                <p class="txt">
+                    고객센터
+                </p>
+            </a>
+            <button class="menu-item header-btn header-alert-btn" onclick="document.querySelector('.header-alert-wrap').style.display='block'">
+                <div class="badge"></div>
+                <img src="../images/icon_alert.png" alt="" class="img">
+                <p class="txt">
+                    알림
+                </p>
+            </button>
+            <a href="mypage_01_01.html" class="menu-item">
+                <img src="../images/icon_ggorumi.png" alt="" class="img">
+                <p class="txt">
+                    나의 꾸러미
+                </p>
+            </a>
+            <a href="cart.html" class="menu-item header-btn header-cart-btn">
+                <div class="badge">0</div>
+                <img src="../images/icon_cart.png" alt="" class="img">
+                <p class="txt">
+                    장바구니
+                </p>
+            </a>
+        </div>
+    </div>
+    <div class="site-map-wrap">
+        <div class="site-map-item">
+            <div class="site-map-title">
+                농가 이야기
+            </div>
+            <div class="site-map-menu-group">
+                <a href="story.html" class="site-map-menu-item">
+                    전체보기
+                </a>
+                <a href="story.html" class="site-map-menu-item">
+                    농가 이야기
+                </a>
+                <a href="story.html" class="site-map-menu-item">
+                    농장스 이야기
+                </a>
+            </div>
+        </div>
+        <div class="site-map-item">
+            <div class="site-map-title">
+                정기구독
+            </div>
+            <div class="site-map-menu-group">
+                <a href="subscript_plan_0.html" class="site-map-menu-item">
+                    꾸러미 신청
+                </a>
+                <a href="subscript.html" class="site-map-menu-item">
+                    꾸러미 이용안내
+                </a>
+                <a href="subscript_benefit.html" class="site-map-menu-item">
+                    정기구독 혜택
+                </a>
+                <a href="subscript_review.html" class="site-map-menu-item">
+                    후기
+                </a>
+            </div>
+        </div>
+        <div class="site-map-item">
+            <div class="site-map-title">
+                직거래 장터
+            </div>
+            <div class="site-map-menu-group">
+                <a href="market.html" class="site-map-menu-item">
+                    직거래 장터
+                </a>
+            </div>
+        </div>
+        <div class="site-map-item">
+            <div class="site-map-title">
+                커뮤니티
+            </div>
+            <div class="site-map-menu-group">
+                <a href="community_1.html" class="site-map-menu-item">
+                    전체보기
+                </a>
+                <a href="community_2.html" class="site-map-menu-item">
+                    채소이야기
+                </a>
+                <a href="community_3.html" class="site-map-menu-item">
+                    레시피
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 알림 버튼 클릭 시 -->
+<div class="header-alert-wrap" style="display: none;">
+    <i class="xi-close close-btn" onclick="document.querySelector('.header-alert-wrap').style.display='none'"></i>
+    <div class="title-wrap">
+        <p class="title">
+            알림
+        </p>
+        <p class="sub-title">
+            최근 90일 동안의 알림이 최대 50건까지 보관됩니다.
+        </p>
+    </div>
+    <div class="alert-null">
+        <i class="icon xi-bell"></i>
+        <p class="txt">
+            새로운 알림이 없습니다.
+        </p>
+    </div>
+    <div class="alert-list">
+        <div class="alert-item">
+            <div class="item-txt-group col-group">
+                <p class="item-label">
+                    꾸러미 알림
+                </p>
+                <p class="item-date">
+                    24.04.12 14:00
+                </p>
+            </div>
+            <p class="item-title">
+                Lorem ipsum dolor sit amet
+            </p>
+            <div class="item-txt">
+                Lorem ipsum dolor sit amet, consectetur 
+                adipiscing elit, sed do eiusmod tempor
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.mb-toggle-btn').click(function(){
+        $('.site-map').addClass('active');
+    });
+    $('.site-map .close-btn').click(function(){
+        $('.site-map').removeClass('active');
+    });
+</script>

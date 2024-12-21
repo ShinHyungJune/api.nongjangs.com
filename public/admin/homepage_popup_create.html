@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <h2 class="main-title">
+                        팝업 등록
+                    </h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-wrap row-group">
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                제목
+                                <span class="red">*</span>
+                            </p>
+                            <div class="item-user">
+                                <input 
+                                    type="text" 
+                                    class="form-input" 
+                                    placeholder='제목을 입력하세요' 
+                                >
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                URL
+                            </p>
+                            <div class="item-user">
+                                <input 
+                                    type="text" 
+                                    class="form-input" 
+                                    placeholder='URL을 입력하세요(https:// 포함)' 
+                                >
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                이미지
+                                <span class="red">*</span>
+                            </p>
+                            <div class="file-upload-wrap">
+                                <input 
+                                    type='file'
+                                    id='popup_file'
+                                    accept="image/gif, image/jpg, image/jpeg, image/png, image/*"
+                                >
+                                <label for="popup_file" class="file-upload-btn">
+                                    파일 업로드
+                                </label>
+                                <span class="guide-txt">
+                                    900*900px 비율 고해상도 사진 등록
+                                </span>
+
+                                <div class="file-preview">
+                                    <p class="file-name">파일이름</p>
+                                    <button 
+                                        type="button"
+                                        class="file-del-btn"
+                                    >
+                                        <i class="xi-close"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                상태
+                                <span class="red">*</span>
+                            </p>
+                            <div class="item-user">
+                                <label for="switch_1" class="form-switch">
+                                    <input type="checkbox" id="switch_1" checked>
+                                    <div class="switch-item col-group">
+                                        <div class="switch">
+                                            <div class="switch-core">
+                                                <i class="icon xi-close"></i>
+                                                <i class="icon xi-check"></i>
+                                            </div>
+                                        </div>
+                                        <p class="title check">
+                                            진행중
+                                        </p>
+                                        <p class="title uncheck">
+                                            마감
+                                        </p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-item row-group">
+                            <p class="item-default">
+                                노출기간
+                            </p>
+                            <div class="item-user col-group">
+                                <input type="date" class="form-input half">
+                                -
+                                <input type="date" class="form-input half">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

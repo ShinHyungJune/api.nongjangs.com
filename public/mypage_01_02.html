@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    배송 당기기 · 미루기
+                </p>
+            </div>
+
+            <div class="mypage">
+                <div class="mypage-container mb-wide">
+                    <div id="mp_nav" class="mp-nav"></div>
+                    <div class="mp-content">
+                        <div class="mp-sub-section-wrap row-group">
+                            <div class="plan-nav col-group">
+                                <h2 class="plan-nav-title">
+                                    배송 당기기 · 미루기
+                                </h2>
+                            </div>
+
+                            <div class="mp-sub-section">
+                                <div class="deli-schedule-wrap">
+                                    <div class="deli-schedule-top col-group">
+                                        <div class="deli-schedule-top-item">
+                                            <p class="item-title">
+                                                기존 예정일
+                                            </p>
+                                            <p class="item-txt">
+                                                2024.10.18 (금)
+                                            </p>
+                                        </div>
+                                        <div class="deli-schedule-top-item active">
+                                            <p class="item-title">
+                                                기존 예정일
+                                            </p>
+                                            <p class="item-txt">
+                                                2024.11.11 (금)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="deli-schedule-calendar">
+                                        <div id='calendar'></div>
+                                    </div>
+                                    <div class="deli-schedule-btm">
+                                        <i class="icon green xi-bell"></i>
+                                        <p class="title green">
+                                            신규 예정일 : 2024.11.11 (금)
+                                        </p>
+                                        <p class="txt">
+                                            <strong>2024.11.06 (월) 오후</strong>에 다시 새로운 구성으로 찾아뵐게요!
+                                        </p>
+                                    </div>
+
+                                    <div class="form-footer-wrap">
+                                        <button class="form-submit-btn" onclick="document.querySelector('.delay_modal_1').classList.add('active')">
+                                            꾸러미 배송 당기기
+                                        </button>
+                                        <button class="form-submit-btn" onclick="document.querySelector('.delay_modal_2').classList.add('active')">
+                                            꾸러미 배송 미루기
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 배송 당기기/미루기 -->
+<div class="modal-container delay_modal delay_modal_1">
+    <div class="modal-wrap modal-alert">
+        <i class="xi-close close-btn"></i>
+        <div class="modal-title-wrap">
+            <i class="icon xi-info green"></i>
+            <p class="modal-title">
+                배송 당기기
+            </p>
+        </div>
+        <p class="modal-alert-txt">
+            지금 배송을 당기시면 <br>
+            <strong>
+                2024년 12월 25일(금)
+            </strong>
+            에 <br>
+            꾸러미가 도착합니다. <br>
+            배송을 당기시겠습니까?
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                배송 당기기
+            </button>
+        </div>
+    </div>
+</div>
+<div class="modal-container delay_modal delay_modal_2">
+    <div class="modal-wrap modal-alert">
+        <i class="xi-close close-btn"></i>
+        <div class="modal-title-wrap">
+            <i class="icon xi-info green"></i>
+            <p class="modal-title">
+                배송 미루기
+            </p>
+        </div>
+        <p class="modal-alert-txt">
+            지금 배송을 미루시면 <br>
+            <strong>
+                2024년 12월 25일(금)
+            </strong>
+            에 <br>
+            꾸러미가 도착합니다. <br>
+            배송을 미루시겠습니까?
+        </p>
+        <div class="modal-footer">
+            <button class="modal-footer-btn submit-btn">
+                배송 미루기
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script> <!-- 캘린더 -->
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var today = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD' 형식
+
+        // 기존 배송일의 요일 확인 (2024-11-22 기준: 금요일)
+        var fixedEvent3Date = new Date('2024-12-13');
+        var fixedEvent3Day = fixedEvent3Date.getDay(); // 요일 (0: 일, 1: 월, ..., 5: 금, 6: 토)
+
+        // 사용자 선택 이벤트가 이미 추가되었는지 추적할 변수
+        var userEventAdded = false;
+        var userEventDate = null; // 사용자 이벤트가 추가된 날짜를 저장
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'multiMonth', // 여러 달 보기
+            locale: 'ko',
+            multiMonth: {
+                cols: 2, // 한 행에 두 달 표시
+                rows: 1, // 총 한 행만 표시
+            },
+            views: {
+                multiMonth: {
+                    duration: { months: 2 }, // prev/next 버튼 클릭 시 2달씩 이동
+                },
+            },
+            headerToolbar: false,
+            multiMonthTitleFormat: {
+                month: 'long',
+                year: 'numeric'
+            },
+            height: 'auto', // 높이를 자동으로 설정
+            events: [
+                {
+                    title: '오늘',
+                    start: today,
+                    classNames: ['today']
+                },
+                {
+                    title: '주문마감',
+                    start: '2024-12-11',
+                    classNames: ['close']
+                },
+                {
+                    title: '기존',
+                    start: '2024-12-13',
+                    classNames: ['before']
+                },
+            ],
+            dateClick: function (info) {
+                // 클릭한 날짜의 요일 가져오기
+                var clickedDate = new Date(info.dateStr);
+                var clickedDay = clickedDate.getDay();
+
+                // 클릭한 날짜가 고정 이벤트 3의 요일과 동일한 경우에만 이벤트 추가
+                if (clickedDay === fixedEvent3Day) {
+                    // 기존에 추가된 사용자 이벤트가 있는 경우 삭제
+                    if (userEventAdded) {
+                        var existingEvent = calendar.getEvents().find(event => event.title === '신규');
+                        if (existingEvent) {
+                            existingEvent.remove(); // 기존 이벤트 삭제
+                        }
+                    }
+
+                    // 사용자 선택 이벤트 추가
+                    calendar.addEvent({
+                        title: '신규',
+                        start: info.dateStr,
+                        classNames: ['new']
+                    });
+
+                    // 새로운 이벤트 등록
+                    userEventAdded = true;
+                    userEventDate = info.dateStr;
+                }
+            },
+            dayCellContent: function (info) {
+                // info.dayNumberText를 사용하여 날짜의 '일'을 제거
+                var dayNumber = info.dayNumberText.replace("일", "");  // '일' 제거
+                return {
+                    html: dayNumber // 변경된 날짜 텍스트를 반환
+                };
+            },
+            eventContent: function(info) {
+            // 클릭된 날짜의 '일' 숫자만 추출
+            var dayNumber = info.event.start.getDate(); // 날짜에서 '일'만 추출
+
+            // 커스텀 HTML 콘텐츠 생성
+            var customContent = document.createElement('div');
+            customContent.classList.add('custom-event-content');
+            customContent.innerHTML = `<span class="event-date">${dayNumber}</span> <span class="event-title">${info.event.title}</span>`;
+
+            // 기존 이벤트를 덮어쓰고 커스터마이즈된 콘텐츠를 반환
+            return { domNodes: [customContent] };
+        },
+        });
+
+        calendar.render();
+    });
+
+</script>
+
+</html>

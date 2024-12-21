@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "admin" : "관리자여부 (1이면 관리자)",
+      "description" : "내용",
+      "name": "표시용 이름 (관리자 | 사용자)",
+      "format_created_at": "표시용 생성일자"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}
+

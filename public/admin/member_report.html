@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap">
+                    <div class="row-group gap24">
+                        <h2 class="main-title">
+                            신고내역
+                        </h2>
+
+                        <div class="col-group sp-bt">
+                            <div class="col-group gap8">
+                                <a href="member_report.html" class="btn tab-btn active">
+                                    전체보기
+                                </a>
+                                <a href="member_report.html" class="btn tab-btn">
+                                    꾸러미 후기
+                                </a>
+                                <a href="member_report.html" class="btn tab-btn">
+                                    직거래 후기
+                                </a>
+                                <a href="member_report.html" class="btn tab-btn">
+                                    채소이야기
+                                </a>
+                                <a href="member_report.html" class="btn tab-btn">
+                                    댓글
+                                </a>
+                            </div>
+                            <div class="col-group gap16 al-ce">
+                                <div class="col-group">
+                                    <input type="search" class="search-input" placeholder="회원명 / 내용">
+                                    <button type="submit" class="search-btn">
+                                        <i class="xi-search"></i>
+                                    </button>
+                                </div>
+                                <button class="btn gray">
+                                    선택 삭제
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <colgroup>
+                                <col width="48px">
+                            </colgroup>
+                            <thead>
+                                <tr><th>
+                                    <label for="check_all">
+                                        <input type="checkbox" id="check_all" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </th>
+                                <th>
+                                    회원명(등급)
+                                </th>
+                                <th>
+                                    상태
+                                </th>
+                                <th>
+                                    신고 수
+                                </th>
+                                <th>
+                                    구분
+                                </th>
+                                <th>
+                                    내용
+                                </th>
+                                <th>
+                                    신고자
+                                </th>
+                                <th>
+                                    신고사유
+                                </th>
+                                <th>
+                                    신고일
+                                </th>
+                                <th>
+                                    상태
+                                </th>
+                                <th>
+                                    관리
+                                </th>
+                            </tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            김지은(Lv.7)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        활동중
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            1
+                                        </button>
+                                    </td>
+                                    <td>
+                                        꾸러미
+                                    </td>
+                                    <td>
+                                        <div class="user-content-txt">
+                                            똑같이 먹는 샐러드도, 오늘만은 좀 특별하게! 푸르른 잎채소면 뭐든 …
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            홍길동(코랑둥이)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        관련없는 이미지/내용
+                                    </td>
+                                    <td>
+                                        25-01-01
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_1">
+                                            미처리
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="member_report_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_2">
+                                            <input type="checkbox" id="check_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            김지은(Lv.7)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <span class="red">
+                                            활동정지
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            3
+                                        </button>
+                                    </td>
+                                    <td>
+                                        직거래
+                                    </td>
+                                    <td>
+                                        <div class="user-content-txt">
+                                            똑같이 먹는 샐러드도, 오늘만은 좀 특별하게! 푸르른 잎채소면 뭐든 …
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            홍길동(코랑둥이)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        욕설/비방
+                                    </td>
+                                    <td>
+                                        25-01-01
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_2">
+                                            숨김
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="member_report_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_3">
+                                            <input type="checkbox" id="check_3" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            김지은(Lv.7)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <span class="red">
+                                            탈퇴
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            1
+                                        </button>
+                                    </td>
+                                    <td>
+                                        채소이야기
+                                    </td>
+                                    <td>
+                                        <div class="user-content-txt">
+                                            똑같이 먹는 샐러드도, 오늘만은 좀 특별하게! 푸르른 잎채소면 뭐든 …
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="underline">
+                                            홍길동(코랑둥이)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        광고/홍보글
+                                    </td>
+                                    <td>
+                                        25-01-01
+                                    </td>
+                                    <td>
+                                        <div class="order-state">
+                                            정상
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="member_report_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

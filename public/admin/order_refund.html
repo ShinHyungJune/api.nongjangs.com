@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap">
+                    <div class="row-group gap24">
+                        <h2 class="main-title">
+                            반품/교환/환불
+                        </h2>
+
+                        <div class="dashboard-item-group col-group gap16">
+                            <div class="dashboard-item">
+                                <p class="item-title">
+                                    취소요청
+                                </p>
+                                <button class="item-sub-txt underline">
+                                    32
+                                </button>
+                            </div>
+                            <div class="dashboard-item">
+                                <p class="item-title">
+                                    결제취소
+                                </p>
+                                <button class="item-sub-txt underline">
+                                    2
+                                </button>
+                            </div>
+                            <div class="dashboard-item">
+                                <p class="item-title">
+                                    오늘의 취소/환불
+                                </p>
+                                <button class="item-sub-txt underline">
+                                    240,000원
+                                </button>
+                            </div>
+                            <div class="dashboard-item">
+                                <p class="item-title">
+                                    이달의 취소/환불
+                                </p>
+                                <button class="item-sub-txt underline">
+                                    240,000원
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-group sp-bt">
+                            <div class="col-group gap8">
+                                <button class="btn tab-btn active">
+                                    꾸러미
+                                </button>
+                                <button class="btn tab-btn">
+                                    직거래 상품
+                                </button>
+                            </div>
+                            <div class="col-group gap8">
+                                <div class="col-group gap8 al-ce">
+                                    <input type="date" class="form-input half">
+                                    -
+                                    <input type="date" class="form-input half">
+                                </div>
+                                <select name="" id="" class="form-input quarter">
+                                    <option value="">상태</option>
+                                    <option value="">취소요청</option>
+                                    <option value="">취소완료</option>
+                                    <option value="">요청반려</option>
+                                </select>
+                                <div class="col-group">
+                                    <input type="search" class="search-input" placeholder="상품명 / 주문번호">
+                                    <button type="submit" class="search-btn">
+                                        <i class="xi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-group gap8">
+                                <button class="btn gray">
+                                    선택 삭제
+                                </button>
+                                <button class="btn darkgray">
+                                    엑셀 다운로드
+                                    <i class="xi-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <colgroup>
+                                <col width="48px">
+                                <col width="104px">
+                            </colgroup>
+                            <thead>
+                                <tr><th>
+                                    <label for="check_all">
+                                        <input type="checkbox" id="check_all" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </th>
+                                <th>
+                                    상태
+                                </th>
+                                <th>
+                                    상품번호
+                                </th>
+                                <th>
+                                    취소요청일시
+                                </th>
+                                <th>
+                                    처리완료일시
+                                </th>
+                                <th>
+                                    주문번호
+                                </th>
+                                <th>
+                                    주문일시
+                                </th>
+                                <th>
+                                    택배사
+                                </th>
+                                <th>
+                                    송장번호
+                                </th>
+                                <th>
+                                    등급
+                                </th>
+                                <th>
+                                    수령인
+                                </th>
+                                <th>
+                                    수령인 전화번호
+                                </th>
+                                <th>
+                                    수령인 주소
+                                </th>
+                                <th>
+                                    배송메세지
+                                </th>
+                                <th>
+                                    옵션
+                                </th>
+                                <th>
+                                    상품갯수
+                                </th>
+                                <th>
+                                    회원아이디
+                                </th>
+                                <th>
+                                    회원명
+                                </th>
+                                <th>
+                                    회원 전화번호
+                                </th>
+                                <th>
+                                    상품명
+                                </th>
+                                <th>
+                                    결제금액
+                                </th>
+                                <th>
+                                    결제수단
+                                </th>
+                                <th>
+                                    결제일시
+                                </th>
+                                <th>
+                                    발송처리일
+                                </th>
+                                <th>
+                                    배송완료일
+                                </th>
+                                <th>
+                                    관리
+                                </th>
+                            </tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_1">
+                                            취소요청
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        수미감자 소 3kg(60g미만)
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        포슬포슬 햇 수미감자 1kg
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_refund_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_2">
+                                            <input type="checkbox" id="check_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_2">
+                                            요청반려
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        수미감자 소 3kg(60g미만)
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        포슬포슬 햇 수미감자 1kg
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_refund_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_3">
+                                            <input type="checkbox" id="check_3" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state">
+                                            취소완료
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        수미감자 소 3kg(60g미만)
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        포슬포슬 햇 수미감자 1kg
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_refund_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

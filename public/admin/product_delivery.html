@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/> <!-- 컬러피커 -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap border">
+                    <h2 class="main-title">
+                        배송설정
+                    </h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-wrap row-group">
+                        <div class="form-list row-group border">
+                            <div class="form-title">
+                                배송비
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    택배사
+                                </p>
+                                <div class="item-user">
+                                    <select name="" id="" class="form-input">
+                                        <option value="">CJ 대한통운</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    배송비
+                                </p>
+                                <div class="item-user">
+                                    <div class="form-label-wrap col-group">
+                                        <label for="deli_fee_1">
+                                            <input type="radio" id="deli_fee_1" name="deli_fee" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    고정 배송비
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="deli_fee_2">
+                                            <input type="radio" id="deli_fee_2" name="deli_fee" class="form-radio">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    고정 배송비
+                                                </p>
+                                            </div>
+                                        </label>
+                                        <label for="deli_fee_3">
+                                            <input type="radio" id="deli_fee_3" name="deli_fee" class="form-radio" checked="">
+                                            <div class="checked-item col-group">
+                                                <div class="icon"></div>
+                                                <p class="txt">
+                                                    수량별 차등 배송비
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 고정 배송비 -->
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    기본 배송비
+                                </p>
+                                <div class="item-user">
+                                    <input 
+                                        type="text" 
+                                        class="form-input" 
+                                        placeholder='배송비' 
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- 조건부 무료배송 -->
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    기본 배송비
+                                </p>
+                                <div class="item-user">
+                                    <input 
+                                        type="text" 
+                                        class="form-input" 
+                                        placeholder='배송비' 
+                                    >
+                                </div>
+                            </div>
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    무료배송 조건
+                                </p>
+                                <div class="item-user">
+                                    <div class="col-group gap8 al-ce">
+                                        <input 
+                                            type="text" 
+                                            class="form-input" 
+                                            placeholder='' 
+                                        >
+                                        이상 구매시
+                                    </div>
+                                
+                                </div>
+                            </div>
+
+                            <!-- 수량별 차등 배송비 -->
+                            <div class="form-item row-group">
+                                <table class="table">
+                                    <thead>
+                                        <th>구매수량</th>
+                                        <th>배송비</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input half">
+                                                    이상
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input">
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input half">
+                                                    이상
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input">
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-group">
+                                    <button class="add-btn btn btn-m gray">
+                                        <i class="xi-plus"></i>
+                                        추가
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-list row-group border">
+                            <div class="form-item row-group">
+                                <div class="form-title">
+                                    제주/도서산간 지역 설정
+                                </div>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input half" placeholder="우편번호">
+                                                </div>
+                                            </td>
+                                            <td>-</td>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input half" placeholder="우편번호">
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input half" placeholder="우편번호">
+                                                </div>
+                                            </td>
+                                            <td>-</td>
+                                            <td>
+                                                <div class="col-group gap8 al-ce">
+                                                    <input type="text" class="form-input half" placeholder="우편번호">
+                                                    <button class="create-table-btn">
+                                                        <i class="xi-close"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-group">
+                                    <button class="add-btn btn btn-m gray">
+                                        <i class="xi-plus"></i>
+                                        추가
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                   
+                        <div class="form-list row-group">
+                            <div class="form-item row-group">
+                                <p class="item-default">
+                                    제주/도서산간 배송비
+                                </p>
+                                <div class="item-user">
+                                    <input 
+                                        type="text" 
+                                        class="form-input" 
+                                        placeholder='품목명' 
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script> <!-- 컬러피커 -->
+<script>
+    Coloris.setInstance('.coloris', { theme: 'polaroid' });
+</script>
+</html>

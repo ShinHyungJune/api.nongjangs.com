@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap">
+                    <div class="row-group gap24">
+                        <h2 class="main-title">
+                            꾸러미 주문 내역
+                        </h2>
+
+                        <div class="dashboard-item-group col-group gap16">
+                            <div class="dashboard-item">
+                                <p class="item-title">
+                                    이번 회차
+                                </p>
+                                <div class="col-group gap8">
+                                    <button class="item-sub-txt underline">
+                                        324 회차
+                                    </button>
+                                    <button class="item-sub-txt blue underline" onclick="document.getElementById('package_list').style.display='block'">
+                                        품목
+                                    </button>
+                                </div>
+                             
+                            </div>
+                            <div class="dashboard-item">
+                                <p class="item-title">
+                                    이번회차 주문건
+                                </p>
+                                <button class="item-sub-txt underline">
+                                    413 건
+                                </button>
+                            </div>
+                            <div class="dashboard-item">
+                                <p class="item-title">
+                                    미루기
+                                </p>
+                                <button class="item-sub-txt underline">
+                                    13 건
+                                </button>
+                            </div>
+                            <div class="dashboard-item">
+                                <p class="item-title">
+                                    당기기
+                                </p>
+                                <button class="item-sub-txt underline">
+                                    16 건
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-group sp-bt">
+                            <div class="col-group gap8">
+                                <select name="" id="" class="form-input quarter">
+                                    <option value="">구분</option>
+                                    <option value="">싱글 꾸러미</option>
+                                    <option value="">벙글 꾸러미</option>
+                                </select>
+                                <select name="" id="" class="form-input quarter">
+                                    <option value="">회차</option>
+                                </select>
+                                <select name="" id="" class="form-input quarter">
+                                    <option value="">상태</option>
+                                </select>
+                                <div class="col-group">
+                                    <input type="search" class="search-input" placeholder="상품명 / 주문번호">
+                                    <button type="submit" class="search-btn">
+                                        <i class="xi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-group gap8">
+                                <button class="btn white">
+                                    출고예정
+                                </button>
+                                <button class="btn white">
+                                    송장등록
+                                </button>
+                                <button class="btn gray">
+                                    선택 삭제
+                                </button>
+                                <button class="btn darkgray">
+                                    엑셀 다운로드
+                                    <i class="xi-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <colgroup>
+                                <col width="48px">
+                                <col width="104px">
+                            </colgroup>
+                            <thead>
+                                <tr><th>
+                                    <label for="check_all">
+                                        <input type="checkbox" id="check_all" class="form-checkbox">
+                                        <div class="checked-item col-group">
+                                            <div class="icon">
+                                                <i class="xi-check"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </th>
+                                <th>
+                                    상태
+                                </th>
+                                <th>
+                                    상품번호
+                                </th>
+                                <th>
+                                    주문번호
+                                </th>
+                                <th>
+                                    주문일시
+                                </th>
+                                <th>
+                                    택배사
+                                </th>
+                                <th>
+                                    송장번호
+                                </th>
+                                <th>
+                                    등급
+                                </th>
+                                <th>
+                                    수령인
+                                </th>
+                                <th>
+                                    수령인 전화번호
+                                </th>
+                                <th>
+                                    수령인 주소
+                                </th>
+                                <th>
+                                    배송메세지
+                                </th>
+                                <th>
+                                    옵션
+                                </th>
+                                <th>
+                                    상품갯수
+                                </th>
+                                <th>
+                                    회원아이디
+                                </th>
+                                <th>
+                                    회원명
+                                </th>
+                                <th>
+                                    회원 전화번호
+                                </th>
+                                <th>
+                                    회차(전체)
+                                </th>
+                                <th>
+                                    상품명
+                                </th>
+                                <th>
+                                    회차(고객)
+                                </th>
+                                <th>
+                                    품목
+                                </th>
+                                <th>
+                                    결제금액
+                                </th>
+                                <th>
+                                    결제수단
+                                </th>
+                                <th>
+                                    결제일시
+                                </th>
+                                <th>
+                                    구매유형
+                                </th>
+                                <th>
+                                    발송처리일
+                                </th>
+                                <th>
+                                    배송완료일
+                                </th>
+                                <th>
+                                    관리
+                                </th>
+                            </tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="check_1">
+                                            <input type="checkbox" id="check_1" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_1">
+                                            결제대기
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        싱글꾸러미
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        422
+                                    </td>
+                                    <td>
+                                        홍길동의 꾸러미
+                                    </td>
+                                    <td>
+                                        32
+                                    </td>
+                                    <td>
+                                        시크릿 유럽상추 500g*1, 베이비 청경채 100g*1, 대파 200g*1, 애호박 1개*1, 와일드 루꼴라 60g*1, 아담한 감자 450g*1, 개성만점 스낵당근 150g*1
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        1회구매
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_package_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_2">
+                                            <input type="checkbox" id="check_2" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_2">
+                                            배송준비
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        싱글꾸러미
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        422
+                                    </td>
+                                    <td>
+                                        홍길동의 꾸러미
+                                    </td>
+                                    <td>
+                                        32
+                                    </td>
+                                    <td>
+                                        시크릿 유럽상추 500g*1, 베이비 청경채 100g*1, 대파 200g*1, 애호박 1개*1, 와일드 루꼴라 60g*1, 아담한 감자 450g*1, 개성만점 스낵당근 150g*1
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        1회구매
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_package_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_3">
+                                            <input type="checkbox" id="check_3" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_3">
+                                            출고예정
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        싱글꾸러미
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        422
+                                    </td>
+                                    <td>
+                                        홍길동의 꾸러미
+                                    </td>
+                                    <td>
+                                        32
+                                    </td>
+                                    <td>
+                                        시크릿 유럽상추 500g*1, 베이비 청경채 100g*1, 대파 200g*1, 애호박 1개*1, 와일드 루꼴라 60g*1, 아담한 감자 450g*1, 개성만점 스낵당근 150g*1
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        1회구매
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_package_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_4">
+                                            <input type="checkbox" id="check_4" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_4">
+                                            배송중
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        싱글꾸러미
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        422
+                                    </td>
+                                    <td>
+                                        홍길동의 꾸러미
+                                    </td>
+                                    <td>
+                                        32
+                                    </td>
+                                    <td>
+                                        시크릿 유럽상추 500g*1, 베이비 청경채 100g*1, 대파 200g*1, 애호박 1개*1, 와일드 루꼴라 60g*1, 아담한 감자 450g*1, 개성만점 스낵당근 150g*1
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        1회구매
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_package_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_5">
+                                            <input type="checkbox" id="check_5" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_5">
+                                            배송완료
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        싱글꾸러미
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        422
+                                    </td>
+                                    <td>
+                                        홍길동의 꾸러미
+                                    </td>
+                                    <td>
+                                        32
+                                    </td>
+                                    <td>
+                                        시크릿 유럽상추 500g*1, 베이비 청경채 100g*1, 대파 200g*1, 애호박 1개*1, 와일드 루꼴라 60g*1, 아담한 감자 450g*1, 개성만점 스낵당근 150g*1
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        1회구매
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_package_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="check_6">
+                                            <input type="checkbox" id="check_6" class="form-checkbox">
+                                            <div class="checked-item col-group">
+                                                <div class="icon">
+                                                    <i class="xi-check"></i>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="order-state">
+                                            구매확정
+                                        </div>
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        2024070314461217530
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        CJ대한통운
+                                    </td>
+                                    <td>
+                                        1234567894561
+                                    </td>
+                                    <td>
+                                        Lv2. 꽃잎 꾸러기
+                                    </td>
+                                    <td>
+                                        홍길동
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </td>
+                                    <td>
+                                        문 앞에 놔주세요
+                                    </td>
+                                    <td>
+                                        싱글꾸러미
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        aa1234@gmail.com
+                                    </td>
+                                    <td>
+                                        이지은
+                                    </td>
+                                    <td>
+                                        01012341234
+                                    </td>
+                                    <td>
+                                        422
+                                    </td>
+                                    <td>
+                                        홍길동의 꾸러미
+                                    </td>
+                                    <td>
+                                        32
+                                    </td>
+                                    <td>
+                                        시크릿 유럽상추 500g*1, 베이비 청경채 100g*1, 대파 200g*1, 애호박 1개*1, 와일드 루꼴라 60g*1, 아담한 감자 450g*1, 개성만점 스낵당근 150g*1
+                                    </td>
+                                    <td>
+                                        87,730
+                                    </td>
+                                    <td>
+                                        간편결제(롯데카드)
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        1회구매
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        24-05-01 12:00
+                                    </td>
+                                    <td>
+                                        <a href="order_package_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- 꾸러기 품목 -->
+<div class="modal-container" id="package_list" style="display: none;">
+    <div class="modal-wrap">
+        <i class="xi-close close-btn"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                꾸러미 품목
+            </p>
+        </div>
+
+        <div class="row-group gap24">
+            <select name="" id="" class="form-input quarter">
+                <option value="">223</option>
+            </select>
+            <div class="col-group sp-bt">
+                <div class="col-group gap8">
+                    <div class="btn tab-btn active">싱글</div>
+                    <div class="btn tab-btn">벙글</div>
+                </div>
+                <button class="btn darkgray">
+                    전체 엑셀 다운로드
+                    <i class="xi-download"></i>
+                </button>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <th>
+                            상품명
+                        </th>
+                        <th>
+                            갯수
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                사과대추 120g
+                            </td>
+                            <td>
+                                5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                히카마(멕시코 감자) 1kg 내외
+                            </td>
+                            <td>
+                                22
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

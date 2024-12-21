@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap col-group sp-bt al-en">
+                    <h2 class="main-title">
+                        1:1 문의
+                    </h2>
+                    <div class="col-group gap16">
+                        <div class="col-group gap8">
+                            <select name="" id="" class="form-input quarter">
+                                <option value="">전체보기</option>
+                                <option value="">배송</option>
+                                <option value="">교환/반품/취소</option>
+                                <option value="">서비스</option>
+                                <option value="">주문/결제</option>
+                                <option value="">회원정보</option>
+                            </select>
+                        </div>
+                        <div class="col-group">
+                            <input type="search" class="search-input" placeholder="제목">
+                            <button type="submit" class="search-btn">
+                                <i class="xi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-group gap24">
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        회원명(등급)
+                                    </th>
+                                    <th>
+                                        분류
+                                    </th>
+                                    <th>
+                                        제목
+                                    </th>
+                                    <th>
+                                        작성일
+                                    </th>
+                                    <th>
+                                        상태
+                                    </th>
+                                    <th>
+                                        관리
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <button class="underline">
+                                            김지은(Lv.7)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        교환/반품/취소
+                                    </td>
+                                    <td>
+                                        꾸러미 배송을 한주 건너뛰고 싶은데 가능할까요?
+                                    </td>
+                                    <td>
+                                        24-05-04 12:00
+                                    </td>
+                                    <td>
+                                        <div class="order-state state_1">
+                                            답변대기
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="inqruiy_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="underline">
+                                            김지은(Lv.7)
+                                        </button>
+                                    </td>
+                                    <td>
+                                        교환/반품/취소
+                                    </td>
+                                    <td>
+                                        꾸러미 배송을 한주 건너뛰고 싶은데 가능할까요?
+                                    </td>
+                                    <td>
+                                        24-05-04 12:00
+                                    </td>
+                                    <td>
+                                        <div class="order-state">
+                                            답변대기
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="inqruiy_detail.html" class="blue">
+                                            상세
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn wide white">
+                        25건 더보기
+                    </button>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

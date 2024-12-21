@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap">
+                    <div class="col-group gap24 al-en">
+                        <h2 class="main-title">
+                            반품/교환/환불 상세
+                        </h2>
+                        <p class="fs20 fw500">
+                            24-05-01 12:00 주문
+                        </p>
+                        <p class="fs16 fw300">
+                            주문번호  A12345678910
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row-group gap40">
+                    <div class="row-group gap80">
+                        <div class="member-detail-wrap">
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        이름(닉네임)
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline">
+                                            김지은(당근12345)
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        이메일
+                                    </div>
+                                    <div class="item-user">
+                                        aaaaaa234@naver.com
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        연락처
+                                    </div>
+                                    <div class="item-user">
+                                        01012341234
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        환불계좌
+                                    </div>
+                                    <div class="item-user">
+                                        <div class="col-group gap16">
+                                            <p>
+                                                신한은행
+                                            </p>
+                                            <p>
+                                                123456789456123
+                                            </p>
+                                            <p>
+                                                김지은
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-group gap16">
+                            <div class="col-group gap4">
+                                <p class="title fs24 fw600">
+                                    요청내역
+                                </p>
+                                <p class="title fs24 fw600 blue">
+                                    1
+                                </p>
+                            </div>
+                            <div class="admin-table-wrap">
+                                <table class="admin-table">
+                                    <thead>
+                                        <th>
+                                            상품정보
+                                        </th>
+                                        <th class="center">
+                                            수량
+                                        </th>
+                                        <th class="center">
+                                            결제금액
+                                        </th>
+                                        <th class="center">
+                                            배송비
+                                        </th>
+                                        <th class="center">
+                                            상태
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="prod-order-item">
+                                                    <div class="col-group gap24 al-st">
+                                                        <div class="img-container">
+                                                            <img src="images/about_slide_1.png" alt="">
+                                                        </div>
+                                                        <div class="row-group gap16">
+                                                            <div class="row-group gap8">
+                                                                <p class="fs16 fw600 blue">
+                                                                    경북 경산 홍길동 농부님
+                                                                </p>
+                                                                <p class="fs18 fw600">
+                                                                    국내산 무농약 신비복숭아 1kg
+                                                                </p>
+                                                                <p class="fs16 gray">
+                                                                    20241212123456
+                                                                </p>
+                                                            </div>
+                                                            <p class="fs16">
+                                                                천도복숭아 1kg
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="center">
+                                                <strong>
+                                                    1
+                                                </strong>
+                                            </td>
+                                            <td class="center">
+                                                <div class="row-group gap8">
+                                                    <strong>
+                                                        30,000원
+                                                    </strong>
+                                                </div>
+                                            </td>
+                                            <td class="center">
+                                                <strong>
+                                                    3,000원
+                                                </strong>
+                                            </td>
+                                            <td class="center">
+                                                <select name="" id="" class="form-input quarter">
+                                                    <option value="">취소요청</option>
+                                                    <option value="">취소완료</option>
+                                                    <option value="">요청반려</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row-group gap16">
+                            <p class="title fs24 fw600">
+                                배송지 정보
+                            </p>
+                            <div class="member-detail-wrap">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        수령인
+                                    </div>
+                                    <div class="item-user">
+                                        코워커넷
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        연락처
+                                    </div>
+                                    <div class="item-user">
+                                        010-1234-12340
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        주소
+                                    </div>
+                                    <div class="item-user">
+                                        (03375) 서울특별시 은평구 진흥로 182 (풍안빌딩) 4층
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        배송 요청사항
+                                    </div>
+                                    <div class="item-user">
+                                        부재시 문앞에 놔주세요
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-group gap16">
+                            <p class="title fs24 fw600">
+                                결제 정보
+                            </p>
+                            <div class="member-detail-wrap">
+                                <div class="member-detail-item bg-light-gray">
+                                    <div class="item-default">
+                                        수령인
+                                    </div>
+                                    <div class="item-user">
+                                        코워커넷
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        배송비 합계
+                                    </div>
+                                    <div class="item-user">
+                                        <span class="fw500">
+                                            6,000원
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        <strong class="red">
+                                            할인 합계
+                                        </strong>
+                                    </div>
+                                    <div class="item-user">
+                                        <strong class="red">
+                                            - 54,870원
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="member-detail-list row-group">
+                                    <div class="member-detail-item bg-light-gray">
+                                        <div class="item-default">
+                                            <span class="fs14">
+                                                상품 할인
+                                            </span>
+                                        </div>
+                                        <div class="item-user">
+                                            <span class="fs14">
+                                                -49,900원
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="member-detail-item bg-light-gray">
+                                        <div class="item-default">
+                                            <span class="fs14">
+                                                쿠폰 할인
+                                            </span>
+                                        </div>
+                                        <div class="item-user">
+                                            <span class="fs14">
+                                                -4,970원
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="member-detail-item bg-light-gray">
+                                        <div class="item-default">
+                                            <span class="fs14">
+                                                적립금사용
+                                            </span>
+                                        </div>
+                                        <div class="item-user">
+                                            <span class="fs14">
+                                                -4,970원
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        <strong>
+                                            최종 결제 금액
+                                        </strong>
+                                    </div>
+                                    <div class="item-user">
+                                        <strong class="fs24 blue">
+                                            87,730원
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        결제수단
+                                    </div>
+                                    <div class="item-user">
+                                        현금(가상계좌) 
+                                        국민 12345678945
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        결제일
+                                    </div>
+                                    <div class="item-user">
+                                        24-05-01 12:00
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-group gap16">
+                            <p class="title fs24 fw600">
+                                취소정보
+                            </p>
+                            <div class="member-detail-wrap">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        취소요청일
+                                    </div>
+                                    <div class="item-user">
+                                        24-05-01 12:00
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        취소사유
+                                    </div>
+                                    <div class="item-user">
+                                        상품이 파손되어 배송됨
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        취소처리일
+                                    </div>
+                                    <div class="item-user">
+                                        24-05-01 12:00
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        반려사유
+                                    </div>
+                                    <div class="item-user">
+
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        <strong>
+                                            최종 환불 금액
+                                        </strong>
+                                    </div>
+                                    <div class="item-user">
+                                        <strong class="fs24 blue">
+                                            87,730원
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        환불수단
+                                    </div>
+                                    <div class="item-user">
+                                        현금(가상계좌) 
+                                        국민 12345678945
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-group gap16">
+                            <div class="col-group gap4">
+                                <p class="title fs24 fw600">
+                                    관리자 메모
+                                </p>
+                                <p class="title fs24 fw600 blue">
+                                    2
+                                </p>
+                            </div>
+                            <div class="admin-table-wrap">
+                                <table class="admin-table">
+                                    <colgroup>
+                                        <col width="80%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                    </colgroup>
+                                    <thead>
+                                        <th>
+                                            내용
+                                        </th>
+                                        <th>
+                                            작성자
+                                        </th>
+                                        <th>
+                                            작성일
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                관리자가 작성한 메모2
+                                            </td>
+                                            <td>
+                                                관리자1
+                                            </td>
+                                            <td>
+                                                25-01-01 12:00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                관리자가 작성한 메모1
+                                            </td>
+                                            <td>
+                                                관리자2
+                                            </td>
+                                            <td>
+                                                25-01-01 12:00
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-wrap col-group">
+                        <button class="btn btn-m blue" onclick="document.getElementById('memo_create').style.display='block'">
+                            메모작성
+                        </button>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- 메모작성 -->
+<div class="modal-container" id="memo_create" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                메모작성
+            </p>
+        </div>
+
+        <div class="form-list row-group">
+            <div class="form-item">
+                <textarea name="" id="" class="form-textarea wide" placeholder="내용을 입력하세요."></textarea>
+            </div>
+            <div class="btn-wrap col-group">
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 요청반려 -->
+<div class="modal-container" style="display: none;">
+    <div class="modal-wrap w480">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                요청반려
+            </p>
+        </div>
+
+        <div class="form-item">
+            <textarea name="" id="" class="form-textarea" placeholder="자세한 내용을 입력해 주세요(필수)"></textarea>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-m gray">
+                요청반려
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 취소완료 -->
+<div class="modal-container" style="display: none;">
+    <div class="modal-wrap w480">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                취소완료
+            </p>
+        </div>
+
+        <div class="form-item">
+            <input type="text" class="form-input" placeholder="환불금액">
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-m gray">
+                취소완료
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

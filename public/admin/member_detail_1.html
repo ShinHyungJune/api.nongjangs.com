@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:image" content="/images/kakao-img.png" />
+    <title>관리자페이지</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="admin-container">
+            <header id="admin_header"></header>
+
+            <div class="admin-wrap">
+
+                <div class="main-title-wrap">
+                    <div class="row-group gap24">
+                        <h2 class="main-title">
+                            회원 상세
+                        </h2>
+
+                        <div class="col-group gap8">
+                            <a href="member_detail_1.html" class="btn btn-m tab-btn active">
+                                회원정보
+                            </a>
+                            <a href="member_detail_2.html" class="btn btn-m tab-btn">
+                                주문내역
+                            </a>
+                            <a href="member_detail_3.html" class="btn btn-m tab-btn">
+                                취소/환불내역
+                            </a>
+                            <a href="member_detail_4_1.html" class="btn btn-m tab-btn">
+                                후기/채소이야기
+                            </a>
+                            <a href="member_detail_5.html" class="btn btn-m tab-btn">
+                                1:1 문의
+                            </a>
+                            <a href="member_detail_6.html" class="btn btn-m tab-btn">
+                                북마크
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-group gap40">
+                    <div class="row-group gap80">
+                        <div class="member-detail-wrap">
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        이름
+                                    </div>
+                                    <div class="item-user">
+                                        김지은
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        이메일
+                                    </div>
+                                    <div class="item-user">
+                                        aaaaaa234@naver.com
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        SNS
+                                    </div>
+                                    <div class="item-user">
+                                        <div class="sns-item kakao"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        닉네임
+                                    </div>
+                                    <div class="item-user">
+                                        초롱이
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        생년월일
+                                    </div>
+                                    <div class="item-user">
+                                        2000-01-01
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        가구원 수
+                                    </div>
+                                    <div class="item-user">
+                                        2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        고객등급
+                                    </div>
+                                    <div class="item-user">
+                                        Lv7 ㅇㅇ꾸러미
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        상태
+                                    </div>
+                                    <div class="item-user">
+                                        활동중
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        가입일
+                                    </div>
+                                    <div class="item-user">
+                                        2025-01-01 14:01
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        누적 결제금액
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline">
+                                            1,220,000
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        적립금
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline" onclick="document.getElementById('point_list').style.display='block'">
+                                            10,002
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        쿠폰
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline" onclick="document.getElementById('coupon_list').style.display='block'">
+                                            1 / 20
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        추천인 코드
+                                    </div>
+                                    <div class="item-user">
+                                        A123B456
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        내가 추천한 회원
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline"
+                                            onclick="document.getElementById('recommend_user').style.display='block'">
+                                            홍길동
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        나를 추천한 회원
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline"
+                                            onclick="document.getElementById('recommend_user').style.display='block'">
+                                            3
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        구독 등록일
+                                    </div>
+                                    <div class="item-user">
+                                        <div class="col-group gap8 al-ce">
+                                            2024-12-12
+                                            <div class="subscript-label active"> <!-- 구독중 상태 - active -->
+                                                구독중
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        신고
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline" onclick="document.getElementById('report_list').style.display='block'">
+                                            2 / 3
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        환불계좌
+                                    </div>
+                                    <div class="item-user">
+                                        <div class="col-group gap8">
+                                            <p>
+                                                신한은행
+                                            </p>
+                                            <p>
+                                                123456789456123
+                                            </p>
+                                            <p>
+                                                김지은
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        마케팅 동의
+                                    </div>
+                                    <div class="item-user">
+                                        Y
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        1:1 문의
+                                    </div>
+                                    <div class="item-user">
+                                        <button class="blue underline">
+                                            1 / 5
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        비선호 품목
+                                    </div>
+                                    <div class="item-user">
+                                        양배추, 유럽상추, 복숭아
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-detail-list per3 col-group">
+                                <div class="member-detail-item wide">
+                                    <div class="item-default">
+                                        기본배송지
+                                    </div>
+                                    <div class="item-user">
+                                        <div class="col-group gap8">
+                                            <p>
+                                                (03375) 서울특별시 은평구 진흥로 182 풍안빌딩 4층
+                                            </p>
+                                            <button class="blue underline" onclick="document.getElementById('addr_list').style.display='block'">
+                                                목록
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 탈퇴회원일 시 보임 -->
+                                <div class="member-detail-item">
+                                    <div class="item-default">
+                                        탈퇴일
+                                    </div>
+                                    <div class="item-user">
+                                        2025-01-01 14:01
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-group gap24">
+                            <div class="col-group gap4">
+                                <p class="title fs24 fw600">
+                                    관리자 메모
+                                </p>
+                                <p class="title fs24 fw600 blue">
+                                    2
+                                </p>
+                            </div>
+                            <div class="admin-table-wrap">
+                                <table class="admin-table">
+                                    <colgroup>
+                                        <col width="80%">
+                                        <col width="10%">
+                                        <col width="10%">
+                                    </colgroup>
+                                    <thead>
+                                        <th>
+                                            내용
+                                        </th>
+                                        <th>
+                                            작성자
+                                        </th>
+                                        <th>
+                                            작성일
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                관리자가 작성한 메모2
+                                            </td>
+                                            <td>
+                                                관리자1
+                                            </td>
+                                            <td>
+                                                25-01-01 12:00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                관리자가 작성한 메모1
+                                            </td>
+                                            <td>
+                                                관리자2
+                                            </td>
+                                            <td>
+                                                25-01-01 12:00
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-wrap col-group">
+                        <a href="member_edit.html" class="btn btn-m gray">
+                            회원정보 수정
+                        </a>
+                        <button class="btn btn-m blue" onclick="document.getElementById('memo_create').style.display='block'">
+                            메모작성
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- 나를 추천한 회원 -->
+<div class="modal-container" id="recommend_user" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                나를 추천한 회원
+            </p>
+        </div>
+
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>
+                            이름
+                        </th>
+                        <th>
+                            이메일
+                        </th>
+                        <th>
+                            전화번호
+                        </th>
+                        <th>
+                            등록일
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            김지은
+                        </td>
+                        <td>
+                            aaaaaa234@naver.com
+                        </td>
+                        <td>
+                            010-1234-5678
+                        </td>
+                        <td>
+                            24-05-01 12:00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            김지은
+                        </td>
+                        <td>
+                            aaaaaa234@naver.com
+                        </td>
+                        <td>
+                            010-1234-5678
+                        </td>
+                        <td>
+                            24-05-01 12:00
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination col-group">
+            <a href="" class="page-btn prev-btn">
+                <i class="xi-angle-left"></i>
+            </a>
+            <a href="" class="page-btn active">
+                1
+            </a>
+            <a href="" class="page-btn">
+                2
+            </a>
+            <a href="" class="page-btn">
+                3
+            </a>
+            <a href="" class="page-btn">
+                4
+            </a>
+            <a href="" class="page-btn">
+                5
+            </a>
+            <a href="" class="page-btn next-btn">
+                <i class="xi-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 배송지 목록 -->
+<div class="modal-container" id="addr_list" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                배송지 목록
+            </p>
+        </div>
+
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>
+                            수령인
+                        </th>
+                        <th>
+                            전화번호
+                        </th>
+                        <th>
+                            우편번호
+                        </th>
+                        <th>
+                            주소
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            김지은
+                        </td>
+                        <td>
+                            010-1234-1324
+                        </td>
+                        <td>
+                            112233
+                        </td>
+                        <td>
+                            <div class="col-group gap8 al-ce">
+                                서울 은평구 진흥로 182 2404동 1234호
+                                <div class="subscript-label default">
+                                    기본배송지
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            김지은
+                        </td>
+                        <td>
+                            010-1234-1324
+                        </td>
+                        <td>
+                            112233
+                        </td>
+                        <td>
+                            <div class="col-group gap8 al-ce">
+                                서울 은평구 진흥로 182 2404동 1234호
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination col-group">
+            <a href="" class="page-btn prev-btn">
+                <i class="xi-angle-left"></i>
+            </a>
+            <a href="" class="page-btn active">
+                1
+            </a>
+            <a href="" class="page-btn">
+                2
+            </a>
+            <a href="" class="page-btn">
+                3
+            </a>
+            <a href="" class="page-btn">
+                4
+            </a>
+            <a href="" class="page-btn">
+                5
+            </a>
+            <a href="" class="page-btn next-btn">
+                <i class="xi-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 누적신고 -->
+<div class="modal-container" id="report_list" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                누적신고
+            </p>
+        </div>
+
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>
+                            신고자
+                        </th>
+                        <th>
+                            신고사유
+                        </th>
+                        <th>
+                            신고일
+                        </th>
+                        <th>
+                            관리
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            홍길동(코랑둥이)
+                        </td>
+                        <td>
+                            관련없는 이미지/내용
+                        </td>
+                        <td>
+                            25-01-01 12:00
+                        </td>
+                        <td>
+                            <button class="blue">
+                                상세
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            홍길동(코랑둥이)
+                        </td>
+                        <td>
+                            광고/홍보글
+                        </td>
+                        <td>
+                            25-01-01 12:00
+                        </td>
+                        <td>
+                            <button class="blue">
+                                상세
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination col-group">
+            <a href="" class="page-btn prev-btn">
+                <i class="xi-angle-left"></i>
+            </a>
+            <a href="" class="page-btn active">
+                1
+            </a>
+            <a href="" class="page-btn">
+                2
+            </a>
+            <a href="" class="page-btn">
+                3
+            </a>
+            <a href="" class="page-btn">
+                4
+            </a>
+            <a href="" class="page-btn">
+                5
+            </a>
+            <a href="" class="page-btn next-btn">
+                <i class="xi-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 쿠폰 발급 내역 -->
+<div class="modal-container" id="coupon_list" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                쿠폰 발급 내역
+            </p>
+        </div>
+
+        <div class="admin-table-wrap">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>
+                            쿠폰명
+                        </th>
+                        <th>
+                            할인율(원/%)
+                        </th>
+                        <th>
+                            유효기간
+                        </th>
+                        <th>
+                            사용여부
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            [직거래 장터] 여름 제철과일 10% 할인!
+                        </td>
+                        <td>
+                            10,000원
+                        </td>
+                        <td>
+                            24-12-01 ~ 24-12-31
+                        </td>
+                        <td>
+                            <span class="">
+                                N
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            [10월] GREEN 회원 1,000원 할인 쿠폰
+                        </td>
+                        <td>
+                            10%
+                        </td>
+                        <td>
+                            24-12-01 ~ 24-12-31
+                        </td>
+                        <td>
+                            <span class="blue">
+                                Y
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="disable">
+                        <td>
+                            [생일쿠폰] 생일축하 5% 할인 쿠폰
+                        </td>
+                        <td>
+                            10,000원
+                        </td>
+                        <td>
+                            24-12-01 ~ 24-12-31
+                        </td>
+                        <td>
+                            <span class="">
+                                N
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination col-group">
+            <a href="" class="page-btn prev-btn">
+                <i class="xi-angle-left"></i>
+            </a>
+            <a href="" class="page-btn active">
+                1
+            </a>
+            <a href="" class="page-btn">
+                2
+            </a>
+            <a href="" class="page-btn">
+                3
+            </a>
+            <a href="" class="page-btn">
+                4
+            </a>
+            <a href="" class="page-btn">
+                5
+            </a>
+            <a href="" class="page-btn next-btn">
+                <i class="xi-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 적립금 -->
+<div class="modal-container" id="point_list" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                적립금
+            </p>
+        </div>
+
+        <div class="modal-scroll-wrap">
+            <div class="form-wrap row-group">
+                <div class="form-item">
+                    <div class="review-reply-wrap row-group al-ce">
+                        <p class="fs18 fw500 txt-center">
+                            <span class="fs18 fw800">김지은</span> 회원님이 <br>
+                            보유한 마일리지는 <span class="fs18 fw800">10,002원</span> 입니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-item row-group">
+                    <div class="item-default">
+                        적립금
+                    </div>
+                    <div class="item-user">
+                        <div class="col-group gap8 al-ce">
+                            <select name="" id="" class="form-input quarter">
+                                <option value="">지급</option>
+                            </select>
+                            <input type="text" class="form-input" placeholder="적립금 입력">
+                            원
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item row-group">
+                    <div class="item-default">
+                        유효기간
+                    </div>
+                    <div class="item-user">
+                        <div class="col-group gap8 al-ce">
+                            <input type="date" class="form-input half">
+                            -
+                            <input type="date" class="form-input half">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item row-group">
+                    <div class="item-default">
+                        사유
+                    </div>
+                    <div class="item-user">
+                        <input type="text" class="form-input" placeholder="내용 입력">
+                    </div>
+                </div>
+                <div class="btn-wrap col-group">
+                    <button class="btn btn-m blue">
+                        저장
+                    </button>
+                </div>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <colgroup>
+                        <col width="48px">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>
+                                지급일
+                            </th>
+                            <th>
+                                적립금
+                            </th>
+                            <th>
+                                사유
+                            </th>
+                            <th>
+                                유효기간
+                            </th>
+                            <th>
+                                처리자
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                24-05-01 12:00
+                            </td>
+                            <td>
+                                <span class="blue">
+                                    (+) 
+                                </span>
+                                1,000
+                            </td>
+                            <td>
+                                상품 품질 불만
+                            </td>
+                            <td>
+                                24-05-01 - 24-05-30
+                            </td>
+                            <td>
+                                관리자1
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                24-05-01 12:00
+                            </td>
+                            <td>
+                                <span class="red">
+                                    (-) 
+                                </span>
+                                1,000
+                            </td>
+                            <td>
+                                결제 차감
+                            </td>
+                            <td>
+                                24-05-01 - 24-05-30
+                            </td>
+                            <td>
+                                자동
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+     
+        <div class="pagination col-group">
+            <a href="" class="page-btn prev-btn">
+                <i class="xi-angle-left"></i>
+            </a>
+            <a href="" class="page-btn active">
+                1
+            </a>
+            <a href="" class="page-btn">
+                2
+            </a>
+            <a href="" class="page-btn">
+                3
+            </a>
+            <a href="" class="page-btn">
+                4
+            </a>
+            <a href="" class="page-btn">
+                5
+            </a>
+            <a href="" class="page-btn next-btn">
+                <i class="xi-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 메모작성 -->
+<div class="modal-container" id="memo_create" style="display: none;">
+    <div class="modal-wrap">
+        <i class="close-btn xi-close"></i>
+        <div class="modal-title-wrap">
+            <p class="modal-title">
+                메모작성
+            </p>
+        </div>
+
+        <div class="form-list row-group">
+            <div class="form-item">
+                <textarea name="" id="" class="form-textarea wide" placeholder="내용을 입력하세요."></textarea>
+            </div>
+            <div class="btn-wrap col-group">
+                <button class="btn btn-m blue">
+                    저장
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>

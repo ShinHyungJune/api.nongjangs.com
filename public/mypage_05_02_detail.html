@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=0" />
+<title>농장스</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> <!-- 회원 등급 애니메이션 -->
+<body>
+    <div id="wrap">
+
+        <!-- header Start -->
+        <header id="header" class="header"></header>
+        <!-- header End -->
+
+        <main>
+            <div class="mb-title-wrap">
+                <a href="javascript:history.back();" class="prev-btn">
+                    <i class="xi-arrow-left"></i>
+                </a>
+                <p class="mb-title">
+                    1:1 문의
+                </p>
+            </div>
+
+            <div class="mypage">
+                <div class="mypage-container">
+                    <div id="mp_nav" class="mp-nav"></div>
+                    <div class="mp-content">
+                        <div class="mp-sub-section-wrap row-group">
+                            <div class="plan-nav col-group">
+                                <h2 class="plan-nav-title">
+                                    1:1 문의
+                                </h2>
+                            </div>
+
+                            <div class="mp-sub-section">
+                                <div class="mp-inquiry-detail">
+                                    <div class="mp-inquiry-item">
+                                        <div class="txt-wrap row-group">
+                                            <p class="label">
+                                                상품확인
+                                            </p>
+                                            <p class="title">
+                                                꾸러미에 제가 주문하지 않은 야채가 왔습니다.
+                                            </p>
+                                            <p class="date">
+                                                2024.12.12
+                                            </p>
+                                        </div>
+                                        <div class="state active">
+                                            답변완료
+                                        </div>
+                                    </div>
+                                    <div class="mp-inquiry-content">
+                                        <div class="mp-inquiry-content-txt">
+                                            <!-- 작성한 내용 -->
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                            
+                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                        <div class="mp-img-list col-group">
+                                            <div class="mp-img-item" onclick="document.querySelector('.modal_slide').classList.add('active')">
+                                                <div class="img-container">
+                                                    <img src="images/about_slide_1.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="mp-img-item" onclick="document.querySelector('.modal_slide').classList.add('active')">
+                                                <div class="img-container">
+                                                    <img src="images/about_slide_1.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="mp-img-item" onclick="document.querySelector('.modal_slide').classList.add('active')">
+                                                <div class="img-container">
+                                                    <img src="images/about_slide_1.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-reply-wrap mp-comment-item">
+                                        <div class="txt-group col-group">
+                                            <p class="title">
+                                                농장스
+                                            </p>
+                                            <p class="sub-txt">
+                                                2025. 01. 01
+                                            </p>
+                                        </div>
+                                        <p class="txt">
+                                            안녕하세요 농장스 입니다! 꾸러미 한주 건너뛰기에 대해 문의주셨는데요.
+                                            꾸러미 한주 건너뛰기는 마이페이지>미루기에서 신청하실 수 있습니다.
+                                            다만, 당기기나 미루기를 선택할 시 구성한 야채가 소진될 수 있으며, 배송일정이 달라지니
+                                            신청 전 꼭 내용 확인 해주시길 바랍니다.
+                                            오늘도 농장스를 이용해주셔서 감사합니다.😊
+                                        </p>
+                                    </div>
+                                    <div class="mp-footer-btn-wrap">
+                                        <button class="mp-footer-btn">
+                                            삭제
+                                        </button>
+                                        <button class="mp-footer-btn green">
+                                            수정
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+        <div id="top_menu"></div>
+        <div id="mb_nav"></div>
+
+    </div>
+</body>
+
+<!-- 이미지 클릭 시 나타나는 팝업 -->
+<div class="modal-container modal_slide">
+    <div class="modal-wrap modal-slide-wrap">
+        <i class="xi-close close-btn"></i>
+        <div class="slide_popup">
+            <img src="images/about_slide_1.png">
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.animateNumber.js"></script> <!-- 숫자 카운트 -->
+
+</html>
