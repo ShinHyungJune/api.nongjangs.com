@@ -40,8 +40,8 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/categories", \App\Http\Controllers\Api\Admin\CategoryController::class)->except(['destroy']);
     Route::delete("/categories", [\App\Http\Controllers\Api\Admin\CategoryController::class, "destroy"]);
 
-    Route::resource("/recommendCategories", \App\Http\Controllers\Api\Admin\RecommendCategoryController::class)->except(['destroy']);
-    Route::delete("/recommendCategories", [\App\Http\Controllers\Api\Admin\RecommendCategoryController::class, "destroy"]);
+    // Route::resource("/recommendCategories", \App\Http\Controllers\Api\Admin\RecommendCategoryController::class)->except(['destroy']);
+    // Route::delete("/recommendCategories", [\App\Http\Controllers\Api\Admin\RecommendCategoryController::class, "destroy"]);
 
     Route::resource("/couponGroups", \App\Http\Controllers\Api\Admin\CouponGroupController::class)->except(['destroy']);
     Route::delete("/couponGroups", [\App\Http\Controllers\Api\Admin\CouponGroupController::class, "destroy"]);
@@ -59,8 +59,8 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/users", \App\Http\Controllers\Api\Admin\UserController::class)->except(['destroy', 'store', 'update']);
     Route::delete("/users", [\App\Http\Controllers\Api\Admin\UserController::class, "destroy"]);
 
-    Route::resource("/estimates", \App\Http\Controllers\Api\Admin\EstimateController::class)->except(['destroy', 'store', 'update']);
-    Route::delete("/estimates", [\App\Http\Controllers\Api\Admin\EstimateController::class, "destroy"]);
+    // Route::resource("/estimates", \App\Http\Controllers\Api\Admin\EstimateController::class)->except(['destroy', 'store', 'update']);
+    // Route::delete("/estimates", [\App\Http\Controllers\Api\Admin\EstimateController::class, "destroy"]);
 
     Route::resource("/qnas", \App\Http\Controllers\Api\Admin\QnaController::class)->except(['destroy', 'store']);
     Route::delete("/qnas", [\App\Http\Controllers\Api\Admin\QnaController::class, "destroy"]);
@@ -74,12 +74,12 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/reviews", \App\Http\Controllers\Api\Admin\ReviewController::class)->except(['destroy']);
     Route::delete("/reviews", [\App\Http\Controllers\Api\Admin\ReviewController::class, "destroy"]);
 
-    Route::resource("/prototypes", \App\Http\Controllers\Api\Admin\PrototypeController::class)->except(['destroy']);
-    Route::delete("/prototypes", [\App\Http\Controllers\Api\Admin\PrototypeController::class, "destroy"]);
+    // Route::resource("/prototypes", \App\Http\Controllers\Api\Admin\PrototypeController::class)->except(['destroy']);
+    // Route::delete("/prototypes", [\App\Http\Controllers\Api\Admin\PrototypeController::class, "destroy"]);
 
-    Route::patch("/feedbacks/check/{feedback}", [\App\Http\Controllers\Api\Admin\FeedbackController::class, "check"]);
-    Route::resource("/feedbacks", \App\Http\Controllers\Api\Admin\FeedbackController::class)->except(['destroy']);
-    Route::delete("/feedbacks", [\App\Http\Controllers\Api\Admin\FeedbackController::class, "destroy"]);
+    // Route::patch("/feedbacks/check/{feedback}", [\App\Http\Controllers\Api\Admin\FeedbackController::class, "check"]);
+    // Route::resource("/feedbacks", \App\Http\Controllers\Api\Admin\FeedbackController::class)->except(['destroy']);
+    // Route::delete("/feedbacks", [\App\Http\Controllers\Api\Admin\FeedbackController::class, "destroy"]);
 
     Route::patch("/orders/cancel/{order}", [\App\Http\Controllers\Api\Admin\OrderController::class, 'cancel']);
     Route::resource("/orders", \App\Http\Controllers\Api\Admin\OrderController::class)->except(['destroy']);
@@ -94,8 +94,8 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/refunds", \App\Http\Controllers\Api\Admin\RefundController::class)->except(['destroy']);
     Route::delete("/refunds", [\App\Http\Controllers\Api\Admin\RefundController::class, "destroy"]);
 
-    Route::resource("/phrases", \App\Http\Controllers\Api\Admin\PhraseController::class)->except(['destroy']);
-    Route::delete("/phrases", [\App\Http\Controllers\Api\Admin\PhraseController::class, "destroy"]);
+    // Route::resource("/phrases", \App\Http\Controllers\Api\Admin\PhraseController::class)->except(['destroy']);
+    // Route::delete("/phrases", [\App\Http\Controllers\Api\Admin\PhraseController::class, "destroy"]);
 
     Route::resource("/intros", \App\Http\Controllers\Api\Admin\IntroController::class)->except(['destroy']);
     Route::delete("/intros", [\App\Http\Controllers\Api\Admin\IntroController::class, "destroy"]);
@@ -103,11 +103,11 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/pointHistories", \App\Http\Controllers\Api\Admin\PointHistoryController::class)->except(['destroy']);
     Route::delete("/pointHistories", [\App\Http\Controllers\Api\Admin\PointHistoryController::class, "destroy"]);
 
-    Route::get('/logos', [\App\Http\Controllers\Api\Admin\LogoController::class, "index"]);
-    Route::get('/logos/{logo}', [\App\Http\Controllers\Api\Admin\LogoController::class, "show"]);
-    Route::patch('/logos/{logo}', [\App\Http\Controllers\Api\Admin\LogoController::class, "update"]);
-    Route::post("/logos", [\App\Http\Controllers\Api\Admin\LogoController::class, "store"]);
-    Route::delete("/logos", [\App\Http\Controllers\Api\Admin\LogoController::class, "destroy"]);
+    // Route::get('/logos', [\App\Http\Controllers\Api\Admin\LogoController::class, "index"]);
+    // Route::get('/logos/{logo}', [\App\Http\Controllers\Api\Admin\LogoController::class, "show"]);
+    // Route::patch('/logos/{logo}', [\App\Http\Controllers\Api\Admin\LogoController::class, "update"]);
+    // Route::post("/logos", [\App\Http\Controllers\Api\Admin\LogoController::class, "store"]);
+    // Route::delete("/logos", [\App\Http\Controllers\Api\Admin\LogoController::class, "destroy"]);
 });
 
 Route::post("/login", [\App\Http\Controllers\Api\UserController::class, "login"]);
@@ -194,19 +194,10 @@ Route::get("/products", [\App\Http\Controllers\Api\ProductController::class, "in
 Route::get("/products/{product}", [\App\Http\Controllers\Api\ProductController::class, "show"]);
 
 Route::get("/categories", [\App\Http\Controllers\Api\CategoryController::class, "index"]);
-Route::get("/recommendCategories", [\App\Http\Controllers\Api\RecommendCategoryController::class, "index"]);
+// Route::get("/recommendCategories", [\App\Http\Controllers\Api\RecommendCategoryController::class, "index"]);
 
 Route::get("/banners", [\App\Http\Controllers\Api\BannerController::class, "index"]);
 
-Route::get("/phrases", [\App\Http\Controllers\Api\PhraseController::class, "index"]);
-Route::get("/phrases/{phrase}", [\App\Http\Controllers\Api\PhraseController::class, "show"]);
-Route::get("/phraseProductCategories", [\App\Http\Controllers\Api\PhraseProductCategoryController::class, "index"]);
-Route::get("/phraseReceiverCategories", [\App\Http\Controllers\Api\PhraseReceiverCategoryController::class, "index"]);
-
-Route::get("/logos", [\App\Http\Controllers\Api\LogoController::class, "index"]);
-Route::get("/logos/{logo}", [\App\Http\Controllers\Api\LogoController::class, "show"]);
-
-Route::post("/estimates", [\App\Http\Controllers\Api\EstimateController::class, "store"]);
 
 Route::get("/presetProducts", [\App\Http\Controllers\Api\PresetProductController::class, "index"]);
 Route::get("/presetProducts/{uuid}", [\App\Http\Controllers\Api\PresetProductController::class, "show"]);
@@ -227,10 +218,3 @@ Route::post('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class,
 Route::patch('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "update"]);
 Route::delete('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "destroy"]);
 
-Route::get("/comments", [\App\Http\Controllers\Api\CommentController::class, "index"]);
-
-Route::get("/feedbacks", [\App\Http\Controllers\Api\FeedbackController::class, "index"]);
-Route::post("/feedbacks", [\App\Http\Controllers\Api\FeedbackController::class, "store"]);
-
-Route::get('/prototypes', [\App\Http\Controllers\Api\PrototypeController::class, "index"]);
-Route::patch('/prototypes/confirm/{prototype}', [\App\Http\Controllers\Api\PrototypeController::class, "confirm"]);
