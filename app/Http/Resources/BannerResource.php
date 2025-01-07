@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Enums\TypeBanner;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BannerResource extends JsonResource
@@ -12,14 +13,16 @@ class BannerResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'color' => $this->color,
             'type' => $this->type, // 유형
             'format_type' => TypeBanner::getLabel($this->type),
-            'tag' => $this->tag, // 태그
-            'title' => $this->title, // 제목
-            'description' => $this->description, // 내용
-            'url' => $this->url, // 클릭 시 이동할 URL
-            'img' => $this->img ?? '', // 이미지
+            'title' => $this->title,
+            'subtitle' => $this->subtitle,
+            'url' => $this->url,
+            'button' => $this->button,
+            'color_text' => $this->color_text,
+            'color_button' => $this->color_button,
+            'started_at' => $this->started_at ? Carbon::make($this->started_at) : '',
+            'finished_at' => $this->finished_at ? Carbon::make($this->finished_at) : '',
             'order' => $this->order,
         ];
     }

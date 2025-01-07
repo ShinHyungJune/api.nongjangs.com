@@ -26,47 +26,21 @@ class UserResource extends JsonResource
         return [
             "id" => $this->id,
 
-            'tax_business_number' => $this->tax_business_number,
-            'tax_company_title' => $this->tax_company_title,
-            'tax_company_president' => $this->tax_company_president,
-            'tax_company_type' => $this->tax_company_type,
-            'tax_company_category' => $this->tax_company_category,
-            'tax_email' => $this->tax_email,
-            'tax_name' => $this->tax_name,
-            'tax_contact' => $this->tax_contact,
-            'tax_address' => $this->tax_address,
-
-            "count_valid_coupon" => $this->count_valid_coupon,
-            "count_ongoing_preset_product" => $this->count_ongoing_preset_product,
-            "format_ongoing_preset_products" => $this->format_ongoing_preset_products,
-            // 'ongoingPresetProducts' => PresetProductMiniResource::collection($this->ongoingPresetProducts),
-
             "admin" => $this->admin ? 1 : 0,
 
             "social" => $this->social ?? '',
 
-            "type" => $this->type,
-            "format_type" => TypeUser::getLabel($this->type),
-
-            "point" => $this->point,
-            "ids" => $this->ids ?? "",
             "email" => $this->email ?? "",
             "name" => $this->name ?? "",
             "contact" => $this->contact ?? "",
+
+            "agree_promotion" => $this->agree_promotion,
+            "code_recommend" => $this->code_recommend,
+            "point" => $this->point,
+
             "address" => $this->address ?? "",
             "address_detail" => $this->address_detail ?? "",
             "address_zipcode" => $this->address_zipcode ?? "",
-
-            "business_number" => $this->business_number ?? "",
-            "company_title" => $this->company_title ?? "",
-            "company_president" => $this->company_president ?? "",
-            "company_size" => $this->company_size ?? "",
-            "company_type" => $this->company_type ?? "",
-            "company_category" => $this->company_category ?? "",
-
-            "agree_promotion_sms" => $this->agree_promotion_sms,
-            "agree_promotion_email" => $this->agree_promotion_email,
-            "agree_promotion_call" => $this->agree_promotion_call,
 
             "reason" => $this->reason,
             "and_so_on" => $this->and_so_on,

@@ -94,20 +94,10 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/refunds", \App\Http\Controllers\Api\Admin\RefundController::class)->except(['destroy']);
     Route::delete("/refunds", [\App\Http\Controllers\Api\Admin\RefundController::class, "destroy"]);
 
-    // Route::resource("/phrases", \App\Http\Controllers\Api\Admin\PhraseController::class)->except(['destroy']);
-    // Route::delete("/phrases", [\App\Http\Controllers\Api\Admin\PhraseController::class, "destroy"]);
-
-    Route::resource("/intros", \App\Http\Controllers\Api\Admin\IntroController::class)->except(['destroy']);
-    Route::delete("/intros", [\App\Http\Controllers\Api\Admin\IntroController::class, "destroy"]);
-
     Route::resource("/pointHistories", \App\Http\Controllers\Api\Admin\PointHistoryController::class)->except(['destroy']);
     Route::delete("/pointHistories", [\App\Http\Controllers\Api\Admin\PointHistoryController::class, "destroy"]);
 
-    // Route::get('/logos', [\App\Http\Controllers\Api\Admin\LogoController::class, "index"]);
-    // Route::get('/logos/{logo}', [\App\Http\Controllers\Api\Admin\LogoController::class, "show"]);
-    // Route::patch('/logos/{logo}', [\App\Http\Controllers\Api\Admin\LogoController::class, "update"]);
-    // Route::post("/logos", [\App\Http\Controllers\Api\Admin\LogoController::class, "store"]);
-    // Route::delete("/logos", [\App\Http\Controllers\Api\Admin\LogoController::class, "destroy"]);
+
 });
 
 Route::post("/login", [\App\Http\Controllers\Api\UserController::class, "login"]);
@@ -115,8 +105,6 @@ Route::post("/users", [\App\Http\Controllers\Api\UserController::class, "store"]
 
 Route::post("/findIds", [\App\Http\Controllers\Api\FindIdController::class, "store"]);
 Route::post("/findPasswords", [\App\Http\Controllers\Api\FindPasswordController::class, "store"]);
-
-
 
 Route::get("/payMethods", [\App\Http\Controllers\Api\PayMethodController::class, "index"]);
 Route::get("/orders/bill",[\App\Http\Controllers\Api\OrderController::class, 'bill']);
@@ -129,62 +117,14 @@ Route::get("/orders/{order}",[\App\Http\Controllers\Api\OrderController::class, 
 Route::post("/orders",[\App\Http\Controllers\Api\OrderController::class, 'store']);
 Route::get("/reviews", [\App\Http\Controllers\Api\ReviewController::class, "index"]);
 
-Route::middleware(['auth'])->group(function () {
-    Route::get("/user", [\App\Http\Controllers\Api\UserController::class, 'show']);
-
-    Route::patch("/users", [\App\Http\Controllers\Api\UserController::class, "update"]);
-
-    Route::delete("/users", [\App\Http\Controllers\Api\UserController::class, "destroy"]);
-    Route::get("/logout", [\App\Http\Controllers\Api\UserController::class, "logout"]);
-    Route::post("/logout", [\App\Http\Controllers\Api\UserController::class, "logout"]);
-
-    Route::post("/qnas", [\App\Http\Controllers\Api\QnaController::class, "store"]);
-    Route::patch("/qnas/{qna}", [\App\Http\Controllers\Api\QnaController::class, "update"]);
-
-    Route::post("/products", [\App\Http\Controllers\Api\ProductController::class, "store"]);
-    Route::patch("/products/{product}", [\App\Http\Controllers\Api\ProductController::class, "update"]);
-    Route::delete("/products/{product}", [\App\Http\Controllers\Api\ProductController::class, "destroy"]);
-
-    Route::patch("/orders/cancel/{order}",[\App\Http\Controllers\Api\OrderController::class, 'cancel']);
-    Route::get("/orders",[\App\Http\Controllers\Api\OrderController::class, 'index']);
-
-    /*Route::patch("/outgoings/confirm/{outgoing}",[\App\Http\Controllers\Api\OutgoingController::class, 'confirm']);
-    Route::resource("/outgoings",\App\Http\Controllers\Api\OutgoingController::class);*/
-
-    Route::get("/refunds",[\App\Http\Controllers\Api\RefundController::class, 'index']);
-    Route::post("/refunds",[\App\Http\Controllers\Api\RefundController::class, 'store']);
-
-
-    Route::post("/reviews", [\App\Http\Controllers\Api\ReviewController::class, "store"]);
-    Route::patch("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "update"]);
-    Route::delete("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "destroy"]);
-
-    Route::patch("/presetProducts/confirm/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "confirm"]);
-
-    Route::get('/pointHistories', [\App\Http\Controllers\Api\PointHistoryController::class, "index"]);
-    Route::get('/couponHistories', [\App\Http\Controllers\Api\CouponHistoryController::class, "index"]);
-
-    Route::get("/qnaCategories", [\App\Http\Controllers\Api\QnaCategoryController::class, "index"]);
-    Route::get("/qnas", [\App\Http\Controllers\Api\QnaController::class, "index"]);
-
-    Route::get('/coupons', [\App\Http\Controllers\Api\CouponController::class, "index"]);
-    Route::post("/coupons", [\App\Http\Controllers\Api\CouponController::class, "store"]);
-
-
-});
-
-
 Route::get("/carts", [\App\Http\Controllers\Api\CartController::class, 'index']);
 Route::post("/carts", [\App\Http\Controllers\Api\CartController::class, 'store']);
 Route::delete("/carts", [\App\Http\Controllers\Api\CartController::class, 'destroy']);
 Route::patch("/carts", [\App\Http\Controllers\Api\CartController::class, 'update']);
 
-Route::get("/intros", [\App\Http\Controllers\Api\IntroController::class, "index"]);
-
 Route::get("/events", [\App\Http\Controllers\Api\EventController::class, "index"]);
 Route::get("/events/{event}", [\App\Http\Controllers\Api\EventController::class, "show"]);
 
-Route::get("/faqCategories", [\App\Http\Controllers\Api\FaqCategoryController::class, "index"]);
 Route::get("/faqs", [\App\Http\Controllers\Api\FaqController::class, "index"]);
 
 Route::get("/notices", [\App\Http\Controllers\Api\NoticeController::class, "index"]);
@@ -197,6 +137,11 @@ Route::get("/categories", [\App\Http\Controllers\Api\CategoryController::class, 
 // Route::get("/recommendCategories", [\App\Http\Controllers\Api\RecommendCategoryController::class, "index"]);
 
 Route::get("/banners", [\App\Http\Controllers\Api\BannerController::class, "index"]);
+Route::get("/pops", [\App\Http\Controllers\Api\PopController::class, "index"]);
+Route::get("/counts", [\App\Http\Controllers\Api\CountController::class, "index"]);
+Route::get("/cities", [\App\Http\Controllers\Api\CityController::class, "index"]);
+Route::get("/tags", [\App\Http\Controllers\Api\TagController::class, "index"]);
+Route::get("/recipes", [\App\Http\Controllers\RecipeController::class, "index"]);
 
 
 Route::get("/presetProducts", [\App\Http\Controllers\Api\PresetProductController::class, "index"]);
@@ -217,4 +162,50 @@ Route::get('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryControll
 Route::post('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class, "store"]);
 Route::patch('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "update"]);
 Route::delete('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "destroy"]);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get("/user", [\App\Http\Controllers\Api\UserController::class, 'show']);
+
+    Route::patch("/users", [\App\Http\Controllers\Api\UserController::class, "update"]);
+
+    Route::delete("/users", [\App\Http\Controllers\Api\UserController::class, "destroy"]);
+    Route::get("/logout", [\App\Http\Controllers\Api\UserController::class, "logout"]);
+    Route::post("/logout", [\App\Http\Controllers\Api\UserController::class, "logout"]);
+
+    Route::post("/qnas", [\App\Http\Controllers\Api\QnaController::class, "store"]);
+    Route::patch("/qnas/{qna}", [\App\Http\Controllers\Api\QnaController::class, "update"]);
+
+    Route::post("/products", [\App\Http\Controllers\Api\ProductController::class, "store"]);
+    Route::patch("/products/{product}", [\App\Http\Controllers\Api\ProductController::class, "update"]);
+    Route::delete("/products/{product}", [\App\Http\Controllers\Api\ProductController::class, "destroy"]);
+
+    Route::patch("/orders/cancel/{order}",[\App\Http\Controllers\Api\OrderController::class, 'cancel']);
+    Route::get("/orders",[\App\Http\Controllers\Api\OrderController::class, 'index']);
+
+
+    Route::get("/refunds",[\App\Http\Controllers\Api\RefundController::class, 'index']);
+    Route::post("/refunds",[\App\Http\Controllers\Api\RefundController::class, 'store']);
+
+
+    Route::post("/reviews", [\App\Http\Controllers\Api\ReviewController::class, "store"]);
+    Route::patch("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "update"]);
+    Route::delete("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "destroy"]);
+
+    Route::patch("/presetProducts/confirm/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "confirm"]);
+
+    Route::get('/pointHistories', [\App\Http\Controllers\Api\PointHistoryController::class, "index"]);
+    Route::get('/couponHistories', [\App\Http\Controllers\Api\CouponHistoryController::class, "index"]);
+
+    Route::get("/qnaCategories", [\App\Http\Controllers\Api\QnaCategoryController::class, "index"]);
+    Route::get("/qnas", [\App\Http\Controllers\Api\QnaController::class, "index"]);
+
+    Route::get('/coupons', [\App\Http\Controllers\Api\CouponController::class, "index"]);
+    Route::post("/coupons", [\App\Http\Controllers\Api\CouponController::class, "store"]);
+
+    Route::get("/likes", [\App\Http\Controllers\LikeController::class, "store"]);
+    Route::get("/bookmarks", [\App\Http\Controllers\BookmarkController::class, "store"]);
+});
+
+
+
 

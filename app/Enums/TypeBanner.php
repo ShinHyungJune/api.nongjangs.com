@@ -12,27 +12,27 @@ namespace App\Enums;
 final class TypeBanner
 {
     const MAIN = 1;
-    const CATEGORY = 2;
-    const MIDDLE = 3;
-    const BAND = 4;
+    const FARM_STORY = 2;
+    const SUBSCRIBE = 3;
+    const DYNAMIC = 4;
 
     public static function getValues()
     {
         return [
             self::MAIN,
-            self::CATEGORY,
-            self::MIDDLE,
-            self::BAND,
+            self::FARM_STORY,
+            self::SUBSCRIBE,
+            self::DYNAMIC,
         ];
     }
 
     public static function getLabel($value)
     {
         $items = [
-            self::MAIN => "메인배너",
-            self::CATEGORY => "상품 카테고리",
-            self::MIDDLE => "중간배너",
-            self::BAND => "띠배너",
+            self::MAIN => "메인",
+            self::FARM_STORY => "농가이야기",
+            self::SUBSCRIBE => "정기구독",
+            self::DYNAMIC => "직거래장터",
             "" => "",
         ];
 

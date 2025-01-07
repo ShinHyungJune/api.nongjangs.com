@@ -55,282 +55,92 @@ class UsersTest extends TestCase
         VerifyNumber::create(['ids' => "12341234", 'verified' => 1, 'number' => '123']);
 
         $this->form = [
-            'type' => TypeUser::COMMON,
-            'name' => "123",
-            'address' => "123",
-            'address_detail' => "123",
-            'address_zipcode' => "123",
-            'contact' => "123",
-            'birth' => "123",
+            'email' => "123@naver.com",
+            'password' => "123@naver.com",
+            'password_confirmation' => "123@naver.com",
+            'name' => "123@naver.com",
+            'contact' => "01030217486",
+            'agree_promotion' => 0,
         ];
     }
 
     /** @test */
-    public function 사용자는_자신의_정보를_수정할_수_있다()
+    public function 누구나_생성을_할_수_있다()
     {
         /*
-        name
-        address
-        address_detail
-        address_zipcode
-        contact
-        birth
-
-        // nullable (값이 있을때만 업데이트)
-        password
-        password_confirmation
-         * */
-        $test = "12341234";
-
-        $this->form = [
-            'name' => $test,
-            'address' => $test,
-            'address_detail' => $test,
-            'address_zipcode' => $test,
-            'contact' => $test,
-            'birth' => $test,
-        ];
-
-        $this->json('patch', '/api/users', $this->form)->assertStatus(200);
-
-        $this->user->refresh();
-
-        $this->assertEquals($test, $this->user->name);
-
-        $this->form = [
-            'name' => $test,
-            'address' => $test,
-            'address_detail' => $test,
-            'address_zipcode' => $test,
-            'contact' => $test,
-            'birth' => $test,
-
-            'password' => $test,
-            'password_confirmation' => $test,
-        ];
-
-        $this->json('patch', '/api/users', $this->form)->assertStatus(200);
-
-        $this->user->refresh();
-
-        $this->assertTrue(Hash::check($test, $this->user->password));
-
-        $this->form = [
-            'name' => $test,
-            'address' => $test,
-            'address_detail' => $test,
-            'address_zipcode' => $test,
-            'contact' => $test,
-            'birth' => $test,
-        ];
-
-        $this->json('patch', '/api/users', $this->form)->assertStatus(200);
-
-        $this->user->refresh();
-
-        $this->assertTrue(Hash::check($test, $this->user->password));
-    }
-
-    /** @test */
-    public function 사용자는_일반사용자로_가입할_수_있다()
-    {
-        /*
-        ids
-        password
-        password_confirmation
-        name
-        contact
-        address
-        address_detail
-        address_zipcode
-        email
-
-        type을 COMMON로 세팅 필요
+         * email
+         * password
+         * password_confirmation
+         * name
+         * contact (verified 된 contact)
+         * agree_promotion
          * */
 
-        $this->form = [
-            "type" => TypeUser::COMMON,
-            "ids" => "123",
-            "password" => "12341234",
-            "password_confirmation" => "12341234",
-            'name' => "123",
-            'contact' => "123",
-            'address' => "123",
-            'address_detail' => "123",
-            'address_zipcode' => "123",
-            'email' => "123@naver.com",
-        ];
-
-        $this->json('post', '/api/users', $this->form)->assertStatus(200);
+        $this->json('post', '/api/users')
     }
 
     /** @test */
-    public function 사용자는_사업자로_가입할_수_있다()
+    public function 인증된_전화번호로만_생성을_할_수_있다()
     {
-        /*
-         ids
+
+    }
+
+    /** @test */
+    public function 사용자는_추천인코드를_업데이트할_수_있다()
+    {
+        // code
+    }
+
+    /** @test */
+    public function 존재하지_않는_추천인코드는_업데이트할_수_없다()
+    {
+
+    }
+
+    /** @test */
+    public function 이미_추천인코드가_있다면_업데이트할_수_없다()
+    {
+
+    }
+
+    /** @test */
+    public function 추천인코드가_업데이트되면_추천자와_추천받은자에게_적립금이_지급된다()
+    {
+        // 포인트내역 쌓여야함 (2000p 부여)
+    }
+
+    /** @test */
+    public function 누구나_비밀번호를_초기화할_수_있다()
+    {
+        /*email
+        contact (인증전화번호)
         password
-        password_confirmation
-        name
-        contact
-        address
-        address_detail
-        address_zipcode
-        email
-
-        - business_number nullable 사업자번호
-        - company_title  nullable 회사명
-        - company_president nullable 대표자명
-        - company_size nullable 기업형태
-        - company_type nullable 업종
-        - company_category nullable 업태
-
-        type을 COMPANY로 세팅 필요
-         * */
-
-        $this->form = [
-            "type" => TypeUser::COMPANY,
-            "ids" => "123",
-            "password" => "12341234",
-            "password_confirmation" => "12341234",
-            'name' => "123",
-            'contact' => "123",
-            'address' => "123",
-            'address_detail' => "123",
-            'address_zipcode' => "123",
-            'email' => "123@naver.com",
-
-            'business_number' => "123",
-            'company_title' => "123",
-            'company_president' => "123",
-            'company_size' => "123",
-            'company_type' => "123",
-            'company_category' => "123",
-        ];
-
-        $this->json('post', '/api/users', $this->form)->assertStatus(200);
+        password_confirmation*/
     }
 
     /** @test */
-    public function 사용자가_생성되면_회원가입포인트가_부여된다()
+    public function 사용자는_비밀번호를_수정할_수_있다()
     {
-        // - 1000포인트
-        // - 포인트기록도 생성되어야함
-        $this->form = [
-            "type" => TypeUser::COMMON,
-            "ids" => "123",
-            "password" => "12341234",
-            "password_confirmation" => "12341234",
-            'name' => "123",
-            'contact' => "123",
-            'address' => "123",
-            'address_detail' => "123",
-            'address_zipcode' => "123",
-            'email' => "123@naver.com",
-        ];
-
-        $item = $this->json('post', '/api/users', $this->form)->decodeResponseJson()['data']['user'];
-
-        $user = User::find($item['id']);
-
-        $this->assertEquals(User::$createPoint, $item['point']);
-        $this->assertEquals(1, $user->pointHistories()->count());
+        /*password 기존 비밀번호
+password_new
+password_new_confirmation*/
     }
 
     /** @test */
-    public function 사용자에서_사용가능_쿠폰수를_조회할_수_있다()
+    public function 누구나_아이디를_찾을_수_있다()
     {
-        $coupons = Coupon::factory()->count(5)->create([
-            'user_id' => $this->user->id,
-        ]);
-
-        $expiredCoupons = Coupon::factory()->count(3)->create([
-            'user_id' => $this->user->id,
-        ]);
-        Coupon::whereIn('id', $expiredCoupons->pluck("id"))->update(['will_finished_at' => Carbon::now()->subDays(3)]);
-
-        $useCoupons = Coupon::factory()->count(4)->create([
-            'user_id' => $this->user->id,
-            'order_id' => Order::factory()->create(['state' => StateOrder::SUCCESS])
-        ]);
-
-        $this->user->refresh();
-
-        $this->assertEquals(count($coupons), $this->user->count_valid_coupon);
+        // contact (인증전화번호)
     }
 
     /** @test */
-    public function 사용자에서_진행중인_출고수를_조회할_수_있다()
+    public function asd()
     {
-        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
-        
-        $beforePaymentPresetProducts = PresetProduct::factory()->count(3)->create([
-            'preset_id' => $preset->id,
-            'state' => StatePresetProduct::BEFORE_PAYMENT
-        ]);
 
-        $ongoingPrototypePresetProducts = PresetProduct::factory()->count(4)->create([
-            'preset_id' => $preset->id,
-            'state' => StatePresetProduct::ONGOING_PROTOTYPE
-        ]);
-
-        $ongoingDeliveryPresetProducts = PresetProduct::factory()->count(4)->create([
-            'preset_id' => $preset->id,
-            'state' => StatePresetProduct::ONGOING_DELIVERY
-        ]);
-
-        $confirmDeliveryPresetProducts = PresetProduct::factory()->count(3)->create([
-            'preset_id' => $preset->id,
-            'state' => StatePresetProduct::CONFIRMED
-        ]);
-
-        $this->user->refresh();
-
-        $this->assertEquals(count($ongoingDeliveryPresetProducts) + count($ongoingPrototypePresetProducts), count($this->user->ongoingPresetProducts));
     }
 
     /** @test */
-    public function 비밀번호를_초기화할_수_있다()
+    public function asd()
     {
-        $test = "12341234";
 
-        $this->user->update(['contact' => '01000000000']);
-
-        $this->form = [
-            'contact' => $this->user->contact,
-            'ids' => $this->user->ids,
-            'password' => $test,
-            'password_confirmation' => $test,
-        ];
-
-        VerifyNumber::factory()->create([
-            'ids' => $this->user->contact,
-            'verified' => 1,
-        ]);
-
-        $this->json('post', '/api/findPasswords', $this->form)->assertStatus(200);
-
-        $this->user->refresh();
-
-        $this->assertTrue(Hash::check($test, $this->user->password));
-    }
-
-    /** @test */
-    public function 아이디를_찾을_수_있다()
-    {
-        $this->user->update(['contact' => '01000000000']);
-
-        $this->form = [
-            'contact' => $this->user->contact,
-        ];
-
-        VerifyNumber::factory()->create([
-            'ids' => $this->user->contact,
-            'verified' => 1,
-        ]);
-
-        $ids = $this->json('post', '/api/findIds', $this->form)->decodeResponseJson()['data']['ids'];
-
-        $this->assertEquals($this->user->ids, $ids);
     }
 }

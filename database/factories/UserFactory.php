@@ -15,16 +15,17 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'type' => TypeUser::COMMON,
-            'point' => 0,
-            'ids' => $this->faker->title,
             'email' => $this->faker->title,
             'name' => $this->faker->title,
             'contact' => $this->faker->title,
+
+            'agree_promotion' => 0,
+
             'address' => $this->faker->title,
             'address_detail' => $this->faker->title,
             'address_zipcode' => $this->faker->title,
             'password' => $this->faker->title,
+            'point' => 0,
         ];
     }
 }
