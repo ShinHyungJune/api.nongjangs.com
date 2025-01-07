@@ -40,7 +40,7 @@ likeable_id*/
     /** @test */
     public function 농가이야기에_대한_데이터를_생성할_수_있다()
     {
-        l/*ikeable_type - Story
+        /*likeable_type - Story
 likeable_id*/
     }
 }

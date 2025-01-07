@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Count;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -34,7 +35,11 @@ class CountsTest extends TestCase
     /** @test */
     public function 누구나_목록을_조회할_수_있다()
     {
+        $counts = Count::factory()->count(2)->create();
 
+        $items = $this->json('get', '/api/counts')->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($counts), count($items));
     }
 
 }

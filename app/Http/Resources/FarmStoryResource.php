@@ -19,10 +19,10 @@ class FarmStoryResource extends JsonResource
             'description' => $this->description,
             'count_view' => $this->count_view,
             'user_id' => $this->user_id,
-            'factory_id' => $this->factory_id,
+            'farm_id' => $this->farm_id,
 
             'img' => $this->img ?? '',
-            'factory' => FactoryResource::make($this->factory),
+            'farm' => FarmResource::make($this->farm),
             'tags' => TagResource::collection($this->tags),
             'user' => $user ? UserResource::make($user) : '',
             'count_like' => $this->likes()->count(),

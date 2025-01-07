@@ -4,21 +4,19 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\County */
-class CountyResource extends JsonResource
+/** @mixin \App\Models\Farm */
+class FarmResource extends JsonResource
 {
     public function toArray($request)
     {
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'order' => $this->order,
 
             'city_id' => $this->city_id,
-            'city' => $this->city ? [
-                'id' => $this->city->id,
-                'title' => $this->city->title,
-            ] : '',
+            'county_id' => $this->county_id,
+
+            'county' => CountyResource::make($this->county),
         ];
     }
 }

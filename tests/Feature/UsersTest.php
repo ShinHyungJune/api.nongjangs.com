@@ -76,7 +76,7 @@ class UsersTest extends TestCase
          * agree_promotion
          * */
 
-        $this->json('post', '/api/users')
+        $this->json('post', '/api/users');
     }
 
     /** @test */
@@ -132,15 +132,4 @@ password_new_confirmation*/
         // contact (인증전화번호)
     }
 
-    /** @test */
-    public function asd()
-    {
-
-    }
-
-    /** @test */
-    public function asd()
-    {
-
-    }
 }

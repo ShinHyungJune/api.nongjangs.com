@@ -33,7 +33,21 @@ class BookmarksTest extends TestCase
     /** @test */
     public function 레시피에_대한_데이터를_생성할_수_있다()
     {
+        $bookmark = \App\Models\Bookmark::factory()->create();
 
+        $this->json('post', '/api/bookmarks', [
+            'bookmarkable_type' => 'App\Models\Recipe',
+            'bookmarkable_id' => $bookmark->id,
+        ]);
+
+        $this->assertCount(1, $this->user->bookmarks()->get());
+
+        $this->json('post', '/api/bookmarks', [
+            'bookmarkable_type' => 'App\Models\Recipe',
+            'bookmarkable_id' => $bookmark->id,
+        ]);
+
+        $this->assertCount(0, $this->user->bookmarks()->get());
     }
 
 }

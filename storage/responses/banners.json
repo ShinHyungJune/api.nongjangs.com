@@ -2,17 +2,27 @@
   "data": [
     {
       "id": "고유번호",
-      "type": "유형 (1 - 메인배너 | 2 - 카테고리 배너 | 3 - 중간배너 | 4 - 띠배너)",
-      "format_type": "표시용 유형",
-      "tag": "태그",
-      "title": "제목",
-      "description": "내용",
-      "url": "클릭 시 이동할 URL",
-      "img (null 주의)": {
+      "pc - PC 이미지(null 주의)": {
         "id": "고유번호",
         "url": "이미지 URL",
         "name" : "파일명"
       },
+      "mobile - 모바일 이미지(null 주의)": {
+        "id": "고유번호",
+        "url": "이미지 URL",
+        "name" : "파일명"
+      },
+      "type": "유형 (1 - MAIN 메인배너 | 2 - FARM_STORY 농가이야기 | 3 - PACKAGE 정기구독 | 4 - PRODUCT 직거래장터)",
+      "format_type": "표시용 유형",
+      "title": "제목",
+      "subtitle": "부제목",
+      "url": "클릭 시 이동할 URL",
+      "button": "버튼명",
+      "color_text": "글씨색상",
+      "color_button": "버튼색상",
+      "started_at": "노출시작일자",
+      "finished_at": "노출종료일자",
+
       "order": "순서"
     }
   ],

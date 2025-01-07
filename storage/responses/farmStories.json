@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "title": "제목",
+      "description": "내용 (<EditorContent /> 사용",
+      "count_view": "조회수",
+      "user_id": "사용자 고유번호",
+      "farm_id": "농가 고유번호",
+      "img": "이미지 객체",
+      "farm": {
+        "id": "농가 고유번호",
+        "title" : "제목",
+        "county" : {
+          "id": "시군구 고유번호",
+          "title": "시군구명",
+          "city" : {
+            "id": "시도 고유번호",
+            "title" : "시도명"
+          }
+        }
+      },
+      "tags": [
+        {
+          "id": "태그 고유번호",
+          "title": "제목"
+        },
+        {
+          "id": "태그 고유번호",
+          "title": "제목"
+        }
+      ],
+      "user": "사용자 객체",
+      "count_like": "좋아요수",
+      "is_like": "좋아요 여부",
+      "format_created_at": "표시용 생성일자"
+    },
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

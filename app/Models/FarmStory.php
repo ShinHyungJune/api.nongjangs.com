@@ -18,9 +18,9 @@ class FarmStory extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function factory(): BelongsTo
+    public function farm(): BelongsTo
     {
-        return $this->belongsTo(Factory::class);
+        return $this->belongsTo(Farm::class);
     }
 
     public function tags()
@@ -33,8 +33,11 @@ class FarmStory extends Model
         return $this->morphMany(Like::class, 'likeable');
     }
 
-    public function isLike() : Attribute
+    public function getIsLikeAttribute()
     {
+        if(!auth()->user())
+            return 0;
 
+        return $this->likes()->where('user_id', auth()->id())->exists() ? 1 : 0;
     }
 }

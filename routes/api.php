@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-Route::get("/naver", [\App\Http\Controllers\Api\ProductController::class, "naver"]);
 Route::post("/images", [\App\Http\Controllers\Api\ImageController::class, "store"]);
 Route::post("/imageUpload", [\App\Http\Controllers\Api\ImageController::class, "store"]);
 
@@ -141,7 +139,9 @@ Route::get("/pops", [\App\Http\Controllers\Api\PopController::class, "index"]);
 Route::get("/counts", [\App\Http\Controllers\Api\CountController::class, "index"]);
 Route::get("/cities", [\App\Http\Controllers\Api\CityController::class, "index"]);
 Route::get("/tags", [\App\Http\Controllers\Api\TagController::class, "index"]);
-Route::get("/recipes", [\App\Http\Controllers\RecipeController::class, "index"]);
+Route::get("/recipes", [\App\Http\Controllers\Api\RecipeController::class, "index"]);
+Route::get("/farmStories", [\App\Http\Controllers\Api\FarmStoryController::class, "index"]);
+Route::get("/farmStories/{farmStory}", [\App\Http\Controllers\Api\FarmStoryController::class, "show"]);
 
 
 Route::get("/presetProducts", [\App\Http\Controllers\Api\PresetProductController::class, "index"]);
@@ -202,8 +202,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/coupons', [\App\Http\Controllers\Api\CouponController::class, "index"]);
     Route::post("/coupons", [\App\Http\Controllers\Api\CouponController::class, "store"]);
 
-    Route::get("/likes", [\App\Http\Controllers\LikeController::class, "store"]);
-    Route::get("/bookmarks", [\App\Http\Controllers\BookmarkController::class, "store"]);
+    Route::post("/likes", [\App\Http\Controllers\Api\LikeController::class, "store"]);
+    Route::post("/bookmarks", [\App\Http\Controllers\Api\BookmarkController::class, "store"]);
 });
 
 

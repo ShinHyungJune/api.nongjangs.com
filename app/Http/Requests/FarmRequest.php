@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BookmarkRequest extends FormRequest
+class FarmRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -15,17 +15,21 @@ class BookmarkRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-
+                        'word' => ['nullable', 'string', 'max:500']
                     ];
 
                 case 'store':
                     return [
-
+                        'city_id' => ['required', 'exists:cities'],
+                        'county_id' => ['required', 'exists:counties'],
+                        'title' => ['required'],
                     ];
 
                 case 'update':
                     return [
-
+                        'city_id' => ['required', 'exists:cities'],
+                        'county_id' => ['required', 'exists:counties'],
+                        'title' => ['required'],//
                     ];
 
                 case 'destroy':
@@ -40,14 +44,12 @@ class BookmarkRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        'bookmarkable_id' => ['required', 'integer'],
-                        'bookmarkable_type' => ['required', 'string', 'max:500'],
+                        '' => []
                     ];
 
                 case 'store':
                     return [
-                        'bookmarkable_id' => ['required', 'integer'],
-                        'bookmarkable_type' => ['required', 'string', 'max:500'],
+                        '' => []
                     ];
 
                 case 'update':
@@ -66,11 +68,8 @@ class BookmarkRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'bookmarkable_id' => [
-                'description' => '<span class="point">북마크 대상 고유번호</span>',
-            ],
-            'bookmarkable_type' => [
-                'description' => '<span class="point">북마크 대상 모델타입 (App\Models\Recipe - 레시피)</span>',
+            'example' => [
+                'description' => '<span class="point"></span>',
             ],
 
             // 늘 쓰이는 애들

@@ -6,9 +6,7 @@ namespace Tests\Feature;
 use App\Enums\TypeBanner;
 use App\Models\Banner;
 use App\Models\Coupon;
-use App\Models\Program;
 use App\Models\User;
-use App\Models\Waiting;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -41,29 +39,40 @@ class BannersTest extends TestCase
     /** @test */
     public function 진행중인_목록을_조회할_수_있다()
     {
-        /*$banners = Banner::factory()->count(5)->create();
+        $includeBanners = Banner::factory()->count(5)->create([
+            'started_at' => Carbon::now()->subDay(),
+            'finished_at' => Carbon::now()->addDay(),
+        ]);
+
+        $excludeBanners = Banner::factory()->count(3)->create([
+            'started_at' => Carbon::now()->addDays(1),
+            'finished_at' => Carbon::now()->addDays(2),
+        ]);
 
         $items = $this->json('get', '/api/banners')->decodeResponseJson()['data'];
 
-        $this->assertEquals(count($banners), count($items));*/
+        $this->assertEquals(count($includeBanners), count($items));
     }
 
     /** @test */
     public function 타입별_목록을_조회할_수_있다()
     {
-        /*$aBanners = Banner::factory()->count(5)->create([
-            'type' => TypeBanner::BAND
+        $includeBanners = Banner::factory()->count(5)->create([
+            'type' => TypeBanner::DYNAMIC,
+            'started_at' => Carbon::now()->subDay(),
+            'finished_at' => Carbon::now()->addDay(),
         ]);
 
-
-        $bBanners = Banner::factory()->count(3)->create([
-            'type' => TypeBanner::CATEGORY
+        $excludeBanners = Banner::factory()->count(3)->create([
+            'type' => TypeBanner::FARM_STORY,
+            'started_at' => Carbon::now()->addDays(1),
+            'finished_at' => Carbon::now()->addDays(2),
         ]);
 
         $items = $this->json('get', '/api/banners', [
-            'type' => TypeBanner::CATEGORY,
+            'type' => TypeBanner::DYNAMIC
         ])->decodeResponseJson()['data'];
 
-        $this->assertEquals(count($bBanners), count($items));*/
+        $this->assertEquals(count($includeBanners), count($items));
     }
 }

@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('farm_stories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('factory_id')->constrained('factories');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('farm_id')->constrained('farms')->onDelete('cascade');
             $table->string('title')->comment('제목');
             $table->string('description')->comment('내용');
             $table->integer('count_view')->default(0)->comment('조회수');

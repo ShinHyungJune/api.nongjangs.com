@@ -6,19 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BannerRequest;
 use App\Http\Resources\BannerResource;
 use App\Models\Banner;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class BannerController extends Controller
+class BannerController extends ApiController
 {
-    /**
-     * @group Banner(배너)
-     * @priority 1
+    /** 목록
+     * @group 사용자
+     * @subgroup Banner(배너)
      * @responseFile storage/responses/banners.json
      */
-
     public function index(BannerRequest $request)
     {
-        $items = new Banner();
+        $items = Banner::where('started_at', '<=', Carbon::now()->startOfDay())
+            ->where('finished_at', '>=', Carbon::now()->endOfDay());
 
         if($request->type)
             $items = $items->where('type', $request->type);

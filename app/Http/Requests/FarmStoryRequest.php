@@ -20,20 +20,16 @@ class FarmStoryRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'user_id' => ['required', 'exists:users'],
-                        'factory_id' => ['required', 'exists:factories'],
+                        'farm_id' => ['required', 'exists:factories'],
                         'title' => ['required'],
                         'description' => ['required'],
-                        'count_view' => ['required', 'integer'],
                     ];
 
                 case 'update':
                     return [
-                        'user_id' => ['required', 'exists:users'],
-                        'factory_id' => ['required', 'exists:factories'],
+                        'farm_id' => ['required', 'exists:factories'],
                         'title' => ['required'],
                         'description' => ['required'],
-                        'count_view' => ['required', 'integer'],//
                     ];
 
                 case 'destroy':
@@ -48,7 +44,11 @@ class FarmStoryRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        '' => []
+                        'order_by' => ['nullable', 'string', 'max:500'],
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'tag_ids' => ['nullable', 'array'],
+                        'farm_id' => ['nullable', 'integer'],
+                        'exclude_farm_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':
@@ -72,8 +72,23 @@ class FarmStoryRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'order_by' => [
+                'description' => '<span class="point">정렬기준 (count_like - 추천수 | created_at - 등록일자)</span>',
+            ],
+            'tag_ids' => [
+                'description' => '<span class="point">관련태그 고유번호 목록</span>',
+            ],
+            'farm_id' => [
+                'description' => '<span class="point">농가 고유번호 (특정 농가의 글만 보고싶을 때)</span>',
+            ],
+            'exclude_farm_id' => [
+                'description' => '<span class="point">제외할 농가 고유번호 (특정 농가것만 빼고 보고싶을 때)</span>',
+            ],
+            'title' => [
+                'description' => '<span class="point">제목</span>',
+            ],
+            'description' => [
+                'description' => '<span class="point">내용</span>',
             ],
 
             // 늘 쓰이는 애들

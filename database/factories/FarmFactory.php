@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
+use App\Models\County;
 use App\Models\Farm;
-use App\Models\FarmStory;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory as BaseFactory;
 use Illuminate\Support\Carbon;
 
-class FarmStoryFactory extends BaseFactory
+class FarmFactory extends BaseFactory
 {
-    protected $model = FarmStory::class;
+    protected $model = Farm::class;
 
     public function definition(): array
     {
@@ -18,11 +18,9 @@ class FarmStoryFactory extends BaseFactory
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'title' => $this->faker->word(),
-            'description' => $this->faker->text(),
-            'count_view' => $this->faker->randomNumber(),
 
-            'user_id' => User::factory(),
-            'farm_id' => Farm::factory(),
+            'city_id' => City::factory(),
+            'county_id' => County::factory(),
         ];
     }
 }

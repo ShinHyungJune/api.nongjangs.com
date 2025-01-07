@@ -13,6 +13,8 @@ class BannerResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'pc' => $this->pc ?? '',
+            'mobile' => $this->mobile ?? '',
             'type' => $this->type, // 유형
             'format_type' => TypeBanner::getLabel($this->type),
             'title' => $this->title,

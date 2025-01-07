@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TypeTag;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
@@ -15,7 +16,7 @@ class TagFactory extends Factory
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'type' => $this->faker->word(),
+            'type' => TypeTag::FARM_STORY,
             'title' => $this->faker->word(),
             'color' => $this->faker->word(),
             'open' => $this->faker->boolean(),

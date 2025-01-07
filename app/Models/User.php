@@ -73,12 +73,6 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
         self::created(function ($model){
             $model->cart()->create();
-
-            Alarm::create([
-               'user_id' => $model->id,
-               'type' => TypeAlarm::USER_CREATED,
-                'contact' => $model->contact,
-            ]);
         });
 
         self::updated(function ($model){
@@ -236,5 +230,15 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     public function couponHistories()
     {
         return $this->hasMany(CouponHistory::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
     }
 }
