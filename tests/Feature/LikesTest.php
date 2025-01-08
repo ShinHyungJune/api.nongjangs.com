@@ -31,16 +31,42 @@ class LikesTest extends TestCase
     }
 
     /** @test */
-    public function 레시피에_대한_데이터를_생성할_수_있다()
+    public function 농가이야기에_대한_데이터를_생성할_수_있다()
     {
-        /*likeable_type - Recipe
-likeable_id*/
+        $farmStory = \App\Models\FarmStory::factory()->create();
+
+        $this->json('post', '/api/likes', [
+            'likeable_type' => 'App\Models\FarmStory',
+            'likeable_id' => $farmStory->id,
+        ]);
+
+        $this->assertCount(1, $this->user->likes()->get());
+
+        $this->json('post', '/api/likes', [
+            'likeable_type' => 'App\Models\FarmStory',
+            'likeable_id' => $farmStory->id,
+        ]);
+
+        $this->assertCount(0, $this->user->likes()->get());
     }
 
     /** @test */
-    public function 농가이야기에_대한_데이터를_생성할_수_있다()
+    public function 레시피에_대한_데이터를_생성할_수_있다()
     {
-        /*likeable_type - Story
-likeable_id*/
+        $recipe = \App\Models\Recipe::factory()->create();
+
+        $this->json('post', '/api/likes', [
+            'likeable_type' => 'App\Models\Recipe',
+            'likeable_id' => $recipe->id,
+        ]);
+
+        $this->assertCount(1, $this->user->likes()->get());
+
+        $this->json('post', '/api/likes', [
+            'likeable_type' => 'App\Models\Recipe',
+            'likeable_id' => $recipe->id,
+        ]);
+
+        $this->assertCount(0, $this->user->likes()->get());
     }
 }

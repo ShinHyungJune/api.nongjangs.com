@@ -22,14 +22,12 @@ class LikeRequest extends FormRequest
                     return [
                         'likeable_id' => ['required'],
                         'likeable_type' => ['required'],
-                        'user_id' => ['required', 'exists:users'],
                     ];
 
                 case 'update':
                     return [
                         'likeable_id' => ['required'],
                         'likeable_type' => ['required'],
-                        'user_id' => ['required', 'exists:users'],//
                     ];
 
                 case 'destroy':
@@ -68,8 +66,11 @@ class LikeRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'likeable_id' => [
+                'description' => '<span class="point">좋아요 대상 고유번호</span>',
+            ],
+            'likeable_type' => [
+                'description' => '<span class="point">좋아요 대상 모델타입 (App\Models\Recipe - 레시피 | App\Models\FarmStory - 농가이야기)</span>',
             ],
 
             // 늘 쓰이는 애들

@@ -17,9 +17,9 @@ class PopFactory extends Factory
             'updated_at' => Carbon::now(),
             'title' => $this->faker->word(),
             'url' => $this->faker->url(),
-            'open' => $this->faker->boolean(),
-            'started_at' => Carbon::now(),
-            'finished_at' => Carbon::now(),
+            'open' => 1,
+            'started_at' => Carbon::now()->subDay(),
+            'finished_at' => Carbon::now()->addDay(),
         ];
     }
 }

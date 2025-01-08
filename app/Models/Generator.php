@@ -12,15 +12,15 @@ class Generator extends Model
 {
     use HasFactory;
 
-    public static function createUuid($model)
+    public static function createUuid($model, $length = 16)
     {
         $uuid = Uuid::uuid4()->toString();
 
-        $uuid = hexdec(substr($uuid, 0, 16));
+        $uuid = hexdec(substr($uuid, 0, $length));
 
         $uuid = $uuid % 10000000000;
 
-        $uuid = str_pad($uuid, 16, '0', STR_PAD_LEFT);
+        $uuid = str_pad($uuid, $length, '0', STR_PAD_LEFT);
 
         if($model->where("uuid", $uuid)->first())
             return Generator::createUuid($model);

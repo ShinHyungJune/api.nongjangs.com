@@ -74,8 +74,20 @@ class PopRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'title' => [
+                'description' => '<span class="point">제목</span>',
+            ],
+            'url' => [
+                'description' => '<span class="point">이동할 링크</span>',
+            ],
+            'open' => [
+                'description' => '<span class="point">공개여부</span>',
+            ],
+            'started_at' => [
+                'description' => '<span class="point">노출시작일</span>',
+            ],
+            'finished_at' => [
+                'description' => '<span class="point">노출종료일</span>',
             ],
 
             // 늘 쓰이는 애들

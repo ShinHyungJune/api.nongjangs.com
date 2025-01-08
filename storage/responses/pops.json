@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "img": "이미지 객체",
+      "title": "제목",
+      "url": "이동할 링크",
+      "open": "공개여부",
+      "started_at": "노출시작일",
+      "finished_at": "노출종료일"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

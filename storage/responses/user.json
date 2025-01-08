@@ -1,0 +1,12 @@
+{
+  "id": "고유번호",
+  "admin": "관리자여부",
+  "social": "로그인한 소셜 유향 (1 - GOOGLE 구글 | 2 - APPLE 애플 | 3 - KAKAO 카카오 | 4 - NAVER 네이버)",
+  "email": "이메일",
+  "name": "이름",
+  "contact": "연락처",
+  "agree_promotion": "프로모션 동의여부",
+  "code_recommend": "추천인코드",
+  "point": "보유포인트",
+  "format_created_at": "표시용 생성일자"
+}

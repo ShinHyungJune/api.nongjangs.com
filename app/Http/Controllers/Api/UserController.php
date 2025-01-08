@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use App\Models\Arr;
 use App\Models\Download;
 use App\Models\EmailVerification;
+use App\Models\PointHistory;
 use App\Models\Refund;
 use App\Models\Social;
 use App\Models\User;
@@ -31,8 +32,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends ApiController
 {
-    /**
-     * @group User(사용자)
+    /** 로그인
+     * @group 사용자
+     * @subgroup User(사용자)
      * @responseFile storage/responses/login.json
      */
     public function login(UserRequest $request)
@@ -65,8 +67,9 @@ class UserController extends ApiController
         ]);
     }
 
-    /**
-     * @group User(사용자)
+    /** 회원가입
+     * @group 사용자
+     * @subgroup User(사용자)
      * @responseFile storage/responses/login.json
      */
     public function store(UserRequest $request)
@@ -88,17 +91,8 @@ class UserController extends ApiController
         $verifyNumber->delete();
 
         $user = User::create(array_merge($data, [
-            'type' => $request->type,
             'password' => $request->password ? Hash::make($request->password) : null,
-            'point' => $request->social_id ? 0 : User::$createPoint,
         ]));
-
-        if(!$request->social_id)
-            $user->pointHistories()->create([
-                'point' => User::$createPoint,
-                'increase' => 1,
-                'type' => TypePointHistory::USER_CREATED,
-            ]);
 
         /*if(is_array($request->file("img"))){
             foreach($request->file("img") as $file){
@@ -116,8 +110,9 @@ class UserController extends ApiController
         ], "성공적으로 가입되었습니다.");
     }
 
-    /**
-     * @group User(사용자)
+    /** 상세
+     * @group 사용자
+     * @subgroup User(사용자)
      * @responseFile storage/responses/user.json
      */
     public function show()
@@ -208,8 +203,9 @@ class UserController extends ApiController
         return redirect(config("app.client_url")."/login?token=".$token);
     }
 
-    /**
-     * @group User(사용자)
+    /** 수정
+     * @group 사용자
+     * @subgroup User(사용자)
      * @responseFile storage/responses/user.json
      */
     public function update(UserRequest $request)
@@ -244,8 +240,9 @@ class UserController extends ApiController
         return $this->respondSuccessfully(UserResource::make(auth()->user()));
     }
 
-    /**
-     * @group User(사용자)
+    /** 삭제
+     * @group 사용자
+     * @subgroup User(사용자)
      */
     public function destroy(UserRequest $request)
     {
@@ -259,8 +256,9 @@ class UserController extends ApiController
         return $this->respondSuccessfully();
     }
 
-    /**
-     * @group User(사용자)
+    /** 로그아웃
+     * @group 사용자
+     * @subgroup User(사용자)
      */
     public function logout()
     {
@@ -280,4 +278,120 @@ class UserController extends ApiController
 
         return $this->respondSuccessfully();
     }
+
+    /** 추천인 등록
+     * @group 사용자
+     * @subgroup User(사용자)
+     */
+    public function updateCodeRecommend(UserRequest $request)
+    {
+        $user = User::where('code', $request->code_recommend)->first();
+
+        if(!$user)
+            return $this->respondForbidden('유효하지 않은 추천인 코드입니다.');
+
+        if(auth()->user()->code_recommend)
+            return $this->respondForbidden('이미 추천인 코드를 등록한적 있습니다.');
+
+        $point = User::$recommendPoint;
+
+        auth()->user()->update(['point' => auth()->user()->point + $point]);
+
+        $user->update(['point' => $user->point + $point]);
+
+        PointHistory::create([
+            'type' => TypePointHistory::USER_RECOMMEND,
+            'increase' => 1,
+            'point' => $point,
+            'point_current' => auth()->user()->point,
+            'user_id' => auth()->id(),
+        ]);
+
+        PointHistory::create([
+            'type' => TypePointHistory::USER_RECOMMENDED,
+            'increase' => 1,
+            'point' => $point,
+            'point_current' => $user->point,
+            'user_id' => $user->id,
+        ]);
+
+        $user->update(['code_recommend' => $request->code_recommend]);
+
+        return $this->respondSuccessfully();
+    }
+
+    /** 비밀번호 변경
+     * @group 사용자
+     * @subgroup User(사용자)
+     */
+    public function updatePassword(UserRequest $request)
+    {
+        if(!Hash::check($request->password, auth()->user()->password))
+            return $this->respondForbidden('기존 비밀번호가 일치하지 않습니다.');
+
+        auth()->user()->update(['password' => Hash::make($request->password_new)]);
+
+        return $this->respondSuccessfully();
+    }
+
+    /** 비밀번호 초기화
+     * @group 사용자
+     * @subgroup User(사용자)
+     */
+    public function clearPassword(UserRequest $request)
+    {
+        $user = User::where('contact', $request->contact)
+            ->where('email', $request->email)
+            ->first();
+
+        if(!$user)
+            return $this->respondForbidden('이메일 및 연락처와 매칭되는 계정정보가 없습니다.');
+
+        $verifyNumber = VerifyNumber::where('ids', $request->contact)
+            ->where('verified', true)->first();
+
+        if(!$verifyNumber)
+            return throw ValidationException::withMessages([
+                "contact" => [
+                    "연락처를 인증해주세요."
+                ]
+            ]);
+
+        $verifyNumber->delete();
+
+        $user->update(['password' => Hash::make($request->password)]);
+
+        return $this->respondSuccessfully();
+    }
+
+    /** 아이디 찾기
+     * @group 사용자
+     * @subgroup User(사용자)
+     * @responseFile storage/responses/findId.json
+     */
+    public function findId(UserRequest $request)
+    {
+        $verifyNumber = VerifyNumber::where('ids', $request->contact)
+            ->where('verified', true)->first();
+
+        if(!$verifyNumber)
+            return throw ValidationException::withMessages([
+                "contact" => [
+                    "연락처를 인증해주세요."
+                ]
+            ]);
+
+        $verifyNumber->delete();
+
+        $user = User::where('contact', $request->contact)->first();
+
+        if(!$user)
+            return $this->respondForbidden('유효하지 않은 연락처입니다.');
+
+        return $this->respondSuccessfully([
+            'email' => $user->email
+        ]);
+    }
+
+
 }

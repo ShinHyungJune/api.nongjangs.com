@@ -167,6 +167,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/user", [\App\Http\Controllers\Api\UserController::class, 'show']);
 
     Route::patch("/users", [\App\Http\Controllers\Api\UserController::class, "update"]);
+    Route::patch("/users/codeRecommend", [\App\Http\Controllers\Api\UserController::class, "updateCodeRecommend"]);
+    Route::patch("/users/password", [\App\Http\Controllers\Api\UserController::class, "updatePassword"]);
+    Route::patch("/users/clearPassword", [\App\Http\Controllers\Api\UserController::class, "clearPassword"]);
+    Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, "findId"]);
 
     Route::delete("/users", [\App\Http\Controllers\Api\UserController::class, "destroy"]);
     Route::get("/logout", [\App\Http\Controllers\Api\UserController::class, "logout"]);

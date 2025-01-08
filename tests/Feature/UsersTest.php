@@ -51,15 +51,14 @@ class UsersTest extends TestCase
 
         $this->actingAs($this->user);
 
-        VerifyNumber::create(['ids' => "123", 'verified' => 1, 'number' => '123']);
-        VerifyNumber::create(['ids' => "12341234", 'verified' => 1, 'number' => '123']);
+        VerifyNumber::create(['ids' => "01012341234", 'verified' => 1, 'number' => '123']);
 
         $this->form = [
             'email' => "123@naver.com",
             'password' => "123@naver.com",
             'password_confirmation' => "123@naver.com",
             'name' => "123@naver.com",
-            'contact' => "01030217486",
+            'contact' => "01012341234",
             'agree_promotion' => 0,
         ];
     }
@@ -76,37 +75,69 @@ class UsersTest extends TestCase
          * agree_promotion
          * */
 
-        $this->json('post', '/api/users');
+        $count = User::count();
+
+        $this->json('post', '/api/users', $this->form);
+
+        $this->assertEquals($count + 1, User::count());
     }
 
     /** @test */
     public function 인증된_전화번호로만_생성을_할_수_있다()
     {
+        VerifyNumber::where('ids', $this->form['contact'])->delete();
 
+        $this->json('post', '/api/users', $this->form)->assertStatus(422);
     }
 
     /** @test */
     public function 사용자는_추천인코드를_업데이트할_수_있다()
     {
+        $point = $this->user->point;
+
         // code
+        $this->patch('/api/users/codeRecommend', [
+            'code_recommend' => $this->other->code
+        ])->assertStatus(200);
+
+        $this->assertEquals($point + User::$recommendPoint, $this->user->refresh()->point);
     }
 
     /** @test */
     public function 존재하지_않는_추천인코드는_업데이트할_수_없다()
     {
+        $point = $this->user->point;
 
+        // code
+        $this->patch('/api/users/codeRecommend', [
+            'code_recommend' => '0000000000000'
+        ])->assertStatus(403);
     }
 
     /** @test */
     public function 이미_추천인코드가_있다면_업데이트할_수_없다()
     {
+        $this->user->update(['code_recommend' => '123']);
 
+        // code
+        $this->patch('/api/users/codeRecommend', [
+            'code_recommend' => $this->other->code
+        ])->assertStatus(403);
     }
 
     /** @test */
     public function 추천인코드가_업데이트되면_추천자와_추천받은자에게_적립금이_지급된다()
     {
-        // 포인트내역 쌓여야함 (2000p 부여)
+        $pointUser = $this->user->point;
+        $pointOther = $this->other->point;
+
+        // code
+        $this->patch('/api/users/codeRecommend', [
+            'code_recommend' => $this->other->code
+        ])->assertStatus(200);
+
+        $this->assertEquals($pointUser + User::$recommendPoint, $this->user->refresh()->point);
+        $this->assertEquals($pointOther + User::$recommendPoint, $this->other->refresh()->point);
     }
 
     /** @test */
@@ -116,6 +147,19 @@ class UsersTest extends TestCase
         contact (인증전화번호)
         password
         password_confirmation*/
+
+        $password = 'testtest';
+
+        $verifyNumber = VerifyNumber::create(['ids' => $this->user->contact, 'verified' => 1,'number'=>123]);
+
+        $this->json('patch','/api/users/clearPassword', [
+            'email' => $this->user->email,
+            'contact' => $this->user->contact,
+            'password' => $password,
+            'password_confirmation' => $password,
+        ]);
+
+        $this->assertTrue(Hash::check($password, $this->user->refresh()->password));
     }
 
     /** @test */
@@ -124,12 +168,32 @@ class UsersTest extends TestCase
         /*password 기존 비밀번호
 password_new
 password_new_confirmation*/
+
+        $prevPassword = 'testtest';
+        $newPassword = 'test12341234';
+
+        $this->user->update(['password' => Hash::make($prevPassword)]);
+
+        $this->json('patch','/api/users/password', [
+            'password' => $prevPassword,
+            'password_new' => $newPassword,
+            'password_new_confirmation' => $newPassword,
+        ]);
+
+        $this->assertTrue(Hash::check($newPassword, $this->user->refresh()->password));
     }
 
     /** @test */
     public function 누구나_아이디를_찾을_수_있다()
     {
         // contact (인증전화번호)
+        $verifyNumber = VerifyNumber::create(['ids' => $this->user->contact, 'verified' => 1,'number'=>123]);
+
+        $item = $this->json('patch','/api/users/findId', [
+            'contact' => $this->user->contact,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($this->user->email, $item['email']);
     }
 
 }
