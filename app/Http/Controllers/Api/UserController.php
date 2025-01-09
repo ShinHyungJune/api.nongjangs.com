@@ -290,6 +290,9 @@ class UserController extends ApiController
         if(!$user)
             return $this->respondForbidden('유효하지 않은 추천인 코드입니다.');
 
+        if(!$user->id == auth()->id())
+            return $this->respondForbidden('자기 자신을 추천할 수 없습니다.');
+
         if(auth()->user()->code_recommend)
             return $this->respondForbidden('이미 추천인 코드를 등록한적 있습니다.');
 
