@@ -392,6 +392,7 @@ class UserController extends ApiController
             return $this->respondForbidden('유효하지 않은 연락처입니다.');
 
         return $this->respondSuccessfully([
+            'name' => $user->name,
             'email' => $user->email
         ]);
     }

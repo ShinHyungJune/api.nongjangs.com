@@ -163,6 +163,7 @@ Route::post('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class,
 Route::patch('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "update"]);
 Route::delete('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "destroy"]);
 Route::patch("/users/clearPassword", [\App\Http\Controllers\Api\UserController::class, "clearPassword"]);
+Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, "findId"]);
 
 Route::middleware(['auth'])->group(function () {
     Route::get("/user", [\App\Http\Controllers\Api\UserController::class, 'show']);
@@ -170,7 +171,6 @@ Route::middleware(['auth'])->group(function () {
     Route::patch("/users", [\App\Http\Controllers\Api\UserController::class, "update"]);
     Route::patch("/users/codeRecommend", [\App\Http\Controllers\Api\UserController::class, "updateCodeRecommend"]);
     Route::patch("/users/password", [\App\Http\Controllers\Api\UserController::class, "updatePassword"]);
-    Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, "findId"]);
 
     Route::delete("/users", [\App\Http\Controllers\Api\UserController::class, "destroy"]);
     Route::get("/logout", [\App\Http\Controllers\Api\UserController::class, "logout"]);
