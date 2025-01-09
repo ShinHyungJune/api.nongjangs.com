@@ -23,6 +23,7 @@ class FarmStoryRequest extends FormRequest
                         'farm_id' => ['required', 'exists:factories'],
                         'title' => ['required'],
                         'description' => ['required'],
+                        'internal' => ['required', 'boolean'],
                     ];
 
                 case 'update':
@@ -30,6 +31,7 @@ class FarmStoryRequest extends FormRequest
                         'farm_id' => ['required', 'exists:factories'],
                         'title' => ['required'],
                         'description' => ['required'],
+                        'internal' => ['required', 'boolean'],
                     ];
 
                 case 'destroy':
@@ -89,6 +91,9 @@ class FarmStoryRequest extends FormRequest
             ],
             'description' => [
                 'description' => '<span class="point">내용</span>',
+            ],
+            'internal' => [
+                'description' => '<span class="point">내부(농장스) 글 여부</span>',
             ],
 
             // 늘 쓰이는 애들

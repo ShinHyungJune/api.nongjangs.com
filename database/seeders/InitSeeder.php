@@ -10,19 +10,10 @@ use App\Enums\StateUser;
 use App\Enums\TypeBanner;
 use App\Enums\TypeProduct;
 use App\Enums\TypeUser;
-use App\Models\AdditionalProduct;
 use App\Models\Alarm;
-use App\Models\Answer;
 use App\Models\Banner;
-use App\Models\BusinessCategory;
-use App\Models\BusinessQuestion;
-use App\Models\Category;
-use App\Models\Certification;
+use App\Models\Bookmark;
 use App\Models\City;
-use App\Models\Color;
-use App\Models\Comment;
-use App\Models\Company;
-use App\Models\Base;
 use App\Models\Count;
 use App\Models\County;
 use App\Models\Coupon;
@@ -31,27 +22,24 @@ use App\Models\CouponHistory;
 use App\Models\Delivery;
 use App\Models\Event;
 use App\Models\Faq;
-use App\Models\FaqCategory;
-use App\Models\Feedback;
+use App\Models\Farm;
+use App\Models\FarmStory;
 use App\Models\Generator;
 use App\Models\Intro;
+use App\Models\Like;
 use App\Models\Notice;
 use App\Models\Order;
 use App\Models\PayMethod;
-use App\Models\Phrase;
-use App\Models\PhraseProductCategory;
-use App\Models\PhraseReceiverCategory;
 use App\Models\PointHistory;
 use App\Models\Pop;
 use App\Models\Preset;
 use App\Models\PresetProduct;
 use App\Models\Product;
-use App\Models\Prototype;
 use App\Models\Qna;
-use App\Models\QnaCategory;
-use App\Models\RecommendCategory;
+use App\Models\Recipe;
 use App\Models\Review;
 use App\Models\Size;
+use App\Models\Tag;
 use App\Models\User;
 use Carbon\Carbon;
 use Faker\Provider\Payment;
@@ -69,6 +57,15 @@ class InitSeeder extends Seeder
         "/images/middleBanner.png",
         "/images/middleBanner1.png",
         "/images/middleBanner2.png",
+    ];
+
+    protected $farmImgs = [
+        "/images/farmImg1.png",
+        "/images/farmImg2.png",
+        "/images/farmImg3.png",
+        "/images/farmImg4.png",
+        "/images/farmImg5.png",
+        "/images/farmImg6.png",
     ];
 
     protected $bannerImages = [
@@ -94,7 +91,15 @@ class InitSeeder extends Seeder
         Count::truncate();
         City::truncate();
         County::truncate();
-        Category::truncate();
+        Tag::truncate();
+        Recipe::truncate();
+        Farm::truncate();
+        Pop::truncate();
+        Bookmark::truncate();
+        Like::truncate();
+        FarmStory::truncate();
+
+        /*Category::truncate();
         PayMethod::truncate();
         Product::truncate();
         Faq::truncate();
@@ -110,8 +115,10 @@ class InitSeeder extends Seeder
         Preset::truncate();
         Review::truncate();
         Order::truncate();
-        PresetProduct::truncate();
+        PresetProduct::truncate();*/
 
+        DB::table("recipe_tag")->truncate();
+        DB::table("farm_story_tag")->truncate();
         DB::table("media")->truncate();
         DB::statement("SET foreign_key_checks=1");
 
@@ -121,6 +128,9 @@ class InitSeeder extends Seeder
         $this->createPops();
         $this->createCounts();
         $this->createLocations();
+        $this->createTags();
+        $this->createFarms();
+        $this->createFarmStories();
         /*$this->createCategories();
         $this->createPayMethods();
         $this->createCouponGroups();
@@ -128,6 +138,30 @@ class InitSeeder extends Seeder
         $this->createPointHistories();
         $this->createCouponHistories();*/
     }
+
+    public function createFarmStories()
+    {
+        $farmStories = FarmStory::factory()->count(20)->create();
+
+        foreach($farmStories as $farmStory){
+            $tags = Tag::inRandomOrder()->take(6)->get();
+
+            $farmStory->tags()->attach($tags->pluck("id"));
+
+            if(config("app.env") != 'local'){
+                $farmStory->addMedia(public_path($this->farmImgs[rand(0, count($this->farmImgs) - 1)]))->preservingOriginal()->toMediaCollection("img", "s3");
+            }
+        }
+    }
+    public function createFarms()
+    {
+        Farm::factory()->count(15)->create();
+    }
+    public function createTags()
+    {
+        Tag::factory()->count(15)->create();
+    }
+
     public function createCounts()
     {
         Count::create([
@@ -220,7 +254,7 @@ class InitSeeder extends Seeder
             ],
 
             [
-                'type' => TypeBanner::SUBSCRIBE,
+                'type' => TypeBanner::PACKAGE,
                 'title' => '작은 농장에서 온 큰 행복,
 당신의 일상에 녹아들다',
                 'subtitle' => '',
@@ -234,7 +268,7 @@ class InitSeeder extends Seeder
                 'finished_at' => Carbon::now()->addDays(3),
             ],
             [
-                'type' => TypeBanner::SUBSCRIBE,
+                'type' => TypeBanner::PACKAGE,
                 'title' => '작은 농장에서 온 큰 행복,
 당신의 일상에 녹아들다',
                 'subtitle' => '',
@@ -249,7 +283,7 @@ class InitSeeder extends Seeder
             ],
 
             [
-                'type' => TypeBanner::DYNAMIC,
+                'type' => TypeBanner::PRODUCT,
                 'title' => '작은 농장에서 온 큰 행복,
 당신의 일상에 녹아들다',
                 'subtitle' => '',
@@ -263,7 +297,7 @@ class InitSeeder extends Seeder
                 'finished_at' => Carbon::now()->addDays(3),
             ],
             [
-                'type' => TypeBanner::DYNAMIC,
+                'type' => TypeBanner::PRODUCT,
                 'title' => '작은 농장에서 온 큰 행복,
 당신의 일상에 녹아들다',
                 'subtitle' => '',
@@ -594,28 +628,22 @@ class InitSeeder extends Seeder
     public function createUsers()
     {
         User::factory()->create([
-            "ids" => "test",
-            "type" => TypeUser::COMMON,
             "email" => "test@naver.com",
-            "password" => Hash::make("test"),
+            "password" => Hash::make("test@naver.com"),
             "contact" => "01030217486",
             "name" => "일반 이름",
         ]);
 
         User::factory()->create([
-            "ids" => "company",
-            "type" => TypeUser::COMPANY,
             "email" => "company@naver.com",
-            "password" => Hash::make("company"),
+            "password" => Hash::make("company@naver.com"),
             "contact" => "01030217486",
             "name" => "사업자 이름",
         ]);
 
         User::factory()->create([
-            "ids" => "admin",
-            "type" => TypeUser::COMPANY,
             "email" => "admin@naver.com",
-            "password" => Hash::make("admin"),
+            "password" => Hash::make("admin@naver.com"),
             "contact" => "01030217486",
             "name" => "관리자 이름",
             "admin" => 1,

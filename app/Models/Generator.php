@@ -12,7 +12,7 @@ class Generator extends Model
 {
     use HasFactory;
 
-    public static function createUuid($model, $length = 16)
+    public static function createUuid($model, $length = 16, $column = "uuid")
     {
         $uuid = Uuid::uuid4()->toString();
 
@@ -22,7 +22,7 @@ class Generator extends Model
 
         $uuid = str_pad($uuid, $length, '0', STR_PAD_LEFT);
 
-        if($model->where("uuid", $uuid)->first())
+        if($model->where($column, $uuid)->first())
             return Generator::createUuid($model);
 
         return $uuid;

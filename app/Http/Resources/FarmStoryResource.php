@@ -27,6 +27,7 @@ class FarmStoryResource extends JsonResource
             'user' => $user ? UserResource::make($user) : '',
             'count_like' => $this->likes()->count(),
             'is_like' => $this->is_like,
+            'internal' => $this->internal,
 
             'created_at' => $this->created_at,
             'format_created_at' => Carbon::make($this->created_at)->format('Y.m.d'),
