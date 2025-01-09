@@ -26,6 +26,8 @@ class UserResource extends JsonResource
         return [
             "id" => $this->id,
 
+            "code" => $this->code,
+
             "admin" => $this->admin ? 1 : 0,
 
             "social" => $this->social ?? '',
