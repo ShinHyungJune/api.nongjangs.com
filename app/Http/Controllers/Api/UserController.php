@@ -51,7 +51,7 @@ class UserController extends ApiController
 
         // $user = User::where("email", $request->email)->first();
 
-        $token = auth()->attempt($request->only("ids", "password"));
+        $token = auth()->attempt($request->only("email", "password"));
 
         if($token) {
             return $this->respondSuccessfully([
@@ -61,7 +61,7 @@ class UserController extends ApiController
         }
 
         return throw ValidationException::withMessages([
-            "ids" => [
+            "email" => [
                 __("socialLogin.invalid")
             ]
         ]);
