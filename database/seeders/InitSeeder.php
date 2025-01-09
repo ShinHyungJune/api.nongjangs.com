@@ -60,12 +60,12 @@ class InitSeeder extends Seeder
     ];
 
     protected $farmImgs = [
-        "/images/farmImg1.png",
-        "/images/farmImg2.png",
-        "/images/farmImg3.png",
-        "/images/farmImg4.png",
-        "/images/farmImg5.png",
-        "/images/farmImg6.png",
+        "/images/farmImgs/farmImg1.png",
+        "/images/farmImgs/farmImg2.png",
+        "/images/farmImgs/farmImg3.png",
+        "/images/farmImgs/farmImg4.png",
+        "/images/farmImgs/farmImg5.png",
+        "/images/farmImgs/farmImg6.png",
     ];
 
     protected $bannerImages = [
