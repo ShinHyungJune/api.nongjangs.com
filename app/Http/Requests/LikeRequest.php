@@ -47,7 +47,8 @@ class LikeRequest extends FormRequest
 
                 case 'store':
                     return [
-                        '' => []
+                        'likeable_id' => ['required'],
+                        'likeable_type' => ['required'],
                     ];
 
                 case 'update':
