@@ -51,6 +51,7 @@ class FarmStoryRequest extends FormRequest
                         'tag_ids' => ['nullable', 'array'],
                         'farm_id' => ['nullable', 'integer'],
                         'exclude_farm_id' => ['nullable', 'integer'],
+                        'internal' => ['nullable', 'boolean'],
                     ];
 
                 case 'store':

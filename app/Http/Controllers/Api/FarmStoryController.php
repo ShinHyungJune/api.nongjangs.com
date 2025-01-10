@@ -30,6 +30,9 @@ class FarmStoryController extends ApiController
                 $query->whereIn('tags.id', $request->tag_ids);
             });
 
+        if(isset($request->internal))
+            $items = $items->where('internal', $request->internal);
+
         if($request->farm_id)
             $items = $items->where('farm_id', $request->farm_id);
 
