@@ -2,11 +2,9 @@
 
 use App\Http\Resources\WebsiteReservationResource;
 use App\Imports\MessageHistoryImport;
-use App\Mail\PrototypeNeeded;
 use App\Models\Iamport;
 use App\Models\Platform;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 use Milon\Barcode\DNS1D;
@@ -42,8 +40,8 @@ Route::post("/users/import",function (Request $request){
 
 Route::get("/visits/export", [\App\Http\Controllers\Api\Admin\VisitController::class, "export"]);
 
-Route::get('/', [\App\Http\Controllers\PageController::class, "index"])->name("home");
-Route::get('/home', [\App\Http\Controllers\PageController::class, "index"]);
+Route::get('/', [\App\Http\Controllers\Api\PageController::class, "index"])->name("home");
+Route::get('/home', [\App\Http\Controllers\Api\PageController::class, "index"]);
 
 
 Route::middleware("guest")->group(function(){

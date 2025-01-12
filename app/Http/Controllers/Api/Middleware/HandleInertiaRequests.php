@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Controllers\Api\Middleware;
 
 use App\Http\Resources\InformationResource;
 use App\Http\Resources\UserResource;

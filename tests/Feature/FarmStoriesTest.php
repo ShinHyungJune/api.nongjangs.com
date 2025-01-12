@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Models\Farm;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -81,7 +82,7 @@ class FarmStoriesTest extends TestCase
             'likeable_type' => \App\Models\FarmStory::class
         ]);
 
-        \App\Models\Like::factory()->count(3)->create([
+        \App\Models\Like::factory()->count(1)->create([
             'likeable_id' => $thirdItem->id,
             'likeable_type' => \App\Models\FarmStory::class
         ]);
@@ -96,6 +97,7 @@ class FarmStoriesTest extends TestCase
             if($prevItem){
                 $this->assertTrue($item['count_like'] < $prevItem['count_like']);
             }
+            $prevItem = $item;
         }
     }
 
@@ -121,7 +123,9 @@ class FarmStoriesTest extends TestCase
         foreach($items as $item){
             if($prevItem){
                 $this->assertTrue($item['created_at'] < $prevItem['created_at']);
+
             }
+            $prevItem = $item;
         }
     }
 
@@ -160,7 +164,7 @@ class FarmStoriesTest extends TestCase
         ]);
 
         $excludeFarmStories = \App\Models\FarmStory::factory()->count(3)->create([
-
+            'farm_id' => Farm::factory()->create()->id,
         ]);
 
         $items = $this->json('get', '/api/farmStories', [
@@ -180,7 +184,7 @@ class FarmStoriesTest extends TestCase
         ]);
 
         $excludeFarmStories = \App\Models\FarmStory::factory()->count(3)->create([
-
+            'farm_id' => Farm::factory()->create()->id,
         ]);
 
         $items = $this->json('get', '/api/farmStories', [

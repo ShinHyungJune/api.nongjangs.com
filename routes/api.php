@@ -142,6 +142,7 @@ Route::get("/tags", [\App\Http\Controllers\Api\TagController::class, "index"]);
 Route::get("/recipes", [\App\Http\Controllers\Api\RecipeController::class, "index"]);
 Route::get("/farmStories", [\App\Http\Controllers\Api\FarmStoryController::class, "index"]);
 Route::get("/farmStories/{farmStory}", [\App\Http\Controllers\Api\FarmStoryController::class, "show"]);
+Route::get("/products", [\App\Http\Controllers\Api\ProductController::class, "index"]);
 
 
 Route::get("/presetProducts", [\App\Http\Controllers\Api\임시\PresetProductController::class, "index"]);

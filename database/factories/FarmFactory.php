@@ -22,7 +22,8 @@ class FarmFactory extends BaseFactory
             '들꽃향기 팜', '산들바람 농원', '맑은샘 농장', '초롱초롱 농원', '달맞이 농장',
             '구름숲 농원', '아침햇살 농장', '따스한 땅 농원', '푸른별 팜', '새싹내음 농장'
         ];
-        $county = County::inRandomOrder()->first();
+
+        $county = County::inRandomOrder()->first() ?? County::factory()->create();
 
         return [
             'created_at' => Carbon::now(),

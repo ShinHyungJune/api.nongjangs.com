@@ -3,9 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\PresetProduct;
+use App\Models\Product;
 use App\Models\Review;
 use App\Models\User;
-use App\Models\임시\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
@@ -20,10 +20,12 @@ class ReviewFactory extends Factory
             'updated_at' => Carbon::now(),
             'best' => $this->faker->boolean(),
             'point' => $this->faker->randomNumber(),
+            'title' => $this->faker->text(),
             'description' => $this->faker->text(),
+            'score' => rand(0,5),
 
             'user_id' => User::factory(),
-            'preset_product_id' => PresetProduct::factory(),
+            // 'preset_product_id' => PresetProduct::factory(),
             'product_id' => Product::factory(),
             'photo' => 0,
         ];

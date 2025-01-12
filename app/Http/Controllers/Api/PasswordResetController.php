@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Mail\Sample;
 use App\Models\PasswordReset;
 use App\Models\SMS;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class PasswordResetController extends \ShinHyungJune\SocialLogin\Http\PasswordResetController

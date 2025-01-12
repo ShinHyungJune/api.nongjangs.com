@@ -10,6 +10,7 @@ return new class extends Migration {
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->constrained('products');
             $table->integer('type')->comment('유형');
             $table->integer('state')->default(StateOption::ONGOING)->comment('판매상태');
             $table->string('title')->comment('제목');

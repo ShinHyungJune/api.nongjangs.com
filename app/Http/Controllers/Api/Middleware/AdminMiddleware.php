@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Controllers\Api\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
-class EmailVerifiedMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,15 +16,15 @@ class EmailVerifiedMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user() && auth()->user()->verified_at) {
+        if(auth()->user() && auth()->user()->admin) {
             return $next($request);
         }
 
         session()->put('url.intended', url()->current());
 
         return response()->json([
-            "message" => __("comment.emailVerifications.403"),
-            'status_code' => 403
-        ], 403);
+            "message" => '권한이 없습니다.',
+            'status_code' => 401
+        ], 401);
     }
 }

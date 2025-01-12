@@ -3,40 +3,50 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CouponRequest;
 use App\Http\Resources\CouponResource;
 use App\Models\Coupon;
-use App\Models\CouponGroup;
 use Illuminate\Http\Request;
 
-class CouponController extends ApiController
+class CouponController extends Controller
 {
-    /**
-    * @group Coupon(쿠폰)
-     * @responseFile storage/responses/coupons.json
-     */
     public function index()
     {
-        $items = auth()->user()->validCoupons()->latest()->paginate(12);
-
-        return CouponResource::collection($items);
+        return CouponResource::collection(Coupon::all());
     }
 
-    public function store(CouponRequest $request)
+    public function store(Request $request)
     {
-        $couponGroup = CouponGroup::find($request->coupon_group_id);
-
-        if(!$couponGroup->isOngoing())
-            return $this->respondForbidden("진행중인 이벤트의 쿠폰만 발급 받을 수 있습니다.");
-
-        if($couponGroup->coupons()->where('user_id', auth()->id())->count() > 0)
-            return $this->respondForbidden("이미 쿠폰이 발급 완료되었습니다.");
-
-        $coupon = Coupon::create([
-            'user_id' => auth()->id(),
-            'coupon_group_id' => $couponGroup->id,
+        $data = $request->validate([
+            'user_id' => ['required', 'exists:users'],
+            'coupon_group_id' => ['required', 'exists:coupon_groups'],
+            'order_id' => ['nullable', 'exists:orders'],
         ]);
 
-        return $this->respondSuccessfully();
+        return new CouponResource(Coupon::create($data));
+    }
+
+    public function show(Coupon $coupon)
+    {
+        return new CouponResource($coupon);
+    }
+
+    public function update(Request $request, Coupon $coupon)
+    {
+        $data = $request->validate([
+            'user_id' => ['required', 'exists:users'],
+            'coupon_group_id' => ['required', 'exists:coupon_groups'],
+            'order_id' => ['nullable', 'exists:orders'],
+        ]);
+
+        $coupon->update($data);
+
+        return new CouponResource($coupon);
+    }
+
+    public function destroy(Coupon $coupon)
+    {
+        $coupon->delete();
+
+        return response()->json();
     }
 }

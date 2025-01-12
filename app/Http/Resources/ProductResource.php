@@ -38,6 +38,7 @@ class ProductResource extends JsonResource
             'can_use_coupon' => $this->can_use_coupon,
             'can_use_point' => $this->can_use_point,
             'count' => $this->count,
+            'count_order' => $this->count_order,
             'type_delivery' => $this->type_delivery,
             'format_type_delivery' => TypeDelivery::getLabel($this->type_delivery),
             'delivery_company' => $this->delivery_company,
@@ -60,10 +61,9 @@ class ProductResource extends JsonResource
             'city_id' => $this->city_id,
             'county_id' => $this->county_id,
 
-            'category' => new CategoryResource($this->whenLoaded('category')),
-            'farm' => new FarmResource($this->whenLoaded('farm')),
-            'city' => new CityResource($this->whenLoaded('city')),
-            'county' => new CountyResource($this->whenLoaded('county')),
+            'category' => $this->category ? CategoryResource::make($this->category) : '',
+            'farm' => $this->farm ? FarmResource::make($this->farm) : '',
+            'county' => $this->county ? CountyResource::make($this->county) : '',
 
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

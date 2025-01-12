@@ -1,7 +1,12 @@
 <?php
 
 
+use App\Enums\StateProduct;
+use App\Models\Product;
+use App\Models\Review;
+use App\Models\Tag;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -33,36 +38,138 @@ class ProductsTest extends TestCase
     /** @test */
     public function 누구나_진행중인_목록을_조회할_수_있다()
     {
+        $includeModels = Product::factory()->count(5)->create(['state' => StateProduct::ONGOING]);
+        $excludeModels = Product::factory()->count(3)->create(['state' => StateProduct::EMPTY]);
 
+        $items = $this->json('get', '/api/products')->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 검색어로_목록을_조회할_수_있다()
     {
+        $word = '테스트';
 
+        $includeModels = Product::factory()->count(5)->create(['state' => StateProduct::ONGOING, 'title' => $word]);
+        $excludeModels = Product::factory()->count(3)->create(['state' => StateProduct::ONGOING]);
+
+        $items = $this->json('get', '/api/products', [
+            'word' => $word
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 태그들을_포함하는_목록을_조회할_수_있다()
     {
+        $tags = Tag::factory()->count(3)->create();
 
+        $includeModels = Product::factory()->count(5)->create(['state' => StateProduct::ONGOING]);
+
+        foreach($includeModels as $model){
+            $model->tags()->attach($tags->random()->id);
+        }
+
+        $excludeModels = Product::factory()->count(3)->create(['state' => StateProduct::ONGOING]);
+
+        $items = $this->json('get', '/api/products', [
+            'tag_ids' => $tags->pluck('id')->toArray()
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 생성순으로_목록을_조회할_수_있다()
     {
+        $secondModel = \App\Models\Product::factory()->create([
+            'created_at' => Carbon::now()->subDays(2),
+        ]);
+        $firstModel = \App\Models\Product::factory()->create([
+            'created_at' => Carbon::now()->subDays(3),
+        ]);
+        $thirdModel = \App\Models\Product::factory()->create([
+            'created_at' => Carbon::now()->subDays(1),
+        ]);
 
+        $items = $this->json('get', '/api/products', [
+            'order_by' => 'created_at',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['created_at'] < $prevItem['created_at']);
+            }
+
+            $prevItem = $item;
+        }
     }
 
     /** @test */
     public function 리뷰수순으로_목록을_조회할_수_있다()
     {
+        $secondModel = \App\Models\Product::factory()->create([
 
+        ]);
+        $firstModel = \App\Models\Product::factory()->create([
+
+        ]);
+        $thirdModel = \App\Models\Product::factory()->create([
+
+        ]);
+
+        Review::factory()->count(2)->create(['product_id' => $secondModel->id]);
+        Review::factory()->count(3)->create(['product_id' => $firstModel->id]);
+        Review::factory()->count(1)->create(['product_id' => $thirdModel->id]);
+
+        $items = $this->json('get', '/api/products', [
+            'order_by' => 'count_review',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['count_review'] < $prevItem['count_review']);
+            }
+
+            $prevItem = $item;
+        }
     }
 
     /** @test */
     public function 주문수순으로_목록을_조회할_수_있다()
     {
+        $secondModel = \App\Models\Product::factory()->create([
+            'count_order' => 5,
+        ]);
+        $firstModel = \App\Models\Product::factory()->create([
+            'count_order' => 10,
+        ]);
+        $thirdModel = \App\Models\Product::factory()->create([
+            'count_order' => 3,
+        ]);
 
+        Review::factory()->count(2)->create(['product_id' => $secondModel->id]);
+        Review::factory()->count(3)->create(['product_id' => $firstModel->id]);
+        Review::factory()->count(1)->create(['product_id' => $thirdModel->id]);
+
+        $items = $this->json('get', '/api/products', [
+            'order_by' => 'count_order',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['count_order'] < $prevItem['count_order']);
+            }
+
+            $prevItem = $item;
+        }
     }
 }

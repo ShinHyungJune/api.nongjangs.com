@@ -88,7 +88,9 @@ class ProductRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        '' => []
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'order_by' => ['nullable', 'string', 'max:500'],
+                        'tag_ids' => ['nullable', 'array', 'max:20'],
                     ];
 
                 case 'store':
@@ -112,14 +114,17 @@ class ProductRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
-            ],
-
-            // 늘 쓰이는 애들
             'word' => [
                 'description' => '<span class="point">검색어</span>',
             ],
+            'order_by' => [
+                'description' => '<span class="point">정렬기준 (created_at 생성순 | count_review 리뷰순 | count_order 주문수순)</span>',
+            ],
+            'tag_ids' => [
+                'description' => '<span class="point">태그고유번호목록</span>',
+            ],
+
+            // 늘 쓰이는 애들
             'ids' => [
                 'description' => '<span class="point">선택한 대상들의 고유번호 목록</span>',
                 // 'example' => '',

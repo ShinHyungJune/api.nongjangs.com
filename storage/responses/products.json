@@ -1,0 +1,76 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "img": "이미지 객체",
+      "imgs": "이미지 목록",
+      "count_option": "옵션개수",
+      "requiredOptions": "필수옵션목록",
+      "additionalOptions": "추가옵션목록",
+      "ratio_discount": "할인률(%)",
+      "average_review": "리뷰평균점수",
+      "count_review": "리뷰수",
+      "tags": "태그 목록",
+
+      "state": "상태 (1 - ONGOING 판매중 | 2 - HIDE 숨김 | 3 - EMPTY 품절)",
+      "format_state": "표시용 상태",
+      "uuid": "상품코드",
+      "title": "제목",
+      "price": "판매가",
+      "price_origin": "정가",
+      "need_tax": "과세여부",
+      "can_use_coupon": "쿠폰사용 가능여부",
+      "can_use_point": "적립금사용 가능여부",
+      "count": "재고",
+      "count_order": "주문수",
+      "type_delivery": "배송유형",
+      "format_type_delivery": "표시용 배송유형",
+      "delivery_company": "택배사",
+      "format_delivery_company": "표시용 택배사",
+      "type_delivery_price": "배송비 유형",
+      "format_type_delivery_price": "표시용 배송비 유형",
+      "price_delivery": "배송비",
+      "prices_delivery": "수량별 차등 배송비",
+      "format_prices_delivery": "표시용 수량별 차등 배송비",
+      "min_price_for_free_delivery_price": "무료배송 최소주문금액",
+      "can_delivery_far_place": "제주도서산간 배송가능여부",
+      "delivery_price_far_place": "제주도서산간 배송비",
+      "delivery_company_refund": "반품택배사",
+      "delivery_price_refund": "반품 배송비",
+      "delivery_address_refund": "교환/반품 배송지",
+      "description": "상품상세 (EditorContent 사용)",
+
+      "category_id": "카테고리 고유번호",
+      "farm_id": "농가 고유번호",
+      "city_id": "시도 고유번호",
+      "county_id": "시군구 고유번호",
+
+      "category": "",
+      "farm (농가)": {
+        "id": "고유번호",
+        "title": "제목",
+        "county" : {
+          "id": "고유번호",
+          "title": "시군구명",
+          "city": {
+            "id": "고유번호",
+            "title" : "시도명"
+          }
+        }
+      },
+      "county (시군구)": {
+        "id": "고유번호",
+        "title": "시군구명",
+        "city": {
+          "id": "고유번호",
+          "title" : "시도명"
+        }
+      }
+    },
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}
