@@ -26,6 +26,8 @@ class UserResource extends JsonResource
         return [
             "id" => $this->id,
 
+            'grade' => $this->grade ? GradeResource::make($this->grade) : '',
+            "delivery_requirement" => $this->delivery_requirement ?? '',
             "code" => $this->code,
 
             "admin" => $this->admin ? 1 : 0,

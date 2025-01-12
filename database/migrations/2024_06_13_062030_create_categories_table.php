@@ -9,7 +9,9 @@ return new class extends Migration {
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('order');
+            $table->string('type_product');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
+            $table->integer('order')->default(0);
             $table->string('title');
             $table->softDeletes();
             $table->timestamps();

@@ -2,23 +2,25 @@
 
 namespace Database\Factories;
 
-use App\Enums\TypeCategory;
 use App\Models\Category;
+use App\Models\Material;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
-class CategoryFactory extends Factory
+class MaterialFactory extends Factory
 {
-    protected $model = Category::class;
+    protected $model = Material::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'order' => $this->faker->randomNumber(),
+            'type' => $this->faker->word(),
             'title' => $this->faker->word(),
-            'type' => TypeCategory::PRODUCT,
+            'description' => $this->faker->text(),
+
+            'category_id' => Category::factory(),
         ];
     }
 }

@@ -2,23 +2,22 @@
 
 namespace Database\Factories;
 
-use App\Enums\TypeCategory;
-use App\Models\Category;
+use App\Models\Grade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
-class CategoryFactory extends Factory
+class GradeFactory extends Factory
 {
-    protected $model = Category::class;
+    protected $model = Grade::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'order' => $this->faker->randomNumber(),
             'title' => $this->faker->word(),
-            'type' => TypeCategory::PRODUCT,
+            'ratio_refund' => $this->faker->randomFloat(),
+            'min_price' => $this->faker->randomNumber(),
         ];
     }
 }

@@ -7,19 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
             $table->string('title');
-            $table->string('color')->nullable();
-            $table->boolean('open')->default(1);
-            $table->integer('order');
+            $table->unsignedFloat('ratio_refund');
+            $table->integer('min_price');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('grades');
     }
 };

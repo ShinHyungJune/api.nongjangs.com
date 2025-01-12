@@ -9,6 +9,7 @@ use App\Enums\StatePresetProduct;
 use App\Enums\StateUser;
 use App\Enums\TypeBanner;
 use App\Enums\TypeProduct;
+use App\Enums\TypeTag;
 use App\Enums\TypeUser;
 use App\Models\Alarm;
 use App\Models\Banner;
@@ -25,6 +26,7 @@ use App\Models\Faq;
 use App\Models\Farm;
 use App\Models\FarmStory;
 use App\Models\Generator;
+use App\Models\Grade;
 use App\Models\Intro;
 use App\Models\Like;
 use App\Models\Notice;
@@ -98,6 +100,7 @@ class InitSeeder extends Seeder
         Bookmark::truncate();
         Like::truncate();
         FarmStory::truncate();
+        Grade::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -122,8 +125,9 @@ class InitSeeder extends Seeder
         DB::table("media")->truncate();
         DB::statement("SET foreign_key_checks=1");
 
+        $this->createGrades();
         $this->createUsers();
-
+        $this->createTags();
         $this->createBanners();
         $this->createPops();
         $this->createCounts();
@@ -137,6 +141,30 @@ class InitSeeder extends Seeder
         $this->createProducts();
         $this->createPointHistories();
         $this->createCouponHistories();*/
+    }
+    public function createGrades()
+    {
+        $items = [
+            [
+                'title' => '등급1',
+                'ratio_refund' => 2,
+                'min_price' => 0,
+            ],
+            [
+                'title' => '등급2',
+                'ratio_refund' => 3,
+                'min_price' => 10000,
+            ],
+            [
+                'title' => '등급3',
+                'ratio_refund' => 4,
+                'min_price' => 50000,
+            ],
+        ];
+
+        foreach($items as $item){
+            Grade::create($item);
+        }
     }
 
     public function createFarmStories()
@@ -159,7 +187,21 @@ class InitSeeder extends Seeder
     }
     public function createTags()
     {
-        Tag::factory()->count(15)->create();
+        Tag::factory()->count(15)->create([
+            'type' => TypeTag::PRODUCT
+        ]);
+        Tag::factory()->count(15)->create([
+            'type' => TypeTag::FARM_STORY
+        ]);
+        Tag::factory()->count(15)->create([
+            'type' => TypeTag::PACKAGE
+        ]);
+        Tag::factory()->count(15)->create([
+            'type' => TypeTag::RECIPE
+        ]);
+        Tag::factory()->count(15)->create([
+            'type' => TypeTag::VEGETABLE_STORY
+        ]);
     }
 
     public function createCounts()

@@ -48,7 +48,9 @@ class TagRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        '' => []
+                        'type' => [
+                            'required', 'integer'
+                        ]
                     ];
 
                 case 'store':
@@ -72,8 +74,8 @@ class TagRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'type' => [
+                'description' => '<span class="point">1 - FARM_STORY 농가이야기 | 2 - RECIPE 레시피 | 3 - VEGETABLE_STORY 채소이야기 | 4 - PRODUCT 직거래장터 | 5 - PACKAGE 꾸러미</span>',
             ],
 
             // 늘 쓰이는 애들

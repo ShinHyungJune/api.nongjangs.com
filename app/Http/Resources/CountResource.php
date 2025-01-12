@@ -13,6 +13,10 @@ class CountResource extends JsonResource
             'id' => $this->id,
             'sum_weight' => $this->sum_weight,
             'sum_store' => $this->sum_store,
+            'count_review' => $this->count_review,
+            'count_review_package' => $this->count_review_pacakage,
+            'average_score_review_package' => $this->average_score_review_package,
+            'count_vegetable_story' => $this->count_vegetable_story,
         ];
     }
 }

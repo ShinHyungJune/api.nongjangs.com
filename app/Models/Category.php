@@ -21,50 +21,10 @@ class Category extends Model implements HasMedia
         self::creating(function ($model){
             $prevModel = Category::orderBy("order", "desc")->first();
 
+            if($model->category)
+                $prevModel = $model->category->categories()->orderBy('order', 'desc')->first();
+
             $model->order = $prevModel ? $prevModel->order + 1 : 1;
         });
-    }
-
-    public function registerMediaCollections():void
-    {
-        $this->addMediaCollection('imgs');
-        $this->addMediaCollection('example')->singleFile();
-    }
-
-    public function getExampleAttribute()
-    {
-        if($this->hasMedia('example')) {
-            $media = $this->getMedia('example')[0];
-
-            return [
-                "id" => $media->id,
-                "name" => $media->file_name,
-                "url" => $media->getFullUrl()
-            ];
-        }
-
-        return null;
-    }
-
-    public function getImgsAttribute()
-    {
-        $medias = $this->getMedia("imgs");
-
-        $items = [];
-
-        foreach($medias as $media){
-            $items[] = [
-                "id" => $media->id,
-                "name" => $media->file_name,
-                "url" => $media->getFullUrl()
-            ];
-        }
-
-        return $items;
-    }
-
-    public function products()
-    {
-        return $this->belongsToMany(Product::class);
     }
 }

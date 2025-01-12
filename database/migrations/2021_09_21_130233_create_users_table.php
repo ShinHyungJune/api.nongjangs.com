@@ -16,6 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
 
+            $table->text('delivery_requirement')->nullable()->comment('배송요청사항');
+            $table->foreignId('grade_id')->nullable()->comment('등급')->constrained('grades');
             $table->string('code')->nullable()->comment('고유 코드');
 
             $table->text('social_id')->nullable();

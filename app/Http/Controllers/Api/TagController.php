@@ -10,30 +10,13 @@ class TagController extends ApiController
 {
     public function index(TagRequest $request)
     {
-        return TagResource::collection(Tag::all());
-    }
+        $items = Tag::where('open', 1);
 
-    public function store(TagRequest $request)
-    {
-        return new TagResource(Tag::create($request->validated()));
-    }
+        if($request->type)
+            $items = $items->where('type', $request->type);
 
-    public function show(Tag $tag)
-    {
-        return new TagResource($tag);
-    }
+        $items = $items->orderBy('order', 'asc')->paginate(100);
 
-    public function update(TagRequest $request, Tag $tag)
-    {
-        $tag->update($request->validated());
-
-        return new TagResource($tag);
-    }
-
-    public function destroy(Tag $tag)
-    {
-        $tag->delete();
-
-        return response()->json();
+        return TagResource::collection($items);
     }
 }
