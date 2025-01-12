@@ -2,36 +2,28 @@
 
 namespace App\Models;
 
-use App\Enums\StateEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CouponGroup extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function events()
+    protected $casts = [
+        'started_at' => 'datetime',
+        'finished_at' => 'datetime',
+    ];
+
+    public function grade(): BelongsTo
     {
-        return $this->hasMany(Event::class);
+        return $this->belongsTo(Grade::class);
     }
 
-    public function isOngoing()
+    public function getHasAttribute()
     {
-        $events = $this->events;
-
-        foreach($events as $event){
-            if($event->state == StateEvent::ONGOING)
-                return true;
-        }
-
-        return false;
-    }
-
-    public function coupons()
-    {
-        return $this->hasMany(Coupon::class);
+        // 보유하고 있어도 사용했는지도 체크해야함 (BEFORE_PAYMENT 이상의 preset을 갖고 있으면 쓴거임)
     }
 }

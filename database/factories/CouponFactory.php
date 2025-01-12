@@ -13,20 +13,15 @@ class CouponFactory extends Factory
 {
     protected $model = Coupon::class;
 
-    public function definition()
+    public function definition(): array
     {
-        $couponGroup = CouponGroup::inRandomOrder()->first();
-
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'title' => $this->faker->title,
-            'ratio_discount' => $this->faker->randomNumber(),
-            'will_finished_at' => Carbon::now()->addDays(30),
 
             'user_id' => User::factory(),
-            'coupon_group_id' => $couponGroup ? $couponGroup->id : CouponGroup::factory()->create()->id,
-            // 'order_id' => Order::factory(),
+            'coupon_group_id' => CouponGroup::factory(),
+            'order_id' => Order::factory(),
         ];
     }
 }

@@ -1,0 +1,9 @@
+{
+  "id": "고유번호",
+  "type": "유형 (1 - FARM_STORY 농가이야기 | 2 - RECIPE 레시피 | 3 - VEGETABLE_STORY 채소이야기 | 4 - PRODUCT 직거래장터 | 5 - PACKAGE 꾸러미)",
+  "format_type": "표시용 유형",
+  "title": "제목",
+  "color": "배경색",
+  "open": "공개여부",
+  "order": "순서"
+}

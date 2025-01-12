@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\TypeBanner;
-use App\Models\Arr;
 use App\Models\Banner;
-use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class BannerSeeder extends Seeder

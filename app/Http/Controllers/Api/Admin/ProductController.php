@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\ProductResource;
 use App\Http\Requests\ProductRequest;
-use App\Models\Category;
+use App\Http\Resources\ProductResource;
 use App\Models\Color;
-use App\Models\Product;
 use App\Models\Size;
+use App\Models\임시\Product;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class ProductController extends ApiController
 {

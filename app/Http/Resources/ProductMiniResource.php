@@ -2,33 +2,28 @@
 
 namespace App\Http\Resources;
 
-use App\Enums\TypeProduct;
-use App\Models\AdditionalProduct;
-use App\Models\Category;
-use App\Models\Like;
-use App\Models\User;
-use Carbon\Carbon;
+use App\Enums\DeliveryCompany;
+use App\Enums\StateProduct;
+use App\Enums\TypeDelivery;
+use App\Enums\TypeDeliveryPrice;
+use App\Enums\TypeOption;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\Product */
 class ProductMiniResource extends JsonResource
 {
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     */
     public function toArray($request)
     {
-        $category = Category::withTrashed()->find($this->category_id);
-
         return [
             'id' => $this->id,
-            'ratio_discount' => $this->ratio_discount,
-            'img' => $this->img ?? '', // 대표이미지
-            'count_review' => $this->count_review,
-            'category' => $category ? CategoryResource::make($category) : '',
-            'count_view' => $this->count_view,
-            'count_order' => $this->count_order,
+            'img' => $this->img ?? '',
             'title' => $this->title,
-            'description' => $this->description,
             'price' => $this->price,
-            'price_discount' => $this->price_discount,
             'price_origin' => $this->price_origin,
         ];
     }

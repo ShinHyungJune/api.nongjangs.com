@@ -2,9 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Enums\StatePresetProduct;
-use App\Enums\TypeDelivery;
-use App\Models\PresetProduct;
+use App\Enums\DeliveryCompany;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -13,21 +11,24 @@ class PresetResource extends JsonResource
 {
     public function toArray($request)
     {
-        $order = $this->order;
-
         return [
             'id' => $this->id,
 
-            'presetProducts' => PresetProductMiniResource::collection($this->presetProducts),
+            'price_delivery' => $this->price_delivery,
+            'price' => $this->price,
+            'price_total' => $this->price_total,
+            'price_discount' => $this->price_discount,
 
-            'can_order' => $this->can_order,
+            'count_option_required' => $this->count_option_required,
+            'count_option_additional' => $this->count_option_additional,
 
-            'order' => $order ? [
-                'id' => $order->id,
-                'merchant_uid' => $order->merchant_uid,
-                'format_created_at' => $order->created_at ? Carbon::make($this->created_at)->format('Y.m.d H:i') : '',
-            ] : '',
+            'order_id' => $this->order_id,
+            'cart_id' => $this->cart_id,
+            'user_id' => $this->user_id,
 
+            'presetProducts' => PresetProductResource::collection($this->presetProducts),
+
+            'order' => $this->order ? OrderResource::make($this->order) : '',
         ];
     }
 }

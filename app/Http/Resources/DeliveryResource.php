@@ -12,11 +12,13 @@ class DeliveryResource extends JsonResource
         return [
             'id' => $this->id,
             'main' => $this->main,
+            'title' => $this->title,
             'name' => $this->name,
             'contact' => $this->contact,
             'address' => $this->address,
             'address_detail' => $this->address_detail,
             'address_zipcode' => $this->address_zipcode,
+            'user_id' => $this->user_id,
         ];
     }
 }

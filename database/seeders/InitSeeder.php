@@ -3,17 +3,22 @@
 namespace Database\Seeders;
 
 use App\Enums\DeliveryCompany;
-use App\Enums\StateMachine;
-use App\Enums\StateOrder;
+use App\Enums\MomentCouponGroup;
 use App\Enums\StatePresetProduct;
-use App\Enums\StateUser;
+use App\Enums\StateProduct;
+use App\Enums\TargetCouponGroup;
 use App\Enums\TypeBanner;
-use App\Enums\TypeProduct;
+use App\Enums\TypeCategory;
+use App\Enums\TypeCouponGroup;
+use App\Enums\TypeDelivery;
+use App\Enums\TypeDeliveryPrice;
+use App\Enums\TypeDiscount;
+use App\Enums\TypeExpire;
+use App\Enums\TypeOption;
 use App\Enums\TypeTag;
-use App\Enums\TypeUser;
-use App\Models\Alarm;
 use App\Models\Banner;
 use App\Models\Bookmark;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Count;
 use App\Models\County;
@@ -21,32 +26,27 @@ use App\Models\Coupon;
 use App\Models\CouponGroup;
 use App\Models\CouponHistory;
 use App\Models\Delivery;
-use App\Models\Event;
-use App\Models\Faq;
 use App\Models\Farm;
 use App\Models\FarmStory;
-use App\Models\Generator;
 use App\Models\Grade;
-use App\Models\Intro;
 use App\Models\Like;
-use App\Models\Notice;
-use App\Models\Order;
+use App\Models\Material;
 use App\Models\PayMethod;
 use App\Models\PointHistory;
 use App\Models\Pop;
 use App\Models\Preset;
 use App\Models\PresetProduct;
 use App\Models\Product;
+use App\Models\Project;
 use App\Models\Qna;
 use App\Models\Recipe;
+use App\Models\ReportCategory;
 use App\Models\Review;
 use App\Models\Size;
 use App\Models\Tag;
 use App\Models\User;
 use Carbon\Carbon;
-use Faker\Provider\Payment;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -101,6 +101,12 @@ class InitSeeder extends Seeder
         Like::truncate();
         FarmStory::truncate();
         Grade::truncate();
+        Category::truncate();
+        Product::truncate();
+        Project::truncate();
+        CouponGroup::truncate();
+        Coupon::truncate();
+        ReportCategory::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -120,6 +126,9 @@ class InitSeeder extends Seeder
         Order::truncate();
         PresetProduct::truncate();*/
 
+        DB::table("coupon_group_user")->truncate();
+        DB::table("coupon_group_product")->truncate();
+        DB::table("product_tag")->truncate();
         DB::table("recipe_tag")->truncate();
         DB::table("farm_story_tag")->truncate();
         DB::table("media")->truncate();
@@ -135,6 +144,11 @@ class InitSeeder extends Seeder
         $this->createTags();
         $this->createFarms();
         $this->createFarmStories();
+        $this->createCategories();
+        $this->createProducts();
+        $this->createProject();
+        $this->createCouponGroups();
+        $this->createReportCategories();
         /*$this->createCategories();
         $this->createPayMethods();
         $this->createCouponGroups();
@@ -142,6 +156,499 @@ class InitSeeder extends Seeder
         $this->createPointHistories();
         $this->createCouponHistories();*/
     }
+
+    public function createReportCategories()
+    {
+        $items = [
+            [
+                'title' => '관련없는 이미지/내용'
+            ],
+            [
+                'title' => '욕설/비방'
+            ],
+            [
+                'title' => '광고/홍보글'
+            ],
+            [
+                'title' => '도배 및 중복'
+            ],
+            [
+                'title' => '기타'
+            ],
+        ];
+
+        foreach($items as $item){
+            ReportCategory::create($item);
+        }
+    }
+
+    public function createCouponGroups()
+    {
+        $items = [
+            [
+                'title' => '개인정보입력 할인 쿠폰',
+                'moment' => MomentCouponGroup::PROFILE,
+                'type' => TypeCouponGroup::ALL,
+                'target' => TargetCouponGroup::ALL,
+                'type_discount' => TypeDiscount::NUMBER,
+                'value' => 1000,
+                'max_price_discount' => 1000,
+                'min_price_order' => 1000,
+                'type_expire' => TypeExpire::FROM_DOWNLOAD,
+                'days' => 60,
+            ],
+            /*[ // 등급별로 각 등급 혜택금액에 맞게 넣어야함
+                'title' => '등급쿠폰',
+                'moment' => MomentCouponGroup::GRADE,
+                'grade_id' => '',
+                'type' => TypeCouponGroup::ALL,
+                'target' => TargetCouponGroup::ALL,
+                'type_discount' => TypeDiscount::NUMBER,
+                'value' => '',
+                'max_price_discount' => '',
+                'min_price_order' => '',
+                'type_expire' => TypeExpire::FROM_DOWNLOAD,
+                'days' => 60,
+            ],*/
+            [
+                'title' => '생일쿠폰',
+                'moment' => MomentCouponGroup::BIRTHDAY,
+                'type' => TypeCouponGroup::ALL,
+                'target' => TargetCouponGroup::ALL,
+                'type_discount' => TypeDiscount::NUMBER,
+                'value' => 3000,
+                'max_price_discount' => 3000,
+                'min_price_order' => 3000,
+                'type_expire' => TypeExpire::FROM_DOWNLOAD,
+                'days' => 60,
+            ],
+            [
+                'title' => '첫구매',
+                'type' => TypeCouponGroup::ALL,
+                'target' => TargetCouponGroup::ALL,
+                'type_discount' => TypeDiscount::NUMBER,
+                'value' => 3000,
+                'max_price_discount' => 3000,
+                'min_price_order' => 3000,
+                'type_expire' => TypeExpire::FROM_DOWNLOAD,
+                'days' => 60,
+            ],
+            [
+                'title' => '10% 할인 쿠폰',
+                'type' => TypeCouponGroup::ALL,
+                'target' => TargetCouponGroup::ALL,
+                'type_discount' => TypeDiscount::RATIO,
+                'value' => 10,
+                'max_price_discount' => 10000,
+                'min_price_order' => 3000,
+                'type_expire' => TypeExpire::FROM_DOWNLOAD,
+                'days' => 60,
+            ],
+            [
+                'title' => '1,000원 할인 쿠폰',
+                'type' => TypeCouponGroup::ALL,
+                'target' => TargetCouponGroup::ALL,
+                'type_discount' => TypeDiscount::NUMBER,
+                'value' => 1000,
+                'max_price_discount' => 1000,
+                'min_price_order' => 3000,
+                'type_expire' => TypeExpire::SPECIFIC,
+                'started_at' => Carbon::now()->subDays(30),
+                'finished_at' => Carbon::now()->addDays(30),
+            ],
+        ];
+
+        foreach($items as $item){
+            CouponGroup::create($item);
+        }
+
+        $users = User::get();
+
+        $couponGroup = CouponGroup::where('title', '10% 할인 쿠폰')->first();
+
+        foreach($users as $user){
+            Coupon::factory()->create([
+                'user_id' => $user->id,
+                'coupon_group_id' => $couponGroup->id,
+            ]);
+        }
+
+        $couponGroup = CouponGroup::where('title', '1,000원 할인 쿠폰')->first();
+
+        foreach($users as $user){
+            Coupon::factory()->create([
+                'user_id' => $user->id,
+                'coupon_group_id' => $couponGroup->id,
+            ]);
+        }
+    }
+    public function createProject()
+    {
+        $product = Product::first();
+
+        $project = Project::factory()->create([
+            'product_id' => $product->id,
+            'started_at' => Carbon::now()->subMonths(1),
+            'finished_at' => Carbon::now()->addMonths(1),
+            'count_goal' => 2000,
+            'count_participate' => 643,
+        ]);
+
+        $project->tags()->attach($product->tags->pluck("id")->toArray());
+
+        if(config("app.env") != 'local'){
+            $product->addMedia(public_path('/images/about_slide_1_1.png'))->preservingOriginal()->toMediaCollection("img", "s3");
+        }
+
+    }
+    public function createProducts()
+    {
+        // 태그 연동 필요
+        // 옵션 연동 필요
+        $farm = Farm::inRandomOrder()->first();
+
+        $items = [
+            [
+                'imgs' => [
+                    '/images/about_slide_1_1.png',
+                    '/images/about_slide_1_2.png',
+                    '/images/about_slide_1_3.png',
+                ],
+                'requiredOptions' => [
+                    [
+                        'title' => '조생감귤 5kg',
+                        'type' => TypeOption::REQUIRED,
+                        'price' => 0,
+                        'count' => 10000
+                    ],
+                    [
+                        'title' => '조생감귤 5kg',
+                        'type' => TypeOption::REQUIRED,
+                        'price' => 15000,
+                        'count' => 10000
+                    ],
+                ],
+                'tags' => [
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => 'NEW',
+                    ],
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => '특가'
+                    ],
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => '무농약'
+                    ]
+                ],
+
+                'state' => StateProduct::ONGOING,
+                'category_id' => Category::inRandomOrder()->first()->id,
+                'farm_id' => $farm->id,
+                'city_id' => $farm->county->city_id,
+                'county_id' => $farm->county->id,
+                'title' => '노지 조생 감귤 5kg 10kg',
+                'price' => 20000,
+                'price_origin' => 40000,
+                'need_tax' => 0,
+                'can_use_coupon' => 1,
+                'can_use_point' => 1,
+                'count' => 100000,
+                'type_delivery' => TypeDelivery::FREE,
+                'delivery_company' => DeliveryCompany::CJ,
+                'type_delivery_price' => TypeDeliveryPrice::STATIC,
+                'price_delivery' => 3000,
+                'prices_delivery' => "[]",
+                'min_price_for_free_delivery_price' => 50000,
+                'can_delivery_far_place' => 1,
+                'delivery_price_far_place' => 3000,
+                'delivery_company_refund' => DeliveryCompany::CJ,
+                'delivery_price_refund' => 3000,
+                'delivery_address_refund' => '서울특별시 강남구 143 43',
+                'description' => "
+                <img src='https://api.nongjangs.com/images/%EA%B7%A4/1.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%EA%B7%A4/2.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%EA%B7%A4/3.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%EA%B7%A4/4.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%EA%B7%A4/5.png' />
+                <br/>
+                ",
+            ],
+            [
+                'imgs' => [
+                    '/images/about_slide_2_1.png',
+                    '/images/about_slide_2_2.png',
+                    '/images/about_slide_2_3.png',
+                ],
+                'requiredOptions' => [
+                    [
+                        'title' => '무농약 블루베리 생과 500g',
+                        'type' => TypeOption::REQUIRED,
+                        'price' => 0,
+                        'count' => 10000
+                    ],
+                    [
+                        'title' => '무농약 블루베리 생과 1kg',
+                        'type' => TypeOption::REQUIRED,
+                        'price' => 25900,
+                        'count' => 10000
+                    ],
+                ],
+                'tags' => [
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => 'NEW',
+                    ],
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => '특가'
+                    ],
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => '무농약'
+                    ]
+                ],
+
+                'state' => StateProduct::ONGOING,
+                'category_id' => Category::inRandomOrder()->first()->id,
+                'farm_id' => $farm->id,
+                'city_id' => $farm->county->city_id,
+                'county_id' => $farm->county->id,
+                'title' => '무농약 블루베리 생과 500g 1kg',
+                'price' => 30900,
+                'price_origin' => 99800,
+                'need_tax' => 0,
+                'can_use_coupon' => 1,
+                'can_use_point' => 1,
+                'count' => 100000,
+                'type_delivery' => TypeDelivery::FREE,
+                'delivery_company' => DeliveryCompany::CJ,
+                'type_delivery_price' => TypeDeliveryPrice::STATIC,
+                'price_delivery' => 3000,
+                'prices_delivery' => "[]",
+                'min_price_for_free_delivery_price' => 50000,
+                'can_delivery_far_place' => 1,
+                'delivery_price_far_place' => 3000,
+                'delivery_company_refund' => DeliveryCompany::CJ,
+                'delivery_price_refund' => 3000,
+                'delivery_address_refund' => '서울특별시 강남구 143 43',
+                'description' => "
+                <img src='https://api.nongjangs.com/images/%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC/1.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC/2.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC/3.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC/4.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%EB%B8%94%EB%A3%A8%EB%B2%A0%EB%A6%AC/5.png' />
+                <br/>
+                ",
+            ],
+            [
+                'imgs' => [
+                    '/images/about_slide_3_1.png',
+                    '/images/about_slide_3_2.png',
+                    '/images/about_slide_3_3.png',
+                ],
+                'requiredOptions' => [
+                    [
+                        'title' => '무농약 생 표고버섯 500g',
+                        'type' => TypeOption::REQUIRED,
+                        'price' => 0,
+                        'count' => 10000
+                    ],
+                    [
+                        'title' => '무농약 생 표고버섯 1kg',
+                        'type' => TypeOption::REQUIRED,
+                        'price' => 8900,
+                        'count' => 10000
+                    ],
+                ],
+                'tags' => [
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => 'NEW',
+                    ],
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => '특가'
+                    ],
+                    [
+                        'type' => TypeTag::PRODUCT,
+                        'title' => '무농약'
+                    ]
+                ],
+
+                'state' => StateProduct::ONGOING,
+                'category_id' => Category::inRandomOrder()->first()->id,
+                'farm_id' => $farm->id,
+                'city_id' => $farm->county->city_id,
+                'county_id' => $farm->county->id,
+                'title' => '무농약 생 표고버섯 500g 1kg',
+                'price' => 10000,
+                'price_origin' => 20000,
+                'need_tax' => 0,
+                'can_use_coupon' => 1,
+                'can_use_point' => 1,
+                'count' => 100000,
+                'type_delivery' => TypeDelivery::FREE,
+                'delivery_company' => DeliveryCompany::CJ,
+                'type_delivery_price' => TypeDeliveryPrice::STATIC,
+                'price_delivery' => 3000,
+                'prices_delivery' => "[]",
+                'min_price_for_free_delivery_price' => 50000,
+                'can_delivery_far_place' => 1,
+                'delivery_price_far_place' => 3000,
+                'delivery_company_refund' => DeliveryCompany::CJ,
+                'delivery_price_refund' => 3000,
+                'delivery_address_refund' => '서울특별시 강남구 143 43',
+                'description' => "
+                <img src='https://api.nongjangs.com/images/%ED%91%9C%EA%B3%A0%EB%B2%84%EC%84%AF/1.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%ED%91%9C%EA%B3%A0%EB%B2%84%EC%84%AF/2.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%ED%91%9C%EA%B3%A0%EB%B2%84%EC%84%AF/3.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%ED%91%9C%EA%B3%A0%EB%B2%84%EC%84%AF/4.png' />
+                <br/>
+                <img src='https://api.nongjangs.com/images/%ED%91%9C%EA%B3%A0%EB%B2%84%EC%84%AF/5.png' />
+                <br/>
+                
+                ",
+            ],
+        ];
+
+        foreach($items as $item){
+            $product = Product::create(\Arr::except($item, ['imgs', 'requiredOptions', 'tags']));
+
+            foreach($item['requiredOptions'] as $option){
+                $product->options()->create($option);
+            }
+
+            foreach($item['tags'] as $tag){
+                $prevTag = Tag::where('type', TypeTag::PRODUCT)->where('title', $tag['title'])->first();
+
+                if(!$prevTag)
+                    $prevTag = Tag::create($tag);
+
+                $product->tags()->attach($prevTag->id);
+            }
+
+            foreach($item['imgs'] as $img){
+                if(config("app.env") != 'local'){
+                    $product->addMedia(public_path($img))->preservingOriginal()->toMediaCollection("imgs", "s3");
+                }
+            }
+        }
+    }
+
+    public function createCategories()
+    {
+        $items = [
+            [
+                'title' => '과일류',
+                'type' => TypeCategory::PRODUCT,
+                'categories' => [
+                    [
+                        'title' => '복숭아'
+                    ],
+                    [
+                        'title' => '사과'
+                    ],
+                    [
+                        'title' => '귤'
+                    ],
+                    [
+                        'title' => '포도'
+                    ],
+                ]
+            ],
+            [
+                'title' => '채소류',
+                'type' => TypeCategory::PRODUCT,
+                'categories' => [
+                    [
+                        'title' => '샐러리'
+                    ],
+                    [
+                        'title' => '청경채'
+                    ],
+                    [
+                        'title' => '양파'
+                    ],
+                    [
+                        'title' => '당근'
+                    ],
+                ]
+            ],
+            [
+                'title' => '과일류',
+                'type' => TypeCategory::PACKAGE,
+                'categories' => [
+                    [
+                        'title' => '복숭아'
+                    ],
+                    [
+                        'title' => '사과'
+                    ],
+                    [
+                        'title' => '귤'
+                    ],
+                    [
+                        'title' => '포도'
+                    ],
+                ]
+            ],
+            [
+                'title' => '채소류',
+                'type' => TypeCategory::PACKAGE,
+                'categories' => [
+                    [
+                        'title' => '샐러리'
+                    ],
+                    [
+                        'title' => '청경채'
+                    ],
+                    [
+                        'title' => '양파'
+                    ],
+                    [
+                        'title' => '당근'
+                    ],
+                ]
+            ],
+        ];
+
+        foreach($items as $item){
+            $category = Category::create(\Arr::except($item, ['categories']));
+
+            foreach($item['categories'] as $subCategory){
+                $subCategory = Category::create(array_merge($subCategory, ['category_id' => $category->id]));
+
+                Material::factory()->create([
+                    'category_id' => $subCategory->id,
+                    'title' => '천도복숭아'
+                ]);
+
+                Material::factory()->create([
+                    'category_id' => $subCategory->id,
+                    'title' => '스테비아 토마토'
+                ]);
+
+                Material::factory()->create([
+                    'category_id' => $subCategory->id,
+                    'title' => '애플망고'
+                ]);
+            }
+        }
+    }
+
     public function createGrades()
     {
         $items = [

@@ -8,6 +8,11 @@ use App\Models\Tag;
 
 class TagController extends ApiController
 {
+    /** 목록
+     * @group 사용자
+     * @subgroup Tag(태그)
+     * @responseFile storage/responses/tags.json
+     */
     public function index(TagRequest $request)
     {
         $items = Tag::where('open', 1);

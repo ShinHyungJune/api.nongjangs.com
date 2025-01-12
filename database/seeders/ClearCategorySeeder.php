@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
+use App\Models\임시\Product;
 use Illuminate\Database\Seeder;
 
 class ClearCategorySeeder extends Seeder

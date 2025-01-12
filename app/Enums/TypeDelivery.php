@@ -11,25 +11,21 @@ namespace App\Enums;
 
 final class TypeDelivery
 {
-    const DELIVERY = 1;
-    const QUICK = 2;
-    const DIRECT = 3;
-
+    const FREE = 1;
+    const EACH = 2;
     public static function getValues()
     {
         return [
-            self::DELIVERY,
-            self::QUICK,
-            self::DIRECT,
+            self::FREE,
+            self::EACH,
         ];
     }
 
     public static function getLabel($value)
     {
         $items = [
-            self::DELIVERY => "택배",
-            self::QUICK => "퀵서비스",
-            self::DIRECT => "직접방문",
+            self::FREE => "무료배송",
+            self::EACH => "개별배송",
             "" => "",
         ];
 

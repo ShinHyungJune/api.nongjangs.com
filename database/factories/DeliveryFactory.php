@@ -11,12 +11,13 @@ class DeliveryFactory extends Factory
 {
     protected $model = Delivery::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'main' => $this->faker->boolean(),
+            'title' => $this->faker->word(),
             'name' => $this->faker->name(),
             'contact' => $this->faker->word(),
             'address' => $this->faker->address(),

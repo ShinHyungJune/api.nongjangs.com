@@ -17,23 +17,6 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public static function get($user = null, $guestId = null)
-    {
-        $cart = null;
-
-        if($user)
-            return $user->cart;
-
-        if($guestId) {
-            $cart = Cart::where('guest_id', $guestId)->first();
-
-            if(!$cart)
-                $cart = Cart::create(['guest_id' => $guestId]);
-        }
-
-        return $cart;
-    }
-
     public function presets()
     {
         return $this->hasMany(Preset::class);

@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Enums\SocialPlatform;
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
-use App\Enums\TypeAlarm;
+use App\Models\임시\Product;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;

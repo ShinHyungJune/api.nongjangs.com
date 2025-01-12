@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ReviewRequest;
 use App\Http\Resources\ReviewResource;
-use App\Models\Preset;
 use App\Models\PresetProduct;
-use App\Models\Product;
 use App\Models\Review;
-use Illuminate\Http\Request;
+use App\Models\임시\Product;
 
 class ReviewController extends ApiController
 {

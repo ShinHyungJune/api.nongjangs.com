@@ -6,28 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CouponGroupRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         $method = $this->route()->getActionMethod();
         $admin = strpos($this->route()->getPrefix(), 'admin') !== false;
 
-        if($admin){
-            switch ($method){
+        if ($admin) {
+            switch ($method) {
                 case 'index':
                     return [
                         'word' => ['nullable', 'string', 'max:500']
@@ -35,16 +20,42 @@ class CouponGroupRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'title' => ['required', 'string', 'max:500'],
-                        'ratio_discount' => ['required', 'integer', 'min:0', 'max:99'],
-                        'duration' => ['required', 'integer', 'min:0'],
+                        'title' => ['required'],
+                        'moment' => ['required', 'integer'],
+                        'type' => ['required', 'integer'],
+                        'type_package' => ['nullable', 'integer'],
+                        'all_product' => ['nullable', 'boolean'],
+                        'target' => ['required', 'integer'],
+                        'grade_id' => ['nullable', 'exists:grades'],
+                        'min_order' => ['nullable', 'integer'],
+                        'type_discount' => ['required', 'integer'],
+                        'value' => ['required', 'integer'],
+                        'max_price_discount' => ['required', 'integer'],
+                        'min_price_order' => ['required', 'integer'],
+                        'type_expire' => ['required', 'integer'],
+                        'started_at' => ['nullable', 'date'],
+                        'finished_at' => ['nullable', 'date'],
+                        'days' => ['nullable', 'integer'],
                     ];
 
                 case 'update':
                     return [
-                        'title' => ['required', 'string', 'max:500'],
-                        'ratio_discount' => ['required', 'integer', 'min:0', 'max:99'],
-                        'duration' => ['required', 'integer', 'min:0'],
+                        'title' => ['required'],
+                        'moment' => ['required', 'integer'],
+                        'type' => ['required', 'integer'],
+                        'type_package' => ['nullable', 'integer'],
+                        'all_product' => ['nullable', 'boolean'],
+                        'target' => ['required', 'integer'],
+                        'grade_id' => ['nullable', 'exists:grades'],
+                        'min_order' => ['nullable', 'integer'],
+                        'type_discount' => ['required', 'integer'],
+                        'value' => ['required', 'integer'],
+                        'max_price_discount' => ['required', 'integer'],
+                        'min_price_order' => ['required', 'integer'],
+                        'type_expire' => ['required', 'integer'],
+                        'started_at' => ['nullable', 'date'],
+                        'finished_at' => ['nullable', 'date'],
+                        'days' => ['nullable', 'integer'],//
                     ];
 
                 case 'destroy':
@@ -55,11 +66,11 @@ class CouponGroupRequest extends FormRequest
                 default:
                     return [];
             }
-        }else{
-            switch ($method){
+        } else {
+            switch ($method) {
                 case 'index':
                     return [
-
+                        '' => []
                     ];
 
                 case 'store':
@@ -77,21 +88,14 @@ class CouponGroupRequest extends FormRequest
                     return [];
             }
         }
-
     }
 
     public function bodyParameters()
     {
         return [
             // 이 모델만 쓰이는 애들
-            'title' => [
-                'description' => '<span class="point">제목</span>',
-            ],
-            'ratio_discount' => [
-                'description' => '<span class="point">할인률</span>',
-            ],
-            'duration' => [
-                'description' => '<span class="point">유효기간</span>',
+            'example' => [
+                'description' => '<span class="point"></span>',
             ],
 
             // 늘 쓰이는 애들
@@ -111,5 +115,11 @@ class CouponGroupRequest extends FormRequest
                 // 'example' => '',
             ],
         ];
+    }
+
+
+    public function authorize(): bool
+    {
+        return true;
     }
 }

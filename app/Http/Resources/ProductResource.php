@@ -2,15 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\DeliveryCompany;
+use App\Enums\StateProduct;
 use App\Enums\TypeDelivery;
-use App\Enums\TypeProduct;
-use App\Models\AdditionalProduct;
-use App\Models\Arr;
-use App\Models\Category;
-use App\Models\Like;
-use App\Models\Logo;
-use App\Models\User;
-use Carbon\Carbon;
+use App\Enums\TypeDeliveryPrice;
+use App\Enums\TypeOption;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \App\Models\Product */
@@ -18,59 +14,59 @@ class ProductResource extends JsonResource
 {
     public function toArray($request)
     {
-        // $category = Category::withTrashed()->find($this->category_id);
-
-
         return [
+
             'id' => $this->id,
 
-
+            'img' => $this->img ?? '',
+            'imgs' => $this->imgs,
+            'count_option' => $this->options()->count(),
+            'requiredOptions' => OptionResource::collection($this->options()->where('type', TypeOption::REQUIRED)->get()),
+            'additionalOptions' => OptionResource::collection($this->options()->where('type', TypeOption::ADDITIONAL)->get()),
             'ratio_discount' => $this->ratio_discount,
-            'img' => $this->img ?? '', // 대표이미지
-            'imgs' => $this->imgs, // 이미지 목록
-            'imgs_prototype' => $this->imgs_prototype, // 시안
-            'imgs_real' => $this->imgs_real, // 실제작 제품
-            'imgs_circle' => $this->imgs_circle, // 360도 이미지
+            'average_review' => $this->average_review,
             'count_review' => $this->count_review,
+            'tags' => TagResource::collection($this->tags),
 
-            'colors' => ColorResource::collection($this->colors()->where('open', 1)->get()),
-            'sizes' => SizeResource::collection($this->sizes()->where('open', 1)->get()),
-            'products' => AdditionalProductResource::collection($this->products()->where('open', 1)->get()),
-
-            'order' => $this->order,
-            'category_ids' => $this->categories->pluck('id')->toArray(),
-            'format_categories' => Arr::getArrayToString($this->categories->pluck('title')->toArray()),
-            /*'category' => $category ? [
-                'id' => $category->id,
-                'title' => $category->title,
-            ] : '',*/
-            'open' => $this->open,
-            'custom' => $this->custom,
-            'count_view' => $this->count_view,
-            'count_order' => $this->count_order,
-            'real_count_order' => $this->real_count_order,
+            'state' => $this->state,
+            'format_state' => StateProduct::getLabel($this->state),
+            'uuid' => $this->uuid,
             'title' => $this->title,
-            'description' => $this->description,
-            'summary' => $this->summary,
             'price' => $this->price,
-            'price_discount' => $this->price_discount,
             'price_origin' => $this->price_origin,
-            'price_delivery' => $this->price_delivery,
-            'pop' => $this->pop,
-            'special' => $this->special,
-            'recommend' => $this->recommend,
-            'empty' => $this->empty,
-            'duration' => $this->duration ?? '',
-            'texture' => $this->texture ?? '',
-            'type_delivery' => $this->type_delivery ?? '',
+            'need_tax' => $this->need_tax,
+            'can_use_coupon' => $this->can_use_coupon,
+            'can_use_point' => $this->can_use_point,
+            'count' => $this->count,
+            'type_delivery' => $this->type_delivery,
             'format_type_delivery' => TypeDelivery::getLabel($this->type_delivery),
-            'creator' => $this->creator ?? '',
-            'case' => $this->case ?? '',
-            'way_to_create' => $this->way_to_create ?? '',
-            'way_to_delivery' => $this->way_to_delivery ?? '',
-            'active' => $this->active,
+            'delivery_company' => $this->delivery_company,
+            'format_delivery_company' => DeliveryCompany::getLabel($this->delivery_company),
+            'type_delivery_price' => $this->type_delivery_price,
+            'format_type_delivery_price' => TypeDeliveryPrice::getLabel($this->type_delivery_price),
+            'price_delivery' => $this->price_delivery,
+            'prices_delivery' => $this->prices_delivery,
+            'format_prices_delivery' => $this->prices_delivery ? json_decode($this->prices_delivery) : [],
+            'min_price_for_free_delivery_price' => $this->min_price_for_free_delivery_price,
+            'can_delivery_far_place' => $this->can_delivery_far_place,
+            'delivery_price_far_place' => $this->delivery_price_far_place,
+            'delivery_company_refund' => $this->delivery_company_refund,
+            'delivery_price_refund' => $this->delivery_price_refund,
+            'delivery_address_refund' => $this->delivery_address_refund,
+            'description' => $this->description,
 
-            'format_created_at' => Carbon::make($this->created_at)->format("m.d H:i"),
+            'category_id' => $this->category_id,
+            'farm_id' => $this->farm_id,
+            'city_id' => $this->city_id,
+            'county_id' => $this->county_id,
+
+            'category' => new CategoryResource($this->whenLoaded('category')),
+            'farm' => new FarmResource($this->whenLoaded('farm')),
+            'city' => new CityResource($this->whenLoaded('city')),
+            'county' => new CountyResource($this->whenLoaded('county')),
+
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
 
         ];
     }

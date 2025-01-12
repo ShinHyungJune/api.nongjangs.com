@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateReviewsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('package_id')->nullable()->constrained('packages')->onDelete('cascade');
+            $table->foreignId('product_id')->nullable()->constrained('products')->onDelete('cascade');
+            $table->foreignId('preset_product_id')->nullable()->constrained('preset_products')->onDelete('cascade');
+            $table->boolean('best')->comment('베스트 여부')->default(0);
+            $table->string('title')->comment('제목');
+            $table->integer('score')->comment('점수');
+            $table->text('description')->nullable()->comment('내용');
+            $table->text('reply')->nullable()->comment('관리자 답글');
+            $table->dateTime('reply_at')->nullable()->comment('관리자 답글일자');
+            $table->unsignedBigInteger('point')->default(0)->comment('받은 적립금');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('reviews');
+    }
+}

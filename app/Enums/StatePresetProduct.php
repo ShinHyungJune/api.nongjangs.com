@@ -13,15 +13,13 @@ final class StatePresetProduct
 {
     const BEFORE_PAYMENT = 1;
     const READY = 2;
-    const ONGOING_PROTOTYPE  = 3;
-    const FINISH_PROTOTYPE  = 4;
-    const ONGOING_DELIVERY = 5;
-    const DELIVERED = 6;
-    const CONFIRMED = 7;
-    const CANCEL = 8;
-    const ONGOING_REFUND = 9;
-    const FINISH_REFUND = 10;
-    const DENY_REFUND = 11;
+    const ONGOING_DELIVERY = 3;
+    const DELIVERED = 4;
+    const CONFIRMED = 5;
+    const CANCEL = 6;
+    const ONGOING_REFUND = 7;
+    const FINISH_REFUND = 8;
+    const DENY_REFUND = 9;
 
     const CONFIRM_PROTOTYPE  = 12;
 
@@ -31,8 +29,6 @@ final class StatePresetProduct
             '' => '',
             self::BEFORE_PAYMENT => "결제전",
             self::READY => "상품준비중",
-            self::ONGOING_PROTOTYPE => "시안준비중",
-            self::FINISH_PROTOTYPE => "시안제작완료",
             self::ONGOING_DELIVERY => "배송중",
             self::DELIVERED => "배송완료",
             self::CONFIRMED => "구매확정",
@@ -40,7 +36,7 @@ final class StatePresetProduct
             self::ONGOING_REFUND => "교환/반품 진행중",
             self::FINISH_REFUND => "교환/반품 완료",
             self::DENY_REFUND => "교환/반품 반려",
-            self::CONFIRM_PROTOTYPE => "상품제작중", // 시안확정
+
         ];
 
         return $items[$value];
@@ -51,8 +47,6 @@ final class StatePresetProduct
         return [
             self::BEFORE_PAYMENT,
             self::READY,
-            self::ONGOING_PROTOTYPE,
-            self::FINISH_PROTOTYPE,
             self::CONFIRM_PROTOTYPE,
             self::ONGOING_DELIVERY,
             self::DELIVERED,

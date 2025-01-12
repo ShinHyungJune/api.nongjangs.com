@@ -4,13 +4,9 @@ namespace App\Jobs;
 
 use App\Enums\CategoryAlarm;
 use App\Enums\StatePresetProduct;
-use App\Enums\TypeAlarm;
-use App\Models\Alarm;
 use App\Models\Keyword;
 use App\Models\PresetProduct;
-use App\Models\Product;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;

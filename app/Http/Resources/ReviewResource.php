@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -32,7 +31,15 @@ class ReviewResource extends JsonResource
             ] : '',
             'product_id' => $this->product_id,
             'product' => $this->product ? ProductMiniResource::make($this->product) : "",
-            'presetProduct' => $this->presetProduct ? PresetProductMiniResource::make($this->presetProduct) : "",
+            'package' => $this->package ? PackageResource::make($this->package) : "",
+            'presetProduct' => $this->presetProduct ? [
+                'id' => $this->presetProduct->id,
+                'product_title' => $this->product_title,
+                'option_title' => $this->option_title,
+            ] : "",
+            'reply' => $this->reply ?? '',
+            'reply_at' => $this->reply_at ? Carbon::make($this->reply_at)->format('Y.m.d') : '',
+
             'img' => $this->img ?? '',
             'imgs' => $this->imgs,
             'photo' => $this->photo,

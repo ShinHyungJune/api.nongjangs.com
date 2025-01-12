@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enums\StatePresetProduct;
-use App\Enums\TypeDelivery;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Preset;
@@ -15,12 +13,18 @@ class PresetFactory extends Factory
 {
     protected $model = Preset::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'count' => $this->faker->randomNumber(),
+
+            'price_delivery' => $this->faker->randomNumber(),
+            'price' => $this->faker->randomNumber(),
+            'price_total' => $this->faker->randomNumber(),
+            'price_discount' => $this->faker->randomNumber(),
+            'count_option_required' => $this->faker->randomNumber(),
+            'count_option_additional' => $this->faker->randomNumber(),
 
             'order_id' => Order::factory(),
             'cart_id' => Cart::factory(),

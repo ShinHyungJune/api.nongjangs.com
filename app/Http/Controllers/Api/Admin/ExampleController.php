@@ -14,7 +14,7 @@ class ExampleController extends ApiController
 {
     /** 목록
      * @group 관리자
-     * @subgroup 모델명
+     * @subgroup 모델명(한글명)
      * @priority 1
      * @responseFile storage/responses/examples.json
      */

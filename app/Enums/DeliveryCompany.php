@@ -11,17 +11,13 @@ namespace App\Enums;
 
 final class DeliveryCompany
 {
-    const LOTTE = "1"; // 롯데택배
-    const LOGEN = "2"; // 로젠택배
-    const CJ = "3"; // CJ
-    const POST = "4"; //
-
+    const CJ = "1"; // CJ
     public static function getOptions()
     {
         return [
             [
-                'label' => DeliveryCompany::getLabel(DeliveryCompany::LOTTE),
-                'value' => DeliveryCompany::LOTTE,
+                'label' => DeliveryCompany::getLabel(DeliveryCompany::CJ),
+                'value' => DeliveryCompany::CJ,
             ],
             /*[
                 'label' => DeliveryCompany::getLabel(DeliveryCompany::LOGEN),
@@ -31,20 +27,14 @@ final class DeliveryCompany
                 'label' => DeliveryCompany::getLabel(DeliveryCompany::CJ),
                 'value' => DeliveryCompany::CJ,
             ],*/
-            [
-                'label' => DeliveryCompany::getLabel(DeliveryCompany::POST),
-                'value' => DeliveryCompany::POST,
-            ],
+
         ];
     }
 
     public static function getLabel($value)
     {
         $items = [
-            self::LOTTE => "롯데택배",
-            self::LOGEN => "로젠택배",
             self::CJ => "CJ택배",
-            self::POST => "우체국택배",
         ];
 
         return $items[$value];

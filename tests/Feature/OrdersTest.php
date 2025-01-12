@@ -3,17 +3,15 @@
 
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
-use App\Models\Banner;
 use App\Models\Coupon;
 use App\Models\Order;
-use App\Models\Preset;
 use App\Models\PayMethod;
+use App\Models\Preset;
 use App\Models\Program;
 use App\Models\User;
 use App\Models\Waiting;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class OrdersTest extends TestCase
@@ -119,7 +117,7 @@ presets : [
 
         $coupon->update(['ratio_discount' => 10]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 1, 'price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -171,7 +169,7 @@ presets : [
             'user_id' => $this->user->id,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 0]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 0]);
 
         $this->attachProduct($preset, $product);
 
@@ -195,7 +193,7 @@ presets : [
             'state' => \App\Enums\StateOrder::BEFORE_PAYMENT,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 1, 'price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -219,7 +217,7 @@ presets : [
             'state' => \App\Enums\StateOrder::BEFORE_PAYMENT,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 1, 'price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -239,7 +237,7 @@ presets : [
             'state' => \App\Enums\StateOrder::BEFORE_PAYMENT,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => \App\Models\Order::$minPrice - 1]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 1, 'price' => \App\Models\Order::$minPrice - 1]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -263,7 +261,7 @@ presets : [
 
         $coupon->update(['ratio_discount' => 10]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 1, 'price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -295,7 +293,7 @@ presets : [
             'order_id'=> \App\Models\Order::factory()->create(['state' => \App\Enums\StateOrder::SUCCESS])->id,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 1, 'price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -355,7 +353,7 @@ presets : [
             'order_id' => $order->id,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 5000]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 1, 'price' => 5000]);
         $size = \App\Models\Size::factory()->create(['price' => 1000]);
         $this->attachProduct($preset, $product, 3, null, $size);
         $this->attachProduct($preset, $product, 1, null, $size);
@@ -364,11 +362,11 @@ presets : [
             'user_id' => $this->user->id,
             'order_id' => $order->id,
         ]);
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 7000]);
+        $product = \App\Models\임시\Product::factory()->create(['open' => 1, 'price' => 7000]);
         $size = \App\Models\Size::factory()->create(['price' => 2000]);
         $this->attachProduct($preset, $product, 1, null, $size);
 
-        $additionalProduct = \App\Models\Product::factory()->create([
+        $additionalProduct = \App\Models\임시\Product::factory()->create([
             'product_id' => $product->id,
             'price' => 500
         ]);
@@ -596,7 +594,7 @@ presets : [
             'order_id' => $order->id
         ]);
 
-        $product = \App\Models\Product::factory()->create();
+        $product = \App\Models\임시\Product::factory()->create();
 
         $this->attachProduct($preset, $product);
 
@@ -713,7 +711,7 @@ presets : [
         foreach($includeOrders as $includeOrder){
             $preset = \App\Models\Preset::factory()->create(['order_id' => $includeOrder->id]);
 
-            $product = \App\Models\Product::factory()->create(['title' => $word]);
+            $product = \App\Models\임시\Product::factory()->create(['title' => $word]);
 
             $this->attachProduct($preset, $product);
         }

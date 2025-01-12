@@ -58,6 +58,11 @@ class Review extends Model implements HasMedia
         return $this->belongsTo(Product::class);
     }
 
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
+
     public function presetProduct()
     {
         return $this->belongsTo(PresetProduct::class);

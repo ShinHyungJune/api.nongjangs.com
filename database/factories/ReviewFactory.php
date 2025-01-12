@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Preset;
 use App\Models\PresetProduct;
-use App\Models\Product;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\임시\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
