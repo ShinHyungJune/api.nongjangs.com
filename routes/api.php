@@ -83,11 +83,11 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/orders", \App\Http\Controllers\Api\Admin\OrderController::class)->except(['destroy']);
     Route::delete("/orders", [\App\Http\Controllers\Api\Admin\OrderController::class, "destroy"]);
 
-    Route::patch("/presetProducts/needAlertDelivery/{presetProduct}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "updateNeedAlertDelivery"]);
+    /*Route::patch("/presetProducts/needAlertDelivery/{presetProduct}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "updateNeedAlertDelivery"]);
     Route::patch("/presetProducts/state/{presetProduct}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "updateState"]);
     Route::patch("/presetProducts/willPrototypeFinishedAt/{presetProduct}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "updateWillPrototypeFinishedAt"]);
     Route::resource("/presetProducts", \App\Http\Controllers\Api\Admin\PresetProductController::class)->except(['destroy']);
-    Route::delete("/presetProducts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "destroy"]);
+    Route::delete("/presetProducts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "destroy"]);*/
 
     Route::resource("/refunds", \App\Http\Controllers\Api\Admin\RefundController::class)->except(['destroy']);
     Route::delete("/refunds", [\App\Http\Controllers\Api\Admin\RefundController::class, "destroy"]);
@@ -128,8 +128,6 @@ Route::get("/faqs", [\App\Http\Controllers\Api\FaqController::class, "index"]);
 Route::get("/notices", [\App\Http\Controllers\Api\NoticeController::class, "index"]);
 Route::get("/notices/{notice}", [\App\Http\Controllers\Api\NoticeController::class, "show"]);
 
-Route::get("/products", [\App\Http\Controllers\Api\임시\ProductController::class, "index"]);
-Route::get("/products/{product}", [\App\Http\Controllers\Api\임시\ProductController::class, "show"]);
 
 Route::get("/categories", [\App\Http\Controllers\Api\CategoryController::class, "index"]);
 // Route::get("/recommendCategories", [\App\Http\Controllers\Api\RecommendCategoryController::class, "index"]);
@@ -145,14 +143,6 @@ Route::get("/farmStories/{farmStory}", [\App\Http\Controllers\Api\FarmStoryContr
 Route::get("/products", [\App\Http\Controllers\Api\ProductController::class, "index"]);
 
 
-Route::get("/presetProducts", [\App\Http\Controllers\Api\임시\PresetProductController::class, "index"]);
-Route::get("/presetProducts/{uuid}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "show"]);
-Route::delete("/presetProducts/{uuid}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "destroy"]);
-Route::patch("/presetProducts/{uuid}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "update"]);
-Route::patch("/presetProducts/count/{uuid}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "updateCount"]);
-
-Route::get("/presets", [\App\Http\Controllers\Api\임시\PresetController::class, "index"]);
-Route::post("/presets", [\App\Http\Controllers\Api\임시\PresetController::class, "store"]);
 
 
 Route::post('/verifyNumbers', [\App\Http\Controllers\Api\VerifyNumberController::class, "store"]);
@@ -180,10 +170,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/qnas", [\App\Http\Controllers\Api\QnaController::class, "store"]);
     Route::patch("/qnas/{qna}", [\App\Http\Controllers\Api\QnaController::class, "update"]);
 
-    Route::post("/products", [\App\Http\Controllers\Api\임시\ProductController::class, "store"]);
-    Route::patch("/products/{product}", [\App\Http\Controllers\Api\임시\ProductController::class, "update"]);
-    Route::delete("/products/{product}", [\App\Http\Controllers\Api\임시\ProductController::class, "destroy"]);
-
     Route::patch("/orders/cancel/{order}",[\App\Http\Controllers\Api\OrderController::class, 'cancel']);
     Route::get("/orders",[\App\Http\Controllers\Api\OrderController::class, 'index']);
 
@@ -196,7 +182,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "update"]);
     Route::delete("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "destroy"]);
 
-    Route::patch("/presetProducts/confirm/{presetProduct}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "confirm"]);
+    // Route::patch("/presetProducts/confirm/{presetProduct}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "confirm"]);
 
     Route::get('/pointHistories', [\App\Http\Controllers\Api\PointHistoryController::class, "index"]);
     Route::get('/couponHistories', [\App\Http\Controllers\Api\CouponHistoryController::class, "index"]);

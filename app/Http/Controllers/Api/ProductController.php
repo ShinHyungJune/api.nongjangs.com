@@ -12,6 +12,11 @@ use League\Glide\Api\Api;
 
 class ProductController extends ApiController
 {
+    /** 목록
+     * @group 사용자
+     * @subgroup Product(상품)
+     * @responseFile storage/responses/product.json
+     */
     public function index(ProductRequest $request)
     {
         $items = Product::withCount('reviews as count_review')
@@ -32,7 +37,11 @@ class ProductController extends ApiController
         return ProductResource::collection($items);
     }
 
-
+    /** 상세
+     * @group 사용자
+     * @subgroup Product(상품)
+     * @responseFile storage/responses/product.json
+     */
     public function show(Product $product)
     {
         return $this->respondSuccessfully(ProductResource::make($product));
