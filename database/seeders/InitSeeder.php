@@ -1181,76 +1181,6 @@ class InitSeeder extends Seeder
         }
     }
 
-    public function createProducts()
-    {
-        $categories = Category::get();
-
-        foreach($categories as $category){
-            for($i=0; $i<2; $i++){
-                $createdItem = Product::factory()->create([
-                    'title' => "[{$category->title}] 상품".($i + 1),
-                    'pop' => 1,
-                    'special' => 1,
-                    'recommend' => 1,
-                ]);
-
-                $createdItem->categories()->attach($category->id);
-            }
-        }
-
-        $products = Product::get();
-        foreach($products as $product) {
-            Color::factory()->create(['product_id' => $product->id, 'title' => '화이트']);
-            Color::factory()->create(['product_id' => $product->id, 'title' => '블랙']);
-            Size::factory()->create(['product_id' => $product->id, 'title' => '소 (15cm * 15cm)']);
-            Size::factory()->create(['product_id' => $product->id, 'title' => '중 (30cm * 30cm)']);
-            Size::factory()->create(['product_id' => $product->id, 'title' => '대 (60cm * 60cm)']);
-            Product::factory()->create(['product_id' => $product->id, 'title' => '추가상품예시1']);
-            Product::factory()->create(['product_id' => $product->id, 'title' => '추가상품예시2']);
-
-            if (config("app.env") != 'local') {
-                $product->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
-                $product->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
-                $product->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs_prototype", "s3");
-                $product->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs_prototype", "s3");
-                $product->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs_real", "s3");
-                $product->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs_real", "s3");
-                $product->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs_circle", "s3");
-                $product->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs_circle", "s3");
-            }
-        }
-    }
-
-    public function createCouponGroups()
-    {
-        $items = [
-            [
-                'title' => '5% 할인',
-                'ratio_discount' => 5,
-                'duration' => '60'
-            ],
-
-            [
-                'title' => '10% 할인',
-                'ratio_discount' => 10,
-                'duration' => '60'
-            ],
-        ];
-
-        $users = User::get();
-
-        foreach($items as $item){
-            $createdItem = CouponGroup::create($item);
-
-            foreach($users as $user){
-                Coupon::factory()->create([
-                    'coupon_group_id' => $createdItem->id,
-                    'user_id' => $user->id,
-                ]);
-            }
-        }
-    }
-
     public function createUsers()
     {
         User::factory()->create([
@@ -1276,44 +1206,6 @@ class InitSeeder extends Seeder
         ]);
     }
 
-    public function createCategories()
-    {
-        $items = [
-            [
-                'title' => '감사패',
-            ],
-            [
-                'title' => '트로피',
-            ],
-            [
-                'title' => '싱글패',
-            ],
-            [
-                'title' => '이글패',
-            ],
-            [
-                'title' => '홀인원',
-            ],
-            [
-                'title' => '교회',
-            ],
-            [
-                'title' => '명패',
-            ],
-            [
-                'title' => '기타',
-            ],
-        ];
-
-        foreach($items as $item){
-            $createdItem = Category::factory()->create($item);
-
-            if(config("app.env") != 'local'){
-                $createdItem->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
-                $createdItem->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("example", "s3");
-            }
-        }
-    }
     public function createDeliveries()
     {
         $users = User::get();

@@ -18,7 +18,7 @@ class MaterialFactory extends Factory
             'updated_at' => Carbon::now(),
             'type' => $this->faker->word(),
             'title' => $this->faker->word(),
-            'description' => $this->faker->text(),
+            'descriptions' => "['123', '222']",
 
             'category_id' => Category::factory(),
         ];

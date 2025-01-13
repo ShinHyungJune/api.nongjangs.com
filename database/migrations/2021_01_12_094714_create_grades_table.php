@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
+            $table->integer('level');
             $table->string('title');
             $table->unsignedFloat('ratio_refund')->comment('적립률');
             $table->integer('min_price')->comment('구매금액');

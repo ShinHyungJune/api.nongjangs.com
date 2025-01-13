@@ -1,0 +1,32 @@
+{
+  "id": "고유번호",
+  "title": "제목",
+  "moment": "특정 시점에 발급되는 쿠폰 (1 - UPDATE_PROFILE 프로필 업데이트 | 2 - GRADE 등급혜택 | 3 - BIRTHDAY 생일쿠폰 | 4 - FIRST_ORDER 첫구매)",
+  "format_moment": "표시용: 특정 시점에 발급되는 쿠폰",
+  "type": "유형 (1 - ALL 모든상품 | 2 - PACKAGE 꾸러미 | 3 - PRODUCT 직거래상품 | 4 - DELIVERY 배송비)",
+  "format_type": "표시용: 유형",
+  "type_package": "꾸러미 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)",
+  "format_type_package": "표시용: 꾸러미 유형",
+  "all_product": "모든 상품 해당여부",
+  "target": "발급대상 (1 - ALL 전체회원 | 2 - GRADE 고객등급 | 3 - ORDER_HISTORY 구매이력 | 4 - PERSONAL 개인회원)",
+  "format_target": "표시용: 발급대상",
+  "min_order": "최소 구매이력수 (최근 3개월 n회 구매한 사람에게만 적용하는 쿠폰)",
+  "type_discount": "할인유형 (1 - NUMBER 원 | 2 - RATIO %)",
+  "format_type_discount": "표시용: 할인유형",
+  "value": "할인값",
+  "max_price_discount": "최대할인금액",
+  "min_price_order": "최소주문금액",
+  "type_expire": "만료유형 (1 - SPECIFIC 특정기간 | 2 - FROM_DOWNLOAD 다운로드일 기준)",
+  "format_type_expire": "표시용: 만료유형",
+  "started_at": "시작일자",
+  "format_started_at": "표시용: 시작일자",
+  "finished_at": "종료일자",
+  "format_finished_at": "표시용: 종료일자",
+  "days": "유효기간(다운로드일 기준)",
+  "grade_id": "등급고유번호",
+  "has": "보유여부 (1 - 보유 | 0 - 미보유)",
+  "grade (null주의)": {
+    "id": "고유번호",
+    "title": "등급명"
+  }
+}
