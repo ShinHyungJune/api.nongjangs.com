@@ -13,12 +13,14 @@ final class TypePointHistory
 {
     const USER_RECOMMENDED = 1;
     const USER_RECOMMEND = 2;
+    const ORDER_CREATED = 3;
 
     public static function getValues()
     {
         return [
             self::USER_RECOMMENDED,
             self::USER_RECOMMEND,
+            self::ORDER_CREATED,
         ];
     }
 
@@ -27,6 +29,7 @@ final class TypePointHistory
         $items = [
             self::USER_RECOMMENDED => "추천인 추천받음",
             self::USER_RECOMMEND => "추천인 추천함",
+            self::ORDER_CREATED => "주문",
             "" => "",
         ];
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\MomentCouponGroup;
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
 use App\Enums\TypeAlarm;
@@ -53,23 +54,21 @@ class Order extends Model
                 $model->success();
                 $model->process_success = true;
 
-                Alarm::create([
+                /*Alarm::create([
                     'contact' => $model->buyer_contact,
                     'order_id' => $model->id,
                     'type' => TypeAlarm::ORDER_SUCCESS,
-                ]);
+                ]);*/
 
                 // 결제성공했을 때 시안 이미 작성한 애들은 시안제작필요 알림 보내기
                 $presetProducts = $model->presetProducts()->where('additional', 0)->get();
 
                 foreach($presetProducts as $presetProduct){
-                    if($presetProduct->submit_request)
+                    /*if($presetProduct->submit_request)
                         Alarm::create([
-                            'contact' => env('ADMIN_CONTACT', '01092106861'),
                             'preset_product_id' => $presetProduct->id,
                             'type' => TypeAlarm::PRESET_PRODUCT_PROTOTYPE_REQUIRED,
-                        ]);
-                        // Mail::to(env('MAIL_ADMIN_ADDRESS', 'janginbiz@naver.com'))->send(new PrototypeNeeded($presetProduct));
+                        ]);*/
                 }
             }
         });
@@ -89,34 +88,52 @@ class Order extends Model
         });
     }
 
+    public function createFirstOrderCoupon()
+    {
+        $couponGroup = CouponGroup::where('moment', MomentCouponGroup::FIRST_ORDER)->first();
+
+        if($couponGroup){
+            $coupon = Coupon::where('user_id', $this->user_id)->where('coupon_group_id', $couponGroup->id)->first();
+
+            if(!$coupon){
+                Coupon::create([
+                    'user_id' => $this->user_id,
+                    'coupon_group_id' => $couponGroup->id,
+                ]);
+            }
+        }
+
+    }
+
     // 포인트내역, 쿠폰내역 기록, 장바구니 삭제
     public function record()
     {
         if(!$this->process_record) {
+            // 첫구매 쿠폰 발급
             $user = User::withTrashed()->find($this->user_id);
 
-            if ($user) {
-                if($this->point_use){
-                    $user->update(['point' => $user->point - $this->point_use]);
+            $this->createFirstOrderCoupon();
 
-                    $user->pointHistories()->create([
-                        'point_current' => $user->point,
-                        'point' => $this->point_use,
-                        'type' => TypePointHistory::ORDER_CREATED,
-                        'increase' => 0,
-                    ]);
-                }
+            if($this->point_use){
+                $user->update(['point' => $user->point - $this->point_use]);
 
-                $coupon = $this->coupon;
-
-                if ($coupon) {
-                    $user->couponHistories()->create([
-                        'title' => $coupon->title,
-                        'type' => TypeCouponHistory::ORDER_CREATED,
-                        'increase' => 0,
-                    ]);
-                }
+                $user->pointHistories()->create([
+                    'point_current' => $user->point,
+                    'point' => $this->point_use,
+                    'type' => TypePointHistory::ORDER_CREATED,
+                    'increase' => 0,
+                ]);
             }
+
+            /*$coupon = $this->coupon;
+
+            if ($coupon) {
+                $user->couponHistories()->create([
+                    'title' => $coupon->title,
+                    'type' => TypeCouponHistory::ORDER_CREATED,
+                    'increase' => 0,
+                ]);
+            }*/
 
             // 장바구니에서 삭제
             $this->presets()->update([
@@ -390,8 +407,8 @@ class Order extends Model
             'agree_open' => isset($data['agree_open']) ? $data['agree_open'] : 0,
         ]);
 
-        if($coupon)
-            $coupon->update(['order_id' => $this->id]);
+        /*if($coupon)
+            $coupon->update(['order_id' => $this->id]);*/
 
         return [
             'success' => true,
@@ -499,10 +516,10 @@ class Order extends Model
         return $result;
     }
 
-    public function coupon()
+   /* public function coupon()
     {
         return $this->hasOne(Coupon::class);
-    }
+    }*/
 
     public function getPriceProductsDiscountAttribute()
     {

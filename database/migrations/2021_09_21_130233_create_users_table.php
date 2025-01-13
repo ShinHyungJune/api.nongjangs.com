@@ -39,6 +39,9 @@ class CreateUsersTable extends Migration
             $table->string("address_zipcode")->nullable()->comment("주소 우편번호");
             $table->string('password')->nullable();
 
+            $table->integer('count_family')->nullable()->comment('가구원수');
+            $table->date('birth')->nullable()->comment('생년월일');
+
             $table->boolean("admin")->default(false);
             $table->boolean("master")->default(false);
 

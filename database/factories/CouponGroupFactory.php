@@ -2,6 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Enums\MomentCouponGroup;
+use App\Enums\TargetCouponGroup;
+use App\Enums\TypeCouponGroup;
+use App\Enums\TypeDiscount;
+use App\Enums\TypeExpire;
 use App\Models\CouponGroup;
 use App\Models\Grade;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -17,22 +22,22 @@ class CouponGroupFactory extends Factory
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'title' => $this->faker->word(),
-            'moment' => $this->faker->randomNumber(),
-            'type' => $this->faker->randomNumber(),
-            'type_package' => $this->faker->randomNumber(),
+            'moment' => null,
+            'type' => TypeCouponGroup::ALL,
+            'type_package' => null,
             'all_product' => $this->faker->boolean(),
-            'target' => $this->faker->randomNumber(),
+            'target' => TargetCouponGroup::ALL,
             'min_order' => $this->faker->randomNumber(),
-            'type_discount' => $this->faker->randomNumber(),
+            'type_discount' => TypeDiscount::NUMBER,
             'value' => $this->faker->randomNumber(),
             'max_price_discount' => $this->faker->randomNumber(),
             'min_price_order' => $this->faker->randomNumber(),
-            'type_expire' => $this->faker->randomNumber(),
+            'type_expire' => TypeExpire::FROM_DOWNLOAD,
             'started_at' => Carbon::now(),
             'finished_at' => Carbon::now(),
             'days' => $this->faker->randomNumber(),
 
-            'grade_id' => Grade::factory(),
+            'grade_id' => null,
         ];
     }
 }

@@ -2,40 +2,51 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\TypeCouponGroup;
+use App\Enums\TypeExpire;
 use App\Http\Requests\CouponGroupRequest;
 use App\Http\Resources\CouponGroupResource;
 use App\Models\CouponGroup;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class CouponGroupController extends ApiController
 {
-    public function index()
+    /** 목록
+     * @group 사용자
+     * @subgroup CouponGroup(쿠폰그룹)
+     * @responseFile storage/responses/couponGroups.json
+     */
+    public function index(CouponGroupRequest $request)
     {
-        $items = CouponGroup::with(['grade']);
+        $items = CouponGroup::where('moment', null);
 
-        return CouponGroupResource::collection(CouponGroup::all());
-    }
+        $types = [TypeCouponGroup::ALL, TypeCouponGroup::DELIVERY];
 
-    public function store(CouponGroupRequest $request)
-    {
-        return new CouponGroupResource(CouponGroup::create($request->validated()));
-    }
+        if($request->product_id) {
+            $types = array_merge($types, [TypeCouponGroup::PRODUCT]);
 
-    public function show(CouponGroup $couponGrou)
-    {
-        return new CouponGroupResource($couponGrou);
-    }
+            $items = $items->where(function (Builder $query) use($request, $types){
+                $query->whereHas('products', function($query) use($request){
+                    $query->where('products.id', $request->product_id);
+                })->orWhere('all_product', 1)
+                    ->orWhereIn('type', [TypeCouponGroup::ALL, TypeCouponGroup::DELIVERY]);
+            });
+        }
 
-    public function update(CouponGroupRequest $request, CouponGroup $couponGrou)
-    {
-        $couponGrou->update($request->validated());
+        $items = $items->whereIn('type', $types);
 
-        return new CouponGroupResource($couponGrou);
-    }
+        $items = $items->where(function (Builder $query) {
+            $query->where('type_expire', TypeExpire::FROM_DOWNLOAD)
+                ->orWhere(function (Builder $query) {
+                    $query->where('type_expire', TypeExpire::SPECIFIC)
+                        ->where('started_at', '<=', Carbon::now())
+                        ->where('finished_at', '>=', Carbon::now());
+                });
+        });
 
-    public function destroy(CouponGroup $couponGrou)
-    {
-        $couponGrou->delete();
+        $items = $items->latest()->paginate(100);
 
-        return response()->json();
+        return CouponGroupResource::collection($items);
     }
 }

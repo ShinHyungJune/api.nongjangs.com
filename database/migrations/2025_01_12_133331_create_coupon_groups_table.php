@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('coupon_groups', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('moment');
+            $table->integer('moment')->nullable();
             $table->integer('type');
             $table->integer('type_package')->nullable();
             $table->boolean('all_product')->nullable();

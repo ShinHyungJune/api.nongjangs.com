@@ -141,8 +141,7 @@ Route::get("/recipes", [\App\Http\Controllers\Api\RecipeController::class, "inde
 Route::get("/farmStories", [\App\Http\Controllers\Api\FarmStoryController::class, "index"]);
 Route::get("/farmStories/{farmStory}", [\App\Http\Controllers\Api\FarmStoryController::class, "show"]);
 Route::get("/products", [\App\Http\Controllers\Api\ProductController::class, "index"]);
-
-
+Route::get("/couponGroups", [\App\Http\Controllers\Api\CouponGroupController::class, "index"]);
 
 
 Route::post('/verifyNumbers', [\App\Http\Controllers\Api\VerifyNumberController::class, "store"]);

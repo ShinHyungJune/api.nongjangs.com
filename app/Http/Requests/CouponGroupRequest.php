@@ -70,7 +70,7 @@ class CouponGroupRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        '' => []
+                        'product_id' => ['nullable', 'integer']
                     ];
 
                 case 'store':
@@ -94,8 +94,8 @@ class CouponGroupRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'product_id' => [
+                'description' => '<span class="point">상품 고유번호</span>',
             ],
 
             // 늘 쓰이는 애들

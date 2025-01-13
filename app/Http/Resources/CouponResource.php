@@ -10,13 +10,12 @@ class CouponResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'id' => $this->id,
 
             'user_id' => $this->user_id,
             'coupon_group_id' => $this->coupon_group_id,
-            'order_id' => $this->order_id,
+
+            'use' => $this->use,
 
             'couponGroup' => new CouponGroupResource($this->whenLoaded('couponGroup')),
         ];

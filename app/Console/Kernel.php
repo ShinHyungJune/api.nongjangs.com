@@ -6,6 +6,7 @@ use App\Console\Commands\AlertDeliveryStart;
 use App\Console\Commands\AlertReviewNeed;
 use App\Console\Commands\AlertWaitPrototype;
 use App\Console\Commands\CancelCampaigns;
+use App\Console\Commands\CheckBirthday;
 use App\Console\Commands\CheckDeliveryState;
 use App\Console\Commands\ConfirmPresets;
 use App\Console\Commands\GetSupportBusiness;
@@ -31,6 +32,7 @@ class Kernel extends ConsoleKernel
         AlertReviewNeed::class,
         CheckDeliveryState::class,
         AlertWaitPrototype::class,
+        CheckBirthday::class,
     ];
 
     /**

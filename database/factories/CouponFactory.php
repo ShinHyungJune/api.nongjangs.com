@@ -21,7 +21,7 @@ class CouponFactory extends Factory
 
             'user_id' => User::factory(),
             'coupon_group_id' => CouponGroup::factory(),
-            'order_id' => Order::factory(),
+            'use' => 0,
         ];
     }
 }

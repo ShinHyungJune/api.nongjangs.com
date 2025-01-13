@@ -18,6 +18,7 @@ class GradeFactory extends Factory
             'title' => $this->faker->word(),
             'ratio_refund' => $this->faker->randomFloat(),
             'min_price' => $this->faker->randomNumber(),
+            'min_count_package' => 10,
         ];
     }
 }

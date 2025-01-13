@@ -20,7 +20,7 @@ class CouponGroupResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'moment' => $this->moment,
-            'format_moment' => $this->moment ? MomentCouponGroup::getLabel($this->moment),
+            'format_moment' => $this->moment ? MomentCouponGroup::getLabel($this->moment) : '',
             'type' => $this->type,
             'format_type' => $this->type ? TypeCouponGroup::getLabel($this->type) : '',
             'type_package' => $this->type_package,
@@ -43,7 +43,7 @@ class CouponGroupResource extends JsonResource
             'days' => $this->days,
             'grade_id' => $this->grade_id,
             'has' => $this->has,
-            'grade' => new GradeResource($this->whenLoaded('grade')),
+            'grade' => $this->grade ? GradeResource::make($this->grade) : '',
         ];
     }
 }

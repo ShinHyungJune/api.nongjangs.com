@@ -26,4 +26,14 @@ class Coupon extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function presetProduct()
+    {
+        return $this->hasOne(PresetProduct::class);
+    }
+
+    public function package()
+    {
+        return $this->hasOne(Package::class);
+    }
 }

@@ -87,6 +87,7 @@ class InitSeeder extends Seeder
     {
         DB::statement("SET foreign_key_checks=0");
 
+        Grade::truncate();
         User::truncate();
         Banner::truncate();
         Pop::truncate();
@@ -187,7 +188,7 @@ class InitSeeder extends Seeder
         $items = [
             [
                 'title' => '개인정보입력 할인 쿠폰',
-                'moment' => MomentCouponGroup::PROFILE,
+                'moment' => MomentCouponGroup::UPDATE_PROFILE,
                 'type' => TypeCouponGroup::ALL,
                 'target' => TargetCouponGroup::ALL,
                 'type_discount' => TypeDiscount::NUMBER,
@@ -224,6 +225,7 @@ class InitSeeder extends Seeder
             ],
             [
                 'title' => '첫구매',
+                'moment' => MomentCouponGroup::FIRST_ORDER,
                 'type' => TypeCouponGroup::ALL,
                 'target' => TargetCouponGroup::ALL,
                 'type_discount' => TypeDiscount::NUMBER,
@@ -653,25 +655,100 @@ class InitSeeder extends Seeder
     {
         $items = [
             [
-                'title' => '등급1',
+                'title' => '씨앗 꾸러기',
+                'ratio_refund' => 0.1,
+                'min_price' => 30000,
+                'min_count_package' => 1,
+                'level' => 1,
+                'img' => '/images/lv-1.png',
+                'price_coupon' => 1000.
+            ],
+            [
+                'title' => '새싹 꾸러기',
+                'ratio_refund' => 0.2,
+                'min_price' => 80000,
+                'min_count_package' => 2,
+                'level' => 2,
+                'img' => '/images/lv-2.png',
+                'price_coupon' => 2000.
+            ],
+            [
+                'title' => '줄기 꾸러기',
+                'ratio_refund' => 0.3,
+                'min_price' => 150000,
+                'min_count_package' => 5,
+                'level' => 3,
+                'img' => '/images/lv-3.png',
+                'price_coupon' => 2500.
+            ],
+            [
+                'title' => '잎새 꾸러기',
+                'ratio_refund' => 1,
+                'min_price' => 300000,
+                'min_count_package' => 9,
+                'level' => 4,
+                'img' => '/images/lv-4.png',
+                'price_coupon' => 3000.
+            ],
+            [
+                'title' => '꽃잎 꾸러기',
+                'ratio_refund' => 1.5,
+                'min_price' => 500000,
+                'min_count_package' => 14,
+                'level' => 5,
+                'img' => '/images/lv-5.png',
+                'price_coupon' => 4000.
+            ],
+            [
+                'title' => '열매 꾸러기',
                 'ratio_refund' => 2,
-                'min_price' => 0,
+                'min_price' => 700000,
+                'min_count_package' => 26,
+                'level' => 6,
+                'img' => '/images/lv-6.png',
+                'price_coupon' => 5000.
             ],
             [
-                'title' => '등급2',
+                'title' => '풍요 꾸러기',
+                'ratio_refund' => 2.5,
+                'min_price' => 1000000,
+                'min_count_package' => 38,
+                'level' => 7,
+                'img' => '/images/lv-7.png',
+                'price_coupon' => 10000.
+            ],
+            [
+                'title' => '영광 꾸러기',
                 'ratio_refund' => 3,
-                'min_price' => 10000,
-            ],
-            [
-                'title' => '등급3',
-                'ratio_refund' => 4,
-                'min_price' => 50000,
+                'min_price' => 1500000,
+                'min_count_package' => 48,
+                'level' => 8,
+                'img' => '/images/lv-8.png',
+                'price_coupon' => 15000.
             ],
         ];
 
         foreach($items as $item){
-            Grade::create($item);
+            $grade = Grade::create(\Arr::except($item, ['img', 'price_coupon']));
+
+            if(config("app.env") != 'local')
+                $grade->addMedia(public_path($item['img']))->preservingOriginal()->toMediaCollection("img", "s3");
+
+            CouponGroup::create([
+                'title' => $item['title']." 쿠폰",
+                'moment' => MomentCouponGroup::GRADE,
+                'grade_id' => $grade->id,
+                'type' => TypeCouponGroup::ALL,
+                'target' => TargetCouponGroup::ALL,
+                'type_discount' => TypeDiscount::NUMBER,
+                'value' => $item['price_coupon'],
+                'max_price_discount' => $item['price_coupon'],
+                'min_price_order' => $item['price_coupon'] + 1000,
+                'type_expire' => TypeExpire::FROM_DOWNLOAD,
+                'days' => 60,
+            ]);
         }
+
     }
 
     public function createFarmStories()
