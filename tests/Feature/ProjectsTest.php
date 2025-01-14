@@ -1,7 +1,9 @@
 <?php
 
 
+use App\Models\Project;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -33,25 +35,57 @@ class ProjectsTest extends TestCase
     /** @test */
     public function 누구나_목록을_조회할_수_있다()
     {
+        $models = Project::factory()->count(3)->create();
 
+        $items = $this->json('get', '/api/projects', [])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($models), count($items));
     }
 
     /** @test */
     public function 데이터에서_남은일자를_조회할_수_있다()
     {
+        $days = 1;
 
+        $model = Project::factory()->create([
+            'finished_at' => Carbon::now()->addDays($days)
+        ]);
+
+        $items = $this->json('get', '/api/projects', [])->decodeResponseJson()['data'];
+
+        $this->assertEquals($days, $items[0]['days_remain']);
     }
 
     /** @test */
     public function 데이터에서_남은시간을_조회할_수_있다()
     {
+        $seconds = 1000;
 
+        $model = Project::factory()->create([
+            'finished_at' => Carbon::now()->addSeconds($seconds)
+        ]);
+
+        $items = $this->json('get', '/api/projects', [])->decodeResponseJson()['data'];
+
+        // 실행하느라 1초 차이남)
+        $this->assertEquals($seconds - 1, $items[0]['time_remain']);
     }
 
     /** @test */
     public function 데이터에서_진행률을_조회할_수_있다()
     {
+        $countGoal = 100;
+        $countParticipate = 10;
 
+        $model = Project::factory()->create([
+            'count_goal' => $countGoal,
+            'count_participate' => $countParticipate
+        ]);
+
+        $items = $this->json('get', '/api/projects', [])->decodeResponseJson()['data'];
+
+        // 실행하느라 1초 차이남)
+        $this->assertEquals(10, $items[0]['ratio_progress']);
     }
 
 }

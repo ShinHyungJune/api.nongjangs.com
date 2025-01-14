@@ -17,7 +17,7 @@ class ProjectFactory extends Factory
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'started_at' => Carbon::now(),
-            'finished_at' => Carbon::now(),
+            'finished_at' => Carbon::now()->addDays(2),
             'count_goal' => $this->faker->randomNumber(),
             'count_participate' => $this->faker->randomNumber(),
 

@@ -19,8 +19,8 @@ class ProjectController extends ApiController
         $items = new Project();
 
         $items = $items->where('started_at', '<=', Carbon::now())
-        ->where('finished_at', '>=', Carbon::now())
-        ->paginate(30);
+            ->where('finished_at', '>=', Carbon::now())
+            ->paginate(30);
 
         return ProjectResource::collection($items);
     }
