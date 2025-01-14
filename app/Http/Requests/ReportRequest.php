@@ -47,7 +47,10 @@ class ReportRequest extends FormRequest
 
                 case 'store':
                     return [
-                        '' => []
+                        'report_category_id' => ['required', 'integer'],
+                        'reportable_id' => ['required', 'integer'],
+                        'reportable_type' => ['required', 'string', 'max:500'],
+                        'description' => ['required', 'string', 'max:50000'],
                     ];
 
                 case 'update':
@@ -66,8 +69,17 @@ class ReportRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'report_category_id' => [
+                'description' => '<span class="point">신고유형 고유번호</span>',
+            ],
+            'reportable_id' => [
+                'description' => '<span class="point">신고대상 고유번호</span>',
+            ],
+            'reportable_type' => [
+                'description' => '<span class="point">신고대상 모델명 (App\Models\Product - 상품 | App\Models\Review - 리뷰)</span>',
+            ],
+            'description' => [
+                'description' => '<span class="point">내용</span>',
             ],
 
             // 늘 쓰이는 애들

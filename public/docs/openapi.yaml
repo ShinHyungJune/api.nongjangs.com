@@ -26,7 +26,7 @@ paths:
                 preset_id:
                   type: integer
                   description: '<span class="point">상품조합 고유번호</span>.'
-                  example: 10
+                  example: 6
                   nullable: false
               required:
                 - preset_id
@@ -73,12 +73,12 @@ paths:
                 preset_id:
                   type: integer
                   description: '<span class="point">상품조합 고유번호</span>.'
-                  example: 2
+                  example: 11
                   nullable: false
                 count:
                   type: integer
                   description: '<span class="point">개수</span>. value(은)는  최소 1 이상이어야 합니다.'
-                  example: 53
+                  example: 63
                   nullable: false
               required:
                 - preset_id
@@ -115,7 +115,7 @@ paths:
                 contact:
                   type: string
                   description: '<span class="point">연락처</span>. Must not be greater than 500 characters.'
-                  example: zvcozmkwonc
+                  example: npyih
                   nullable: false
               required:
                 - contact
@@ -139,17 +139,17 @@ paths:
                 ids:
                   type: string
                   description: '<span class="point">아이디</span>. Must not be greater than 500 characters.'
-                  example: vuhtauacczm
+                  example: c
                   nullable: false
                 contact:
                   type: string
                   description: '<span class="point">연락처</span>. Must not be greater than 500 characters.'
-                  example: gwuthnshowa
+                  example: wwt
                   nullable: false
                 password:
                   type: string
                   description: '<span class="point">비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters.'
-                  example: "/U5q6nO;qIl'%?z%"
+                  example: '`Jn^r[W_+\)?XO'
                   nullable: false
               required:
                 - ids
@@ -171,7 +171,7 @@ paths:
         in: path
         name: review_id
         description: 'The ID of the review.'
-        example: 3
+        example: 5
         required: true
         schema:
           type: integer
@@ -194,7 +194,7 @@ paths:
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: oaglooudmyxundhbrvwlxsvc
+                  example: wjomxeqzhdjbz
                   nullable: false
               required:
                 - contact
@@ -217,12 +217,12 @@ paths:
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: woowuxizrsp
+                  example: sidubwgmg
                   nullable: false
                 number:
                   type: string
                   description: "<span class='point'>인증번호</span>. Must not be greater than 500 characters."
-                  example: lam
+                  example: cwozaxjvxzb
                   nullable: false
               required:
                 - contact
@@ -327,7 +327,7 @@ paths:
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: qipamdsifdnxghmz
+                  example: dluo
                   nullable: true
       security: []
     post:
@@ -471,7 +471,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the example.'
-        example: esse
+        example: consequatur
         required: true
         schema:
           type: string
@@ -627,12 +627,12 @@ paths:
                 type:
                   type: integer
                   description: '<span class="point">유형 (1 - 메인배너 | 2 - 농가이야기 | 3 - 정기구독 | 4 - 직거래장터)</span>.'
-                  example: 20
+                  example: 11
                   nullable: true
                 word:
                   type: string
                   description: 'Must not be greater than 500 characters.'
-                  example: zrtjzafhtle
+                  example: ukzrtqcaxupuvhqkq
                   nullable: true
       security: []
     post:
@@ -753,42 +753,42 @@ paths:
                 title:
                   type: string
                   description: '<span class="point">제목</span>. Must not be greater than 500 characters.'
-                  example: syvsrfqlbulgrhkmtocaiec
+                  example: uxhxvyuuvijtgxvr
                   nullable: false
                 subtitle:
                   type: string
                   description: '<span class="point">부제목</span>. Must not be greater than 500 characters.'
-                  example: fxgcsond
+                  example: gnegzsr
                   nullable: true
                 url:
                   type: string
                   description: '<span class="point">이동 URL</span>. Must not be greater than 500 characters.'
-                  example: 'http://www.considine.com/quisquam-qui-pariatur-dolorem'
+                  example: 'http://morar.com/'
                   nullable: true
                 button:
                   type: string
                   description: '<span class="point">버튼명</span>. Must not be greater than 500 characters.'
-                  example: ztrthwhhz
+                  example: mydzmvrvuucjug
                   nullable: false
                 color_text:
                   type: string
                   description: '<span class="point">글씨 색상</span>. Must not be greater than 500 characters.'
-                  example: fccvxylhdrym
+                  example: j
                   nullable: false
                 color_button:
                   type: string
                   description: '<span class="point">버튼 색상</span>. Must not be greater than 500 characters.'
-                  example: enyv
+                  example: xsxdtntjtuelkn
                   nullable: false
                 started_at:
                   type: string
                   description: '<span class="point">노출시작일</span>. Must be a valid date.'
-                  example: '2025-01-14T12:11:32'
+                  example: '2025-01-14T14:10:34'
                   nullable: false
                 finished_at:
                   type: string
                   description: '<span class="point">노출종료일</span>. Must be a valid date.'
-                  example: '2025-01-14T12:11:32'
+                  example: '2025-01-14T14:10:34'
                   nullable: false
               required:
                 - title
@@ -1038,42 +1038,42 @@ paths:
                 title:
                   type: string
                   description: '<span class="point">제목</span>. Must not be greater than 500 characters.'
-                  example: thsjncssuwfpyxvjyxh
+                  example: kuouvwwpqqelaphpydynyti
                   nullable: false
                 subtitle:
                   type: string
                   description: '<span class="point">부제목</span>. Must not be greater than 500 characters.'
-                  example: rghzcqvlneggnecoztpdq
+                  example: ddjatiuavsuvlmlp
                   nullable: true
                 url:
                   type: string
                   description: '<span class="point">이동 URL</span>. Must not be greater than 500 characters.'
-                  example: 'http://www.rau.net/earum-nam-optio-labore-velit-quam'
+                  example: 'http://ondricka.com/minima-quia-autem-est-aliquam'
                   nullable: true
                 button:
                   type: string
                   description: '<span class="point">버튼명</span>. Must not be greater than 500 characters.'
-                  example: vfwcbadagumvlpuksqyyz
+                  example: lrhikgnyasrxrnaw
                   nullable: false
                 color_text:
                   type: string
                   description: '<span class="point">글씨 색상</span>. Must not be greater than 500 characters.'
-                  example: qohvsf
+                  example: fbkwjtsbsntdguqkruwhjxw
                   nullable: false
                 color_button:
                   type: string
                   description: '<span class="point">버튼 색상</span>. Must not be greater than 500 characters.'
-                  example: ccggtootirnwmx
+                  example: oywk
                   nullable: false
                 started_at:
                   type: string
                   description: '<span class="point">노출시작일</span>. Must be a valid date.'
-                  example: '2025-01-14T12:11:36'
+                  example: '2025-01-14T14:10:38'
                   nullable: false
                 finished_at:
                   type: string
                   description: '<span class="point">노출종료일</span>. Must be a valid date.'
-                  example: '2025-01-14T12:11:36'
+                  example: '2025-01-14T14:10:38'
                   nullable: false
               required:
                 - title
@@ -1088,7 +1088,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the banner.'
-        example: 9
+        example: 16
         required: true
         schema:
           type: integer
@@ -1314,7 +1314,7 @@ paths:
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: ekpp
+                  example: mksezcmquiuhdob
                   nullable: true
       security: []
     delete:
@@ -1480,7 +1480,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the couponGroup.'
-        example: 14
+        example: 1
         required: true
         schema:
           type: integer
@@ -1661,7 +1661,7 @@ paths:
                 word:
                   type: string
                   description: "<span class='point'>검색어</span>. Must not be greater than 500 characters."
-                  example: nxuvfrvw
+                  example: uaopfxelceepgqxaxtjgto
                   nullable: true
       security: []
     delete:
@@ -1751,7 +1751,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the user.'
-        example: 8
+        example: 20
         required: true
         schema:
           type: integer
@@ -2117,7 +2117,7 @@ paths:
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: lkdejmjwxqkbwpcpzrgzu
+                  example: vtkwfmcvxjvfcv
                   nullable: true
       security: []
     delete:
@@ -2395,7 +2395,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the product.'
-        example: magnam
+        example: illo
         required: true
         schema:
           type: string
@@ -2544,17 +2544,17 @@ paths:
                 token:
                   type: string
                   description: "<span class='point'>로그인 토큰 - 소셜로그인 시 필요</span>. Must not be greater than 500 characters."
-                  example: hwaesf
+                  example: gafiaq
                   nullable: true
                 ids:
                   type: string
                   description: 'Must not be greater than 500 characters.'
-                  example: pplgc
+                  example: rlqbtswbnibuuzoc
                   nullable: true
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. Must not be greater than 500 characters."
-                  example: '[OF;sh'
+                  example: 'l"dyO!'
                   nullable: true
       security: []
   /api/users:
@@ -2632,37 +2632,37 @@ paths:
                 social_id:
                   type: string
                   description: 'Must not be greater than 500 characters.'
-                  example: syhixyx
+                  example: xmiijflpihaxwrheemwkqe
                   nullable: true
                 social_platform:
                   type: string
                   description: 'Must not be greater than 500 characters.'
-                  example: qx
+                  example: oslasvygclmtsntnhix
                   nullable: true
                 email:
                   type: string
                   description: "<span class='point'>이메일</span>. value(은)는 이메일 형태여야 합니다. Must not be greater than 500 characters."
-                  example: ora51@example.com
+                  example: filiberto.dooley@example.net
                   nullable: true
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters."
-                  example: "&L./bu'xE<"
+                  example: '6c%/d)h>9l*'
                   nullable: false
                 name:
                   type: string
                   description: "<span class='point'>이름</span>. Must not be greater than 500 characters."
-                  example: rtnoqnlughrwongpfm
+                  example: mhv
                   nullable: false
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: dbvenfd
+                  example: bqpqlsluuqwckhlvlhpmdtoym
                   nullable: false
                 agree_promotion:
                   type: boolean
                   description: "<span class='point'>프로모션 수신여부</span>."
-                  example: true
+                  example: false
                   nullable: true
               required:
                 - password
@@ -2735,17 +2735,17 @@ paths:
                 name:
                   type: string
                   description: "<span class='point'>이름</span>. Must not be greater than 500 characters."
-                  example: huoeo
+                  example: roeljddcuvmxfutjsjaxeuvdx
                   nullable: false
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: vgsqmxicwzfdrpqjaiuzqktd
+                  example: foxazhndjgeitvkyaixclgrl
                   nullable: false
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요."
-                  example: "P9ao'(|n-4>"
+                  example: '_cPnV*[.m7S}YUJtH'
                   nullable: true
               required:
                 - name
@@ -2769,12 +2769,12 @@ paths:
                 reason:
                   type: string
                   description: "<span class='point'>탈퇴사유</span>. Must not be greater than 3000 characters."
-                  example: sweilfgznecyiya
+                  example: jssaeadwubjdeohsclap
                   nullable: true
                 and_so_on:
                   type: string
                   description: "<span class='point'>기타 추가입력사항</span>. Must not be greater than 3000 characters."
-                  example: edejamobhuxfeluzlkotq
+                  example: dnguiquxitxxmc
                   nullable: true
       security: []
   /api/banners:
@@ -2929,7 +2929,7 @@ paths:
                 type:
                   type: integer
                   description: '<span class="point">유형 (1 - 메인배너 | 2 - 농가이야기 | 3 - 정기구독 | 4 - 직거래장터)</span>.'
-                  example: 17
+                  example: 3
                   nullable: true
       security: []
   /api/pops:
@@ -3109,7 +3109,7 @@ paths:
                 type:
                   type: integer
                   description: '<span class="point">1 - FARM_STORY 농가이야기 | 2 - RECIPE 레시피 | 3 - VEGETABLE_STORY 채소이야기 | 4 - PRODUCT 직거래장터 | 5 - PACKAGE 꾸러미</span>.'
-                  example: 5
+                  example: 19
                   nullable: false
               required:
                 - type
@@ -3140,12 +3140,12 @@ paths:
                 order_by:
                   type: string
                   description: '<span class="point">정렬기준 (count_like - 추천수 | created_at - 등록일자)</span>. Must not be greater than 500 characters.'
-                  example: mbgaoqsjupyhfreoyyyn
+                  example: ccuhwnbt
                   nullable: true
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: sdvuhqnapihhsjitillbcq
+                  example: o
                   nullable: true
                 tag_ids:
                   type: object
@@ -3156,12 +3156,12 @@ paths:
                 farm_id:
                   type: integer
                   description: '<span class="point">농가 고유번호 (특정 농가의 글만 보고싶을 때)</span>.'
-                  example: 13
+                  example: 10
                   nullable: true
                 exclude_farm_id:
                   type: integer
                   description: '<span class="point">제외할 농가 고유번호 (특정 농가것만 빼고 보고싶을 때)</span>.'
-                  example: 19
+                  example: 3
                   nullable: true
                 internal:
                   type: boolean
@@ -3560,12 +3560,12 @@ paths:
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: dduoswhphanqxrxpa
+                  example: qdawsxjky
                   nullable: true
                 order_by:
                   type: string
                   description: '<span class="point">정렬기준 (created_at 생성순 | count_review 리뷰순 | count_order 주문수순)</span>. Must not be greater than 500 characters.'
-                  example: krfaaynw
+                  example: mdcge
                   nullable: true
                 tag_ids:
                   type: object
@@ -3825,7 +3825,7 @@ paths:
         in: path
         name: product_id
         description: 'The ID of the product.'
-        example: 8
+        example: 18
         required: true
         schema:
           type: integer
@@ -4149,7 +4149,7 @@ paths:
                 product_id:
                   type: integer
                   description: '<span class="point">상품 고유번호</span>.'
-                  example: 1
+                  example: 16
                   nullable: true
       security: []
   /api/users/clearPassword:
@@ -4171,17 +4171,17 @@ paths:
                 email:
                   type: string
                   description: "<span class='point'>이메일</span>. Must not be greater than 500 characters."
-                  example: mikel.rempel@example.net
+                  example: pebert@example.org
                   nullable: false
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: gzhvtxn
+                  example: sflojrjdpezncazcuyao
                   nullable: false
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters."
-                  example: "byoCtO$L6nl6/Dd'e9O"
+                  example: 'Ja/#8$CpO'
                   nullable: false
               required:
                 - email
@@ -4219,7 +4219,7 @@ paths:
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: ywoef
+                  example: sbtvabhlc
                   nullable: false
               required:
                 - contact
@@ -4301,7 +4301,7 @@ paths:
                 code_recommend:
                   type: string
                   description: "<span class='point'>추천인 코드</span>. Must not be greater than 500 characters."
-                  example: wjzzme
+                  example: agucykifpq
                   nullable: false
               required:
                 - code_recommend
@@ -4325,12 +4325,12 @@ paths:
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters."
-                  example: eb6a.\
+                  example: 'XfUNk2Zx[P1o{(&'
                   nullable: false
                 password_new:
                   type: string
                   description: "<span class='point'>새 비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters."
-                  example: tjxoutcta
+                  example: lawftuwaulpavuydpkmnkm
                   nullable: false
               required:
                 - password
@@ -4365,12 +4365,12 @@ paths:
                 likeable_id:
                   type: string
                   description: '<span class="point">좋아요 대상 고유번호</span>.'
-                  example: perferendis
+                  example: nihil
                   nullable: false
                 likeable_type:
                   type: string
                   description: '<span class="point">좋아요 대상 모델타입 (App\Models\Recipe - 레시피 | App\Models\FarmStory - 농가이야기)</span>.'
-                  example: nihil
+                  example: molestiae
                   nullable: false
               required:
                 - likeable_id
@@ -4395,16 +4395,58 @@ paths:
                 bookmarkable_id:
                   type: integer
                   description: '<span class="point">북마크 대상 고유번호</span>.'
-                  example: 9
+                  example: 19
                   nullable: false
                 bookmarkable_type:
                   type: string
                   description: '<span class="point">북마크 대상 모델타입 (App\Models\Recipe - 레시피)</span>. Must not be greater than 500 characters.'
-                  example: karqncfxdknnopny
+                  example: tvhofxki
                   nullable: false
               required:
                 - bookmarkable_id
                 - bookmarkable_type
+      security: []
+  /api/reports:
+    post:
+      summary: 생성
+      operationId: ''
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 사용자
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                report_category_id:
+                  type: integer
+                  description: '<span class="point">신고유형 고유번호</span>.'
+                  example: 6
+                  nullable: false
+                reportable_id:
+                  type: integer
+                  description: '<span class="point">신고대상 고유번호</span>.'
+                  example: 8
+                  nullable: false
+                reportable_type:
+                  type: string
+                  description: '<span class="point">신고대상 모델명 (App\Models\Product - 상품 | App\Models\Review - 리뷰)</span>. Must not be greater than 500 characters.'
+                  example: ebebrpfpvljvgzmbqekq
+                  nullable: false
+                description:
+                  type: string
+                  description: '<span class="point">내용</span>. Must not be greater than 50000 characters.'
+                  example: 'Ad repellendus quo eum earum in.'
+                  nullable: false
+              required:
+                - report_category_id
+                - reportable_id
+                - reportable_type
+                - description
       security: []
   /api/images:
     post:
@@ -4441,7 +4483,7 @@ paths:
         in: path
         name: category_id
         description: 'The ID of the category.'
-        example: 20
+        example: 18
         required: true
         schema:
           type: integer
@@ -4460,7 +4502,7 @@ paths:
         in: path
         name: category_id
         description: 'The ID of the category.'
-        example: 12
+        example: 6
         required: true
         schema:
           type: integer
@@ -4489,7 +4531,7 @@ paths:
         in: path
         name: product
         description: ''
-        example: a
+        example: nihil
         required: true
         schema:
           type: string
@@ -4508,7 +4550,7 @@ paths:
         in: path
         name: product
         description: ''
-        example: et
+        example: repellendus
         required: true
         schema:
           type: string
@@ -4527,7 +4569,7 @@ paths:
         in: path
         name: order_id
         description: 'The ID of the order.'
-        example: 7
+        example: 15
         required: true
         schema:
           type: integer
@@ -4550,12 +4592,12 @@ paths:
                 imp_uid:
                   type: string
                   description: '<span class="point">아임포트 고유번호</span>. Must not be greater than 50000 characters.'
-                  example: hmrugfqt
+                  example: vmbbjtqg
                   nullable: false
                 merchant_uid:
                   type: string
                   description: '<span class="point">주문번호</span>. Must not be greater than 50000 characters.'
-                  example: fgacssiavrehbujaxm
+                  example: pfuihgrztgapkb
                   nullable: false
               required:
                 - imp_uid
@@ -4580,12 +4622,12 @@ paths:
                 imp_uid:
                   type: string
                   description: '<span class="point">아임포트 고유번호</span>. Must not be greater than 50000 characters.'
-                  example: spuldwcqrnqdfckadzkz
+                  example: chxdgi
                   nullable: false
                 merchant_uid:
                   type: string
                   description: '<span class="point">주문번호</span>. Must not be greater than 50000 characters.'
-                  example: ulcplgru
+                  example: pmcfqkjqrkv
                   nullable: false
               required:
                 - imp_uid
@@ -4649,7 +4691,7 @@ paths:
         in: path
         name: delivery_id
         description: 'The ID of the delivery.'
-        example: 5
+        example: 10
         required: true
         schema:
           type: integer

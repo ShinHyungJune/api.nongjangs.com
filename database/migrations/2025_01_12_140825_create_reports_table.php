@@ -9,7 +9,9 @@ return new class extends Migration {
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('report_category_id')->constrained('report_categories');
+            $table->morphs('reportable');
             $table->text('description')->nullable()->comment('내용');
             $table->timestamps();
         });

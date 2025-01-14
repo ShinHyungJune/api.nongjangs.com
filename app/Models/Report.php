@@ -10,6 +10,8 @@ class Report extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function reportCategory(): BelongsTo
     {
         return $this->belongsTo(ReportCategory::class);

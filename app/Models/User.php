@@ -139,6 +139,11 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         return null;
     }
 
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+
     public function grade()
     {
         return $this->belongsTo(Grade::class);

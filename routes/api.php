@@ -196,6 +196,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post("/likes", [\App\Http\Controllers\Api\LikeController::class, "store"]);
     Route::post("/bookmarks", [\App\Http\Controllers\Api\BookmarkController::class, "store"]);
+
+    Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);
 });
 
 
