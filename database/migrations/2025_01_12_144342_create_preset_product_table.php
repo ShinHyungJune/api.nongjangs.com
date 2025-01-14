@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('preset_products', function (Blueprint $table) {
+        Schema::create('preset_product', function (Blueprint $table) {
             $table->id();
             $table->string('state')->default(StatePresetProduct::BEFORE_PAYMENT)->comment('상태');
             $table->foreignId('preset_id')->constrained('presets');
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('option_id')->constrained('options');
-            $table->foreignId('coupon_id')->constrained('coupons');
+            $table->foreignId('coupon_id')->nullable()->constrained('coupons');
 
             $table->string('product_title')->comment('상품명');
             $table->unsignedBigInteger('product_price')->comment('상품판매가');

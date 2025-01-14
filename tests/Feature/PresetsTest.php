@@ -36,7 +36,6 @@ class PresetsTest extends TestCase
     {
         /*[
             {
-                product_id: "",
                 option_id: "",
                 count: "",
             }

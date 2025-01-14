@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PresetRequest;
 use App\Http\Resources\PresetResource;
+use App\Models\Option;
 use App\Models\Preset;
 
-class PresetController extends Controller
+class PresetController extends ApiController
 {
     public function index()
     {
@@ -16,7 +17,14 @@ class PresetController extends Controller
 
     public function store(PresetRequest $request)
     {
-        return new PresetResource(Preset::create($request->validated()));
+        $preset = auth()->user()->presets()->create();
+
+        $result = $preset->attachProducts($request);
+
+        if(!$result['success'])
+            return $this->respondForbidden($result['message']);
+
+        return $this->respondSuccessfully(PresetResource::make($preset));
     }
 
     public function show(Preset $preset)

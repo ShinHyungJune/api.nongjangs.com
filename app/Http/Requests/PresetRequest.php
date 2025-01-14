@@ -79,7 +79,9 @@ class PresetRequest extends FormRequest
 
                 case 'store':
                     return [
-                        '' => []
+                        'options' => 'required|array',
+                        'options.option_id' => ['required', 'integer'],
+                        'options.count' => ['required', 'integer', 'min:1'],
                     ];
 
                 case 'update':
@@ -98,8 +100,11 @@ class PresetRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'option_id' => [
+                'description' => '<span class="point">옵션 고유번호</span>',
+            ],
+            'count' => [
+                'description' => '<span class="point">개수</span>',
             ],
 
             // 늘 쓰이는 애들

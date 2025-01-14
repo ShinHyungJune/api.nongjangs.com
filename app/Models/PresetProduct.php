@@ -10,6 +10,8 @@ class PresetProduct extends Model
 {
     use HasFactory;
 
+    protected $table = ['preset_product'];
+
     public function preset(): BelongsTo
     {
         return $this->belongsTo(Preset::class);

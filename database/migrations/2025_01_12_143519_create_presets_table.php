@@ -17,9 +17,6 @@ return new class extends Migration {
             $table->unsignedBigInteger('price')->comment('최종금액')->default(0);
             $table->unsignedBigInteger('price_total')->comment('상품 총 금액')->default(0);
             $table->unsignedBigInteger('price_discount')->comment('할인금액')->default(0);
-
-            $table->integer('count_option_required')->comment('필수옵션 개수')->default(0);
-            $table->integer('count_option_additional')->comment('추가옵션 개수')->default(0);
             $table->timestamps();
         });
     }
