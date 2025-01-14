@@ -55,12 +55,12 @@ class CouponRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
-
+                        'product_id' => 'nullable|integer'
                     ];
 
                 case 'store':
                     return [
-                        'coupon_group_id' => ['required', 'integer']
+                        'coupon_group_ids' => ['required', 'array']
                     ];
 
                 case 'update':
@@ -80,11 +80,11 @@ class CouponRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'product_id' => [
+                'description' => '<span class="point">상품 고유번호 (특정 상품에 사용 가능한 쿠폰목록 보고싶을 때)</span>',
             ],
-            'coupon_group_id' => [
-                'description' => '<span class="point">쿠폰그룹 고유번호</span>',
+            'coupon_group_ids' => [
+                'description' => '<span class="point">쿠폰그룹 고유번호 목록</span>',
             ],
 
             // 늘 쓰이는 애들

@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\StateOrder;
+use App\Enums\TargetCouponGroup;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,5 +45,36 @@ class CouponGroup extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function canCreateCoupon($user)
+    {
+        $hasCoupon = $user->coupons()->where('coupon_group_id', $this->id)->first();
+
+        if($hasCoupon)
+            return 0;
+
+        if($this->moment)
+            return 0;
+
+        // 대상자인지
+        if($this->target == TargetCouponGroup::GRADE){
+            if($this->grade_id != $user->grade_id)
+                return 0;
+        }
+
+        if($this->target == TargetCouponGroup::ORDER_HISTORY){
+            $latestCountOrder = $user->orders()->where('state', StateOrder::SUCCESS)->where('created_at', '>=', Carbon::now()->subMonths(3)->startOfDay())->count();
+
+            if($this->min_order > $latestCountOrder)
+                return 0;
+        }
+
+        if($this->target == TargetCouponGroup::PERSONAL){
+            if(!$this->users()->where('users.id', $user->id)->exists())
+                return 0;
+        }
+
+        return 1;
     }
 }

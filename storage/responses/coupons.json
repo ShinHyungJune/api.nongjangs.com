@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "user_id": "사용자 고유번호",
+      "coupon_group_id": "쿠폰그룹 고유번호",
+      "use" : "시용여부",
+      "started_at" : "유효기간 시작일자",
+      "format_started_at" : "표시용: 유효기간 시작일자",
+      "finished_at" : "유효기간 종료일자",
+      "format_finished_at" : "표시용: 유효기간 종료일자",
+      "couponGroup" : "쿠폰그룹 객체"
+    },
+
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

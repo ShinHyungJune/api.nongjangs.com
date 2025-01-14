@@ -6,6 +6,9 @@ use App\Enums\TargetCouponGroup;
 use App\Enums\TypeCouponGroup;
 use App\Enums\TypeDiscount;
 use App\Enums\TypeExpire;
+use App\Models\Coupon;
+use App\Models\CouponGroup;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -38,7 +41,13 @@ class CouponsTest extends TestCase
     /** @test */
     public function 쿠폰그룹고유번호들로_쿠폰을_생성할_수_있다()
     {
+        $couponGroups = CouponGroup::factory()->count(3)->create();
 
+        $this->json('post', '/api/coupons', [
+            'coupon_group_ids' => $couponGroups->pluck('id')->toArray(),
+        ])->assertStatus(200);
+
+        $this->assertEquals(count($couponGroups), $this->user->coupons()->count());
     }
 
     /** @test */
@@ -47,5 +56,50 @@ class CouponsTest extends TestCase
         /*# 불가
         - moment가 있는 경우
         - 이미 보유*/
+        $momentCouponGroups = CouponGroup::factory()->count(3)->create([
+            'moment' => MomentCouponGroup::GRADE,
+        ]);
+        $hasCouponGroups = CouponGroup::factory()->count(4)->create();
+        $coupons = CouponGroup::factory()->count(5)->create();
+
+        foreach($hasCouponGroups as $couponGroup){
+            Coupon::create([
+                'user_id' => $this->user->id,
+                'coupon_group_id' => $couponGroup->id
+            ]);
+        }
+
+        $prevCountCoupon = $this->user->coupons()->count();
+
+        $this->json('post', '/api/coupons', [
+            'coupon_group_ids' => CouponGroup::get()->pluck('id')->toArray(),
+        ])->assertStatus(200);
+
+        $this->assertEquals($prevCountCoupon + count($coupons), $this->user->coupons()->count());
+    }
+
+    /** @test */
+    public function 자신의_사용안한_목록을_조회할_수_있다()
+    {
+        $useCoupons = Coupon::factory()->count(5)->create([
+            'user_id' => $this->user->id,
+            'use' => 1
+        ]);
+
+        $notUseCoupons = Coupon::factory()->count(3)->create([
+            'user_id' => $this->user->id,
+            'use' => 0
+        ]);
+
+        $notUseOtherCoupons = Coupon::factory()->count(6)->create([
+            'user_id' => $this->other->id,
+            'use' => 0
+        ]);
+
+        $items = $this->json('get', '/api/coupons', [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($notUseCoupons), count($items));
     }
 }

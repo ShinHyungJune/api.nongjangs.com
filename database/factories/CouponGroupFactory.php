@@ -33,8 +33,8 @@ class CouponGroupFactory extends Factory
             'max_price_discount' => $this->faker->randomNumber(),
             'min_price_order' => $this->faker->randomNumber(),
             'type_expire' => TypeExpire::FROM_DOWNLOAD,
-            'started_at' => Carbon::now(),
-            'finished_at' => Carbon::now(),
+            'started_at' => Carbon::now()->format('Y-m-d H:i'),
+            'finished_at' => Carbon::now()->format('Y-m-d H:i'),
             'days' => $this->faker->randomNumber(),
 
             'grade_id' => null,

@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('coupon_group_id')->constrained('coupon_groups');
             $table->boolean('use')->default(0)->comment('사용여부');
+            $table->dateTime('started_at')->nullable();
+            $table->dateTime('finished_at')->nullable();
             $table->timestamps();
         });
     }
