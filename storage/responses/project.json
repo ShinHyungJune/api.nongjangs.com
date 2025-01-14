@@ -1,0 +1,18 @@
+{
+  "id": "고유번호",
+  "started_at": "시작일시",
+  "format_started_at": "표시용: 시작일시",
+  "finished_at": "종료일시",
+  "format_finished_at": "표시용: 종료일시",
+  "count_goal": "목표 수량",
+  "count_participate": "참여 수량",
+  "product_id": "상품고유번호",
+  "tags": "태그 목록",
+  "product": "상품 객체",
+  "img": "이미지 객체",
+  "state": "진행 상태 (1 - BEFORE 시작전 | 2 - ONGOING 진행중 | 3 - FINISH 종료)",
+  "format_state": "표시용: 진행상태",
+  "ratio_progress": "진행률",
+  "days_remain": "남은 일수",
+  "time_remain": "남은 시간 (프론트에서 setInterval로 카운트다운해야됨)"
+}
