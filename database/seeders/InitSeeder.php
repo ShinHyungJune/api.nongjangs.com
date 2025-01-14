@@ -548,6 +548,8 @@ class InitSeeder extends Seeder
                 }
             }
         }
+
+        Product::factory()->count(50)->create();
     }
 
     public function createCategories()
