@@ -50,6 +50,8 @@ class ProductResource extends JsonResource
             'format_prices_delivery' => $this->prices_delivery ? json_decode($this->prices_delivery) : [],
             'min_price_for_free_delivery_price' => $this->min_price_for_free_delivery_price,
             'can_delivery_far_place' => $this->can_delivery_far_place,
+            'ranges_far_place' => $this->ranges_far_place,
+            'format_ranges_far_place' => $this->format_ranges_far_place,
             'delivery_price_far_place' => $this->delivery_price_far_place,
             'delivery_company_refund' => $this->delivery_company_refund,
             'delivery_price_refund' => $this->delivery_price_refund,

@@ -5,36 +5,34 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PresetProductRequest;
 use App\Http\Resources\PresetProductResource;
+use App\Models\Coupon;
 use App\Models\PresetProduct;
 
-class PresetProductController extends Controller
+class PresetProductController extends ApiController
 {
-    public function index()
+    /** 목록
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function updateCoupon(PresetProductRequest $request, PresetProduct $presetProduct)
     {
-        return PresetProductResource::collection(PresetProduct::all());
+        if(!$presetProduct->preset->can_order)
+            return $this->respondForbidden('쿠폰을 적용할 수 없습니다.');
+
+        $coupon = Coupon::find($request->coupon_id);
+
+        $coupons = auth()->user()->canUseCoupons($presetProduct);
+
+        if(!$coupons->where('coupons.id', $coupon->id)->first())
+            return $this->respondForbidden('해당 상품에 적용할 수 없는 쿠폰입니다.');
+
+        $presetProduct->update([
+            'coupon_id' => $coupon->id,
+            'price_coupon' => $presetProduct->calculatePriceCoupon($coupon),
+        ]);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
 
-    public function store(PresetProductRequest $request)
-    {
-        return new PresetProductResource(PresetProduct::create($request->validated()));
-    }
-
-    public function show(PresetProduct $presetProduct)
-    {
-        return new PresetProductResource($presetProduct);
-    }
-
-    public function update(PresetProductRequest $request, PresetProduct $presetProduct)
-    {
-        $presetProduct->update($request->validated());
-
-        return new PresetProductResource($presetProduct);
-    }
-
-    public function destroy(PresetProduct $presetProduct)
-    {
-        $presetProduct->delete();
-
-        return response()->json();
-    }
 }

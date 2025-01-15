@@ -14,9 +14,9 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('price_delivery')->comment('배송비')->default(0);
-            $table->unsignedBigInteger('price')->comment('최종금액')->default(0);
+            /*$table->unsignedBigInteger('price')->comment('최종금액')->default(0);
             $table->unsignedBigInteger('price_total')->comment('상품 총 금액')->default(0);
-            $table->unsignedBigInteger('price_discount')->comment('할인금액')->default(0);
+            $table->unsignedBigInteger('price_discount')->comment('할인금액')->default(0);*/
             $table->timestamps();
         });
     }

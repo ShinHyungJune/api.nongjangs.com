@@ -70,9 +70,9 @@ class PresetProductRequest extends FormRequest
                         '' => []
                     ];
 
-                case 'update':
+                case 'updateCoupon':
                     return [
-                        '' => []
+                        'coupon_id' => ['required', 'integer']
                     ];
 
 

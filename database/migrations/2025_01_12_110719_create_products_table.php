@@ -34,6 +34,7 @@ return new class extends Migration {
             $table->text('prices_delivery')->nullable()->comment('수량별 차등 배송비');
             $table->unsignedBigInteger('min_price_for_free_delivery_price')->comment('무료배송 최소주문금액')->default(0);
             $table->boolean('can_delivery_far_place')->comment('제주도서산간 배송가능여부')->default(0);
+            $table->text('ranges_far_place')->nullable()->comment('제주/도서산간 지역 설정 (["zipcode_start" => "", "zipcode_end" => ""]');
             $table->unsignedBigInteger('delivery_price_far_place')->comment('제주도서산간 배송비')->default(0);
             $table->integer('delivery_company_refund')->comment('반품택배사')->default(DeliveryCompany::CJ);
             $table->unsignedBigInteger('delivery_price_refund')->comment('반품 배송비')->default(0);

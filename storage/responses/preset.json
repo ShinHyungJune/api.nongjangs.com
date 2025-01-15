@@ -1,0 +1,14 @@
+{
+  "id": "고유번호",
+  "price_delivery": "배송비",
+  "price": "최종금액",
+  "price_total": "총 상품금액",
+  "price_discount": "할인받은 상품금액",
+  "count_option_required": "필수옵션개수",
+  "count_option_additional": "추가옵션개수",
+  "order_id": "주문 고유번호",
+  "cart_id": "장바구니 고유번호",
+  "user_id": "사용자 고유번호",
+  "presetProducts": "출고상품 목록",
+  "order": "주문 객체"
+}

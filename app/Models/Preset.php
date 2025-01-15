@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\StateOrder;
+use App\Enums\TypeDelivery;
+use App\Enums\TypeDeliveryPrice;
+use App\Enums\TypeOption;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,19 +23,29 @@ class Preset extends Model
     // 구매가능여부
     public function getCanOrderAttribute()
     {
+        if(!auth()->user())
+            return 0;
 
+
+        if(auth()->id() != $this->user_id)
+            return 0;
+
+        if($this->order && $this->order->state != StateOrder::BEFORE_PAYMENT)
+            return 0;
+
+        return 1;
     }
 
     // 필수옵션개수
     public function getCountOptionRequiredAttribute()
     {
-
+        return $this->presetProducts()->where('option_type', TypeOption::REQUIRED)->sum('count');
     }
 
     // 추가옵션개수
     public function getCountOptionAdditionalAttribute()
     {
-
+        return $this->presetProducts()->where('option_type', TypeOption::ADDITIONAL)->sum('count');
     }
 
     public function order(): BelongsTo
@@ -54,11 +68,119 @@ class Preset extends Model
         return $this->hasMany(PresetProduct::class);
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
+    public function getPriceDeliveryAttribute()
+    {
+        return $this->calculatePriceDelivery();
+    }
+
+    public function getPriceAttribute()
+    {
+        return $this->presetProducts()->sum('price');
+    }
+
+    public function getPriceDiscountAttribute()
+    {
+        $presetProducts = $this->presetProducts;
+
+        $total = 0;
+
+        foreach($presetProducts as $presetProduct){
+            $option = $presetProduct->option;
+
+            // 필수상품일때만 상품에 대한 할인가가 합산되어야함
+            if($option->type == TypeOption::REQUIRED) {
+                $price = $presetProduct->product_price_origin - $presetProduct->product_price;
+
+                $total += $price * $presetProduct->count;
+            }
+        }
+
+        return $total;
+    }
+
+    public function getPriceTotalAttribute()
+    {
+        return $this->price + $this->price_delivery;
+    }
+
+
+    public function calculatePriceDelivery()
+    {
+        $product = $this->products()->first();
+
+        if($product){
+            $priceDelivery = $product->price_delivery;
+
+            if($product->type_delivery == TypeDelivery::FREE)
+                $priceDelivery = 0;
+
+            if($product->type_delivery == TypeDelivery::EACH) {
+                // 배송비
+                if($product->type_delivery_price == TypeDeliveryPrice::STATIC)
+                    $priceDelivery = $product->price_delivery;
+
+                if($product->type_delivery_price == TypeDeliveryPrice::CONDITIONAL){
+                    if($this->price >= $this->min_price_for_free_delivery_price)
+                        $priceDelivery = 0;
+                    else
+                        $priceDelivery = $product->price_delivery;
+                }
+
+                if($product->type_delivery_price == TypeDeliveryPrice::PRICE_BY_COUNT){
+                    $prices = json_decode($this->prices_delivery);
+
+                    usort($prices, function ($a, $b) {
+                        if ($a['count'] == $b['count'])
+                            return 0;
+
+                        return ($a['count'] > $b['count']) ? -1 : 1; // 내림차순 정렬
+                    });
+
+                    foreach($prices as $price){
+                        if($price['count'] <= $this->count_option_required) {
+                            $priceDelivery = $price['price'];
+
+                            break;
+                        }
+                    }
+                }
+
+                $priceDeliveryFarPlace = 0;
+
+                if($this->order && $this->delivery_address_zipcode && $this->ranges_far_place){
+                    $rangesFarPlace = json_decode($this->ranges_far_place);
+
+                    foreach($rangesFarPlace as $range){
+                        if($range['zipcode_start'] <= $this->order->delivery_address_zipcode && $range['zipcode_end'] >= $this->order->delivery_address_zipcode){
+                            $priceDeliveryFarPlace = $range['price'];
+
+                            break;
+                        }
+                    }
+                }
+
+                return $priceDelivery + $priceDeliveryFarPlace;
+            }
+
+            return $priceDelivery;
+        }
+
+        return 0;
+    }
+
     public function attachProducts($request)
     {
+
         \DB::beginTransaction();
 
         try {
+            $this->presetProducts()->delete();
+
             foreach ($request->options as $optionData) {
                 // 옵션과 해당 제품 조회
                 $option = Option::find($optionData['id']);
@@ -69,13 +191,12 @@ class Preset extends Model
                     \DB::rollBack();
 
                     return [
-                        'success' => 'false',
+                        'success' => false,
                         'message' => $option->title."의 재고가 부족합니다.",
                     ];
                 }
 
-                // 정상적인 attach 작업
-                $this->products()->attach($product->id, [
+                $this->presetProducts()->create([
                     'product_id' => $product->id,
                     'option_id' => $option->id,
                     'product_title' => $product->title,
@@ -100,7 +221,7 @@ class Preset extends Model
             \DB::rollBack();
 
             return [
-                'success' => 'false',
+                'success' => false,
                 'message' => $e->getMessage(),
             ];
         }
@@ -113,13 +234,11 @@ class Preset extends Model
         foreach($presetProducts as $presetProduct){
             $presetProduct->update([
                 'product_title' => $presetProduct->product->title,
-                'price' => $presetProduct->product->price,
-                'price_discount' => $presetProduct->product->price_discount,
-                'price_origin' => $presetProduct->product->price_origin,
-                'price_delivery' => $presetProduct->product->price_delivery,
-                'size_title' => $presetProduct->size ? $presetProduct->size->title : '판매중단 사이즈',
-                'size_price' => $presetProduct->size ? $presetProduct->size->price : '-',
-                'color_title' => $presetProduct->color ? $presetProduct->color->title : "판매중단 색상",
+                'product_price' => $presetProduct->product->price,
+                'product_price_origin' => $presetProduct->product->price_origin,
+                'option_title' => $presetProduct->option->title,
+                'option_price' => $presetProduct->option->price,
+                'option_type' => $presetProduct->option->type,
             ]);
         }
     }

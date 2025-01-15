@@ -1,8 +1,13 @@
 <?php
 
 
+use App\Enums\TypeOption;
 use App\Models\Count;
+use App\Models\Option;
+use App\Models\Preset;
+use App\Models\Product;
 use App\Models\User;
+use Database\Factories\OptionFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -36,16 +41,62 @@ class PresetsTest extends TestCase
     {
         /*[
             {
-                option_id: "",
+                id: "",
                 count: "",
             }
         ]*/
+        $requiredOption = Option::factory()->create([
+            'type' => TypeOption::REQUIRED,
+            'count' => 1000,
+        ]);
+
+        $additionalOptions = Option::factory()->count(3)->create([
+            'type' => TypeOption::ADDITIONAL,
+            'count' => 1000,
+        ]);
+
+        $countRequired = 3;
+        $countAdditional = 2;
+
+        $this->form = [
+            'options' => [
+                [
+                    'id' => $requiredOption->id,
+                    'count' => $countRequired
+                ]
+            ]
+        ];
+
+        foreach($additionalOptions as $option){
+            $this->form['options'][] = [
+                'id' => $option->id,
+                'count' => $countAdditional
+            ];
+        }
+
+        $item = $this->json('post', '/api/presets', $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals($countRequired, $item['count_option_required']);
+        $this->assertEquals($countAdditional * count($additionalOptions), $item['count_option_additional']);
     }
 
     /** @test */
     public function 재고보다_더_많이_생성할_수_없다()
     {
         // 반복문으로 옵션과 상품의 재고를 확인하고 forBidden으로 무슨 상품 재고가 털렸는지 뿌려주기
+        $count = 3;
+
+        $option = Option::factory()->create(['count' => $count]);
+
+        $this->form['options'] = [
+            [
+                'id' => $option->id,
+                'count' => $count + 1
+            ]
+        ];
+
+
+        $this->json('post', '/api/presets', $this->form)->assertStatus(403);
     }
 
     /** @test */
@@ -75,23 +126,92 @@ class PresetsTest extends TestCase
 
 # 쿠폰
 최종가 기준으로 쿠폰 적용되어야함*/
+        $product = Product::factory()->create([
+            'price'=> 1000
+        ]);
+
+        $requiredOption = Option::factory()->create([
+            'product_id' => $product->id,
+            'type' => TypeOption::REQUIRED,
+            'price' => 1000,
+            'count' => 1000,
+        ]);
+
+        $additionalOptions = Option::factory()->count(3)->create([
+            'product_id' => $product->id,
+            'type' => TypeOption::ADDITIONAL,
+            'price' => 500,
+            'count' => 1000,
+        ]);
+
+        $countRequired = 3;
+        $countAdditional = 2;
+
+        $this->form = [
+            'options' => [
+                [
+                    'id' => $requiredOption->id,
+                    'count' => $countRequired
+                ]
+            ]
+        ];
+
+        foreach($additionalOptions as $option){
+            $this->form['options'][] = [
+                'id' => $option->id,
+                'count' => $countAdditional
+            ];
+        }
+
+        $item = $this->json('post', '/api/presets', $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals(9000, $item['price']);
     }
     /** @test */
     public function 사용자는_자신의_데이터를_수정할_수_있다()
     {
         /*[
             {
-                product_id: "",
                 option_id: "",
                 count: "",
             }
         ]*/
-    }
-    /** @test */
-    public function 데이터를_수정하면_비용이_갱신된다()
-    {
 
+        $requiredOption = Option::factory()->create([
+            'type' => TypeOption::REQUIRED,
+            'count' => 10000,
+        ]);
+
+        $additionalOptions = Option::factory()->count(3)->create([
+            'type' => TypeOption::ADDITIONAL,
+            'count' => 10000,
+        ]);
+
+        $countRequired = 3;
+        $countAdditional = 2;
+
+        $this->form = [
+            'options' => [
+                [
+                    'id' => $requiredOption->id,
+                    'count' => $countRequired
+                ]
+            ]
+        ];
+
+        foreach($additionalOptions as $option){
+            $this->form['options'][] = [
+                'id' => $option->id,
+                'count' => $countAdditional
+            ];
+        }
+
+        $item = $this->json('post', '/api/presets', $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals($countRequired, $item['count_option_required']);
+        $this->assertEquals($countAdditional * count($additionalOptions), $item['count_option_additional']);
     }
+
 
 
 }

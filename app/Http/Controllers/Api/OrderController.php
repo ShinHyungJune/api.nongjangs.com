@@ -16,6 +16,25 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends ApiController
 {
+    /** 배송비 계산
+     * @group Order(주문)
+     * @responseFile storage/responses/priceDelivery.json
+     */
+    public function calculatePriceDelivery(Order $order)
+    {
+        $total = 0;
+
+        $presets = $order->presets;
+
+        foreach($presets as $preset){
+            $total += $preset->price_delivery;
+        }
+
+        return $this->respondSuccessfully([
+            'price_delivery' => $total
+        ]);
+    }
+
     /** 목록
      * @group Order(주문)
      * @responseFile storage/responses/orders.json

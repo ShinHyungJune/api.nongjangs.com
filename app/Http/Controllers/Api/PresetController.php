@@ -10,11 +10,11 @@ use App\Models\Preset;
 
 class PresetController extends ApiController
 {
-    public function index()
-    {
-        return PresetResource::collection(Preset::all());
-    }
-
+    /** 목록
+     * @group 사용자
+     * @subgroup Preset(상품조합)
+     * @responseFile storage/responses/preset.json
+     */
     public function store(PresetRequest $request)
     {
         $preset = auth()->user()->presets()->create();
@@ -27,22 +27,21 @@ class PresetController extends ApiController
         return $this->respondSuccessfully(PresetResource::make($preset));
     }
 
-    public function show(Preset $preset)
-    {
-        return new PresetResource($preset);
-    }
-
+    /** 상세
+     * @group 사용자
+     * @subgroup Preset(상품조합)
+     * @responseFile storage/responses/preset.json
+     */
     public function update(PresetRequest $request, Preset $preset)
     {
-        $preset->update($request->validated());
+        if(!$preset->can_order)
+            return $this->respondForbidden('수정할 수 없습니다.');
 
-        return new PresetResource($preset);
-    }
+        $result = $preset->attachProducts($request);
 
-    public function destroy(Preset $preset)
-    {
-        $preset->delete();
+        if(!$result['success'])
+            return $this->respondForbidden($result['message']);
 
-        return response()->json();
+        return $this->respondSuccessfully(PresetResource::make($preset));
     }
 }

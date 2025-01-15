@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TypeCouponGroup;
 use App\Enums\TypeExpire;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

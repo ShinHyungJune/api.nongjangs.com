@@ -173,6 +173,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::patch("/orders/cancel/{order}",[\App\Http\Controllers\Api\OrderController::class, 'cancel']);
     Route::get("/orders",[\App\Http\Controllers\Api\OrderController::class, 'index']);
+    Route::get("/orders/calculatePriceDelivery/{order}",[\App\Http\Controllers\Api\OrderController::class, 'calculatePriceDelivery']);
 
 
     Route::get("/refunds",[\App\Http\Controllers\Api\RefundController::class, 'index']);
@@ -183,6 +184,9 @@ Route::middleware(['auth'])->group(function () {
     Route::patch("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "update"]);
     Route::delete("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "destroy"]);
 
+    Route::post("/presets", [\App\Http\Controllers\Api\PresetController::class, "store"]);
+
+    Route::patch("/presetProducts/coupon/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "updateCoupon"]);
     // Route::patch("/presetProducts/confirm/{presetProduct}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "confirm"]);
 
     Route::get('/pointHistories', [\App\Http\Controllers\Api\PointHistoryController::class, "index"]);

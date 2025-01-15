@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\StateOption;
+use App\Enums\TypeOption;
 use App\Models\Option;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,8 +21,8 @@ class OptionFactory extends Factory
             'product_id' => $product->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'type' => $this->faker->randomNumber(),
-            'state' => $this->faker->randomNumber(),
+            'type' => TypeOption::REQUIRED,
+            'state' => StateOption::ONGOING,
             'title' => $this->faker->word(),
             'price' => $this->faker->randomNumber(),
             'count' => $this->faker->randomNumber(),

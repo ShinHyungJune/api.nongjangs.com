@@ -6,6 +6,7 @@ use App\Enums\MomentCouponGroup;
 use App\Enums\SocialPlatform;
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
+use App\Enums\TypeCouponGroup;
 use App\Models\임시\Product;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -199,6 +200,29 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     public function coupons()
     {
         return $this->hasMany(Coupon::class);
+    }
+
+    public function canUseCoupons($presetProduct = null)
+    {
+        $items = $this->coupons()->where('use', 0)
+            ->whereHas('couponGroup', function ($query) use ($presetProduct) {
+                $query->where(function ($query) use ($presetProduct) {
+                    $query->whereIn('type', [TypeCouponGroup::ALL, TypeCouponGroup::DELIVERY])
+                        ->orWhere(function ($query) use ($presetProduct){
+                            $query->where('type', TypeCouponGroup::PRODUCT)
+                                ->where(function ($query) use($presetProduct){
+                                    $query->where('all_product', 1)
+                                        ->orWhereHas('products', function ($query) use ($presetProduct) {
+                                            $query->where('products.id', $presetProduct->product_id);
+                                        });
+                                });
+                        });
+                })->where('min_price_order', '<=', $presetProduct->products_price)
+                    ->where('started_at', '<=', Carbon::now())
+                    ->where('finished_at', '>=', Carbon::now());
+            });
+
+        return $items;
     }
 
     public function validCoupons()

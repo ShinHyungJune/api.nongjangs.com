@@ -14,9 +14,12 @@ class PresetProductResource extends JsonResource
         return [
             'id' => $this->id,
             'state' => $this->state,
+            'price' => $this->price,
             'product_title' => $this->product_title,
+            'products_price' => $this->products_price,
             'product_price' => $this->product_price,
             'product_price_origin' => $this->product_price_origin,
+            'price_coupon' => $this->price_coupon,
             'count' => $this->count,
             'option_title' => $this->option_title,
             'option_price' => $this->option_price,
@@ -37,12 +40,11 @@ class PresetProductResource extends JsonResource
             'delivery_company' => $this->delivery_company,
             'format_delivery_company' => $this->delivery_company ? DeliveryCompany::getLabel($this->delivery_company) : '',
             'delivery_at' => $this->delivery_at ? Carbon::make($this->delivery_at)->format('Y.m.d') : '',
-            'price_coupon' => $this->price_coupon,
 
-            'preset' => new PresetResource($this->whenLoaded('preset')),
+            /*'preset' => new PresetResource($this->whenLoaded('preset')),
             'product' => new ProductResource($this->whenLoaded('product')),
             'option' => new OptionResource($this->whenLoaded('option')),
-            'coupon' => new CouponResource($this->whenLoaded('coupon')),
+            'coupon' => new CouponResource($this->whenLoaded('coupon')),*/
         ];
     }
 }

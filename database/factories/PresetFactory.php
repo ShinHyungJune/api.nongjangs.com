@@ -20,11 +20,6 @@ class PresetFactory extends Factory
             'updated_at' => Carbon::now(),
 
             'price_delivery' => $this->faker->randomNumber(),
-            'price' => $this->faker->randomNumber(),
-            'price_total' => $this->faker->randomNumber(),
-            'price_discount' => $this->faker->randomNumber(),
-            'count_option_required' => $this->faker->randomNumber(),
-            'count_option_additional' => $this->faker->randomNumber(),
 
             'order_id' => Order::factory(),
             'cart_id' => Cart::factory(),

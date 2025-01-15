@@ -15,19 +15,16 @@ class PresetResource extends JsonResource
             'id' => $this->id,
 
             'price_delivery' => $this->price_delivery,
-            'price' => $this->price,
-            'price_total' => $this->price_total,
-            'price_discount' => $this->price_discount,
-
-            'count_option_required' => $this->count_option_required,
-            'count_option_additional' => $this->count_option_additional,
-
             'order_id' => $this->order_id,
             'cart_id' => $this->cart_id,
             'user_id' => $this->user_id,
 
+            'price' => $this->price,
+            'price_total' => $this->price_total,
+            'price_discount' => $this->price_discount,
+            'count_option_required' => $this->count_option_required,
+            'count_option_additional' => $this->count_option_additional,
             'presetProducts' => PresetProductResource::collection($this->presetProducts),
-
             'order' => $this->order ? OrderResource::make($this->order) : '',
         ];
     }

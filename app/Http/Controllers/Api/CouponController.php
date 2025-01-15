@@ -21,24 +21,7 @@ class CouponController extends ApiController
      */
     public function index(CouponRequest $request)
     {
-        $items = auth()->user()->coupons()
-            ->where('use', 0);
-
-        if($request->product_id) {
-            $product = Product::find($request->product_id);
-
-            $items = $items->whereHas('couponGroup', function ($query) use ($request, $product) {
-                $query->whereIn('type', [TypeCouponGroup::ALL, TypeCouponGroup::DELIVERY, TypeCouponGroup::PRODUCT])
-                    ->where(function ($query) use ($request, $product) {
-                        $query->where('all_product', 1)
-                            ->orWhereHas('products', function ($query) use ($request, $product) {
-                                $query->where('products.id', $request->product_id);
-                            });
-                    })->where('min_price_order', '<=', $product->price)
-                ->where('started_at', '<=', Carbon::now())
-                    ->where('finished_at', '>=', Carbon::now());
-            });
-        }
+        $items = auth()->user()->coupons()->where('use', 0);
 
         $items = $items->latest()->paginate(100);
 
@@ -56,7 +39,7 @@ class CouponController extends ApiController
         foreach($couponGroups as $couponGroup){
             if($couponGroup->canCreateCoupon(auth()->user()))
                 auth()->user()->coupons()->create([
-                    'coupon_group_id' => $couponGroup->id
+                    'coupon_group_id' => $couponGroup->id,
                 ]);
         }
 

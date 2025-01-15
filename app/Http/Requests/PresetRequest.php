@@ -80,8 +80,8 @@ class PresetRequest extends FormRequest
                 case 'store':
                     return [
                         'options' => 'required|array',
-                        'options.option_id' => ['required', 'integer'],
-                        'options.count' => ['required', 'integer', 'min:1'],
+                        'options.*.id' => ['required', 'integer'],
+                        'options.*.count' => ['required', 'integer', 'min:1'],
                     ];
 
                 case 'update':

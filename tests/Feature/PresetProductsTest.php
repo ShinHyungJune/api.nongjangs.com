@@ -1,7 +1,14 @@
 <?php
 
 
+use App\Enums\StateOrder;
+use App\Enums\TypeDiscount;
 use App\Models\Count;
+use App\Models\Coupon;
+use App\Models\CouponGroup;
+use App\Models\Order;
+use App\Models\Preset;
+use App\Models\PresetProduct;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -34,22 +41,95 @@ class PresetProductsTest extends TestCase
     /** @test */
     public function 쿠폰을_적용할_수_있다()
     {
+        $coupon = Coupon::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
 
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id
+        ]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+        ]);
+
+        $this->json('patch', '/api/presetProducts/coupon/'.$presetProduct->id, [
+            'coupon_id' => $coupon->id,
+        ])->assertStatus(200);
     }
+
     /** @test */
+    public function 현재_주문_가능한_상품조합의_상품일_경우에만_쿠폰을_적용할_수_있다()
+    {
+        $coupon = Coupon::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        // 남의거
+        $preset = Preset::factory()->create([
+            'user_id' => $this->other->id
+        ]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+        ]);
+
+        $this->json('patch', '/api/presetProducts/coupon/'.$presetProduct->id, [
+            'coupon_id' => $coupon->id,
+        ])->assertStatus(403);
+
+        // 이미 주문 완료
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+            'order_id' => Order::factory()->create(['state' => StateOrder::SUCCESS])
+        ]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+        ]);
+
+        $this->json('patch', '/api/presetProducts/coupon/'.$presetProduct->id, [
+            'coupon_id' => $coupon->id,
+        ])->assertStatus(403);
+    }
+
     public function 자신의_쿠폰이고_사용한적_없는_쿠폰만_사용할_수_있다()
     {
 
     }
 
-    /** @test */
     public function 쿠폰사용불가_상품에는_쿠폰을_적용할_수_없다()
     {
 
     }
+
     /** @test */
     public function 쿠폰을_적용하면_상품조합의_비용과_출고의_쿠폰적용금액이_갱신된다()
     {
+        $couponGroup = CouponGroup::factory()->create([
+            'type_discount' => TypeDiscount::NUMBER,
+            'value' => 1000,
+            'max_price_discount' => 700
+        ]);
 
+        $coupon = Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'coupon_group_id' => $couponGroup->id,
+        ]);
+
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id
+        ]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+        ]);
+
+        $item = $this->json('patch', '/api/presetProducts/coupon/'.$presetProduct->id, [
+            'coupon_id' => $coupon->id,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals( 700, $item['price_coupon']);
+        $this->assertEquals( $item['price'], $item['products_price'] - 700);
     }
 }

@@ -462,7 +462,6 @@ class Order extends Model
             return 0;
 
         if($this->presetProducts()->whereIn('state', [
-                StatePresetProduct::FINISH_PROTOTYPE,
                 StatePresetProduct::ONGOING_DELIVERY,
                 StatePresetProduct::DELIVERED,
                 StatePresetProduct::CONFIRMED,
