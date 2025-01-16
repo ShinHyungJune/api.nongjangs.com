@@ -1227,6 +1227,12 @@ class InitSeeder extends Seeder
                 "name" => "신용카드",
                 "commission" => "7",
             ],
+            [
+                "pg" => "html5_inicis",
+                "method" => "phone",
+                "name" => "휴대폰",
+                "commission" => "7",
+            ],
         ];
 
         foreach($payMethods as $payMethod){
