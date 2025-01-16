@@ -83,6 +83,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/orders", \App\Http\Controllers\Api\Admin\OrderController::class)->except(['destroy']);
     Route::delete("/orders", [\App\Http\Controllers\Api\Admin\OrderController::class, "destroy"]);
 
+
     /*Route::patch("/presetProducts/needAlertDelivery/{presetProduct}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "updateNeedAlertDelivery"]);
     Route::patch("/presetProducts/state/{presetProduct}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "updateState"]);
     Route::patch("/presetProducts/willPrototypeFinishedAt/{presetProduct}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "updateWillPrototypeFinishedAt"]);
@@ -105,14 +106,9 @@ Route::post("/findIds", [\App\Http\Controllers\Api\FindIdController::class, "sto
 Route::post("/findPasswords", [\App\Http\Controllers\Api\FindPasswordController::class, "store"]);
 
 Route::get("/payMethods", [\App\Http\Controllers\Api\PayMethodController::class, "index"]);
-Route::get("/orders/bill",[\App\Http\Controllers\Api\OrderController::class, 'bill']);
-Route::get("/orders/guest", [\App\Http\Controllers\Api\OrderController::class, "showByGuest"]);
 Route::post("/orders/complete/webhook", [\App\Http\Controllers\Api\OrderController::class, "complete"]);
 Route::post("/orders/complete", [\App\Http\Controllers\Api\OrderController::class, "complete"]);
 Route::get("/orders/complete/mobile", [\App\Http\Controllers\Api\OrderController::class, "complete"]);
-Route::patch("/orders/{order}",[\App\Http\Controllers\Api\OrderController::class, 'update']);
-Route::get("/orders/{order}",[\App\Http\Controllers\Api\OrderController::class, 'show']);
-Route::post("/orders",[\App\Http\Controllers\Api\OrderController::class, 'store']);
 Route::get("/reviews", [\App\Http\Controllers\Api\ReviewController::class, "index"]);
 
 Route::get("/carts", [\App\Http\Controllers\Api\CartController::class, 'index']);
@@ -173,6 +169,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::patch("/orders/cancel/{order}",[\App\Http\Controllers\Api\OrderController::class, 'cancel']);
     Route::get("/orders",[\App\Http\Controllers\Api\OrderController::class, 'index']);
+    Route::post("/orders",[\App\Http\Controllers\Api\OrderController::class, 'store']);
     Route::get("/orders/calculatePriceDelivery/{order}",[\App\Http\Controllers\Api\OrderController::class, 'calculatePriceDelivery']);
 
 
@@ -202,6 +199,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/bookmarks", [\App\Http\Controllers\Api\BookmarkController::class, "store"]);
 
     Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);
+
+    Route::patch("/orders/{order}",[\App\Http\Controllers\Api\OrderController::class, 'update']);
+    Route::get("/orders/{order}",[\App\Http\Controllers\Api\OrderController::class, 'show']);
+    Route::post("/orders",[\App\Http\Controllers\Api\OrderController::class, 'store']);
 });
 
 

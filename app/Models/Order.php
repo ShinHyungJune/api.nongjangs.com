@@ -188,7 +188,6 @@ class Order extends Model
 
                 foreach($products as $product){
                     $product->update(['count_order' => $product->count_order + 1]);
-                    $product->update(['real_count_order' => $product->real_count_order + 1]);
                 }
             }
         }
@@ -272,21 +271,14 @@ class Order extends Model
     {
         $presets = $this->presets;
 
-        $priceDelivery = 0;
-        $priceCouponDiscount = 0;
-        $priceProducts = 0;
+        $pricePresets = 0;
         $point = $data['point_use'];
-
-        $coupon = null;
 
         if($point > 0 && auth()->user()->point < $point)
             return [
                 'success' => false,
                 'message' => '보유 포인트가 부족합니다.'
             ];
-
-        if(auth()->user() && isset($data['coupon_id']))
-            $coupon = auth()->user()->validCoupons()->where('id', $data['coupon_id'])->first();
 
         foreach($presets as $preset){
 
@@ -296,16 +288,9 @@ class Order extends Model
                     'message' => '주문할 수 없습니다. 관리자에게 문의해주세요.'
                 ];
 
-            $products = $preset->products()->wherePivot('additional', 0)->get();
-            $additionalProducts = $preset->products()->wherePivot('additional', 1)->get();
+            $pricePresets += $preset->price;
 
             $preset->presetProducts()->update([
-                /*'buyer_name' => $data['buyer_name'],
-                'buyer_email' => $data['buyer_email'],
-                'buyer_contact' => $data['buyer_contact'],
-                'buyer_address' => $data['buyer_address'],
-                'buyer_address_detail' =>$data['buyer_address_detail'],
-                'buyer_address_zipcode' => $data['buyer_address_zipcode'],*/
                 'delivery_name' => $data['delivery_name'],
                 'delivery_contact' => $data['delivery_contact'],
                 'delivery_address' => $data['delivery_address'],
@@ -314,23 +299,10 @@ class Order extends Model
                 'delivery_requirement' => isset($data['delivery_requirement']) ? $data['delivery_requirement'] : null,
                 'type_delivery' => $data['type_delivery'],
             ]);
-
-            foreach($products as $product){
-                $priceProducts += ($product->pivot->price + $product->pivot->size_price) * $product->pivot->count;
-            }
-
-            // 첫번째 product의 배송비 (이건 다른거 개발할때는 고민해봐야됨)
-            $priceDelivery = $products->first()->price_delivery;
-
-            foreach($additionalProducts as $additionalProduct){
-                $priceProducts += $additionalProduct->pivot->price * $additionalProduct->pivot->count;
-            }
         }
 
-        if($coupon)
-            $priceCouponDiscount = floor(($priceProducts + $priceDelivery - $point) / 100 * $coupon->ratio_discount);
 
-        $price = $priceProducts + $priceDelivery - $priceCouponDiscount - $point;
+        $price = $pricePresets - $point;
 
         if($price < self::$minPrice)
             return [
@@ -340,48 +312,12 @@ class Order extends Model
 
         $payMethod = PayMethod::find($data['pay_method_id']);
 
-        if(auth()->user()){
-            if($data['need_tax']){
-                auth()->user()->update([
-                    'tax_business_number' => $data['tax_business_number'],
-                    'tax_company_title' => $data['tax_company_title'],
-                    'tax_company_president' => $data['tax_company_president'],
-                    'tax_company_type' => $data['tax_company_type'],
-                    'tax_company_category' => $data['tax_company_category'],
-                    'tax_email' => $data['tax_email'],
-                    'tax_name' => $data['tax_name'],
-                    'tax_contact' => $data['tax_contact'],
-                    'tax_address' => $data['tax_address'],
-                ]);
-            }
-
-            if($data['buyer_address'] && !auth()->user()->address){
-                auth()->user()->update([
-                    'address' => $data['buyer_address'],
-                    'address_detail' => $data['buyer_address_detail'],
-                    'address_zipcode' => $data['buyer_address_zipcode'],
-                ]);
-            }
-        }
-
-
         $this->update([
-            'need_tax' => $data['need_tax'],
-            'tax_business_number' => $data['tax_business_number'],
-            'tax_company_title' => $data['tax_company_title'],
-            'tax_company_president' => $data['tax_company_president'],
-            'tax_company_type' => $data['tax_company_type'],
-            'tax_company_category' => $data['tax_company_category'],
-            'tax_email' => $data['tax_email'],
-            'tax_name' => $data['tax_name'],
-            'tax_contact' => $data['tax_contact'],
-            'tax_address' => $data['tax_address'],
-
             'price' => $price,
-            'price_products' => $priceProducts,
+            /*'price_products' => $priceProducts,
             'price_delivery' => $priceDelivery,
             'point_use' => $point,
-            'price_coupon_discount' => $priceCouponDiscount,
+            'price_coupon_discount' => $priceCouponDiscount,*/
 
             'merchant_uid' => 'ORD-' . $this->id.Carbon::now()->format('Hisv'),
             'pay_method_id' => $payMethod->id,
@@ -390,12 +326,12 @@ class Order extends Model
             'pay_method_name' => $payMethod->name,
             'pay_method_commission' => $payMethod->commission,
 
-            'buyer_name' => $data['buyer_name'],
-            'buyer_email' => $data['buyer_email'],
-            'buyer_contact' => $data['buyer_contact'],
-            'buyer_address' => $data['buyer_address'],
-            'buyer_address_detail' =>$data['buyer_address_detail'],
-            'buyer_address_zipcode' => $data['buyer_address_zipcode'],
+            'buyer_name' => auth()->user()->name ?? auth()->user()->nickname,
+            'buyer_email' => auth()->user()->email,
+            'buyer_contact' => $data['delivery_contact'],
+            'buyer_address' => $data['delivery_address'],
+            'buyer_address_detail' =>$data['delivery_address_detail'],
+            'buyer_address_zipcode' => $data['delivery_address_zipcode'],
 
             'delivery_name' => $data['delivery_name'],
             'delivery_contact' => $data['delivery_contact'],
@@ -522,7 +458,7 @@ class Order extends Model
 
     public function getPriceProductsDiscountAttribute()
     {
-        return $this->presetProducts()->where('additional', 0)->sum('price_discount');
+        // return $this->presetProducts()->where('additional', 0)->sum('price_discount');
     }
 
     public function getFormatProducts($presetProducts)
@@ -536,10 +472,5 @@ class Order extends Model
         }
 
         return Arr::getArrayToString($items);
-    }
-
-    public function getPresentPresetProductAttribute()
-    {
-        return $this->presetProducts()->where('additional', 0)->orderBy('id', 'asc')->first();
     }
 }

@@ -38,10 +38,10 @@ class OrderResource extends JsonResource
             'delivery_requirement' => $this->delivery_requirement,
 
             'point_use' => $this->point_use,
-            'price_products' => $this->price_products,
+            /*'price_products' => $this->price_products,
             'price_products_discount' => $this->price_products_discount,
             'price_delivery' => $this->price_delivery,
-            'price_coupon_discount' => $this->price_coupon_discount,
+            'price_coupon_discount' => $this->price_coupon_discount,*/
 
             'price' => $this->price,
             'state' => $this->state,
@@ -60,7 +60,6 @@ class OrderResource extends JsonResource
 
             'format_state' => StateOrder::getLabel($this->state),
             'presets' => PresetResource::collection($this->presets),
-            'presentPresetProduct' => PresetProductResource::make($this->presentPresetProduct),
             'can_cancel' => $this->can_cancel,
             'admin_can_cancel' => $this->admin_can_cancel,
             'format_created_at' => Carbon::make($this->created_at)->format('Y.m.d H:i'),

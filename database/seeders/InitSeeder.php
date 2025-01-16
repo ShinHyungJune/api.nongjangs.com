@@ -31,6 +31,7 @@ use App\Models\FarmStory;
 use App\Models\Grade;
 use App\Models\Like;
 use App\Models\Material;
+use App\Models\Option;
 use App\Models\PayMethod;
 use App\Models\PointHistory;
 use App\Models\Pop;
@@ -107,7 +108,9 @@ class InitSeeder extends Seeder
         Project::truncate();
         CouponGroup::truncate();
         Coupon::truncate();
+        Option::truncate();
         ReportCategory::truncate();
+        Tag::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -137,25 +140,19 @@ class InitSeeder extends Seeder
 
         $this->createGrades();
         $this->createUsers();
-        $this->createTags();
         $this->createBanners();
         $this->createPops();
         $this->createCounts();
         $this->createLocations();
-        $this->createTags();
         $this->createFarms();
         $this->createFarmStories();
         $this->createCategories();
         $this->createProducts();
         $this->createProject();
-        $this->createCouponGroups();
+        $this->createTags();
+        // $this->createCouponGroups();
         $this->createReportCategories();
-        /*$this->createCategories();
         $this->createPayMethods();
-        $this->createCouponGroups();
-        $this->createProducts();
-        $this->createPointHistories();
-        $this->createCouponHistories();*/
     }
 
     public function createReportCategories()
@@ -537,7 +534,7 @@ class InitSeeder extends Seeder
                 $prevTag = Tag::where('type', TypeTag::PRODUCT)->where('title', $tag['title'])->first();
 
                 if(!$prevTag)
-                    $prevTag = Tag::create($tag);
+                    $prevTag = Tag::factory()->create($tag);
 
                 $product->tags()->attach($prevTag->id);
             }
@@ -549,7 +546,7 @@ class InitSeeder extends Seeder
             }
         }
 
-        Product::factory()->count(50)->create();
+        /*Product::factory()->count(50)->create();*/
     }
 
     public function createCategories()
