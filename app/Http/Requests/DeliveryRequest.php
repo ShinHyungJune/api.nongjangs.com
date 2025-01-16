@@ -59,12 +59,24 @@ class DeliveryRequest extends FormRequest
 
                 case 'store':
                     return [
-                        '' => []
+                        'main' => ['required', 'boolean'],
+                        'title' => ['required', 'string', 'max:500'],
+                        'name' => ['required', 'string', 'max:500'],
+                        'contact' => ['required', 'string', 'max:500'],
+                        'address' => ['required', 'string', 'max:500'],
+                        'address_detail' => ['required', 'string', 'max:500'],
+                        'address_zipcode' => ['required', 'string', 'max:500'],
                     ];
 
                 case 'update':
                     return [
-                        '' => []
+                        'main' => ['required', 'boolean'],
+                        'title' => ['required', 'string', 'max:500'],
+                        'name' => ['required', 'string', 'max:500'],
+                        'contact' => ['required', 'string', 'max:500'],
+                        'address' => ['required', 'string', 'max:500'],
+                        'address_detail' => ['required', 'string', 'max:500'],
+                        'address_zipcode' => ['required', 'string', 'max:500'],
                     ];
 
 

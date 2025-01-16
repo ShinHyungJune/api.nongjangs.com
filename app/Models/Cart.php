@@ -21,4 +21,14 @@ class Cart extends Model
     {
         return $this->hasMany(Preset::class);
     }
+
+    public static function get($user)
+    {
+        $cart = $user->cart;
+
+        if(!$cart)
+            $cart = Cart::create(['user_id' => $user->id]);
+
+        return $cart;
+    }
 }

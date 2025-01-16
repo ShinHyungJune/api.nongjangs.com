@@ -19,7 +19,7 @@ class CreateReviewsTable extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('package_id')->nullable()->constrained('packages')->onDelete('cascade');
             $table->foreignId('product_id')->nullable()->constrained('products')->onDelete('cascade');
-            $table->foreignId('preset_product_id')->nullable()->constrained('preset_products')->onDelete('cascade');
+            $table->foreignId('preset_product_id')->nullable()->constrained('preset_product')->onDelete('cascade');
             $table->boolean('best')->comment('베스트 여부')->default(0);
             $table->string('title')->comment('제목');
             $table->integer('score')->comment('점수');

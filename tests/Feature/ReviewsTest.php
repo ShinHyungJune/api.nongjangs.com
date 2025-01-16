@@ -29,7 +29,7 @@ class ReviewsTest extends TestCase
         $this->actingAs($this->user);
 
         $this->form = [
-
+            "title" => "123",
         ];
     }
 
@@ -175,13 +175,14 @@ class ReviewsTest extends TestCase
         ]);
 
         $this->form = [
+            'title' => '123',
             'preset_product_id' => $presetProduct->id,
             'description' => 'asdsad',
             'score' => 5,
             'imgs' => [
                 ['file' => \Illuminate\Http\UploadedFile::fake()->image('image1.jpg')],
                 ['file' => \Illuminate\Http\UploadedFile::fake()->image('image2.jpg')],
-            ]
+            ],
         ];
 
         $item = $this->json('post', '/api/reviews', $this->form)->decodeResponseJson()['data'];
@@ -199,6 +200,7 @@ class ReviewsTest extends TestCase
         $test = '5';
 
         $this->form = [
+            'title' => '123',
             'description' => $test,
             'score' => 5,
         ];
@@ -217,6 +219,7 @@ class ReviewsTest extends TestCase
         ]);
 
         $this->form = [
+            'title' => '123',
             'description' => "123",
             'score' => 5,
             "imgs" => [
@@ -237,6 +240,7 @@ class ReviewsTest extends TestCase
         }
 
         $this->form = [
+            'title' => '123',
             'description' => "123",
             'score' => 5,
             "imgs_remove_ids" => $removeImgIds

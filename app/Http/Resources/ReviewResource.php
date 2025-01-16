@@ -23,6 +23,7 @@ class ReviewResource extends JsonResource
             'best' => $this->best,
             'score' => $this->score,
             'point' => $this->point,
+            'title' => $this->title,
             'description' => $this->description,
             'user' => $user ? [
                 'id' => $user->id,

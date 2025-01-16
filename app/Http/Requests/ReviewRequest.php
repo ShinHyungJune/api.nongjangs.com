@@ -73,6 +73,7 @@ class ReviewRequest extends FormRequest
                 case 'store':
                     return [
                         'preset_product_id' => ['required', 'integer'],
+                        'title' => ['required', 'string', 'max:10000'],
                         'description' => ['required', 'string', 'max:10000'],
                         'score' => ['required', 'integer', 'min:1', 'max:5'],
                         'imgs' => ['nullable', 'array']
@@ -81,6 +82,7 @@ class ReviewRequest extends FormRequest
                 case 'update':
                     return [
                         'description' => ['required', 'string', 'max:10000'],
+                        'title' => ['required', 'string', 'max:10000'],
                         'score' => ['required', 'integer', 'min:1', 'max:5'],
                         'imgs' => ['nullable', 'array'],
                         'imgs_remove_ids' => ['nullable', 'array']

@@ -21,7 +21,6 @@ final class StatePresetProduct
     const FINISH_REFUND = 8;
     const DENY_REFUND = 9;
 
-    const CONFIRM_PROTOTYPE  = 12;
 
     public static function getLabel($value)
     {

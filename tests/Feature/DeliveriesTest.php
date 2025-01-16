@@ -2,6 +2,7 @@
 
 
 use App\Models\Count;
+use App\Models\Delivery;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -27,38 +28,78 @@ class DeliveriesTest extends TestCase
         $this->actingAs($this->user);
 
         $this->form = [
-
+            'main' => 0,
+            'title' => '123',
+            'name' => '123',
+            'contact' => '123',
+            'address' => '123',
+            'address_detail' => '123',
+            'address_zipcode' => '123',
         ];
     }
 
     /** @test */
     public function 사용자는_자신의_목록을_조회할_수_있다()
     {
+        $myModels = Delivery::factory()->count(3)->create([
+            'user_id' => $this->user->id,
+        ]);
 
+        $otherModels = Delivery::factory()->count(2)->create([
+            'user_id' => $this->other->id,
+        ]);
+
+        $items = $this->json('get', '/api/deliveries', [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($myModels), count($items));
     }
 
     /** @test */
     public function 데이터를_생성할_수_있다()
     {
+        $this->json('post', '/api/deliveries', $this->form)->decodeResponseJson()['data'];
 
+        $this->assertEquals(1, $this->user->deliveries()->count());
     }
 
     /** @test */
     public function 데이터를_수정할_수_있다()
     {
+        $delivery = Delivery::factory()->create(['user_id' => $this->user->id]);
 
+        $title = '테스트';
+
+        $this->form['title'] = $title;
+
+        $item = $this->json('patch', '/api/deliveries/'.$delivery->id, $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals($title, $item['title']);
     }
 
     /** @test */
     public function 데이터를_삭제할_수_있다()
     {
+        $delivery = Delivery::factory()->create(['user_id' => $this->user->id]);
 
+        $item = $this->json('delete', '/api/deliveries/'.$delivery->id);
+
+        $this->assertEquals(0, $this->user->deliveries()->count());
     }
 
     /** @test */
     public function 데이터가_기본배송지로_수정되면_다른_배송지는_기본배송지가_아니게된다()
     {
+        $mainDelivery = Delivery::factory()->create(['user_id' => $this->user->id, 'main' => 1]);
+        $subDelivery = Delivery::factory()->create(['user_id' => $this->user->id, 'main' => 0]);
 
+        $this->form['main'] = 1;
+
+        $item = $this->json('patch', '/api/deliveries/'.$subDelivery->id, $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals(1, $item['main']);
+        $this->assertEquals(0, $mainDelivery->refresh()->main);
     }
 
 }

@@ -149,15 +149,16 @@ Route::get("/couponGroups", [\App\Http\Controllers\Api\CouponGroupController::cl
 Route::post('/verifyNumbers', [\App\Http\Controllers\Api\VerifyNumberController::class, "store"]);
 Route::patch('/verifyNumbers', [\App\Http\Controllers\Api\VerifyNumberController::class, "update"]);
 
-Route::get('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class, "index"]);
-Route::get('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "show"]);
-Route::post('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class, "store"]);
-Route::patch('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "update"]);
-Route::delete('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "destroy"]);
 Route::patch("/users/clearPassword", [\App\Http\Controllers\Api\UserController::class, "clearPassword"]);
 Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, "findId"]);
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class, "index"]);
+    Route::get('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "show"]);
+    Route::post('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class, "store"]);
+    Route::patch('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "update"]);
+    Route::delete('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "destroy"]);
+
     Route::get("/user", [\App\Http\Controllers\Api\UserController::class, 'show']);
 
     Route::patch("/users", [\App\Http\Controllers\Api\UserController::class, "update"]);

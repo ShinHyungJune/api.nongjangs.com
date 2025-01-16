@@ -40,6 +40,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('delivery_price_refund')->comment('반품 배송비')->default(0);
             $table->string('delivery_address_refund')->nullable()->comment('교환/반품 배송지');
             $table->text('description')->nullable()->comment('상품상세');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
