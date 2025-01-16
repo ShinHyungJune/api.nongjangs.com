@@ -6,7 +6,7 @@ use App\Http\Requests\ReviewRequest;
 use App\Http\Resources\ReviewResource;
 use App\Models\PresetProduct;
 use App\Models\Review;
-use App\Models\임시\Product;
+use App\Models\Product;
 
 class ReviewController extends ApiController
 {
@@ -55,6 +55,7 @@ class ReviewController extends ApiController
         $review = auth()->user()->reviews()->create([
             'preset_product_id' => $presetProduct->id,
             'product_id' => $product->id,
+            'title' => $request->title,
             'description' => $request->description,
             'score' => $request->score,
             'point' => Review::$point,
@@ -84,6 +85,7 @@ class ReviewController extends ApiController
 
         $review->update([
             'score' => $request->score,
+            'title' => $request->title,
             'description' => $request->description,
         ]);
 

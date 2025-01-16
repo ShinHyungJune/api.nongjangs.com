@@ -38,33 +38,21 @@ class CartController extends ApiController
      * */
     public function store(CartRequest $request)
     {
-        $cart = Cart::get(auth()->user(), $request->guest_id);
+        $cart = Cart::get(auth()->user());
 
         $preset = Preset::find($request->preset_id);
 
-        if(auth()->user() && $preset->user_id != auth()->id())
-            return $this->respondForbidden();
+        if(!$preset->can_order)
+            return $this->respondForbidden('장바구니에 담을 수 없습니다.');
 
-        if(!auth()->user() && $preset->guest_id != $request->guest_id)
-            return $this->respondForbidden();
+        /*if(!auth()->user() && $preset->guest_id != $request->guest_id)
+            return $this->respondForbidden();*/
 
         if($cart->presets()->count() >= 100)
             return $this->respondForbidden('최대 100개까지만 담을 수 있습니다.');
 
-        /*
-        $prevSaleProduct = auth()->user()->cart->saleProducts()->where('sale_products.id', $request->sale_product_id)->first();
-
-        if($prevSaleProduct){
-            auth()->user()->cart->saleProducts()->updateExistingPivot($prevSaleProduct->id, [
-                'count' => $prevSaleProduct->pivot->count + $request->count
-            ]);
-
-            return $this->respondSuccessfully();
-        }*/
-
         $preset->update([
             'cart_id' => $cart->id,
-            'count' => 1,
         ]);
 
         return $this->respondSuccessfully();
@@ -88,12 +76,16 @@ class CartController extends ApiController
     /**
      * @group Cart(장바구니)
      * */
-
     public function destroy(CartRequest $request)
     {
         $cart = Cart::get(auth()->user(), $request->guest_id);
 
-        $cart->presets()->whereIn('presets.id', $request->preset_ids)->update(['cart_id' => null]);
+        foreach($request->preset_ids as $id){
+            $preset = $cart->presets()->find($id);
+
+            if($preset->can_order)
+                $preset->delete();
+        }
 
         return $this->respondSuccessfully();
     }

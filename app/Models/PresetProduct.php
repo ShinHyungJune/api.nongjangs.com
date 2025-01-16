@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\StatePresetProduct;
 use App\Enums\TypeDiscount;
 use App\Enums\TypeOption;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,6 +46,28 @@ class PresetProduct extends Model
     public function coupon(): BelongsTo
     {
         return $this->belongsTo(Coupon::class);
+    }
+
+    public function getCanReviewAttribute()
+    {
+        if(!auth()->user())
+            return 0;
+
+        if(auth()->user()->id != $this->preset->user_id)
+            return 0;
+
+        if($this->state == StatePresetProduct::BEFORE_PAYMENT)
+            return 0;
+
+        if($this->review)
+            return 0;
+
+        return 1;
+    }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class);
     }
 
     public function calculatePrice()

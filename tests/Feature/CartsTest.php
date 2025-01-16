@@ -2,6 +2,7 @@
 
 
 use App\Models\Count;
+use App\Models\Preset;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -34,19 +35,44 @@ class CartsTest extends TestCase
     /** @test */
     public function 누구나_자신의_장바구니에_담은_상품조합_목록을_조회할_수_있다()
     {
+        $presets = Preset::factory()->count(3)->create([
+            'user_id' => $this->user->id,
+            'cart_id' => $this->user->cart->id,
+        ]);
 
+        $this->assertEquals(count($presets), $this->user->cart->presets()->count());
     }
 
     /** @test */
     public function 누구나_장바구니에_상품조합을_담을_수_있다()
     {
         // preset_id (preset이 누구건지 확인 필요)
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id
+        ]);
+
+        $this->json('post', '/api/carts', [
+            'preset_id' => $preset->id
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(1, $this->user->cart->presets()->count());
     }
 
     /** @test */
     public function 누구나_자신의_장바구니의_상품조합목록을_삭제할_수_있다()
     {
+        $presets = Preset::factory()->count(3)->create([
+            'user_id' => $this->user->id,
+            'cart_id' => $this->user->cart->id,
+        ]);
 
+        $this->assertEquals(count($presets), $this->user->cart->presets()->count());
+
+        $this->json('delete', '/api/carts', [
+            'preset_ids' => $presets->pluck('id')->toArray(),
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(0, $this->user->cart->presets()->count());
     }
 
 }
