@@ -11,7 +11,7 @@ class ReportController extends ApiController
 {
     /** 생성
      * @group 사용자
-     * @subgroup 신고(Report)
+     * @subgroup Report(신고)
      */
     public function store(ReportRequest $request)
     {
