@@ -329,9 +329,6 @@ class Order extends Model
             'buyer_name' => auth()->user()->name ?? auth()->user()->nickname,
             'buyer_email' => auth()->user()->email,
             'buyer_contact' => $data['delivery_contact'],
-            'buyer_address' => $data['delivery_address'],
-            'buyer_address_detail' =>$data['delivery_address_detail'],
-            'buyer_address_zipcode' => $data['delivery_address_zipcode'],
 
             'delivery_name' => $data['delivery_name'],
             'delivery_contact' => $data['delivery_contact'],

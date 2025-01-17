@@ -77,7 +77,7 @@ class Preset extends Model
     {
         return $this->calculatePriceDelivery();
     }
-
+    
     public function getPriceAttribute()
     {
         return $this->presetProducts()->sum('price');
@@ -103,6 +103,20 @@ class Preset extends Model
         return $total;
     }
 
+    public function getPriceCouponAttribute()
+    {
+        $presetProducts = $this->presetProducts;
+
+        $total = 0;
+
+        foreach($presetProducts as $presetProduct){
+            $total += $presetProduct->price_coupon;
+        }
+
+        return $total;
+    }
+
+    // 배송비 포함
     public function getPriceTotalAttribute()
     {
         return $this->price + $this->price_delivery;
