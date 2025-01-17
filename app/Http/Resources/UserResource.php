@@ -52,6 +52,9 @@ class UserResource extends JsonResource
             'count_family' => $this->count_family ?? '',
             'birth' => $this->birth ? Carbon::make($this->birth)->format('Y.m.d') : '',
 
+            'count_cart' => $this->cart->presets()->count(),
+            'count_alarm' => $this->alarms()->count(),
+
             "created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y-m-d H:i") : "",
             "format_created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y.m.d") : "",
             "updated_at" => $this->updated_at ? Carbon::make($this->updated_at)->format("Y-m-d H:i") : "",
