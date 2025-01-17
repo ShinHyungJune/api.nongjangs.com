@@ -7,6 +7,7 @@ use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
 use App\Enums\TypeAlarm;
 use App\Enums\TypeCouponHistory;
+use App\Enums\TypeOption;
 use App\Enums\TypePointHistory;
 use App\Mail\PrototypeNeeded;
 use Carbon\Carbon;
@@ -59,17 +60,6 @@ class Order extends Model
                     'order_id' => $model->id,
                     'type' => TypeAlarm::ORDER_SUCCESS,
                 ]);*/
-
-                // 결제성공했을 때 시안 이미 작성한 애들은 시안제작필요 알림 보내기
-                $presetProducts = $model->presetProducts()->where('additional', 0)->get();
-
-                foreach($presetProducts as $presetProduct){
-                    /*if($presetProduct->submit_request)
-                        Alarm::create([
-                            'preset_product_id' => $presetProduct->id,
-                            'type' => TypeAlarm::PRESET_PRODUCT_PROTOTYPE_REQUIRED,
-                        ]);*/
-                }
             }
         });
 
@@ -297,7 +287,6 @@ class Order extends Model
                 'delivery_address_detail' => $data['delivery_address_detail'],
                 'delivery_address_zipcode' => $data['delivery_address_zipcode'],
                 'delivery_requirement' => isset($data['delivery_requirement']) ? $data['delivery_requirement'] : null,
-                'type_delivery' => $data['type_delivery'],
             ]);
         }
 
@@ -336,8 +325,6 @@ class Order extends Model
             'delivery_address_detail' => $data['delivery_address_detail'],
             'delivery_address_zipcode' => $data['delivery_address_zipcode'],
             'delivery_requirement' => isset($data['delivery_requirement']) ? $data['delivery_requirement'] : null,
-            'type_delivery' => $data['type_delivery'],
-            'agree_open' => isset($data['agree_open']) ? $data['agree_open'] : 0,
         ]);
 
         /*if($coupon)
@@ -458,14 +445,16 @@ class Order extends Model
         // return $this->presetProducts()->where('additional', 0)->sum('price_discount');
     }
 
-    public function getFormatProducts($presetProducts)
+    public function getFormatProductsAttribute()
     {
         $items = [];
 
+        $presetProducts = $this->presetProducts;
+
         foreach($presetProducts as $presetProduct){
-            $items[] = $presetProduct->additional
-                ? "{$presetProduct->product_title} (추가상품)"
-                : "{$presetProduct->product_title} ({$presetProduct->color_title} * {$presetProduct->size_title})";
+            if($presetProduct->option_type == TypeOption::REQUIRED){
+                $items[] = $presetProduct->product_title." ({$presetProduct->option_title} * {$presetProduct->count})";
+            }
         }
 
         return Arr::getArrayToString($items);

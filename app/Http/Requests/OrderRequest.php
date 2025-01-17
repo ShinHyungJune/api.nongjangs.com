@@ -40,7 +40,7 @@ class OrderRequest extends FormRequest
 
             case 'update':
                 $data = [
-                    'buyer_contact' => ['required','email','max:500'],
+                    'buyer_contact' => ['required','string','max:500'],
                     'buyer_email' => ['required','string','max:500'],
                     'buyer_name' => ['required','string','max:500'],
 

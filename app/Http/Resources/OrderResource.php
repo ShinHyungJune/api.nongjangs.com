@@ -58,6 +58,7 @@ class OrderResource extends JsonResource
             'vbank_name' => $this->vbank_name,
             'vbank_date' => $this->vbank_date,
 
+            'format_products' => $this->format_products,
             'format_state' => StateOrder::getLabel($this->state),
             'presets' => PresetResource::collection($this->presets),
             'can_cancel' => $this->can_cancel,
