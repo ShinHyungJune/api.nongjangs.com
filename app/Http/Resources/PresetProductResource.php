@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Enums\DeliveryCompany;
+use App\Enums\TypeOption;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,6 +22,8 @@ class PresetProductResource extends JsonResource
                 'title' => $this->product_title,
                 'price' => $this->product_price,
                 'price_origin' => $this->product_price_origin,
+                'requiredOptions' => OptionResource::collection($this->options()->where('type', TypeOption::REQUIRED)->get()),
+                'additionalOptions' => OptionResource::collection($this->options()->where('type', TypeOption::ADDITIONAL)->get()),
             ],
             'option' => [
                 'id' => $this->option_id,
