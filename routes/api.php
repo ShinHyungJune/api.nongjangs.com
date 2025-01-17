@@ -185,6 +185,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "destroy"]);
 
     Route::post("/presets", [\App\Http\Controllers\Api\PresetController::class, "store"]);
+    Route::patch("/presets/{preset}", [\App\Http\Controllers\Api\PresetController::class, "update"]);
 
     Route::patch("/presetProducts/coupon/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "updateCoupon"]);
     // Route::patch("/presetProducts/confirm/{presetProduct}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "confirm"]);
