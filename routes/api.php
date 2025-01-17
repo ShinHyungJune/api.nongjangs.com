@@ -111,10 +111,7 @@ Route::post("/orders/complete", [\App\Http\Controllers\Api\OrderController::clas
 Route::get("/orders/complete/mobile", [\App\Http\Controllers\Api\OrderController::class, "complete"]);
 Route::get("/reviews", [\App\Http\Controllers\Api\ReviewController::class, "index"]);
 
-Route::get("/carts", [\App\Http\Controllers\Api\CartController::class, 'index']);
-Route::post("/carts", [\App\Http\Controllers\Api\CartController::class, 'store']);
-Route::delete("/carts", [\App\Http\Controllers\Api\CartController::class, 'destroy']);
-Route::patch("/carts", [\App\Http\Controllers\Api\CartController::class, 'update']);
+
 
 Route::get("/events", [\App\Http\Controllers\Api\EventController::class, "index"]);
 Route::get("/events/{event}", [\App\Http\Controllers\Api\EventController::class, "show"]);
@@ -149,6 +146,11 @@ Route::patch("/users/clearPassword", [\App\Http\Controllers\Api\UserController::
 Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, "findId"]);
 
 Route::middleware(['auth'])->group(function () {
+    Route::get("/carts", [\App\Http\Controllers\Api\CartController::class, 'index']);
+    Route::post("/carts", [\App\Http\Controllers\Api\CartController::class, 'store']);
+    Route::delete("/carts", [\App\Http\Controllers\Api\CartController::class, 'destroy']);
+    Route::patch("/carts", [\App\Http\Controllers\Api\CartController::class, 'update']);
+
     Route::get('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class, "index"]);
     Route::get('/deliveries/{delivery}', [\App\Http\Controllers\Api\DeliveryController::class, "show"]);
     Route::post('/deliveries', [\App\Http\Controllers\Api\DeliveryController::class, "store"]);
