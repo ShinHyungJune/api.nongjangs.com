@@ -11,7 +11,7 @@ return new class extends Migration {
         Schema::create('preset_product', function (Blueprint $table) {
             $table->id();
             $table->string('state')->default(StatePresetProduct::BEFORE_PAYMENT)->comment('상태');
-            $table->foreignId('preset_id')->constrained('presets');
+            $table->foreignId('preset_id')->constrained('presets')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('option_id')->constrained('options');
             $table->foreignId('coupon_id')->nullable()->constrained('coupons');
