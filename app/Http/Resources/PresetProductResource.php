@@ -15,15 +15,28 @@ class PresetProductResource extends JsonResource
             'id' => $this->id,
             'state' => $this->state,
             'price' => $this->price,
-            'product_title' => $this->product_title,
+            'product' => [
+                'id' => $this->product_id,
+                'img' => $this->product ? $this->product->img : '',
+                'title' => $this->product_title,
+                'price' => $this->product_price,
+                'price_origin' => $this->product_price_origin,
+            ],
+            'option' => [
+                'id' => $this->option_id,
+                'title' => $this->option_title,
+                'price' => $this->option_price,
+                'type' => $this->option_type,
+            ],
+            /*'product_title' => $this->product_title,
             'products_price' => $this->products_price,
             'product_price' => $this->product_price,
-            'product_price_origin' => $this->product_price_origin,
+            'product_price_origin' => $this->product_price_origin,*/
             'price_coupon' => $this->price_coupon,
             'count' => $this->count,
-            'option_title' => $this->option_title,
+            /*'option_title' => $this->option_title,
             'option_price' => $this->option_price,
-            'option_type' => $this->option_type,
+            'option_type' => $this->option_type,*/
 
             'preset_id' => $this->preset_id,
             'product_id' => $this->product_id,
