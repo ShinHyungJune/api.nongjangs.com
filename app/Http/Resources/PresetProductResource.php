@@ -22,8 +22,8 @@ class PresetProductResource extends JsonResource
                 'title' => $this->product_title,
                 'price' => $this->product_price,
                 'price_origin' => $this->product_price_origin,
-                'requiredOptions' => OptionResource::collection($this->options()->where('type', TypeOption::REQUIRED)->get()),
-                'additionalOptions' => OptionResource::collection($this->options()->where('type', TypeOption::ADDITIONAL)->get()),
+                'requiredOptions' => $this->product ? OptionResource::collection($this->product->options()->where('type', TypeOption::REQUIRED)->get()) : '',
+                'additionalOptions' => $this->product ? OptionResource::collection($this->product->options()->where('type', TypeOption::ADDITIONAL)->get()) : '',
             ],
             'option' => [
                 'id' => $this->option_id,
