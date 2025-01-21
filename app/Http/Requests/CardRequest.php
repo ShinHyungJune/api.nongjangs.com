@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PackageRequest extends FormRequest
+class CardRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -20,32 +20,24 @@ class PackageRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'count' => ['required', 'integer'],
-                        'will_delivery_at' => ['nullable', 'date'],
-                        'tax' => ['boolean'],
-                        'start_pack_wait_at' => ['nullable', 'date'],
-                        'finish_pack_wait_at' => ['nullable', 'date'],
-                        'start_pack_at' => ['nullable', 'date'],
-                        'finish_pack_at' => ['nullable', 'date'],
-                        'start_delivery_ready_at' => ['nullable', 'date'],
-                        'finish_delivery_ready_at' => ['nullable', 'date'],
-                        'start_will_out_at' => ['nullable', 'date'],
-                        'finish_will_out_at' => ['nullable', 'date'],
+                        'user_id' => ['required', 'exists:users'],
+                        'card_number' => ['required'],
+                        'expiry' => ['required'],
+                        'birth' => ['required'],
+                        'password' => ['required'],
+                        'name' => ['required'],
+                        'billingKey' => ['required'],
                     ];
 
                 case 'update':
                     return [
-                        'count' => ['required', 'integer'],
-                        'will_delivery_at' => ['nullable', 'date'],
-                        'tax' => ['boolean'],
-                        'start_pack_wait_at' => ['nullable', 'date'],
-                        'finish_pack_wait_at' => ['nullable', 'date'],
-                        'start_pack_at' => ['nullable', 'date'],
-                        'finish_pack_at' => ['nullable', 'date'],
-                        'start_delivery_ready_at' => ['nullable', 'date'],
-                        'finish_delivery_ready_at' => ['nullable', 'date'],
-                        'start_will_out_at' => ['nullable', 'date'],
-                        'finish_will_out_at' => ['nullable', 'date'],//
+                        'user_id' => ['required', 'exists:users'],
+                        'card_number' => ['required'],
+                        'expiry' => ['required'],
+                        'birth' => ['required'],
+                        'password' => ['required'],
+                        'name' => ['required'],
+                        'billingKey' => ['required'],//
                     ];
 
                 case 'destroy':
@@ -65,7 +57,10 @@ class PackageRequest extends FormRequest
 
                 case 'store':
                     return [
-                        '' => []
+                        'card_number' => ['required', 'string', 'max:500'],
+                        'expiry' => ['required', 'string', 'max:500'],
+                        'birth' => ['required', 'string', 'max:500'],
+                        'password' => ['required', 'string', 'max:500'],
                     ];
 
                 case 'update':
@@ -84,8 +79,17 @@ class PackageRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'card_number' => [
+                'description' => '<span class="point">카드번호</span>',
+            ],
+            'expiry' => [
+                'description' => '<span class="point">만료일자</span>',
+            ],
+            'birth' => [
+                'description' => '<span class="point">생년월일</span>',
+            ],
+            'password' => [
+                'description' => '<span class="point">비밀번호</span>',
             ],
 
             // 늘 쓰이는 애들

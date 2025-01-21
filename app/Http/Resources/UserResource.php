@@ -9,6 +9,7 @@ use App\Enums\StateUser;
 use App\Enums\TypeUser;
 use App\Models\Delivery;
 use App\Models\Like;
+use App\Models\PackageSetting;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -42,18 +43,22 @@ class UserResource extends JsonResource
             "code_recommend" => $this->code_recommend,
             "point" => $this->point,
 
-            "address" => $this->address ?? "",
-            "address_detail" => $this->address_detail ?? "",
-            "address_zipcode" => $this->address_zipcode ?? "",
-
             "reason" => $this->reason,
             "and_so_on" => $this->and_so_on,
 
             'count_family' => $this->count_family ?? '',
             'birth' => $this->birth ? Carbon::make($this->birth)->format('Y.m.d') : '',
+            'always_use_coupon_for_package' => $this->always_use_coupon_for_package,
+            'always_use_point_for_package' => $this->always_use_point_for_package,
+            'message' => $this->message ?? '',
+            'reason_leave' => $this->reason_leave ?? '',
+            'reason_leave_and_so_on' => $this->reason_leave_and_so_on ?? '',
 
             'count_cart' => $this->cart->presets()->count(),
             'count_alarm' => 0,
+
+            'point_use' => $this->point_use,
+            'packageSetting' => $this->packageSetting ? PackageSetting::make($this->packageSetting) : '',
 
             "created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y-m-d H:i") : "",
             "format_created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y.m.d") : "",

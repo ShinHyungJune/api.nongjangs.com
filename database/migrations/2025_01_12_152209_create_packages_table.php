@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('count')->comment('회차');
-            $table->date('will_deliveried_at')->nullable()->comment('도착예정일');
+            $table->date('will_delivery_at')->nullable()->comment('도착예정일');
             $table->boolean('tax')->default(0)->comment('과세여부');
             $table->date('start_pack_wait_at')->nullable()->comment('구성대기 시작일');
             $table->date('finish_pack_wait_at')->nullable()->comment('구성대기 종료일');

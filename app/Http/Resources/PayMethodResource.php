@@ -21,6 +21,7 @@ class PayMethodResource extends JsonResource
             'name' => $this->name,
             'commission' => $this->commission,
             'used' => $this->used,
+            'external' => $this->external,
         ];
     }
 }

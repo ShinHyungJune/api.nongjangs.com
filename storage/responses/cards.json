@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "name": "카드사명",
+      "card_number": "카드번호",
+      "color": "색상"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

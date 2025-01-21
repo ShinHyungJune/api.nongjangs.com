@@ -1,0 +1,46 @@
+{
+  "id": "고유번호",
+  "count": "회차",
+  "will_delivery_at": "도착예정일",
+  "format_will_delivery_at": "표시용",
+  "tax": "과세여부 (1 - 과세 | 0 - 비과세)",
+  "start_pack_wait_at": "구성대기 시작일자",
+  "format_start_pack_wait_at": "표시용",
+  "finish_pack_wait_at": "구성대기 종료일자",
+  "format_finish_pack_wait_at": "표시용",
+  "start_pack_at": "품목구성 시작일자",
+  "format_start_pack_at": "표시용",
+  "finish_pack_at": "품목구성 종료일자",
+  "format_finish_pack_at": "표시용",
+  "start_delivery_ready_at": "배송준비 시작일자",
+  "format_start_delivery_ready_at": "표시용",
+  "finish_delivery_ready_at": "배송준비 종료일자",
+  "format_finish_delivery_ready_at": "표시용",
+  "start_will_out_at": "출고예정 시작일자",
+  "format_start_will_out_at": "표시용",
+  "finish_will_out_at": "출고예정 종료일자",
+  "format_finish_will_out_at": "표시용",
+  "packageMaterials (구성품목목록)": [
+    {
+      "material 품목": {
+        "id": "고유번호",
+        "img": "이미지 객체",
+        "category_id": "카테고리 고유번호",
+        "category": "카테고리 객체",
+        "type": "유형 (1 - PRODUCT 직거래 상품 | 2 - PACKAGE 꾸러미)",
+        "format_type": "표시용",
+        "title": "제목",
+        "descriptions": "설명내용",
+        "format_descriptions": "설명내용 배열 (반복문으로 뿌리기)"
+      },
+      "type": "구성품목 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글 | 3 - CAN_SELECT 선택가능)",
+      "format_type_package_material": "표시용",
+      "count": "구성품목 수량",
+      "unit": "구성품목 단위",
+      "price_origin": "구성품목 정가",
+      "price":"구성품목 판매가",
+      "tags": "구성품목 태그 목록"
+    }
+  ],
+  "price": "가격"
+}

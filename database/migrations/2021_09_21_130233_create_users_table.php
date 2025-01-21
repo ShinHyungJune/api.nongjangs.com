@@ -33,19 +33,22 @@ class CreateUsersTable extends Migration
 
             $table->text('reason')->comment('탈퇴사유')->nullable();
             $table->text('and_so_on')->comment('기타 탈퇴사유')->nullable();
-
-            $table->string("address")->nullable()->comment("주소");
-            $table->string("address_detail")->nullable()->comment("주소 상세");
-            $table->string("address_zipcode")->nullable()->comment("주소 우편번호");
             $table->string('password')->nullable();
 
             $table->integer('count_family')->nullable()->comment('가구원수');
             $table->date('birth')->nullable()->comment('생년월일');
 
+            $table->boolean('always_use_coupon_for_package')->default(1)->comment('꾸러미 결제 시 쿠폰 자동 적용여부');
+            $table->boolean('always_use_point_for_package')->default(1)->comment('꾸러미 결제 시 적립금 자동사용여부');
+            $table->text('message')->nullable()->comment('프로필 메시지');
+            $table->string('nickname')->nullable()->comment('닉네임');
+
             $table->boolean("admin")->default(false);
             $table->boolean("master")->default(false);
 
             $table->text("push_token")->nullable();
+
+
 
             $table->rememberToken();
             $table->timestamps();

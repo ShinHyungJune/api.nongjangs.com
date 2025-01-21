@@ -125,6 +125,8 @@ Route::get("/notices/{notice}", [\App\Http\Controllers\Api\NoticeController::cla
 Route::get("/categories", [\App\Http\Controllers\Api\CategoryController::class, "index"]);
 // Route::get("/recommendCategories", [\App\Http\Controllers\Api\RecommendCategoryController::class, "index"]);
 
+Route::get("/packages/current", [\App\Http\Controllers\Api\PackageController::class, "current"]);
+
 Route::get("/banners", [\App\Http\Controllers\Api\BannerController::class, "index"]);
 Route::get("/pops", [\App\Http\Controllers\Api\PopController::class, "index"]);
 Route::get("/counts", [\App\Http\Controllers\Api\CountController::class, "index"]);
@@ -146,6 +148,9 @@ Route::patch("/users/clearPassword", [\App\Http\Controllers\Api\UserController::
 Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, "findId"]);
 
 Route::middleware(['auth'])->group(function () {
+    Route::post("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "store"]);
+
+    Route::get("/cards", [\App\Http\Controllers\Api\CardController::class, 'index']);
     Route::get("/carts", [\App\Http\Controllers\Api\CartController::class, 'index']);
     Route::post("/carts", [\App\Http\Controllers\Api\CartController::class, 'store']);
     Route::delete("/carts", [\App\Http\Controllers\Api\CartController::class, 'destroy']);

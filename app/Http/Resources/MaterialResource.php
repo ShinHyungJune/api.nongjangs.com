@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Enums\TypeMaterial;
+use App\Enums\TypePackageMaterial;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \App\Models\Material */

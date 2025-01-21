@@ -290,6 +290,16 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         return $this->hasMany(PointHistory::class);
     }
 
+    public function getPointUseAttribute()
+    {
+        return $this->pointHistories()->where('increase', 0)->sum('point');
+    }
+
+    public function packageSetting()
+    {
+        return $this->hasOne(PackageSetting::class);
+    }
+
     public function couponHistories()
     {
         return $this->hasMany(CouponHistory::class);
@@ -303,5 +313,10 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     public function bookmarks()
     {
         return $this->hasMany(Bookmark::class);
+    }
+
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
     }
 }

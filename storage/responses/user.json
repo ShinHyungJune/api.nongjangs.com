@@ -8,5 +8,32 @@
   "agree_promotion": "프로모션 동의여부",
   "code_recommend": "추천인코드",
   "point": "보유포인트",
+
+  "reason": "탈퇴사유",
+  "and_so_on": "기타 탈퇴사유(직접입력)",
+  "count_family": "가구원수",
+  "birth": "생년월일",
+  "always_use_coupon_for_package": "꾸러미 결제 시 쿠폰 자동 적용여부",
+  "always_use_point_for_package": "꾸러미 결제 시 적립금 자동사용여부",
+  "message": "프로필 메시지",
+  "nickname": "닉네임",
+
+  "count_cart": "장바구니에 담긴 상품조합수",
+  "count_alarm": "알람수",
+  "point_use": "총 사용 적립금",
+  "packageSetting (패키지 설정값)": {
+    "id": "고유번호",
+    "type_package": "패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)",
+    "term": "주기",
+    "card (사용할 카드)": {
+      "id": "고유번호",
+      "name": "카드사명",
+      "card_number": "카드번호"
+    },
+    "delivery":"배송지 객체",
+    "will_order_at": "다음 결제일자",
+    "firstPackage": "첫 결제 패키지 객체"
+  },
+
   "format_created_at": "표시용 생성일자"
 }

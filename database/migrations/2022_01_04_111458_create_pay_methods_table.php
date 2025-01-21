@@ -20,6 +20,7 @@ class CreatePayMethodsTable extends Migration
             $table->string("name")->nullable();
             $table->integer("commission")->nullable();
             $table->boolean("used")->default(true);
+            $table->boolean('external')->default(1)->comment('외부결제수단 여부');
             $table->timestamps();
         });
     }

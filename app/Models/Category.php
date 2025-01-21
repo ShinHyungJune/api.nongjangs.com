@@ -27,4 +27,9 @@ class Category extends Model implements HasMedia
             $model->order = $prevModel ? $prevModel->order + 1 : 1;
         });
     }
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
+    }
 }

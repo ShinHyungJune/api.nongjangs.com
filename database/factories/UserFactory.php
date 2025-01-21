@@ -21,9 +21,6 @@ class UserFactory extends Factory
 
             'agree_promotion' => 0,
 
-            'address' => $this->faker->title,
-            'address_detail' => $this->faker->title,
-            'address_zipcode' => $this->faker->title,
             'password' => $this->faker->title,
             'point' => 0,
         ];

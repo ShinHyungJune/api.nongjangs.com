@@ -26,7 +26,7 @@ paths:
                 preset_id:
                   type: integer
                   description: '<span class="point">상품조합 고유번호</span>.'
-                  example: 5
+                  example: 4
                   nullable: false
               required:
                 - preset_id
@@ -73,12 +73,12 @@ paths:
                 preset_id:
                   type: integer
                   description: '<span class="point">상품조합 고유번호</span>.'
-                  example: 15
+                  example: 18
                   nullable: false
                 count:
                   type: integer
                   description: '<span class="point">개수</span>. value(은)는  최소 1 이상이어야 합니다.'
-                  example: 89
+                  example: 17
                   nullable: false
               required:
                 - preset_id
@@ -115,7 +115,7 @@ paths:
                 contact:
                   type: string
                   description: '<span class="point">연락처</span>. Must not be greater than 500 characters.'
-                  example: orzsuorlndwrmnyzdjuyghnlu
+                  example: eawclvlnxpq
                   nullable: false
               required:
                 - contact
@@ -139,17 +139,17 @@ paths:
                 ids:
                   type: string
                   description: '<span class="point">아이디</span>. Must not be greater than 500 characters.'
-                  example: qfqearlpm
+                  example: rjebxnqwrbbhdjq
                   nullable: false
                 contact:
                   type: string
                   description: '<span class="point">연락처</span>. Must not be greater than 500 characters.'
-                  example: txtlicxtqesry
+                  example: qudpicimjjdytflsqxjocsnd
                   nullable: false
                 password:
                   type: string
                   description: '<span class="point">비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters.'
-                  example: '`fzp20`~Arrv'
+                  example: '9#JGM1<^]wh~|"Km?!8'
                   nullable: false
               required:
                 - ids
@@ -183,10 +183,83 @@ paths:
         in: path
         name: order_id
         description: 'The ID of the order.'
-        example: 1
+        example: 5
         required: true
         schema:
           type: integer
+  /api/payMethods:
+    get:
+      summary: ''
+      operationId: getApiPayMethods
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 고유번호
+                      pg: pg코드
+                      name: 결제수단명
+                      external: '외부결제수단여부 (0 - 농장스 간편결제 | 1 - 휴대폰, 신용카드 가상계좌 등)'
+                      card_number: 카드번호
+                      color: 색상
+                  meta:
+                    total: '총 개수'
+                    current_page: '현재 페이지'
+                    last_page: '마지막 페이지'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 고유번호
+                        pg: pg코드
+                        name: 결제수단명
+                        external: '외부결제수단여부 (0 - 농장스 간편결제 | 1 - 휴대폰, 신용카드 가상계좌 등)'
+                        card_number: 카드번호
+                        color: 색상
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 고유번호
+                        pg:
+                          type: string
+                          example: pg코드
+                        name:
+                          type: string
+                          example: 결제수단명
+                        external:
+                          type: string
+                          example: '외부결제수단여부 (0 - 농장스 간편결제 | 1 - 휴대폰, 신용카드 가상계좌 등)'
+                        card_number:
+                          type: string
+                          example: 카드번호
+                        color:
+                          type: string
+                          example: 색상
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: string
+                        example: '총 개수'
+                      current_page:
+                        type: string
+                        example: '현재 페이지'
+                      last_page:
+                        type: string
+                        example: '마지막 페이지'
+      tags:
+        - PayMethod(결제수단)
+      security: []
   /api/qnaCategories:
     get:
       summary: ''
@@ -224,7 +297,7 @@ paths:
         in: path
         name: review_id
         description: 'The ID of the review.'
-        example: 3
+        example: 1
         required: true
         schema:
           type: integer
@@ -247,7 +320,7 @@ paths:
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: dhoojorco
+                  example: wwgmwm
                   nullable: false
               required:
                 - contact
@@ -270,12 +343,12 @@ paths:
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: mxkzfttougvckpaqahrk
+                  example: dlpeuyohtgujdnos
                   nullable: false
                 number:
                   type: string
                   description: "<span class='point'>인증번호</span>. Must not be greater than 500 characters."
-                  example: ipuftzszhzqafncyzjhde
+                  example: vqkr
                   nullable: false
               required:
                 - contact
@@ -380,7 +453,7 @@ paths:
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: faewtputcfdif
+                  example: isrlpiiewmpayoyt
                   nullable: true
       security: []
     post:
@@ -524,7 +597,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the example.'
-        example: eligendi
+        example: molestiae
         required: true
         schema:
           type: string
@@ -680,12 +753,12 @@ paths:
                 type:
                   type: integer
                   description: '<span class="point">유형 (1 - 메인배너 | 2 - 농가이야기 | 3 - 정기구독 | 4 - 직거래장터)</span>.'
-                  example: 14
+                  example: 7
                   nullable: true
                 word:
                   type: string
                   description: 'Must not be greater than 500 characters.'
-                  example: cbdp
+                  example: jswgcqihcrfjdzctzpdecc
                   nullable: true
       security: []
     post:
@@ -806,42 +879,42 @@ paths:
                 title:
                   type: string
                   description: '<span class="point">제목</span>. Must not be greater than 500 characters.'
-                  example: fdlzsinjrulpuvjsmwouwrlxq
+                  example: mvywshufgh
                   nullable: false
                 subtitle:
                   type: string
                   description: '<span class="point">부제목</span>. Must not be greater than 500 characters.'
-                  example: sensezxhxggrtvptocpxxkb
+                  example: u
                   nullable: true
                 url:
                   type: string
                   description: '<span class="point">이동 URL</span>. Must not be greater than 500 characters.'
-                  example: 'http://www.reilly.info/'
+                  example: 'http://maggio.com/atque-eum-et-sint-optio-nam.html'
                   nullable: true
                 button:
                   type: string
                   description: '<span class="point">버튼명</span>. Must not be greater than 500 characters.'
-                  example: jjuxg
+                  example: iqiyfpzqousupfr
                   nullable: false
                 color_text:
                   type: string
                   description: '<span class="point">글씨 색상</span>. Must not be greater than 500 characters.'
-                  example: jpttafov
+                  example: khobgzpviauqusymlcyybvco
                   nullable: false
                 color_button:
                   type: string
                   description: '<span class="point">버튼 색상</span>. Must not be greater than 500 characters.'
-                  example: vnrykvatpkolhtghbips
+                  example: ddkgvmarvzll
                   nullable: false
                 started_at:
                   type: string
                   description: '<span class="point">노출시작일</span>. Must be a valid date.'
-                  example: '2025-01-17T02:40:38'
+                  example: '2025-01-22T03:45:50'
                   nullable: false
                 finished_at:
                   type: string
                   description: '<span class="point">노출종료일</span>. Must be a valid date.'
-                  example: '2025-01-17T02:40:38'
+                  example: '2025-01-22T03:45:50'
                   nullable: false
               required:
                 - title
@@ -1091,42 +1164,42 @@ paths:
                 title:
                   type: string
                   description: '<span class="point">제목</span>. Must not be greater than 500 characters.'
-                  example: jmrxobqroztkjzzyyztnemgid
+                  example: toogn
                   nullable: false
                 subtitle:
                   type: string
                   description: '<span class="point">부제목</span>. Must not be greater than 500 characters.'
-                  example: rhwtkdxssbneumzfh
+                  example: tckhygyrhphhekxptgc
                   nullable: true
                 url:
                   type: string
                   description: '<span class="point">이동 URL</span>. Must not be greater than 500 characters.'
-                  example: 'http://hegmann.com/'
+                  example: 'https://russel.net/eum-omnis-atque-itaque-numquam-molestiae-voluptatem.html'
                   nullable: true
                 button:
                   type: string
                   description: '<span class="point">버튼명</span>. Must not be greater than 500 characters.'
-                  example: vhyejxhokbhpjylonefyp
+                  example: xlzmnwcb
                   nullable: false
                 color_text:
                   type: string
                   description: '<span class="point">글씨 색상</span>. Must not be greater than 500 characters.'
-                  example: zohptxowglzymkvrzhxrppw
+                  example: iunigocgsoqrbgll
                   nullable: false
                 color_button:
                   type: string
                   description: '<span class="point">버튼 색상</span>. Must not be greater than 500 characters.'
-                  example: rwkapomlimiufv
+                  example: qgjqpfagopbnjgqvebwvil
                   nullable: false
                 started_at:
                   type: string
                   description: '<span class="point">노출시작일</span>. Must be a valid date.'
-                  example: '2025-01-17T02:40:38'
+                  example: '2025-01-22T03:45:50'
                   nullable: false
                 finished_at:
                   type: string
                   description: '<span class="point">노출종료일</span>. Must be a valid date.'
-                  example: '2025-01-17T02:40:38'
+                  example: '2025-01-22T03:45:50'
                   nullable: false
               required:
                 - title
@@ -1367,7 +1440,7 @@ paths:
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: dudrjmlka
+                  example: rgvfupegjz
                   nullable: true
       security: []
     delete:
@@ -1637,6 +1710,28 @@ paths:
                       agree_promotion: '프로모션 동의여부'
                       code_recommend: 추천인코드
                       point: 보유포인트
+                      reason: 탈퇴사유
+                      and_so_on: '기타 탈퇴사유(직접입력)'
+                      count_family: 가구원수
+                      birth: 생년월일
+                      always_use_coupon_for_package: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                      always_use_point_for_package: '꾸러미 결제 시 적립금 자동사용여부'
+                      message: '프로필 메시지'
+                      nickname: 닉네임
+                      count_cart: '장바구니에 담긴 상품조합수'
+                      count_alarm: 알람수
+                      point_use: '총 사용 적립금'
+                      'packageSetting (패키지 설정값)':
+                        id: 고유번호
+                        type_package: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                        term: 주기
+                        'card (사용할 카드)':
+                          id: 고유번호
+                          name: 카드사명
+                          card_number: 카드번호
+                        delivery: '배송지 객체'
+                        will_order_at: '다음 결제일자'
+                        firstPackage: '첫 결제 패키지 객체'
                       format_created_at: '표시용 생성일자'
                   meta:
                     total: '총 개수'
@@ -1656,6 +1751,28 @@ paths:
                         agree_promotion: '프로모션 동의여부'
                         code_recommend: 추천인코드
                         point: 보유포인트
+                        reason: 탈퇴사유
+                        and_so_on: '기타 탈퇴사유(직접입력)'
+                        count_family: 가구원수
+                        birth: 생년월일
+                        always_use_coupon_for_package: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                        always_use_point_for_package: '꾸러미 결제 시 적립금 자동사용여부'
+                        message: '프로필 메시지'
+                        nickname: 닉네임
+                        count_cart: '장바구니에 담긴 상품조합수'
+                        count_alarm: 알람수
+                        point_use: '총 사용 적립금'
+                        'packageSetting (패키지 설정값)':
+                          id: 고유번호
+                          type_package: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                          term: 주기
+                          'card (사용할 카드)':
+                            id: 고유번호
+                            name: 카드사명
+                            card_number: 카드번호
+                          delivery: '배송지 객체'
+                          will_order_at: '다음 결제일자'
+                          firstPackage: '첫 결제 패키지 객체'
                         format_created_at: '표시용 생성일자'
                     items:
                       type: object
@@ -1687,6 +1804,72 @@ paths:
                         point:
                           type: string
                           example: 보유포인트
+                        reason:
+                          type: string
+                          example: 탈퇴사유
+                        and_so_on:
+                          type: string
+                          example: '기타 탈퇴사유(직접입력)'
+                        count_family:
+                          type: string
+                          example: 가구원수
+                        birth:
+                          type: string
+                          example: 생년월일
+                        always_use_coupon_for_package:
+                          type: string
+                          example: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                        always_use_point_for_package:
+                          type: string
+                          example: '꾸러미 결제 시 적립금 자동사용여부'
+                        message:
+                          type: string
+                          example: '프로필 메시지'
+                        nickname:
+                          type: string
+                          example: 닉네임
+                        count_cart:
+                          type: string
+                          example: '장바구니에 담긴 상품조합수'
+                        count_alarm:
+                          type: string
+                          example: 알람수
+                        point_use:
+                          type: string
+                          example: '총 사용 적립금'
+                        'packageSetting (패키지 설정값)':
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 고유번호
+                            type_package:
+                              type: string
+                              example: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                            term:
+                              type: string
+                              example: 주기
+                            'card (사용할 카드)':
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  example: 고유번호
+                                name:
+                                  type: string
+                                  example: 카드사명
+                                card_number:
+                                  type: string
+                                  example: 카드번호
+                            delivery:
+                              type: string
+                              example: '배송지 객체'
+                            will_order_at:
+                              type: string
+                              example: '다음 결제일자'
+                            firstPackage:
+                              type: string
+                              example: '첫 결제 패키지 객체'
                         format_created_at:
                           type: string
                           example: '표시용 생성일자'
@@ -1714,7 +1897,7 @@ paths:
                 word:
                   type: string
                   description: "<span class='point'>검색어</span>. Must not be greater than 500 characters."
-                  example: xxmauzwujfssfuj
+                  example: optgbutalncrgvuuhxmoex
                   nullable: true
       security: []
     delete:
@@ -1764,6 +1947,28 @@ paths:
                   agree_promotion: '프로모션 동의여부'
                   code_recommend: 추천인코드
                   point: 보유포인트
+                  reason: 탈퇴사유
+                  and_so_on: '기타 탈퇴사유(직접입력)'
+                  count_family: 가구원수
+                  birth: 생년월일
+                  always_use_coupon_for_package: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                  always_use_point_for_package: '꾸러미 결제 시 적립금 자동사용여부'
+                  message: '프로필 메시지'
+                  nickname: 닉네임
+                  count_cart: '장바구니에 담긴 상품조합수'
+                  count_alarm: 알람수
+                  point_use: '총 사용 적립금'
+                  'packageSetting (패키지 설정값)':
+                    id: 고유번호
+                    type_package: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                    term: 주기
+                    'card (사용할 카드)':
+                      id: 고유번호
+                      name: 카드사명
+                      card_number: 카드번호
+                    delivery: '배송지 객체'
+                    will_order_at: '다음 결제일자'
+                    firstPackage: '첫 결제 패키지 객체'
                   format_created_at: '표시용 생성일자'
                 properties:
                   id:
@@ -1793,6 +1998,72 @@ paths:
                   point:
                     type: string
                     example: 보유포인트
+                  reason:
+                    type: string
+                    example: 탈퇴사유
+                  and_so_on:
+                    type: string
+                    example: '기타 탈퇴사유(직접입력)'
+                  count_family:
+                    type: string
+                    example: 가구원수
+                  birth:
+                    type: string
+                    example: 생년월일
+                  always_use_coupon_for_package:
+                    type: string
+                    example: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                  always_use_point_for_package:
+                    type: string
+                    example: '꾸러미 결제 시 적립금 자동사용여부'
+                  message:
+                    type: string
+                    example: '프로필 메시지'
+                  nickname:
+                    type: string
+                    example: 닉네임
+                  count_cart:
+                    type: string
+                    example: '장바구니에 담긴 상품조합수'
+                  count_alarm:
+                    type: string
+                    example: 알람수
+                  point_use:
+                    type: string
+                    example: '총 사용 적립금'
+                  'packageSetting (패키지 설정값)':
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 고유번호
+                      type_package:
+                        type: string
+                        example: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                      term:
+                        type: string
+                        example: 주기
+                      'card (사용할 카드)':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: 고유번호
+                          name:
+                            type: string
+                            example: 카드사명
+                          card_number:
+                            type: string
+                            example: 카드번호
+                      delivery:
+                        type: string
+                        example: '배송지 객체'
+                      will_order_at:
+                        type: string
+                        example: '다음 결제일자'
+                      firstPackage:
+                        type: string
+                        example: '첫 결제 패키지 객체'
                   format_created_at:
                     type: string
                     example: '표시용 생성일자'
@@ -2170,7 +2441,7 @@ paths:
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: arwyhzduz
+                  example: czechb
                   nullable: true
       security: []
     delete:
@@ -2448,7 +2719,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the product.'
-        example: et
+        example: ipsa
         required: true
         schema:
           type: string
@@ -2597,17 +2868,17 @@ paths:
                 token:
                   type: string
                   description: "<span class='point'>로그인 토큰 - 소셜로그인 시 필요</span>. Must not be greater than 500 characters."
-                  example: hyxrbymsghsupxssqunjo
+                  example: nlzpccltrtmiutmuwq
                   nullable: true
                 ids:
                   type: string
                   description: 'Must not be greater than 500 characters.'
-                  example: vxyvesgejsvekxezjrbcqbor
+                  example: ntuhjbfsnjcawccnbaya
                   nullable: true
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. Must not be greater than 500 characters."
-                  example: '&8&l(o9F?MxZ#'
+                  example: 'BP$v#&5)_Gh\'
                   nullable: true
       security: []
   /api/users:
@@ -2685,37 +2956,37 @@ paths:
                 social_id:
                   type: string
                   description: 'Must not be greater than 500 characters.'
-                  example: zoxmxaqjl
+                  example: oxshourmbnezt
                   nullable: true
                 social_platform:
                   type: string
                   description: 'Must not be greater than 500 characters.'
-                  example: pkojhz
+                  example: aikxzxrwfiklejk
                   nullable: true
                 email:
                   type: string
                   description: "<span class='point'>이메일</span>. value(은)는 이메일 형태여야 합니다. Must not be greater than 500 characters."
-                  example: hettinger.margaret@example.org
+                  example: imarks@example.net
                   nullable: true
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters."
-                  example: )uG>r|.Z1
+                  example: rp^WC-IZs
                   nullable: false
                 name:
                   type: string
                   description: "<span class='point'>이름</span>. Must not be greater than 500 characters."
-                  example: ergrymxhfuslv
+                  example: fpmwsqqxwhdxhpsrhwn
                   nullable: false
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: dwgkbezauyyxvehkvnwatmawx
+                  example: povxdjeywjoyidf
                   nullable: false
                 agree_promotion:
                   type: boolean
                   description: "<span class='point'>프로모션 수신여부</span>."
-                  example: true
+                  example: false
                   nullable: true
               required:
                 - password
@@ -2744,6 +3015,28 @@ paths:
                   agree_promotion: '프로모션 동의여부'
                   code_recommend: 추천인코드
                   point: 보유포인트
+                  reason: 탈퇴사유
+                  and_so_on: '기타 탈퇴사유(직접입력)'
+                  count_family: 가구원수
+                  birth: 생년월일
+                  always_use_coupon_for_package: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                  always_use_point_for_package: '꾸러미 결제 시 적립금 자동사용여부'
+                  message: '프로필 메시지'
+                  nickname: 닉네임
+                  count_cart: '장바구니에 담긴 상품조합수'
+                  count_alarm: 알람수
+                  point_use: '총 사용 적립금'
+                  'packageSetting (패키지 설정값)':
+                    id: 고유번호
+                    type_package: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                    term: 주기
+                    'card (사용할 카드)':
+                      id: 고유번호
+                      name: 카드사명
+                      card_number: 카드번호
+                    delivery: '배송지 객체'
+                    will_order_at: '다음 결제일자'
+                    firstPackage: '첫 결제 패키지 객체'
                   format_created_at: '표시용 생성일자'
                 properties:
                   id:
@@ -2773,6 +3066,72 @@ paths:
                   point:
                     type: string
                     example: 보유포인트
+                  reason:
+                    type: string
+                    example: 탈퇴사유
+                  and_so_on:
+                    type: string
+                    example: '기타 탈퇴사유(직접입력)'
+                  count_family:
+                    type: string
+                    example: 가구원수
+                  birth:
+                    type: string
+                    example: 생년월일
+                  always_use_coupon_for_package:
+                    type: string
+                    example: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                  always_use_point_for_package:
+                    type: string
+                    example: '꾸러미 결제 시 적립금 자동사용여부'
+                  message:
+                    type: string
+                    example: '프로필 메시지'
+                  nickname:
+                    type: string
+                    example: 닉네임
+                  count_cart:
+                    type: string
+                    example: '장바구니에 담긴 상품조합수'
+                  count_alarm:
+                    type: string
+                    example: 알람수
+                  point_use:
+                    type: string
+                    example: '총 사용 적립금'
+                  'packageSetting (패키지 설정값)':
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 고유번호
+                      type_package:
+                        type: string
+                        example: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                      term:
+                        type: string
+                        example: 주기
+                      'card (사용할 카드)':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: 고유번호
+                          name:
+                            type: string
+                            example: 카드사명
+                          card_number:
+                            type: string
+                            example: 카드번호
+                      delivery:
+                        type: string
+                        example: '배송지 객체'
+                      will_order_at:
+                        type: string
+                        example: '다음 결제일자'
+                      firstPackage:
+                        type: string
+                        example: '첫 결제 패키지 객체'
                   format_created_at:
                     type: string
                     example: '표시용 생성일자'
@@ -2788,17 +3147,17 @@ paths:
                 name:
                   type: string
                   description: "<span class='point'>이름</span>. Must not be greater than 500 characters."
-                  example: gaoytp
+                  example: lwodavccyiwry
                   nullable: false
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: cvsmnzvvynhthco
+                  example: ezik
                   nullable: false
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요."
-                  example: 'C@~d~6*9`Ffh'
+                  example: '.?k?i*bNp?mECIe'
                   nullable: true
               required:
                 - name
@@ -2822,13 +3181,213 @@ paths:
                 reason:
                   type: string
                   description: "<span class='point'>탈퇴사유</span>. Must not be greater than 3000 characters."
-                  example: yzlpkm
+                  example: tdlefggguzpqjwvjfjkhoezqt
                   nullable: true
                 and_so_on:
                   type: string
                   description: "<span class='point'>기타 추가입력사항</span>. Must not be greater than 3000 characters."
-                  example: zhaabwxtsrz
+                  example: vymermn
                   nullable: true
+      security: []
+  /api/packages/current:
+    get:
+      summary: '상세(현재 회차 Carbon::now()->addWeek())'
+      operationId: CarbonnowaddWeek
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 고유번호
+                  count: 회차
+                  will_delivery_at: 도착예정일
+                  format_will_delivery_at: 표시용
+                  tax: '과세여부 (1 - 과세 | 0 - 비과세)'
+                  start_pack_wait_at: '구성대기 시작일자'
+                  format_start_pack_wait_at: 표시용
+                  finish_pack_wait_at: '구성대기 종료일자'
+                  format_finish_pack_wait_at: 표시용
+                  start_pack_at: '품목구성 시작일자'
+                  format_start_pack_at: 표시용
+                  finish_pack_at: '품목구성 종료일자'
+                  format_finish_pack_at: 표시용
+                  start_delivery_ready_at: '배송준비 시작일자'
+                  format_start_delivery_ready_at: 표시용
+                  finish_delivery_ready_at: '배송준비 종료일자'
+                  format_finish_delivery_ready_at: 표시용
+                  start_will_out_at: '출고예정 시작일자'
+                  format_start_will_out_at: 표시용
+                  finish_will_out_at: '출고예정 종료일자'
+                  format_finish_will_out_at: 표시용
+                  'packageMaterials (구성품목목록)':
+                    -
+                      'material 품목':
+                        id: 고유번호
+                        img: '이미지 객체'
+                        category_id: '카테고리 고유번호'
+                        category: '카테고리 객체'
+                        type: '유형 (1 - PRODUCT 직거래 상품 | 2 - PACKAGE 꾸러미)'
+                        format_type: 표시용
+                        title: 제목
+                        descriptions: 설명내용
+                        format_descriptions: '설명내용 배열 (반복문으로 뿌리기)'
+                      type: '구성품목 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글 | 3 - CAN_SELECT 선택가능)'
+                      format_type_package_material: 표시용
+                      count: '구성품목 수량'
+                      unit: '구성품목 단위'
+                      price_origin: '구성품목 정가'
+                      price: '구성품목 판매가'
+                      tags: '구성품목 태그 목록'
+                  price: 가격
+                properties:
+                  id:
+                    type: string
+                    example: 고유번호
+                  count:
+                    type: string
+                    example: 회차
+                  will_delivery_at:
+                    type: string
+                    example: 도착예정일
+                  format_will_delivery_at:
+                    type: string
+                    example: 표시용
+                  tax:
+                    type: string
+                    example: '과세여부 (1 - 과세 | 0 - 비과세)'
+                  start_pack_wait_at:
+                    type: string
+                    example: '구성대기 시작일자'
+                  format_start_pack_wait_at:
+                    type: string
+                    example: 표시용
+                  finish_pack_wait_at:
+                    type: string
+                    example: '구성대기 종료일자'
+                  format_finish_pack_wait_at:
+                    type: string
+                    example: 표시용
+                  start_pack_at:
+                    type: string
+                    example: '품목구성 시작일자'
+                  format_start_pack_at:
+                    type: string
+                    example: 표시용
+                  finish_pack_at:
+                    type: string
+                    example: '품목구성 종료일자'
+                  format_finish_pack_at:
+                    type: string
+                    example: 표시용
+                  start_delivery_ready_at:
+                    type: string
+                    example: '배송준비 시작일자'
+                  format_start_delivery_ready_at:
+                    type: string
+                    example: 표시용
+                  finish_delivery_ready_at:
+                    type: string
+                    example: '배송준비 종료일자'
+                  format_finish_delivery_ready_at:
+                    type: string
+                    example: 표시용
+                  start_will_out_at:
+                    type: string
+                    example: '출고예정 시작일자'
+                  format_start_will_out_at:
+                    type: string
+                    example: 표시용
+                  finish_will_out_at:
+                    type: string
+                    example: '출고예정 종료일자'
+                  format_finish_will_out_at:
+                    type: string
+                    example: 표시용
+                  'packageMaterials (구성품목목록)':
+                    type: array
+                    example:
+                      -
+                        'material 품목':
+                          id: 고유번호
+                          img: '이미지 객체'
+                          category_id: '카테고리 고유번호'
+                          category: '카테고리 객체'
+                          type: '유형 (1 - PRODUCT 직거래 상품 | 2 - PACKAGE 꾸러미)'
+                          format_type: 표시용
+                          title: 제목
+                          descriptions: 설명내용
+                          format_descriptions: '설명내용 배열 (반복문으로 뿌리기)'
+                        type: '구성품목 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글 | 3 - CAN_SELECT 선택가능)'
+                        format_type_package_material: 표시용
+                        count: '구성품목 수량'
+                        unit: '구성품목 단위'
+                        price_origin: '구성품목 정가'
+                        price: '구성품목 판매가'
+                        tags: '구성품목 태그 목록'
+                    items:
+                      type: object
+                      properties:
+                        'material 품목':
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 고유번호
+                            img:
+                              type: string
+                              example: '이미지 객체'
+                            category_id:
+                              type: string
+                              example: '카테고리 고유번호'
+                            category:
+                              type: string
+                              example: '카테고리 객체'
+                            type:
+                              type: string
+                              example: '유형 (1 - PRODUCT 직거래 상품 | 2 - PACKAGE 꾸러미)'
+                            format_type:
+                              type: string
+                              example: 표시용
+                            title:
+                              type: string
+                              example: 제목
+                            descriptions:
+                              type: string
+                              example: 설명내용
+                            format_descriptions:
+                              type: string
+                              example: '설명내용 배열 (반복문으로 뿌리기)'
+                        type:
+                          type: string
+                          example: '구성품목 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글 | 3 - CAN_SELECT 선택가능)'
+                        format_type_package_material:
+                          type: string
+                          example: 표시용
+                        count:
+                          type: string
+                          example: '구성품목 수량'
+                        unit:
+                          type: string
+                          example: '구성품목 단위'
+                        price_origin:
+                          type: string
+                          example: '구성품목 정가'
+                        price:
+                          type: string
+                          example: '구성품목 판매가'
+                        tags:
+                          type: string
+                          example: '구성품목 태그 목록'
+                  price:
+                    type: string
+                    example: 가격
+      tags:
+        - 사용자
       security: []
   /api/banners:
     get:
@@ -2982,7 +3541,7 @@ paths:
                 type:
                   type: integer
                   description: '<span class="point">유형 (1 - 메인배너 | 2 - 농가이야기 | 3 - 정기구독 | 4 - 직거래장터)</span>.'
-                  example: 16
+                  example: 2
                   nullable: true
       security: []
   /api/pops:
@@ -3162,7 +3721,7 @@ paths:
                 type:
                   type: integer
                   description: '<span class="point">1 - FARM_STORY 농가이야기 | 2 - RECIPE 레시피 | 3 - VEGETABLE_STORY 채소이야기 | 4 - PRODUCT 직거래장터 | 5 - PACKAGE 꾸러미</span>.'
-                  example: 11
+                  example: 7
                   nullable: false
               required:
                 - type
@@ -3193,12 +3752,12 @@ paths:
                 order_by:
                   type: string
                   description: '<span class="point">정렬기준 (count_like - 추천수 | created_at - 등록일자)</span>. Must not be greater than 500 characters.'
-                  example: kpolutohjmzvutpajrrfmlhp
+                  example: ptcntlg
                   nullable: true
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: jzmkzjphsfrr
+                  example: tbqhrwnaxnnphju
                   nullable: true
                 tag_ids:
                   type: object
@@ -3209,12 +3768,12 @@ paths:
                 farm_id:
                   type: integer
                   description: '<span class="point">농가 고유번호 (특정 농가의 글만 보고싶을 때)</span>.'
-                  example: 3
+                  example: 4
                   nullable: true
                 exclude_farm_id:
                   type: integer
                   description: '<span class="point">제외할 농가 고유번호 (특정 농가것만 빼고 보고싶을 때)</span>.'
-                  example: 7
+                  example: 11
                   nullable: true
                 internal:
                   type: boolean
@@ -3613,12 +4172,12 @@ paths:
                 word:
                   type: string
                   description: '<span class="point">검색어</span>. Must not be greater than 500 characters.'
-                  example: snzsulfzseeuqwxwr
+                  example: mbpkro
                   nullable: true
                 order_by:
                   type: string
                   description: '<span class="point">정렬기준 (created_at 생성순 | count_review 리뷰순 | count_order 주문수순)</span>. Must not be greater than 500 characters.'
-                  example: nohzz
+                  example: wfqsxteqkqcrnstffp
                   nullable: true
                 tag_ids:
                   type: object
@@ -3878,7 +4437,7 @@ paths:
         in: path
         name: product_id
         description: 'The ID of the product.'
-        example: 6
+        example: 1
         required: true
         schema:
           type: integer
@@ -4202,7 +4761,7 @@ paths:
                 product_id:
                   type: integer
                   description: '<span class="point">상품 고유번호</span>.'
-                  example: 6
+                  example: 5
                   nullable: true
       security: []
   /api/users/clearPassword:
@@ -4224,17 +4783,17 @@ paths:
                 email:
                   type: string
                   description: "<span class='point'>이메일</span>. Must not be greater than 500 characters."
-                  example: ssmith@example.com
+                  example: elna28@example.org
                   nullable: false
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: erqooeozxydjw
+                  example: gyqvqxy
                   nullable: false
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters."
-                  example: 'ov>yO8LKb*Ef.'
+                  example: '"wgVQ6x_*}Rs[7-Q'
                   nullable: false
               required:
                 - email
@@ -4272,10 +4831,178 @@ paths:
                 contact:
                   type: string
                   description: "<span class='point'>연락처</span>. Must not be greater than 500 characters."
-                  example: nzvuxkkawwnvhy
+                  example: hprwdbkygua
                   nullable: false
               required:
                 - contact
+      security: []
+  /api/packageSettings:
+    post:
+      summary: 목록
+      operationId: ''
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 고유번호
+                  type_package: '꾸러미 유형'
+                  format_type_package: 표시용
+                  term_week: 배송주기
+                  active: 활성여부
+                  will_order_at: '다음 결제일'
+                  card: '카드 객체'
+                  delivery: '배송지 객체'
+                  firstPackage: '첫결제 패키지 객체'
+                  unlike_materials: '비선호 품목 목록'
+                  format_unlike_materials: 표시용
+                properties:
+                  id:
+                    type: string
+                    example: 고유번호
+                  type_package:
+                    type: string
+                    example: '꾸러미 유형'
+                  format_type_package:
+                    type: string
+                    example: 표시용
+                  term_week:
+                    type: string
+                    example: 배송주기
+                  active:
+                    type: string
+                    example: 활성여부
+                  will_order_at:
+                    type: string
+                    example: '다음 결제일'
+                  card:
+                    type: string
+                    example: '카드 객체'
+                  delivery:
+                    type: string
+                    example: '배송지 객체'
+                  firstPackage:
+                    type: string
+                    example: '첫결제 패키지 객체'
+                  unlike_materials:
+                    type: string
+                    example: '비선호 품목 목록'
+                  format_unlike_materials:
+                    type: string
+                    example: 표시용
+      tags:
+        - 사용자
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                card_id:
+                  type: integer
+                  description: '<span class="point">결제카드 고유번호</span>.'
+                  example: 13
+                  nullable: true
+                delivery_id:
+                  type: integer
+                  description: '<span class="point">배송지 고유번호</span>.'
+                  example: 16
+                  nullable: false
+                type_package:
+                  type: integer
+                  description: '<span class="point">꾸러미 유형</span>.'
+                  example: 20
+                  nullable: false
+                term_week:
+                  type: integer
+                  description: '<span class="point">배송주기</span>.'
+                  example: 20
+                  nullable: false
+                unlike_material_ids:
+                  type: object
+                  description: '<span class="point">비선호 품목 고유번호 목록</span>.'
+                  example: null
+                  nullable: true
+                  properties: {  }
+                active:
+                  type: boolean
+                  description: '<span class="point">활성여부 (1 - 정기구독일 때 | 0 - 1회성 구매일 때)</span>.'
+                  example: false
+                  nullable: false
+              required:
+                - delivery_id
+                - type_package
+                - term_week
+                - active
+      security: []
+  /api/cards:
+    get:
+      summary: 목록
+      operationId: ''
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 고유번호
+                      name: 카드사명
+                      card_number: 카드번호
+                      color: 색상
+                  meta:
+                    total: '총 개수'
+                    current_page: '현재 페이지'
+                    last_page: '마지막 페이지'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 고유번호
+                        name: 카드사명
+                        card_number: 카드번호
+                        color: 색상
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 고유번호
+                        name:
+                          type: string
+                          example: 카드사명
+                        card_number:
+                          type: string
+                          example: 카드번호
+                        color:
+                          type: string
+                          example: 색상
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: string
+                        example: '총 개수'
+                      current_page:
+                        type: string
+                        example: '현재 페이지'
+                      last_page:
+                        type: string
+                        example: '마지막 페이지'
+      tags:
+        - 사용자
       security: []
   '/api/deliveries/{delivery_id}':
     delete:
@@ -4292,7 +5019,7 @@ paths:
         in: path
         name: delivery_id
         description: 'The ID of the delivery.'
-        example: 2
+        example: 4
         required: true
         schema:
           type: integer
@@ -4319,6 +5046,28 @@ paths:
                   agree_promotion: '프로모션 동의여부'
                   code_recommend: 추천인코드
                   point: 보유포인트
+                  reason: 탈퇴사유
+                  and_so_on: '기타 탈퇴사유(직접입력)'
+                  count_family: 가구원수
+                  birth: 생년월일
+                  always_use_coupon_for_package: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                  always_use_point_for_package: '꾸러미 결제 시 적립금 자동사용여부'
+                  message: '프로필 메시지'
+                  nickname: 닉네임
+                  count_cart: '장바구니에 담긴 상품조합수'
+                  count_alarm: 알람수
+                  point_use: '총 사용 적립금'
+                  'packageSetting (패키지 설정값)':
+                    id: 고유번호
+                    type_package: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                    term: 주기
+                    'card (사용할 카드)':
+                      id: 고유번호
+                      name: 카드사명
+                      card_number: 카드번호
+                    delivery: '배송지 객체'
+                    will_order_at: '다음 결제일자'
+                    firstPackage: '첫 결제 패키지 객체'
                   format_created_at: '표시용 생성일자'
                 properties:
                   id:
@@ -4348,6 +5097,72 @@ paths:
                   point:
                     type: string
                     example: 보유포인트
+                  reason:
+                    type: string
+                    example: 탈퇴사유
+                  and_so_on:
+                    type: string
+                    example: '기타 탈퇴사유(직접입력)'
+                  count_family:
+                    type: string
+                    example: 가구원수
+                  birth:
+                    type: string
+                    example: 생년월일
+                  always_use_coupon_for_package:
+                    type: string
+                    example: '꾸러미 결제 시 쿠폰 자동 적용여부'
+                  always_use_point_for_package:
+                    type: string
+                    example: '꾸러미 결제 시 적립금 자동사용여부'
+                  message:
+                    type: string
+                    example: '프로필 메시지'
+                  nickname:
+                    type: string
+                    example: 닉네임
+                  count_cart:
+                    type: string
+                    example: '장바구니에 담긴 상품조합수'
+                  count_alarm:
+                    type: string
+                    example: 알람수
+                  point_use:
+                    type: string
+                    example: '총 사용 적립금'
+                  'packageSetting (패키지 설정값)':
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 고유번호
+                      type_package:
+                        type: string
+                        example: '패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)'
+                      term:
+                        type: string
+                        example: 주기
+                      'card (사용할 카드)':
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: 고유번호
+                          name:
+                            type: string
+                            example: 카드사명
+                          card_number:
+                            type: string
+                            example: 카드번호
+                      delivery:
+                        type: string
+                        example: '배송지 객체'
+                      will_order_at:
+                        type: string
+                        example: '다음 결제일자'
+                      firstPackage:
+                        type: string
+                        example: '첫 결제 패키지 객체'
                   format_created_at:
                     type: string
                     example: '표시용 생성일자'
@@ -4373,7 +5188,7 @@ paths:
                 code_recommend:
                   type: string
                   description: "<span class='point'>추천인 코드</span>. Must not be greater than 500 characters."
-                  example: kbgopbjnmhuujc
+                  example: yxnvfvkwurjtabwjscqnpak
                   nullable: false
               required:
                 - code_recommend
@@ -4397,12 +5212,12 @@ paths:
                 password:
                   type: string
                   description: "<span class='point'>비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters."
-                  example: 0;.HPe
+                  example: "MEkv$k'_"
                   nullable: false
                 password_new:
                   type: string
                   description: "<span class='point'>새 비밀번호</span>. value(은)는 최소 8 자 이상 작성해주세요. Must not be greater than 500 characters."
-                  example: tjucrcujdibqbuawpfx
+                  example: jgelofgjutz
                   nullable: false
               required:
                 - password
@@ -4522,12 +5337,12 @@ paths:
                       id:
                         type: integer
                         description: ''
-                        example: 8
+                        example: 4
                         nullable: false
                       count:
                         type: integer
                         description: 'value(은)는  최소 1 이상이어야 합니다.'
-                        example: 10
+                        example: 88
                         nullable: false
                     required:
                       - id
@@ -4535,6 +5350,93 @@ paths:
               required:
                 - options
       security: []
+  '/api/presets/{preset_id}':
+    patch:
+      summary: 상세
+      operationId: ''
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 고유번호
+                  price_delivery: 배송비
+                  price: 최종금액
+                  price_total: '총 상품금액'
+                  price_discount: '할인받은 상품금액'
+                  count_option_required: 필수옵션개수
+                  count_option_additional: 추가옵션개수
+                  order_id: '주문 고유번호'
+                  cart_id: '장바구니 고유번호'
+                  user_id: '사용자 고유번호'
+                  presetProducts: '출고상품 목록'
+                  order: '주문 객체'
+                properties:
+                  id:
+                    type: string
+                    example: 고유번호
+                  price_delivery:
+                    type: string
+                    example: 배송비
+                  price:
+                    type: string
+                    example: 최종금액
+                  price_total:
+                    type: string
+                    example: '총 상품금액'
+                  price_discount:
+                    type: string
+                    example: '할인받은 상품금액'
+                  count_option_required:
+                    type: string
+                    example: 필수옵션개수
+                  count_option_additional:
+                    type: string
+                    example: 추가옵션개수
+                  order_id:
+                    type: string
+                    example: '주문 고유번호'
+                  cart_id:
+                    type: string
+                    example: '장바구니 고유번호'
+                  user_id:
+                    type: string
+                    example: '사용자 고유번호'
+                  presetProducts:
+                    type: string
+                    example: '출고상품 목록'
+                  order:
+                    type: string
+                    example: '주문 객체'
+      tags:
+        - 사용자
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                '':
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: false
+      security: []
+    parameters:
+      -
+        in: path
+        name: preset_id
+        description: 'The ID of the preset.'
+        example: 8
+        required: true
+        schema:
+          type: integer
   '/api/presetProducts/coupon/{presetProduct_id}':
     patch:
       summary: 목록
@@ -4610,7 +5512,7 @@ paths:
                 coupon_id:
                   type: integer
                   description: ''
-                  example: 2
+                  example: 19
                   nullable: false
               required:
                 - coupon_id
@@ -4620,7 +5522,7 @@ paths:
         in: path
         name: presetProduct_id
         description: 'The ID of the presetProduct.'
-        example: 1
+        example: 8
         required: true
         schema:
           type: integer
@@ -4650,7 +5552,7 @@ paths:
                 product_id:
                   type: integer
                   description: '<span class="point">상품 고유번호 (특정 상품에 사용 가능한 쿠폰목록 보고싶을 때)</span>.'
-                  example: 5
+                  example: 6
                   nullable: true
       security: []
     post:
@@ -4696,12 +5598,12 @@ paths:
                 likeable_id:
                   type: string
                   description: '<span class="point">좋아요 대상 고유번호</span>.'
-                  example: enim
+                  example: minus
                   nullable: false
                 likeable_type:
                   type: string
                   description: '<span class="point">좋아요 대상 모델타입 (App\Models\Recipe - 레시피 | App\Models\FarmStory - 농가이야기)</span>.'
-                  example: maxime
+                  example: repudiandae
                   nullable: false
               required:
                 - likeable_id
@@ -4726,12 +5628,12 @@ paths:
                 bookmarkable_id:
                   type: integer
                   description: '<span class="point">북마크 대상 고유번호</span>.'
-                  example: 10
+                  example: 3
                   nullable: false
                 bookmarkable_type:
                   type: string
                   description: '<span class="point">북마크 대상 모델타입 (App\Models\Recipe - 레시피)</span>. Must not be greater than 500 characters.'
-                  example: mcrxfyunpfdqpyuxxovqrh
+                  example: uobffg
                   nullable: false
               required:
                 - bookmarkable_id
@@ -4756,22 +5658,22 @@ paths:
                 report_category_id:
                   type: integer
                   description: '<span class="point">신고유형 고유번호</span>.'
-                  example: 17
+                  example: 9
                   nullable: false
                 reportable_id:
                   type: integer
                   description: '<span class="point">신고대상 고유번호</span>.'
-                  example: 19
+                  example: 8
                   nullable: false
                 reportable_type:
                   type: string
                   description: '<span class="point">신고대상 모델명 (App\Models\Product - 상품 | App\Models\Review - 리뷰)</span>. Must not be greater than 500 characters.'
-                  example: mhnswnzvowrzfaw
+                  example: rvhpfvjyafxeoxohldurffrcu
                   nullable: false
                 description:
                   type: string
                   description: '<span class="point">내용</span>. Must not be greater than 50000 characters.'
-                  example: 'Perspiciatis sit doloribus perspiciatis aperiam autem distinctio.'
+                  example: 'Et dolorem totam aliquid.'
                   nullable: false
               required:
                 - report_category_id
@@ -4862,7 +5764,7 @@ paths:
         in: path
         name: product
         description: ''
-        example: corporis
+        example: quasi
         required: true
         schema:
           type: string
@@ -4881,7 +5783,7 @@ paths:
         in: path
         name: product
         description: ''
-        example: provident
+        example: aut
         required: true
         schema:
           type: string
@@ -4900,7 +5802,7 @@ paths:
         in: path
         name: order_id
         description: 'The ID of the order.'
-        example: 1
+        example: 14
         required: true
         schema:
           type: integer
@@ -4923,12 +5825,12 @@ paths:
                 imp_uid:
                   type: string
                   description: '<span class="point">아임포트 고유번호</span>. Must not be greater than 50000 characters.'
-                  example: tz
+                  example: cvtaboxluvxyfifmespjd
                   nullable: false
                 merchant_uid:
                   type: string
                   description: '<span class="point">주문번호</span>. Must not be greater than 50000 characters.'
-                  example: lxskgqm
+                  example: gcmdxwtajfnwmzevmkn
                   nullable: false
               required:
                 - imp_uid
@@ -4953,12 +5855,12 @@ paths:
                 imp_uid:
                   type: string
                   description: '<span class="point">아임포트 고유번호</span>. Must not be greater than 50000 characters.'
-                  example: lncerrinotifhnzywa
+                  example: xzixg
                   nullable: false
                 merchant_uid:
                   type: string
                   description: '<span class="point">주문번호</span>. Must not be greater than 50000 characters.'
-                  example: t
+                  example: ypgrqbrq
                   nullable: false
               required:
                 - imp_uid
@@ -5881,12 +6783,12 @@ paths:
                 imp_uid:
                   type: string
                   description: '<span class="point">아임포트 고유번호</span>. Must not be greater than 50000 characters.'
-                  example: wtqzffv
+                  example: bx
                   nullable: false
                 merchant_uid:
                   type: string
                   description: '<span class="point">주문번호</span>. Must not be greater than 50000 characters.'
-                  example: vspsoiitfizq
+                  example: ucqvo
                   nullable: false
               required:
                 - imp_uid
@@ -6922,7 +7824,7 @@ paths:
               schema:
                 type: object
                 example:
-                  message: "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nongjangs.notices' doesn't exist (SQL: select * from `notices` where `id` = 1 limit 1)"
+                  message: "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nongjangs.notices' doesn't exist (SQL: select * from `notices` where `id` = 14 limit 1)"
                   exception: Illuminate\Database\QueryException
                   file: 'D:\project\api.nongjangs.com\vendor\laravel\framework\src\Illuminate\Database\Connection.php'
                   line: 712
@@ -7386,7 +8288,7 @@ paths:
                 properties:
                   message:
                     type: string
-                    example: "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nongjangs.notices' doesn't exist (SQL: select * from `notices` where `id` = 1 limit 1)"
+                    example: "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nongjangs.notices' doesn't exist (SQL: select * from `notices` where `id` = 14 limit 1)"
                   exception:
                     type: string
                     example: Illuminate\Database\QueryException
@@ -7881,7 +8783,7 @@ paths:
         in: path
         name: notice_id
         description: 'The ID of the notice.'
-        example: 1
+        example: 14
         required: true
         schema:
           type: integer
@@ -12504,6 +13406,9 @@ tags:
     description: ''
   -
     name: Order(주문)
+    description: ''
+  -
+    name: PayMethod(결제수단)
     description: ''
   -
     name: QnaCategory(문의카테고리)
