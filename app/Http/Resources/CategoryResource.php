@@ -21,6 +21,7 @@ class CategoryResource extends JsonResource
             'format_type' => TypeCategory::getLabel($this->type),
             'order' => $this->order,
             'title' => $this->title,
+            'materials' => MaterialResource::collection($this->materials),
         ];
     }
 }

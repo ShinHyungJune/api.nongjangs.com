@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TypePackageMaterial;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -51,9 +52,14 @@ class Package extends Model
         return $this->hasMany(PackageMaterial::class);
     }
 
-    public function getPriceAttribute()
+    public function getPriceSingleAttribute()
     {
-        return $this->packageMaterials()->sum('price');
+        return $this->packageMaterials()->where('type', TypePackageMaterial::SINGLE)->sum('price');
+    }
+
+    public function getPriceBungleAttribute()
+    {
+        return $this->packageMaterials()->where('type', TypePackageMaterial::BUNGLE)->sum('price');
     }
 
     public static function getCurrent()

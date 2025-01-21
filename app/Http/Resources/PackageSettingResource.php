@@ -28,6 +28,7 @@ class PackageSettingResource extends JsonResource
             'first_package_id' => $this->first_package_id,
             'firstPackage' => $this->firstPackage ? PackageResource::make($this->firstPackage) : '',
 
+
             'unlike_materials' => MaterialResource::collection($this->materials()->wherePivot('unlike', 1)->get()),
             'format_unlike_materials' => Arr::getArrayToString($this->materials()->wherePivot('unlike', 1)->pluck("title")->toArray()),
         ];

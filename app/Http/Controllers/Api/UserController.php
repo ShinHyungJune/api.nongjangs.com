@@ -397,5 +397,25 @@ class UserController extends ApiController
         ]);
     }
 
+    /** 쿠폰 자동 적용 여부 수정
+     * @group 사용자
+     * @subgroup User(사용자)
+     */
+    public function updateAlwaysUseCouponForPackage(UserRequest $request)
+    {
+        auth()->user()->update(['always_use_coupon_for_package' => $request->always_use_coupon_for_package]);
 
+        return $this->respondSuccessfully();
+    }
+
+    /** 적립금 자동 적용 여부 수정
+     * @group 사용자
+     * @subgroup User(사용자)
+     */
+    public function updateAlwaysUsePointForPackage(UserRequest $request)
+    {
+        auth()->user()->update(['always_use_coupon_for_package' => $request->always_use_coupon_for_package]);
+
+        return $this->respondSuccessfully();
+    }
 }

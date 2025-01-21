@@ -121,6 +121,16 @@ class UserRequest extends FormRequest
                         'contact' => 'required|string|max:500',
                     ];
 
+                case "updateAlwaysUseCouponForPackage":
+                    return [
+                        'always_use_coupon_for_package' => 'required|boolean'
+                    ];
+
+                case "updateAlwaysUsePointForPackage":
+                    return [
+                        'always_use_point_for_package' => 'required|boolean'
+                    ];
+
                 default: return [
 
                 ];

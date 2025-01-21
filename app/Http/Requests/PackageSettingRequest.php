@@ -66,7 +66,7 @@ class PackageSettingRequest extends FormRequest
                         'type_package' => ['required', 'integer'],
                         'term_week' => ['required', 'integer'],
                         'unlike_material_ids' => ['nullable', 'array'],
-                        'active' => ['required', 'boolean']
+                        'active' => ['required', 'boolean'],
                     ];
 
                 case 'update':

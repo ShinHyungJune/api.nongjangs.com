@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\TypePackage;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -33,7 +34,10 @@ class PackageResource extends JsonResource
             'finish_will_out_at' => $this->finish_will_out_at,
             'format_finish_will_out_at' => $this->finish_will_out_at ? Carbon::make($this->finish_will_out_at)->format('Y.m.d H:i') : '',
             'packageMaterials' => PackageMaterialResource::collection($this->packageMaterials),
-            'price' => $this->price
+            'prices' => [
+                TypePackage::SINGLE => $this->price_single,
+                TypePackage::BUNGLE => $this->price_bungle,
+            ]
         ];
     }
 }

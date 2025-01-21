@@ -165,6 +165,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/user", [\App\Http\Controllers\Api\UserController::class, 'show']);
 
     Route::patch("/users", [\App\Http\Controllers\Api\UserController::class, "update"]);
+    Route::patch("/users/alwaysUseCouponForPackage", [\App\Http\Controllers\Api\UserController::class, "updateAlwaysUseCouponForPackage"]);
+    Route::patch("/users/alwaysUsePointForPackage", [\App\Http\Controllers\Api\UserController::class, "updateAlwaysUsePointForPackage"]);
     Route::patch("/users/codeRecommend", [\App\Http\Controllers\Api\UserController::class, "updateCodeRecommend"]);
     Route::patch("/users/password", [\App\Http\Controllers\Api\UserController::class, "updatePassword"]);
 
