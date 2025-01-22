@@ -22,7 +22,7 @@ final class TypeMaterial
             self::PACKAGE => "패키지 구독상품",
         ];
 
-        return $items[$value];
+        return isset($items[$value]) ? $items[$value] : '';
     }
 
     public static function getValues()

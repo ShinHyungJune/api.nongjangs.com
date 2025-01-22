@@ -15,7 +15,10 @@ class MaterialResource extends JsonResource
             'id' => $this->id,
             'img' => $this->img ?? '',
             'category_id' => $this->category_id,
-            'category' => $this->category ? CategoryResource::make($this->category) : '',
+            'category' => $this->category ? [
+                'id' => $this->category->id,
+                'title' => $this->category->title,
+            ] : '',
             'type' => $this->type,
             'format_type' => TypeMaterial::getLabel($this->type),
             'title' => $this->title,
