@@ -16,7 +16,7 @@ class CategoryController extends ApiController
      */
     public function index()
     {
-        $categories = Category::where('hide', 0)->orderBy('order', 'asc')->paginate(30);
+        $categories = Category::orderBy('order', 'asc')->paginate(30);
 
         return CategoryResource::collection($categories);
     }

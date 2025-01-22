@@ -34,10 +34,8 @@ class PackageResource extends JsonResource
             'finish_will_out_at' => $this->finish_will_out_at,
             'format_finish_will_out_at' => $this->finish_will_out_at ? Carbon::make($this->finish_will_out_at)->format('Y.m.d H:i') : '',
             'packageMaterials' => PackageMaterialResource::collection($this->packageMaterials),
-            'prices' => [
-                TypePackage::SINGLE => $this->price_single,
-                TypePackage::BUNGLE => $this->price_bungle,
-            ]
+            'price_single' => $this->price_single,
+            'price_bungle' => $this->price_bungle,
         ];
     }
 }
