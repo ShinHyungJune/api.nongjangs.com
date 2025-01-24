@@ -12,8 +12,9 @@ use Illuminate\Http\Request;
 
 class VerifyNumberController extends ApiController
 {
-    /**
-     * @group VerifyNumber(인증번호)
+    /** 생성
+     * @group 사용자
+     * @subgroup VerifyNumber(인증번호)
      */
     public function store(VerifyNumberRequest $request)
     {
@@ -39,8 +40,9 @@ class VerifyNumberController extends ApiController
         return $this->respondSuccessfully();
     }
 
-    /**
-     * @group VerifyNumber(인증번호)
+    /** 인증
+     * @group 사용자
+     * @subgroup VerifyNumber(인증번호)
      */
     public function update(VerifyNumberRequest $request)
     {

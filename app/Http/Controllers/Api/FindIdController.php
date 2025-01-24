@@ -13,8 +13,9 @@ use Illuminate\Validation\ValidationException;
 
 class FindIdController extends ApiController
 {
-    /**
-     * @group FindId(아이디 찾기)
+    /** 생성
+     * @group 사용자
+     * @subgroup FindId(아이디 찾기)
      * @responseFile storage/responses/findId.json
      */
     public function store(FindIdRequest $request)

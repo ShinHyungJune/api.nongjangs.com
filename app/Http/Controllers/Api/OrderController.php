@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\DB;
 class OrderController extends ApiController
 {
     /** 배송비 계산
-     * @group Order(주문)
+     * @group 사용자
+     * @subgroup Order(주문)
      * @responseFile storage/responses/priceDelivery.json
      */
     public function calculatePriceDelivery(Order $order)
@@ -36,7 +37,8 @@ class OrderController extends ApiController
     }
 
     /** 목록
-     * @group Order(주문)
+     * @group 사용자
+     * @subgroup Order(주문)
      * @responseFile storage/responses/orders.json
      */
     public function index(OrderRequest $request)
@@ -67,7 +69,8 @@ class OrderController extends ApiController
     }
 
     /** 생성
-     * @group Order(주문)
+     * @group 사용자
+     * @subgroup Order(주문)
      * @responseFile storage/responses/order.json
      */
     public function store(OrderRequest $request)
@@ -90,7 +93,8 @@ class OrderController extends ApiController
     }
 
     /** 수정(결제시도)
-     * @group Order(주문)
+     * @group 사용자
+     * @subgroup Order(주문)
      * @responseFile storage/responses/order.json
      */
     public function update(Order $order, OrderRequest $request)
@@ -201,7 +205,8 @@ class OrderController extends ApiController
     }
 
     /** 취소
-     * @group Order(주문)
+     * @group 사용자
+     * @subgroup Order(주문)
      * @responseFile storage/responses/order.json
      */
     public function cancel(Order $order)
@@ -224,7 +229,8 @@ class OrderController extends ApiController
     }
 
     /** 회원용 상세
-     * @group Order(주문)
+     * @group 사용자
+     * @subgroup Order(주문)
      * @responseFile storage/responses/order.json
      */
     public function show(Order $order, Request $request)
@@ -239,7 +245,8 @@ class OrderController extends ApiController
     }
 
     /** 비회원용 상세
-     * @group Order(주문)
+     * @group 사용자
+     * @subgroup Order(주문)
      * @responseFile storage/responses/order.json
      */
     public function showByGuest(OrderRequest $request)
@@ -265,7 +272,8 @@ class OrderController extends ApiController
     }
 
     /** 주문서 조회
-     * @group Order(주문)
+     * @group 사용자
+     * @subgroup Order(주문)
      */
     public function bill(OrderRequest $request)
     {

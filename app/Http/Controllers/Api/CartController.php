@@ -14,8 +14,9 @@ use Illuminate\Http\Request;
 
 class CartController extends ApiController
 {
-    /**
-     * @group Cart(장바구니)
+    /** 목록
+     * @group 사용자
+     * @subgroup Cart(장바구니)
      * @responseFile storage/responses/presets.json
      * */
     public function index(CartRequest $request)
@@ -33,8 +34,9 @@ class CartController extends ApiController
         return $this->respondSuccessfully(PresetResource::collection($items));
     }
 
-    /**
-     * @group Cart(장바구니)
+    /** 담기
+     * @group 사용자
+     * @subgroup Cart(장바구니)
      * */
     public function store(CartRequest $request)
     {
@@ -59,7 +61,8 @@ class CartController extends ApiController
     }
 
     /**
-     * @group Cart(장바구니)
+     * @group 수정
+     * @subgroup Cart(장바구니)
      * */
 
     public function update(CartRequest $request)
@@ -74,7 +77,8 @@ class CartController extends ApiController
     }
 
     /**
-     * @group Cart(장바구니)
+     * @group 삭제
+     * @subgroup Cart(장바구니)
      * */
     public function destroy(CartRequest $request)
     {

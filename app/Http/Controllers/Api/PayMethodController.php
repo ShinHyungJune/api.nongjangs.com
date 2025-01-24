@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 
 class PayMethodController extends ApiController
 {
-    /**
-     * @group PayMethod(결제수단)
+    /** 목록
+     * @group 사용자
+     * @subgroup PayMethod(결제수단)
      * @responseFile storage/responses/payMethods.json
      */
     public function index(Request $request)

@@ -20,8 +20,9 @@ use Illuminate\Validation\ValidationException;
 
 class FindPasswordController extends ApiController
 {
-    /**
-     * @group FindPassword(비밀번호 찾기)
+    /** 생성
+     * @group 사용자
+     * @subgroup FindPassword(비밀번호 찾기)
      */
     public function store(FindPasswordRequest $request)
     {

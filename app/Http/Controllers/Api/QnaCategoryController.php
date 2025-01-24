@@ -9,8 +9,9 @@ use App\Models\QnaCategory;
 
 class QnaCategoryController extends ApiController
 {
-    /**
-    * @group QnaCategory(문의카테고리)
+    /** 목록
+    * @group 사용자
+    * @subgroup QnaCategory(문의카테고리)
      */
     public function index()
     {
