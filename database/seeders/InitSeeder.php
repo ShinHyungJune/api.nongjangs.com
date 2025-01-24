@@ -124,6 +124,7 @@ class InitSeeder extends Seeder
         Package::truncate();
         Card::truncate();
         Material::truncate();
+        Review::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -170,6 +171,7 @@ class InitSeeder extends Seeder
         $this->createPayMethods();
         $this->createPackages();
         $this->createCards();
+        $this->createReviews();
     }
 
     public function createCards()
@@ -1458,8 +1460,10 @@ class InitSeeder extends Seeder
     }
     public function createReviews()
     {
+        $user = User::inRandomOrder()->first();
+
         // 상품별 리뷰
-        $products = Product::get();
+        $products = Product::inRandomOrder()->take(12)->get();
 
         foreach($products as $product){
             Review::factory()->count(10)->create(['product_id' => $product->id]);
@@ -1475,23 +1479,19 @@ class InitSeeder extends Seeder
         }
 
         // 리뷰작성가능 상품조합 목록
-        $presets = Preset::factory()->count(5)->create([
+        /*$presets = Preset::factory()->count(5)->create([
             'user_id' => $user->id,
         ]);
 
         foreach($presets as $preset){
             $product = Product::inRandomOrder()->first();
-            $size = $product->sizes()->inRandomOrder()->first();
-            $color = $product->colors()->inRandomOrder()->first();
 
             PresetProduct::factory()->create([
                 'product_id' => $product->id,
                 'preset_id' => $preset->id,
-                'color_id' => $color->id,
-                'size_id' => $size->id,
                 'state' => StatePresetProduct::CONFIRMED,
             ]);
-        }
+        }*/
     }
 
     public function createPointHistories()
