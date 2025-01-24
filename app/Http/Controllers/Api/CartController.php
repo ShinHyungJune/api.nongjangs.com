@@ -60,8 +60,8 @@ class CartController extends ApiController
         return $this->respondSuccessfully();
     }
 
-    /**
-     * @group 수정
+    /** 수정
+     * @group 사용자
      * @subgroup Cart(장바구니)
      * */
 
@@ -76,8 +76,8 @@ class CartController extends ApiController
         return $this->respondSuccessfully();
     }
 
-    /**
-     * @group 삭제
+    /** 삭제
+     * @group 사용자
      * @subgroup Cart(장바구니)
      * */
     public function destroy(CartRequest $request)
