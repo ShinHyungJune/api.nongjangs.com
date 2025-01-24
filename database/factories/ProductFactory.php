@@ -87,7 +87,7 @@ class ProductFactory extends Factory
             'category_id' => $category->id,
             'farm_id' => $farm->id,
             'city_id' => $farm->county->city_id,
-            'county_id' => $farm->count_id,
+            'county_id' => $farm->county_id,
         ];
     }
 }

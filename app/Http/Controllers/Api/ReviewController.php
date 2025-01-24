@@ -12,7 +12,8 @@ use App\Models\Product;
 class ReviewController extends ApiController
 {
     /**
-     * @group Review(리뷰)
+     * @group 사용자
+     * @subgroup Review(리뷰)
      * @responseFile storage/responses/reviews.json
      * */
     public function index(ReviewRequest $request)
