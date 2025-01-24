@@ -11,7 +11,7 @@ use App\Models\Product;
 
 class ReviewController extends ApiController
 {
-    /**
+    /** 목록
      * @group 사용자
      * @subgroup Review(리뷰)
      * @responseFile storage/responses/reviews.json
@@ -44,7 +44,7 @@ class ReviewController extends ApiController
         return ReviewResource::collection($items);
     }
 
-    /**
+    /** 생성
      * @group 사용자
      * @subgroup Review(리뷰)
      * @responseFile storage/responses/review.json
@@ -88,7 +88,7 @@ class ReviewController extends ApiController
         return $this->respondSuccessfully(ReviewResource::make($review));
     }
 
-    /**
+    /** 수정
      * @group 사용자
      * @subgroup Review(리뷰)
      * @responseFile storage/responses/review.json
@@ -131,7 +131,7 @@ class ReviewController extends ApiController
         return $this->respondSuccessfully(ReviewResource::make($review));
     }
 
-    /**
+    /** 삭제
      * @group 사용자
      * @subgroup Review(리뷰)
      * */
