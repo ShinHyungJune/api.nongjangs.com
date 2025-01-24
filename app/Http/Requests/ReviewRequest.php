@@ -104,7 +104,7 @@ class ReviewRequest extends FormRequest
                 'description' => '<span class="point">가져올 개수</span>',
             ],
             'order_by' => [ // best - 베스트여부 | created_at 생성
-                'description' => '<span class="point">정렬기준 (best - 베스트여부 | created_at 생성일자)</span>',
+                'description' => '<span class="point">정렬기준 (best - 베스트여부 | created_at 생성일자 | count_like 좋아요순)</span>',
             ],
             'align' => [
                 'description' => '<span class="point">정렬순서 default desc (desc - 내림차순 | asc - 오름차순)</span>',
