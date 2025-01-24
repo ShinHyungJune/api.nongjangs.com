@@ -60,27 +60,16 @@ use Illuminate\Support\Facades\Hash;
 class InitSeeder extends Seeder
 {
     protected $imgs = [
-        "/images/productImages/1-1.png",
-        "/images/productImages/1-2.png",
-        "/images/productImages/1-3.png",
-        "/images/productImages/1-4.png",
-        "/images/productImages/1-5.png",
-        "/images/productImages/1-6.png",
-        "/images/productImages/2-1.png",
-        "/images/productImages/2-2.png",
-        "/images/productImages/2-3.png",
-        "/images/productImages/2-4.png",
-        "/images/productImages/2-5.png",
-        "/images/productImages/2-6.png",
-        "/images/productImages/3-1.png",
-        "/images/productImages/3-2.png",
-        "/images/productImages/3-3.png",
-        "/images/productImages/3-4.png",
-        "/images/productImages/3-5.png",
-        "/images/productImages/3-6.png",
-        "/images/productImages/3-7.png",
-        "/images/productImages/3-8.png",
-        "/images/productImages/3-9.png"
+        "/images/about_slide_1.png",
+        "/images/about_slide_1_1.png",
+        "/images/about_slide_1_2.png",
+        "/images/about_slide_1_3.png",
+        "/images/about_slide_2_1.png",
+        "/images/about_slide_2_2.png",
+        "/images/about_slide_2_3.png",
+        "/images/about_slide_3_1.png",
+        "/images/about_slide_3_2.png",
+        "/images/about_slide_3_3.png",
     ];
 
     protected $farmImgs = [
