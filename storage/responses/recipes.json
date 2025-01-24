@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "title": "제목",
+      "description": "내용",
+      "materials": "재료",
+      "seasonings": "양념",
+      "ways": "조리순서",
+      "count_view": "조회수",
+      "user": {
+        "id": "고유번호",
+        "nickname": "닉네임",
+      },
+      "img": "이미지 객체",
+      "imgs": "이미지 목록",
+      "tags": "태그 목록",
+      "format_materials": "표시용 재료(배열)",
+      "format_seasonings": "표시용 양념(배열)",
+      "format_ways": "표시용 조리순서(배열)",
+      "count_like": "좋아요수",
+      "count_bookmark": "북마크수",
+      "is_like": "좋아요여부",
+      "is_bookmark": "북마크여부",
+      "format_created_at": "표시용 생성일자",
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

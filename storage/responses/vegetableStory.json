@@ -1,0 +1,35 @@
+{
+  "id": "고유번호",
+  "description": "내용",
+  "user_id": "사용자 고유번호",
+  "package_id": "패키지 고유번호",
+  "product_id": "상품 고유번호",
+  "preset_product_id": "출고상품 고유번호",
+  "recipe_id": "레시피 고유번호",
+  "user": {
+    "id": "고유번호",
+    "nickname" : "닉네임"
+  },
+  "package": {
+    "id": "고유번호",
+    "count":"회차"
+  },
+  "product": {
+    "id": "고유번호",
+    "title": "제목"
+  },
+  "recipe": {
+    "id": "고유번호",
+    "title": "제목"
+  },
+  "img": "이미지 객체",
+  "imgs": "이미지 목록",
+  "tags": "태그 목록",
+  "count_like": "좋아요수",
+  "count_bookmark": "북마크수",
+  "count_comment": "댓글수",
+  "is_like": "좋아요여부",
+  "is_bookmark": "북마크여부",
+  "format_display" : "표시용 라벨",
+  "format_created_at": "표시용 생성일자"
+}

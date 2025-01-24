@@ -67,28 +67,34 @@ class Recipe extends Model implements HasMedia
         return $this->morphMany(Bookmark::class, 'bookmarkable');
     }
 
-    public function formatMaterials(): Attribute
+    public function getFormatMaterialsAttribute()
     {
 
     }
 
-    public function formatRecipes(): Attribute
+    public function getFormatRecipesAttribute()
     {
 
     }
 
-    public function formatSeasonings(): Attribute
+    public function getFormatSeasoningsAttribute()
     {
 
     }
 
-    public function isBookmark(): Attribute
+    public function getIsBookmarkAttribute()
     {
+        if(!auth()->user())
+            return 0;
 
+        return $this->bookmarks()->where('user_id', auth()->id())->exists() ? 1 : 0;
     }
 
-    public function isLike(): Attribute
+    public function getIsLikeAttribute()
     {
+        if(!auth()->user())
+            return 0;
 
+        return $this->likes()->where('user_id', auth()->id())->exists() ? 1 : 0;
     }
 }

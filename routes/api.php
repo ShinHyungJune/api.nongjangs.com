@@ -133,6 +133,7 @@ Route::get("/counts", [\App\Http\Controllers\Api\CountController::class, "index"
 Route::get("/cities", [\App\Http\Controllers\Api\CityController::class, "index"]);
 Route::get("/tags", [\App\Http\Controllers\Api\TagController::class, "index"]);
 Route::get("/recipes", [\App\Http\Controllers\Api\RecipeController::class, "index"]);
+Route::get("/recipes/{recipe}", [\App\Http\Controllers\Api\RecipeController::class, "show"]);
 Route::get("/farmStories", [\App\Http\Controllers\Api\FarmStoryController::class, "index"]);
 Route::get("/farmStories/{farmStory}", [\App\Http\Controllers\Api\FarmStoryController::class, "show"]);
 Route::get("/products", [\App\Http\Controllers\Api\ProductController::class, "index"]);
@@ -147,8 +148,19 @@ Route::patch('/verifyNumbers', [\App\Http\Controllers\Api\VerifyNumberController
 Route::patch("/users/clearPassword", [\App\Http\Controllers\Api\UserController::class, "clearPassword"]);
 Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, "findId"]);
 
+Route::get("/vegetableStories", [\App\Http\Controllers\Api\VegetableStoryController::class, "index"]);
+Route::get("/comments", [\App\Http\Controllers\Api\CommentController::class, 'index']);
+
 Route::middleware(['auth'])->group(function () {
     Route::post("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "store"]);
+
+    Route::post("/comments", [\App\Http\Controllers\Api\CommentController::class, 'store']);
+    Route::patch("/comments/{comment}", [\App\Http\Controllers\Api\CommentController::class, 'update']);
+    Route::delete("/comments/{comment}", [\App\Http\Controllers\Api\CommentController::class, 'destroy']);
+
+    Route::post("/vegetableStories", [\App\Http\Controllers\Api\VegetableStoryController::class, 'store']);
+    Route::delete("/vegetableStories/{vegetableStory}", [\App\Http\Controllers\Api\VegetableStoryController::class, 'destroy']);
+    Route::patch("/vegetableStories/{vegetableStory}", [\App\Http\Controllers\Api\VegetableStoryController::class, 'update']);
 
     Route::get("/cards", [\App\Http\Controllers\Api\CardController::class, 'index']);
     Route::get("/carts", [\App\Http\Controllers\Api\CartController::class, 'index']);

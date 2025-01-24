@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "user": {
+        "id": "고유번호",
+        "nickname": "닉네임"
+      },
+      "description": "내용",
+      "count_like": "좋아요수",
+      "is_like": "좋아요 여부",
+      "format_created_at": "표시용 생성일자",
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

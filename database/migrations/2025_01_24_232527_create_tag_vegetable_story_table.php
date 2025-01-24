@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecipeTagTable extends Migration
+class CreateTagVegetableStoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateRecipeTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('recipe_tag', function (Blueprint $table) {
+        Schema::create('tag_vegetable_story', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('recipe_id')->constrained('recipes')->onDelete('cascade');
             $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade');
-            $table->index(['recipe_id', 'tag_id']);
+            $table->foreignId('vegetable_story_id')->constrained('vegetable_stories')->onDelete('cascade');
+            $table->index(['tag_id', 'vegetable_story_id']);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateRecipeTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recipe_tag');
+        Schema::dropIfExists('tag_vegetable_story');
     }
 }

@@ -24,7 +24,10 @@ class RecipeResource extends JsonResource
             'count_view' => $this->count_view,
             'created_at' => $this->created_at,
 
-            'user' =>  UserResource::make($user),
+            'user' =>  $user ? [
+                'id' => $user->id,
+                'nickname' => $user->nickname,
+            ] : '',
             'img' => $this->img,
             'imgs' => $this->imgs,
             'tags' => TagResource::collection($this->tags),

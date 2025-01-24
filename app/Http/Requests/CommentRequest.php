@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BookmarkRequest extends FormRequest
+class CommentRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -15,17 +15,23 @@ class BookmarkRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-
+                        'word' => ['nullable', 'string', 'max:500']
                     ];
 
                 case 'store':
                     return [
-
+                        'user_id' => ['required', 'exists:users'],
+                        'commentable_id' => ['required'],
+                        'commentable_type' => ['required'],
+                        'description' => ['required'],
                     ];
 
                 case 'update':
                     return [
-
+                        'user_id' => ['required', 'exists:users'],
+                        'commentable_id' => ['required'],
+                        'commentable_type' => ['required'],
+                        'description' => ['required'],//
                     ];
 
                 case 'destroy':
@@ -40,19 +46,19 @@ class BookmarkRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        'bookmarkable_id' => ['required', 'integer'],
-                        'bookmarkable_type' => ['required', 'string', 'max:500'],
+                        '' => []
                     ];
 
                 case 'store':
                     return [
-                        'bookmarkable_id' => ['required', 'integer'],
-                        'bookmarkable_type' => ['required', 'string', 'max:500'],
+                        'commentable_id' => ['required', 'integer'],
+                        'commentable_type' => ['required', 'string', 'max:500'],
+                        'description' => ['required', 'string', 'max:5000'],
                     ];
 
                 case 'update':
                     return [
-                        '' => []
+                        'description' => ['required', 'string', 'max:5000'],
                     ];
 
 
@@ -66,11 +72,14 @@ class BookmarkRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'bookmarkable_id' => [
-                'description' => '<span class="point">북마크 대상 고유번호</span>',
+            'commentable_id' => [
+                'description' => '<span class="point">대상 고유번호</span>',
             ],
-            'bookmarkable_type' => [
-                'description' => '<span class="point">북마크 대상 모델타입 (App\Models\Recipe - 레시피 | App\Models\VegetableStory - 채소이야기 | App\Models\FarmStory - 농가이야기)</span>',
+            'commentable_type' => [
+                'description' => '<span class="point">대상 모델명 (App\Models\VegetableStory - 채소이야기)</span>',
+            ],
+            'description' => [
+                'description' => '<span class="point">내용</span>',
             ],
 
             // 늘 쓰이는 애들

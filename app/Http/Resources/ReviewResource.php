@@ -44,7 +44,7 @@ class ReviewResource extends JsonResource
             'imgs' => $this->imgs,
             'photo' => $this->photo,
             'hide' => $this->hide,
-            'format_tag' => $this->format_tag,
+            'format_display' => $this->format_display,
             'is_like' => $this->is_like,
             'is_bookmark' => $this->is_bookmark,
             'count_like' => $this->count_like,

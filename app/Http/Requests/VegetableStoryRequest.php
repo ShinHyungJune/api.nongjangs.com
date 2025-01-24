@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LikeRequest extends FormRequest
+class VegetableStoryRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -20,14 +20,22 @@ class LikeRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'likeable_id' => ['required'],
-                        'likeable_type' => ['required'],
+                        'user_id' => ['required', 'exists:users'],
+                        'package_id' => ['nullable', 'exists:packages'],
+                        'product_id' => ['nullable', 'exists:products'],
+                        'preset_product_id' => ['nullable', 'exists:preset_product'],
+                        'recipe_id' => ['nullable', 'exists:recipes'],
+                        'description' => ['nullable'],
                     ];
 
                 case 'update':
                     return [
-                        'likeable_id' => ['required'],
-                        'likeable_type' => ['required'],
+                        'user_id' => ['required', 'exists:users'],
+                        'package_id' => ['nullable', 'exists:packages'],
+                        'product_id' => ['nullable', 'exists:products'],
+                        'preset_product_id' => ['nullable', 'exists:preset_product'],
+                        'recipe_id' => ['nullable', 'exists:recipes'],
+                        'description' => ['nullable'],//
                     ];
 
                 case 'destroy':
@@ -47,13 +55,19 @@ class LikeRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'likeable_id' => ['required'],
-                        'likeable_type' => ['required'],
+                        'imgs' => ['required', 'array', 'min:1'],
+                        'preset_product_id' => ['nullable', 'integer'],
+                        'description' => ['required', 'string', 'max:15000'],
+                        'recipe_id' => ['nullable', 'integer'],
+                        'tag_ids' => ['nullable', 'array'],
                     ];
 
                 case 'update':
                     return [
-                        '' => []
+                        'imgs' => ['required', 'array', 'min:1'],
+                        'description' => ['required', 'string', 'max:15000'],
+                        'recipe_id' => ['nullable', 'integer'],
+                        'tag_ids' => ['nullable', 'array'],
                     ];
 
 
@@ -67,11 +81,20 @@ class LikeRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'likeable_id' => [
-                'description' => '<span class="point">좋아요 대상 고유번호</span>',
+            'imgs' => [
+                'description' => '<span class="point">이미지 목록</span>',
             ],
-            'likeable_type' => [
-                'description' => '<span class="point">좋아요 대상 모델타입 (App\Models\Recipe - 레시피 | App\Models\VegetableStory - 채소이야기 | App\Models\FarmStory - 농가이야기 | App\Models\Comment - 댓글)</span>',
+            'preset_product_id' => [
+                'description' => '<span class="point">출고상품 고유번호</span>',
+            ],
+            'description' => [
+                'description' => '<span class="point">내용</span>',
+            ],
+            'recipe_id' => [
+                'description' => '<span class="point">레시피 고유번호</span>',
+            ],
+            'tag_ids' => [
+                'description' => '<span class="point">태그 고유번호 목록</span>',
             ],
 
             // 늘 쓰이는 애들

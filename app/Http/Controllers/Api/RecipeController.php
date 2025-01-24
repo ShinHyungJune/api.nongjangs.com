@@ -8,32 +8,25 @@ use App\Models\Recipe;
 
 class RecipeController extends ApiController
 {
+    /** 목록
+     * @group 사용자
+     * @subgroup Recipe(레시피)
+     * @responseFile storage/responses/recipes.json
+     */
     public function index()
     {
         return RecipeResource::collection(Recipe::all());
     }
-
-    public function store(RecipeRequest $request)
-    {
-        return new RecipeResource(Recipe::create($request->validated()));
-    }
-
+ 
+    /** 상세
+     * @group 사용자
+     * @subgroup Recipe(레시피)
+     * @responseFile storage/responses/recipe.json
+     */
     public function show(Recipe $recipe)
     {
         return new RecipeResource($recipe);
     }
 
-    public function update(RecipeRequest $request, Recipe $recipe)
-    {
-        $recipe->update($request->validated());
 
-        return new RecipeResource($recipe);
-    }
-
-    public function destroy(Recipe $recipe)
-    {
-        $recipe->delete();
-
-        return response()->json();
-    }
 }
