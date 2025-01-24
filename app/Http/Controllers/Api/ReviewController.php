@@ -45,7 +45,8 @@ class ReviewController extends ApiController
     }
 
     /**
-     * @group Review(리뷰)
+     * @group 사용자
+     * @subgroup Review(리뷰)
      * @responseFile storage/responses/review.json
      * */
     public function store(ReviewRequest $request)
@@ -88,7 +89,8 @@ class ReviewController extends ApiController
     }
 
     /**
-     * @group Review(리뷰)
+     * @group 사용자
+     * @subgroup Review(리뷰)
      * @responseFile storage/responses/review.json
      * */
     public function update(ReviewRequest $request, Review $review)
@@ -130,7 +132,8 @@ class ReviewController extends ApiController
     }
 
     /**
-     * @group Review(리뷰)
+     * @group 사용자
+     * @subgroup Review(리뷰)
      * */
     public function destroy(Review $review)
     {

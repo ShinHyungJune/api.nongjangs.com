@@ -60,27 +60,27 @@ use Illuminate\Support\Facades\Hash;
 class InitSeeder extends Seeder
 {
     protected $imgs = [
-        "/images/1-1.png",
-        "/images/1-2.png",
-        "/images/1-3.png",
-        "/images/1-4.png",
-        "/images/1-5.png",
-        "/images/1-6.png",
-        "/images/2-1.png",
-        "/images/2-2.png",
-        "/images/2-3.png",
-        "/images/2-4.png",
-        "/images/2-5.png",
-        "/images/2-6.png",
-        "/images/3-1.png",
-        "/images/3-2.png",
-        "/images/3-3.png",
-        "/images/3-4.png",
-        "/images/3-5.png",
-        "/images/3-6.png",
-        "/images/3-7.png",
-        "/images/3-8.png",
-        "/images/3-9.png"
+        "/images/productImages/1-1.png",
+        "/images/productImages/1-2.png",
+        "/images/productImages/1-3.png",
+        "/images/productImages/1-4.png",
+        "/images/productImages/1-5.png",
+        "/images/productImages/1-6.png",
+        "/images/productImages/2-1.png",
+        "/images/productImages/2-2.png",
+        "/images/productImages/2-3.png",
+        "/images/productImages/2-4.png",
+        "/images/productImages/2-5.png",
+        "/images/productImages/2-6.png",
+        "/images/productImages/3-1.png",
+        "/images/productImages/3-2.png",
+        "/images/productImages/3-3.png",
+        "/images/productImages/3-4.png",
+        "/images/productImages/3-5.png",
+        "/images/productImages/3-6.png",
+        "/images/productImages/3-7.png",
+        "/images/productImages/3-8.png",
+        "/images/productImages/3-9.png"
     ];
 
     protected $farmImgs = [
@@ -888,7 +888,7 @@ class InitSeeder extends Seeder
         $products = Product::factory()->count(30)->create();
 
         foreach($products as $product){
-            $img = $this->imgs[rand(0, count($this->imgs))];
+            $img = $this->imgs[rand(0, count($this->imgs) - 1)];
 
             foreach($items[0]['requiredOptions'] as $option){
                 $product->options()->create($option);
@@ -903,10 +903,8 @@ class InitSeeder extends Seeder
                 $product->tags()->attach($prevTag->id);
             }
 
-            foreach($item['imgs'] as $img){
-                if(config("app.env") != 'local'){
-                    $product->addMedia(public_path($img))->preservingOriginal()->toMediaCollection("imgs", "s3");
-                }
+            if(config("app.env") != 'local'){
+                $product->addMedia(public_path($img))->preservingOriginal()->toMediaCollection("imgs", "s3");
             }
         }
 

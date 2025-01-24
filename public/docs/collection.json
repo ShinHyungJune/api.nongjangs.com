@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "b3d0883a-e275-499a-b67f-59a0ea3fda91",
+        "_postman_id": "b5c66347-da0e-46e1-b93a-2d0d30c5e362",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"preset_id\":11}"
+                            "raw": "{\"preset_id\":13}"
                         },
                         "description": "",
                         "auth": {
@@ -103,7 +103,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"preset_id\":19,\"count\":2}"
+                            "raw": "{\"preset_id\":12,\"count\":12}"
                         },
                         "description": "",
                         "auth": {
@@ -140,7 +140,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"contact\":\"meqtchyesqybcpfwyuqkho\"}"
+                            "raw": "{\"contact\":\"crsmaakazfrjrmtbllleowpcz\"}"
                         },
                         "description": "",
                         "auth": {
@@ -184,7 +184,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"ids\":\"enfvthy\",\"contact\":\"zvjlpcjelxfey\",\"password\":\"[I6GM+2M:\"}"
+                            "raw": "{\"ids\":\"wrwocafwioizpbptlimgm\",\"contact\":\"fzzsgdjmnxxselsi\",\"password\":\"9HkGK|Jz@bEJ\"}"
                         },
                         "description": "",
                         "auth": {
@@ -211,7 +211,7 @@
                                 {
                                     "id": "order_id",
                                     "key": "order_id",
-                                    "value": "19",
+                                    "value": "2",
                                     "description": "The ID of the order."
                                 }
                             ]
@@ -340,170 +340,6 @@
             ]
         },
         {
-            "name": "Review(\ub9ac\ubdf0)",
-            "description": "",
-            "item": [
-                {
-                    "name": "GET api\/reviews",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/reviews",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/reviews"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"take\":17,\"order_by\":\"btusuxpaexydrhdubatffnpfy\",\"align\":\"ajyglzcgikpc\",\"has_column\":\"abefiygdwtxqbwwgcgt\",\"product_id\":11,\"package_id\":5,\"best\":true,\"type\":6,\"user_id\":10,\"photo\":false}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n      \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "POST api\/reviews",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/reviews",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/reviews"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"preset_product_id\":2,\"description\":\"Est voluptate sequi voluptate nulla sed nisi.\",\"score\":5}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "PATCH api\/reviews\/{review_id}",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/reviews\/:review_id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/reviews\/:review_id",
-                            "variable": [
-                                {
-                                    "id": "review_id",
-                                    "key": "review_id",
-                                    "value": "1",
-                                    "description": "The ID of the review."
-                                }
-                            ]
-                        },
-                        "method": "PATCH",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"description\":\"Enim autem velit optio rem consectetur consequuntur.\",\"score\":5}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "DELETE api\/reviews\/{review_id}",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/reviews\/:review_id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/reviews\/:review_id",
-                            "variable": [
-                                {
-                                    "id": "review_id",
-                                    "key": "review_id",
-                                    "value": "15",
-                                    "description": "The ID of the review."
-                                }
-                            ]
-                        },
-                        "method": "DELETE",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                }
-            ]
-        },
-        {
             "name": "VerifyNumber(\uc778\uc99d\ubc88\ud638)",
             "description": "",
             "item": [
@@ -529,7 +365,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"contact\":\"wwfb\"}"
+                            "raw": "{\"contact\":\"svbhrkktzzrb\"}"
                         },
                         "description": "",
                         "auth": {
@@ -560,7 +396,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"contact\":\"rtcgqyputahwyt\",\"number\":\"qbyxotymfkny\"}"
+                            "raw": "{\"contact\":\"rwzvjhbhdoeujwwvblbqncytn\",\"number\":\"j\"}"
                         },
                         "description": "",
                         "auth": {
@@ -660,7 +496,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "perspiciatis",
+                                            "value": "blanditiis",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -703,7 +539,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "sit",
+                                            "value": "qui",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -749,7 +585,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "ut",
+                                            "value": "ducimus",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -804,7 +640,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"rlnpxqnvjq\"}"
+                                    "raw": "{\"word\":\"ibhuesifzfrsynykdojqfkco\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -848,7 +684,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":19,\"word\":\"jsgc\"}"
+                                    "raw": "{\"type\":7,\"word\":\"dnbcyrcdmwfu\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -886,7 +722,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"title\":\"inlromzectzgc\",\"subtitle\":\"mkugyvslv\",\"url\":\"http:\\\/\\\/monahan.com\\\/blanditiis-quae-id-aut-rem-qui\",\"button\":\"usleboydoj\",\"color_text\":\"rjrzelbevdposeosha\",\"color_button\":\"cdjcxbxjqujzfhujxbyruh\",\"started_at\":\"2025-01-24T16:13:03\",\"finished_at\":\"2025-01-24T16:13:03\"}"
+                                    "raw": "{\"title\":\"cnwcscojnuncvkprw\",\"subtitle\":\"tquxnqnssl\",\"url\":\"http:\\\/\\\/quigley.com\\\/quo-id-consequatur-ut-hic-sapiente-molestias.html\",\"button\":\"yuvbztzoxjvezktsqfukku\",\"color_text\":\"oxjgjdschezpmlwy\",\"color_button\":\"zkilumitdolkj\",\"started_at\":\"2025-01-24T16:16:11\",\"finished_at\":\"2025-01-24T16:16:11\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -975,7 +811,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"title\":\"uik\",\"subtitle\":\"h\",\"url\":\"http:\\\/\\\/www.labadie.com\\\/nesciunt-nostrum-numquam-deleniti-vel-et-magni.html\",\"button\":\"djg\",\"color_text\":\"xxnsmuyqfje\",\"color_button\":\"xebpwkje\",\"started_at\":\"2025-01-24T16:13:03\",\"finished_at\":\"2025-01-24T16:13:03\"}"
+                                    "raw": "{\"title\":\"pg\",\"subtitle\":\"mhezxskdbn\",\"url\":\"http:\\\/\\\/www.ruecker.com\\\/voluptatum-quo-omnis-dolor-temporibus-cumque\",\"button\":\"bezkw\",\"color_text\":\"nbdeo\",\"color_button\":\"qrioszm\",\"started_at\":\"2025-01-24T16:16:11\",\"finished_at\":\"2025-01-24T16:16:11\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1087,7 +923,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"wewfgotjcptgtaqdicnnmimjk\"}"
+                                    "raw": "{\"word\":\"cuvjwjabahrvnaxbchybqt\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1316,7 +1152,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"fjnjjsjwuffef\"}"
+                                    "raw": "{\"word\":\"bauqkb\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1471,7 +1307,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"tlvcoqgzgxgtcpdnuwxppeoxv\"}"
+                                    "raw": "{\"word\":\"evtyhcmd\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1499,7 +1335,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "dolores",
+                                            "value": "laboriosam",
                                             "description": "The ID of the product."
                                         }
                                     ]
@@ -1589,7 +1425,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"tnsjxanzgjqgdptolumvt\"}"
+                                    "raw": "{\"word\":\"izkamnnhfnpsyvtlgrvizbwqi\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1652,7 +1488,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "7",
+                                            "value": "2",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -1695,7 +1531,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "18",
+                                            "value": "2",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -1713,7 +1549,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":11,\"best\":false,\"score\":3,\"description\":\"Qui nostrum dolor eos facere iste itaque sit.\",\"hide\":false}"
+                                    "raw": "{\"product_id\":3,\"best\":false,\"score\":3,\"description\":\"Ut magnam consequuntur iusto laudantium.\",\"hide\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1899,7 +1735,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"token\":\"zehmldwzisqegcsadzwzze\",\"ids\":\"oamgisfmwxslwbufmkbzefwk\",\"password\":\"{%aPJ57D6U}O-EP\"}"
+                                    "raw": "{\"token\":\"bnvjwpmwmdmxhp\",\"ids\":\"zppyjs\",\"password\":\"DLU*i8GT_,csXH\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1937,7 +1773,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"social_id\":\"fhbcivrvmlbzvgpghtezy\",\"social_platform\":\"ticcidx\",\"email\":\"eleonore00@example.net\",\"password\":\"HDWkw:!qmh2\",\"name\":\"g\",\"contact\":\"khtibocx\",\"agree_promotion\":false}"
+                                    "raw": "{\"social_id\":\"tegbsbpwkonazmnmmwwnytrlw\",\"social_platform\":\"e\",\"email\":\"fstroman@example.net\",\"password\":\"SF$}S\\\"C5.b9C:Pp?k.%O\",\"name\":\"bysk\",\"contact\":\"cfteo\",\"agree_promotion\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1975,7 +1811,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"email\":\"stamm.ozella@example.com\",\"contact\":\"v\",\"password\":\"\\\\V`&b_\"}"
+                                    "raw": "{\"email\":\"colten.lueilwitz@example.org\",\"contact\":\"lxvr\",\"password\":\"b{n)rCYwj{s\\\\?\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2006,7 +1842,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"yu\"}"
+                                    "raw": "{\"contact\":\"ohitzxmxqrehm\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2079,7 +1915,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"name\":\"rkqtgxrptjjzqjn\",\"contact\":\"vyblkn\",\"password\":\"53x:?M7ZZ(\"}"
+                                    "raw": "{\"name\":\"yifig\",\"contact\":\"ahbzttdomizcwsoe\",\"password\":\"NFO}U*9_(*[\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2117,7 +1953,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"always_use_coupon_for_package\":false}"
+                                    "raw": "{\"always_use_coupon_for_package\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2179,7 +2015,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"code_recommend\":\"bk\"}"
+                                    "raw": "{\"code_recommend\":\"cgevsywthbqttu\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2210,7 +2046,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"password\":\"#jzlBF<<SMI_VBGxA|\",\"password_new\":\"vnhafnfytjnior\"}"
+                                    "raw": "{\"password\":\"2eZ`PagrvcRvsyp\",\"password_new\":\"gmbakiiakhwuatkzmv\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2241,7 +2077,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"reason\":\"heltnympvkkumyijcimesdtny\",\"and_so_on\":\"jegqythdknsq\"}"
+                                    "raw": "{\"reason\":\"xpqelxwafzwogqqamzznp\",\"and_so_on\":\"qyfwtyqzgue\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2329,6 +2165,170 @@
                     ]
                 },
                 {
+                    "name": "Review(\ub9ac\ubdf0)",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "GET api\/reviews",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/reviews",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/reviews"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"take\":24,\"order_by\":\"hwzcujhvonykvxjtdefo\",\"align\":\"mgnsmoyrkcrivlsc\",\"has_column\":\"gafg\",\"product_id\":14,\"package_id\":20,\"best\":false,\"type\":12,\"user_id\":15,\"photo\":false}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n      \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "POST api\/reviews",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/reviews",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/reviews"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"preset_product_id\":20,\"description\":\"Voluptate eaque vel quia odio.\",\"score\":4}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "PATCH api\/reviews\/{review_id}",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/reviews\/:review_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/reviews\/:review_id",
+                                    "variable": [
+                                        {
+                                            "id": "review_id",
+                                            "key": "review_id",
+                                            "value": "1",
+                                            "description": "The ID of the review."
+                                        }
+                                    ]
+                                },
+                                "method": "PATCH",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"description\":\"Aperiam in aliquid eius laudantium odit consequatur dolor.\",\"score\":5}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "DELETE api\/reviews\/{review_id}",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/reviews\/:review_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/reviews\/:review_id",
+                                    "variable": [
+                                        {
+                                            "id": "review_id",
+                                            "key": "review_id",
+                                            "value": "18",
+                                            "description": "The ID of the review."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
                     "name": "Package(\uafb8\ub7ec\ubbf8)",
                     "description": "",
                     "item": [
@@ -2395,7 +2395,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":11}"
+                                    "raw": "{\"type\":17}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2483,7 +2483,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":7}"
+                                    "raw": "{\"type\":15}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2527,7 +2527,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"order_by\":\"xaancjyuufjctnnzuufrv\",\"word\":\"nhymzgqucmnru\",\"farm_id\":18,\"exclude_farm_id\":16,\"internal\":true}"
+                                    "raw": "{\"order_by\":\"cxtwtyhcvqsnsavmvzcueaxx\",\"word\":\"quxembnnnktyvg\",\"farm_id\":15,\"exclude_farm_id\":2,\"internal\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2614,7 +2614,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"u\",\"order_by\":\"j\"}"
+                                    "raw": "{\"word\":\"fzbqhnhliuemp\",\"order_by\":\"tyqsxwhmfi\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2742,7 +2742,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":15}"
+                                    "raw": "{\"product_id\":8}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2786,7 +2786,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"card_id\":1,\"delivery_id\":20,\"type_package\":14,\"term_week\":10,\"active\":false}"
+                                    "raw": "{\"card_id\":14,\"delivery_id\":16,\"type_package\":16,\"term_week\":15,\"active\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2861,7 +2861,7 @@
                                         {
                                             "id": "delivery_id",
                                             "key": "delivery_id",
-                                            "value": "3",
+                                            "value": "14",
                                             "description": "The ID of the delivery."
                                         }
                                     ]
@@ -2913,7 +2913,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"options\":[{\"id\":9,\"count\":9}]}"
+                                    "raw": "{\"options\":[{\"id\":3,\"count\":51}]}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2941,7 +2941,7 @@
                                         {
                                             "id": "preset_id",
                                             "key": "preset_id",
-                                            "value": "6",
+                                            "value": "9",
                                             "description": "The ID of the preset."
                                         }
                                     ]
@@ -2993,7 +2993,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "13",
+                                            "value": "14",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -3011,7 +3011,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"coupon_id\":15}"
+                                    "raw": "{\"coupon_id\":14}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3055,7 +3055,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":19}"
+                                    "raw": "{\"product_id\":17}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3130,7 +3130,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"likeable_id\":\"explicabo\",\"likeable_type\":\"enim\"}"
+                                    "raw": "{\"likeable_id\":\"sed\",\"likeable_type\":\"vitae\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3167,7 +3167,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"bookmarkable_id\":12,\"bookmarkable_type\":\"ppjzbzm\"}"
+                                    "raw": "{\"bookmarkable_id\":20,\"bookmarkable_type\":\"ryqbkotuigerl\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3204,7 +3204,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"report_category_id\":10,\"reportable_id\":15,\"reportable_type\":\"pvprmnypungfphsf\",\"description\":\"Rem pariatur sed non totam blanditiis quos.\"}"
+                                    "raw": "{\"report_category_id\":16,\"reportable_id\":1,\"reportable_type\":\"fmcmklqw\",\"description\":\"Quas dolore magni consectetur et amet rerum.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3389,7 +3389,7 @@
                                 {
                                     "id": "product",
                                     "key": "product",
-                                    "value": "ipsum",
+                                    "value": "ut",
                                     "description": ""
                                 }
                             ]
@@ -3425,7 +3425,7 @@
                                 {
                                     "id": "product",
                                     "key": "product",
-                                    "value": "exercitationem",
+                                    "value": "blanditiis",
                                     "description": ""
                                 }
                             ]
@@ -3461,7 +3461,7 @@
                                 {
                                     "id": "order_id",
                                     "key": "order_id",
-                                    "value": "6",
+                                    "value": "4",
                                     "description": "The ID of the order."
                                 }
                             ]
@@ -3507,7 +3507,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"imp_uid\":\"wunahnnnvqmzgaebqaprvdps\",\"merchant_uid\":\"biijd\"}"
+                            "raw": "{\"imp_uid\":\"ttmjhlhttnkbzffbptmkvb\",\"merchant_uid\":\"effgtksxatc\"}"
                         },
                         "description": "",
                         "auth": {
@@ -3538,7 +3538,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"imp_uid\":\"lmenstpmdswx\",\"merchant_uid\":\"jyrcmujbdyhylss\"}"
+                            "raw": "{\"imp_uid\":\"sywqswelpj\",\"merchant_uid\":\"qsxudjcbzwnblt\"}"
                         },
                         "description": "",
                         "auth": {
@@ -3569,7 +3569,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"imp_uid\":\"dabrkfxsoypqj\",\"merchant_uid\":\"jtgnntnhsqpgbdmoeojvbrh\"}"
+                            "raw": "{\"imp_uid\":\"estinlblbcqfuznncf\",\"merchant_uid\":\"scumocwmhlkezq\"}"
                         },
                         "description": "",
                         "auth": {
@@ -3674,7 +3674,7 @@
                                 {
                                     "id": "notice_id",
                                     "key": "notice_id",
-                                    "value": "15",
+                                    "value": "1",
                                     "description": "The ID of the notice."
                                 }
                             ]
@@ -3721,7 +3721,7 @@
                                 }
                             ],
                             "code": 500,
-                            "body": "{\n    \"message\": \"SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nongjangs.notices' doesn't exist (SQL: select * from `notices` where `id` = 15 limit 1)\",\n    \"exception\": \"Illuminate\\\\Database\\\\QueryException\",\n    \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Connection.php\",\n    \"line\": 712,\n    \"trace\": [\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Connection.php\",\n            \"line\": 672,\n            \"function\": \"runQueryCallback\",\n            \"class\": \"Illuminate\\\\Database\\\\Connection\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Connection.php\",\n            \"line\": 359,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Database\\\\Connection\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Query\\\\Builder.php\",\n            \"line\": 2413,\n            \"function\": \"select\",\n            \"class\": \"Illuminate\\\\Database\\\\Connection\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Query\\\\Builder.php\",\n            \"line\": 2402,\n            \"function\": \"runSelect\",\n            \"class\": \"Illuminate\\\\Database\\\\Query\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Query\\\\Builder.php\",\n            \"line\": 2936,\n            \"function\": \"Illuminate\\\\Database\\\\Query\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Database\\\\Query\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Query\\\\Builder.php\",\n            \"line\": 2401,\n            \"function\": \"onceWithColumns\",\n            \"class\": \"Illuminate\\\\Database\\\\Query\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Eloquent\\\\Builder.php\",\n            \"line\": 625,\n            \"function\": \"get\",\n            \"class\": \"Illuminate\\\\Database\\\\Query\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Eloquent\\\\Builder.php\",\n            \"line\": 609,\n            \"function\": \"getModels\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Concerns\\\\BuildsQueries.php\",\n            \"line\": 294,\n            \"function\": \"get\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Eloquent\\\\Model.php\",\n            \"line\": 1880,\n            \"function\": \"first\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\ImplicitRouteBinding.php\",\n            \"line\": 55,\n            \"function\": \"resolveRouteBinding\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Model\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 859,\n            \"function\": \"resolveForRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\ImplicitRouteBinding\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings.php\",\n            \"line\": 41,\n            \"function\": \"substituteImplicitBindings\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 93,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 55,\n            \"function\": \"handleRequestUsingNamedLimiter\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 58,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\sanctum\\\\src\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 33,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 128,\n            \"function\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\{closure}\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\sanctum\\\\src\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 32,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 719,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 698,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 662,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 651,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 167,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 128,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings.php\",\n            \"line\": 40,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance.php\",\n            \"line\": 86,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\fruitcake\\\\laravel-cors\\\\src\\\\HandleCors.php\",\n            \"line\": 52,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Fruitcake\\\\Cors\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\TrustProxies.php\",\n            \"line\": 39,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 142,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 111,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 310,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 298,\n            \"function\": \"callLaravelOrLumenRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 91,\n            \"function\": \"makeApiCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 44,\n            \"function\": \"makeResponseCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 35,\n            \"function\": \"makeResponseCallIfConditionsPass\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 237,\n            \"function\": \"__invoke\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 163,\n            \"function\": \"iterateThroughStrategies\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 95,\n            \"function\": \"fetchResponses\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 125,\n            \"function\": \"processRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 72,\n            \"function\": \"extractEndpointsInfoFromLaravelApp\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 50,\n            \"function\": \"extractEndpointsInfoAndWriteToDisk\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Commands\\\\GenerateDocumentation.php\",\n            \"line\": 53,\n            \"function\": \"get\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 36,\n            \"function\": \"handle\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\Util.php\",\n            \"line\": 40,\n            \"function\": \"Illuminate\\\\Container\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 93,\n            \"function\": \"unwrapIfClosure\",\n            \"class\": \"Illuminate\\\\Container\\\\Util\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 35,\n            \"function\": \"callBoundMethod\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\Container.php\",\n            \"line\": 653,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Command.php\",\n            \"line\": 136,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\Container\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\symfony\\\\console\\\\Command\\\\Command.php\",\n            \"line\": 298,\n            \"function\": \"execute\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Command.php\",\n            \"line\": 120,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Command\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 1040,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 301,\n            \"function\": \"doRunCommand\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 171,\n            \"function\": \"doRun\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Application.php\",\n            \"line\": 94,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Console\\\\Kernel.php\",\n            \"line\": 129,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\artisan\",\n            \"line\": 35,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Console\\\\Kernel\",\n            \"type\": \"->\"\n        }\n    ]\n}",
+                            "body": "{\n    \"message\": \"SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nongjangs.notices' doesn't exist (SQL: select * from `notices` where `id` = 1 limit 1)\",\n    \"exception\": \"Illuminate\\\\Database\\\\QueryException\",\n    \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Connection.php\",\n    \"line\": 712,\n    \"trace\": [\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Connection.php\",\n            \"line\": 672,\n            \"function\": \"runQueryCallback\",\n            \"class\": \"Illuminate\\\\Database\\\\Connection\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Connection.php\",\n            \"line\": 359,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Database\\\\Connection\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Query\\\\Builder.php\",\n            \"line\": 2413,\n            \"function\": \"select\",\n            \"class\": \"Illuminate\\\\Database\\\\Connection\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Query\\\\Builder.php\",\n            \"line\": 2402,\n            \"function\": \"runSelect\",\n            \"class\": \"Illuminate\\\\Database\\\\Query\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Query\\\\Builder.php\",\n            \"line\": 2936,\n            \"function\": \"Illuminate\\\\Database\\\\Query\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Database\\\\Query\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Query\\\\Builder.php\",\n            \"line\": 2401,\n            \"function\": \"onceWithColumns\",\n            \"class\": \"Illuminate\\\\Database\\\\Query\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Eloquent\\\\Builder.php\",\n            \"line\": 625,\n            \"function\": \"get\",\n            \"class\": \"Illuminate\\\\Database\\\\Query\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Eloquent\\\\Builder.php\",\n            \"line\": 609,\n            \"function\": \"getModels\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Concerns\\\\BuildsQueries.php\",\n            \"line\": 294,\n            \"function\": \"get\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Database\\\\Eloquent\\\\Model.php\",\n            \"line\": 1880,\n            \"function\": \"first\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Builder\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\ImplicitRouteBinding.php\",\n            \"line\": 55,\n            \"function\": \"resolveRouteBinding\",\n            \"class\": \"Illuminate\\\\Database\\\\Eloquent\\\\Model\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 859,\n            \"function\": \"resolveForRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\ImplicitRouteBinding\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings.php\",\n            \"line\": 41,\n            \"function\": \"substituteImplicitBindings\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 93,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 55,\n            \"function\": \"handleRequestUsingNamedLimiter\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests.php\",\n            \"line\": 58,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\sanctum\\\\src\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 33,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 128,\n            \"function\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\{closure}\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\sanctum\\\\src\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful.php\",\n            \"line\": 32,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Laravel\\\\Sanctum\\\\Http\\\\Middleware\\\\EnsureFrontendRequestsAreStateful\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 719,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 698,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 662,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n            \"line\": 651,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 167,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 128,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings.php\",\n            \"line\": 40,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance.php\",\n            \"line\": 86,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\fruitcake\\\\laravel-cors\\\\src\\\\HandleCors.php\",\n            \"line\": 52,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Fruitcake\\\\Cors\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\TrustProxies.php\",\n            \"line\": 39,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 142,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n            \"line\": 111,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 310,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 298,\n            \"function\": \"callLaravelOrLumenRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 91,\n            \"function\": \"makeApiCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 44,\n            \"function\": \"makeResponseCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls.php\",\n            \"line\": 35,\n            \"function\": \"makeResponseCallIfConditionsPass\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 237,\n            \"function\": \"__invoke\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 163,\n            \"function\": \"iterateThroughStrategies\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Extracting\\\\Extractor.php\",\n            \"line\": 95,\n            \"function\": \"fetchResponses\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 125,\n            \"function\": \"processRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 72,\n            \"function\": \"extractEndpointsInfoFromLaravelApp\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp.php\",\n            \"line\": 50,\n            \"function\": \"extractEndpointsInfoAndWriteToDisk\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\knuckleswtf\\\\scribe\\\\src\\\\Commands\\\\GenerateDocumentation.php\",\n            \"line\": 53,\n            \"function\": \"get\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 36,\n            \"function\": \"handle\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\Util.php\",\n            \"line\": 40,\n            \"function\": \"Illuminate\\\\Container\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 93,\n            \"function\": \"unwrapIfClosure\",\n            \"class\": \"Illuminate\\\\Container\\\\Util\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\BoundMethod.php\",\n            \"line\": 35,\n            \"function\": \"callBoundMethod\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Container\\\\Container.php\",\n            \"line\": 653,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Command.php\",\n            \"line\": 136,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\Container\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\symfony\\\\console\\\\Command\\\\Command.php\",\n            \"line\": 298,\n            \"function\": \"execute\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Command.php\",\n            \"line\": 120,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Command\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 1040,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 301,\n            \"function\": \"doRunCommand\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\symfony\\\\console\\\\Application.php\",\n            \"line\": 171,\n            \"function\": \"doRun\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Console\\\\Application.php\",\n            \"line\": 94,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Console\\\\Kernel.php\",\n            \"line\": 129,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"D:\\\\project\\\\api.nongjangs.com\\\\artisan\",\n            \"line\": 35,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Console\\\\Kernel\",\n            \"type\": \"->\"\n        }\n    ]\n}",
                             "name": ""
                         }
                     ]
