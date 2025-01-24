@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\StatePresetProduct;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +14,12 @@ class VegetableStory extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $guarded = ['id'];
+
+    public static $points = [
+        80, // 1회
+        100, // 2회
+        120 // 3호;
+    ];
 
     public function getImgAttribute()
     {
@@ -88,7 +95,7 @@ class VegetableStory extends Model implements HasMedia
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function getCountLikeAttribute()

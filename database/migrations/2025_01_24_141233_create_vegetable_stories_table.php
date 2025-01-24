@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->foreignId('package_id')->nullable()->constrained('packages')->onDelete('cascade');
             $table->foreignId('product_id')->nullable()->constrained('products')->onDelete('cascade');
             $table->foreignId('preset_product_id')->nullable()->constrained('preset_product')->onDelete('cascade');
-            $table->foreignId('recipe_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('recipe_id')->nullable()->constrained('recipes')->onDelete('cascade');
             $table->text('description')->nullable()->comment('내용');
             $table->timestamps();
         });

@@ -71,6 +71,20 @@ class PresetProduct extends Model
         return 1;
     }
 
+    public function getCanVegetableStoryAttribute()
+    {
+        if(!auth()->user())
+            return 0;
+
+        if(auth()->user()->id != $this->preset->user_id)
+            return 0;
+
+        if($this->state != StatePresetProduct::CONFIRMED)
+            return 0;
+
+        return 1;
+    }
+
     public function review()
     {
         return $this->hasOne(Review::class);

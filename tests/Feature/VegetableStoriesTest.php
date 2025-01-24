@@ -1,10 +1,17 @@
 <?php
 
 
-
+use App\Enums\StatePresetProduct;
 use App\Enums\TypeBanner;
 use App\Models\Banner;
 use App\Models\Coupon;
+use App\Models\Like;
+use App\Models\Package;
+use App\Models\Preset;
+use App\Models\PresetProduct;
+use App\Models\Recipe;
+use App\Models\VegetableStory;
+use App\Models\Tag;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -30,101 +37,323 @@ class VegetableStoriesTest extends TestCase
 
         $this->actingAs($this->user);
 
-        $this->form = [
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
 
+        $presetProduct = PresetProduct::factory()->create([
+            'state' => StatePresetProduct::CONFIRMED,
+            'preset_id' => $preset->id,
+        ]);
+
+        $this->form = [
+            'imgs' => [
+                ['file' => \Illuminate\Http\UploadedFile::fake()->image('image1.jpg')],
+                ['file' => \Illuminate\Http\UploadedFile::fake()->image('image2.jpg')],
+            ],
+            'preset_product_id' => $presetProduct->id,
+            'description' => '123',
+            'tag_ids' => Tag::factory()->count(3)->create()->pluck('id')->toArray(),
         ];
     }
 
     /** @test */
     public function 누구나_목록을_조회할_수_있다()
     {
+        $models = VegetableStory::factory()->count(5)->create();
 
+        $items = $this->json('get', '/api/vegetableStories', [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($models), count($items));
     }
 
     /** @test */
     public function 사용자별_목록을_조회할_수_있다()
     {
+        $vegetableStories = \App\Models\VegetableStory::factory()->count(5)->create([
+            'user_id' => $this->user->id,
+        ]);
 
+        $otherVegetableStories = \App\Models\VegetableStory::factory()->count(3)->create([
+            'user_id' => $this->other->id,
+        ]);
+
+        $items = $this->json('get', '/api/vegetableStories', [
+            'user_id' => $this->other->id,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($otherVegetableStories), count($items));
     }
 
     /** @test */
     public function 특정_태그들을_포함하는_목록을_조회할_수_있다()
     {
+        $tag = Tag::factory()->create();
 
+        $includeModels = Recipe::factory()->count(5)->create();
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        foreach($includeModels as $model){
+            $model->tags()->attach($tag->id);
+        }
+
+        $items = $this->json('get', '/api/recipes', [
+            'tag_ids' => [$tag->id]
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 키워드를_포함하는_목록을_조회할_수_있다()
     {
+        $word = 'test';
 
+        $includeModels = Recipe::factory()->count(5)->create(['title' => $word]);
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        $items = $this->json('get', '/api/recipes', [
+            'word' => $word
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 상품별_목록을_조회할_수_있다()
     {
+        $package = Package::factory()->create();
 
+        $includeModels = Recipe::factory()->count(5)->create();
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        foreach($includeModels as $model){
+            $model->packages()->sync([$package->id]);
+        }
+
+        $items = $this->json('get', '/api/recipes', [
+            'package_id' => $package->id
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 패키지별_목록을_조회할_수_있다()
     {
+        $package = Package::factory()->create();
 
+        $includeModels = Recipe::factory()->count(5)->create();
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        foreach($includeModels as $model){
+            $model->packages()->sync([$package->id]);
+        }
+
+        $items = $this->json('get', '/api/recipes', [
+            'package_id' => $package->id
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 상품유형별_목록을_조회할_수_있다()
     {
-        // type_product
+        $a = \App\Models\Package::factory()->create();
+        $b = \App\Models\Product::factory()->create();
+        $aVegetableStories = \App\Models\VegetableStory::factory()->count(5)->create([
+            'package_id' => $a->id,
+            'product_id' => null,
+        ]);
+
+        $bVegetableStories = \App\Models\VegetableStory::factory()->count(3)->create([
+            'package_id' => null,
+            'product_id' => $b->id,
+        ]);
+
+        $items = $this->json('get', '/api/vegetableStories', [
+            'has_column' => 'package_id',
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($aVegetableStories), count($items));
     }
 
     /** @test */
     public function 좋아요순으로_목록을_조회할_수_있다()
     {
+        $firstItem = \App\Models\VegetableStory::factory()->create([
 
+        ]);
+
+        $thirdItem = \App\Models\VegetableStory::factory()->create([
+
+        ]);
+
+        $secondItem = \App\Models\VegetableStory::factory()->create([
+
+        ]);
+
+        Like::factory()->count(3)->create([
+            'likeable_id' => $firstItem->id,
+            'likeable_type' => VegetableStory::class
+        ]);
+
+        Like::factory()->count(1)->create([
+            'likeable_id' => $thirdItem->id,
+            'likeable_type' => VegetableStory::class
+        ]);
+
+        Like::factory()->count(2)->create([
+            'likeable_id' => $secondItem->id,
+            'likeable_type' => VegetableStory::class
+        ]);
+
+        $items = $this->json('get', '/api/vegetableStories', [
+            'order_by' => 'count_like',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem)
+                $this->assertTrue($prevItem['count_like'] > $item['count_like']);
+
+            $prevItem = $item;
+        }
     }
 
     /** @test */
     public function 등록순으로_목록을_조회할_수_있다()
     {
+        $firstItem = \App\Models\VegetableStory::factory()->create([
+            'created_at' => Carbon::now()->addDays(0)
+        ]);
 
+        $thirdItem = \App\Models\VegetableStory::factory()->create([
+            'created_at' => Carbon::now()->addDays(3)
+        ]);
+
+        $secondItem = \App\Models\VegetableStory::factory()->create([
+            'created_at' => Carbon::now()->addDays(2)
+        ]);
+
+        $items = $this->json('get', '/api/vegetableStories', [
+            'order_by' => 'created_at',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem)
+                $this->assertTrue($prevItem['format_created_at'] > $item['format_created_at']);
+
+            $prevItem = $item;
+        }
     }
 
     /** @test */
     public function 사용자는_데이터를_생성할_수_있다()
     {
         /*imgs: []
-preset_product_id (nullable)
-description
-recipe_id nullable
-tag_ids
+        preset_product_id (nullable)
+        description
+        recipe_id nullable
+        tag_ids
 
-preset_product_id를 통해 package_id나 product_id가 자동설정되어야함*/
+        preset_product_id를 통해 package_id나 product_id가 자동설정되어야함*/
+
+        $item = $this->json('post', '/api/vegetableStories', $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals(1, VegetableStory::count());
     }
 
     /** @test */
     public function 관련출고건이_있다면_자신의_출고건이고_구매확정된_출고건이어야만_데이터를_생성할_수_있다()
     {
+        $myConfirmPreset = Preset::factory()->create(['user_id' => $this->user->id]);
+        $myConfirmPresetProduct = PresetProduct::factory()->create(['preset_id' => $myConfirmPreset->id, 'state' => StatePresetProduct::CONFIRMED]);
+        $this->form['preset_product_id'] = $myConfirmPresetProduct->id;
+        $this->json('post', '/api/vegetableStories', $this->form)->assertStatus(200);
 
+        $otherPreset = Preset::factory()->create(['user_id' => $this->other->id]);
+        $otherPresetProduct = PresetProduct::factory()->create(['preset_id' => $otherPreset->id, 'state' => StatePresetProduct::CONFIRMED]);
+        $this->form['preset_product_id'] = $otherPresetProduct->id;
+        $this->json('post', '/api/vegetableStories', $this->form)->assertStatus(403);
+
+        $myPreset = Preset::factory()->create(['user_id' => $this->user->id]);
+        $myNotConfirmPresetProduct = PresetProduct::factory()->create(['preset_id' => $myPreset->id, 'state' => StatePresetProduct::ONGOING_DELIVERY]);
+        $this->form['preset_product_id'] = $myNotConfirmPresetProduct->id;
+        $this->json('post', '/api/vegetableStories', $this->form)->assertStatus(403);
     }
 
     /** @test */
     public function 데이터를_생성할때_특정_출고건에_대한_데이터라면_적립금이_부여된다()
     {
+        $prevPoint = $this->user->point;
         /*1회 80원
 2회 100원
 3회 120원
 적립할때마다 pointHistory 쌓여야함*/
+
+        $item = $this->json('post', '/api/vegetableStories', $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals(1, VegetableStory::count());
+
+        $this->assertEquals($prevPoint + VegetableStory::$points[0], $this->user->refresh()->point);
+
+
+        $prevPoint = $this->user->refresh()->point;
+
+        $item = $this->json('post', '/api/vegetableStories', $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals(2, VegetableStory::count());
+
+        $this->assertEquals($prevPoint + VegetableStory::$points[1], $this->user->refresh()->point);
+
+
+        $prevPoint = $this->user->refresh()->point;
+
+        $item = $this->json('post', '/api/vegetableStories', $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals(3, VegetableStory::count());
+
+        $this->assertEquals($prevPoint + VegetableStory::$points[2], $this->user->refresh()->point);
     }
 
     /** @test */
     public function 자신의_데이터를_수정할_수_있다()
     {
         // preset_product_id는 수정불가주의
+        $model = VegetableStory::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $description = 'test';
+
+        $this->form['description'] = $description;
+
+        $item = $this->json('patch', '/api/vegetableStories/'.$model->id, $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals($description, $item['description']);
+
     }
 
     /** @test */
     public function 자신의_데이터를_삭제할_수_있다()
     {
+        $model = VegetableStory::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
 
+        $description = 'test';
+
+        $this->form['description'] = $description;
+
+        $item = $this->json('delete', '/api/vegetableStories/'.$model->id)->decodeResponseJson()['data'];
+
+        $this->assertEquals(0, VegetableStory::count());
     }
 }

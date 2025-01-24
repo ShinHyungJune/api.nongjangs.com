@@ -50,7 +50,12 @@ class VegetableStoryRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        '' => []
+                        'order_by' => ['nullable', 'string', 'max:500'],
+                        'user_id' => ['nullable', 'integer'],
+                        'tag_ids' => ['nullable', 'array'],
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'has_column' => ['nullable', 'string', 'max:500'],
+                        'package_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':
@@ -81,6 +86,12 @@ class VegetableStoryRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
+            'order_by' => [
+                'description' => '<span class="point">정렬 (count_like - 좋아요순 | created_at - 등록순)</span>',
+            ],
+            'user_id' => [
+                'description' => '<span class="point">사용자 고유번호</span>',
+            ],
             'imgs' => [
                 'description' => '<span class="point">이미지 목록</span>',
             ],
@@ -95,6 +106,12 @@ class VegetableStoryRequest extends FormRequest
             ],
             'tag_ids' => [
                 'description' => '<span class="point">태그 고유번호 목록</span>',
+            ],
+            'has_column' => [
+                'description' => '<span class="point">특정 컬럼 보유여부 (package_id - 꾸러미 관련만 보기 | product_id - 직거래상품 관련만 보기)</span>',
+            ],
+            'package_id' => [
+                'description' => '<span class="point">패키지 고유번호</span>',
             ],
 
             // 늘 쓰이는 애들

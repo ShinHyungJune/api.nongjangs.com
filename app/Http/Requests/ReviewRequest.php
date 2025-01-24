@@ -100,6 +100,9 @@ class ReviewRequest extends FormRequest
             'hide' => [
                 'description' => '<span class="point">가림여부</span>',
             ],
+            'has_column' => [
+                'description' => '<span class="point">특정 컬럼 보유여부 (package_id - 꾸러미 관련만 보기 | product_id - 직거래상품 관련만 보기)</span>',
+            ],
             'take' => [
                 'description' => '<span class="point">가져올 개수</span>',
             ],

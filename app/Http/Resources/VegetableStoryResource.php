@@ -40,6 +40,7 @@ class VegetableStoryResource extends JsonResource
             'img' => $this->img ?? '',
             'imgs' => $this->imgs,
             'tags' => TagResource::collection($this->tags),
+            'tag_ids' => $this->tags->pluck('id')->toArray(),
             'count_like' => $this->count_like,
             'count_bookmark' => $this->count_bookmark,
             'count_comment' => $this->count_comment,

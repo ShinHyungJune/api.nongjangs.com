@@ -319,4 +319,9 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     {
         return $this->hasMany(Card::class);
     }
+
+    public function vegetableStories()
+    {
+        return $this->hasMany(VegetableStory::class);
+    }
 }

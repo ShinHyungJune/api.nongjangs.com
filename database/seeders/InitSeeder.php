@@ -51,6 +51,7 @@ use App\Models\Review;
 use App\Models\Size;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\VegetableStory;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -126,6 +127,7 @@ class InitSeeder extends Seeder
         Material::truncate();
         Review::truncate();
         PresetProduct::truncate();
+        VegetableStory::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -176,6 +178,22 @@ class InitSeeder extends Seeder
         $this->createPresetProducts();
         $this->createRecipes();
         $this->createReviews();
+        $this->createVegetableStories();
+    }
+
+    public function createVegetableStories()
+    {
+        $items = VegetableStory::factory()->count(30)->create();
+
+        foreach($items as $item){
+            $tags = Tag::where('type', TypeTag::VEGETABLE_STORY)->inRandomOrder()->take(5)->get();
+
+            $item->tags()->sync($tags->pluck("id")->toArray());
+
+            if(config("app.env") != 'local'){
+                $item->addMedia(public_path($this->farmImgs[rand(0, count($this->farmImgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
+            }
+        }
     }
 
     public function createPresetProducts()
