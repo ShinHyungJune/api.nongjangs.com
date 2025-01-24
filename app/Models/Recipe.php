@@ -69,17 +69,26 @@ class Recipe extends Model implements HasMedia
 
     public function getFormatMaterialsAttribute()
     {
+        if($this->materials)
+            return json_decode($this->materials);
 
+        return [];
     }
 
     public function getFormatRecipesAttribute()
     {
+        if($this->recipes)
+            return json_decode($this->recipes);
 
+        return [];
     }
 
     public function getFormatSeasoningsAttribute()
     {
+        if($this->seasonings)
+            return json_decode($this->seasonings);
 
+        return [];
     }
 
     public function getIsBookmarkAttribute()
