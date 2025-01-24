@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "best": "베스트 여부",
+      "score": "점수",
+      "point": "받은 적립금",
+      "user": {
+        "id": "고유번호",
+        "nickname": "닉네임"
+      },
+      "product": "상품 객체",
+      "package": "패키지 객체",
+      "presetProduct (출고상품)": {
+        "id": "고유번호",
+        "product_title": "구매당시 상품명",
+        "option_title": "구매당시 옵션명"
+      },
+      "reply": "관리자 답변",
+      "reply_at": "관리자 답변일자",
+      "format_reply_at": "표시용 답변일자",
+
+      "img": "대표이미지 객체",
+      "imgs": "이미지 목록",
+      "photo": "포토리뷰여부",
+      "hide": "숨김여부",
+      "format_tag": "표시용 태그 (ex. 꾸러미 3회차, 귤 1박스)",
+      "is_like": "좋아요여부",
+      "is_bookmark": "북마크여부",
+      "format_created_at": "표시용 생성일자"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

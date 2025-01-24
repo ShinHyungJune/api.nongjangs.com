@@ -35,10 +35,7 @@ class ReviewRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'product_id' => ['required', 'integer'],
-                        'best' => ['required', 'boolean'],
-                        'score' => ['required', 'integer', 'min:1', 'max:5'],
-                        'description' => ['required', 'string', 'max:50000'],
+
                     ];
 
                 case 'update':
@@ -47,6 +44,7 @@ class ReviewRequest extends FormRequest
                         'best' => ['required', 'boolean'],
                         'score' => ['required', 'integer', 'min:1', 'max:5'],
                         'description' => ['required', 'string', 'max:50000'],
+                        'hide' => ['required', 'boolean'],
                     ];
 
                 case 'destroy':
@@ -62,10 +60,14 @@ class ReviewRequest extends FormRequest
                 case 'index':
                     return [
                         'take' => 'nullable|integer|max:100',
-                        'order_by' => 'nullable|string|max:500', // best - 베스트여부 | created_at 생성
+                        'order_by' => 'nullable|string|max:500',
                         'align' => 'nullable|string|max:500',
 
+                        'has_column' => 'nullable|string|max:500',
                         'product_id' => 'nullable|integer',
+                        'package_id' => 'nullable|integer',
+                        'best' => 'nullable|boolean',
+                        'type' => 'nullable|integer',
                         'user_id' => 'nullable|integer',
                         'photo' => 'nullable|boolean',
                     ];
@@ -73,7 +75,6 @@ class ReviewRequest extends FormRequest
                 case 'store':
                     return [
                         'preset_product_id' => ['required', 'integer'],
-                        'title' => ['required', 'string', 'max:10000'],
                         'description' => ['required', 'string', 'max:10000'],
                         'score' => ['required', 'integer', 'min:1', 'max:5'],
                         'imgs' => ['nullable', 'array']
@@ -82,7 +83,6 @@ class ReviewRequest extends FormRequest
                 case 'update':
                     return [
                         'description' => ['required', 'string', 'max:10000'],
-                        'title' => ['required', 'string', 'max:10000'],
                         'score' => ['required', 'integer', 'min:1', 'max:5'],
                         'imgs' => ['nullable', 'array'],
                         'imgs_remove_ids' => ['nullable', 'array']
@@ -97,6 +97,9 @@ class ReviewRequest extends FormRequest
     public function bodyParameters()
     {
         return [
+            'hide' => [
+                'description' => '<span class="point">가림여부</span>',
+            ],
             'take' => [
                 'description' => '<span class="point">가져올 개수</span>',
             ],

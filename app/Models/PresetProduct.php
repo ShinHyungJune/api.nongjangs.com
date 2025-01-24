@@ -56,7 +56,7 @@ class PresetProduct extends Model
         if(auth()->user()->id != $this->preset->user_id)
             return 0;
 
-        if($this->state == StatePresetProduct::BEFORE_PAYMENT)
+        if($this->state != StatePresetProduct::CONFIRMED)
             return 0;
 
         if($this->review)

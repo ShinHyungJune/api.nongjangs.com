@@ -21,12 +21,12 @@ class CreateReviewsTable extends Migration
             $table->foreignId('product_id')->nullable()->constrained('products')->onDelete('cascade');
             $table->foreignId('preset_product_id')->nullable()->constrained('preset_product')->onDelete('cascade');
             $table->boolean('best')->comment('베스트 여부')->default(0);
-            $table->string('title')->comment('제목');
             $table->integer('score')->comment('점수');
             $table->text('description')->nullable()->comment('내용');
             $table->text('reply')->nullable()->comment('관리자 답글');
             $table->dateTime('reply_at')->nullable()->comment('관리자 답글일자');
             $table->unsignedBigInteger('point')->default(0)->comment('받은 적립금');
+            $table->boolean('hide')->default(0)->comment('관리자 가림여부');
             $table->timestamps();
         });
     }

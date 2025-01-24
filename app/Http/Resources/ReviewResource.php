@@ -23,12 +23,10 @@ class ReviewResource extends JsonResource
             'best' => $this->best,
             'score' => $this->score,
             'point' => $this->point,
-            'title' => $this->title,
             'description' => $this->description,
             'user' => $user ? [
                 'id' => $user->id,
-                'name' => $user->name,
-                'contact' => $user->contact,
+                'nickname' => $user->nickname,
             ] : '',
             'product_id' => $this->product_id,
             'product' => $this->product ? ProductMiniResource::make($this->product) : "",
@@ -39,11 +37,18 @@ class ReviewResource extends JsonResource
                 'option_title' => $this->option_title,
             ] : "",
             'reply' => $this->reply ?? '',
-            'reply_at' => $this->reply_at ? Carbon::make($this->reply_at)->format('Y.m.d') : '',
+            'reply_at' => $this->reply_at,
+            'format_reply_at' => $this->reply_at ? Carbon::make($this->reply_at)->format('Y.m.d') : '',
 
             'img' => $this->img ?? '',
             'imgs' => $this->imgs,
             'photo' => $this->photo,
+            'hide' => $this->hide,
+            'format_tag' => $this->format_tag,
+            'is_like' => $this->is_like,
+            'is_bookmark' => $this->is_bookmark,
+            'count_like' => $this->count_like,
+            'count_bookmark' => $this->count_bookmark,
             'format_created_at' => Carbon::make($this->created_at)->format('Y.m.d'),
         ];
     }
