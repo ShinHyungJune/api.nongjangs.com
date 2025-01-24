@@ -116,6 +116,16 @@ class Review extends Model implements HasMedia
 
     public function getFormatDisplayAttribute()
     {
+        $presetProduct = $this->presetProduct;
+
+        if($presetProduct){
+            if($presetProduct->product_id)
+                return $presetProduct->product_title;
+
+            if($presetProduct->package_id)
+                return "꾸러미 ".$presetProduct->package_count."회차";
+        }
+
         return "";
     }
 }

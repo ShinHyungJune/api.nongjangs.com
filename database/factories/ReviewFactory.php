@@ -16,6 +16,7 @@ class ReviewFactory extends Factory
     public function definition()
     {
         $user = User::inRandomOrder()->first() ?? User::factory()->create();
+        $presetProduct = PresetProduct::inRandomOrder()->first() ?? PresetProduct::factory()->create();
 
         $descriptions = [
             "신선하고 아삭아삭한 식감이 정말 좋아요.",
@@ -49,7 +50,7 @@ class ReviewFactory extends Factory
             'score' => rand(0,5),
 
             'user_id' => $user->id,
-            'preset_product_id' => PresetProduct::factory(),
+            'preset_product_id' => $presetProduct->id,
             // 'product_id' => Product::factory(),
             'photo' => 0,
         ];

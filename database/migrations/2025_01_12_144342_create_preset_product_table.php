@@ -12,19 +12,24 @@ return new class extends Migration {
             $table->id();
             $table->string('state')->default(StatePresetProduct::BEFORE_PAYMENT)->comment('상태');
             $table->foreignId('preset_id')->constrained('presets')->onDelete('cascade');
-            $table->foreignId('product_id')->constrained('products');
-            $table->foreignId('option_id')->constrained('options');
+            $table->foreignId('product_id')->nullable()->constrained('products');
+            $table->foreignId('package_id')->nullable()->constrained('packages');
+            $table->foreignId('option_id')->nullable()->constrained('options');
             $table->foreignId('coupon_id')->nullable()->constrained('coupons');
 
             $table->unsignedBigInteger('price')->default(0)->comment('최종가격');
-            $table->unsignedBigInteger('products_price')->default(0)->comment('상품 총 가격');
-            $table->string('product_title')->comment('상품명');
-            $table->unsignedBigInteger('product_price')->comment('상품판매가');
-            $table->unsignedBigInteger('product_price_origin')->comment('상품정가');
-            $table->unsignedBigInteger('count')->comment('개수');
-            $table->string('option_title')->comment('옵션명');
-            $table->unsignedBigInteger('option_price')->comment('옵션가격');
-            $table->integer('option_type')->comment('옵션유형');
+            $table->string('package_count')->nullable()->comment('꾸러미 회차');
+            $table->integer('package_type')->nullable()->comment('꾸러미 유형');
+            $table->unsignedBigInteger('package_price')->nullable()->comment('패키지 가격');
+
+            $table->unsignedBigInteger('products_price')->nullable()->default(0)->comment('상품 총 가격');
+            $table->string('product_title')->nullable()->comment('상품명');
+            $table->unsignedBigInteger('product_price')->nullable()->comment('상품판매가');
+            $table->unsignedBigInteger('product_price_origin')->nullable()->comment('상품정가');
+            $table->unsignedBigInteger('count')->nullable()->comment('개수');
+            $table->string('option_title')->nullable()->comment('옵션명');
+            $table->unsignedBigInteger('option_price')->nullable()->comment('옵션가격');
+            $table->integer('option_type')->nullable()->comment('옵션유형');
             $table->unsignedBigInteger('price_coupon')->comment('쿠폰적용금액')->default(0);
 
             $table->string('delivery_name')->nullable()->comment('수취인 이름');

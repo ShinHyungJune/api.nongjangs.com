@@ -15,6 +15,7 @@ class GradeFactory extends Factory
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'level' => rand(1,6),
             'title' => $this->faker->word(),
             'ratio_refund' => $this->faker->randomFloat(),
             'min_price' => $this->faker->randomNumber(),

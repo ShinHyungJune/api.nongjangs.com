@@ -5,10 +5,15 @@
 use App\Enums\TypeBanner;
 use App\Models\Banner;
 use App\Models\Coupon;
+use App\Models\Like;
+use App\Models\Package;
 use App\Models\Program;
+use App\Models\Recipe;
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\Waiting;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -40,60 +45,196 @@ class RecipesTest extends TestCase
     /** @test */
     public function 누구나_목록을_조회할_수_있다()
     {
+        $models = Recipe::factory()->count(5)->create();
 
+        $items = $this->json('get', '/api/recipes')->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($models), count($items));
     }
 
     /** @test */
     public function 검색어로_목록을_조회할_수_있다()
     {
+        $word = 'test';
 
+        $includeModels = Recipe::factory()->count(5)->create(['title' => $word]);
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        $items = $this->json('get', '/api/recipes', [
+            'word' => $word
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 태그들을_포함하는_목록을_조회할_수_있다()
     {
+        $tag = Tag::factory()->create();
 
+        $includeModels = Recipe::factory()->count(5)->create();
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        foreach($includeModels as $model){
+            $model->tags()->attach($tag->id);
+        }
+
+        $items = $this->json('get', '/api/recipes', [
+            'tag_ids' => [$tag->id]
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 좋아요순으로_목록을_조회할_수_있다()
     {
+        $secondItem = \App\Models\Recipe::factory()->create();
+        $firstItem = \App\Models\Recipe::factory()->create();
+        $thirdItem = \App\Models\Recipe::factory()->create();
 
+        \App\Models\Like::factory()->count(3)->create([
+            'likeable_id' => $firstItem->id,
+            'likeable_type' => \App\Models\Recipe::class
+        ]);
+
+        \App\Models\Like::factory()->count(2)->create([
+            'likeable_id' => $secondItem->id,
+            'likeable_type' => \App\Models\Recipe::class
+        ]);
+
+        \App\Models\Like::factory()->count(1)->create([
+            'likeable_id' => $thirdItem->id,
+            'likeable_type' => \App\Models\Recipe::class
+        ]);
+
+        $items = $this->json('get', '/api/recipes', [
+            'order_by' => 'count_like',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['count_like'] < $prevItem['count_like']);
+            }
+            $prevItem = $item;
+        }
     }
 
     /** @test */
     public function 등록순으로_목록을_조회할_수_있다()
     {
+        $secondItem = \App\Models\Recipe::factory()->create([
+            'created_at' => Carbon::now()->subDays(2),
+        ]);
+        $firstItem = \App\Models\Recipe::factory()->create([
+            'created_at' => Carbon::now()->subDays(1),
+        ]);
+        $thirdItem = \App\Models\Recipe::factory()->create([
+            'created_at' => Carbon::now()->subDays(3),
+        ]);
 
+        $items = $this->json('get', '/api/recipes', [
+            'order_by' => 'created_at',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['created_at'] < $prevItem['created_at']);
+            }
+            $prevItem = $item;
+        }
+    }
+
+    /** @test */
+    public function 꾸러미별_목록을_조회할_수_있다()
+    {
+        $package = Package::factory()->create();
+
+        $includeModels = Recipe::factory()->count(5)->create();
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        foreach($includeModels as $model){
+            $model->packages()->sync([$package->id]);
+        }
+
+        $items = $this->json('get', '/api/recipes', [
+            'package_id' => $package->id
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
     public function 좋아요여부를_조회할_수_있다()
     {
+        $model = Recipe::factory()->create();
 
+        $item = $this->json('get', '/api/recipes/'.$model->id, [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(0, $item['is_like']);
+
+
+
+        $model->likes()->create(['user_id' => $this->user->id]);
+
+        $item = $this->json('get', '/api/recipes/'.$model->id, [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(1, $item['is_like']);
     }
 
     /** @test */
     public function 북마크여부를_조회할_수_있다()
     {
+        $model = Recipe::factory()->create();
 
-    }
+        $item = $this->json('get', '/api/recipes/'.$model->id, [
 
-    /** @test */
-    public function 이번주_꾸러미와_관련된_목록을_조회할_수_있다()
-    {
+        ])->decodeResponseJson()['data'];
 
+        $this->assertEquals(0, $item['is_bookmark']);
+
+
+
+        $model->bookmarks()->create(['user_id' => $this->user->id]);
+
+        $item = $this->json('get', '/api/recipes/'.$model->id, [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(1, $item['is_bookmark']);
     }
 
     /** @test */
     public function 상세를_조회할_수_있다()
     {
+        $model = Recipe::factory()->create();
 
+        $item = $this->json('get', '/api/recipes/'.$model->id, [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($model->id, $item['id']);
     }
 
     /** @test */
     public function 상세를_조회하면_조회수가_갱신된다()
     {
+        $model = Recipe::factory()->create();
 
+        $prevCountView = $model->count_view;
+
+        $item = $this->json('get', '/api/recipes/'.$model->id, [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($prevCountView + 1, $item['count_view']);
     }
 }

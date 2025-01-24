@@ -83,4 +83,9 @@ class Package extends Model
 
         return $findPackage;
     }
+
+    public function recipes()
+    {
+        return $this->belongsToMany(Recipe::class);
+    }
 }

@@ -50,7 +50,10 @@ class RecipeRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        '' => []
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'tag_ids' => ['nullable', 'array'],
+                        'order_by' => ['nullable', 'string', 'max:500'],
+                        'package_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':
@@ -74,8 +77,17 @@ class RecipeRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'word' => [
+                'description' => '<span class="point">검색어</span>',
+            ],
+            'tag_ids' => [
+                'description' => '<span class="point">태그 고유번호 목록</span>',
+            ],
+            'order_by' => [
+                'description' => '<span class="point">정렬 (count_like - 좋아요순 | created_at - 등록순)</span>',
+            ],
+            'package_id' => [
+                'description' => '<span class="point">꾸러미 고유번호 (이번주 꾸러미의 레시피 보고싶을 때 이번주 꾸러미의 고유번호 보내기)</span>',
             ],
 
             // 늘 쓰이는 애들

@@ -4,6 +4,7 @@
 namespace Tests\Feature;
 
 use App\Enums\TypeBanner;
+use App\Enums\TypeTag;
 use App\Models\Banner;
 use App\Models\Coupon;
 use App\Models\Tag;
@@ -43,13 +44,17 @@ class TagsTest extends TestCase
         // 순서순, 오픈여부 참
         $includeTags = Tag::factory()->count(5)->create([
             'open' => 1,
+            'type' => TypeTag::RECIPE,
         ]);
 
         $excludeTags = Tag::factory()->count(5)->create([
             'open' => 0,
+            'type' => TypeTag::RECIPE,
         ]);
 
-        $items = $this->json('get', '/api/tags')->decodeResponseJson()['data'];
+        $items = $this->json('get', '/api/tags', [
+            'type' => TypeTag::RECIPE,
+        ])->decodeResponseJson()['data'];
 
         $this->assertEquals(count($includeTags), count($items));
     }

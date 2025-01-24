@@ -125,6 +125,7 @@ class InitSeeder extends Seeder
         Card::truncate();
         Material::truncate();
         Review::truncate();
+        PresetProduct::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -144,6 +145,7 @@ class InitSeeder extends Seeder
         Order::truncate();
         PresetProduct::truncate();*/
 
+        DB::table("package_recipe")->truncate();
         DB::table("coupon_group_user")->truncate();
         DB::table("coupon_group_product")->truncate();
         DB::table("product_tag")->truncate();
@@ -171,7 +173,49 @@ class InitSeeder extends Seeder
         $this->createPayMethods();
         $this->createPackages();
         $this->createCards();
+        $this->createPresetProducts();
+        $this->createRecipes();
         $this->createReviews();
+    }
+
+    public function createPresetProducts()
+    {
+        $presetA = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $presetB = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+
+        PresetProduct::factory()->count(8)->create([
+            'preset_id' => $presetA->id,
+            'product_id' => null,
+            'state'=>StatePresetProduct::CONFIRMED,
+        ]);
+
+        PresetProduct::factory()->count(5)->create([
+            'preset_id' => $presetB->id,
+            'package_id' => null,
+            'state'=>StatePresetProduct::CONFIRMED,
+        ]);
+    }
+    public function createRecipes()
+    {
+        $recipes = Recipe::factory()->count(30)->create();
+
+        foreach($recipes as $recipe){
+            $package = Package::inRandomOrder()->first();
+            $tags = Tag::where('type', TypeTag::RECIPE)->inRandomOrder()->take(5)->get();
+
+            $recipe->packages()->attach($package->id);
+            $recipe->tags()->sync($tags->pluck("id")->toArray());
+
+            if(config("app.env") != 'local'){
+                $recipe->addMedia(public_path($this->farmImgs[rand(0, count($this->farmImgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
+            }
+        }
     }
 
     public function createCards()
@@ -1466,8 +1510,8 @@ class InitSeeder extends Seeder
         $products = Product::inRandomOrder()->take(12)->get();
 
         foreach($products as $product){
-            Review::factory()->count(10)->create(['product_id' => $product->id]);
-            Review::factory()->count(10)->create(['product_id' => $product->id, 'user_id' => $user->id]);
+            Review::factory()->count(10)->create(['product_id' => $product->id, 'package_id' => null]);
+            Review::factory()->count(10)->create(['product_id' => $product->id, 'user_id' => $user->id, 'package_id' => null]);
             $photoReviews = Review::factory()->count(5)->create(['product_id' => $product->id, 'photo' => 1]);
 
             foreach($photoReviews as $photoReview){
@@ -1477,6 +1521,8 @@ class InitSeeder extends Seeder
                 }
             }
         }
+
+        $reviews = Review::factory()->count(10)->create(['product_id' => null]);
 
         // 리뷰작성가능 상품조합 목록
         /*$presets = Preset::factory()->count(5)->create([

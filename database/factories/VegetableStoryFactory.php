@@ -17,16 +17,20 @@ class VegetableStoryFactory extends Factory
 
     public function definition(): array
     {
+        $user = User::inRandomOrder()->first() ?? User::factory()->create();
+        $presetProduct = PresetProduct::inRandomOrder()->first() ?? PresetProduct::factory()->create();
+        $recipe = Recipe::inRandomOrder()->first() ?? Recipe::factory()->create();
+
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'description' => $this->faker->text(),
 
-            'user_id' => User::factory(),
-            'package_id' => Package::factory(),
-            'product_id' => Product::factory(),
-            'preset_product_id' => PresetProduct::factory(),
-            'recipe_id' => Recipe::factory(),
+            'user_id' => $user->id,
+            'package_id' => $presetProduct->package_id,
+            'product_id' => $presetProduct->product_id,
+            'preset_product_id' => $presetProduct->id,
+            'recipe_id' => $recipe->id,
         ];
     }
 }

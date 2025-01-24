@@ -1,14 +1,42 @@
 {
   "id": "고유번호",
-  "price_delivery": "배송비",
-  "price": "최종금액",
-  "price_total": "총 상품금액",
-  "price_discount": "할인받은 상품금액",
-  "count_option_required": "필수옵션개수",
-  "count_option_additional": "추가옵션개수",
-  "order_id": "주문 고유번호",
-  "cart_id": "장바구니 고유번호",
-  "user_id": "사용자 고유번호",
-  "presetProducts": "출고상품 목록",
-  "order": "주문 객체"
+  "state": "상태 (1 - BEFORE_PAYMENT 결제전 | 2 - READY 결제대기 | 3 - ONGOING_DELIVERY 결제완료 | 4 - DELIVERED 배송완료 | 5 - CONFIRMED 구매확정 | 6 - CANCEL 주문취소 | 7 - ONGOING_REFUND 교환/반품 진행중 | 8 - FINISH_REFUND 교환/반품 완료 | 9 - DENY_REFUND 교환/반품 반려)",
+  "price": "결제금액",
+  "product": {
+    "id": "고유번호",
+    "img": "이미지 객체",
+    "title": "제목",
+    "price": "가격",
+    "price_origin": "정가",
+    "requiredOptions": "필수옵션목록",
+    "additionalOptions": "추가옵션목록"
+  },
+  "products_price": "상품 총 가격",
+  "option": {
+    "id": "고유번호",
+    "title": "제목",
+    "price": "가격",
+    "type": "유형 (1 - REQUIRED 필수 | 2 - ADDITIONAL 추가)"
+  },
+
+  "package": {
+    "id": "고유번호",
+    "count": "회차",
+    "price": "가격",
+    "type": "패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)",
+  },
+
+  "price_coupon": "쿠폰적용가격",
+  "count": "개수",
+  "delivery_name": "수령자명",
+  "delivery_contact": "연락처",
+  "delivery_address": "주소",
+  "delivery_address_detail": "상세주소",
+  "delivery_address_zipcode": "우편번호",
+  "delivery_requirement": "배송요청사항",
+  "delivery_number": "운송장번호",
+  "delivery_company": "택배사",
+  "format_delivery_company": "표시용 택배사",
+  "delivery_at": "배송완료일자",
+  "format_title": "표시용 제목"
 }

@@ -97,4 +97,9 @@ class Recipe extends Model implements HasMedia
 
         return $this->likes()->where('user_id', auth()->id())->exists() ? 1 : 0;
     }
+
+    public function packages()
+    {
+        return $this->belongsToMany(Package::class);
+    }
 }

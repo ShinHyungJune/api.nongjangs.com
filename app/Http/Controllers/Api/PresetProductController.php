@@ -13,6 +13,21 @@ class PresetProductController extends ApiController
     /** 목록
      * @group 사용자
      * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProducts.json
+     */
+    public function index(PresetProductRequest $request, PresetProduct $presetProduct)
+    {
+        $items = auth()->user()->presetProducts();
+
+        if($items->where('can_review'))
+        $items = $items->latest()->paginate(20);
+
+        return PresetProductResource::collection($items);
+    }
+
+    /** 쿠폰적용
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
      * @responseFile storage/responses/presetProduct.json
      */
     public function updateCoupon(PresetProductRequest $request, PresetProduct $presetProduct)

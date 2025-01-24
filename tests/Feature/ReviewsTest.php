@@ -441,6 +441,6 @@ class ReviewsTest extends TestCase
 
         $review->update(['best' => 1]);
 
-        $this->assertEquals($prevPoint + Review::$pointPhoto, $this->user->refresh()->point);
+        $this->assertEquals($prevPoint + Review::$pointBest, $this->user->refresh()->point);
     }
 }

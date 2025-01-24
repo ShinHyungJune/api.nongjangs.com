@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\StatePresetProduct;
 use App\Enums\TypeDiscount;
 use App\Enums\TypeOption;
+use App\Enums\TypePackage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -36,6 +37,11 @@ class PresetProduct extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
     }
 
     public function option(): BelongsTo
@@ -72,25 +78,35 @@ class PresetProduct extends Model
 
     public function calculatePrice()
     {
-        $total = 0;
+        if($this->product){
+            $total = 0;
 
-        $option = $this->option;
+            $option = $this->option;
 
-        if($option->type == TypeOption::REQUIRED) {
-            $price = $this->option_price + $this->product_price;
+            if($option->type == TypeOption::REQUIRED) {
+                $price = $this->option_price + $this->product_price;
 
-            $total += $price * $this->count;
+                $total += $price * $this->count;
+            }
+
+            if($option->type == TypeOption::ADDITIONAL) {
+                $price = $this->option_price;
+
+                $total += $price * $this->count;
+            }
+
+            $this->products_price = $total;
+
+            $this->price = $total - $this->price_coupon;
+
+            return $this;
         }
 
-        if($option->type == TypeOption::ADDITIONAL) {
-            $price = $this->option_price;
+        if($this->package->type == TypePackage::SINGLE)
+            $this->price = $this->package->price_single;
 
-            $total += $price * $this->count;
-        }
-
-        $this->products_price = $total;
-
-        $this->price = $total - $this->price_coupon;
+        if($this->package->type == TypePackage::BUNGLE)
+            $this->price = $this->package->price_bungle;
 
         return $this;
     }
@@ -111,5 +127,13 @@ class PresetProduct extends Model
             $priceDiscount = $couponGroup->max_price_discount;
 
         return $priceDiscount;
+    }
+
+    public function getFormatTitleAttribute()
+    {
+        if($this->product_id)
+            return $this->product_title." "."({$this->option_title})";
+
+        return TypePackage::getLabel($this->package_type)."꾸러미 ".$this->package_count."회차";
     }
 }

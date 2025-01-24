@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\RecipeRequest;
 use App\Http\Resources\RecipeResource;
 use App\Models\Recipe;
+use Illuminate\Database\Eloquent\Builder;
 
 class RecipeController extends ApiController
 {
@@ -13,9 +14,33 @@ class RecipeController extends ApiController
      * @subgroup Recipe(레시피)
      * @responseFile storage/responses/recipes.json
      */
-    public function index()
+    public function index(RecipeRequest $request)
     {
-        return RecipeResource::collection(Recipe::all());
+        $items = Recipe::withCount('likes as count_like');
+
+        $request['order_by'] = $request->order_by ?? 'count_like';
+
+        if($request->word)
+            $items = $items->where(function (Builder $query) use($request){
+                $query->where('title', 'LIKE', '%'.$request->word."%")
+                    ->orWhereHas('tags',function ($query) use ($request){
+                        $query->where('tags.title', 'LIKE', '%'.$request->word.'%');
+                    });
+            });
+
+        if($request->tag_ids)
+            $items = $items->whereHas('tags', function ($query) use($request){
+                $query->whereIn('tags.id', $request->tag_ids);
+            });
+
+        if($request->package_id)
+            $items = $items->whereHas('packages', function ($query) use($request){
+                $query->where('packages.id', $request->package_id);
+            });
+
+        $items = $items->orderBy($request->order_by, 'desc')->paginate(12);
+
+        return RecipeResource::collection($items);
     }
  
     /** 상세
@@ -25,8 +50,9 @@ class RecipeController extends ApiController
      */
     public function show(Recipe $recipe)
     {
-        return new RecipeResource($recipe);
-    }
+        $recipe->update(['count_view' => $recipe->count_view + 1]);
 
+        return $this->respondSuccessfully(RecipeResource::make($recipe));
+    }
 
 }
