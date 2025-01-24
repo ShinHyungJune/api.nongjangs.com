@@ -60,12 +60,27 @@ use Illuminate\Support\Facades\Hash;
 class InitSeeder extends Seeder
 {
     protected $imgs = [
-        "/images/biz_program_01.png",
-        "/images/biz_program_02.png",
-        "/images/biz_program_03.png",
-        "/images/middleBanner.png",
-        "/images/middleBanner1.png",
-        "/images/middleBanner2.png",
+        "/images/1-1.png",
+        "/images/1-2.png",
+        "/images/1-3.png",
+        "/images/1-4.png",
+        "/images/1-5.png",
+        "/images/1-6.png",
+        "/images/2-1.png",
+        "/images/2-2.png",
+        "/images/2-3.png",
+        "/images/2-4.png",
+        "/images/2-5.png",
+        "/images/2-6.png",
+        "/images/3-1.png",
+        "/images/3-2.png",
+        "/images/3-3.png",
+        "/images/3-4.png",
+        "/images/3-5.png",
+        "/images/3-6.png",
+        "/images/3-7.png",
+        "/images/3-8.png",
+        "/images/3-9.png"
     ];
 
     protected $farmImgs = [
@@ -870,6 +885,31 @@ class InitSeeder extends Seeder
         }
 
         /*Product::factory()->count(50)->create();*/
+        $products = Product::factory()->count(30)->create();
+
+        foreach($products as $product){
+            $img = $this->imgs[rand(0, count($this->imgs))];
+
+            foreach($items[0]['requiredOptions'] as $option){
+                $product->options()->create($option);
+            }
+
+            foreach($items[0]['tags'] as $tag){
+                $prevTag = Tag::where('type', TypeTag::PRODUCT)->where('title', $tag['title'])->first();
+
+                if(!$prevTag)
+                    $prevTag = Tag::factory()->create($tag);
+
+                $product->tags()->attach($prevTag->id);
+            }
+
+            foreach($item['imgs'] as $img){
+                if(config("app.env") != 'local'){
+                    $product->addMedia(public_path($img))->preservingOriginal()->toMediaCollection("imgs", "s3");
+                }
+            }
+        }
+
     }
 
     public function createCategories()
@@ -1431,8 +1471,6 @@ class InitSeeder extends Seeder
     }
     public function createReviews()
     {
-        $user = User::where('ids', 'test')->first();
-
         // 상품별 리뷰
         $products = Product::get();
 
