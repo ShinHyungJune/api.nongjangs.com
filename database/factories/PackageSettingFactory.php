@@ -17,20 +17,24 @@ class PackageSettingFactory extends Factory
 
     public function definition(): array
     {
+        $card = Card::inRandomOrder()->first() ?? Card::factory()->create();
+        $delivery = Delivery::inRandomOrder()->first() ?? Delivery::factory()->create();
+        $package = Package::inRandomOrder()->first() ?? Package::factory()->create();
+
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'name' => null,
             'type_package' => TypePackage::BUNGLE,
-            'term_week' => $this->faker->randomNumber(),
-            'active' => $this->faker->boolean(),
-            'will_order_at' => Carbon::now(),
-            'retry' => $this->faker->randomNumber(),
+            'term_week' => 3,
+            'active' => 1,
+            'will_order_at' => Carbon::now()->addWeek(),
+            'retry' => 0,
 
-            'user_id' => User::factory(),
-            'card_id' => Card::factory(),
-            'delivery_id' => Delivery::factory(),
-            'first_package_id' => Package::factory(),
+            'user_id' => null,
+            'card_id' => $card->id,
+            'delivery_id' => $delivery->id,
+            'first_package_id' => $package->id,
         ];
     }
 }

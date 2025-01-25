@@ -37,6 +37,7 @@ use App\Models\Material;
 use App\Models\Option;
 use App\Models\Package;
 use App\Models\PackageMaterial;
+use App\Models\PackageSetting;
 use App\Models\PayMethod;
 use App\Models\PointHistory;
 use App\Models\Pop;
@@ -128,6 +129,7 @@ class InitSeeder extends Seeder
         Review::truncate();
         PresetProduct::truncate();
         VegetableStory::truncate();
+        PackageSetting::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -174,11 +176,19 @@ class InitSeeder extends Seeder
         $this->createReportCategories();
         $this->createPayMethods();
         $this->createPackages();
+        $this->createPackageSettings();
         $this->createCards();
         $this->createPresetProducts();
         $this->createRecipes();
         $this->createReviews();
         $this->createVegetableStories();
+    }
+
+    public function createPackageSettings()
+    {
+        PackageSetting::factory()->create([
+            'user_id' => $this->user->id
+        ]);
     }
 
     public function createVegetableStories()
