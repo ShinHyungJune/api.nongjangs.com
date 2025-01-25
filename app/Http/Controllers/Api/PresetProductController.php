@@ -23,7 +23,7 @@ class PresetProductController extends ApiController
         /*if($items->where('can_review'))
             $items = $items->where*/
 
-        if($items->where('can_vegetable_story'))
+        if($request->can_vegetable_story)
             $items = $items->where('state', StatePresetProduct::CONFIRMED);
 
         $items = $items->latest()->paginate(20);
