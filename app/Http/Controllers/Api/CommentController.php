@@ -13,9 +13,21 @@ class CommentController extends ApiController
      * @subgroup Comment(댓글)
      * @responseFile storage/responses/comments.json
      */
-    public function index()
+    public function index(CommentRequest $request)
     {
-        return CommentResource::collection(Comment::all());
+        $items = Comment::withCount('likes as count_like');
+
+        $request['order_by'] = $request->order_by ?? 'count_like';
+
+        if($request->commentable_type)
+            $items = $items->where('commentable_type', $request->commentable_type);
+
+        if($request->commentable_id)
+            $items = $items->where('commentable_id', $request->commentable_id);
+
+        $items = $items->orderBy($request->order_by, 'desc')->latest()->paginate(12);
+
+        return CommentResource::collection($items);
     }
 
     /** 생성
@@ -25,7 +37,9 @@ class CommentController extends ApiController
      */
     public function store(CommentRequest $request)
     {
-        return new CommentResource(Comment::create($request->validated()));
+        $comment = auth()->user()->comments()->create($request->validated());
+
+        return $this->respondSuccessfully(CommentResource::make($comment));
     }
     
     /** 수정
@@ -35,9 +49,12 @@ class CommentController extends ApiController
      */
     public function update(CommentRequest $request, Comment $comment)
     {
+        if($comment->user_id != auth()->id())
+            return $this->respondForbidden();
+
         $comment->update($request->validated());
 
-        return new CommentResource($comment);
+        return $this->respondSuccessfully(CommentResource::make($comment));
     }
     
     /** 삭제
@@ -46,8 +63,11 @@ class CommentController extends ApiController
      */
     public function destroy(Comment $comment)
     {
+        if($comment->user_id != auth()->id())
+            return $this->respondForbidden();
+
         $comment->delete();
 
-        return response()->json();
+        return $this->respondSuccessfully();
     }
 }

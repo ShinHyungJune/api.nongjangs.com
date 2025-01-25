@@ -324,4 +324,9 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     {
         return $this->hasMany(VegetableStory::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

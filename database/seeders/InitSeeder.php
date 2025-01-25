@@ -1528,8 +1528,8 @@ class InitSeeder extends Seeder
         $products = Product::inRandomOrder()->take(12)->get();
 
         foreach($products as $product){
-            Review::factory()->count(10)->create(['product_id' => $product->id, 'package_id' => null]);
-            Review::factory()->count(10)->create(['product_id' => $product->id, 'user_id' => $user->id, 'package_id' => null]);
+            Review::factory()->count(3)->create(['product_id' => $product->id, 'package_id' => null]);
+            Review::factory()->count(2)->create(['product_id' => null, 'user_id' => $user->id]);
             $photoReviews = Review::factory()->count(5)->create(['product_id' => $product->id, 'photo' => 1]);
 
             foreach($photoReviews as $photoReview){
@@ -1540,7 +1540,7 @@ class InitSeeder extends Seeder
             }
         }
 
-        $reviews = Review::factory()->count(10)->create(['product_id' => null]);
+        // $reviews = Review::factory()->count(10)->create(['product_id' => null]);
 
         // 리뷰작성가능 상품조합 목록
         /*$presets = Preset::factory()->count(5)->create([

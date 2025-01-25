@@ -51,6 +51,8 @@ class ReviewFactory extends Factory
 
             'user_id' => $user->id,
             'preset_product_id' => $presetProduct->id,
+            'package_id' => $presetProduct->package_id,
+            'product_id' => $presetProduct->product_id,
             // 'product_id' => Product::factory(),
             'photo' => 0,
         ];

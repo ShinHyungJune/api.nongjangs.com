@@ -4,8 +4,12 @@
 
 use App\Enums\TypeBanner;
 use App\Models\Banner;
+use App\Models\Comment;
 use App\Models\Coupon;
+use App\Models\Package;
+use App\Models\Recipe;
 use App\Models\User;
+use App\Models\VegetableStory;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -31,32 +35,109 @@ class CommentsTest extends TestCase
         $this->actingAs($this->user);
 
         $this->form = [
-
+            "commentable_id" => VegetableStory::factory()->create()->id,
+            "commentable_type" => VegetableStory::class,
+            "description"=> "내용",
         ];
     }
 
     /** @test */
     public function 누구나_목록을_조회할_수_있다()
     {
+        $models = Comment::factory()->count(5)->create();
 
+        $items = $this->json('get', '/api/comments', [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($models), count($items));
     }
 
     /** @test */
     public function 특정_대상에_대한_목록을_조회할_수_있다()
     {
+        $vegetableStory = VegetableStory::factory()->create([
 
+        ]);
+
+        $includeModels = Comment::factory()->count(5)->create([
+            'commentable_type' => VegetableStory::class,
+            'commentable_id' => $vegetableStory->id,
+        ]);
+
+        $excludeModels = Comment::factory()->count(3)->create([
+            'commentable_type' => VegetableStory::class,
+        ]);
+
+        $items = $this->json('get', '/api/comments', [
+            'commentable_id' => $vegetableStory->id,
+            'commentable_type' => VegetableStory::class,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
     }
 
     /** @test */
-    public function 좋아여순으로_목록을_조회할_수_있다()
+    public function 좋아요순으로_목록을_조회할_수_있다()
     {
+        $secondItem = \App\Models\Comment::factory()->create();
+        $firstItem = \App\Models\Comment::factory()->create();
+        $thirdItem = \App\Models\Comment::factory()->create();
 
+        \App\Models\Like::factory()->count(3)->create([
+            'likeable_id' => $firstItem->id,
+            'likeable_type' => \App\Models\Comment::class
+        ]);
+
+        \App\Models\Like::factory()->count(2)->create([
+            'likeable_id' => $secondItem->id,
+            'likeable_type' => \App\Models\Comment::class
+        ]);
+
+        \App\Models\Like::factory()->count(1)->create([
+            'likeable_id' => $thirdItem->id,
+            'likeable_type' => \App\Models\Comment::class
+        ]);
+
+        $items = $this->json('get', '/api/comments', [
+            'order_by' => 'count_like',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['count_like'] < $prevItem['count_like']);
+            }
+            $prevItem = $item;
+        }
     }
 
     /** @test */
     public function 등록순으로_목록을_조회할_수_있다()
     {
+        $secondItem = \App\Models\Comment::factory()->create([
+            'created_at' => Carbon::now()->subDays(2),
+        ]);
+        $firstItem = \App\Models\Comment::factory()->create([
+            'created_at' => Carbon::now()->subDays(1),
+        ]);
+        $thirdItem = \App\Models\Comment::factory()->create([
+            'created_at' => Carbon::now()->subDays(3),
+        ]);
 
+        $items = $this->json('get', '/api/comments', [
+            'order_by' => 'created_at',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['format_created_at'] < $prevItem['format_created_at']);
+            }
+            $prevItem = $item;
+        }
     }
 
     /** @test */
@@ -65,17 +146,24 @@ class CommentsTest extends TestCase
         /*commentable_id
         commentable_type
         description*/
+
+        $this->json('post', '/api/comments', $this->form)->assertStatus(200);
     }
 
     /** @test */
     public function 사용자는_자신의_데이터를_수정할_수_있다()
     {
+        $myComment = Comment::factory()->create(['user_id' => $this->user->id]);
+        $otherComment = Comment::factory()->create(['user_id' => $this->other->id]);
+        $this->json('patch', '/api/comments/'.$myComment->id, $this->form)->assertStatus(200);
+        $this->json('patch', '/api/comments/'.$otherComment->id, $this->form)->assertStatus(403);
 
     }
 
     /** @test */
     public function 사용자는_자신의_데이터를_삭제할_수_있다()
     {
-
+        $comment = Comment::factory()->create(['user_id' => $this->user->id]);
+        $this->json('delete', '/api/comments/'.$comment->id)->assertStatus(200);
     }
 }
