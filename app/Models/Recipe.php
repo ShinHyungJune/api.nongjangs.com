@@ -75,10 +75,10 @@ class Recipe extends Model implements HasMedia
         return [];
     }
 
-    public function getFormatRecipesAttribute()
+    public function getFormatWaysAttribute()
     {
-        if($this->recipes)
-            return json_decode($this->recipes);
+        if($this->ways)
+            return json_decode($this->ways);
 
         return [];
     }
