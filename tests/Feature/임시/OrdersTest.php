@@ -1,6 +1,8 @@
 <?php
 
 
+namespace Tests\Feature\임시;
+
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
 use App\Models\Coupon;
@@ -130,7 +132,7 @@ presets : [
 
         $this->form['coupon_id'] = $coupon->id;
 
-        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(200);
+        $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(200);
 
         $order->refresh();
 
@@ -204,7 +206,7 @@ presets : [
 
         $this->attachProduct($preset, $product);
 
-        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(200);
+        $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(200);
     }
 
     /** @test */
@@ -228,7 +230,7 @@ presets : [
 
         $this->attachProduct($preset, $product);
 
-        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(403);
+        $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(403);
     }
 
     /** @test */
@@ -248,7 +250,7 @@ presets : [
 
         $this->attachProduct($preset, $product);
 
-        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(403);
+        $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(403);
     }
 
     /** @test */
@@ -274,7 +276,7 @@ presets : [
 
         $this->form['coupon_id'] = $coupon->id;
 
-        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(200);
+        $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(200);
 
         $order->refresh();
 
@@ -292,7 +294,7 @@ presets : [
         // 사용쿠폰
         $coupon = Coupon::factory()->create([
             'user_id' => $this->user->id,
-            'order_id'=> \App\Models\Order::factory()->create(['state' => \App\Enums\StateOrder::SUCCESS])->id,
+            'order_id' => \App\Models\Order::factory()->create(['state' => \App\Enums\StateOrder::SUCCESS])->id,
         ]);
 
         $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
@@ -306,7 +308,7 @@ presets : [
 
         $this->form['coupon_id'] = $coupon->id;
 
-        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(200);
+        $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(200);
 
         $order->refresh();
 
@@ -321,7 +323,7 @@ presets : [
 
         $this->form['coupon_id'] = $coupon->id;
 
-        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(200);
+        $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(200);
 
         $order->refresh();
 
@@ -331,10 +333,10 @@ presets : [
     /** @test */
     public function 주문구성에_맞게_결제금액이_계산된다()
     {
-/*        - 마일리지
-        - 쿠폰 (쿠폰은 최종결제가가 아니라 종합상품금액 기준으로 할인 들어가야함)
-- 상품수 * 상품가격
-- 추가상품수 * 추가상품가격*/
+        /*        - 마일리지
+                - 쿠폰 (쿠폰은 최종결제가가 아니라 종합상품금액 기준으로 할인 들어가야함)
+        - 상품수 * 상품가격
+        - 추가상품수 * 추가상품가격*/
 
         $this->user->update(['point' => 1000]);
 
@@ -378,13 +380,12 @@ presets : [
         $this->form['coupon_id'] = $coupon->id;
         $this->form['point_use'] = 1000;
 
-        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(200);
+        $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(200);
 
         $order->refresh();
 
         $this->assertEquals(30875, $order->price);
     }
-
 
 
     // 보류
@@ -394,14 +395,13 @@ presets : [
     }
 
 
-
     /** @test */
     public function 주문이_결제대기상태가_되면_사용자에게서_포인트_및_쿠폰내역_기록_및_장바구니에서_상품이_삭제된다()
     {
-/*
-- point가 0 초과일 때만 해당 작업
-- 포인트 사용기록 생성되어야함
- * */
+        /*
+        - point가 0 초과일 때만 해당 작업
+        - 포인트 사용기록 생성되어야함
+         * */
         $point = 1000;
 
         $order = \App\Models\Order::factory()->create([
@@ -441,7 +441,7 @@ presets : [
 
         $this->assertEquals(0, $this->user->validCoupons()->count());
 
-        foreach($presets as $preset){
+        foreach ($presets as $preset) {
             $preset->refresh();
 
             $this->assertEquals(null, $preset->cart_id);
@@ -499,7 +499,7 @@ presets : [
 
         $this->assertEquals(0, $this->user->validCoupons()->count());
 
-        foreach($presetProducts as $presetProduct){
+        foreach ($presetProducts as $presetProduct) {
             $presetProduct->refresh();
             $this->assertEquals($presetProduct->state, \App\Enums\StatePresetProduct::READY);
             $this->assertEquals($presetProduct->cart_id, null);
@@ -710,7 +710,7 @@ presets : [
 
         $word = "test";
 
-        foreach($includeOrders as $includeOrder){
+        foreach ($includeOrders as $includeOrder) {
             $preset = \App\Models\Preset::factory()->create(['order_id' => $includeOrder->id]);
 
             $product = \App\Models\Product::factory()->create(['title' => $word]);
@@ -738,11 +738,11 @@ presets : [
             'state' => StateOrder::SUCCESS,
         ]);
 
-        $this->json('get', '/api/orders/'.$order->id, [
+        $this->json('get', '/api/orders/' . $order->id, [
 
         ])->assertStatus(200);
 
-        $this->json('get', '/api/orders/'.$otherOrder->id, [
+        $this->json('get', '/api/orders/' . $otherOrder->id, [
 
         ])->assertStatus(403);
     }
@@ -764,7 +764,7 @@ presets : [
             'state' => StatePresetProduct::READY,
         ]);
 
-        $item = $this->json('patch', '/api/orders/cancel/'.$order->id, [
+        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
 
         ])->decodeResponseJson()['data'];
 
@@ -773,7 +773,7 @@ presets : [
         // 출고상품들 취소처리
         $presetProducts = $order->presetProducts;
 
-        foreach($presetProducts as $presetProduct){
+        foreach ($presetProducts as $presetProduct) {
             $this->assertEquals(\App\Enums\StatePresetProduct::CANCEL, $presetProduct->refresh()->state);
         }
     }
@@ -795,7 +795,7 @@ presets : [
             'state' => StatePresetProduct::READY,
         ]);
 
-        $item = $this->json('get', '/api/orders/'.$order->id, [
+        $item = $this->json('get', '/api/orders/' . $order->id, [
 
         ])->decodeResponseJson()['data'];
 
@@ -807,7 +807,7 @@ presets : [
             'state' => StatePresetProduct::DELIVERED
         ]);
 
-        $item = $this->json('get', '/api/orders/'.$order->id, [
+        $item = $this->json('get', '/api/orders/' . $order->id, [
 
         ])->decodeResponseJson()['data'];
 
@@ -836,7 +836,7 @@ presets : [
             'state' => StatePresetProduct::DELIVERED
         ]);
 
-        $item = $this->json('patch', '/api/orders/cancel/'.$order->id, [
+        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
 
         ])->assertStatus(403);
     }
@@ -858,11 +858,11 @@ presets : [
             'state' => StatePresetProduct::READY,
         ]);
 
-        $item = $this->json('patch', '/api/orders/cancel/'.$order->id, [
+        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
 
         ])->assertStatus(200);
 
-        foreach($presetProducts as $presetProduct){
+        foreach ($presetProducts as $presetProduct) {
             $this->assertEquals(StatePresetProduct::CANCEL, $presetProduct->refresh()->state);
         }
     }
@@ -894,7 +894,7 @@ presets : [
 
         $this->assertEquals(0, $this->user->validCoupons()->count());
 
-        $item = $this->json('patch', '/api/orders/cancel/'.$order->id, [
+        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
 
         ])->assertStatus(200);
 
@@ -918,7 +918,7 @@ presets : [
             'point_use' => $point
         ]);
 
-        $item = $this->json('patch', '/api/orders/cancel/'.$order->id, [
+        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
 
         ])->assertStatus(200);
 

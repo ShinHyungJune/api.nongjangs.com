@@ -38,6 +38,11 @@ class RecipeController extends ApiController
                 $query->where('packages.id', $request->package_id);
             });
 
+        if($request->except_package_id)
+            $items = $items->whereDoesntHave('packages', function ($query) use($request){
+                $query->where('packages.id', $request->package_id);
+            });
+
         if(isset($request->is_bookmark)){
             $items = $request->is_bookmark ? $items->whereHas('bookmarks', function ($query){
                 $query->where('bookmarks.user_id', auth()->id());

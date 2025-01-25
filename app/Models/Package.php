@@ -88,4 +88,9 @@ class Package extends Model
     {
         return $this->belongsToMany(Recipe::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

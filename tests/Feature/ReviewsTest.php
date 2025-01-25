@@ -113,10 +113,12 @@ class ReviewsTest extends TestCase
         $b = \App\Models\Product::factory()->create();
         $aReviews = \App\Models\Review::factory()->count(5)->create([
             'package_id' => $a->id,
+            'product_id' => null,
         ]);
 
         $bReviews = \App\Models\Review::factory()->count(3)->create([
             'product_id' => $b->id,
+            'package_id' => null,
         ]);
 
         $items = $this->json('get', '/api/reviews', [
