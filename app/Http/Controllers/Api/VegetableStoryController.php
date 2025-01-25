@@ -46,6 +46,9 @@ class VegetableStoryController extends ApiController
         if($request->package_id)
             $items = $items->where('package_id', $request->package_id);
 
+        if($request->recipe_id)
+            $items = $items->where('recipe_id', $request->recipe_id);
+
         $items = $items->orderBy($request->order_by, 'desc')->paginate(12);
 
         return VegetableStoryResource::collection($items);

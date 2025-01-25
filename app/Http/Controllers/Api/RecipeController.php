@@ -40,7 +40,7 @@ class RecipeController extends ApiController
 
         if($request->except_package_id)
             $items = $items->whereDoesntHave('packages', function ($query) use($request){
-                $query->where('packages.id', $request->package_id);
+                $query->where('packages.id', $request->except_package_id);
             });
 
         if(isset($request->is_bookmark)){

@@ -182,6 +182,26 @@ class VegetableStoriesTest extends TestCase
     }
 
     /** @test */
+    public function 레시피별_목록을_조회할_수_있다()
+    {
+        $a = \App\Models\Recipe::factory()->create();
+        $b = \App\Models\Recipe::factory()->create();
+        $aVegetableStories = \App\Models\VegetableStory::factory()->count(5)->create([
+            'recipe_id' => $a->id,
+        ]);
+
+        $bVegetableStories = \App\Models\VegetableStory::factory()->count(3)->create([
+            'recipe_id' => $b->id,
+        ]);
+
+        $items = $this->json('get', '/api/vegetableStories', [
+            'recipe_id' => $a->id,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($aVegetableStories), count($items));
+    }
+
+    /** @test */
     public function 좋아요순으로_목록을_조회할_수_있다()
     {
         $firstItem = \App\Models\VegetableStory::factory()->create([

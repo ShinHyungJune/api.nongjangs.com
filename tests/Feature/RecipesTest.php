@@ -169,6 +169,25 @@ class RecipesTest extends TestCase
     }
 
     /** @test */
+    public function 특정_꾸러미를_제외한_목록을_조회할_수_있다()
+    {
+        $package = Package::factory()->create();
+
+        $includeModels = Recipe::factory()->count(5)->create();
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        foreach($includeModels as $model){
+            $model->packages()->sync([$package->id]);
+        }
+
+        $items = $this->json('get', '/api/recipes', [
+            'except_package_id' => $package->id
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($excludeModels), count($items));
+    }
+
+    /** @test */
     public function 내가_북마크한_목록만_조회할_수_있다()
     {
         $includeModels = Recipe::factory()->count(5)->create();

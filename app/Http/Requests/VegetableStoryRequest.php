@@ -56,6 +56,7 @@ class VegetableStoryRequest extends FormRequest
                         'word' => ['nullable', 'string', 'max:500'],
                         'has_column' => ['nullable', 'string', 'max:500'],
                         'package_id' => ['nullable', 'integer'],
+                        'recipe_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':
