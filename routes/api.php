@@ -150,6 +150,8 @@ Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, 
 
 Route::get("/vegetableStories", [\App\Http\Controllers\Api\VegetableStoryController::class, "index"]);
 Route::get("/comments", [\App\Http\Controllers\Api\CommentController::class, 'index']);
+Route::get('/reportCategories', [\App\Http\Controllers\Api\ReportCategoryController::class, "index"]);
+Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);
 
 Route::middleware(['auth'])->group(function () {
     Route::post("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "store"]);
