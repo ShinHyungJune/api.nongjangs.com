@@ -20,6 +20,9 @@ class TagController extends ApiController
         if($request->type)
             $items = $items->where('type', $request->type);
 
+        if($request->word)
+            $items = $items->where('title','LIKE','%'.$request->type.'%');
+
         $items = $items->orderBy('order', 'asc')->paginate(100);
 
         return TagResource::collection($items);
