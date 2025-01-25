@@ -21,7 +21,7 @@ class TagController extends ApiController
             $items = $items->where('type', $request->type);
 
         if($request->word)
-            $items = $items->where('title','LIKE','%'.$request->type.'%');
+            $items = $items->where('title','LIKE','%'.$request->word.'%');
 
         $items = $items->orderBy('order', 'asc')->paginate(100);
 
