@@ -76,7 +76,7 @@ class ReportRequest extends FormRequest
                 'description' => '<span class="point">신고대상 고유번호</span>',
             ],
             'reportable_type' => [
-                'description' => '<span class="point">신고대상 모델명 (App\Models\Product - 상품 | App\Models\Review - 리뷰)</span>',
+                'description' => '<span class="point">신고대상 모델명 (App\Models\Product - 상품 | App\Models\Review - 리뷰 | App\Models\Comment - 댓글 | App\Models\VegetableStory - 채소이야기 | App\Models\Recipe 레시피)</span>',
             ],
             'description' => [
                 'description' => '<span class="point">내용</span>',
