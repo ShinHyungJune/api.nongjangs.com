@@ -27,6 +27,7 @@ class VegetableStoryResource extends JsonResource
             'package' => $this->package ? [
                 'id' => $this->package->id,
                 'count' => $this->package->count,
+                'tags' => TagResource::collection($this->package->tags),
             ] : '',
             'product' => $this->product ? [
                 'id' => $this->product->id,
