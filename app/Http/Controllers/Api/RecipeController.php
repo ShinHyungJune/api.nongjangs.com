@@ -38,6 +38,14 @@ class RecipeController extends ApiController
                 $query->where('packages.id', $request->package_id);
             });
 
+        if(isset($request->is_bookmark)){
+            $items = $request->is_bookmark ? $items->whereHas('bookmarks', function ($query){
+                $query->where('bookmarks.user_id', auth()->id());
+            }) : $items->whereDoesntHave('bookmarks', function ($query){
+                $query->where('bookmarks.user_id', auth()->id());
+            });
+        }
+
         $items = $items->orderBy($request->order_by, 'desc')->paginate(12);
 
         return RecipeResource::collection($items);

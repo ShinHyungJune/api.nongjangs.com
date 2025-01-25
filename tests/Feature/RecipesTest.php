@@ -169,6 +169,23 @@ class RecipesTest extends TestCase
     }
 
     /** @test */
+    public function 내가_북마크한_목록만_조회할_수_있다()
+    {
+        $includeModels = Recipe::factory()->count(5)->create();
+        $excludeModels = Recipe::factory()->count(3)->create();
+
+        foreach($includeModels as $model){
+            $model->bookmarks()->create(['user_id' => $this->user->id]);
+        }
+
+        $items = $this->json('get', '/api/recipes', [
+            'is_bookmark' => 1
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($includeModels), count($items));
+    }
+
+    /** @test */
     public function 좋아요여부를_조회할_수_있다()
     {
         $model = Recipe::factory()->create();
