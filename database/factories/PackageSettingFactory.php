@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TypePackage;
 use App\Models\Card;
 use App\Models\Delivery;
 use App\Models\Package;
@@ -19,7 +20,8 @@ class PackageSettingFactory extends Factory
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'type_package' => $this->faker->word(),
+            'name' => null,
+            'type_package' => TypePackage::BUNGLE,
             'term_week' => $this->faker->randomNumber(),
             'active' => $this->faker->boolean(),
             'will_order_at' => Carbon::now(),

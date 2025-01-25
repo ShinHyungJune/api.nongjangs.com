@@ -71,7 +71,13 @@ class PackageSettingRequest extends FormRequest
 
                 case 'update':
                     return [
-                        '' => []
+                        'card_id' => ['nullable', 'integer'],
+                        'delivery_id' => ['nullable', 'integer'],
+                        'type_package' => ['nullable', 'integer'],
+                        'term_week' => ['nullable', 'integer'],
+                        'unlike_material_ids' => ['nullable', 'array'],
+                        'name' => ['nullable', 'string', 'max:100'],
+                        'active' => ['nullable', 'boolean'],
                     ];
 
 
@@ -102,6 +108,9 @@ class PackageSettingRequest extends FormRequest
             ],
             'active' => [
                 'description' => '<span class="point">활성여부 (1 - 정기구독일 때 | 0 - 1회성 구매일 때)</span>',
+            ],
+            'name' => [
+                'description' => '<span class="point">꾸러미 이름</span>',
             ],
 
             // 늘 쓰이는 애들

@@ -14,6 +14,7 @@ class PackageSettingResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'name' => $this->name,
             'type_package' => $this->type_package,
             'format_type_package' => TypePackage::getLabel($this->type_package),
             'term_week' => $this->term_week,

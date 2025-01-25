@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\PackageSettingRequest;
 use App\Http\Resources\PackageSettingResource;
+use App\Models\Card;
+use App\Models\Delivery;
 use App\Models\Package;
 use App\Models\PackageSetting;
 use Carbon\Carbon;
@@ -18,6 +20,20 @@ class PackageSettingController extends ApiController
     public function store(PackageSettingRequest $request)
     {
         $currentPackage = Package::getCurrent();
+
+        if($request->delivery_id) {
+            $delivery = Delivery::find($request->delivery_id);
+
+            if($delivery->user_id != auth()->id())
+                return $this->respondForbidden();
+        }
+
+        if($request->card_id) {
+            $card = Card::find($request->card_id);
+
+            if($card->user_id != auth()->id())
+                return $this->respondForbidden();
+        }
 
         PackageSetting::updateOrCreate([
             'user_id' => auth()->id(),
@@ -42,9 +58,61 @@ class PackageSettingController extends ApiController
         return $this->respondSuccessfully(PackageSettingResource::make($item));
     }
 
+    /** 수정
+     * @group 사용자
+     * @subgroup PackageSetting(꾸러미 기본설정)
+     * @responseFile storage/responses/packageSetting.json
+     */
     public function update(PackageSettingRequest $request, PackageSetting $packageSetting)
     {
-        $packageSetting->update($request->validated());
+        if($packageSetting->user_id != auth()->id())
+            return $this->respondForbidden();
+
+        if($request->type_package)
+            $packageSetting->update(['type_package' => $request->type_package]);
+
+        if($request->term_week)
+            $packageSetting->update(['term_week' => $request->term_week]);
+
+        if($request->type_package)
+            $packageSetting->update(['type_package' => $request->type_package]);
+
+        if($request->type_package)
+            $packageSetting->update(['type_package' => $request->type_package]);
+
+        if($request->unlike_material_ids) {
+            $materials = [];
+
+            foreach($request->unlike_material_ids as $id){
+                $materials[$id] = ['unlike' => 1];
+            }
+
+            $packageSetting->materials()->sync($materials);
+        }
+
+        if($request->delivery_id) {
+            $delivery = Delivery::find($request->delivery_id);
+
+            if($delivery->user_id != auth()->id())
+                return $this->respondForbidden();
+
+            $packageSetting->update(['delivery_id' => $request->delivery_id]);
+        }
+
+        if($request->card_id) {
+            $card = Card::find($request->card_id);
+
+            if($card->user_id != auth()->id())
+                return $this->respondForbidden();
+
+            $packageSetting->update(['card_id' => $request->card_id]);
+        }
+
+        if($request->name)
+            $packageSetting->update(['name' => $request->name]);
+
+        if(isset($request->active))
+            $packageSetting->update(['active' => $request->active]);
 
         return new PackageSettingResource($packageSetting);
     }

@@ -154,7 +154,9 @@ Route::get('/reportCategories', [\App\Http\Controllers\Api\ReportCategoryControl
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);
+
     Route::post("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "store"]);
+    Route::patch("/packageSettings/{packageSetting}", [\App\Http\Controllers\Api\PackageSettingController::class, "update"]);
 
     Route::post("/comments", [\App\Http\Controllers\Api\CommentController::class, 'store']);
     Route::patch("/comments/{comment}", [\App\Http\Controllers\Api\CommentController::class, 'update']);

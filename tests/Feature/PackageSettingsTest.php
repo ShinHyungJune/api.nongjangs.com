@@ -7,6 +7,8 @@ use App\Models\Card;
 use App\Models\Delivery;
 use App\Models\Material;
 use App\Models\Package;
+use App\Models\PackageSetting;
+use App\Models\StopHistory;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -94,5 +96,137 @@ class PackageSettingsTest extends TestCase
 
         $this->assertEquals(null, $item['will_order_at']);
         $this->assertEquals( null, $item['firstPackage']);
+    }
+
+    /** @test */
+    public function 패키지설정이_생성되면_꾸러미이름이_자동생성된다()
+    {
+        // 닉네임의 꾸러미
+        $packageSetting = PackageSetting::factory()->create();
+
+        $this->assertNotNull($packageSetting->name);
+    }
+
+    /** @test */
+    public function 꾸러미유형을_수정할_수_있다()
+    {
+        // 메소드를 각각 만들지말고 있는값만 수정하는식으로 수정
+        $packageSetting = PackageSetting::factory()->create([
+            'user_id' => $this->user->id,
+            'type_package' => TypePackage::SINGLE
+        ]);
+
+        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
+            'type_package' => TypePackage::BUNGLE,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($item['type_package'], TypePackage::BUNGLE);
+    }
+
+    /** @test */
+    public function 배송주기를_수정할_수_있다()
+    {
+        $packageSetting = PackageSetting::factory()->create([
+            'user_id' => $this->user->id,
+            'term_week' => 1
+        ]);
+
+
+        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
+            'term_week' => 2
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(2, $item['term_week']);
+    }
+
+    /** @test */
+    public function 비선호품목을_수정할_수_있다()
+    {
+        $packageSetting = PackageSetting::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $unlikeMaterialIds = Material::factory()->count(3)->create()->pluck('id')->toArray();
+
+        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
+            'unlike_material_ids' => $unlikeMaterialIds
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($unlikeMaterialIds), count($item['unlike_materials']));
+    }
+
+    /** @test */
+    public function 배송지를_수정할_수_있다()
+    {
+        $packageSetting = PackageSetting::factory()->create([
+            'user_id' => $this->user->id,
+            'delivery_id' => Delivery::factory()->create()->id,
+        ]);
+
+        $delivery = Delivery::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
+            'delivery_id' => $delivery->id,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($item['delivery_id'], $delivery->id);
+    }
+
+    /** @test */
+    public function 결제카드를_수정할_수_있다()
+    {
+        $packageSetting = PackageSetting::factory()->create([
+            'user_id' => $this->user->id,
+            'card_id' => Card::factory()->create()->id,
+        ]);
+
+        $card = Card::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
+            'card_id' => $card->id,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($item['card_id'], $card->id);
+    }
+
+    /** @test */
+    public function 꾸러미이름을_수정할_수_있다()
+    {
+        $packageSetting = PackageSetting::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
+            'name' => '1',
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($item['name'], '1');
+    }
+
+    /** @test */
+    public function 정기구독을_정지할_수_있다()
+    {
+        /*
+          - will_order_at null처리
+          - 정지기록 남겨야함 (최대 n회만 정지 가능한가봄)
+          - package_stop_histories 생성 필요
+        */
+
+        $packageSetting = PackageSetting::factory()->create([
+            'active' => 1,
+            'user_id' => $this->user->id,
+        ]);
+
+        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
+            'active' => 0,
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($item['active'], 0);
+
+        $this->assertEquals(1, StopHistory::count());
     }
 }

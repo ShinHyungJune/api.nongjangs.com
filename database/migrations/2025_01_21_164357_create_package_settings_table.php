@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('package_settings', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable()->comment('꾸러미 이름');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('card_id')->nullable()->constrained('cards');
             $table->foreignId('delivery_id')->nullable()->constrained('deliveries');
