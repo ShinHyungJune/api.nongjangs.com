@@ -54,6 +54,7 @@ class RecipeRequest extends FormRequest
                         'tag_ids' => ['nullable', 'array'],
                         'order_by' => ['nullable', 'string', 'max:500'],
                         'package_id' => ['nullable', 'integer'],
+                        'is_bookmark' => ['nullable', 'boolean'],
                     ];
 
                 case 'store':
@@ -88,6 +89,9 @@ class RecipeRequest extends FormRequest
             ],
             'package_id' => [
                 'description' => '<span class="point">꾸러미 고유번호 (이번주 꾸러미의 레시피 보고싶을 때 이번주 꾸러미의 고유번호 보내기)</span>',
+            ],
+            'is_bookmark' => [
+                'description' => '<span class="point">북마크 여부 (1 - 내가 북마크한것만 보기)</span>',
             ],
 
             // 늘 쓰이는 애들
