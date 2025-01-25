@@ -24,6 +24,7 @@ class PresetProductResource extends JsonResource
                 'price_origin' => $this->product_price_origin,
                 'requiredOptions' => $this->product ? OptionResource::collection($this->product->options()->where('type', TypeOption::REQUIRED)->get()) : [],
                 'additionalOptions' => $this->product ? OptionResource::collection($this->product->options()->where('type', TypeOption::ADDITIONAL)->get()) : [],
+                'tags' => $this->product ? TagResource::collection($this->product->tags) : [],
             ] : '',
             'products_price' => $this->products_price,
             'package' => $this->package_id ? [
@@ -31,6 +32,7 @@ class PresetProductResource extends JsonResource
                 'count' => $this->package_count,
                 'price' => $this->package_price,
                 'type' => $this->package_type,
+                'tags' => $this->package ? TagResource::collection($this->package->tags) : [],
             ] : '',
             'option' => [
                 'id' => $this->option_id,

@@ -11,7 +11,8 @@
         "price": "가격",
         "price_origin": "정가",
         "requiredOptions": "필수옵션목록",
-        "additionalOptions": "추가옵션목록"
+        "additionalOptions": "추가옵션목록",
+        "tags" : "태그 목록"
       },
       "products_price": "상품 총 가격",
       "option": {
@@ -26,6 +27,7 @@
         "count": "회차",
         "price": "가격",
         "type": "패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)",
+        "tags" : "태그 목록"
       },
 
       "price_coupon": "쿠폰적용가격",

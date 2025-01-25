@@ -85,6 +85,11 @@ class PresetProduct extends Model
         return 1;
     }
 
+    public function canCreateVegetableStories()
+    {
+
+    }
+
     public function review()
     {
         return $this->hasOne(Review::class);

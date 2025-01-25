@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\StatePresetProduct;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PresetProductRequest;
 use App\Http\Resources\PresetProductResource;
@@ -19,7 +20,12 @@ class PresetProductController extends ApiController
     {
         $items = auth()->user()->presetProducts();
 
-        if($items->where('can_review'))
+        /*if($items->where('can_review'))
+            $items = $items->where*/
+
+        if($items->where('can_vegetable_story'))
+            $items = $items->where('state', StatePresetProduct::CONFIRMED);
+
         $items = $items->latest()->paginate(20);
 
         return PresetProductResource::collection($items);
