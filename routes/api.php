@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\QnaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -152,6 +153,9 @@ Route::get("/vegetableStories", [\App\Http\Controllers\Api\VegetableStoryControl
 Route::get("/comments", [\App\Http\Controllers\Api\CommentController::class, 'index']);
 Route::get('/reportCategories', [\App\Http\Controllers\Api\ReportCategoryController::class, "index"]);
 
+Route::get('/faqCategories', [\App\Http\Controllers\Api\FaqCategoryController::class, "index"]);
+Route::get('/faqs', [\App\Http\Controllers\Api\FaqController::class, "index"]);
+
 Route::middleware(['auth'])->group(function () {
     Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);
 
@@ -190,8 +194,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/logout", [\App\Http\Controllers\Api\UserController::class, "logout"]);
     Route::post("/logout", [\App\Http\Controllers\Api\UserController::class, "logout"]);
 
-    Route::post("/qnas", [\App\Http\Controllers\Api\QnaController::class, "store"]);
-    Route::patch("/qnas/{qna}", [\App\Http\Controllers\Api\QnaController::class, "update"]);
+    Route::resource("/qnas", QnaController::class);
 
     Route::patch("/orders/cancel/{order}",[\App\Http\Controllers\Api\OrderController::class, 'cancel']);
     Route::get("/orders",[\App\Http\Controllers\Api\OrderController::class, 'index']);

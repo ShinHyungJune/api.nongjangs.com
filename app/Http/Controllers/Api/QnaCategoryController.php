@@ -12,6 +12,7 @@ class QnaCategoryController extends ApiController
     /** 목록
     * @group 사용자
     * @subgroup QnaCategory(문의카테고리)
+     * @responseFile storage/responses/qnaCategories.json
      */
     public function index()
     {

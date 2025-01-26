@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 
 class FaqController extends ApiController
 {
-    /**
-     * @group Faqs(자주묻는질문)
+    /** 목록
+     * @group 사용자
+     * @subgroup Faqs(자주묻는질문)
      * @responseFile storage/responses/faqs.json
      */
     public function index(FaqRequest $request)

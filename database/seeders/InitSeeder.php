@@ -29,6 +29,8 @@ use App\Models\Coupon;
 use App\Models\CouponGroup;
 use App\Models\CouponHistory;
 use App\Models\Delivery;
+use App\Models\Faq;
+use App\Models\FaqCategory;
 use App\Models\Farm;
 use App\Models\FarmStory;
 use App\Models\Grade;
@@ -46,6 +48,7 @@ use App\Models\PresetProduct;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Qna;
+use App\Models\QnaCategory;
 use App\Models\Recipe;
 use App\Models\ReportCategory;
 use App\Models\Review;
@@ -130,6 +133,10 @@ class InitSeeder extends Seeder
         PresetProduct::truncate();
         VegetableStory::truncate();
         PackageSetting::truncate();
+        QnaCategory::truncate();
+        Qna::truncate();
+        FaqCategory::truncate();
+        Faq::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -182,8 +189,81 @@ class InitSeeder extends Seeder
         $this->createRecipes();
         $this->createReviews();
         $this->createVegetableStories();
+        $this->createQnaCategories();
+        $this->createFaqCategories();
     }
 
+    public function createQnaCategories()
+    {
+        $items = [
+            [
+                'title' => '배송'
+            ],
+            [
+                'title' => '교환/반품/취소'
+            ],
+            [
+                'title' => '서비스'
+            ],
+            [
+                'title' => '주문/결제'
+            ],
+            [
+                'title' => '상품확인'
+            ],
+            [
+                'title' => '회원정보'
+            ],
+            [
+                'title' => '기타'
+            ],
+        ];
+
+        foreach($items as $item){
+            $qnaCategory = QnaCategory::create($item);
+
+            Qna::factory()->count(5)->create([
+                'qna_category_id' => $qnaCategory->id,
+                'user_id' => $this->user->id,
+            ]);
+
+            Qna::factory()->count(5)->create([
+                'qna_category_id' => $qnaCategory->id,
+                'user_id' => $this->user->id,
+                'answer' => '답변예시입니다
+                이런식으로 답변이 뜨면 되는데 줄바꿈도 제대로 되는지 봐주세요',
+                'answered_at' => Carbon::now()
+            ]);
+        }
+    }
+    public function createFaqCategories()
+    {
+        $items = [
+            [
+                'title' => '배송'
+            ],
+            [
+                'title' => '교환/반품/취소'
+            ],
+            [
+                'title' => '서비스'
+            ],
+            [
+                'title' => '주문/결제'
+            ],
+            [
+                'title' => '회원정보'
+            ],
+        ];
+
+        foreach($items as $item){
+            $faqCategory = FaqCategory::create($item);
+
+            Faq::factory()->count(10)->create([
+                'faq_category_id' => $faqCategory->id,
+            ]);
+        }
+    }
     public function createPackageSettings()
     {
         PackageSetting::factory()->create([
@@ -1498,38 +1578,6 @@ class InitSeeder extends Seeder
         }
     }
 
-    public function createQnaCategories()
-    {
-        $user = User::where('ids', 'test')->first();
-
-        $items = [
-            [
-                'title' => '상장 제작',
-            ],
-            [
-                'title' => '결제 및 배송',
-            ],
-            [
-                'title' => 'A/S 및 교환',
-            ],
-            [
-                'title' => '적립금',
-            ],
-            [
-                'title' => '세금계산서',
-            ],
-            [
-                'title' => '기타',
-            ],
-        ];
-
-        foreach($items as $item){
-            $qnaCategory = QnaCategory::create($item);
-
-            Qna::factory()->count(10)->create(['user_id' => $user->id, 'qna_category_id' => $qnaCategory->id, 'answer' => '답변예시', 'answered_at' => Carbon::now()]);
-            Qna::factory()->count(10)->create(['user_id' => $user->id, 'qna_category_id' => $qnaCategory->id]);
-        }
-    }
     public function createReviews()
     {
         $user = User::inRandomOrder()->first();

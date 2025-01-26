@@ -10,11 +10,104 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "2f72f679-8725-412a-9581-3216940f9fe5",
+        "_postman_id": "1cb01d3d-643e-4365-a6e4-a7dbc3236818",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
+        {
+            "name": "User",
+            "description": "",
+            "item": [
+                {
+                    "name": "Qna(\ubb38\uc758)",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "\uc0dd\uc131",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/qnas",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/qnas"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"qna_category_id\":5,\"title\":\"wqyjdbrdb\",\"description\":\"Et reiciendis laboriosam quos iure.\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"title\": \"\uc81c\ubaa9\",\r\n      \"description\": \"\ub0b4\uc6a9\",\r\n      \"qnaCategory\": \"qna \uc720\ud615 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"answer\": \"\ub2f5\ubcc0\",\r\n      \"format_created_at\" : \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\",\r\n      \"format_answered_at\" : \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "\uc0c1\uc138",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/qnas\/:id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/qnas\/:id",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "13",
+                                            "description": "The ID of the qna."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"title\": \"\uc81c\ubaa9\",\r\n      \"description\": \"\ub0b4\uc6a9\",\r\n      \"qnaCategory\": \"qna \uc720\ud615 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"answer\": \"\ub2f5\ubcc0\",\r\n      \"format_created_at\" : \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\",\r\n      \"format_answered_at\" : \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "\uad00\ub9ac\uc790",
             "description": "",
@@ -104,7 +197,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "ab",
+                                            "value": "consectetur",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -147,7 +240,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "cum",
+                                            "value": "numquam",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -193,7 +286,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "eaque",
+                                            "value": "a",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -248,7 +341,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"hrdxb\"}"
+                                    "raw": "{\"word\":\"duudgpns\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -292,7 +385,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":3,\"word\":\"pginyco\"}"
+                                    "raw": "{\"type\":7,\"word\":\"murzbcwbyxsl\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -330,7 +423,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"title\":\"wltmupejmtaucep\",\"subtitle\":\"scsb\",\"url\":\"http:\\\/\\\/goodwin.com\\\/sed-perspiciatis-incidunt-consectetur-et-aut\",\"button\":\"qd\",\"color_text\":\"ddutmopkactptdwoywqcyr\",\"color_button\":\"bzshvna\",\"started_at\":\"2025-01-25T18:05:45\",\"finished_at\":\"2025-01-25T18:05:45\"}"
+                                    "raw": "{\"title\":\"accfrryoptzobgpzrsezvcdz\",\"subtitle\":\"vex\",\"url\":\"http:\\\/\\\/www.botsford.info\\\/voluptatibus-aut-magni-aperiam-quas-sed-culpa.html\",\"button\":\"rsvntpo\",\"color_text\":\"eeobcjrqapxhim\",\"color_button\":\"yatyfoeexdujlbrruu\",\"started_at\":\"2025-01-26T09:49:33\",\"finished_at\":\"2025-01-26T09:49:33\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -358,7 +451,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "14",
+                                            "value": "9",
                                             "description": "The ID of the banner."
                                         }
                                     ]
@@ -401,7 +494,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "18",
+                                            "value": "4",
                                             "description": "The ID of the banner."
                                         }
                                     ]
@@ -419,7 +512,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"title\":\"prkeqiqmpzeeshjxtnv\",\"subtitle\":\"zcrcerzvkngccxfzeht\",\"url\":\"https:\\\/\\\/schaden.com\\\/cumque-voluptatem-consequatur-eligendi-perspiciatis-veniam-aperiam-voluptas.html\",\"button\":\"wvevzwrpnroab\",\"color_text\":\"ssevpaptuzlvfodpspkxqco\",\"color_button\":\"gzdwriskcse\",\"started_at\":\"2025-01-25T18:05:49\",\"finished_at\":\"2025-01-25T18:05:49\"}"
+                                    "raw": "{\"title\":\"fzswaefanaf\",\"subtitle\":\"xsoscdn\",\"url\":\"http:\\\/\\\/kihn.biz\\\/\",\"button\":\"xo\",\"color_text\":\"hpuwbnrmkrnlctywxxeaxnakz\",\"color_button\":\"kxtlgfnelxzsvhtk\",\"started_at\":\"2025-01-26T09:49:38\",\"finished_at\":\"2025-01-26T09:49:38\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -531,7 +624,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"bmuutsngtisqznrx\"}"
+                                    "raw": "{\"word\":\"zd\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -559,7 +652,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "14",
+                                            "value": "13",
                                             "description": "The ID of the couponGroup."
                                         }
                                     ]
@@ -665,6 +758,171 @@
                     "description": "",
                     "item": [
                         {
+                            "name": "\ubaa9\ub85d",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/admin\/faqs",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/admin\/faqs"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"word\":\"bfk\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"faq_category_id\": \"faq\uce74\ud14c\uace0\ub9ac \uace0\uc720\ubc88\ud638\",\r\n      \"faqCategory\": \"faq\uce74\ud14c\uace0\ub9ac \uac1d\uccb4\",\r\n      \"title\": \"\uc81c\ubaa9\",\r\n      \"description\": \"\ub0b4\uc6a9\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "\uc0dd\uc131",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/admin\/faqs",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/admin\/faqs"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"faq_category_id\":10,\"title\":\"rfowspdnmploqovgfukzknbdt\",\"description\":\"Accusantium ut dolore excepturi.\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n  \"faq_category_id\": \"faq\uce74\ud14c\uace0\ub9ac \uace0\uc720\ubc88\ud638\",\r\n  \"faqCategory\": \"faq\uce74\ud14c\uace0\ub9ac \uac1d\uccb4\",\r\n  \"title\": \"\uc81c\ubaa9\",\r\n  \"description\": \"\ub0b4\uc6a9\",\r\n  \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "\uc0c1\uc138",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/admin\/faqs\/:id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/admin\/faqs\/:id",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "12",
+                                            "description": "The ID of the faq."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n  \"faq_category_id\": \"faq\uce74\ud14c\uace0\ub9ac \uace0\uc720\ubc88\ud638\",\r\n  \"faqCategory\": \"faq\uce74\ud14c\uace0\ub9ac \uac1d\uccb4\",\r\n  \"title\": \"\uc81c\ubaa9\",\r\n  \"description\": \"\ub0b4\uc6a9\",\r\n  \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "\uc218\uc815",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/admin\/faqs\/:id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/admin\/faqs\/:id",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "9",
+                                            "description": "The ID of the faq."
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"faq_category_id\":12,\"title\":\"vxsustzbsefzffkwlpp\",\"description\":\"Itaque blanditiis error doloribus officiis eaque fuga.\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n  \"faq_category_id\": \"faq\uce74\ud14c\uace0\ub9ac \uace0\uc720\ubc88\ud638\",\r\n  \"faqCategory\": \"faq\uce74\ud14c\uace0\ub9ac \uac1d\uccb4\",\r\n  \"title\": \"\uc81c\ubaa9\",\r\n  \"description\": \"\ub0b4\uc6a9\",\r\n  \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
                             "name": "\uc0ad\uc81c",
                             "request": {
                                 "url": {
@@ -760,7 +1018,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"ovwejujzmlgpsvqdytxxw\"}"
+                                    "raw": "{\"word\":\"gpayvpnpvbbehhgd\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -857,6 +1115,133 @@
                     "description": "",
                     "item": [
                         {
+                            "name": "\ubaa9\ub85d",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/admin\/qnas",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/admin\/qnas"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"word\":\"efpiqeasf\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"title\": \"\uc81c\ubaa9\",\r\n      \"description\": \"\ub0b4\uc6a9\",\r\n      \"qnaCategory\": \"qna \uc720\ud615 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"answer\": \"\ub2f5\ubcc0\",\r\n      \"format_created_at\" : \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\",\r\n      \"format_answered_at\" : \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "\uc0c1\uc138",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/admin\/qnas\/:id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/admin\/qnas\/:id",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "9",
+                                            "description": "The ID of the qna."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"title\": \"\uc81c\ubaa9\",\r\n      \"description\": \"\ub0b4\uc6a9\",\r\n      \"qnaCategory\": \"qna \uc720\ud615 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"answer\": \"\ub2f5\ubcc0\",\r\n      \"format_created_at\" : \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\",\r\n      \"format_answered_at\" : \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "\uc218\uc815",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/admin\/qnas\/:id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/admin\/qnas\/:id",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "6",
+                                            "description": "The ID of the qna."
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"answer\":\"bwzzrkh\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"title\": \"\uc81c\ubaa9\",\r\n      \"description\": \"\ub0b4\uc6a9\",\r\n      \"qnaCategory\": \"qna \uc720\ud615 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"answer\": \"\ub2f5\ubcc0\",\r\n      \"format_created_at\" : \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\",\r\n      \"format_answered_at\" : \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
                             "name": "\uc0ad\uc81c",
                             "request": {
                                 "url": {
@@ -915,7 +1300,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"hnwrieqxeiqerhqvcvqryzd\"}"
+                                    "raw": "{\"word\":\"giv\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -943,7 +1328,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "laborum",
+                                            "value": "et",
                                             "description": "The ID of the product."
                                         }
                                     ]
@@ -1033,7 +1418,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"chudfaxyonrmydxxrvbzljm\"}"
+                                    "raw": "{\"word\":\"scqavbjqokijzo\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1044,7 +1429,7 @@
                                 {
                                     "header": [],
                                     "code": 200,
-                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n      \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_display\": \"\ud45c\uc2dc\uc6a9 \ub77c\ubca8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n      \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
                                     "name": ""
                                 }
                             ]
@@ -1079,7 +1464,7 @@
                                 {
                                     "header": [],
                                     "code": 200,
-                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "body": "{\r\n  \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n  \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n  \"score\": \"\uc810\uc218\",\r\n  \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n  \"user\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"nickname\": \"\ub2c9\ub124\uc784\"\r\n  },\r\n  \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n  \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n  \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n    \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n  },\r\n  \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n  \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n  \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n  \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n  \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n  \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n  \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n  \"format_display\": \"\ud45c\uc2dc\uc6a9 \ub77c\ubca8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n  \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n  \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n  \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n  \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n  \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n}\r\n",
                                     "name": ""
                                 }
                             ]
@@ -1096,7 +1481,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "8",
+                                            "value": "2",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -1122,7 +1507,7 @@
                                 {
                                     "header": [],
                                     "code": 200,
-                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "body": "{\r\n  \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n  \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n  \"score\": \"\uc810\uc218\",\r\n  \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n  \"user\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"nickname\": \"\ub2c9\ub124\uc784\"\r\n  },\r\n  \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n  \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n  \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n    \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n  },\r\n  \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n  \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n  \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n  \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n  \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n  \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n  \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n  \"format_display\": \"\ud45c\uc2dc\uc6a9 \ub77c\ubca8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n  \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n  \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n  \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n  \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n  \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n}\r\n",
                                     "name": ""
                                 }
                             ]
@@ -1139,7 +1524,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "3",
+                                            "value": "19",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -1157,7 +1542,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":19,\"best\":true,\"score\":5,\"description\":\"Velit dolores quisquam omnis et laudantium aut cupiditate aut.\",\"hide\":false}"
+                                    "raw": "{\"product_id\":4,\"best\":true,\"score\":2,\"description\":\"Quis exercitationem earum tenetur dicta repellat rerum.\",\"hide\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1168,7 +1553,7 @@
                                 {
                                     "header": [],
                                     "code": 200,
-                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "body": "{\r\n  \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n  \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n  \"score\": \"\uc810\uc218\",\r\n  \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n  \"user\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"nickname\": \"\ub2c9\ub124\uc784\"\r\n  },\r\n  \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n  \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n  \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n    \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n  },\r\n  \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n  \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n  \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n  \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n  \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n  \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n  \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n  \"format_display\": \"\ud45c\uc2dc\uc6a9 \ub77c\ubca8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n  \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n  \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n  \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n  \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n  \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n}\r\n",
                                     "name": ""
                                 }
                             ]
@@ -1343,7 +1728,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"token\":\"iplqsemhfdskticvxktjnpvmp\",\"ids\":\"sqykcbmsoj\",\"password\":\"+e1mNPc}\"}"
+                                    "raw": "{\"token\":\"yrieujxgovsqlafqycftksv\",\"ids\":\"mqmxpssyqrenescyelu\",\"password\":\":w!27p[G\\\\(Z-D;\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1381,7 +1766,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"social_id\":\"sbwq\",\"social_platform\":\"fqo\",\"email\":\"herman.murazik@example.org\",\"password\":\"Qy'}>Nq:6=$V0b$gd.\",\"name\":\"ixvbnpjgvwzish\",\"contact\":\"nrmyhnvjfkoejq\",\"agree_promotion\":true}"
+                                    "raw": "{\"social_id\":\"plu\",\"social_platform\":\"wcsbt\",\"email\":\"concepcion65@example.net\",\"password\":\"v8wj,{o5>@<(tt_G+BF\",\"name\":\"giw\",\"contact\":\"pdqhdmvkxvehja\",\"agree_promotion\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1419,7 +1804,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"email\":\"selina29@example.net\",\"contact\":\"xfdok\",\"password\":\"M)N9B3\\\\~:wpDoedb9R\"}"
+                                    "raw": "{\"email\":\"tmiller@example.net\",\"contact\":\"ntvdvgxflq\",\"password\":\"}0u9mAi+vyT\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1450,7 +1835,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"zmipmnvgzfd\"}"
+                                    "raw": "{\"contact\":\"ytuhsswvvoqnmilasdttpj\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1523,7 +1908,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"name\":\"zdhzyzo\",\"contact\":\"uxscknqjlzzhdxfkixw\",\"password\":\"|\\\/r?H7lnZl9qAf\"}"
+                                    "raw": "{\"name\":\"roghdzqwbmctbvieu\",\"contact\":\"cqxchrsiovniib\",\"password\":\"nfJ!aD5;QZ?tRa,_9:~K\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1561,7 +1946,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"always_use_coupon_for_package\":false}"
+                                    "raw": "{\"always_use_coupon_for_package\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1592,7 +1977,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"always_use_point_for_package\":false}"
+                                    "raw": "{\"always_use_point_for_package\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1623,7 +2008,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"code_recommend\":\"hxotuybepcbcpturiazjgb\"}"
+                                    "raw": "{\"code_recommend\":\"octbofgizmjz\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1654,7 +2039,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"password\":\"D[IquhU-\\\\a4V\\\\B\",\"password_new\":\"vhydfrsqgekclqbzalndn\"}"
+                                    "raw": "{\"password\":\"N}UV\\\/CD`)3GEK6MhF~\",\"password_new\":\"rhzwbrrgmrudhwg\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1685,7 +2070,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"reason\":\"qgmiygnijhugh\",\"and_so_on\":\"o\"}"
+                                    "raw": "{\"reason\":\"xcgc\",\"and_so_on\":\"kezvvqngutjlc\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1750,7 +2135,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"ezdlcesxpqxlyslgvqgm\"}"
+                                    "raw": "{\"contact\":\"bzvnjbpcjje\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1794,7 +2179,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"ids\":\"plevqppxpx\",\"contact\":\"pmkomwzenaieqzoxivpwbh\",\"password\":\"iR3xAO)knB{e!FSC\"}"
+                                    "raw": "{\"ids\":\"ptniojdaiepdvhqh\",\"contact\":\"ikxkql\",\"password\":\"PZsJ3aSb\\\/V\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1872,7 +2257,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"take\":9,\"order_by\":\"pvb\",\"align\":\"zvstloqjgqlqjlxzpvadbjk\",\"has_column\":\"ywehqozwupqsptglwutes\",\"product_id\":16,\"package_id\":3,\"best\":false,\"type\":11,\"user_id\":6,\"photo\":true}"
+                                    "raw": "{\"take\":3,\"order_by\":\"jfqxklocxzfk\",\"align\":\"yk\",\"has_column\":\"hhfsdli\",\"product_id\":17,\"package_id\":17,\"best\":false,\"type\":13,\"user_id\":14,\"photo\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1883,7 +2268,7 @@
                                 {
                                     "header": [],
                                     "code": 200,
-                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n      \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_display\": \"\ud45c\uc2dc\uc6a9 \ub77c\ubca8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n      \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
                                     "name": ""
                                 }
                             ]
@@ -1910,7 +2295,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"preset_product_id\":3,\"description\":\"Aspernatur ut odit impedit quo in sed.\",\"score\":2}"
+                                    "raw": "{\"preset_product_id\":18,\"description\":\"Perspiciatis autem est eos dolorum nobis.\",\"score\":4}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1921,7 +2306,7 @@
                                 {
                                     "header": [],
                                     "code": 200,
-                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n      \"score\": \"\uc810\uc218\",\r\n      \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n      \"user\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"nickname\": \"\ub2c9\ub124\uc784\"\r\n      },\r\n      \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n      \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n      \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n        \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n        \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n        \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n      },\r\n      \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n      \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n      \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n      \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n      \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n      \"format_tag\": \"\ud45c\uc2dc\uc6a9 \ud0dc\uadf8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n      \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n      \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "body": "{\r\n  \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n  \"best\": \"\ubca0\uc2a4\ud2b8 \uc5ec\ubd80\",\r\n  \"score\": \"\uc810\uc218\",\r\n  \"point\": \"\ubc1b\uc740 \uc801\ub9bd\uae08\",\r\n  \"user\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"nickname\": \"\ub2c9\ub124\uc784\"\r\n  },\r\n  \"product\": \"\uc0c1\ud488 \uac1d\uccb4\",\r\n  \"package\": \"\ud328\ud0a4\uc9c0 \uac1d\uccb4\",\r\n  \"presetProduct (\ucd9c\uace0\uc0c1\ud488)\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"product_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc0c1\ud488\uba85\",\r\n    \"option_title\": \"\uad6c\ub9e4\ub2f9\uc2dc \uc635\uc158\uba85\"\r\n  },\r\n  \"reply\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\",\r\n  \"reply_at\": \"\uad00\ub9ac\uc790 \ub2f5\ubcc0\uc77c\uc790\",\r\n  \"format_reply_at\": \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\",\r\n\r\n  \"img\": \"\ub300\ud45c\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n  \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n  \"photo\": \"\ud3ec\ud1a0\ub9ac\ubdf0\uc5ec\ubd80\",\r\n  \"hide\": \"\uc228\uae40\uc5ec\ubd80\",\r\n  \"format_display\": \"\ud45c\uc2dc\uc6a9 \ub77c\ubca8 (ex. \uafb8\ub7ec\ubbf8 3\ud68c\ucc28, \uade4 1\ubc15\uc2a4)\",\r\n  \"is_like\": \"\uc88b\uc544\uc694\uc5ec\ubd80\",\r\n  \"is_bookmark\": \"\ubd81\ub9c8\ud06c\uc5ec\ubd80\",\r\n  \"count_like\": \"\uc88b\uc544\uc694\uc218\",\r\n  \"count_bookmark\": \"\ubd81\ub9c8\ud06c\uc218\",\r\n  \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n}\r\n",
                                     "name": ""
                                 }
                             ]
@@ -1938,7 +2323,7 @@
                                         {
                                             "id": "review_id",
                                             "key": "review_id",
-                                            "value": "8",
+                                            "value": "3",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -1956,7 +2341,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"description\":\"Et sit deleniti nemo ut aut accusamus.\",\"score\":1}"
+                                    "raw": "{\"description\":\"At sint cum sunt beatae explicabo.\",\"score\":2}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1984,7 +2369,7 @@
                                         {
                                             "id": "review_id",
                                             "key": "review_id",
-                                            "value": "14",
+                                            "value": "4",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -2007,6 +2392,50 @@
                                 }
                             },
                             "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Faqs(\uc790\uc8fc\ubb3b\ub294\uc9c8\ubb38)",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "\ubaa9\ub85d",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/faqs",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/faqs"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"faq_category_id\":8,\"word\":\"matohyscvpap\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"faq_category_id\": \"faq\uce74\ud14c\uace0\ub9ac \uace0\uc720\ubc88\ud638\",\r\n      \"faqCategory\": \"faq\uce74\ud14c\uace0\ub9ac \uac1d\uccb4\",\r\n      \"title\": \"\uc81c\ubaa9\",\r\n      \"description\": \"\ub0b4\uc6a9\",\r\n      \"format_created_at\": \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
                         }
                     ]
                 },
@@ -2077,7 +2506,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":18}"
+                                    "raw": "{\"type\":5}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2165,7 +2594,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":4,\"word\":\"laboriosam\"}"
+                                    "raw": "{\"type\":9,\"word\":\"at\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2209,7 +2638,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"pbfjlossqiuczwmmqzr\",\"order_by\":\"gzmt\",\"package_id\":19,\"except_package_id\":17,\"is_bookmark\":false}"
+                                    "raw": "{\"word\":\"bbdpdusvwxmkibcgel\",\"order_by\":\"amhwvfvjgxvnakdeeqsxbha\",\"package_id\":18,\"except_package_id\":12,\"is_bookmark\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2237,7 +2666,7 @@
                                         {
                                             "id": "recipe_id",
                                             "key": "recipe_id",
-                                            "value": "8",
+                                            "value": "18",
                                             "description": "The ID of the recipe."
                                         }
                                     ]
@@ -2296,7 +2725,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"order_by\":\"tquggiqmydecukkexkkpvggjq\",\"word\":\"symnjelgi\",\"farm_id\":5,\"exclude_farm_id\":10,\"internal\":false}"
+                                    "raw": "{\"order_by\":\"pkxzvmtvqhpjskhnpkuiod\",\"word\":\"fizcfxnpdywzwlhurqcs\",\"farm_id\":7,\"exclude_farm_id\":11,\"internal\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2324,7 +2753,7 @@
                                         {
                                             "id": "farmStory_id",
                                             "key": "farmStory_id",
-                                            "value": "5",
+                                            "value": "8",
                                             "description": "The ID of the farmStory."
                                         }
                                     ]
@@ -2383,7 +2812,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"jfvvlcswmavyh\",\"order_by\":\"xnfwa\"}"
+                                    "raw": "{\"word\":\"uvxhzvsjhsatoyxcnepqsmoo\",\"order_by\":\"dfwawmtvtgbtjlfzqu\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2411,7 +2840,7 @@
                                         {
                                             "id": "product_id",
                                             "key": "product_id",
-                                            "value": "11",
+                                            "value": "17",
                                             "description": "The ID of the product."
                                         }
                                     ]
@@ -2511,7 +2940,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":17}"
+                                    "raw": "{\"product_id\":14}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2555,7 +2984,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"phoeydyqoeyzvwud\"}"
+                                    "raw": "{\"contact\":\"obfgoapispdihlljleoi\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2586,7 +3015,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"bousfajpwhpj\",\"number\":\"ouesnlpeqcelyeue\"}"
+                                    "raw": "{\"contact\":\"bcw\",\"number\":\"bmkymjoa\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2623,7 +3052,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"order_by\":\"qeampwmgywrakil\",\"user_id\":7,\"word\":\"aclpsknerlg\",\"has_column\":\"hnysjrrbwspkhnme\",\"package_id\":15,\"recipe_id\":8}"
+                                    "raw": "{\"order_by\":\"realt\",\"user_id\":20,\"word\":\"kfpaushyqblyzuyxl\",\"has_column\":\"r\",\"package_id\":8,\"recipe_id\":19}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2661,7 +3090,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"imgs\":[],\"preset_product_id\":2,\"description\":\"Distinctio ut eum et perferendis distinctio eos.\",\"recipe_id\":1}"
+                                    "raw": "{\"imgs\":[],\"preset_product_id\":12,\"description\":\"Velit repellendus quia distinctio velit iusto et.\",\"recipe_id\":11}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2689,7 +3118,7 @@
                                         {
                                             "id": "vegetableStory_id",
                                             "key": "vegetableStory_id",
-                                            "value": "20",
+                                            "value": "5",
                                             "description": "The ID of the vegetableStory."
                                         }
                                     ]
@@ -2725,7 +3154,7 @@
                                         {
                                             "id": "vegetableStory_id",
                                             "key": "vegetableStory_id",
-                                            "value": "2",
+                                            "value": "10",
                                             "description": "The ID of the vegetableStory."
                                         }
                                     ]
@@ -2743,7 +3172,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"imgs\":[],\"description\":\"Id beatae quas veritatis architecto animi rerum.\",\"recipe_id\":20}"
+                                    "raw": "{\"imgs\":[],\"description\":\"Illum culpa eum a quos.\",\"recipe_id\":18}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2825,7 +3254,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"commentable_id\":7,\"commentable_type\":\"xolnjepqywstiwfuxhcdowx\",\"description\":\"Nihil velit molestiae dolores inventore nihil et.\"}"
+                                    "raw": "{\"commentable_id\":4,\"commentable_type\":\"vkweshi\",\"description\":\"Et cumque odit officia.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2853,7 +3282,7 @@
                                         {
                                             "id": "comment_id",
                                             "key": "comment_id",
-                                            "value": "10",
+                                            "value": "14",
                                             "description": "The ID of the comment."
                                         }
                                     ]
@@ -2871,7 +3300,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"description\":\"Dolor atque ut minima alias sed.\"}"
+                                    "raw": "{\"description\":\"Eos quam rem corrupti inventore velit autem eius.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2899,7 +3328,7 @@
                                         {
                                             "id": "comment_id",
                                             "key": "comment_id",
-                                            "value": "7",
+                                            "value": "16",
                                             "description": "The ID of the comment."
                                         }
                                     ]
@@ -2967,6 +3396,47 @@
                     ]
                 },
                 {
+                    "name": "FaqCategories(\uc790\uc8fc\ubb3b\ub294\uc9c8\ubb38 \uc720\ud615)",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "\ubaa9\ub85d",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/faqCategories",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/faqCategories"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"title\": \"\uc81c\ubaa9\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "Report(\uc2e0\uace0)",
                     "description": "",
                     "item": [
@@ -2992,7 +3462,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"report_category_id\":14,\"reportable_id\":16,\"reportable_type\":\"uzmquolawwyq\",\"description\":\"Quis ut dolores reiciendis delectus ut aut eius.\"}"
+                                    "raw": "{\"report_category_id\":20,\"reportable_id\":1,\"reportable_type\":\"zwcdemlcaiilnueaonh\",\"description\":\"Aut cupiditate vel vero porro praesentium enim libero enim.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3029,7 +3499,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"card_id\":19,\"delivery_id\":10,\"type_package\":14,\"term_week\":7,\"active\":true}"
+                                    "raw": "{\"card_id\":10,\"delivery_id\":10,\"type_package\":2,\"term_week\":20,\"active\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3057,7 +3527,7 @@
                                         {
                                             "id": "packageSetting_id",
                                             "key": "packageSetting_id",
-                                            "value": "14",
+                                            "value": "17",
                                             "description": "The ID of the packageSetting."
                                         }
                                     ]
@@ -3075,7 +3545,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"card_id\":12,\"delivery_id\":16,\"type_package\":9,\"term_week\":16,\"name\":\"mglyaujlolmyr\",\"active\":true}"
+                                    "raw": "{\"card_id\":2,\"delivery_id\":11,\"type_package\":4,\"term_week\":10,\"name\":\"ju\",\"active\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3160,7 +3630,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"preset_id\":20}"
+                                    "raw": "{\"preset_id\":9}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3222,7 +3692,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"preset_id\":4,\"count\":23}"
+                                    "raw": "{\"preset_id\":7,\"count\":8}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3249,8 +3719,124 @@
                                         {
                                             "id": "delivery_id",
                                             "key": "delivery_id",
-                                            "value": "10",
+                                            "value": "20",
                                             "description": "The ID of the delivery."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Qna(\ubb38\uc758)",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "\ubaa9\ub85d",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/qnas",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/qnas"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"title\": \"\uc81c\ubaa9\",\r\n      \"description\": \"\ub0b4\uc6a9\",\r\n      \"qnaCategory\": \"qna \uc720\ud615 \uac1d\uccb4\",\r\n      \"imgs\": \"\uc774\ubbf8\uc9c0 \ubaa9\ub85d\",\r\n      \"answer\": \"\ub2f5\ubcc0\",\r\n      \"format_created_at\" : \"\ud45c\uc2dc\uc6a9 \uc0dd\uc131\uc77c\uc790\",\r\n      \"format_answered_at\" : \"\ud45c\uc2dc\uc6a9 \ub2f5\ubcc0\uc77c\uc790\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "\uc218\uc815",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/qnas\/:id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/qnas\/:id",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "16",
+                                            "description": "The ID of the qna."
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"qna_category_id\":19,\"title\":\"rheyfhvqvyfckdtw\",\"description\":\"Facilis aperiam magnam ex minus quis qui omnis.\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "\uc0ad\uc81c",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/qnas\/:id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/qnas\/:id",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "17",
+                                            "description": "The ID of the qna."
                                         }
                                     ]
                                 },
@@ -3291,7 +3877,7 @@
                                         {
                                             "id": "order_id",
                                             "key": "order_id",
-                                            "value": "2",
+                                            "value": "20",
                                             "description": "The ID of the order."
                                         }
                                     ]
@@ -3350,7 +3936,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"options\":[{\"id\":14,\"count\":14}]}"
+                                    "raw": "{\"options\":[{\"id\":9,\"count\":66}]}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3378,7 +3964,7 @@
                                         {
                                             "id": "preset_id",
                                             "key": "preset_id",
-                                            "value": "3",
+                                            "value": "13",
                                             "description": "The ID of the preset."
                                         }
                                     ]
@@ -3468,7 +4054,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "12",
+                                            "value": "18",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -3486,7 +4072,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"coupon_id\":3}"
+                                    "raw": "{\"coupon_id\":9}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3498,6 +4084,47 @@
                                     "header": [],
                                     "code": 200,
                                     "body": "{\r\n  \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n  \"state\": \"\uc0c1\ud0dc (1 - BEFORE_PAYMENT \uacb0\uc81c\uc804 | 2 - READY \uacb0\uc81c\ub300\uae30 | 3 - ONGOING_DELIVERY \uacb0\uc81c\uc644\ub8cc | 4 - DELIVERED \ubc30\uc1a1\uc644\ub8cc | 5 - CONFIRMED \uad6c\ub9e4\ud655\uc815 | 6 - CANCEL \uc8fc\ubb38\ucde8\uc18c | 7 - ONGOING_REFUND \uad50\ud658\/\ubc18\ud488 \uc9c4\ud589\uc911 | 8 - FINISH_REFUND \uad50\ud658\/\ubc18\ud488 \uc644\ub8cc | 9 - DENY_REFUND \uad50\ud658\/\ubc18\ud488 \ubc18\ub824)\",\r\n  \"price\": \"\uacb0\uc81c\uae08\uc561\",\r\n  \"product\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"img\": \"\uc774\ubbf8\uc9c0 \uac1d\uccb4\",\r\n    \"title\": \"\uc81c\ubaa9\",\r\n    \"price\": \"\uac00\uaca9\",\r\n    \"price_origin\": \"\uc815\uac00\",\r\n    \"requiredOptions\": \"\ud544\uc218\uc635\uc158\ubaa9\ub85d\",\r\n    \"additionalOptions\": \"\ucd94\uac00\uc635\uc158\ubaa9\ub85d\"\r\n  },\r\n  \"products_price\": \"\uc0c1\ud488 \ucd1d \uac00\uaca9\",\r\n  \"option\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"title\": \"\uc81c\ubaa9\",\r\n    \"price\": \"\uac00\uaca9\",\r\n    \"type\": \"\uc720\ud615 (1 - REQUIRED \ud544\uc218 | 2 - ADDITIONAL \ucd94\uac00)\"\r\n  },\r\n\r\n  \"package\": {\r\n    \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n    \"count\": \"\ud68c\ucc28\",\r\n    \"price\": \"\uac00\uaca9\",\r\n    \"type\": \"\ud328\ud0a4\uc9c0 \uc720\ud615 (1 - SINGLE \uc2f1\uae00 | 2 - BUNGLE \ubc99\uae00)\",\r\n  },\r\n\r\n  \"price_coupon\": \"\ucfe0\ud3f0\uc801\uc6a9\uac00\uaca9\",\r\n  \"count\": \"\uac1c\uc218\",\r\n  \"delivery_name\": \"\uc218\ub839\uc790\uba85\",\r\n  \"delivery_contact\": \"\uc5f0\ub77d\ucc98\",\r\n  \"delivery_address\": \"\uc8fc\uc18c\",\r\n  \"delivery_address_detail\": \"\uc0c1\uc138\uc8fc\uc18c\",\r\n  \"delivery_address_zipcode\": \"\uc6b0\ud3b8\ubc88\ud638\",\r\n  \"delivery_requirement\": \"\ubc30\uc1a1\uc694\uccad\uc0ac\ud56d\",\r\n  \"delivery_number\": \"\uc6b4\uc1a1\uc7a5\ubc88\ud638\",\r\n  \"delivery_company\": \"\ud0dd\ubc30\uc0ac\",\r\n  \"format_delivery_company\": \"\ud45c\uc2dc\uc6a9 \ud0dd\ubc30\uc0ac\",\r\n  \"delivery_at\": \"\ubc30\uc1a1\uc644\ub8cc\uc77c\uc790\",\r\n  \"format_title\": \"\ud45c\uc2dc\uc6a9 \uc81c\ubaa9\"\r\n}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "QnaCategory(\ubb38\uc758\uce74\ud14c\uace0\ub9ac)",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "\ubaa9\ub85d",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/qnaCategories",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/qnaCategories"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\r\n  \"data\": [\r\n    {\r\n      \"id\": \"\uace0\uc720\ubc88\ud638\",\r\n      \"title\": \"\uc81c\ubaa9\"\r\n    }\r\n  ],\r\n  \"meta\": {\r\n    \"total\": \"\ucd1d \uac1c\uc218\",\r\n    \"current_page\": \"\ud604\uc7ac \ud398\uc774\uc9c0\",\r\n    \"last_page\": \"\ub9c8\uc9c0\ub9c9 \ud398\uc774\uc9c0\"\r\n  }\r\n}",
                                     "name": ""
                                 }
                             ]
@@ -3530,7 +4157,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":5}"
+                                    "raw": "{\"product_id\":6}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3605,7 +4232,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"likeable_id\":\"qui\",\"likeable_type\":\"ullam\"}"
+                                    "raw": "{\"likeable_id\":\"ratione\",\"likeable_type\":\"vel\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3642,7 +4269,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"bookmarkable_id\":11,\"bookmarkable_type\":\"srhpwxckyc\"}"
+                                    "raw": "{\"bookmarkable_id\":13,\"bookmarkable_type\":\"itmigaaxlvjneebn\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3727,7 +4354,7 @@
                                 {
                                     "id": "category_id",
                                     "key": "category_id",
-                                    "value": "1",
+                                    "value": "3",
                                     "description": "The ID of the category."
                                 }
                             ]
@@ -3763,7 +4390,7 @@
                                 {
                                     "id": "category_id",
                                     "key": "category_id",
-                                    "value": "14",
+                                    "value": "5",
                                     "description": "The ID of the category."
                                 }
                             ]
@@ -3827,7 +4454,7 @@
                                 {
                                     "id": "product",
                                     "key": "product",
-                                    "value": "hic",
+                                    "value": "quibusdam",
                                     "description": ""
                                 }
                             ]
@@ -3863,7 +4490,7 @@
                                 {
                                     "id": "product",
                                     "key": "product",
-                                    "value": "excepturi",
+                                    "value": "ex",
                                     "description": ""
                                 }
                             ]
@@ -3899,7 +4526,7 @@
                                 {
                                     "id": "order_id",
                                     "key": "order_id",
-                                    "value": "16",
+                                    "value": "15",
                                     "description": "The ID of the order."
                                 }
                             ]
@@ -3945,7 +4572,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"imp_uid\":\"ze\",\"merchant_uid\":\"aenemkfunq\"}"
+                            "raw": "{\"imp_uid\":\"nbzxynccqzzihjxcez\",\"merchant_uid\":\"nzynrgiqinmydvkdjtdp\"}"
                         },
                         "description": "",
                         "auth": {
@@ -3976,7 +4603,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"imp_uid\":\"nwkkd\",\"merchant_uid\":\"pgkulhvibkinp\"}"
+                            "raw": "{\"imp_uid\":\"znkzyygztar\",\"merchant_uid\":\"fzfjrvbwmlp\"}"
                         },
                         "description": "",
                         "auth": {

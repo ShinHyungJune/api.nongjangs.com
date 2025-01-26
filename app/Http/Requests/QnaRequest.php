@@ -68,7 +68,10 @@ class QnaRequest extends FormRequest
 
                 case 'update':
                     return [
-                        '' => []
+                        'qna_category_id' => ['required', 'integer'],
+                        'title' => ['required', 'string', 'max:500'],
+                        'description' => ['required', 'string', 'max:10000'],
+                        'imgs' => ['nullable', 'array'],
                     ];
 
 

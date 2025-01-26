@@ -31,12 +31,10 @@ class QnaResource extends JsonResource
             'answer' => $this->answer ?? "",
             'imgs' => $this->imgs,
 
-            "state" => $this->state,
-            "format_state" => $this->format_state,
+            /*"state" => $this->state,
+            "format_state" => $this->format_state,*/
 
-            "format_answered_at" => $this->answered_at ? Carbon::make($this->answered_at)->format("Y.m.d H:i") : "",
 
-            'created_at' => $this->created_at,
             "format_created_at" => Carbon::make($this->created_at)->format("Y.m.d"),
         ];
     }
