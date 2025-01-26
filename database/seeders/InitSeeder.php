@@ -23,6 +23,7 @@ use App\Models\Bookmark;
 use App\Models\Card;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Comment;
 use App\Models\Count;
 use App\Models\County;
 use App\Models\Coupon;
@@ -137,6 +138,8 @@ class InitSeeder extends Seeder
         Qna::truncate();
         FaqCategory::truncate();
         Faq::truncate();
+        Comment::truncate();
+        Bookmark::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -191,8 +194,44 @@ class InitSeeder extends Seeder
         $this->createVegetableStories();
         $this->createQnaCategories();
         $this->createFaqCategories();
+        $this->createComments();
+        $this->createBookmarks();
     }
 
+    public function createBookmarks()
+    {
+        $recipes = Recipe::inRandomOrder()->take(5)->get();
+        $vegetableStories = VegetableStory::inRandomOrder()->take(5)->get();
+
+        foreach($recipes as $recipe){
+            Bookmark::create([
+                'user_id' => $this->user->id,
+                'bookmarkable_id' => $recipe->id,
+                'bookmarkable_type' => Recipe::class,
+            ]);
+        }
+
+        foreach($vegetableStories as $vegetableStory){
+            Bookmark::create([
+                'user_id' => $this->user->id,
+                'bookmarkable_id' => $vegetableStory->id,
+                'bookmarkable_type' => VegetableStory::class,
+            ]);
+        }
+    }
+
+    public function createComments()
+    {
+        $vegetableStories = VegetableStory::get();
+
+        foreach($vegetableStories as $vegetableStory){
+            Comment::factory()->create([
+                'commentable_type' => VegetableStory::class,
+                'commentable_id' => $vegetableStory->id,
+                'user_id' => $this->user->id
+            ]);
+        }
+    }
     public function createQnaCategories()
     {
         $items = [
@@ -273,7 +312,9 @@ class InitSeeder extends Seeder
 
     public function createVegetableStories()
     {
-        $items = VegetableStory::factory()->count(30)->create();
+        $items = VegetableStory::factory()->count(30)->create([
+            'user_id' => $this->user->id,
+        ]);
 
         foreach($items as $item){
             $tags = Tag::where('type', TypeTag::VEGETABLE_STORY)->inRandomOrder()->take(5)->get();
@@ -296,8 +337,14 @@ class InitSeeder extends Seeder
             'user_id' => $this->user->id,
         ]);
 
+        $presetC = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
 
-        PresetProduct::factory()->count(8)->create([
+        $product = Product::inRandomOrder()->first() ?? Product::factory()->create();
+        $option = Option::inRandomOrder()->first() ?? Option::factory()->create();
+
+        PresetProduct::factory()->count(5)->create([
             'preset_id' => $presetA->id,
             'product_id' => null,
             'state'=>StatePresetProduct::CONFIRMED,
@@ -305,9 +352,44 @@ class InitSeeder extends Seeder
 
         PresetProduct::factory()->count(5)->create([
             'preset_id' => $presetB->id,
+            'product_id' => null,
+            'state'=>StatePresetProduct::CONFIRMED,
+        ]);
+
+        PresetProduct::factory()->count(5)->create([
+            'preset_id' => $presetC->id,
+            'product_id' => $product->id,
             'package_id' => null,
             'state'=>StatePresetProduct::CONFIRMED,
         ]);
+
+        $packagePresetProducts = PresetProduct::inRandomOrder()->take(2)->whereHas('preset', function ($query){
+            $query->where('user_id', $this->user->id);
+        })->whereNotNull('package_id')->where('state', StatePresetProduct::CONFIRMED)
+            ->get();
+
+        foreach($packagePresetProducts as $presetProduct){
+            $photoReview = Review::factory()->create(['preset_product_id' => $presetProduct->id, 'photo' => 1, 'user_id' => $this->user->id]);
+
+            if (config("app.env") != 'local') {
+                $photoReview->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
+                $photoReview->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
+            }
+        }
+
+        $productPresetProducts = PresetProduct::inRandomOrder()->take(3)->whereHas('preset', function ($query){
+            $query->where('user_id', $this->user->id);
+        })->whereNotNull('product_id')->where('state', StatePresetProduct::CONFIRMED)
+            ->get();
+
+        foreach($productPresetProducts as $presetProduct){
+            $photoReview = Review::factory()->create(['preset_product_id' => $presetProduct->id, 'photo' => 1, 'user_id' => $this->user->id]);
+
+            if (config("app.env") != 'local') {
+                $photoReview->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
+                $photoReview->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
+            }
+        }
     }
     public function createRecipes()
     {
@@ -1588,7 +1670,7 @@ class InitSeeder extends Seeder
         foreach($products as $product){
             Review::factory()->count(3)->create(['product_id' => $product->id, 'package_id' => null]);
             Review::factory()->count(2)->create(['product_id' => null, 'user_id' => $user->id]);
-            $photoReviews = Review::factory()->count(5)->create(['product_id' => $product->id, 'photo' => 1]);
+            $photoReviews = Review::factory()->count(5)->create(['product_id' => $product->id, 'photo' => 1, 'user_id' => $this->user->id]);
 
             foreach($photoReviews as $photoReview){
                 if (config("app.env") != 'local') {
