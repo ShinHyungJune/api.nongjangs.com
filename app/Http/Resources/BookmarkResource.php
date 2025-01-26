@@ -22,6 +22,8 @@ class BookmarkResource extends JsonResource
         return [
             'id' => $this->id,
             'bookmarkable' => $bookmarkable,
+            'bookmarkable_id' => $this->bookmarkable_id,
+            'bookmarkable_type' => $this->bookmarkable_type,
         ];
     }
 }

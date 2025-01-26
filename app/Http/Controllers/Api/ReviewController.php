@@ -44,6 +44,19 @@ class ReviewController extends ApiController
         return ReviewResource::collection($items);
     }
 
+    /** 상세
+     * @group 사용자
+     * @subgroup Review(리뷰)
+     * @responseFile storage/responses/review.json
+     * */
+    public function show(Review $review)
+    {
+        if($review->user_id != auth()->id())
+            return $this->respondForbidden();
+
+        return $this->respondSuccessfully(ReviewResource::make($review));
+    }
+
     /** 생성
      * @group 사용자
      * @subgroup Review(리뷰)
