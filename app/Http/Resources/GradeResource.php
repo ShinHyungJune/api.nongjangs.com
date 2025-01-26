@@ -18,6 +18,8 @@ class GradeResource extends JsonResource
             'ratio_refund' => $this->ratio_refund,
             'min_count_package' => $this->min_count_pacakge,
             'min_price' => $this->min_price,
+            'need_count_package_for_next_level' => $this->need_count_package_for_next_level,
+            'need_price_for_next_level' => $this->need_price_for_next_level,
             'couponGroup' => $this->couponGroup ? CouponGroupResource::make($this->couponGroup) : '',
         ];
     }

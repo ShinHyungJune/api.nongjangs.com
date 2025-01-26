@@ -7,34 +7,20 @@ use App\Http\Requests\GradeRequest;
 use App\Http\Resources\GradeResource;
 use App\Models\Grade;
 
-class GradeController extends Controller
+class GradeController extends ApiController
 {
+    /** 목록
+     * @group 관리자
+     * @subgroup Grade(등급)
+     * @responseFile storage/responses/grades.json
+     */
     public function index()
     {
-        return GradeResource::collection(Grade::all());
+        $items = new Grade();
+
+        $items->orderBy('level', 'asc')->paginate(30);
+
+        return GradeResource::collection($items);
     }
 
-    public function store(GradeRequest $request)
-    {
-        return new GradeResource(Grade::create($request->validated()));
-    }
-
-    public function show(Grade $grade)
-    {
-        return new GradeResource($grade);
-    }
-
-    public function update(GradeRequest $request, Grade $grade)
-    {
-        $grade->update($request->validated());
-
-        return new GradeResource($grade);
-    }
-
-    public function destroy(Grade $grade)
-    {
-        $grade->delete();
-
-        return response()->json();
-    }
 }

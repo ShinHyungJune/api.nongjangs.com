@@ -274,6 +274,11 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         return $this->ongoingPresetProducts()->count();
     }
 
+    public function getCountPackageAttribute()
+    {
+        return $this->presetProducts()->whereNotIn('state', [StatePresetProduct::WAIT, StatePresetProduct::BEFORE_PAYMENT, StatePresetProduct::CANCEL])->count();
+    }
+
     public function getFormatOngoingPresetProductsAttribute()
     {
         $ongoingPresetProducts = $this->ongoingPresetProducts;

@@ -60,6 +60,7 @@ class UserResource extends JsonResource
 
             'point_use' => $this->point_use,
             'packageSetting' => $this->packageSetting ? PackageSettingMiniResource::make($this->packageSetting) : '',
+            'count_package' => $this->count_package,
 
             "created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y-m-d H:i") : "",
             "format_created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y.m.d") : "",

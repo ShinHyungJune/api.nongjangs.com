@@ -155,6 +155,7 @@ Route::get('/reportCategories', [\App\Http\Controllers\Api\ReportCategoryControl
 
 Route::get('/faqCategories', [\App\Http\Controllers\Api\FaqCategoryController::class, "index"]);
 Route::get('/faqs', [\App\Http\Controllers\Api\FaqController::class, "index"]);
+Route::get('/grades', [\App\Http\Controllers\Api\GradeController::class, "index"]);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);

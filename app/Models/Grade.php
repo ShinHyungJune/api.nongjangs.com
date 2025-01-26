@@ -37,4 +37,24 @@ class Grade extends Model implements HasMedia
     {
         return $this->hasOne(CouponGroup::class);
     }
+
+    public function getNeedCountPackageForNextLevelAttribute()
+    {
+        $nextLevel = Grade::where('level', $this->level + 1)->first();
+
+        if(!$nextLevel)
+            return 0;
+
+        return 0;
+    }
+
+    public function getNeedPriceForNextLevelAttribute()
+    {
+        $nextLevel = Grade::where('level', $this->level + 1)->first();
+
+        if(!$nextLevel)
+            return 0;
+
+        return 0;
+    }
 }
