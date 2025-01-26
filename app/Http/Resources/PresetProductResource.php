@@ -65,6 +65,7 @@ class PresetProductResource extends JsonResource
             'format_delivery_company' => $this->delivery_company ? DeliveryCompany::getLabel($this->delivery_company) : '',
             'delivery_at' => $this->delivery_at ? Carbon::make($this->delivery_at)->format('Y.m.d') : '',
             'format_title' => $this->format_title,
+            'format_created_at' => $this->preset->order ? Carbon::make($this->preset->order->created_at)->format('Y.m.d') : '',
 
             /*'preset' => new PresetResource($this->whenLoaded('preset')),
             'product' => new ProductResource($this->whenLoaded('product')),

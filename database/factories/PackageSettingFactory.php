@@ -20,6 +20,7 @@ class PackageSettingFactory extends Factory
         $card = Card::inRandomOrder()->first() ?? Card::factory()->create();
         $delivery = Delivery::inRandomOrder()->first() ?? Delivery::factory()->create();
         $package = Package::inRandomOrder()->first() ?? Package::factory()->create();
+        $user = User::inRandomOrder()->first() ?? User::factory()->create();
 
         return [
             'created_at' => Carbon::now(),
@@ -31,7 +32,7 @@ class PackageSettingFactory extends Factory
             'will_order_at' => Carbon::now()->addWeek(),
             'retry' => 0,
 
-            'user_id' => null,
+            'user_id' => $user->id,
             'card_id' => $card->id,
             'delivery_id' => $delivery->id,
             'first_package_id' => $package->id,

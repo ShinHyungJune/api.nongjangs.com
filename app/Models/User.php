@@ -85,7 +85,7 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
         self::creating(function ($model){
             $grade = Grade::orderBy('level', 'asc')->first();
-            $model->grade_id = $grade->id;
+            $model->grade_id = $grade ? $grade->id : null;
             $model->code = Generator::createUuid($model, 6, 'code');
             $model->nickname = $model->nicknames[rand(0, count($model->nicknames) - 1)].$model->code;
         });

@@ -42,6 +42,7 @@ class PresetProductMiniResource extends JsonResource
             'price_coupon' => $this->price_coupon,
             'count' => $this->count,
             'format_title' => $this->format_title,
+            'format_created_at' => $this->preset->order ? Carbon::make($this->preset->order->created_at)->format('Y.m.d') : '',
         ];
     }
 }
