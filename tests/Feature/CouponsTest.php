@@ -10,6 +10,7 @@ use App\Models\Coupon;
 use App\Models\CouponGroup;
 use App\Models\Product;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -101,5 +102,78 @@ class CouponsTest extends TestCase
         ])->decodeResponseJson()['data'];
 
         $this->assertEquals(count($notUseCoupons), count($items));
+    }
+
+    /** @test */
+    public function 할인값순으로_목록을_조회할_수_있다()
+    {
+        $secondItem = \App\Models\CouponGroup::factory()->create([
+            'value' => 2,
+        ]);
+        Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'coupon_group_id' => $secondItem->id,
+        ]);
+
+        $firstItem = \App\Models\CouponGroup::factory()->create([
+            'value' => 3,
+        ]);
+        Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'coupon_group_id' => $firstItem->id,
+        ]);
+
+        $thirdItem = \App\Models\CouponGroup::factory()->create([
+            'value' => 1,
+        ]);
+        Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'coupon_group_id' => $thirdItem->id,
+        ]);
+
+        $items = $this->json('get', '/api/coupons', [
+            'order_by' => 'value',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['couponGroup']['value'] < $prevItem['couponGroup']['value']);
+            }
+            $prevItem = $item;
+        }
+    }
+
+    /** @test */
+    public function 등록순으로_목록을_조회할_수_있다()
+    {
+        Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'created_at' => Carbon::now()->subDays(1)
+        ]);
+
+        Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'created_at' => Carbon::now()->subDays(3)
+        ]);
+
+        Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'created_at' => Carbon::now()->subDays(2)
+        ]);
+
+        $items = $this->json('get', '/api/coupons', [
+            'order_by' => 'created_at',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['format_created_at'] < $prevItem['format_created_at']);
+            }
+            $prevItem = $item;
+        }
     }
 }

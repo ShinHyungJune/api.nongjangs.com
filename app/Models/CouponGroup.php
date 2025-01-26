@@ -77,4 +77,9 @@ class CouponGroup extends Model
 
         return 1;
     }
+
+    public function coupons()
+    {
+        return $this->hasMany(Coupon::class);
+    }
 }

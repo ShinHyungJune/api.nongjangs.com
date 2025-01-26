@@ -70,7 +70,9 @@ class CouponGroupRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        'product_id' => ['nullable', 'integer']
+                        'product_id' => ['nullable', 'integer'],
+                        'order_by' => ['nullable', 'string', 'max:500'],
+                        'can_download' => ['nullable', 'integer'],
                     ];
 
                 case 'store':
@@ -97,7 +99,12 @@ class CouponGroupRequest extends FormRequest
             'product_id' => [
                 'description' => '<span class="point">상품 고유번호</span>',
             ],
-
+            'order_by' => [
+                'description' => '<span class="point">value - 할인값 | created_at - 등록순</span>',
+            ],
+            'can_download' => [
+                'description' => '<span class="point">다운가능여부</span>',
+            ],
             // 늘 쓰이는 애들
             'word' => [
                 'description' => '<span class="point">검색어</span>',

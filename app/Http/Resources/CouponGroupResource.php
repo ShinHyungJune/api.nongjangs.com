@@ -44,6 +44,7 @@ class CouponGroupResource extends JsonResource
             'grade_id' => $this->grade_id,
             'has' => $this->has,
             'grade' => $this->grade ? GradeResource::make($this->grade) : '',
+            'format_created_at' => Carbon::make($this->created_at)->format('Y.m.d'),
         ];
     }
 }

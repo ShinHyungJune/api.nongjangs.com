@@ -25,6 +25,7 @@ class CouponResource extends JsonResource
             'format_finished_at' => Carbon::make($this->finished_at)->format('Y.m.d H:i'),
 
             'couponGroup' => $this->couponGroup ? CouponGroupResource::make($this->couponGroup) : '',
+            'format_created_at' => Carbon::make($this->created_at)->format('Y.m.d H:i'),
         ];
     }
 }

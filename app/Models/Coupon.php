@@ -32,6 +32,11 @@ class Coupon extends Model
         });
     }
 
+    protected $casts = [
+        'started_at' => 'datetime',
+        'finished_at' => 'datetime'
+    ];
+
     protected $guarded = ['id'];
 
     public function user(): BelongsTo

@@ -55,7 +55,8 @@ class CouponRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
-                        'product_id' => 'nullable|integer'
+                        'product_id' => 'nullable|integer',
+                        'order_by' => 'nullable|string|max:500',
                     ];
 
                 case 'store':
@@ -85,6 +86,9 @@ class CouponRequest extends FormRequest
             ],
             'coupon_group_ids' => [
                 'description' => '<span class="point">쿠폰그룹 고유번호 목록</span>',
+            ],
+            'order_by' => [
+                'description' => '<span class="point">value - 할인값 | created_at - 등록순</span>',
             ],
 
             // 늘 쓰이는 애들

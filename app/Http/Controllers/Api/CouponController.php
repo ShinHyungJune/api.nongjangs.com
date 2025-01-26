@@ -23,6 +23,16 @@ class CouponController extends ApiController
     {
         $items = auth()->user()->coupons()->where('use', 0);
 
+        if($request->order_by == 'value')
+            $items = $items->with([
+                'couponGroup' => function($query){
+                    $query->orderBy('value', 'desc');
+                }
+            ]);
+
+        if($request->created_at)
+            $items = $items->orderBy('created_at', 'desc');
+
         $items = $items->latest()->paginate(100);
 
         return CouponResource::collection($items);

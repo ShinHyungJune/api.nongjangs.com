@@ -19,6 +19,8 @@ class CouponGroupController extends ApiController
      */
     public function index(CouponGroupRequest $request)
     {
+        $request['order_by'] = $request->order_by ?? "created_at";
+
         $items = CouponGroup::where('moment', null);
 
         $types = [TypeCouponGroup::ALL, TypeCouponGroup::DELIVERY];
@@ -45,7 +47,12 @@ class CouponGroupController extends ApiController
                 });
         });
 
-        $items = $items->latest()->paginate(100);
+        if($request->can_download)
+            $items = $items->whereDoesntHave('coupons', function ($query){
+                $query->where('user_id', auth()->id());
+            });
+
+        $items = $items->orderBy($request->order_by, 'desc')->paginate(100);
 
         return CouponGroupResource::collection($items);
     }

@@ -200,6 +200,8 @@ type_expire가 from_download거나 specific이면 유효기간이 유효한 경�
         $this->artisan('check:birthday');
         $this->assertEquals(1, $this->user->coupons()->count());
 
+        $recover = Carbon::now();
+
         // 또 생일이지만 1년 지난 경우
         Carbon::setTestNow(Carbon::now()->addYear());
         $this->artisan('check:birthday');
@@ -211,6 +213,9 @@ type_expire가 from_download거나 specific이면 유효기간이 유효한 경�
         $this->user->update(['birth' => Carbon::now()->subDay()]);
         $this->artisan('check:birthday');
         $this->assertEquals(0, $this->user->coupons()->count());
+
+        Carbon::setTestNow(null);
+
     }
 
     /** @test */
@@ -238,5 +243,79 @@ type_expire가 from_download거나 specific이면 유효기간이 유효한 경�
         $couponGroup->users()->attach($this->user->id);
 
         $this->assertEquals(1, $this->user->coupons()->count());
+    }
+
+    /** @test */
+    public function 다운_가능한_목록을_조회할_수_있다()
+    {
+        $notDownloadCouponGroups = CouponGroup::factory()->count(5)->create();
+        $alreadyDownloadCouponGroups = CouponGroup::factory()->count(3)->create();
+
+        foreach($alreadyDownloadCouponGroups as $couponGroup){
+            Coupon::factory()->create([
+                'coupon_group_id' => $couponGroup->id,
+                'user_id' => $this->user->id
+            ]);
+        }
+
+        $items = $this->json('get', '/api/couponGroups', [
+            'can_download' => 1
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($notDownloadCouponGroups), count($items));
+    }
+
+    /** @test */
+    public function 할인값순으로_목록을_조회할_수_있다()
+    {
+        $secondItem = \App\Models\CouponGroup::factory()->create([
+            'value' => 2,
+        ]);
+        $firstItem = \App\Models\CouponGroup::factory()->create([
+            'value' => 3,
+        ]);
+        $thirdItem = \App\Models\CouponGroup::factory()->create([
+            'value' => 1,
+        ]);
+
+        $items = $this->json('get', '/api/couponGroups', [
+            'order_by' => 'value',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['value'] < $prevItem['value']);
+            }
+            $prevItem = $item;
+        }
+    }
+
+    /** @test */
+    public function 등록순으로_목록을_조회할_수_있다()
+    {
+        $secondItem = \App\Models\CouponGroup::factory()->create([
+            'created_at' => Carbon::now()->subDays(2),
+        ]);
+        $firstItem = \App\Models\CouponGroup::factory()->create([
+            'created_at' => Carbon::now()->subDays(1),
+        ]);
+        $thirdItem = \App\Models\CouponGroup::factory()->create([
+            'created_at' => Carbon::now()->subDays(3),
+        ]);
+
+        $items = $this->json('get', '/api/couponGroups', [
+            'order_by' => 'created_at',
+        ])->decodeResponseJson()['data'];
+
+        $prevItem = null;
+
+        foreach($items as $item){
+            if($prevItem){
+                $this->assertTrue($item['format_created_at'] < $prevItem['format_created_at']);
+            }
+            $prevItem = $item;
+        }
     }
 }
