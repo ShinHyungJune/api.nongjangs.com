@@ -19,6 +19,8 @@ final class TypePointHistory
     const TEXT_REVIEW_CREATED = 6;
     const BEST_REVIEW_UPDATED = 7;
     const VEGETABLE_STORY_CREATED = 8;
+    const PRESET_PRODUCT_CONFIRM = 9; 
+    const EXPIRED = 10;
 
     public static function getValues()
     {
@@ -31,6 +33,8 @@ final class TypePointHistory
             self::TEXT_REVIEW_CREATED,
             self::BEST_REVIEW_UPDATED,
             self::VEGETABLE_STORY_CREATED,
+            self::PRESET_PRODUCT_CONFIRM,
+            self::EXPIRED,
         ];
     }
 
@@ -45,6 +49,8 @@ final class TypePointHistory
             self::TEXT_REVIEW_CREATED => "일반리뷰 작성",
             self::BEST_REVIEW_UPDATED => "베스트리뷰 선정",
             self::VEGETABLE_STORY_CREATED => "채소이야기 작성",
+            self::PRESET_PRODUCT_CONFIRM => "구매확정",
+            self::EXPIRED => "유효기간만료",
 
             "" => "",
         ];

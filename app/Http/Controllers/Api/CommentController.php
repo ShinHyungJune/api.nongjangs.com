@@ -25,6 +25,9 @@ class CommentController extends ApiController
         if($request->commentable_id)
             $items = $items->where('commentable_id', $request->commentable_id);
 
+        if($request->user_id)
+            $items = $items->where('user_id', $request->user_id);
+
         $items = $items->orderBy($request->order_by, 'desc')->latest()->paginate(12);
 
         return CommentResource::collection($items);

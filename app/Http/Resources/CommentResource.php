@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\VegetableStory;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -10,6 +11,9 @@ class CommentResource extends JsonResource
 {
     public function toArray($request)
     {
+        if($this->commentable_type == VegetableStory::class)
+            $commentable = VegetableStoryResource::make($this->commentable);
+
         return [
             'id' => $this->id,
             'user' => $this->user ? [
@@ -20,6 +24,7 @@ class CommentResource extends JsonResource
                 'nickname' => "알 수 없는 사용자"
             ],
             'description' => $this->description,
+            'commentable' => $commentable,
 
             'count_like' => $this->count_like,
             'is_like' => $this->is_like,

@@ -6,6 +6,7 @@
         "id": "고유번호",
         "nickname": "닉네임"
       },
+      "commentable": "댓글 대상 정보 객체",
       "description": "내용",
       "count_like": "좋아요수",
       "is_like": "좋아요 여부",

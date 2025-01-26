@@ -34,4 +34,9 @@ class Comment extends Model
 
         return $this->likes()->where('user_id', auth()->id())->exists() ? 1 : 0;
     }
+
+    public function commentable()
+    {
+        return $this->morphTo(Comment::class);
+    }
 }

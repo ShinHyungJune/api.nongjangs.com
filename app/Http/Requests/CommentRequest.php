@@ -46,7 +46,7 @@ class CommentRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        '' => []
+                        'user_id' => ['nullable', 'integer']
                     ];
 
                 case 'store':
@@ -72,6 +72,9 @@ class CommentRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
+            'user_id' => [
+                'description' => '<span class="point">사용자 고유번호</span>',
+            ],
             'commentable_id' => [
                 'description' => '<span class="point">대상 고유번호</span>',
             ],
