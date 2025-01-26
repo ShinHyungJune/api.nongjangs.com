@@ -2,7 +2,9 @@
   "data": [
     {
       "id": "고유번호",
-      "bookmarkable": "북마크 대상 정보 객체"
+      "bookmarkable": "북마크 대상 정보 객체",
+      "bookmarkable_id": "북마크 대상 고유번호",
+      "bookmarkable_type": "북마크 대상 모델명"
     }
   ],
   "meta": {
