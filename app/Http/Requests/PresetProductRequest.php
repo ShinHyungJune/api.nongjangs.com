@@ -62,6 +62,7 @@ class PresetProductRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
+                        'can_review' => ['nullable', 'boolean'],
                         'can_vegetable_story' => ['nullable', 'boolean']
                     ];
 
@@ -86,6 +87,9 @@ class PresetProductRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
+            'can_review' => [
+                'description' => '<span class="point">후기 작성가능여부</span>',
+            ],
             'can_vegetable_story' => [
                 'description' => '<span class="point">채소이야기 작성가능여부</span>',
             ],

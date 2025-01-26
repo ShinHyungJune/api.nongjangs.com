@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Models\Bookmark;
+use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -28,6 +30,23 @@ class BookmarksTest extends TestCase
         $this->form = [
 
         ];
+    }
+
+    /** @test */
+    public function 자신의_목록을_조회할_수_있다()
+    {
+        $recipe = \App\Models\Recipe::factory()->create();
+
+        $bookmarks = Bookmark::factory()->count(3)->create([
+            'bookmarkable_type' => Recipe::class,
+            'bookmarkable_id' => $recipe->id,
+            'user_id' => $this->user->id,
+        ]);
+
+        $items = $this->json('get', '/api/bookmarks', [
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($bookmarks), count($items));
     }
 
     /** @test */

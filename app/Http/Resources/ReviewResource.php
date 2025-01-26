@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\TypeOption;
+use App\Enums\TypePackage;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -30,12 +32,8 @@ class ReviewResource extends JsonResource
             ] : '',
             'product_id' => $this->product_id,
             'product' => $this->product ? ProductMiniResource::make($this->product) : "",
-            'package' => $this->package ? PackageResource::make($this->package) : "",
-            'presetProduct' => $this->presetProduct ? [
-                'id' => $this->presetProduct->id,
-                'product_title' => $this->product_title,
-                'option_title' => $this->option_title,
-            ] : "",
+            'package' => $this->package ? PackageMiniResource::make($this->package) : "",
+            'presetProduct' => $this->presetProduct ? PresetProductMiniResource::make($this->presetProduct) : "",
             'reply' => $this->reply ?? '',
             'reply_at' => $this->reply_at,
             'format_reply_at' => $this->reply_at ? Carbon::make($this->reply_at)->format('Y.m.d') : '',

@@ -228,6 +228,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/coupons", [\App\Http\Controllers\Api\CouponController::class, "store"]);
 
     Route::post("/likes", [\App\Http\Controllers\Api\LikeController::class, "store"]);
+    Route::get("/bookmarks", [\App\Http\Controllers\Api\BookmarkController::class, "index"]);
     Route::post("/bookmarks", [\App\Http\Controllers\Api\BookmarkController::class, "store"]);
 
     Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);

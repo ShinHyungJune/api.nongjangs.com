@@ -16,12 +16,12 @@ class PresetProductController extends ApiController
      * @subgroup PresetProduct(출고상품)
      * @responseFile storage/responses/presetProducts.json
      */
-    public function index(PresetProductRequest $request, PresetProduct $presetProduct)
+    public function index(PresetProductRequest $request)
     {
         $items = auth()->user()->presetProducts();
 
-        /*if($items->where('can_review'))
-            $items = $items->where*/
+        if($items->where('can_review'))
+            $items = $items->where('state', StatePresetProduct::CONFIRMED)->whereDoesntHave('review');
 
         if($request->can_vegetable_story)
             $items = $items->where('state', StatePresetProduct::CONFIRMED);

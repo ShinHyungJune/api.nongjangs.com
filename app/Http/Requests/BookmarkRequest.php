@@ -40,8 +40,7 @@ class BookmarkRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        'bookmarkable_id' => ['required', 'integer'],
-                        'bookmarkable_type' => ['required', 'string', 'max:500'],
+                        'bookmarkable_type' => ['nullable', 'string', 'max:500'],
                     ];
 
                 case 'store':
