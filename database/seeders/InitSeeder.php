@@ -843,6 +843,8 @@ class InitSeeder extends Seeder
                 'coupon_group_id' => $couponGroup->id,
             ]);
         }
+
+        CouponGroup::factory()->count(4)->create();
     }
     public function createProject()
     {
