@@ -1,9 +1,11 @@
 <?php
 
+use App\Enums\StatePresetProduct;
 use App\Http\Resources\WebsiteReservationResource;
 use App\Imports\MessageHistoryImport;
 use App\Models\Iamport;
 use App\Models\Platform;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
@@ -22,7 +24,7 @@ use Milon\Barcode\DNS1D;
 /*Route::get("/test", [\App\Http\Controllers\Api\Admin\SurveyController::class, "export"]);*/
 
 Route::get("/test", function (){
-    $order = \App\Models\Order::where('imp_uid', '!=', null)->latest()->first();
+    dd(User::first()->presetProducts()->where('state', StatePresetProduct::CONFIRMED)->whereDoesntHave('review')->count());
 
     // 권한 얻기
     $accessToken = Iamport::getAccessToken();

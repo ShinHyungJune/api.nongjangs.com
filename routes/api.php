@@ -209,7 +209,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/refunds",[\App\Http\Controllers\Api\RefundController::class, 'store']);
 
 
-    Route::get("/review/{review}", [\App\Http\Controllers\Api\ReviewController::class, "show"]);
+    Route::get("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "show"]);
     Route::post("/reviews", [\App\Http\Controllers\Api\ReviewController::class, "store"]);
     Route::patch("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "update"]);
     Route::delete("/reviews/{review}", [\App\Http\Controllers\Api\ReviewController::class, "destroy"]);
