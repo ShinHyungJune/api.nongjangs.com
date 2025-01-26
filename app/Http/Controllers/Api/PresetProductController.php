@@ -20,7 +20,7 @@ class PresetProductController extends ApiController
     {
         $items = auth()->user()->presetProducts();
 
-        if($items->where('can_review'))
+        if($request->can_review)
             $items = $items->where('state', StatePresetProduct::CONFIRMED)->whereDoesntHave('review');
 
         if($request->can_vegetable_story)
