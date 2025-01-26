@@ -12,7 +12,19 @@ use Carbon\Carbon;
 
 class PackageSettingController extends ApiController
 {
-    /** 목록
+    /** 생성
+     * @group 사용자
+     * @subgroup PackageSetting(꾸러미 기본설정)
+     * @responseFile storage/responses/packageSetting.json
+     */
+    public function index()
+    {
+        $items = PackageSetting::where('user_id', auth()->id())->latest()->paginate(30);
+
+        return $this->respondSuccessfully(PackageSettingResource::make($items));
+    }
+
+    /** 생성
      * @group 사용자
      * @subgroup PackageSetting(꾸러미 기본설정)
      * @responseFile storage/responses/packageSetting.json

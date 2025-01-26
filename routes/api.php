@@ -159,6 +159,7 @@ Route::get('/faqs', [\App\Http\Controllers\Api\FaqController::class, "index"]);
 Route::middleware(['auth'])->group(function () {
     Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);
 
+    Route::get("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "index"]);
     Route::post("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "store"]);
     Route::patch("/packageSettings/{packageSetting}", [\App\Http\Controllers\Api\PackageSettingController::class, "update"]);
 
