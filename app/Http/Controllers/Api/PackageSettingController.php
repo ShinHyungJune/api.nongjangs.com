@@ -21,7 +21,7 @@ class PackageSettingController extends ApiController
     {
         $items = PackageSetting::where('user_id', auth()->id())->latest()->paginate(30);
 
-        return $this->respondSuccessfully(PackageSettingResource::make($items));
+        return PackageSettingResource::collection($items);
     }
 
     /** 생성
