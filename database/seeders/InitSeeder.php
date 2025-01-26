@@ -179,7 +179,7 @@ class InitSeeder extends Seeder
         $this->createProducts();
         $this->createProject();
         $this->createTags();
-        // $this->createCouponGroups();
+        $this->createCouponGroups();
         $this->createReportCategories();
         $this->createPayMethods();
         $this->createPackages();
