@@ -150,6 +150,7 @@ Route::patch("/users/clearPassword", [\App\Http\Controllers\Api\UserController::
 Route::patch("/users/findId", [\App\Http\Controllers\Api\UserController::class, "findId"]);
 
 Route::get("/vegetableStories", [\App\Http\Controllers\Api\VegetableStoryController::class, "index"]);
+Route::show("/vegetableStories/{vegetableStory}", [\App\Http\Controllers\Api\VegetableStoryController::class, "show"]);
 Route::get("/comments", [\App\Http\Controllers\Api\CommentController::class, 'index']);
 Route::get('/reportCategories', [\App\Http\Controllers\Api\ReportCategoryController::class, "index"]);
 

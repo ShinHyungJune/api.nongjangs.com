@@ -54,6 +54,16 @@ class VegetableStoryController extends ApiController
         return VegetableStoryResource::collection($items);
     }
 
+    /** 상세
+     * @group 사용자
+     * @subgroup VegetableStory(채소이야기)
+     * @responseFile storage/responses/vegetableStory.json
+     */
+    public function show(VegetableStory $vegetableStory)
+    {
+        return $this->respondSuccessfully(VegetableStoryResource::make($vegetableStory));
+    }
+
     /** 생성
      * @group 사용자
      * @subgroup VegetableStory(채소이야기)
