@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Enums\DeliveryCompany;
 use App\Enums\TypeOption;
+use App\Enums\TypePackage;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -29,9 +30,11 @@ class PresetProductResource extends JsonResource
             'products_price' => $this->products_price,
             'package' => $this->package_id ? [
                 'id' => $this->package_id,
+                'name' => $this->package_name,
                 'count' => $this->package_count,
                 'price' => $this->package_price,
                 'type' => $this->package_type,
+                'format_type' => TypePackage::getLabel($this->package_type),
                 'tags' => $this->package ? TagResource::collection($this->package->tags) : [],
             ] : '',
             'option' => [

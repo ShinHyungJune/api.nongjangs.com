@@ -18,7 +18,7 @@ class GradeController extends ApiController
     {
         $items = new Grade();
 
-        $items->orderBy('level', 'asc')->paginate(30);
+        $items = $items->orderBy('level', 'asc')->paginate(30);
 
         return GradeResource::collection($items);
     }

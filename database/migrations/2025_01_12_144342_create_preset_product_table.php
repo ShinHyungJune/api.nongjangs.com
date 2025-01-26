@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->foreignId('coupon_id')->nullable()->constrained('coupons');
 
             $table->unsignedBigInteger('price')->default(0)->comment('최종가격');
+            $table->string('package_name')->nullable()->comment('꾸러미 이름');
             $table->string('package_count')->nullable()->comment('꾸러미 회차');
             $table->integer('package_type')->nullable()->comment('꾸러미 유형');
             $table->unsignedBigInteger('package_price')->nullable()->comment('패키지 가격');
