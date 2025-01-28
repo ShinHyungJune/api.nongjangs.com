@@ -370,30 +370,7 @@ class Order extends Model
         ];
     }
 
-    public function getCanCancelAttribute()
-    {
-        if(!auth()->user())
-            return 0;
 
-        if(auth()->user()->id != $this->user_id)
-            return 0;
-
-        if($this->pay_method_method == "vbank")
-            return 0;
-
-        if($this->presetProducts()->whereIn('state', [
-                StatePresetProduct::ONGOING_DELIVERY,
-                StatePresetProduct::DELIVERED,
-                StatePresetProduct::CONFIRMED,
-                StatePresetProduct::CANCEL,
-                StatePresetProduct::ONGOING_REFUND,
-                StatePresetProduct::FINISH_REFUND,
-                StatePresetProduct::DENY_REFUND,])->count() > 0) {
-            return 0;
-        }
-
-        return 1;
-    }
 
     public function getAdminCanCancelAttribute()
     {

@@ -93,4 +93,14 @@ class Package extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function getStateAttribute()
+    {
+
+    }
+
+    public function getFormatStateAttribute()
+    {
+
+    }
 }

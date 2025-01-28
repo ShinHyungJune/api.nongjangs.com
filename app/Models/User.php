@@ -255,6 +255,32 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         return $this->validCoupons()->count();
     }
 
+    public function getCountAlarmAttribute()
+    {
+        return $this->alarms()->where('read', 0)->count();
+    }
+
+    public function getCountOngoingPresetProductAttribute()
+    {
+        return $this->presetProducts()->whereIn('state', [
+            StatePresetProduct::WAIT,
+            StatePresetProduct::READY,
+            StatePresetProduct::ONGOING_DELIVERY
+        ])->count();
+    }
+
+    public function getCountCouponAttribute()
+    {
+        return $this->coupons()->where('use', 0)->count();
+    }
+
+    public function getCountPackageAttribute()
+    {
+        return $this->presetProducts()->whereNotNull('package_id')
+            ->where('state', '!=', StatePresetProduct::BEFORE_PAYMENT)
+            ->count();
+    }
+
     public function presets()
     {
         return $this->hasMany(Preset::class);
@@ -305,12 +331,17 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
     public function pointHistories()
     {
-        return $this->hasMany(PointHistory::class);
+        return $this->hasManyThrough(PointHistory::class, Point::class);
     }
 
     public function getPointUseAttribute()
     {
         return $this->pointHistories()->where('increase', 0)->sum('point');
+    }
+
+    public function getPointAttribute()
+    {
+
     }
 
     public function packageSetting()
@@ -346,5 +377,10 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function points()
+    {
+        return $this->hasMany(Point::class);
     }
 }

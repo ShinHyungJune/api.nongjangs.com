@@ -16,9 +16,6 @@ return new class extends Migration {
             $table->string('type_package')->comment('꾸러미 유형');
             $table->integer('term_week')->comment('주기 (몇주에 한번 배송)');
             $table->boolean('active')->default(1)->comment('활성여부');
-            $table->date('will_order_at')->nullable()->comment('다음 주문일자');
-            $table->foreignId('first_package_id')->nullable()->comment('첫 패키지')->constrained('packages')->cascadeOnDelete('packages');
-            $table->integer('retry')->default(0)->comment('결제 재시도 횟수');
             $table->timestamps();
         });
     }

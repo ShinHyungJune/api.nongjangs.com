@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "reason": "사유",
+      "and_so_on": "직접입력사유",
+      "format_created_at": "중지날짜"
+
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

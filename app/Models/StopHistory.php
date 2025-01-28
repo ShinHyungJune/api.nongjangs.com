@@ -10,8 +10,5 @@ class StopHistory extends Model
 {
     use HasFactory;
 
-    public function package(): BelongsTo
-    {
-        return $this->belongsTo(Package::class);
-    }
+    protected $guarded = ['id'];
 }

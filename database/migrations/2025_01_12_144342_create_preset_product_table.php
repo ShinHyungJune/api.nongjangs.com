@@ -20,6 +20,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('price')->default(0)->comment('최종가격');
             $table->string('package_name')->nullable()->comment('꾸러미 이름');
             $table->string('package_count')->nullable()->comment('꾸러미 회차');
+            $table->date('package_will_delivery_at')->nullable()->comment('꾸러미 도착예정일');
+            $table->boolean('package_setting_active')->nullable()->comment('구독활성여부 (1회성인지 정기구독인지)');
             $table->integer('package_type')->nullable()->comment('꾸러미 유형');
             $table->unsignedBigInteger('package_price')->nullable()->comment('패키지 가격');
 
@@ -32,7 +34,9 @@ return new class extends Migration {
             $table->unsignedBigInteger('option_price')->nullable()->comment('옵션가격');
             $table->integer('option_type')->nullable()->comment('옵션유형');
             $table->unsignedBigInteger('price_coupon')->comment('쿠폰적용금액')->default(0);
+            $table->unsignedBigInteger('point')->comment('배분된 적립금')->default(0);
 
+     
             $table->string('delivery_name')->nullable()->comment('수취인 이름');
             $table->string('delivery_contact')->nullable()->comment('수취인 연락처');
             $table->string('delivery_address')->nullable()->comment('주소');
@@ -43,6 +47,9 @@ return new class extends Migration {
             $table->integer('delivery_company')->nullable()->comment('택배사');
             $table->date('delivery_at')->nullable()->comment('배송완료일자');
 
+            $table->text('reason_request_refund')->nullable()->comment('취소요청사유');
+            $table->text('reason_deny_refund')->nullable()->comment('취소요청 반려사유');
+            
             $table->timestamps();
         });
     }

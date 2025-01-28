@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Enums\DeliveryCompany;
 use App\Enums\TypeOption;
 use App\Enums\TypePackage;
+use App\Models\Arr;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,6 +18,8 @@ class PresetProductResource extends JsonResource
             'id' => $this->id,
             'state' => $this->state,
             'price' => $this->price,
+            'reason_request_refund' => $this->reason_request_refund,
+            'reason_deny_refund' => $this->reason_deny_refund,
             'product' => $this->product_id ? [
                 'id' => $this->product_id,
                 'img' => $this->product ? $this->product->img : '',
@@ -34,6 +37,8 @@ class PresetProductResource extends JsonResource
                 'count' => $this->package_count,
                 'price' => $this->package_price,
                 'type' => $this->package_type,
+                'active' => $this->package_setting_active,
+                'format_will_delivery_at' => $this->package_will_delivery_at ? Carbon::make($this->package_will_delivery_at)->format('Y.m.d') : '',
                 'format_type' => TypePackage::getLabel($this->package_type),
                 'tags' => $this->package ? TagResource::collection($this->package->tags) : [],
             ] : '',
@@ -47,6 +52,7 @@ class PresetProductResource extends JsonResource
             'product_price' => $this->product_price,
             'product_price_origin' => $this->product_price_origin,*/
             'price_coupon' => $this->price_coupon,
+            'point' => $this->point,
             'count' => $this->count,
             /*'option_title' => $this->option_title,
             'option_price' => $this->option_price,
@@ -70,6 +76,13 @@ class PresetProductResource extends JsonResource
             'format_title' => $this->format_title,
             'format_created_at' => $this->preset->order ? Carbon::make($this->preset->order->created_at)->format('Y.m.d') : '',
 
+            'materials' => MaterialResource::collection($this->materials),
+            'format_materials' => Arr::getArrayToString($this->materials->pluck('title')->toArray()),
+            'canLatePackage' => $this->canLatePackage,
+            'canFastPackage' => $this->canFastPackage,
+            'can_confirm' => $this->can_confirm,
+            'can_review' => $this->can_review,
+            'can_cancel' => $this->can_cancel,
             /*'preset' => new PresetResource($this->whenLoaded('preset')),
             'product' => new ProductResource($this->whenLoaded('product')),
             'option' => new OptionResource($this->whenLoaded('option')),

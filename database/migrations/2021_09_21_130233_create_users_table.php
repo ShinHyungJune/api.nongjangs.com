@@ -29,7 +29,6 @@ class CreateUsersTable extends Migration
 
             $table->boolean("agree_promotion")->default(false)->comment('혜택수신동의');
             $table->string('code_recommend')->nullable()->comment('추천인코드');
-            $table->integer("point")->default(0)->comment("포인트");
 
             $table->text('reason')->comment('탈퇴사유')->nullable();
             $table->text('and_so_on')->comment('기타 탈퇴사유')->nullable();

@@ -11,18 +11,13 @@ class PointHistory extends Model
 
     protected $guarded = ['id'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function order()
-    {
-        return $this->belongsTo(Order::class);
-    }
-
     public function getFormatIncreaseAttribute()
     {
         return $this->increase ? '적립' : '사용';
+    }
+
+    public function pointHistoriable()
+    {
+        return $this->morphTo();
     }
 }

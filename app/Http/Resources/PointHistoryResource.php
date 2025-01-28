@@ -12,30 +12,17 @@ class PointHistoryResource extends JsonResource
 {
     public function toArray($request)
     {
-        $order = $this->order;
-        $user = User::withTrashed()->find($this->user_id);
-
         return [
             'id' => $this->id,
 
             'type' => $this->type,
             'increase' => $this->increase,
-            'point_current' => $this->point_current,
+            'point_leave' => $this->point_leave,
             'point' => $this->point,
             'memo' => $this->memo,
 
-            'user' => $user ? [
-                'id' => $user->id,
-                'name' => $user->name,
-                'contact' => $user->contact,
-            ] : '',
-
             'format_increase' => $this->format_increase,
-            'order' => $order ? [
-                'id' => $order->id,
-                'merchant_uid' => $order->merchant_uid,
-                'format_created_at' => Carbon::make($order->created_at)->format('Y.m.d H:i'),
-            ] : '',
+            'pointHistoriable' => $this->pointHistoriable,
             'format_type' => TypePointHistory::getLabel($this->type),
             'format_created_at' => $this->created_at ? Carbon::make($this->created_at)->format('Y-m-d H:i') : '',
         ];

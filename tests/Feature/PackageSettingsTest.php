@@ -72,30 +72,15 @@ class PackageSettingsTest extends TestCase
     }
 
     /** @test */
-    public function 패키지설정이_생성되면_이번회차기준으로_다음_결제일이_자동계산된다()
+    public function 패키지설정이_생성되면_현재이용가능회차를_대상으로_출고가_생성된다()
     {
-        $package = Package::factory()->create([
-            'will_delivery_at' => Carbon::now()->addWeek(),
-        ]);
-        $item = $this->json('post', '/api/packageSettings', $this->form)->decodeResponseJson()['data'];
-
-        $this->assertEquals(Carbon::make($package->will_delivery_at)->subDays(2)->format('Y.m.d'), $item['will_order_at']);
-        $this->assertEquals( $package->id, $item['firstPackage']['id']);
+        // 출고에 pacakge_setting_active도 기록 필요 (1회성인지 아닌지 구분용)
     }
 
     /** @test */
-    public function 활성여부가_거짓이라면_다음_결제일은_빈값으로_설정된다()
+    public function 패키지설정의_활성여부가_참으로_수정됐을때_진행중인_출고가_없으면_출고가_새로_생성된다()
     {
-        $package = Package::factory()->create([
-            'will_delivery_at' => Carbon::now()->addWeek(),
-        ]);
-
-        $this->form['active'] = 0;
-
-        $item = $this->json('post', '/api/packageSettings', $this->form)->decodeResponseJson()['data'];
-
-        $this->assertEquals(null, $item['will_order_at']);
-        $this->assertEquals( null, $item['firstPackage']);
+        // 대상회차가 현재구매가능한 회차로 설정되어있는 출고가 없다면 새로 생성
     }
 
     /** @test */
@@ -211,9 +196,8 @@ class PackageSettingsTest extends TestCase
     public function 정기구독을_정지할_수_있다()
     {
         /*
-          - will_order_at null처리
-          - 정지기록 남겨야함 (최대 n회만 정지 가능한가봄)
-          - package_stop_histories 생성 필요
+        - **active를 0으로 설정 및 중지기록 남기기**
+        - **결제대기중인 presetProduct 삭제**
         */
 
         $packageSetting = PackageSetting::factory()->create([
@@ -228,5 +212,7 @@ class PackageSettingsTest extends TestCase
         $this->assertEquals($item['active'], 0);
 
         $this->assertEquals(1, StopHistory::count());
+
+        $this->assertEquals(true, false);
     }
 }

@@ -36,6 +36,8 @@ class PackageResource extends JsonResource
             'packageMaterials' => PackageMaterialResource::collection($this->packageMaterials),
             'price_single' => $this->price_single,
             'price_bungle' => $this->price_bungle,
+            'state' => $this->state,
+            'format_state' => $this->format_state,
         ];
     }
 }

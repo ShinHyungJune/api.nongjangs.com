@@ -42,7 +42,6 @@ class UserResource extends JsonResource
 
             "agree_promotion" => $this->agree_promotion,
             "code_recommend" => $this->code_recommend,
-            "point" => $this->point,
 
             "reason" => $this->reason,
             "and_so_on" => $this->and_so_on,
@@ -55,12 +54,16 @@ class UserResource extends JsonResource
             'reason_leave' => $this->reason_leave ?? '',
             'reason_leave_and_so_on' => $this->reason_leave_and_so_on ?? '',
 
-            'count_cart' => $this->cart->presets()->count(),
-            'count_alarm' => 0,
 
+
+            "point" => $this->point,
             'point_use' => $this->point_use,
             'packageSetting' => $this->packageSetting ? PackageSettingMiniResource::make($this->packageSetting) : '',
             'count_package' => $this->count_package,
+            'count_cart' => $this->cart->presets()->count(),
+            'count_alarm' => 0,
+            'count_ongoing_preset_product' => $this->count_ongoing_preset_product,
+            'count_coupon' => $this->count_coupon,
 
             "created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y-m-d H:i") : "",
             "format_created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y.m.d") : "",

@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "type": "유형",
+      "increase": "증감여부 (1 - 증가 | 0 - 감소)",
+      "point": "포인트",
+      "point_leave": "남은 포인트",
+      "memo": "메모",
+      "format_increase": "표시용 증감여부",
+      "pointHistoriable": "포인트내역 관련 데이터 객체",
+      "format_type": "표시용 유형",
+      "format_createD_at": "표시용 생성일자"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

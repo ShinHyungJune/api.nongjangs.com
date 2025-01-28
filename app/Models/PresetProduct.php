@@ -155,4 +155,58 @@ class PresetProduct extends Model
 
         return TypePackage::getLabel($this->package_type)."꾸러미 ".$this->package_count."회차";
     }
+
+    public function packageChangeHistories()
+    {
+        return $this->hasMany(PackageChangeHistory::class);
+    }
+
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class)->withPivot([
+            'price',
+            'price_origin',
+            'unit',
+            'count'
+        ]);
+    }
+
+    public function getCanLatePackageAttribute()
+    {
+
+    }
+
+    public function getCanFastPackageAttribute()
+    {
+
+    }
+
+    public function getCanConfirmAttribute()
+    {
+
+    }
+
+    public function getCanCancelAttribute()
+    {
+        if(!auth()->user())
+            return 0;
+
+        if(auth()->user()->id != $this->preset->user_id)
+            return 0;
+
+        if($this->presetProducts()->whereIn('state', [
+                StatePresetProduct::READY,
+                StatePresetProduct::ONGOING_DELIVERY,
+                StatePresetProduct::DELIVERED,
+                StatePresetProduct::CONFIRMED,
+                StatePresetProduct::CANCEL,
+                StatePresetProduct::ONGOING_REFUND,
+                StatePresetProduct::FINISH_REFUND,
+                StatePresetProduct::DENY_REFUND,
+                ])->count() > 0) {
+            return 0;
+        }
+
+        return 1;
+    }
 }

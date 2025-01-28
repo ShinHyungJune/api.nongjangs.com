@@ -1,6 +1,8 @@
 {
   "id": "고유번호",
-  "state": "상태 (1 - BEFORE_PAYMENT 결제전 | 2 - READY 결제대기 | 3 - ONGOING_DELIVERY 결제완료 | 4 - DELIVERED 배송완료 | 5 - CONFIRMED 구매확정 | 6 - CANCEL 주문취소 | 7 - ONGOING_REFUND 교환/반품 진행중 | 8 - FINISH_REFUND 교환/반품 완료 | 9 - DENY_REFUND 교환/반품 반려)",
+  "state": "상태 (1 - BEFORE_PAYMENT 결제전 | 2 - WAIT 결제대기 | 3 - READY 배송준비 | 4 - WILL_OUT 출고예정 | 5 - ONGOING_DELIVERY 배송중 | 6 - DELIVERED 배송완료 | 7 - CONFIRMED 구매확정 | 8 - CANCEL 주문취소 | 9 - ONGOING_REFUND 교환/반품 진행중 | 10 - FINISH_REFUND 교환/반품 완료 | 11 - DENY_REFUND 교환/반품 반려)",
+  "reason_request_refund": "취소요청사유",
+  "reason_deny_refund": "취소요청 반려사유",
   "price": "결제금액",
   "product": {
     "id": "고유번호",
@@ -9,7 +11,8 @@
     "price": "가격",
     "price_origin": "정가",
     "requiredOptions": "필수옵션목록",
-    "additionalOptions": "추가옵션목록"
+    "additionalOptions": "추가옵션목록",
+    "tags" : "태그 목록"
   },
   "products_price": "상품 총 가격",
   "option": {
@@ -21,12 +24,18 @@
 
   "package": {
     "id": "고유번호",
+    "name": "이름",
     "count": "회차",
     "price": "가격",
+    "active": "구독여부 (1 - 정기구독 | 0 - 1회성 결제)",
+    "format_will_delivery_at": "표시용 도착예정일",
     "type": "패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)",
+    "format_type": "표시용 유형",
+    "tags" : "태그 목록"
   },
 
   "price_coupon": "쿠폰적용가격",
+  "point": "포인트",
   "count": "개수",
   "delivery_name": "수령자명",
   "delivery_contact": "연락처",
@@ -39,5 +48,13 @@
   "format_delivery_company": "표시용 택배사",
   "delivery_at": "배송완료일자",
   "format_title": "표시용 제목",
-  "format_created_at": "구매일자"
+  "format_created_at": "구매일자",
+
+  "materials" : "구성품목 목록",
+  "format_materials" : "표시용 구성품목 목록",
+  "canLatePackage": "미루기 가능한 회차 객체 (null주의)",
+  "canFastPackage": "당기기 가능한 회차 객체 (null주의)",
+  "can_confirm": "구매확정 가능여부",
+  "can_review": "리뷰작성 가능여부",
+  "can_cancel" : "주문취소 가능여부"
 }

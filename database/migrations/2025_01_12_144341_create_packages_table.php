@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->date('finish_delivery_ready_at')->nullable()->comment('배송준비 종료일');
             $table->date('start_will_out_at')->nullable()->comment('출고예정 시작일');
             $table->date('finish_will_out_at')->nullable()->comment('출고예정 종료일');
+            $table->boolean('alert_pack')->default(0)->comment('품목구성 알림여부');
             $table->timestamps();
         });
     }

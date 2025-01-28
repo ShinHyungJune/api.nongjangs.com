@@ -140,6 +140,8 @@ class UsersTest extends TestCase
         $this->assertEquals($pointOther + User::$recommendPoint, $this->other->refresh()->point);
     }
 
+
+
     /** @test */
     public function 누구나_비밀번호를_초기화할_수_있다()
     {
@@ -194,6 +196,38 @@ password_new_confirmation*/
         ])->decodeResponseJson()['data'];
 
         $this->assertEquals($this->user->email, $item['email']);
+    }
+
+    /** @test */
+    public function 데이터에서_남은_포인트를_조회할_수_있다()
+    {
+
+    }
+
+    /** @test */
+    public function 데이터에서_누적사용포인트를_조회할_수_있다()
+    {
+
+    }
+
+    /** @test */
+    public function 사용자는_자신의_정보를_수정할_수_있다()
+    {
+        /*password nullable
+password_confirmation nullable
+name
+contact nullable (값이 있다면 인증된 번호여야함)
+nikcname nullable
+message
+birth
+count_family
+agree_promotion*/
+    }
+
+    /** @test */
+    public function 사용자가_탈퇴를_하면_구독은_취소된다()
+    {
+        // package_setting active 되어있었으면 0처리 및 결제준비중인 꾸러미출고 삭제
     }
 
 }
