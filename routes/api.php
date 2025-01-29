@@ -126,6 +126,7 @@ Route::get("/notices/{notice}", [\App\Http\Controllers\Api\NoticeController::cla
 Route::get("/categories", [\App\Http\Controllers\Api\CategoryController::class, "index"]);
 // Route::get("/recommendCategories", [\App\Http\Controllers\Api\RecommendCategoryController::class, "index"]);
 
+Route::get("/packages/canOrder", [\App\Http\Controllers\Api\PackageController::class, "canOrder"]);
 Route::get("/packages/current", [\App\Http\Controllers\Api\PackageController::class, "current"]);
 
 Route::get("/banners", [\App\Http\Controllers\Api\BannerController::class, "index"]);
@@ -199,7 +200,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource("/qnas", QnaController::class);
 
-    Route::patch("/orders/cancel/{order}",[\App\Http\Controllers\Api\OrderController::class, 'cancel']);
     Route::get("/orders",[\App\Http\Controllers\Api\OrderController::class, 'index']);
     Route::post("/orders",[\App\Http\Controllers\Api\OrderController::class, 'store']);
     Route::get("/orders/calculatePriceDelivery/{order}",[\App\Http\Controllers\Api\OrderController::class, 'calculatePriceDelivery']);
@@ -218,8 +218,11 @@ Route::middleware(['auth'])->group(function () {
     Route::patch("/presets/{preset}", [\App\Http\Controllers\Api\PresetController::class, "update"]);
 
     Route::get("/presetProducts", [\App\Http\Controllers\Api\PresetProductController::class, "index"]);
+    Route::get("/presetProducts/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "show"]);
+    Route::patch("/presetProducts/requestCancel/{presetProduct}",[\App\Http\Controllers\Api\PresetProductController::class, 'requestCancel']);
+    Route::patch("/presetProducts/cancel/{presetProduct}",[\App\Http\Controllers\Api\PresetProductController::class, 'cancel']);
     Route::patch("/presetProducts/coupon/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "updateCoupon"]);
-    // Route::patch("/presetProducts/confirm/{presetProduct}", [\App\Http\Controllers\Api\임시\PresetProductController::class, "confirm"]);
+    Route::patch("/presetProducts/confirm/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "confirm"]);
 
     Route::get('/pointHistories', [\App\Http\Controllers\Api\PointHistoryController::class, "index"]);
     Route::get('/couponHistories', [\App\Http\Controllers\Api\CouponHistoryController::class, "index"]);

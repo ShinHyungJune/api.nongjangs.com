@@ -7,10 +7,13 @@ use App\Enums\TypeDiscount;
 use App\Models\Count;
 use App\Models\Coupon;
 use App\Models\CouponGroup;
+use App\Models\Grade;
 use App\Models\Order;
 use App\Models\Preset;
 use App\Models\PresetProduct;
+use App\Models\Product;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -94,14 +97,65 @@ class PresetProductsTest extends TestCase
         ])->assertStatus(403);
     }
 
-    public function 자신의_쿠폰이고_사용한적_없는_쿠폰만_사용할_수_있다()
+    public function 자신의_쿠폰이_아니면_적용할_수_없다()
     {
+        $coupon = Coupon::factory()->create([
+            'user_id' => $this->other->id,
+        ]);
 
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id
+        ]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+        ]);
+
+        $this->json('patch', '/api/presetProducts/coupon/'.$presetProduct->id, [
+            'coupon_id' => $coupon->id,
+        ])->assertStatus(403);
+    }
+
+    public function 이미_사용한_쿠폰은_적용할_수_없다()
+    {
+        $coupon = Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'use' => 1,
+        ]);
+
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id
+        ]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+        ]);
+
+        $this->json('patch', '/api/presetProducts/coupon/'.$presetProduct->id, [
+            'coupon_id' => $coupon->id,
+        ])->assertStatus(403);
     }
 
     public function 쿠폰사용불가_상품에는_쿠폰을_적용할_수_없다()
     {
+        $coupon = Coupon::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
 
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id
+        ]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'product_id' => Product::factory()->create([
+                'can_use_coupon' => 0
+            ])->id,
+        ]);
+
+        $this->json('patch', '/api/presetProducts/coupon/'.$presetProduct->id, [
+            'coupon_id' => $coupon->id,
+        ])->assertStatus(403);
     }
 
     /** @test */
@@ -135,54 +189,18 @@ class PresetProductsTest extends TestCase
     }
 
     /** @test */
-    public function 취소를_할_수_있다()
-    {
-        $order = Order::factory()->create([
-            'state' => StateOrder::SUCCESS,
-            'user_id' => $this->user->id,
-        ]);
-
-        $preset = Preset::factory()->create([
-            'order_id' => $order->id,
-        ]);
-
-        $presetProducts = \App\Models\PresetProduct::factory()->count(5)->create([
-            'preset_id' => $preset->id,
-            'state' => StatePresetProduct::READY,
-        ]);
-
-        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
-
-        ])->decodeResponseJson()['data'];
-
-        $this->assertEquals(StateOrder::CANCEL, $item['state']);
-
-        // 출고상품들 취소처리
-        $presetProducts = $order->presetProducts;
-
-        foreach ($presetProducts as $presetProduct) {
-            $this->assertEquals(\App\Enums\StatePresetProduct::CANCEL, $presetProduct->refresh()->state);
-        }
-    }
-
-    /** @test */
     public function 데이터에서_취소가능여부를_조회할_수_있다()
     {
-        $order = Order::factory()->create([
-            'state' => StateOrder::SUCCESS,
+        $preset = Preset::factory()->create([
             'user_id' => $this->user->id,
         ]);
 
-        $preset = Preset::factory()->create([
-            'order_id' => $order->id,
-        ]);
-
-        $presetProducts = \App\Models\PresetProduct::factory()->count(5)->create([
+        $presetProduct = \App\Models\PresetProduct::factory()->create([
             'preset_id' => $preset->id,
             'state' => StatePresetProduct::READY,
         ]);
 
-        $item = $this->json('get', '/api/orders/' . $order->id, [
+        $item = $this->json('get', '/api/presetProducts/' . $presetProduct->id, [
 
         ])->decodeResponseJson()['data'];
 
@@ -190,11 +208,11 @@ class PresetProductsTest extends TestCase
 
 
         // 이미 상품 중 하나가 출고됨
-        $order->presetProducts()->first()->update([
+        $presetProduct->update([
             'state' => StatePresetProduct::DELIVERED
         ]);
 
-        $item = $this->json('get', '/api/orders/' . $order->id, [
+        $item = $this->json('get', '/api/presetProducts/' . $presetProduct->id, [
 
         ])->decodeResponseJson()['data'];
 
@@ -202,131 +220,191 @@ class PresetProductsTest extends TestCase
     }
 
     /** @test */
-    public function 취소가능여부_거짓이라면_취소를_요청할_수_없다()
+    public function 취소를_할_수_있다()
     {
-        $order = Order::factory()->create([
-            'state' => StateOrder::SUCCESS,
+        $preset = Preset::factory()->create([
             'user_id' => $this->user->id,
         ]);
 
-        $preset = Preset::factory()->create([
-            'order_id' => $order->id,
-        ]);
-
-        $presetProducts = \App\Models\PresetProduct::factory()->count(5)->create([
+        $presetProduct = \App\Models\PresetProduct::factory()->create([
             'preset_id' => $preset->id,
             'state' => StatePresetProduct::READY,
         ]);
 
-        // 이미 상품 중 하나가 출고됨
-        $order->presetProducts()->first()->update([
-            'state' => StatePresetProduct::DELIVERED
-        ]);
+        $item = $this->json('patch', '/api/presetProducts/cancel/' . $presetProduct->id, [
 
-        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
+        ])->decodeResponseJson()['data'];
 
-        ])->assertStatus(403);
+        $this->assertEquals(StatePresetProduct::CANCEL, $item['state']);
     }
 
     /** @test */
-    public function 데이터가_취소상태가_되면_쿠폰은_미사용처리된다()
+    public function 취소가능여부_거짓이라면_취소를_요청할_수_없다()
     {
-        // - user_id가 있는 경우에만
-        // - 쿠폰사용기록이 생성되어야함
-        $order = Order::factory()->create([
-            'state' => StateOrder::SUCCESS,
-            'user_id' => $this->user->id,
-        ]);
-
         $preset = Preset::factory()->create([
             'user_id' => $this->user->id,
-            'order_id' => $order->id,
         ]);
 
-        $coupon = Coupon::factory()->create([
-            'user_id' => $this->user->id,
-            'use' => 1,
-        ]);
-
-        $presetProduct = PresetProduct::factory()->create([
+        $presetProduct = \App\Models\PresetProduct::factory()->create([
             'preset_id' => $preset->id,
-            'coupon_id' => $coupon->id,
+            'state' => StatePresetProduct::WILL_OUT,
         ]);
 
-        $this->assertEquals(0, $this->user->validCoupons()->count());
+        $item = $this->json('patch', '/api/presetProducts/cancel/' . $presetProduct->id, [
 
-        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
+        ])->assertStatus(403);
 
-        ])->assertStatus(200);
-
-        $this->assertEquals(1, $this->user->validCoupons()->count());
-
-        $this->assertEquals(1, $this->user->couponHistories()->where('type', \App\Enums\TypeCouponHistory::ORDER_CANCLED)->count());
-    }
-
-    /** @test */
-    public function 데이터가_취소상태가_되면_사용한_포인트는_반환된다()
-    {
-        // - user_id가 있는 경우에만
-        // 배분포인트만큼 다시 point가 생성되어야함 (method로 제저하는게 나을듯)
-        // - 포인트기록이 생성되어야함
-
-        $point = 1000;
-        $prevUserPoint = $this->user->point;
-
-        $order = Order::factory()->create([
-            'state' => StateOrder::SUCCESS,
-            'user_id' => $this->user->id,
-            'point_use' => $point
-        ]);
-
-        $item = $this->json('patch', '/api/orders/cancel/' . $order->id, [
-
-        ])->assertStatus(200);
-
-        $this->assertEquals($prevUserPoint + $point, $this->user->refresh()->point);
-
-        $this->assertEquals(1, $this->user->pointHistories()->where('type', \App\Enums\TypePointHistory::ORDER_CANCLED)->count());
     }
 
     /** @test */
     public function 취소요청을_생성할_수_있다()
     {
+        // 취소요청상태로 갱신
+        // 취소요청날짜 기록
 
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $presetProduct = \App\Models\PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'state' => StatePresetProduct::WILL_OUT,
+        ]);
+
+        $item = $this->json('patch', '/api/presetProducts/requestCancel/' . $presetProduct->id, [
+            'reason_request_cancel' => '요청사유',
+        ])->assertStatus(200);
+
+        $this->assertEquals(StatePresetProduct::REQUEST_CANCEL, $presetProduct->refresh()->state);
+        $this->assertEquals(Carbon::now(), $presetProduct->refresh()->request_cancel_at);
     }
 
     /** @test */
-    public function 취소요청을_중복생성할_수_없다()
+    public function 취소요청_가능여부가_참일때만_생성할_수_있다()
     {
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
 
+        $presetProduct = \App\Models\PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'state' => StatePresetProduct::BEFORE_PAYMENT,
+        ]);
+
+        $item = $this->json('patch', '/api/presetProducts/requestCancel/' . $presetProduct->id, [
+            'reason_request_cancel' => '요청사유',
+        ])->assertStatus(403);
     }
 
     /** @test */
-    public function 취소요청을_생성하면_취소진행중_상태로_갱신된다()
+    public function 취소완료_상태가_되면_포인트는_반횐된다()
     {
+        $prevPoint = $this->user->point;
 
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
+
+        $point = 1000;
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'point' => $point,
+            'state' => StatePresetProduct::READY,
+        ]);
+
+        $presetProduct->update(['state' => StatePresetProduct::CANCEL]);
+
+        $this->assertEquals($prevPoint + $point, $this->user->refresh()->point);
     }
 
     /** @test */
-    public function 취소요청이_취소완료_상태가_되면_포인트는_반횐된다()
+    public function 취소완료_상태가_되면_쿠폰은_미사용_처리된다()
     {
+        $coupon = Coupon::factory()->create(['use' => 1]);
 
-    }
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
 
-    /** @test */
-    public function 취소요청이_취소완료_상태가_되면_쿠폰은_미사용_처리된다()
-    {
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'coupon_id' => $coupon->id,
+            'state' => StatePresetProduct::READY,
+        ]);
 
+        $presetProduct->update(['state' => StatePresetProduct::CANCEL]);
+
+        $this->assertEquals(0, $coupon->refresh()->use);
     }
 
     /** @test */
     public function 구매확정을_할_수_있다()
     {
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
 
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'state' => StatePresetProduct::DELIVERED,
+        ]);
+
+        $item = $this->json('patch', '/api/presetProducts/confirm/' . $presetProduct->id, [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals(StatePresetProduct::CONFIRMED, $item['state']);
     }
 
     /** @test */
-    public function 구매확정이_되면_사용자의_등급이_갱신된()
+    public function 구매확정이_되면_적립금이_부여된다()
+    {
+        $prevPoint = $this->user->point;
+
+        $grade = Grade::factory()->create(['ratio_refund' => 0.1]);
+
+        $this->user->update([
+            'grade_id' => $grade->id,
+        ]);
+
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'state' => StatePresetProduct::DELIVERED,
+        ]);
+
+        $item = $this->json('patch', '/api/presetProducts/confirm/' . $presetProduct->id, [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($prevPoint + floor($presetProduct->price * $grade->ratio_refund), $this->user->refresh()->point);
+    }
+
+    /** @test */
+    public function 구매확정이_되면_사용자의_등급이_갱신된다()
+    {
+
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'state' => StatePresetProduct::DELIVERED,
+        ]);
+
+        $grade = Grade::factory()->create(['ratio_refund' => 0.1]);
+
+        $nextGrade = Grade::factory()->create(['level' => $grade->level + 1, 'min_price' => $presetProduct->price]);
+
+        $this->user->update([
+            'grade_id' => $grade->id,
+        ]);
+
+
+        $item = $this->json('patch', '/api/presetProducts/confirm/' . $presetProduct->id, [
+
+        ])->decodeResponseJson()['data'];
+
+        $this->assertEquals($nextGrade->id, $this->user->refresh()->grade_id);
+    }
+
+    /** @test */
+    public function 구매확정처리를_실행하면_배송완료상태_중_배송완료일자가_일주일_이상_지난_건들은_구매확정처리된다()
     {
 
     }
@@ -342,4 +420,131 @@ class PresetProductsTest extends TestCase
     {
         // API 참고해서 추가설계필요
     }
+
+
+    /** @test */
+    public function 나의_현재_꾸러미출고를_조회할_수_있다()
+    {
+// (마이페이지에 보여줄용)
+        /*- **출고의 대상회차가 현재 진행중인 회차 리턴**
+        - **패키지설정의 구독여부가 꺼져있다면 (active 0) null을 리턴**
+        - **가장 최근 꾸러미 출고 리턴***/
+    }
+
+    /** @test */
+    public function 품목구성알림을_실행하면_품목구성완료일이_지난_이번회차를_대상회차로_설정해놓은_패키지설정을_보유한_사용자들에게_알림이_발송된다()
+    {
+        /*# 알람조건
+                - 이번 회차여야함
+            - 현재시간이 품목구성완료일 이상이여야함
+            - 품목구성알림여부가 거짓이어야함
+            - 이번회차를 현재대상회차로 설정해놓은 출고를 보유한 사용자들이어야함
+
+        # 알람
+            - 알람 발송 후 품목구성알림여부 1로 업데이트
+            - 해당 출고에 싱글,벙글이냐에 따라 품목 자동 연결*/
+    }
+
+    /** @test */
+    public function 품목구성알림이_실행되면_출고에_품목이_자동으로_연결된다()
+    {
+        // 비선호품목은 제외되고 제외된만큼 다른 품목 자동더하기 (반복문 돌려서 최소금액 채울때까지 랜덤으로 1개씩 추가하기)
+    }
+
+    /** @test */
+    public function 자동결제를_시도하면_현재_회차를_대상회차로_갖고있는_사용자들중_결제전인_출고에_대해_결제가_시도된다()
+    {
+
+
+    }
+
+    /** @test */
+    public function 결제가_성공사태가_되면_다음_출고가_자동생성된다()
+    {
+        // PackageSetting이 active라면 배송주기에 맞게 다음 출고 생성
+    }
+
+
+    /** @test */
+    public function 결제를_시도할_시_사용자의_쿠폰자동적용여부가_참이라면_쿠폰이_자동적용된다()
+    {
+        // 쿠폰유형이 꾸러미용이고 최소주문금액 맞출 경우 최대금액까지만 쓸 수 있게 쿠폰 찾아야할듯
+    }
+
+    /** @test */
+    public function 결제를_시도할_시_사용자의_적립금자동적용여부가_참이라면_적립금이_자동적용된다()
+    {
+        // 결제금액이 1000원 남을때까지만 적용
+    }
+
+    /** @test */
+    public function 자동결제를_실패하면_세번까지_재시도한다()
+    {
+
+
+    }
+
+    /** @test */
+    public function 세번까지_재시도를_실패하면_다음_회차로_자동미루기가_된다()
+    {
+        /*- ***미루기 당기기 기록 생성 필요***
+        - **쌓인 실패 orders의 수를 보기 (reason도 남겨)***/
+    }
+
+    /** @test */
+    public function 사용자는_출고의_품목구성을_수정할_수_있다()
+    {
+        /*materials
+            id
+            count*/
+
+    }
+
+    /** @test */
+    public function 출고의_대상회차에_있는_선택가능구성_및_기본구성_내에서만_수정할_수_있다()
+    {
+
+
+    }
+
+    /** @test */
+    public function 출고의_대상회차가_품목구성상태가_아니라면_수정할_수_없다()
+    {
+
+
+    }
+
+    /** @test */
+    public function 품목구성금액은_패키지유형의_최소금액을_맞춰야한다()
+    {
+
+
+    }
+
+    /** @test */
+    public function 출고에서_미루기_및_당기기_가능한_패키지를_조회할_수_있다()
+    {
+
+
+    }
+
+    /** @test */
+    public function 배송당기기를_할_수_있다()
+    {
+
+        /*- 출고가 결제대기중이어야함
+    - 해당 출고에 당기기 가능한 패키지가 있어야함
+    - 당길 경우 대상회차가 현재주문가능회차로 변경됨
+    - 배송당기기 히스토리가 생성됨*/
+    }
+
+    /** @test */
+    public function 배송미루기를_할_수_있다()
+    {
+
+        /*- 출고가 결제대기중이어야함
+    - 미룰 경우 대상회차가 현재회차의 바로 다음회차로 변경됨
+    - 배송미루기 히스토리가 생성됨*/
+    }
+
 }

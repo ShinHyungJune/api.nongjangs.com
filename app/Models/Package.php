@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\StatePackage;
 use App\Enums\TypePackageMaterial;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -96,11 +97,15 @@ class Package extends Model
 
     public function getStateAttribute()
     {
+        if($this->finish_pack_wait_at >= Carbon::now())
+            return StatePackage::WAIT_PACK;
 
-    }
+        if($this->finish_pack_at >= Carbon::now())
+            return StatePackage::ONGOING_PACK;
 
-    public function getFormatStateAttribute()
-    {
+        if($this->finish_delivery_ready_at >= Carbon::now())
+            return StatePackage::DELIVERY_READY;
 
+        return StatePackage::WILL_OUT;
     }
 }

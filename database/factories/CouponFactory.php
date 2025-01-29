@@ -18,8 +18,8 @@ class CouponFactory extends Factory
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'started_at' => Carbon::now()->subDays(3),
-            'finished_at' => Carbon::now()->addDays(3),
+            'started_at' => Carbon::now()->addSeconds(5),
+            'finished_at' => Carbon::now()->addSeconds(10),
 
             'user_id' => User::factory(),
             'coupon_group_id' => CouponGroup::factory(),

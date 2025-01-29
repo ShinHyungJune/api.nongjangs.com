@@ -19,9 +19,8 @@ final class StatePresetProduct
     const DELIVERED = 6;
     const CONFIRMED = 7;
     const CANCEL = 8;
-    const ONGOING_REFUND = 9;
-    const FINISH_REFUND = 10;
-    const DENY_REFUND = 11;
+    const REQUEST_CANCEL = 9;
+    const DENY_CANCEL = 10;
 
 
     public static function getLabel($value)
@@ -36,9 +35,8 @@ final class StatePresetProduct
             self::DELIVERED => "배송완료",
             self::CONFIRMED => "구매확정",
             self::CANCEL => "취소",
-            self::ONGOING_REFUND => "교환/반품 진행중",
-            self::FINISH_REFUND => "교환/반품 완료",
-            self::DENY_REFUND => "교환/반품 반려",
+            self::REQUEST_CANCEL => "취소요청",
+            self::DENY_CANCEL => "취쇼요청반려",
 
         ];
 

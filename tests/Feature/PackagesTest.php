@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Enums\StatePackage;
 use App\Models\Package;
 use App\Models\User;
 use Carbon\Carbon;
@@ -35,7 +36,11 @@ class PackagesTest extends TestCase
     /** @test */
     public function 꾸러미에서_상태를_조회할_수_있다()
     {
+        $package = Package::factory()->create([
+            'finish_pack_wait_at' => Carbon::now()->addDays(1),
+        ]);
 
+        $this->assertEquals(StatePackage::WAIT_PACK, $package->refresh()->state);
 
     }
 
@@ -50,151 +55,19 @@ class PackagesTest extends TestCase
             'will_delivery_at' => Carbon::now()->addDays(1),
         ]);
 
-        $currentPackage = Package::factory()->create([
+        $canOrderPackage = Package::factory()->create([
             'will_delivery_at' => Carbon::now()->addDays(3),
         ]);
 
-        $item = $this->json('get', '/api/packages/current')->decodeResponseJson()['data'];
+        $item = $this->json('get', '/api/packages/canOrder')->decodeResponseJson()['data'];
 
-        $this->assertEquals($currentPackage->id, $item['id']);
+        $this->assertEquals($canOrderPackage->id, $item['id']);
 
     }
 
-    /** @test */
-    public function 현재_진행중인_패키지를_조회할_수_있다()
+    /*public function 현재_진행중인_패키지를_조회할_수_있다()
     {
         // 구성대기시작일  ≤ 현재 ≤ 도착예정일 + 1일
-    }
+    }*/
 
-    /** @test */
-    public function 나의_현재_꾸러미출고를_조회할_수_있다()
-    {
-// (마이페이지에 보여줄용)
-/*- **출고의 대상회차가 현재 진행중인 회차 리턴**
-- **패키지설정의 구독여부가 꺼져있다면 (active 0) null을 리턴**
-- **가장 최근 꾸러미 출고 리턴***/
-    }
-
-    /** @test */
-    public function 품목구성알림을_실행하면_품목구성완료일이_지난_이번회차를_대상회차로_설정해놓은_패키지설정을_보유한_사용자들에게_알림이_발송된다()
-    {
-/*# 알람조건
-        - 이번 회차여야함
-    - 현재시간이 품목구성완료일 이상이여야함
-    - 품목구성알림여부가 거짓이어야함
-    - 이번회차를 현재대상회차로 설정해놓은 출고를 보유한 사용자들이어야함
-
-# 알람
-    - 알람 발송 후 품목구성알림여부 1로 업데이트
-    - 해당 출고에 싱글,벙글이냐에 따라 품목 자동 연결*/
-    }
-
-    /** @test */
-    public function 품목구성알림이_실행되면_출고에_품목이_자동으로_연결된다()
-    {
-        // 비선호품목은 제외되고 제외된만큼 다른 품목 자동더하기 (반복문 돌려서 최소금액 채울때까지 랜덤으로 1개씩 추가하기)
-    }
-
-    /** @test */
-    public function 자동결제를_시도하면_현재_회차를_대상회차로_갖고있는_사용자들중_결제전인_출고에_대해_결제가_시도된다()
-    {
-
-
-    }
-
-    /** @test */
-    public function 결제가_성공사태가_되면_다음_출고가_자동생성된다()
-    {
-        // PackageSetting이 active라면 배송주기에 맞게 다음 출고 생성
-    }
-
-
-    /** @test */
-    public function 결제를_시도할_시_사용자의_쿠폰자동적용여부가_참이라면_쿠폰이_자동적용된다()
-    {
-        // 쿠폰유형이 꾸러미용이고 최소주문금액 맞출 경우 최대금액까지만 쓸 수 있게 쿠폰 찾아야할듯
-    }
-
-    /** @test */
-    public function 결제를_시도할_시_사용자의_적립금자동적용여부가_참이라면_적립금이_자동적용된다()
-    {
-        // 결제금액이 1000원 남을때까지만 적용
-    }
-
-    /** @test */
-    public function 자동결제를_실패하면_세번까지_재시도한다()
-    {
-
-
-    }
-
-    /** @test */
-    public function 세번까지_재시도를_실패하면_다음_회차로_자동미루기가_된다()
-    {
-/*- ***미루기 당기기 기록 생성 필요***
-- **쌓인 실패 orders의 수를 보기 (reason도 남겨)***/
-    }
-
-    /** @test */
-    public function 사용자는_출고의_품목구성을_수정할_수_있다()
-    {
-        /*materials
-            id
-            count*/
-
-    }
-
-    /** @test */
-    public function 출고의_대상회차에_있는_선택가능구성_및_기본구성_내에서만_수정할_수_있다()
-    {
-
-
-    }
-
-    /** @test */
-    public function 출고의_대상회차가_품목구성상태가_아니라면_수정할_수_없다()
-    {
-
-
-    }
-
-    /** @test */
-    public function 품목구성금액은_패키지유형의_최소금액을_맞춰야한다()
-    {
-
-
-    }
-
-    /** @test */
-    public function 출고에서_미루기_및_당기기_가능한_패키지를_조회할_수_있다()
-    {
-
-
-    }
-
-    /** @test */
-    public function 배송당기기를_할_수_있다()
-    {
-
-        /*- 출고가 결제대기중이어야함
-    - 해당 출고에 당기기 가능한 패키지가 있어야함
-    - 당길 경우 대상회차가 현재주문가능회차로 변경됨
-    - 배송당기기 히스토리가 생성됨*/
-    }
-
-    /** @test */
-    public function 배송미루기를_할_수_있다()
-    {
-
-        /*- 출고가 결제대기중이어야함
-    - 미룰 경우 대상회차가 현재회차의 바로 다음회차로 변경됨
-    - 배송미루기 히스토리가 생성됨*/
-    }
-
-    /** @test */
-    public function asd()
-    {
-
-
-    }
 }

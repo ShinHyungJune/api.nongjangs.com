@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
 use App\Enums\TypeDiscount;
 use App\Enums\TypeOption;
 use App\Enums\TypePackage;
+use App\Enums\TypePointHistory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 class PresetProduct extends Model
 {
@@ -29,7 +33,46 @@ class PresetProduct extends Model
         });
 
         self::updated(function (PresetProduct $presetProduct) {
-            // 구매확정 시 레벨업 계산
+            $user = User::withTrashed()->find($presetProduct->preset->user_id);
+
+
+            // 주문취소 시 반환처리
+            $prevState = $presetProduct->getOriginal('state');
+
+            if($prevState != StatePresetProduct::CANCEL && $presetProduct->state == StatePresetProduct::CANCEL){
+                if($presetProduct->coupon)
+                    $presetProduct->coupon->update(['use' => 0]);
+
+                if($presetProduct->point && $user)
+                    $user->givePoint($presetProduct->point, TypePointHistory::PRESET_PRODUCT_CANCLE, $presetProduct);
+
+                $user->update([
+                    'total_order_price' => $user->total_order_price - $presetProduct->price,
+                    'total_order_count_package' => $presetProduct->package_id ? $user->total_order_count_package - 1 : $user->total_order_count_package,
+                ]);
+            }
+
+            if($prevState != StatePresetProduct::CONFIRMED && $presetProduct->state == StatePresetProduct::CONFIRMED){
+                if($user && $user->grade) {
+                    $point = floor($presetProduct->price * $user->grade->ratio_refund);
+
+                    $user->givePoint($point, TypePointHistory::PRESET_PRODUCT_CONFIRM, $presetProduct);
+
+                    $user->update([
+                        'total_order_price' => $user->total_order_price + $presetProduct->price,
+                        'total_order_count_package' => $presetProduct->package_id ? $user->total_order_count_package + 1 : $user->total_order_count_package,
+                    ]);
+
+                    // 등급업 처리 필요
+                    $nextGrade = Grade::where('level', $user->grade->level + 1)->first();
+
+                    // 다음 등급이 있고 && 등급업을 위한 조건들을 이미 충족했을 때
+                    if($nextGrade && ($user->count_package_for_next_grade <= 0 || $user->price_for_next_grade <= 0)){
+                        $user->update(['grade_id' => $nextGrade->id]);
+                    }
+                }
+
+            }
         });
     }
 
@@ -120,17 +163,18 @@ class PresetProduct extends Model
 
             $this->products_price = $total;
 
-            $this->price = $total - $this->price_coupon;
+            $this->price = $total - $this->price_coupon - $this->point;
 
             return $this;
         }
 
         if($this->package){
+            // 일단 초기는 이렇게 잡았는데 상품구성에 따라 가격 달라져야함
             if($this->package->type == TypePackage::SINGLE)
-                $this->price = $this->package->price_single;
+                $this->price = $this->package->price_single - $this->price_coupon - $this->point;
 
             if($this->package->type == TypePackage::BUNGLE)
-                $this->price = $this->package->price_bungle;
+                $this->price = $this->package->price_bungle - $this->price_coupon - $this->point;
 
             return $this;
         }
@@ -191,7 +235,35 @@ class PresetProduct extends Model
 
     public function getCanConfirmAttribute()
     {
+        if(!auth()->user())
+            return 0;
 
+        if(auth()->user()->id != $this->preset->user_id)
+            return 0;
+
+        if($this->state == StatePresetProduct::DELIVERED)
+            return 1;
+
+        return 0;
+    }
+
+    public function getCanRequestCancelAttribute()
+    {
+        if(!auth()->user())
+            return 0;
+
+        if(auth()->user()->id != $this->preset->user_id)
+            return 0;
+
+        if(in_array($this->state, [
+            StatePresetProduct::WILL_OUT,
+            StatePresetProduct::ONGOING_DELIVERY,
+            StatePresetProduct::DELIVERED,
+        ])) {
+            return 1;
+        }
+
+        return 0;
     }
 
     public function getCanCancelAttribute()
@@ -202,19 +274,42 @@ class PresetProduct extends Model
         if(auth()->user()->id != $this->preset->user_id)
             return 0;
 
-        if($this->presetProducts()->whereIn('state', [
-                StatePresetProduct::READY,
-                StatePresetProduct::ONGOING_DELIVERY,
-                StatePresetProduct::DELIVERED,
-                StatePresetProduct::CONFIRMED,
-                StatePresetProduct::CANCEL,
-                StatePresetProduct::ONGOING_REFUND,
-                StatePresetProduct::FINISH_REFUND,
-                StatePresetProduct::DENY_REFUND,
-                ])->count() > 0) {
+        if(in_array($this->state, [
+            StatePresetProduct::WILL_OUT,
+            StatePresetProduct::ONGOING_DELIVERY,
+            StatePresetProduct::DELIVERED,
+            StatePresetProduct::CONFIRMED,
+            StatePresetProduct::CANCEL,
+            StatePresetProduct::REQUEST_CANCEL,
+            StatePresetProduct::DENY_CANCEL,
+        ])) {
             return 0;
         }
 
         return 1;
+    }
+
+
+    public function cancel()
+    {
+        $result = DB::transaction(function (){
+            $user = User::withTrashed()->find($this->preset->user_id);
+
+            if(config('app.env') != 'testing'){
+                $accessToken = Iamport::getAccessToken();
+
+                $result = Iamport::cancel($accessToken, $this->imp_uid, $this->price);
+
+                if(!$result["response"])
+                    return ["success" => false, "message" => $result["message"]];
+            }
+
+            // 취소처리
+            $this->update(["state" => StatePresetProduct::CANCEL, 'cancel_at' => Carbon::now()]);
+
+            return ["success" => true, "message" => "주문이 취소되었습니다."];
+        });
+
+        return $result;
     }
 }

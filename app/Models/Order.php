@@ -374,7 +374,7 @@ class Order extends Model
 
     public function getAdminCanCancelAttribute()
     {
-        if(!auth()->user() || !auth()->user()->admin)
+        /*if(!auth()->user() || !auth()->user()->admin)
             return 0;
 
         if($this->pay_method_method == "vbank")
@@ -387,29 +387,7 @@ class Order extends Model
             return 0;
         }
 
-        return 1;
-    }
-
-    public function cancel()
-    {
-        $result = DB::transaction(function (){
-            if(config('app.env') != 'testing'){
-                $accessToken = Iamport::getAccessToken();
-
-                $result = Iamport::cancel($accessToken, $this->imp_uid);
-
-                if(!$result["response"])
-                    return ["success" => false, "message" => $result["message"]];
-            }
-
-            $this->update(["state" => StateOrder::CANCEL]);
-
-            $this->presetProducts()->update(["preset_product.state" => StatePresetProduct::CANCEL]);
-
-            return ["success" => true, "message" => "주문이 취소되었습니다."];
-        });
-
-        return $result;
+        return 1;*/
     }
 
    /* public function coupon()

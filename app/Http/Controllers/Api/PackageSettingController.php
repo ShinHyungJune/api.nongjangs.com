@@ -121,10 +121,17 @@ class PackageSettingController extends ApiController
         if($request->name)
             $packageSetting->update(['name' => $request->name]);
 
-        if(isset($request->active))
-            $packageSetting->update(['active' => $request->active]);
+        if(isset($request->active)) {
+            $packageSetting->update([
+                'active' => $request->active,
+                'reason' => $request->reason ?? null,
+                'and_so_on' => $request->and_so_on ?? null,
+                'memo' => $request->memo ?? null,
+            ]);
+        }
 
-        return new PackageSettingResource($packageSetting);
+        return $this->respondSuccessfully(PackageSettingResource::make($packageSetting));
     }
+
 
 }

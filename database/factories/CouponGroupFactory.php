@@ -35,7 +35,7 @@ class CouponGroupFactory extends Factory
             'type_expire' => TypeExpire::FROM_DOWNLOAD,
             'started_at' => Carbon::now()->subDays(1),
             'finished_at' => Carbon::now()->addDays(30),
-            'days' => $this->faker->randomNumber(),
+            'days' => rand(0, 100),
 
             'grade_id' => null,
         ];

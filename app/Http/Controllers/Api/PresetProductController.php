@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Enums\StatePresetProduct;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PresetProductRequest;
+use App\Http\Resources\OrderResource;
+use App\Http\Resources\PackageResource;
 use App\Http\Resources\PresetProductResource;
 use App\Models\Coupon;
+use App\Models\Order;
 use App\Models\PresetProduct;
+use Carbon\Carbon;
 
 class PresetProductController extends ApiController
 {
@@ -31,6 +35,19 @@ class PresetProductController extends ApiController
         return PresetProductResource::collection($items);
     }
 
+    /** 상세
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function show(PresetProduct $presetProduct, PresetProductRequest $request)
+    {
+        if($presetProduct->preset->user_id != auth()->id())
+            return $this->respondForbidden();
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
     /** 쿠폰적용
      * @group 사용자
      * @subgroup PresetProduct(출고상품)
@@ -48,6 +65,9 @@ class PresetProductController extends ApiController
         if(!$coupons->where('coupons.id', $coupon->id)->first())
             return $this->respondForbidden('해당 상품에 적용할 수 없는 쿠폰입니다.');
 
+        if(!$presetProduct->product->can_use_coupon)
+            return $this->respondForbidden('쿠폰적용불가 상품입니다.');
+
         $presetProduct->update([
             'coupon_id' => $coupon->id,
             'price_coupon' => $presetProduct->calculatePriceCoupon($coupon),
@@ -56,4 +76,83 @@ class PresetProductController extends ApiController
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
 
+    /** 현재 대상 꾸러미 회차출고 상세
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function ongoingPackagePresetProduct()
+    {
+        $presetProduct = auth()->user()->ongoingPackagePresetProducts()->first();
+
+        $packageSetting = auth()->user()->packageSetting;
+
+        if(!$presetProduct){
+            // 구독 안하고 있음
+            if(!$packageSetting || !$packageSetting->active)
+                return $this->respondSuccessfully(null);
+
+            // 가장 최근
+            $presetProduct = auth()->user()->presetProducts()->whereNotNull('package_id')
+                ->orderBy('id', 'desc')
+                ->first();
+        }
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
+    /** 취소
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function cancel(PresetProduct $presetProduct)
+    {
+        if(!$presetProduct->can_cancel)
+            return $this->respondForbidden('취소 불가능한 상태입니다.');
+
+        $result = $presetProduct->cancel();
+
+        if(!$result['success'])
+            return $this->respondForbidden($result['message']);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
+    /** 취소요청
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function requestCancel(PresetProduct $presetProduct, PresetProductRequest $request)
+    {
+        if(!$presetProduct->can_request_cancel)
+            return $this->respondForbidden('취소 불가능한 상태입니다.');
+
+        $result = $presetProduct->update([
+            'state' => StatePresetProduct::REQUEST_CANCEL,
+            'request_cancel_at' => Carbon::now(),
+            'reason_request_cancel' => $request->reason_request_cancel,
+        ]);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
+    /** 구매확정
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function confirm(PresetProduct $presetProduct, PresetProductRequest $request)
+    {
+        if(!$presetProduct->can_confirm)
+            return $this->respondForbidden('구매확정할 수 없습니다.');
+
+        $presetProduct->update([
+            'state' => StatePresetProduct::CONFIRMED,
+            'confirm_at' => Carbon::now(),
+        ]);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
 }

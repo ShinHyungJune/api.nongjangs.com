@@ -76,6 +76,11 @@ class PresetProductRequest extends FormRequest
                         'coupon_id' => ['required', 'integer']
                     ];
 
+                case 'requestCancel':
+                    return [
+                        'reason_request_cancel' => 'required|string|max:5000'
+                    ];
+
 
                 default:
                     return [];

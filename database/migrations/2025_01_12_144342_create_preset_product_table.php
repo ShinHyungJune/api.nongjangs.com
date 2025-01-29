@@ -47,9 +47,13 @@ return new class extends Migration {
             $table->integer('delivery_company')->nullable()->comment('택배사');
             $table->date('delivery_at')->nullable()->comment('배송완료일자');
 
-            $table->text('reason_request_refund')->nullable()->comment('취소요청사유');
-            $table->text('reason_deny_refund')->nullable()->comment('취소요청 반려사유');
-            
+            $table->date('cancel_at')->nullable()->comment('주문취소날짜');
+            $table->date('request_cancel_at')->nullable()->comment('취소요청날짜');
+            $table->date('confirm_at')->nullable()->comment('구매확정일자');
+
+            $table->text('reason_request_cancel')->nullable()->comment('취소요청사유');
+            $table->text('reason_deny_cancel')->nullable()->comment('취소요청 반려사유');
+
             $table->timestamps();
         });
     }

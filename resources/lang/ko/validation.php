@@ -303,7 +303,7 @@ return [
 
         'type_delivery' => '배송유형',
         'coupon_id' => '쿠폰',
-
+        'reason_request_cancel' => '요청사유',
     ],
 
 ];

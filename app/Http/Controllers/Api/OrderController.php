@@ -204,30 +204,6 @@ class OrderController extends ApiController
         return $this->respondSuccessfully(OrderResource::make($order));
     }
 
-    /** 취소
-     * @group 사용자
-     * @subgroup Order(주문)
-     * @responseFile storage/responses/order.json
-     */
-    public function cancel(Order $order)
-    {
-        if(!auth()->user())
-            return $this->respondForbidden();
-
-        if($order->user_id != auth()->id())
-            return $this->respondForbidden();
-
-        if(!$order->can_cancel)
-            return $this->respondForbidden('취소 불가능한 상태입니다.');
-
-        $result = $order->cancel();
-
-        if(!$result['success'])
-            return $this->respondForbidden($result['message']);
-
-        return $this->respondSuccessfully(OrderResource::make($order));
-    }
-
     /** 회원용 상세
      * @group 사용자
      * @subgroup Order(주문)

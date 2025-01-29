@@ -46,6 +46,9 @@ class PackageSetting extends Model
 
                 StopHistory::create([
                     'user_id' => $packageSetting->user_id,
+                    'reason' => $packageSetting->reason,
+                    'and_so_on' => $packageSetting->and_so_on,
+                    'memo' => $packageSetting->memo,
                 ]);
             }
         });

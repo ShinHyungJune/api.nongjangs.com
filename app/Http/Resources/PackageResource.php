@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\StatePackage;
 use App\Enums\TypePackage;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -37,7 +38,7 @@ class PackageResource extends JsonResource
             'price_single' => $this->price_single,
             'price_bungle' => $this->price_bungle,
             'state' => $this->state,
-            'format_state' => $this->format_state,
+            'format_state' => StatePackage::getLabel($this->state),
         ];
     }
 }

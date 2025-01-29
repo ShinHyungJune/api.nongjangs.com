@@ -10,14 +10,14 @@ use Carbon\Carbon;
 
 class PackageController extends ApiController
 {
-    /** 상세(현재 회차 Carbon::now()->addWeek())
+    /** 현재 구매 가능한 꾸러미 회차 상세
      * @group 사용자
      * @subgroup Package(꾸러미)
      * @responseFile storage/responses/package.json
      */
-    public function current()
+    public function canOrder()
     {
-        $findPackage = Package::getCurrent();
+        $findPackage = Package::getCanOrder();
 
         if(!$findPackage)
             return $this->respondForbidden('현재 구매할 수 있는 회차가 없습니다.');

@@ -1,9 +1,11 @@
 {
   "id": "고유번호",
-  "state": "상태 (1 - BEFORE_PAYMENT 결제전 | 2 - WAIT 결제대기 | 3 - READY 배송준비 | 4 - WILL_OUT 출고예정 | 5 - ONGOING_DELIVERY 배송중 | 6 - DELIVERED 배송완료 | 7 - CONFIRMED 구매확정 | 8 - CANCEL 주문취소 | 9 - ONGOING_REFUND 교환/반품 진행중 | 10 - FINISH_REFUND 교환/반품 완료 | 11 - DENY_REFUND 교환/반품 반려)",
-  "reason_request_refund": "취소요청사유",
-  "reason_deny_refund": "취소요청 반려사유",
+  "state": "상태 (1 - BEFORE_PAYMENT 결제전 | 2 - WAIT 결제대기 | 3 - READY 배송준비 | 4 - WILL_OUT 출고예정 | 5 - ONGOING_DELIVERY 배송중 | 6 - DELIVERED 배송완료 | 7 - CONFIRMED 구매확정 | 8 - CANCEL 주문취소 | 9 - REQUEST_CANCEL 취소요청 | 10 - DENY_REFUND 취소요청반려)",
   "price": "결제금액",
+  "reason_request_cancel": "취소요청사유",
+  "reason_deny_cancel": "취소요청 반려사유",
+  "format_cancel_at": "표시용 주문취소 일자",
+  "format_request_cancel_at": "표시용 주문취소 요청일자",
   "product": {
     "id": "고유번호",
     "img": "이미지 객체",
@@ -56,5 +58,6 @@
   "canFastPackage": "당기기 가능한 회차 객체 (null주의)",
   "can_confirm": "구매확정 가능여부",
   "can_review": "리뷰작성 가능여부",
-  "can_cancel" : "주문취소 가능여부"
+  "can_cancel" : "주문취소 가능여부",
+  "can_request_cancel": "취소신청 가능여부"
 }

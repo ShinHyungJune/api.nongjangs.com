@@ -16,6 +16,7 @@ use App\Models\CreateCategory;
 use App\Models\Grade;
 use App\Models\Order;
 use App\Models\Package;
+use App\Models\PackageSetting;
 use App\Models\Point;
 use App\Models\PointHistory;
 use App\Models\Preset;
@@ -218,7 +219,7 @@ password_new_confirmation*/
     {
         $pointHistories = PointHistory::factory()->count(5)->create([
             'increase' => 0,
-            'point_id' => Point::factory()->create(['user_id' => $this->user->id])->id,
+            'user_id' => $this->user->id,
             'point' => 200
         ]);
 
@@ -296,16 +297,12 @@ agree_promotion*/
     /** @test */
     public function 사용자가_탈퇴를_하면_대기중인_패키지출고는_삭제된다()
     {
-        // package_setting active 되어있었으면 0처리 및 결제준비중인 꾸러미출고 삭제
-        $preset = Preset::factory()->create([
-            'user_id' => $this->user->id
+        $packageSetting = PackageSetting::factory()->create([
+            'user_id' => $this->user->id,
+            'active' => 1,
         ]);
 
-        $presetProduct = PresetProduct::create([
-            'preset_id' => $preset->id,
-            'package_id' => Package::factory()->create()->id,
-            'state' => StatePresetProduct::BEFORE_PAYMENT
-        ]);
+        $this->assertEquals(1, PresetProduct::count());
 
         $this->json('delete', '/api/users')->assertStatus(200);
 

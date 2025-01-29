@@ -486,9 +486,4 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
         return $nextGrade->min_price - $this->total_order_price;
     }
-
-    public function getCurrentPackagePresetProductAttribute()
-    {
-
-    }
 }
