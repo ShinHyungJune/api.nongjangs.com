@@ -6,6 +6,7 @@ use App\Enums\TypeBanner;
 use App\Enums\TypeTag;
 use App\Models\Banner;
 use App\Models\Coupon;
+use App\Models\PointHistory;
 use App\Models\Tag;
 use App\Models\User;
 use Carbon\Carbon;
@@ -40,6 +41,16 @@ class PointHistoriesTest extends TestCase
     /** @test */
     public function 나의_목록을_조회할_수_있다()
     {
+        $myModels = PointHistory::factory()->count(3)->create([
+            'user_id' => $this->user->id,
+        ]);
 
+        $otherModels = PointHistory::factory()->count(2)->create([
+            'user_id' => $this->other->id,
+        ]);
+
+        $items = $this->json('get', '/api/pointHistories')->decodeResponseJson()['data'];
+
+        $this->assertEquals(count($myModels), count($items));
     }
 }

@@ -29,13 +29,10 @@ class PackageSettingFactory extends Factory
             'type_package' => TypePackage::BUNGLE,
             'term_week' => 3,
             'active' => 1,
-            'will_order_at' => Carbon::now()->addWeek(),
-            'retry' => 0,
 
             'user_id' => $user->id,
             'card_id' => $card->id,
             'delivery_id' => $delivery->id,
-            'first_package_id' => $package->id,
         ];
     }
 }

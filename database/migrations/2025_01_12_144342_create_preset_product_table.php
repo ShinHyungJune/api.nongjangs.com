@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('package_name')->nullable()->comment('꾸러미 이름');
             $table->string('package_count')->nullable()->comment('꾸러미 회차');
             $table->date('package_will_delivery_at')->nullable()->comment('꾸러미 도착예정일');
-            $table->boolean('package_setting_active')->nullable()->comment('구독활성여부 (1회성인지 정기구독인지)');
+            $table->boolean('package_active')->nullable()->comment('구독활성여부 (1회성인지 정기구독인지)');
             $table->integer('package_type')->nullable()->comment('꾸러미 유형');
             $table->unsignedBigInteger('package_price')->nullable()->comment('패키지 가격');
 

@@ -9,7 +9,8 @@ return new class extends Migration {
     {
         Schema::create('point_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('point_id')->constrained('points')->onDelete('cascade');
+            // $table->foreignId('point_id')->constrained('points')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->unsignedBigInteger('point_historiable_id')->nullable();
             $table->string('point_historiable_type')->nullable();
             $table->integer('type');

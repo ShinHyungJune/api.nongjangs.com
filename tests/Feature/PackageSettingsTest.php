@@ -8,6 +8,7 @@ use App\Models\Delivery;
 use App\Models\Material;
 use App\Models\Package;
 use App\Models\PackageSetting;
+use App\Models\PresetProduct;
 use App\Models\StopHistory;
 use App\Models\User;
 use Carbon\Carbon;
@@ -26,6 +27,7 @@ class PackageSettingsTest extends TestCase
     protected $form;
     protected $delivery;
     protected $card;
+    protected $canOrderPackage;
 
     protected function setUp(): void
     {
@@ -53,6 +55,8 @@ class PackageSettingsTest extends TestCase
             'unlike_material_ids' => $this->materials->pluck('id')->toArray(),
             'active' => 1,
         ];
+
+        $this->canOrderPackage = Package::factory()->create();
     }
 
     /** @test */
@@ -72,15 +76,32 @@ class PackageSettingsTest extends TestCase
     }
 
     /** @test */
-    public function 패키지설정이_생성되면_현재이용가능회차를_대상으로_출고가_생성된다()
+    public function 패키지설정이_생성되면_현재구매가능회차를_대상으로_출고가_생성된다()
     {
         // 출고에 pacakge_setting_active도 기록 필요 (1회성인지 아닌지 구분용)
+        $item = $this->json('post', '/api/packageSettings', $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals(1, PresetProduct::whereNotNull('package_id')->count());
     }
 
     /** @test */
-    public function 패키지설정의_활성여부가_참으로_수정됐을때_진행중인_출고가_없으면_출고가_새로_생성된다()
+    public function 패키지설정의_활성여부가_참으로_수정됐을때_대기중이거나_진행중인_출고가_없으면_출고가_새로_생성된다()
     {
         // 대상회차가 현재구매가능한 회차로 설정되어있는 출고가 없다면 새로 생성
+        $packageSetting = PackageSetting::factory()->create([
+            'user_id' => $this->user->id,
+            'active' => 0
+        ]);
+
+        $presetProducts = PresetProduct::get();
+
+        foreach($presetProducts as $presetProduct){
+            $presetProduct->delete();
+        }
+
+        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, $this->form)->decodeResponseJson()['data'];
+
+        $this->assertEquals(1, PresetProduct::whereNotNull('package_id')->count());
     }
 
     /** @test */
@@ -205,14 +226,16 @@ class PackageSettingsTest extends TestCase
             'user_id' => $this->user->id,
         ]);
 
-        $item = $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
-            'active' => 0,
-        ])->decodeResponseJson()['data'];
+        $this->assertEquals(1, PresetProduct::count());
 
-        $this->assertEquals($item['active'], 0);
+        $this->json('patch', '/api/packageSettings/'.$packageSetting->id, [
+            'active' => 0,
+        ])->assertStatus(200);
+
+        $this->assertEquals(0, $packageSetting->refresh()->active);
+
+        $this->assertEquals(0, PresetProduct::count());
 
         $this->assertEquals(1, StopHistory::count());
-
-        $this->assertEquals(true, false);
     }
 }

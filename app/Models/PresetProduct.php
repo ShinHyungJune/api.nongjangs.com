@@ -27,6 +27,10 @@ class PresetProduct extends Model
         self::updating(function (PresetProduct $presetProduct) {
             $presetProduct = $presetProduct->calculatePrice();
         });
+
+        self::updated(function (PresetProduct $presetProduct) {
+            // 구매확정 시 레벨업 계산
+        });
     }
 
     public function preset(): BelongsTo
@@ -121,11 +125,15 @@ class PresetProduct extends Model
             return $this;
         }
 
-        if($this->package->type == TypePackage::SINGLE)
-            $this->price = $this->package->price_single;
+        if($this->package){
+            if($this->package->type == TypePackage::SINGLE)
+                $this->price = $this->package->price_single;
 
-        if($this->package->type == TypePackage::BUNGLE)
-            $this->price = $this->package->price_bungle;
+            if($this->package->type == TypePackage::BUNGLE)
+                $this->price = $this->package->price_bungle;
+
+            return $this;
+        }
 
         return $this;
     }

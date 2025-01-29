@@ -25,5 +25,4 @@ class PointHistoryController extends ApiController
 
         return PointHistoryResource::collection($items);
     }
-
 }

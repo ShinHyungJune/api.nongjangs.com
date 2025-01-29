@@ -87,9 +87,14 @@ class UserRequest extends FormRequest
 
                 case "update":
                     return [
-                        'name' => 'required|string|max:500',
-                        'contact' => 'required|string|max:500|unique:users,contact,'.auth()->id(),
-                        "password" => "nullable|string|min:8|confirmed",
+                        'password' => 'nullable|string|min:8|max:500|confirmed',
+                        'name' => 'nullable|string|max:500',
+                        'contact' => 'nullable|string|max:500|unique:users,contact,'.auth()->id(),
+                        'nickname' => 'nullable|string|max:500|unique:users,nickname,'.auth()->id(),
+                        'message' => 'nullable|string|max:500',
+                        'birth' => 'nullable|date',
+                        'count_family' => 'nullable|integer',
+                        'agree_promotion' => 'nullable|boolean',
                     ];
 
                 case "destroy":
@@ -152,6 +157,12 @@ class UserRequest extends FormRequest
             "email" => [
                 "description" => "<span class='point'>이메일</span>"
             ],
+            "contact" => [
+                "description" => "<span class='point'>연락처</span>"
+            ],
+            "count_family" => [
+                "description" => "<span class='point'>가구원수</span>"
+            ],
             "password" => [
                 "description" => "<span class='point'>비밀번호</span>"
             ],
@@ -167,8 +178,14 @@ class UserRequest extends FormRequest
             "name" => [
                 "description" => "<span class='point'>이름</span>"
             ],
-            "contact" => [
-                "description" => "<span class='point'>연락처</span>"
+            "nickname" => [
+                "description" => "<span class='point'>닉네임</span>"
+            ],
+            "birth" => [
+                "description" => "<span class='point'>생년월</span>"
+            ],
+            "message" => [
+                "description" => "<span class='point'>프로필 메시지</span>"
             ],
             "agree_promotion" => [
                 "description" => "<span class='point'>프로모션 수신여부</span>"

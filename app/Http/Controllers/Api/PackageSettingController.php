@@ -8,6 +8,7 @@ use App\Models\Card;
 use App\Models\Delivery;
 use App\Models\Package;
 use App\Models\PackageSetting;
+use App\Models\Preset;
 use Carbon\Carbon;
 
 class PackageSettingController extends ApiController
@@ -31,7 +32,6 @@ class PackageSettingController extends ApiController
      */
     public function store(PackageSettingRequest $request)
     {
-        $currentPackage = Package::getCurrent();
 
         if($request->delivery_id) {
             $delivery = Delivery::find($request->delivery_id);
@@ -51,11 +51,9 @@ class PackageSettingController extends ApiController
             'user_id' => auth()->id(),
         ],array_merge([
             'user_id' => auth()->id(),
-            'first_package_id' => $request->active && $currentPackage ? $currentPackage->id : null,
-            'will_order_at' => $request->active && $currentPackage ? Carbon::make($currentPackage->will_delivery_at)->subDays(2)->setHours(0)->setSeconds(0) : null,
         ], $request->validated()));
 
-        $item = auth()->user()->packageSetting;
+        $packageSetting = auth()->user()->packageSetting;
 
         if($request->unlike_material_ids) {
             $materials = [];
@@ -64,10 +62,10 @@ class PackageSettingController extends ApiController
                 $materials[$id] = ['unlike' => 1];
             }
 
-            $item->materials()->sync($materials);
+            $packageSetting->materials()->sync($materials);
         }
 
-        return $this->respondSuccessfully(PackageSettingResource::make($item));
+        return $this->respondSuccessfully(PackageSettingResource::make($packageSetting));
     }
 
     /** 수정

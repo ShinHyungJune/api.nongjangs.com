@@ -6,6 +6,7 @@ use App\Enums\TypeBanner;
 use App\Enums\TypeTag;
 use App\Models\Banner;
 use App\Models\Coupon;
+use App\Models\Point;
 use App\Models\Tag;
 use App\Models\User;
 use Carbon\Carbon;
@@ -40,6 +41,20 @@ class PointsTest extends TestCase
     /** @test */
     public function 유효기간만료처리를_실행하면_유효기간이_만료된_포인트들은_회수되고_포인트내역이_생성된다()
     {
+        $expiredPoints = Point::factory()->count(3)->create([
+            'user_id' => $this->user->id,
+            'expired_at' => Carbon::now()->subDays(2),
+            'point' => 100
+        ]);
 
+        $notExpiredPoints = Point::factory()->count(2)->create([
+            'user_id' => $this->user->id,
+            'expired_at' => Carbon::now()->addDay(),
+            'point' => 10
+        ]);
+
+        $this->artisan('take:expiredPoints');
+
+        $this->assertEquals(20, $this->user->refresh()->point);
     }
 }

@@ -7,8 +7,10 @@ use App\Enums\SocialPlatform;
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
 use App\Enums\TypeCouponGroup;
+use App\Enums\TypePointHistory;
 use App\Models\임시\Product;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -260,15 +262,6 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         return $this->alarms()->where('read', 0)->count();
     }
 
-    public function getCountOngoingPresetProductAttribute()
-    {
-        return $this->presetProducts()->whereIn('state', [
-            StatePresetProduct::WAIT,
-            StatePresetProduct::READY,
-            StatePresetProduct::ONGOING_DELIVERY
-        ])->count();
-    }
-
     public function getCountCouponAttribute()
     {
         return $this->coupons()->where('use', 0)->count();
@@ -294,17 +287,31 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     public function ongoingPresetProducts()
     {
         return $this->presetProducts()
-            ->whereIn('state', [StatePresetProduct::READY, StatePresetProduct::ONGOING_PROTOTYPE, StatePresetProduct::FINISH_PROTOTYPE, StatePresetProduct::ONGOING_DELIVERY]);
+            ->whereIn('state', [
+                StatePresetProduct::WAIT,
+                StatePresetProduct::READY,
+                StatePresetProduct::ONGOING_DELIVERY
+            ]);
+    }
+
+    public function ongoingPackagePresetProducts()
+    {
+        return $this->presetProducts()
+            ->whereIn('state', [
+                StatePresetProduct::BEFORE_PAYMENT,
+                StatePresetProduct::READY,
+                StatePresetProduct::WAIT,
+                StatePresetProduct::READY,
+                StatePresetProduct::ONGOING_DELIVERY
+            ])->orWhere(function (Builder $query) {
+                $query->where('state', StatePresetProduct::DELIVERED)
+                    ->where('package_will_delivery_at', '>=', Carbon::now()->subDay()->startOfDay());
+        });
     }
 
     public function getCountOngoingPresetProductAttribute()
     {
         return $this->ongoingPresetProducts()->count();
-    }
-
-    public function getCountPackageAttribute()
-    {
-        return $this->presetProducts()->whereNotIn('state', [StatePresetProduct::WAIT, StatePresetProduct::BEFORE_PAYMENT, StatePresetProduct::CANCEL])->count();
     }
 
     public function getFormatOngoingPresetProductsAttribute()
@@ -331,17 +338,17 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
     public function pointHistories()
     {
-        return $this->hasManyThrough(PointHistory::class, Point::class);
+        return $this->hasMany(PointHistory::class);
     }
 
     public function getPointUseAttribute()
     {
-        return $this->pointHistories()->where('increase', 0)->sum('point');
+        return $this->pointHistories()->where('increase', 0)->sum('point_histories.point');
     }
 
     public function getPointAttribute()
     {
-
+        return $this->points()->sum('point');
     }
 
     public function packageSetting()
@@ -382,5 +389,106 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     public function points()
     {
         return $this->hasMany(Point::class);
+    }
+
+    public function givePoint($point, $type, $relationModel = null)
+    {
+        $pointModel = $this->points()->create([
+            'point' => $point
+        ]);
+
+        PointHistory::create([
+            'point_id' => $pointModel->id,
+            'type' => $type,
+            'increase' => 1,
+            'point' => $point,
+            'point_leave' => $this->point,
+            'point_historiable_type' => $relationModel ? get_class($relationModel) : null,
+            'point_historiable_id' => $relationModel ? $relationModel->id : null,
+            'user_id' => $this->id,
+        ]);
+    }
+
+    public function takePoint($point, $type, $relationModel = null, $pointModel)
+    {
+        return \DB::transaction(function () use ($point, $type, $relationModel, $pointModel) {
+            // 특정 포인트에서만 차감
+            if ($pointModel) {
+                $pointModel->update([
+                    'point' => $pointModel->point - $point
+                ]);
+
+                return PointHistory::create([
+                    'type' => $type,
+                    'increase' => 0,
+                    'point' => $point,
+                    'point_leave' => $this->point,
+                    'point_historiable_type' => $relationModel ? get_class($relationModel) : null,
+                    'point_historiable_id' => $relationModel ? $relationModel->id : null,
+                    'user_id' => $this->id,
+                ]);
+            }
+
+            // 여러 포인트에서 차감
+            $pointModels = $this->points()->oldest()->where('point', '>', 0)->cursor();
+            $pointTakeTotal = 0;
+
+            foreach ($pointModels as $pointModel) {
+                if ($point <= 0)
+                    break;
+
+                $pointTake = min($pointModel->point, $point);
+                $pointTakeTotal += $pointTake;
+                $point -= $pointTake;
+
+                $pointModel->update(['point' => $pointModel->point - $pointTake]);
+            }
+
+            // 히스토리 기록
+            return PointHistory::create([
+                'type' => $type,
+                'increase' => 0,
+                'point' => $pointTakeTotal,
+                'point_leave' => $this->point,
+                'point_historiable_type' => $relationModel ? get_class($relationModel) : null,
+                'point_historiable_id' => $relationModel ? $relationModel->id : null,
+                'user_id' => $this->id,
+            ]);
+        });
+    }
+
+    public function getCountPackageForNextGradeAttribute()
+    {
+        $grade = $this->grade;
+
+        if(!$grade)
+            return 0;
+
+        $nextGrade = Grade::where('level', $grade->level + 1)->first();
+
+        if(!$nextGrade)
+            return 0;
+
+        return $nextGrade->min_count_package - $this->total_order_count_package;
+    }
+
+    public function getPriceForNextGradeAttribute()
+    {
+        $grade = $this->grade;
+
+        if(!$grade)
+            return 0;
+
+        $nextGrade = Grade::where('level', $grade->level + 1)->first();
+
+        if(!$nextGrade)
+            return 0;
+
+        return $nextGrade->min_price - $this->total_order_price;
+    }
+
+    public function getCurrentPackagePresetProductAttribute()
+    {
+
     }
 }

@@ -47,7 +47,8 @@ class CreateUsersTable extends Migration
 
             $table->text("push_token")->nullable();
 
-
+            $table->unsignedBigInteger('total_order_price')->default(0)->comment('총 구매금액');
+            $table->unsignedBigInteger('total_order_count_package')->default(0)->comment('총 구매회차');
 
             $table->rememberToken();
             $table->timestamps();

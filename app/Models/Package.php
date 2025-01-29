@@ -62,7 +62,7 @@ class Package extends Model
         return $this->packageMaterials()->where('type', TypePackageMaterial::BUNGLE)->sum('price');
     }
 
-    public static function getCurrent()
+    public static function getCanOrder()
     {
         $packages = Package::where('will_delivery_at', '>=', Carbon::now()->startOfDay())
             ->orderBy('count', 'asc')

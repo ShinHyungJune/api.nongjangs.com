@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('stop_preset_product_id')->nullable()->comment('중단된 내역')->constrained('users')->onDelete('cascade');
-            $table->string('reason')->comment('사유');
+            $table->string('reason')->nullable()->comment('사유');
             $table->text('and_so_on')->nullable()->comment('기타 직접입력');
             $table->text('memo')->nullable();
             $table->timestamps();

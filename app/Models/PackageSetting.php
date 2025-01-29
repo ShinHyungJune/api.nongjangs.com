@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Enums\StatePresetProduct;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Log;
 
 class PackageSetting extends Model
 {
@@ -25,12 +27,44 @@ class PackageSetting extends Model
             $packageSetting->name = $packageSetting->user->nickname."의 꾸러미";
         });
 
+        self::created(function (PackageSetting $packageSetting) {
+            $packageSetting->createPresetProduct();
+        });
+
         self::updated(function (PackageSetting $packageSetting) {
             $prevActive = $packageSetting->getOriginal('active');
 
-            if($prevActive && !$packageSetting->active)
-                $packageSetting->stopHistories()->create();
+            if(!$prevActive && $packageSetting->active){
+                $ongoingPackagePresetProduct = $packageSetting->user->ongoingPackagePresetProducts()->first();
+
+                if(!$ongoingPackagePresetProduct)
+                    $packageSetting->createPresetProduct();
+            }
+
+            if($prevActive && !$packageSetting->active) {
+                $packageSetting->user->presetProducts()->whereNotNull('package_id')->where('state', StatePresetProduct::BEFORE_PAYMENT)->delete();
+
+                StopHistory::create([
+                    'user_id' => $packageSetting->user_id,
+                ]);
+            }
         });
+    }
+
+    public function createPresetProduct()
+    {
+        $canOrderPackage = Package::getCanOrder();
+
+        $preset = Preset::create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $result = $preset->attachProducts([
+            'package_id' => $canOrderPackage->id
+        ], $this);
+
+        if(!$result['success'])
+            Log::error('[패키지 생성] 회차출고생성 실패', ['message' => $result['message']]);
     }
 
     public function stopHistories()

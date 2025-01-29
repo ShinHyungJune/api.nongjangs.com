@@ -6,6 +6,7 @@ use App\Enums\TypeBanner;
 use App\Enums\TypeTag;
 use App\Models\Banner;
 use App\Models\Coupon;
+use App\Models\Grade;
 use App\Models\Tag;
 use App\Models\User;
 use Carbon\Carbon;
@@ -40,24 +41,12 @@ class GradesTest extends TestCase
     /** @test */
     public function 누구나_목록을_조회할_수_있다()
     {
+        $grades = Grade::factory()->count(10)->create();
 
-    }
+        $items = $this->json('get', '/api/grades', [
+            ''
+        ])->decodeResponseJson()['data'];
 
-    /** @test */
-    public function 다음_등급_레벨업을_위해_남은_금액과_회차를_알_수_있다()
-    {
-        $includeBanners = Banner::factory()->count(5)->create([
-            'started_at' => Carbon::now()->subDay(),
-            'finished_at' => Carbon::now()->addDay(),
-        ]);
-
-        $excludeBanners = Banner::factory()->count(3)->create([
-            'started_at' => Carbon::now()->addDays(1),
-            'finished_at' => Carbon::now()->addDays(2),
-        ]);
-
-        $items = $this->json('get', '/api/banners')->decodeResponseJson()['data'];
-
-        $this->assertEquals(count($includeBanners), count($items));
+        $this->assertEquals(count($grades), count($items));
     }
 }

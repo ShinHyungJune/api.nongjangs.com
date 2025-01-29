@@ -65,6 +65,11 @@ class UserResource extends JsonResource
             'count_ongoing_preset_product' => $this->count_ongoing_preset_product,
             'count_coupon' => $this->count_coupon,
 
+            'count_package_for_next_grade' => $this->count_package_for_next_grade,
+            'price_for_next_grade' => $this->price_for_next_grade,
+            'total_order_price' => $this->total_order_price,
+            'total_order_count_package' => $this->total_order_count_package,
+
             "created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y-m-d H:i") : "",
             "format_created_at" => $this->created_at ? Carbon::make($this->created_at)->format("Y.m.d") : "",
             "updated_at" => $this->updated_at ? Carbon::make($this->updated_at)->format("Y-m-d H:i") : "",

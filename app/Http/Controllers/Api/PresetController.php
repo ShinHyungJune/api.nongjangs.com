@@ -19,7 +19,7 @@ class PresetController extends ApiController
     {
         $preset = auth()->user()->presets()->create();
 
-        $result = $preset->attachProducts($request);
+        $result = $preset->attachProducts($request->all());
 
         if(!$result['success'])
             return $this->respondForbidden($result['message']);
@@ -37,7 +37,7 @@ class PresetController extends ApiController
         if(!$preset->can_order)
             return $this->respondForbidden('수정할 수 없습니다.');
 
-        $result = $preset->attachProducts($request);
+        $result = $preset->attachProducts($request->all());
 
         if(!$result['success'])
             return $this->respondForbidden($result['message']);

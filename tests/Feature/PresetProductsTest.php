@@ -326,6 +326,18 @@ class PresetProductsTest extends TestCase
     }
 
     /** @test */
+    public function 구매확정이_되면_사용자의_등급이_갱신된()
+    {
+
+    }
+
+    /** @test */
+    public function 구매확정이_되면_누적구매액과_누적회차수가_갱신된다()
+    {
+
+    }
+
+    /** @test */
     public function 배송상태갱신을_실행하면_배송상태가_수정된다()
     {
         // API 참고해서 추가설계필요

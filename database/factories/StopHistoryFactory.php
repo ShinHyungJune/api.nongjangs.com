@@ -17,8 +17,6 @@ class StopHistoryFactory extends Factory
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'memo' => $this->faker->word(),
-
-            'package_id' => Package::factory(),
         ];
     }
 }

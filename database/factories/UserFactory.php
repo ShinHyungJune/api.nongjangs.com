@@ -22,7 +22,6 @@ class UserFactory extends Factory
             'agree_promotion' => 0,
 
             'password' => $this->faker->title,
-            'point' => 0,
         ];
     }
 }

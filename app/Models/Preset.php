@@ -6,6 +6,7 @@ use App\Enums\StateOrder;
 use App\Enums\TypeDelivery;
 use App\Enums\TypeDeliveryPrice;
 use App\Enums\TypeOption;
+use App\Enums\TypePackage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -187,42 +188,85 @@ class Preset extends Model
         return 0;
     }
 
-    public function attachProducts($request)
+    public function attachProducts($data, $packageSetting = null)
     {
-
         \DB::beginTransaction();
 
         try {
             $this->presetProducts()->delete();
 
-            foreach ($request->options as $optionData) {
-                // 옵션과 해당 제품 조회
-                $option = Option::find($optionData['id']);
-                $product = $option->product;
+            if(isset($data['options'])){
+                foreach ($data['options'] as $optionData) {
+                    // 옵션과 해당 제품 조회
+                    $option = Option::find($optionData['id']);
+                    $product = $option->product;
 
-                // 조건을 체크하는 부분 (예시: count가 0이면 실패)
-                if ($optionData['count'] > $option->count) {
+                    // 조건을 체크하는 부분 (예시: count가 0이면 실패)
+                    if ($optionData['count'] > $option->count) {
+                        \DB::rollBack();
+
+                        return [
+                            'success' => false,
+                            'message' => $option->title."의 재고가 부족합니다.",
+                        ];
+                    }
+
+                    $this->presetProducts()->create([
+                        'product_id' => $product->id,
+                        'option_id' => $option->id,
+                        'product_title' => $product->title,
+                        'product_price' => $product->price,
+                        'product_price_origin' => $product->price_origin,
+                        'count' => $optionData['count'],
+                        'option_title' => $option->title,
+                        'option_price' => $option->price,
+                        'option_type' => $option->type,
+                    ]);
+                }
+            }
+
+            if(isset($data['package_id'])){
+                $package = Package::find($data['package_id']);
+
+                $canOrderPackage = Package::getCanOrder();
+
+                if(!$packageSetting){
                     \DB::rollBack();
 
                     return [
                         'success' => false,
-                        'message' => $option->title."의 재고가 부족합니다.",
+                        'message' => "구독설정을 먼저 진행해주세요.",
+                    ];
+                }
+
+                if(!$canOrderPackage){
+                    \DB::rollBack();
+
+                    return [
+                        'success' => false,
+                        'message' => "현재 주문 가능한 회차가 없습니다. 관리자에게 문의하세요.",
+                    ];
+                }
+
+                if($canOrderPackage->id != $package->id){
+                    \DB::rollBack();
+
+                    return [
+                        'success' => false,
+                        'message' => "해당 회차는 주문 가능한 회차가 아닙니다",
                     ];
                 }
 
                 $this->presetProducts()->create([
-                    'product_id' => $product->id,
-                    'option_id' => $option->id,
-                    'product_title' => $product->title,
-                    'product_price' => $product->price,
-                    'product_price_origin' => $product->price_origin,
-                    'count' => $optionData['count'],
-                    'option_title' => $option->title,
-                    'option_price' => $option->price,
-                    'option_type' => $option->type,
+                    'package_id' => $package->id,
+                    'package_name' => $packageSetting->name,
+                    'package_count' => $package->count,
+                    'package_will_delivery_at' => $package->will_delivery_at,
+                    'package_active' => $packageSetting->active,
+                    'package_type' => $packageSetting->type,
+                    'package_price' => $packageSetting->type == TypePackage::BUNGLE ? $package->price_bungle : $package->price_single,
                 ]);
             }
-
             // 모든 작업이 정상적으로 완료되면 트랜잭션 커밋
             \DB::commit();
 

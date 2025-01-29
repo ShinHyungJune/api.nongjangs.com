@@ -144,7 +144,7 @@ class Order extends Model
                 $user->pointHistories()->create([
                     'point_current' => $user->point,
                     'point' => $this->point_use,
-                    'type' => TypePointHistory::ORDER_CANCLED,
+                    'type' => TypePointHistory::PRESET_PRODUCT_CANCLE,
                     'increase'=>1,
                 ]);
             }

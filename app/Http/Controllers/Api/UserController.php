@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\StatePresetProduct;
 use App\Enums\TypePointHistory;
 use App\Enums\TypeUser;
 use App\Http\Controllers\Api\ApiController;
@@ -210,13 +211,7 @@ class UserController extends ApiController
      */
     public function update(UserRequest $request)
     {
-        $data = [
-            'name' => $request->name,
-            'address' => $request->address,
-            'address_detail' => $request->address_detail,
-            'address_zipcode' => $request->address_zipcode,
-            'contact' => $request->contact,
-        ];
+        $data = $request->validated();
 
         if(auth()->user()->contact != $request->contact){
             $verifyNumber = VerifyNumber::where('ids', $request->contact)
@@ -246,10 +241,19 @@ class UserController extends ApiController
      */
     public function destroy(UserRequest $request)
     {
+        if(auth()->user()->ongoingPresetProducts()->count() > 0)
+            return $this->respondForbidden('진행중인 출고가 있어 탈퇴가 불가능합니다. 고객센터에 문의해주세요.');
+
         auth()->user()->update([
             'reason' => $request->reason,
             'and_so_on' => $request->and_so_on,
         ]);
+
+        $packageSetting = auth()->user()->packageSetting;
+
+        // 꾸러미 비활성처리
+        if($packageSetting)
+            $packageSetting->update(['active' => 0]);
 
         auth()->user()->delete();
 
@@ -298,25 +302,8 @@ class UserController extends ApiController
 
         $point = User::$recommendPoint;
 
-        auth()->user()->update(['point' => auth()->user()->point + $point]);
-
-        $user->update(['point' => $user->point + $point]);
-
-        PointHistory::create([
-            'type' => TypePointHistory::USER_RECOMMEND,
-            'increase' => 1,
-            'point' => $point,
-            'point_current' => auth()->user()->point,
-            'user_id' => auth()->id(),
-        ]);
-
-        PointHistory::create([
-            'type' => TypePointHistory::USER_RECOMMENDED,
-            'increase' => 1,
-            'point' => $point,
-            'point_current' => $user->point,
-            'user_id' => $user->id,
-        ]);
+        auth()->user()->givePoint($point, TypePointHistory::USER_RECOMMEND, $user);
+        $user->givePoint($point, TypePointHistory::USER_RECOMMENDED, auth()->user());
 
         $user->update(['code_recommend' => $request->code_recommend]);
 

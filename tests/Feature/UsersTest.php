@@ -13,7 +13,11 @@ use App\Models\Company;
 use App\Models\County;
 use App\Models\Coupon;
 use App\Models\CreateCategory;
+use App\Models\Grade;
 use App\Models\Order;
+use App\Models\Package;
+use App\Models\Point;
+use App\Models\PointHistory;
 use App\Models\Preset;
 use App\Models\PresetProduct;
 use App\Models\User;
@@ -201,13 +205,24 @@ password_new_confirmation*/
     /** @test */
     public function 데이터에서_남은_포인트를_조회할_수_있다()
     {
+        $points = Point::factory()->count(3)->create([
+            'user_id' => $this->user->id,
+            'point' => 200,
+        ]);
 
+        $this->assertEquals(600, $this->user->refresh()->point);
     }
 
     /** @test */
     public function 데이터에서_누적사용포인트를_조회할_수_있다()
     {
+        $pointHistories = PointHistory::factory()->count(5)->create([
+            'increase' => 0,
+            'point_id' => Point::factory()->create(['user_id' => $this->user->id])->id,
+            'point' => 200
+        ]);
 
+        $this->assertEquals(1000, $this->user->refresh()->point_use);
     }
 
     /** @test */
@@ -222,12 +237,78 @@ message
 birth
 count_family
 agree_promotion*/
+
+        $test = "test";
+
+        $this->form = [
+            'password' => null,
+            'password_confirmation' => null,
+            'name' => 'asd',
+            'contact' => $this->user->contact,
+            'nickname' => $test,
+            'message' => 'asd',
+            'birth' => '2000-03-03',
+            'count_family' => 10,
+            'agree_promotion' => 0,
+        ];
+
+        $this->json('patch', '/api/users', $this->form)->assertStatus(200);
+
+        $this->assertEquals($test, $this->user->refresh()->nickname);
     }
 
     /** @test */
-    public function 사용자가_탈퇴를_하면_구독은_취소된다()
+    public function 사용자에서_다음_등급_레벨업을_위해_남은_금액과_회차를_알_수_있다()
     {
-        // package_setting active 되어있었으면 0처리 및 결제준비중인 꾸러미출고 삭제
+        $grade = Grade::factory()->create();
+
+        $nextGrade = Grade::factory()->create([
+            'level' => $grade->level + 1,
+            'min_price' => 100,
+            'min_count_package' => 50
+        ]);
+
+        $this->user->update([
+            'grade_id' => $grade->id,
+            'total_order_price' => 30,
+            'total_order_count_package' => 40,
+        ]);
+
+        $this->assertEquals(70, $this->user->refresh()->price_for_next_grade);
+        $this->assertEquals(10, $this->user->refresh()->count_package_for_next_grade);
     }
 
+    /** @test */
+    public function 진행중인_출고가_있다면_탈퇴를_할_수_없다()
+    {
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id
+        ]);
+
+        $presetProducts = PresetProduct::create([
+            'preset_id' => $preset->id,
+            'state' => StatePresetProduct::READY
+        ]);
+
+        $this->json('delete', '/api/users')->assertStatus(403);
+    }
+
+    /** @test */
+    public function 사용자가_탈퇴를_하면_대기중인_패키지출고는_삭제된다()
+    {
+        // package_setting active 되어있었으면 0처리 및 결제준비중인 꾸러미출고 삭제
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id
+        ]);
+
+        $presetProduct = PresetProduct::create([
+            'preset_id' => $preset->id,
+            'package_id' => Package::factory()->create()->id,
+            'state' => StatePresetProduct::BEFORE_PAYMENT
+        ]);
+
+        $this->json('delete', '/api/users')->assertStatus(200);
+
+        $this->assertEquals(0, PresetProduct::count());
+    }
 }

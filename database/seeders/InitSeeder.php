@@ -17,6 +17,7 @@ use App\Enums\TypeExpire;
 use App\Enums\TypeMaterial;
 use App\Enums\TypeOption;
 use App\Enums\TypePackageMaterial;
+use App\Enums\TypePointHistory;
 use App\Enums\TypeTag;
 use App\Models\Banner;
 use App\Models\Bookmark;
@@ -38,10 +39,12 @@ use App\Models\Grade;
 use App\Models\Like;
 use App\Models\Material;
 use App\Models\Option;
+use App\Models\Order;
 use App\Models\Package;
 use App\Models\PackageMaterial;
 use App\Models\PackageSetting;
 use App\Models\PayMethod;
+use App\Models\Point;
 use App\Models\PointHistory;
 use App\Models\Pop;
 use App\Models\Preset;
@@ -140,6 +143,8 @@ class InitSeeder extends Seeder
         Faq::truncate();
         Comment::truncate();
         Bookmark::truncate();
+        Point::truncate();
+        PointHistory::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -196,6 +201,7 @@ class InitSeeder extends Seeder
         $this->createFaqCategories();
         $this->createComments();
         $this->createBookmarks();
+        $this->createPointHistories();
     }
 
     public function createBookmarks()
@@ -1702,19 +1708,91 @@ class InitSeeder extends Seeder
 
     public function createPointHistories()
     {
-        $users = User::get();
+        PointHistory::factory()->count(2)->create([
+            'type' => TypePointHistory::USER_RECOMMENDED,
+            'point_historiable_type' => User::class,
+            'point_historiable_id' => User::inRandomOrder()->where('id', '!=', $this->user->id)->first()->id,
+            'increase' => 1,
+            'user_id' => $this->user->id,
+        ]);
 
-        foreach($users as $user){
-            PointHistory::factory()->count(10)->create([
-                'user_id' => $user->id,
-                'increase' => 1
-            ]);
+        PointHistory::factory()->count(2)->create([
+            'type' => TypePointHistory::USER_RECOMMEND,
+            'point_historiable_type' => User::class,
+            'point_historiable_id' => User::inRandomOrder()->where('id', '!=', $this->user->id)->first()->id,
+            'increase' => 1,
+            'user_id' => $this->user->id,
+        ]);
 
-            PointHistory::factory()->count(10)->create([
-                'user_id' => $user->id,
-                'increase' => 0
-            ]);
-        }
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::ORDER_CREATED,
+            'point_historiable_type' => Order::class,
+            'point_historiable_id' => Order::factory()->create()->id,
+            'increase' => 0,
+            'user_id' => $this->user->id,
+        ]);
+
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::PRESET_PRODUCT_CANCLE,
+            'point_historiable_type' => PresetProduct::class,
+            'point_historiable_id' => PresetProduct::inRandomOrder()->first()->id,
+            'increase' => 0,
+            'user_id' => $this->user->id,
+        ]);
+
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::PHOTO_REVIEW_CREATED,
+            'point_historiable_type' => PresetProduct::class,
+            'point_historiable_id' => PresetProduct::inRandomOrder()->first()->id,
+            'increase' => 0,
+            'user_id' => $this->user->id,
+        ]);
+
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::TEXT_REVIEW_CREATED,
+            'point_historiable_type' => PresetProduct::class,
+            'point_historiable_id' => PresetProduct::inRandomOrder()->first()->id,
+            'increase' => 0,
+            'user_id' => $this->user->id,
+        ]);
+
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::BEST_REVIEW_UPDATED,
+            'point_historiable_type' => PresetProduct::class,
+            'point_historiable_id' => PresetProduct::inRandomOrder()->first()->id,
+            'increase' => 0,
+            'user_id' => $this->user->id,
+        ]);
+
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::BEST_REVIEW_UPDATED,
+            'point_historiable_type' => PresetProduct::class,
+            'point_historiable_id' => PresetProduct::inRandomOrder()->first()->id,
+            'increase' => 0,
+            'user_id' => $this->user->id,
+        ]);
+
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::VEGETABLE_STORY_CREATED,
+            'point_historiable_type' => VegetableStory::class,
+            'point_historiable_id' => VegetableStory::inRandomOrder()->first()->id,
+            'increase' => 1,
+            'user_id' => $this->user->id,
+        ]);
+
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::PRESET_PRODUCT_CONFIRM,
+            'point_historiable_type' => PresetProduct::class,
+            'point_historiable_id' => PresetProduct::inRandomOrder()->first()->id,
+            'increase' => 1,
+            'user_id' => $this->user->id,
+        ]);
+
+        PointHistory::factory()->count(1)->create([
+            'type' => TypePointHistory::EXPIRED,
+            'increase' => 1,
+            'user_id' => $this->user->id,
+        ]);
     }
 
     public function createCouponHistories()
