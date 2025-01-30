@@ -41,6 +41,7 @@ class Package extends Model
     {
         return $this->belongsToMany(Material::class, 'package_material')->withPivot([
             'type',
+            'value',
             'count',
             'unit',
             'price_origin',
@@ -115,5 +116,10 @@ class Package extends Model
             return StatePackage::DELIVERY_READY;
 
         return StatePackage::WILL_OUT;
+    }
+
+    public function presetProducts()
+    {
+        return $this->hasMany(PresetProduct::class);
     }
 }

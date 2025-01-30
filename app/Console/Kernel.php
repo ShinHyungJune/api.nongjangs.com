@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\AlertDeliveryStart;
+use App\Console\Commands\AlertPackageStartPack;
 use App\Console\Commands\AlertReviewNeed;
 use App\Console\Commands\AlertWaitPrototype;
 use App\Console\Commands\CancelCampaigns;
@@ -33,6 +34,7 @@ class Kernel extends ConsoleKernel
         CheckDeliveryState::class,
         ConfirmPresetProducts::class,
         TakeExpiredPoints::class,
+        AlertPackageStartPack::class,
     ];
 
     /**

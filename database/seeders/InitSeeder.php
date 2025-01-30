@@ -382,6 +382,7 @@ class InitSeeder extends Seeder
                     'price_origin' => $material->pivot->price_origin,
                     'unit' => $material->pivot->unit,
                     'count' => $material->pivot->count,
+                    'value' => $material->pivot->value,
                 ]);
             }
         }
@@ -472,7 +473,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::SINGLE,
-                            'count' => 120,
+                            'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 1800,
                             'price' => 1800
@@ -485,7 +486,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::CAN_SELECT,
-                            'count' => 120,
+                            'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 1800,
                             'price' => 1800
@@ -498,7 +499,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::BUNGLE,
-                            'count' => 240,
+                            'value' => 240,
                             'unit' => 'g',
                             'price_origin' => 3600,
                             'price' => 3600
@@ -513,7 +514,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::SINGLE,
-                            'count' => 500,
+                            'value' => 500,
                             'unit' => 'g',
                             'price_origin' => 1800,
                             'price' => 1800
@@ -526,7 +527,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::CAN_SELECT,
-                            'count' => 500,
+                            'value' => 500,
                             'unit' => 'g',
                             'price_origin' => 1800,
                             'price' => 1800
@@ -539,7 +540,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::BUNGLE,
-                            'count' => 500,
+                            'value' => 500,
                             'unit' => 'g',
                             'price_origin' => 3600,
                             'price' => 3600
@@ -554,7 +555,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::SINGLE,
-                            'count' => 120,
+                            'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 5000,
                             'price' => 5000
@@ -567,7 +568,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::CAN_SELECT,
-                            'count' => 120,
+                            'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 5000,
                             'price' => 5000
@@ -580,7 +581,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::BUNGLE,
-                            'count' => 240,
+                            'value' => 240,
                             'unit' => 'g',
                             'price_origin' => 10000,
                             'price' => 10000
@@ -595,7 +596,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::SINGLE,
-                            'count' => 1,
+                            'value' => 1,
                             'unit' => '개',
                             'price_origin' => 1300,
                             'price' => 1300
@@ -608,7 +609,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::CAN_SELECT,
-                            'count' => 1,
+                            'value' => 1,
                             'unit' => '개',
                             'price_origin' => 1300,
                             'price' => 1300
@@ -621,7 +622,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::BUNGLE,
-                            'count' => 2,
+                            'value' => 2,
                             'unit' => '개',
                             'price_origin' => 2600,
                             'price' => 2600
@@ -636,7 +637,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::SINGLE,
-                            'count' => 120,
+                            'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 1800,
                             'price' => 1800
@@ -649,7 +650,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::CAN_SELECT,
-                            'count' => 120,
+                            'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 1800,
                             'price' => 1800
@@ -662,7 +663,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::BUNGLE,
-                            'count' => 240,
+                            'value' => 240,
                             'unit' => 'g',
                             'price_origin' => 3600,
                             'price' => 3600
@@ -677,7 +678,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::SINGLE,
-                            'count' => 120,
+                            'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 1800,
                             'price' => 1800
@@ -690,7 +691,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::CAN_SELECT,
-                            'count' => 120,
+                            'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 1800,
                             'price' => 1800
@@ -703,7 +704,7 @@ class InitSeeder extends Seeder
 
                         'pivot' => [
                             'type' => TypePackageMaterial::BUNGLE,
-                            'count' => 240,
+                            'value' => 240,
                             'unit' => 'g',
                             'price_origin' => 3600,
                             'price' => 3600

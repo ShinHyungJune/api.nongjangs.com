@@ -48,6 +48,7 @@ class PresetProductFactory extends Factory
 
             'reason_request_cancel' => '이래서 취소했어요',
             'reason_deny_cancel' => '이래서 취소요청해요.',
+            'alert_pack' => 0,
         ];
     }
 }

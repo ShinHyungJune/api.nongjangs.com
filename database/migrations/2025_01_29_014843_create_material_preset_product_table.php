@@ -17,10 +17,12 @@ class CreateMaterialPresetProductTable extends Migration
             $table->id();
             $table->foreignId('material_id')->constrained('materials')->onDelete('cascade');
             $table->foreignId('preset_product_id')->constrained('preset_product')->onDelete('cascade');
+            $table->string('type')->comment('유형');
             $table->unsignedBigInteger('price')->comment('판매가');
             $table->unsignedBigInteger('price_origin')->comment('정가');
             $table->string('unit')->comment('단위');
             $table->unsignedBigInteger('count')->comment('개수');
+            $table->unsignedBigInteger('value')->comment('값');
             $table->timestamps();
         });
     }

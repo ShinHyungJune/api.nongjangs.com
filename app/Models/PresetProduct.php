@@ -222,7 +222,9 @@ class PresetProduct extends Model
             'price',
             'price_origin',
             'unit',
-            'count'
+            'count',
+            'value',
+            'type',
         ]);
     }
 

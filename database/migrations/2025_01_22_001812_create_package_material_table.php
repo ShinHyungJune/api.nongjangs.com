@@ -18,7 +18,8 @@ class CreatePackageMaterialTable extends Migration
             $table->foreignId('package_id')->constrained('packages')->onDelete('cascade');
             $table->foreignId('material_id')->constrained('materials')->onDelete('cascade');
             $table->string('type')->comment('유형');
-            $table->unsignedBigInteger('count')->comment('수량');
+            $table->unsignedBigInteger('value')->comment('값');
+            $table->unsignedBigInteger('count')->comment('수량')->default(1);
             $table->string('unit')->comment('단위');
             $table->unsignedBigInteger('price_origin')->comment('정가');
             $table->unsignedBigInteger('price')->comment('판매가');
