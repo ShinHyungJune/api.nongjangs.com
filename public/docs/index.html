@@ -920,6 +920,34 @@
 
                                                                                     <div class="children" style="display: none;">
                                                                                                     <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-GETapi-admin-orders">
+                                                        <div title="목록" id="toc-item--GETapi-admin-orders"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            목록
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-POSTapi-admin-orders">
+                                                        <div title="생성" id="toc-item--POSTapi-admin-orders"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            생성
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-GETapi-admin-orders--id-">
+                                                        <div title="상세" id="toc-item--GETapi-admin-orders--id-"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            상세
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-PUTapi-admin-orders--id-">
+                                                        <div title="수정" id="toc-item--PUTapi-admin-orders--id-"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            수정
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
                                                        href="#-DELETEapi-admin-orders">
                                                         <div title="삭제" id="toc-item--DELETEapi-admin-orders"
                                                              class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
@@ -2068,10 +2096,38 @@
 
                                                                                     <div class="children" style="display: none;">
                                                                                                     <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-GETapi-orders">
+                                                        <div title="목록" id="toc-item--GETapi-orders"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            목록
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-POSTapi-orders">
+                                                        <div title="생성" id="toc-item--POSTapi-orders"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            생성
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
                                                        href="#-GETapi-orders-calculatePriceDelivery--order_id-">
                                                         <div title="배송비 계산" id="toc-item--GETapi-orders-calculatePriceDelivery--order_id-"
                                                              class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
                                                             배송비 계산
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-PATCHapi-orders--order_id-">
+                                                        <div title="수정(결제시도)" id="toc-item--PATCHapi-orders--order_id-"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            수정(결제시도)
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-GETapi-orders--order_id-">
+                                                        <div title="회원용 상세" id="toc-item--GETapi-orders--order_id-"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            회원용 상세
                                                         </div>
                                                     </a>
                                                                                             </div>
@@ -8963,6 +9019,688 @@ You can switch the language used with the tabs at the top right (or from the nav
         <div class="sl-relative">
             <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
                 <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-GETapi-admin-orders">
+                    목록
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/admin/orders"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: green;"
+                        >
+                            GET
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/admin/orders</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                    
+
+                    
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">Body Parameters</h3>
+
+                                <div class="sl-text-sm">
+                                    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">word</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">검색어</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+                            </div>
+                        </div>
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-GETapi-admin-orders-toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('GETapi-admin-orders', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-GETapi-admin-orders example-response-GETapi-admin-orders-0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;고유번호&quot;,
+      &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+
+      &quot;buyer_name&quot;: &quot;주문자 이름&quot;,
+      &quot;buyer_contact&quot;: &quot;주문자 연락처&quot;,
+
+      &quot;delivery_name&quot;: &quot;수령자 이름&quot;,
+      &quot;delivery_contact&quot;: &quot;수령자 연락처&quot;,
+      &quot;delivery_address&quot;: &quot;주소&quot;,
+      &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+      &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+      &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+
+      &quot;point_use&quot;: &quot;사용 적립금&quot;,
+      &quot;presetProducts&quot;: &quot;출고목록&quot;,
+      /*&quot;price_products&quot;: &quot;&quot;,
+      &quot;price_products_discount&quot;: &quot;&quot;,
+      &quot;price_delivery&quot;: &quot;&quot;,
+      &quot;price_coupon_discount&quot;: &quot;&quot;,*/
+
+      &quot;price&quot;: &quot;결제금액&quot;,
+      &quot;state&quot;: &quot;주문상태&quot;,
+      &quot;reason&quot;: &quot;사유&quot;,
+
+      &quot;pay_method_name&quot;: &quot;결제수단명&quot;,
+
+      &quot;vbank_num&quot;: &quot;가상계좌 계좌번호&quot;,
+      &quot;vbank_name&quot;: &quot;가상계좌 은행명&quot;,
+      &quot;vbank_date&quot;: &quot;가상계좌 만료일자&quot;,
+
+      &quot;format_success_at&quot;: &quot;주문성공일자&quot;
+    }
+  ],
+  &quot;meta&quot;: {
+    &quot;total&quot;: &quot;총 개수&quot;,
+    &quot;current_page&quot;: &quot;현재 페이지&quot;,
+    &quot;last_page&quot;: &quot;마지막 페이지&quot;
+  }
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-POSTapi-admin-orders">
+                    생성
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/admin/orders"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: black;"
+                        >
+                            POST
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/admin/orders</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                    
+
+                    
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">Body Parameters</h3>
+
+                                <div class="sl-text-sm">
+                                    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2"></div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                
+    </div>
+</div>
+
+            </div>
+                            </div>
+                        </div>
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-POSTapi-admin-orders-toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('POSTapi-admin-orders', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-POSTapi-admin-orders example-response-POSTapi-admin-orders-0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;id&quot;: &quot;고유번호&quot;,
+  &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+
+  &quot;buyer_name&quot;: &quot;주문자 이름&quot;,
+  &quot;buyer_contact&quot;: &quot;주문자 연락처&quot;,
+
+  &quot;delivery_name&quot;: &quot;수령자 이름&quot;,
+  &quot;delivery_contact&quot;: &quot;수령자 연락처&quot;,
+  &quot;delivery_address&quot;: &quot;주소&quot;,
+  &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+  &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+  &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+
+  &quot;point_use&quot;: &quot;사용 적립금&quot;,
+  &quot;presetProducts&quot;: &quot;출고목록&quot;,
+  /*&quot;price_products&quot;: &quot;&quot;,
+  &quot;price_products_discount&quot;: &quot;&quot;,
+  &quot;price_delivery&quot;: &quot;&quot;,
+  &quot;price_coupon_discount&quot;: &quot;&quot;,*/
+
+  &quot;price&quot;: &quot;결제금액&quot;,
+  &quot;state&quot;: &quot;주문상태&quot;,
+  &quot;reason&quot;: &quot;사유&quot;,
+
+  &quot;pay_method_name&quot;: &quot;결제수단명&quot;,
+
+  &quot;vbank_num&quot;: &quot;가상계좌 계좌번호&quot;,
+  &quot;vbank_name&quot;: &quot;가상계좌 은행명&quot;,
+  &quot;vbank_date&quot;: &quot;가상계좌 만료일자&quot;,
+
+  &quot;format_success_at&quot;: &quot;주문성공일자&quot;
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-GETapi-admin-orders--id-">
+                    상세
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/admin/orders/{id}"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: green;"
+                        >
+                            GET
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/admin/orders/{id}</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">URL Parameters</h3>
+
+                            <div class="sl-text-sm">
+                                                                    <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p>The ID of the order.</p>
+        </div>
+                
+    </div>
+</div>
+                                                            </div>
+                        </div>
+                    
+
+                    
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-GETapi-admin-orders--id--toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('GETapi-admin-orders--id-', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-GETapi-admin-orders--id- example-response-GETapi-admin-orders--id--0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;id&quot;: &quot;고유번호&quot;,
+  &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+
+  &quot;buyer_name&quot;: &quot;주문자 이름&quot;,
+  &quot;buyer_contact&quot;: &quot;주문자 연락처&quot;,
+
+  &quot;delivery_name&quot;: &quot;수령자 이름&quot;,
+  &quot;delivery_contact&quot;: &quot;수령자 연락처&quot;,
+  &quot;delivery_address&quot;: &quot;주소&quot;,
+  &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+  &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+  &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+
+  &quot;point_use&quot;: &quot;사용 적립금&quot;,
+  &quot;presetProducts&quot;: &quot;출고목록&quot;,
+  /*&quot;price_products&quot;: &quot;&quot;,
+  &quot;price_products_discount&quot;: &quot;&quot;,
+  &quot;price_delivery&quot;: &quot;&quot;,
+  &quot;price_coupon_discount&quot;: &quot;&quot;,*/
+
+  &quot;price&quot;: &quot;결제금액&quot;,
+  &quot;state&quot;: &quot;주문상태&quot;,
+  &quot;reason&quot;: &quot;사유&quot;,
+
+  &quot;pay_method_name&quot;: &quot;결제수단명&quot;,
+
+  &quot;vbank_num&quot;: &quot;가상계좌 계좌번호&quot;,
+  &quot;vbank_name&quot;: &quot;가상계좌 은행명&quot;,
+  &quot;vbank_date&quot;: &quot;가상계좌 만료일자&quot;,
+
+  &quot;format_success_at&quot;: &quot;주문성공일자&quot;
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-PUTapi-admin-orders--id-">
+                    수정
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/admin/orders/{id}"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: darkblue;"
+                        >
+                            PUT
+                        </div>
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: purple;"
+                        >
+                            PATCH
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/admin/orders/{id}</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">URL Parameters</h3>
+
+                            <div class="sl-text-sm">
+                                                                    <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p>The ID of the order.</p>
+        </div>
+                
+    </div>
+</div>
+                                                            </div>
+                        </div>
+                    
+
+                    
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">Body Parameters</h3>
+
+                                <div class="sl-text-sm">
+                                    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2"></div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                
+    </div>
+</div>
+
+            </div>
+                            </div>
+                        </div>
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-PUTapi-admin-orders--id--toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('PUTapi-admin-orders--id-', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-PUTapi-admin-orders--id- example-response-PUTapi-admin-orders--id--0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;id&quot;: &quot;고유번호&quot;,
+  &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+
+  &quot;buyer_name&quot;: &quot;주문자 이름&quot;,
+  &quot;buyer_contact&quot;: &quot;주문자 연락처&quot;,
+
+  &quot;delivery_name&quot;: &quot;수령자 이름&quot;,
+  &quot;delivery_contact&quot;: &quot;수령자 연락처&quot;,
+  &quot;delivery_address&quot;: &quot;주소&quot;,
+  &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+  &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+  &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+
+  &quot;point_use&quot;: &quot;사용 적립금&quot;,
+  &quot;presetProducts&quot;: &quot;출고목록&quot;,
+  /*&quot;price_products&quot;: &quot;&quot;,
+  &quot;price_products_discount&quot;: &quot;&quot;,
+  &quot;price_delivery&quot;: &quot;&quot;,
+  &quot;price_coupon_discount&quot;: &quot;&quot;,*/
+
+  &quot;price&quot;: &quot;결제금액&quot;,
+  &quot;state&quot;: &quot;주문상태&quot;,
+  &quot;reason&quot;: &quot;사유&quot;,
+
+  &quot;pay_method_name&quot;: &quot;결제수단명&quot;,
+
+  &quot;vbank_num&quot;: &quot;가상계좌 계좌번호&quot;,
+  &quot;vbank_name&quot;: &quot;가상계좌 은행명&quot;,
+  &quot;vbank_date&quot;: &quot;가상계좌 만료일자&quot;,
+
+  &quot;format_success_at&quot;: &quot;주문성공일자&quot;
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
                     id="-DELETEapi-admin-orders">
                     삭제
                 </h2>
@@ -8998,6 +9736,37 @@ You can switch the language used with the tabs at the top right (or from the nav
                     
 
                     
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">Body Parameters</h3>
+
+                                <div class="sl-text-sm">
+                                    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">ids</div>
+                                            <span class="sl-truncate sl-text-muted">object</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                
+    </div>
+</div>
+
+            </div>
+                            </div>
+                        </div>
                     
                                     </div>
             </div>
@@ -9212,6 +9981,7 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;id&quot;: &quot;고유번호&quot;,
             &quot;type&quot;: &quot;유형&quot;,
             &quot;increase&quot;: &quot;증감여부 (1 - 증가 | 0 - 감소)&quot;,
+            &quot;pointModel&quot;: &quot;관련 포인트 객체&quot;,
             &quot;point&quot;: &quot;포인트&quot;,
             &quot;point_leave&quot;: &quot;남은 포인트&quot;,
             &quot;memo&quot;: &quot;메모&quot;,
@@ -9389,6 +10159,7 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;id&quot;: &quot;고유번호&quot;,
             &quot;type&quot;: &quot;유형&quot;,
             &quot;increase&quot;: &quot;증감여부 (1 - 증가 | 0 - 감소)&quot;,
+            &quot;pointModel&quot;: &quot;관련 포인트 객체&quot;,
             &quot;point&quot;: &quot;포인트&quot;,
             &quot;point_leave&quot;: &quot;남은 포인트&quot;,
             &quot;memo&quot;: &quot;메모&quot;,
@@ -9538,6 +10309,7 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;id&quot;: &quot;고유번호&quot;,
             &quot;type&quot;: &quot;유형&quot;,
             &quot;increase&quot;: &quot;증감여부 (1 - 증가 | 0 - 감소)&quot;,
+            &quot;pointModel&quot;: &quot;관련 포인트 객체&quot;,
             &quot;point&quot;: &quot;포인트&quot;,
             &quot;point_leave&quot;: &quot;남은 포인트&quot;,
             &quot;memo&quot;: &quot;메모&quot;,
@@ -9721,6 +10493,7 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;id&quot;: &quot;고유번호&quot;,
             &quot;type&quot;: &quot;유형&quot;,
             &quot;increase&quot;: &quot;증감여부 (1 - 증가 | 0 - 감소)&quot;,
+            &quot;pointModel&quot;: &quot;관련 포인트 객체&quot;,
             &quot;point&quot;: &quot;포인트&quot;,
             &quot;point_leave&quot;: &quot;남은 포인트&quot;,
             &quot;memo&quot;: &quot;메모&quot;,
@@ -20069,6 +20842,443 @@ You can switch the language used with the tabs at the top right (or from the nav
         <div class="sl-relative">
             <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
                 <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-GETapi-orders">
+                    목록
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/orders"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: green;"
+                        >
+                            GET
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/orders</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                    
+
+                    
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">Body Parameters</h3>
+
+                                <div class="sl-text-sm">
+                                    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">started_at</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">시작일자</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">finished_at</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">종료일자</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">word</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">검색어</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">has_column</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">특정데이터 보유여부 (package_id - 꾸러미 | product_id - 직거래 장터)</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">states</div>
+                                            <span class="sl-truncate sl-text-muted">object</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">상태목록 (PresetProduct의 상태 목록)</span>.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+                            </div>
+                        </div>
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-GETapi-orders-toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('GETapi-orders', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-GETapi-orders example-response-GETapi-orders-0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;고유번호&quot;,
+      &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+
+      &quot;buyer_name&quot;: &quot;주문자 이름&quot;,
+      &quot;buyer_contact&quot;: &quot;주문자 연락처&quot;,
+
+      &quot;delivery_name&quot;: &quot;수령자 이름&quot;,
+      &quot;delivery_contact&quot;: &quot;수령자 연락처&quot;,
+      &quot;delivery_address&quot;: &quot;주소&quot;,
+      &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+      &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+      &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+
+      &quot;point_use&quot;: &quot;사용 적립금&quot;,
+      &quot;presetProducts&quot;: &quot;출고목록&quot;,
+      /*&quot;price_products&quot;: &quot;&quot;,
+      &quot;price_products_discount&quot;: &quot;&quot;,
+      &quot;price_delivery&quot;: &quot;&quot;,
+      &quot;price_coupon_discount&quot;: &quot;&quot;,*/
+
+      &quot;price&quot;: &quot;결제금액&quot;,
+      &quot;state&quot;: &quot;주문상태&quot;,
+      &quot;reason&quot;: &quot;사유&quot;,
+
+      &quot;pay_method_name&quot;: &quot;결제수단명&quot;,
+
+      &quot;vbank_num&quot;: &quot;가상계좌 계좌번호&quot;,
+      &quot;vbank_name&quot;: &quot;가상계좌 은행명&quot;,
+      &quot;vbank_date&quot;: &quot;가상계좌 만료일자&quot;,
+
+      &quot;format_success_at&quot;: &quot;주문성공일자&quot;
+    }
+  ],
+  &quot;meta&quot;: {
+    &quot;total&quot;: &quot;총 개수&quot;,
+    &quot;current_page&quot;: &quot;현재 페이지&quot;,
+    &quot;last_page&quot;: &quot;마지막 페이지&quot;
+  }
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-POSTapi-orders">
+                    생성
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/orders"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: black;"
+                        >
+                            POST
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/orders</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                    
+
+                    
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">Body Parameters</h3>
+
+                                <div class="sl-text-sm">
+                                    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">presets</div>
+                                            <span class="sl-truncate sl-text-muted">object</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">상품조합목록</span>. Must not have more than 100 items.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+                            </div>
+                        </div>
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-POSTapi-orders-toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('POSTapi-orders', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-POSTapi-orders example-response-POSTapi-orders-0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;id&quot;: &quot;고유번호&quot;,
+  &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+
+  &quot;buyer_name&quot;: &quot;주문자 이름&quot;,
+  &quot;buyer_contact&quot;: &quot;주문자 연락처&quot;,
+
+  &quot;delivery_name&quot;: &quot;수령자 이름&quot;,
+  &quot;delivery_contact&quot;: &quot;수령자 연락처&quot;,
+  &quot;delivery_address&quot;: &quot;주소&quot;,
+  &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+  &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+  &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+
+  &quot;point_use&quot;: &quot;사용 적립금&quot;,
+  &quot;presetProducts&quot;: &quot;출고목록&quot;,
+  /*&quot;price_products&quot;: &quot;&quot;,
+  &quot;price_products_discount&quot;: &quot;&quot;,
+  &quot;price_delivery&quot;: &quot;&quot;,
+  &quot;price_coupon_discount&quot;: &quot;&quot;,*/
+
+  &quot;price&quot;: &quot;결제금액&quot;,
+  &quot;state&quot;: &quot;주문상태&quot;,
+  &quot;reason&quot;: &quot;사유&quot;,
+
+  &quot;pay_method_name&quot;: &quot;결제수단명&quot;,
+
+  &quot;vbank_num&quot;: &quot;가상계좌 계좌번호&quot;,
+  &quot;vbank_name&quot;: &quot;가상계좌 은행명&quot;,
+  &quot;vbank_date&quot;: &quot;가상계좌 만료일자&quot;,
+
+  &quot;format_success_at&quot;: &quot;주문성공일자&quot;
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
                     id="-GETapi-orders-calculatePriceDelivery--order_id-">
                     배송비 계산
                 </h2>
@@ -20181,6 +21391,638 @@ You can switch the language used with the tabs at the top right (or from the nav
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
     &quot;price_delivery&quot;: &quot;배송비&quot;
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-PATCHapi-orders--order_id-">
+                    수정(결제시도)
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/orders/{order_id}"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: purple;"
+                        >
+                            PATCH
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/orders/{order_id}</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">URL Parameters</h3>
+
+                            <div class="sl-text-sm">
+                                                                    <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">order_id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p>The ID of the order.</p>
+        </div>
+                
+    </div>
+</div>
+                                                            </div>
+                        </div>
+                    
+
+                    
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">Body Parameters</h3>
+
+                                <div class="sl-text-sm">
+                                    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">buyer_contact</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">주문자 연락처</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">buyer_email</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">주문자 이메일</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">buyer_name</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">주문자 이름</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">delivery_name</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">수취인 이름</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">delivery_contact</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">수취인 연락처</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">delivery_address</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">수취인 주소</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">delivery_address_detail</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">수취인 상세주소</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">delivery_address_zipcode</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">수취인 우편번호</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">delivery_requirement</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">배송요청사항</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">point_use</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">사용할 포인트</span>.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">pay_method_id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">결제수단 고유번호</span>.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+                            </div>
+                        </div>
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-PATCHapi-orders--order_id--toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('PATCHapi-orders--order_id-', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-PATCHapi-orders--order_id- example-response-PATCHapi-orders--order_id--0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;id&quot;: &quot;고유번호&quot;,
+  &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+
+  &quot;buyer_name&quot;: &quot;주문자 이름&quot;,
+  &quot;buyer_contact&quot;: &quot;주문자 연락처&quot;,
+
+  &quot;delivery_name&quot;: &quot;수령자 이름&quot;,
+  &quot;delivery_contact&quot;: &quot;수령자 연락처&quot;,
+  &quot;delivery_address&quot;: &quot;주소&quot;,
+  &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+  &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+  &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+
+  &quot;point_use&quot;: &quot;사용 적립금&quot;,
+  &quot;presetProducts&quot;: &quot;출고목록&quot;,
+  /*&quot;price_products&quot;: &quot;&quot;,
+  &quot;price_products_discount&quot;: &quot;&quot;,
+  &quot;price_delivery&quot;: &quot;&quot;,
+  &quot;price_coupon_discount&quot;: &quot;&quot;,*/
+
+  &quot;price&quot;: &quot;결제금액&quot;,
+  &quot;state&quot;: &quot;주문상태&quot;,
+  &quot;reason&quot;: &quot;사유&quot;,
+
+  &quot;pay_method_name&quot;: &quot;결제수단명&quot;,
+
+  &quot;vbank_num&quot;: &quot;가상계좌 계좌번호&quot;,
+  &quot;vbank_name&quot;: &quot;가상계좌 은행명&quot;,
+  &quot;vbank_date&quot;: &quot;가상계좌 만료일자&quot;,
+
+  &quot;format_success_at&quot;: &quot;주문성공일자&quot;
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-GETapi-orders--order_id-">
+                    회원용 상세
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/orders/{order_id}"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: green;"
+                        >
+                            GET
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/orders/{order_id}</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">URL Parameters</h3>
+
+                            <div class="sl-text-sm">
+                                                                    <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">order_id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p>The ID of the order.</p>
+        </div>
+                
+    </div>
+</div>
+                                                            </div>
+                        </div>
+                    
+
+                    
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-GETapi-orders--order_id--toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('GETapi-orders--order_id-', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-GETapi-orders--order_id- example-response-GETapi-orders--order_id--0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;id&quot;: &quot;고유번호&quot;,
+  &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+
+  &quot;buyer_name&quot;: &quot;주문자 이름&quot;,
+  &quot;buyer_contact&quot;: &quot;주문자 연락처&quot;,
+
+  &quot;delivery_name&quot;: &quot;수령자 이름&quot;,
+  &quot;delivery_contact&quot;: &quot;수령자 연락처&quot;,
+  &quot;delivery_address&quot;: &quot;주소&quot;,
+  &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+  &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+  &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+
+  &quot;point_use&quot;: &quot;사용 적립금&quot;,
+  &quot;presetProducts&quot;: &quot;출고목록&quot;,
+  /*&quot;price_products&quot;: &quot;&quot;,
+  &quot;price_products_discount&quot;: &quot;&quot;,
+  &quot;price_delivery&quot;: &quot;&quot;,
+  &quot;price_coupon_discount&quot;: &quot;&quot;,*/
+
+  &quot;price&quot;: &quot;결제금액&quot;,
+  &quot;state&quot;: &quot;주문상태&quot;,
+  &quot;reason&quot;: &quot;사유&quot;,
+
+  &quot;pay_method_name&quot;: &quot;결제수단명&quot;,
+
+  &quot;vbank_num&quot;: &quot;가상계좌 계좌번호&quot;,
+  &quot;vbank_name&quot;: &quot;가상계좌 은행명&quot;,
+  &quot;vbank_date&quot;: &quot;가상계좌 만료일자&quot;,
+
+  &quot;format_success_at&quot;: &quot;주문성공일자&quot;
 }</code></pre>
                                                                             </div>
                                 </div>
@@ -22104,6 +23946,7 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;id&quot;: &quot;고유번호&quot;,
             &quot;type&quot;: &quot;유형&quot;,
             &quot;increase&quot;: &quot;증감여부 (1 - 증가 | 0 - 감소)&quot;,
+            &quot;pointModel&quot;: &quot;관련 포인트 객체&quot;,
             &quot;point&quot;: &quot;포인트&quot;,
             &quot;point_leave&quot;: &quot;남은 포인트&quot;,
             &quot;memo&quot;: &quot;메모&quot;,
@@ -23980,11 +25823,11 @@ You can switch the language used with the tabs at the top right (or from the nav
     &quot;message&quot;: &quot;Trying to access array offset on value of type null&quot;,
     &quot;exception&quot;: &quot;ErrorException&quot;,
     &quot;file&quot;: &quot;/Users/shinhyungjune/project/api.nongjangs.com/app/Http/Controllers/Api/OrderController.php&quot;,
-    &quot;line&quot;: 142,
+    &quot;line&quot;: 148,
     &quot;trace&quot;: [
         {
             &quot;file&quot;: &quot;/Users/shinhyungjune/project/api.nongjangs.com/app/Http/Controllers/Api/OrderController.php&quot;,
-            &quot;line&quot;: 142,
+            &quot;line&quot;: 148,
             &quot;function&quot;: &quot;handleError&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Bootstrap\\HandleExceptions&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
@@ -25329,7 +27172,7 @@ You can switch the language used with the tabs at the top right (or from the nav
                                                                                                                                                                         
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;test.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 9 limit 1)&quot;,
+    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;test.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 17 limit 1)&quot;,
     &quot;exception&quot;: &quot;Illuminate\\Database\\QueryException&quot;,
     &quot;file&quot;: &quot;/Users/shinhyungjune/project/api.nongjangs.com/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
     &quot;line&quot;: 712,
@@ -25998,9 +27841,9 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;id&quot;: 1,
             &quot;sum_weight&quot;: 2226227,
             &quot;sum_store&quot;: 10023,
-            &quot;count_review&quot;: 125,
+            &quot;count_review&quot;: 120,
             &quot;count_review_package&quot;: null,
-            &quot;average_score_review_package&quot;: &quot;2.1385&quot;,
+            &quot;average_score_review_package&quot;: &quot;2.4286&quot;,
             &quot;count_vegetable_story&quot;: 0
         }
     ]

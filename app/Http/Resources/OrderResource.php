@@ -60,7 +60,7 @@ class OrderResource extends JsonResource
 
             'format_products' => $this->format_products,
             'format_state' => StateOrder::getLabel($this->state),
-            'presets' => PresetResource::collection($this->presets),
+            'presetProducts' => PresetProductResource::collection($this->presetProducts),
             'can_cancel' => $this->can_cancel,
             'admin_can_cancel' => $this->admin_can_cancel,
             'format_success_at' => $this->success_at ? Carbon::make($this->success_at)->format('Y.m.d H:i') : '',
