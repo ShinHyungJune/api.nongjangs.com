@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Enums\TypePointHistory;
+use App\Models\Point;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -12,6 +13,11 @@ class PointHistoryResource extends JsonResource
 {
     public function toArray($request)
     {
+        $pointHistoriable = $this->pointHistoriable;
+
+        if($this->point_historiable_type == Point::class)
+            $pointHistoriable = PointResource::make($pointHistoriable);
+
         return [
             'id' => $this->id,
 
@@ -22,7 +28,7 @@ class PointHistoryResource extends JsonResource
             'memo' => $this->memo,
 
             'format_increase' => $this->format_increase,
-            'pointHistoriable' => $this->pointHistoriable,
+            'pointHistoriable' => $pointHistoriable,
             'format_title' => $this->format_title,
             'format_type' => TypePointHistory::getLabel($this->type),
             'format_created_at' => $this->created_at ? Carbon::make($this->created_at)->format('Y-m-d H:i') : '',

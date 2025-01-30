@@ -1724,7 +1724,7 @@ class InitSeeder extends Seeder
             'user_id' => $this->user->id,
         ]);
 
-        PointHistory::factory()->count(1)->create([
+        PointHistory::factory()->count(30)->create([
             'type' => TypePointHistory::ORDER_CREATED,
             'point_historiable_type' => Order::class,
             'point_historiable_id' => Order::factory()->create()->id,

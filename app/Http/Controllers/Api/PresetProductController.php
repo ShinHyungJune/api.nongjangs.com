@@ -165,7 +165,9 @@ class PresetProductController extends ApiController
     {
         // 출고의 대상회차가 현재 진행중인 회차라면
 
-        // ㅇ
+        // 패키지설정의 구독여부가 꺼져있다면 (active 0) null을 리턴
+
+        //
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
