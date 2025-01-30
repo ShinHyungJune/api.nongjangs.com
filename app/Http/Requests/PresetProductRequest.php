@@ -84,8 +84,8 @@ class PresetProductRequest extends FormRequest
                 case 'updateMaterials':
                     return [
                         'materials' => 'required|array',
-                        'materials.id' => 'required|integer',
-                        'materials.count' => 'required|integer|min:1',
+                        'materials.*.id' => 'required|integer',
+                        'materials.*.count' => 'required|integer|min:1',
                     ];
 
                 default:
@@ -103,6 +103,15 @@ class PresetProductRequest extends FormRequest
             ],
             'can_vegetable_story' => [
                 'description' => '<span class="point">채소이야기 작성가능여부</span>',
+            ],
+            'materials' => [
+                'description' => '<span class="point">품목구성 ([{id: material의 고유번호, count: 개수}])</span>',
+            ],
+            'reason_request_cancel' => [
+                'description' => '<span class="point">취소요청사유</span>',
+            ],
+            'coupon_id' => [
+                'description' => '<span class="point">쿠폰고유번호</span>',
             ],
 
             // 늘 쓰이는 애들

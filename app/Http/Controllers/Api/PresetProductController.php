@@ -185,4 +185,34 @@ class PresetProductController extends ApiController
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
+
+    /** 당기기
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function fast(PresetProduct $presetProduct)
+    {
+        if(!$presetProduct->can_fast_package)
+            return $this->respondForbidden('당기기를 할 수 없습니다.');
+
+        $presetProduct->changePackage($presetProduct->can_fast_package);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
+    /** 미루기
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function late(PresetProduct $presetProduct)
+    {
+        if(!$presetProduct->can_late_package)
+            return $this->respondForbidden('미루기를 할 수 없습니다.');
+
+        $presetProduct->changePackage($presetProduct->can_late_package);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
 }

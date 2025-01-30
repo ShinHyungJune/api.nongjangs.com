@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Enums\DeliveryCompany;
 use App\Enums\StatePackage;
+use App\Enums\StatePresetProduct;
 use App\Enums\TypeOption;
 use App\Enums\TypePackage;
 use App\Models\Arr;
@@ -18,6 +19,7 @@ class PresetProductResource extends JsonResource
         return [
             'id' => $this->id,
             'state' => $this->state,
+            'format_state' => $this->state ? StatePresetProduct::getLabel($this->state) : '',
 
             'price' => $this->price,
             'reason_request_cancel' => $this->reason_request_cancel,
@@ -91,6 +93,7 @@ class PresetProductResource extends JsonResource
             'can_review' => $this->can_review,
             'can_cancel' => $this->can_cancel,
             'can_request_cancel' => $this->can_request_cancel,
+            'can_update_materials' => $this->can_update_materials,
             /*'preset' => new PresetResource($this->whenLoaded('preset')),
             'product' => new ProductResource($this->whenLoaded('product')),
             'option' => new OptionResource($this->whenLoaded('option')),

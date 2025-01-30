@@ -220,7 +220,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/presetProducts", [\App\Http\Controllers\Api\PresetProductController::class, "index"]);
     Route::get("/presetProducts/currentPackage", [\App\Http\Controllers\Api\PresetProductController::class, "currentPackage"]);
     Route::get("/presetProducts/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "show"]);
-    Route::patch("/presetProducts/materials", [\App\Http\Controllers\Api\PresetProductController::class, "updateMaterials"]);
+    Route::patch("/presetProducts/fast/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "fast"]);
+    Route::patch("/presetProducts/late/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "late"]);
+    Route::patch("/presetProducts/materials/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "updateMaterials"]);
     Route::patch("/presetProducts/requestCancel/{presetProduct}",[\App\Http\Controllers\Api\PresetProductController::class, 'requestCancel']);
     Route::patch("/presetProducts/cancel/{presetProduct}",[\App\Http\Controllers\Api\PresetProductController::class, 'cancel']);
     Route::patch("/presetProducts/coupon/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "updateCoupon"]);

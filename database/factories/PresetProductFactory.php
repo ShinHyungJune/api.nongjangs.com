@@ -46,6 +46,12 @@ class PresetProductFactory extends Factory
             'product_id' => $product->id,
             'option_id' => $option->id,
 
+            'delivery_name' => $this->faker->name,
+            'delivery_address' => $this->faker->address,
+            'delivery_address_detail' => $this->faker->name,
+            'delivery_address_zipcode' => "20120",
+            'delivery_requirement' => '배송요청사항예시',
+
             'reason_request_cancel' => '이래서 취소했어요',
             'reason_deny_cancel' => '이래서 취소요청해요.',
             'alert_pack' => 0,

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\StateOrder;
+use App\Enums\StatePackage;
 use App\Enums\StatePresetProduct;
 use App\Enums\TypeDiscount;
 use App\Enums\TypeOption;
@@ -276,12 +277,39 @@ class PresetProduct extends Model
 
     public function getCanLatePackageAttribute()
     {
+        $user = User::withTrashed()->find($this->preset->user_id);
 
+        $currentPackagePresetProduct = $user->getCurrentPackagePresetProduct();
+
+        if(!$currentPackagePresetProduct)
+            return null;
+
+        if($currentPackagePresetProduct->state != StatePresetProduct::BEFORE_PAYMENT)
+            return null;
+
+        $nextPackage = Package::orderBy('count', 'asc')->where('count', '>', $currentPackagePresetProduct->package_count)->first();
+
+        return $nextPackage;
     }
 
     public function getCanFastPackageAttribute()
     {
+        $user = User::withTrashed()->find($this->preset->user_id);
 
+        $currentPackagePresetProduct = $user->getCurrentPackagePresetProduct();
+
+        if(!$currentPackagePresetProduct)
+            return null;
+
+        if($currentPackagePresetProduct->state != StatePresetProduct::BEFORE_PAYMENT)
+            return null;
+
+        $canOrderPackage = Package::getCanOrder();
+
+        if($canOrderPackage->count < $currentPackagePresetProduct->package_count)
+            return $canOrderPackage;
+
+        return null;
     }
 
     public function getCanConfirmAttribute()
@@ -306,10 +334,15 @@ class PresetProduct extends Model
         if(auth()->user()->id != $this->preset->user_id)
             return 0;
 
-        if($this->state == StatePresetProduct::BEFORE_PAYMENT)
-            return 1;
+        $package = $this->package;
 
-        return 0;
+        if(!$package)
+            return 0;
+
+        if($package->state != StatePackage::ONGOING_PACK)
+            return 0;
+
+        return 1;
     }
 
     public function getCanRequestCancelAttribute()
@@ -376,5 +409,20 @@ class PresetProduct extends Model
         });
 
         return $result;
+    }
+
+    public function changePackage($package)
+    {
+        $packageSetting = $this->preset->user->packageSetting;
+
+        $this->update([
+            'package_id' => $package->id,
+            'package_name' => $packageSetting->name,
+            'package_count' => $package->count,
+            'package_will_delivery_at' => $package->will_delivery_at,
+            'package_active' => $this->package_active,
+            'package_type' => $this->package_type,
+            'package_price' => $this->package_type == TypePackage::BUNGLE ? $package->price_bungle : $package->price_single,
+        ]);
     }
 }

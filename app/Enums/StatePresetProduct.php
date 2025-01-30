@@ -27,7 +27,7 @@ final class StatePresetProduct
     {
         $items = [
             '' => '',
-            self::BEFORE_PAYMENT => "결제전",
+            self::BEFORE_PAYMENT => "결제대기",
             self::WAIT => "결제대기",
             self::READY => "배송준비",
             self::WILL_OUT => "출고예정",

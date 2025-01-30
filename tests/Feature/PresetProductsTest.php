@@ -68,8 +68,13 @@ class PresetProductsTest extends TestCase
     public function createPackage()
     {
         $package = Package::factory()->create([
-            'start_pack_wait_at' => Carbon::now()->subDay(),
-            'start_pack_at' => Carbon::now()->subDays(1)
+            'start_pack_wait_at' => Carbon::now()->subDays(2),
+            'finish_pack_wait_at' => Carbon::now()->subDays(2),
+            'start_pack_at' => Carbon::now()->subDays(1),
+            'finish_pack_at' => Carbon::now()->addDays(3),
+            'start_will_out_at' => Carbon::now()->addDays(4),
+            'finish_will_out_at' => Carbon::now()->addDays(5),
+            'will_delivery_at' => Carbon::now()->addDays(7),
         ]);
 
         $this->singleMaterials = Material::factory()->count(10)->create();
@@ -612,11 +617,9 @@ class PresetProductsTest extends TestCase
     {
         $package = $this->createPackage();
 
-        $this->packageSetting->update(['type' => TypePackage::BUNGLE]);
-
         $preset = Preset::factory()->create(['user_id' => $this->user->id]);
 
-        $presetProduct = PresetProduct::factory()->create(['package_id' => $package->id, 'preset_id' => $preset->id]);
+        $presetProduct = PresetProduct::factory()->create(['package_type'=> TypePackage::BUNGLE, 'package_id' => $package->id, 'preset_id' => $preset->id]);
 
         $this->artisan('alert:packageStartPack');
 
@@ -638,11 +641,9 @@ class PresetProductsTest extends TestCase
             ]);
         }
 
-        $this->packageSetting->update(['type' => TypePackage::BUNGLE]);
-
         $preset = Preset::factory()->create(['user_id' => $this->user->id]);
 
-        $presetProduct = PresetProduct::factory()->create(['package_id' => $package->id, 'preset_id' => $preset->id]);
+        $presetProduct = PresetProduct::factory()->create(['package_type' => TypePackage::BUNGLE, 'package_id' => $package->id, 'preset_id' => $preset->id]);
 
         $this->artisan('alert:packageStartPack');
 
@@ -667,7 +668,11 @@ class PresetProductsTest extends TestCase
 
         $preset = Preset::factory()->create(['user_id' => $this->user->id]);
 
-        $presetProduct = PresetProduct::factory()->create(['package_id' => $package->id, 'preset_id' => $preset->id]);
+        $presetProduct = PresetProduct::factory()->create([
+            'package_type' => TypePackage::BUNGLE,
+            'package_id' => $package->id,
+            'preset_id' => $preset->id
+        ]);
 
         $materials = [];
 
@@ -678,9 +683,18 @@ class PresetProductsTest extends TestCase
             ];
         }
 
+        foreach($this->bungleMaterials as $material){
+            $materials[] = [
+                'id' => $material->id,
+                'count' => 1,
+            ];
+        }
+
         $this->artisan('alert:packageStartPack');
 
-        $this->json('patch', '/patch/presetProducts/materials', [
+        $this->assertEquals(count($this->bungleMaterials), $presetProduct->refresh()->materials()->count());
+
+        $this->json('patch', '/api/presetProducts/materials/'.$presetProduct->id, [
             'materials' => $materials
         ]);
 
@@ -691,34 +705,173 @@ class PresetProductsTest extends TestCase
     public function 출고의_대상회차에_있는_선택가능구성_및_기본구성_내에서만_수정할_수_있다()
     {
 
+        /* materials
+                   id
+                   count
+                */
+        $package = $this->createPackage();
 
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'package_type' => TypePackage::BUNGLE,
+            'package_id' => $package->id,
+            'preset_id' => $preset->id
+        ]);
+
+        $material = Material::factory()->create();
+
+        $materials = [
+            [
+                'id' => $material->id,
+                'count' => 1,
+            ],
+        ];
+
+        foreach($this->bungleMaterials as $material){
+            $materials[] = [
+                'id' => $material->id,
+                'count' => 1,
+            ];
+        }
+
+        $this->artisan('alert:packageStartPack');
+
+        $this->json('patch', '/api/presetProducts/materials/'.$presetProduct->id, [
+            'materials' => $materials
+        ])->decodeResponseJson(403);
     }
 
     /** @test */
     public function 출고의_대상회차가_품목구성상태가_아니라면_수정할_수_없다()
     {
+        $package = $this->createPackage();
 
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
+
+        $presetProduct = PresetProduct::factory()->create([
+            'package_type' => TypePackage::BUNGLE,
+            'package_id' => $package->id,
+            'preset_id' => $preset->id
+        ]);
+
+        foreach($this->bungleMaterials as $material){
+            $materials[] = [
+                'id' => $material->id,
+                'count' => 1,
+            ];
+        }
+
+        $this->artisan('alert:packageStartPack');
+
+        $this->json('patch', '/api/presetProducts/materials/'.$presetProduct->id, [
+            'materials' => $materials
+        ])->assertStatus(200);
+
+        $package->update(['finish_pack_at' => Carbon::now()->subDay()]);
+
+        $this->json('patch', '/api/presetProducts/materials/'.$presetProduct->id, [
+            'materials' => $materials
+        ])->assertStatus(403);
 
     }
 
     /** @test */
     public function 품목구성금액은_패키지유형의_최소금액을_맞춰야한다()
     {
+        $package = $this->createPackage();
 
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
 
+        $presetProduct = PresetProduct::factory()->create([
+            'package_type' => TypePackage::BUNGLE,
+            'package_id' => $package->id,
+            'preset_id' => $preset->id
+        ]);
+
+        foreach($this->bungleMaterials as $material){
+            $materials[] = [
+                'id' => $material->id,
+                'count' => 1,
+            ];
+        }
+
+        array_splice($materials, 0, 1);
+
+        $this->artisan('alert:packageStartPack');
+
+        $this->json('patch', '/api/presetProducts/materials/'.$presetProduct->id, [
+            'materials' => $materials
+        ])->assertStatus(403);
     }
 
     /** @test */
     public function 출고에서_미루기_및_당기기_가능한_패키지를_조회할_수_있다()
     {
+        $packages = Package::get();
 
+        foreach($packages as $package){
+            $package->presetProducts()->delete();
 
+            $package->delete();
+        }
+
+        $currentPackage = Package::factory()->create([
+            'count' => 1,
+            'start_pack_wait_at' => Carbon::now()->subDays(4),
+            'finish_pack_wait_at' => Carbon::now()->subDays(3),
+            'start_pack_at' => Carbon::now()->subDays(2),
+            'finish_pack_at' => Carbon::now()->subDays(1),
+            'start_delivery_ready_at' => Carbon::now()->subDays(2),
+            'finish_delivery_ready_at' => Carbon::now()->addDays(4),
+            'start_will_out_at' => Carbon::now()->addDays(4),
+            'finish_will_out_at' => Carbon::now()->addDays(4),
+            'will_delivery_at' => Carbon::now()->addDays(4),
+        ]);
+        $futurePackage = Package::factory()->create([
+            'count' => 2,
+            'start_pack_wait_at' => Carbon::now()->addWeeks(1),
+            'finish_pack_wait_at' => Carbon::now()->addWeeks(2),
+            'start_pack_at' => Carbon::now()->addWeeks(2),
+            'finish_pack_at' => Carbon::now()->addWeeks(2),
+            'start_delivery_ready_at' => Carbon::now()->addWeeks(2),
+            'finish_delivery_ready_at' => Carbon::now()->addWeeks(2),
+            'start_will_out_at' => Carbon::now()->addWeeks(2),
+            'finish_will_out_at' => Carbon::now()->addWeeks(2),
+            'will_delivery_at' => Carbon::now()->addWeeks(2),
+        ]);
+        $moreFuturePackage = Package::factory()->create([
+            'count' => 3,
+            'start_pack_wait_at' => Carbon::now()->addWeeks(4),
+            'finish_pack_wait_at' => Carbon::now()->addWeeks(4),
+            'start_pack_at' => Carbon::now()->addWeeks(4),
+            'finish_pack_at' => Carbon::now()->addWeeks(4),
+            'start_delivery_ready_at' => Carbon::now()->addWeeks(4),
+            'finish_delivery_ready_at' => Carbon::now()->addWeeks(4),
+            'start_will_out_at' => Carbon::now()->addWeeks(4),
+            'finish_will_out_at' => Carbon::now()->addWeeks(4),
+            'will_delivery_at' => Carbon::now()->addWeeks(4),
+        ]);
+
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $this->user->presetProducts()->delete();
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'package_id' => $futurePackage->id,
+            'package_count' => $futurePackage->count,
+        ]);
+
+        $this->assertEquals($currentPackage->id, $presetProduct->refresh()->canFastPackage->id);
+        $this->assertEquals($moreFuturePackage->id, $presetProduct->refresh()->canLatePackage->id);
     }
 
     /** @test */
     public function 배송당기기를_할_수_있다()
     {
-
         /*- 출고가 결제대기중이어야함
     - 해당 출고에 당기기 가능한 패키지가 있어야함
     - 당길 경우 대상회차가 현재주문가능회차로 변경됨
@@ -728,7 +881,6 @@ class PresetProductsTest extends TestCase
     /** @test */
     public function 배송미루기를_할_수_있다()
     {
-
         /*- 출고가 결제대기중이어야함
     - 미룰 경우 대상회차가 현재회차의 바로 다음회차로 변경됨
     - 배송미루기 히스토리가 생성됨*/

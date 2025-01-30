@@ -240,6 +240,7 @@ class Preset extends Model
                 }
 
                 if(!$canOrderPackage){
+
                     \DB::rollBack();
 
                     return [
