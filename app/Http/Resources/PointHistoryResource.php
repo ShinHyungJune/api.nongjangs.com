@@ -23,6 +23,7 @@ class PointHistoryResource extends JsonResource
 
             'format_increase' => $this->format_increase,
             'pointHistoriable' => $this->pointHistoriable,
+            'format_title' => $this->format_title,
             'format_type' => TypePointHistory::getLabel($this->type),
             'format_created_at' => $this->created_at ? Carbon::make($this->created_at)->format('Y-m-d H:i') : '',
         ];
