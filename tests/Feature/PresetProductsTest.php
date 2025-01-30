@@ -659,10 +659,32 @@ class PresetProductsTest extends TestCase
     /** @test */
     public function 사용자는_출고의_품목구성을_수정할_수_있다()
     {
-        /*materials
-            id
-            count*/
+        /* materials
+           id
+           count
+        */
+        $package = $this->createPackage();
 
+        $preset = Preset::factory()->create(['user_id' => $this->user->id]);
+
+        $presetProduct = PresetProduct::factory()->create(['package_id' => $package->id, 'preset_id' => $preset->id]);
+
+        $materials = [];
+
+        foreach($this->selectMaterials as $material){
+            $materials[] = [
+                'id' => $material->id,
+                'count' => 1,
+            ];
+        }
+
+        $this->artisan('alert:packageStartPack');
+
+        $this->json('patch', '/patch/presetProducts/materials', [
+            'materials' => $materials
+        ]);
+
+        $this->assertEquals(count($this->bungleMaterials) + count($this->selectMaterials), $presetProduct->refresh()->materials()->count());
     }
 
     /** @test */

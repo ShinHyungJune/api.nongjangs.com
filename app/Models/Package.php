@@ -56,12 +56,32 @@ class Package extends Model
 
     public function getPriceSingleAttribute()
     {
-        return $this->packageMaterials()->where('type', TypePackageMaterial::SINGLE)->sum('price');
+        $total = 0;
+
+        $packageMaterials = $this->packageMaterials()
+            ->where('type', TypePackageMaterial::SINGLE)
+            ->get();
+
+        foreach($packageMaterials as $packageMaterial){
+            $total += ($packageMaterial->price * $packageMaterial->count);
+        }
+
+        return $total;
     }
 
     public function getPriceBungleAttribute()
     {
-        return $this->packageMaterials()->where('type', TypePackageMaterial::BUNGLE)->sum('price');
+        $total = 0;
+
+        $packageMaterials = $this->packageMaterials()
+            ->where('type', TypePackageMaterial::BUNGLE)
+            ->get();
+
+        foreach($packageMaterials as $packageMaterial){
+            $total += ($packageMaterial->price * $packageMaterial->count);
+        }
+
+        return $total;
     }
 
     public static function getOngoing()

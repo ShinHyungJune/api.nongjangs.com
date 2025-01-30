@@ -65,7 +65,7 @@ class AlertPackageStartPack extends Command
                         $unlikeMaterials = $packageSetting->materials()->wherePivot('unlike', 1)->get();
 
                         $packageMaterials = $package->packageMaterials()
-                            ->where('type', $packageSetting->type == TypePackage::SINGLE ? TypePackageMaterial::SINGLE : TypePackageMaterial::BUNGLE)
+                            ->where('type', $presetProduct->package_type == TypePackage::SINGLE ? TypePackageMaterial::SINGLE : TypePackageMaterial::BUNGLE)
                             ->whereNotIn('material_id', $unlikeMaterials->pluck('id')->toArray())
                             ->get();
 
@@ -85,7 +85,7 @@ class AlertPackageStartPack extends Command
                         }
 
                         // 비선호 품목으로 인해 빠진 품목이 있다면 최소가격만큼 채우기
-                        $priceMinPackage = $packageSetting->type == TypePackage::SINGLE ? $package->price_single : $package->price_bungle;
+                        $priceMinPackage = $presetProduct->package_type == TypePackage::SINGLE ? $package->price_single : $package->price_bungle;
 
                         while($priceTotal < $priceMinPackage){
                             $packageMaterial = $packageMaterials->get(rand(0, count($packageMaterials) - 1));

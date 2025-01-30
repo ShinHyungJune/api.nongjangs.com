@@ -81,6 +81,12 @@ class PresetProductRequest extends FormRequest
                         'reason_request_cancel' => 'required|string|max:5000'
                     ];
 
+                case 'updateMaterials':
+                    return [
+                        'materials' => 'required|array',
+                        'materials.id' => 'required|integer',
+                        'materials.count' => 'required|integer|min:1',
+                    ];
 
                 default:
                     return [];

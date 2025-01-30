@@ -167,4 +167,22 @@ class PresetProductController extends ApiController
 
         return $this->respondSuccessfully($presetProduct ? PresetProductResource::make($presetProduct) : null);
     }
+
+    /** 꾸러미 구성품목 변경
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function updateMaterials(PresetProduct $presetProduct, PresetProductRequest $request)
+    {
+        if(!$presetProduct->can_update_materials)
+            return $this->respondForbidden('품목구성을 변경할 수 없습니다.');
+
+        $result = $presetProduct->syncMaterials($request->materials);
+
+        if(!$result['success'])
+            return $this->respondForbidden($result['message']);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
 }

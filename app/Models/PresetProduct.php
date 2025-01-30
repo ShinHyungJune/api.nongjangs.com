@@ -36,7 +36,6 @@ class PresetProduct extends Model
         self::updated(function (PresetProduct $presetProduct) {
             $user = User::withTrashed()->find($presetProduct->preset->user_id);
 
-
             // 주문취소 시 반환처리
             $prevState = $presetProduct->getOriginal('state');
 
@@ -228,6 +227,53 @@ class PresetProduct extends Model
         ]);
     }
 
+    public function syncMaterials($materials)
+    {
+        $package = $this->package;
+
+        if(!$package)
+            return ['success' => false, 'message' => '더 이상 구매할 수 없는 회차입니다.'];
+
+        $priceTotal = 0;
+        $priceMin = $this->package_type == TypePackage::BUNGLE ? $package->price_bungle : $package->price_single;
+
+        foreach($materials as $materialData){
+            $packageMaterial = $package->packageMaterials()->where('material_id', $materialData['id'])->first();
+
+            if(!$packageMaterial)
+                return ['success' => false, 'message' => '해당 회차에 소속된 품목만을 추가할 수 있습니다.'];
+
+            $priceTotal += ($packageMaterial->count * $packageMaterial->price);
+        }
+
+        if($priceMin > $priceTotal)
+            return ['success' => false, 'message' => '최소 금액을 충족하지 못했습니다.'];
+
+        foreach($materials as $materialData){
+            $packageMaterial = $package->packageMaterials()->where('material_id', $materialData['id'])->first();
+
+            $prevMaterial = $this->materials()->where('materials.id', $packageMaterial->material_id)->first();
+
+            // 기존 개수에만 추가
+            if($prevMaterial){
+                $this->materials()->updateExistingPivot($packageMaterial->material_id, [
+                    'count' => $prevMaterial->pivot->count + 1,
+                ]);
+            }else{ // 새로 추가
+                $this->materials()->attach($packageMaterial->material_id, [
+                    'price' => $packageMaterial->price,
+                    'price_origin' => $packageMaterial->price_origin,
+                    'unit' => $packageMaterial->unit,
+                    'value' => $packageMaterial->value,
+                    'count' => $packageMaterial->count,
+                    'type' => $packageMaterial->type,
+                ]);
+            }
+        }
+
+        return ['success' => true, 'message' => ''];
+    }
+
     public function getCanLatePackageAttribute()
     {
 
@@ -247,6 +293,20 @@ class PresetProduct extends Model
             return 0;
 
         if($this->state == StatePresetProduct::DELIVERED)
+            return 1;
+
+        return 0;
+    }
+
+    public function getCanUpdateMaterialsAttribute()
+    {
+        if(!auth()->user())
+            return 0;
+
+        if(auth()->user()->id != $this->preset->user_id)
+            return 0;
+
+        if($this->state == StatePresetProduct::BEFORE_PAYMENT)
             return 1;
 
         return 0;
