@@ -54,6 +54,7 @@ class Order extends Model
 
                 $model->success();
                 $model->process_success = true;
+                $model->success_at = Carbon::now();
 
                 /*Alarm::create([
                     'contact' => $model->buyer_contact,
@@ -397,7 +398,7 @@ class Order extends Model
 
     public function getPriceProductsDiscountAttribute()
     {
-        // return $this->presetProducts()->where('additional', 0)->sum('price_discount');
+        return $this->presetProducts()->sum('products_price');
     }
 
     public function getFormatProductsAttribute()

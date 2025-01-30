@@ -4,6 +4,7 @@
       "id": "고유번호",
       "type": "유형",
       "increase": "증감여부 (1 - 증가 | 0 - 감소)",
+      "pointModel": "관련 포인트 객체",
       "point": "포인트",
       "point_leave": "남은 포인트",
       "memo": "메모",

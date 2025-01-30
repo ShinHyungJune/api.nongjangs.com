@@ -55,4 +55,9 @@ class PointHistory extends Model
     {
         return $this->morphTo();
     }
+
+    public function pointModel()
+    {
+        return $this->belongsTo(Point::class);
+    }
 }

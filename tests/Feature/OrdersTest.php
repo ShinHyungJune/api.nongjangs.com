@@ -1,18 +1,14 @@
 <?php
 
 
-namespace Tests\임시;
+namespace Tests\Feature;
 
 use App\Enums\StateOrder;
-use App\Enums\StatePresetProduct;
 use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\PayMethod;
 use App\Models\Preset;
-use App\Models\PresetProduct;
-use App\Models\Program;
 use App\Models\User;
-use App\Models\Waiting;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

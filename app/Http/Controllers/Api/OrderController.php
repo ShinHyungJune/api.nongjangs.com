@@ -54,14 +54,20 @@ class OrderController extends ApiController
             $items = $items->where('created_at', '<=', Carbon::make($request->finished_at)->endOfDay());
 
         if($request->word)
-            $items = $items->whereHas('presets', function ($query) use($request){
-                $query->whereHas('products', function ($query) use($request){
-                    $query->where('products.title', 'LIKE', '%'.$request->word.'%');
-                });
+            $items = $items->whereHas('presetProducts', function ($query) use($request){
+                $query->where('product_title', 'LIKE', '%'.$request->word.'%')
+                    ->orWhere('package_name', 'LIKE', '%'.$request->word.'%');
+            });
+
+        if($request->has_column)
+            $items = $items->whereHas('presetProducts', function ($query) use($request){
+                $query->whereNotNull('has_column');
             });
 
         if($request->states)
-            $items = $items->whereIn('state', $request->states);
+            $items = $items->whereHas('presetProducts', function ($query) use($request){
+                $query->whereIn('preset_product.state', $request->states);
+            });
 
         $items = $items->latest()->paginate(12);
 

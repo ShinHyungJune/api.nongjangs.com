@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\DeliveryCompany;
 use App\Enums\MomentCouponGroup;
+use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
 use App\Enums\StateProduct;
 use App\Enums\TargetCouponGroup;
@@ -145,6 +146,7 @@ class InitSeeder extends Seeder
         Bookmark::truncate();
         Point::truncate();
         PointHistory::truncate();
+        Order::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -193,7 +195,7 @@ class InitSeeder extends Seeder
         $this->createPackages();
         $this->createPackageSettings();
         $this->createCards();
-        $this->createPresetProducts();
+        $this->createOrders();
         $this->createRecipes();
         $this->createReviews();
         $this->createVegetableStories();
@@ -333,69 +335,80 @@ class InitSeeder extends Seeder
         }
     }
 
-    public function createPresetProducts()
+    public function createPresetProducts($preset)
+    {
+        $states = StatePresetProduct::getValues();
+
+        foreach($states as $state){
+            $product = Product::inRandomOrder()->first() ?? Product::factory()->create();
+            $option = Option::inRandomOrder()->first() ?? Option::factory()->create();
+
+            $presetProduct = PresetProduct::factory()->create([
+                'preset_id' => $preset->id,
+                'package_id' => null,
+                'product_id' => $product->id,
+                'product_price' => $product->price,
+                'product_price_origin' => $product->price_origin,
+                'count' => rand(1,2),
+                'option_id' => $option->id,
+                'option_title' => $option->title,
+                'option_price' => $option->price,
+                'option_type' => $option->type,
+                'state'=> $state,
+            ]);
+
+            $package = Package::inRandomOrder()->first() ?? Package::factory()->create();
+
+            $packageSetting = $this->user->packageSetting ?? PackageSetting::factory()->create(['user_id' => $this->user->id]);
+
+            $packagePresetProduct = PresetProduct::factory()->create([
+                'preset_id' => $preset->id,
+                'package_id' => $package->id,
+                'package_count' => $package->count,
+                'package_name' => $packageSetting->name,
+                'package_price' => $package->price_single,
+                'package_type' => $packageSetting->type,
+                'package_active' => rand(0, 1),
+                'package_will_delivery_at' => $package->will_delivery_at,
+                'product_id' => null,
+                'state'=> $state,
+            ]);
+
+            $materials = $package->materials;
+
+            foreach($materials as $material){
+                $packagePresetProduct->materials()->attach($material->id, [
+                    'price' => $material->pivot->price,
+                    'price_origin' => $material->pivot->price_origin,
+                    'unit' => $material->pivot->unit,
+                    'count' => $material->pivot->count,
+                ]);
+            }
+        }
+    }
+    public function createPresets($order)
     {
         $presetA = Preset::factory()->create([
+            'order_id' => $order->id,
             'user_id' => $this->user->id,
         ]);
 
         $presetB = Preset::factory()->create([
+            'order_id' => $order->id,
             'user_id' => $this->user->id,
         ]);
 
-        $presetC = Preset::factory()->create([
-            'user_id' => $this->user->id,
+        $this->createPresetProducts($presetA);
+    }
+
+    public function createOrders()
+    {
+        $successOrder = Order::factory()->create([
+            'user_id'=> $this->user->id,
+            'state' => StateOrder::SUCCESS
         ]);
 
-        $product = Product::inRandomOrder()->first() ?? Product::factory()->create();
-        $option = Option::inRandomOrder()->first() ?? Option::factory()->create();
-
-        PresetProduct::factory()->count(5)->create([
-            'preset_id' => $presetA->id,
-            'product_id' => null,
-            'state'=>StatePresetProduct::CONFIRMED,
-        ]);
-
-        PresetProduct::factory()->count(5)->create([
-            'preset_id' => $presetB->id,
-            'product_id' => null,
-            'state'=>StatePresetProduct::CONFIRMED,
-        ]);
-
-        PresetProduct::factory()->count(5)->create([
-            'preset_id' => $presetC->id,
-            'product_id' => $product->id,
-            'package_id' => null,
-            'state'=>StatePresetProduct::CONFIRMED,
-        ]);
-
-        $packagePresetProducts = PresetProduct::inRandomOrder()->take(2)->whereHas('preset', function ($query){
-            $query->where('user_id', $this->user->id);
-        })->whereNotNull('package_id')->where('state', StatePresetProduct::CONFIRMED)
-            ->get();
-
-        foreach($packagePresetProducts as $presetProduct){
-            $photoReview = Review::factory()->create(['preset_product_id' => $presetProduct->id, 'photo' => 1, 'user_id' => $this->user->id]);
-
-            if (config("app.env") != 'local') {
-                $photoReview->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
-                $photoReview->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
-            }
-        }
-
-        $productPresetProducts = PresetProduct::inRandomOrder()->take(3)->whereHas('preset', function ($query){
-            $query->where('user_id', $this->user->id);
-        })->whereNotNull('product_id')->where('state', StatePresetProduct::CONFIRMED)
-            ->get();
-
-        foreach($productPresetProducts as $presetProduct){
-            $photoReview = Review::factory()->create(['preset_product_id' => $presetProduct->id, 'photo' => 1, 'user_id' => $this->user->id]);
-
-            if (config("app.env") != 'local') {
-                $photoReview->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
-                $photoReview->addMedia(public_path($this->imgs[rand(0, count($this->imgs) - 1)]))->preservingOriginal()->toMediaCollection("imgs", "s3");
-            }
-        }
+        $this->createPresets($successOrder);
     }
     public function createRecipes()
     {

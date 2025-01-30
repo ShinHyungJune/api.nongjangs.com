@@ -33,9 +33,9 @@ class OrderFactory extends Factory
             'vbank_num' => $this->faker->word(),
             'vbank_name' => $this->faker->name(),
             'vbank_date' => $this->faker->word(),
-            'buyer_name' => $this->faker->name(),
-            'buyer_contact' => $this->faker->word(),
-            'delivery_name' => $this->faker->name(),
+            'buyer_name' => $user->name,
+            'buyer_contact' => $user->contact,
+            'delivery_name' => $user->name,
             'delivery_contact' => $this->faker->word(),
             'delivery_address' => $this->faker->address(),
             'delivery_address_detail' => $this->faker->address(),
@@ -54,6 +54,7 @@ class OrderFactory extends Factory
             'reason_refund' => $this->faker->word(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'success_at' => Carbon::now(),
         ];
     }
 }

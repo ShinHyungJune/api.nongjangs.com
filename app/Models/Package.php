@@ -63,6 +63,14 @@ class Package extends Model
         return $this->packageMaterials()->where('type', TypePackageMaterial::BUNGLE)->sum('price');
     }
 
+    public static function getOngoing()
+    {
+        return Package::where('start_pack_wait_at', '<=', Carbon::now())
+            ->where('will_delivery_at', '>=', Carbon::now()->subDay()->startOfDay())
+            ->orderBy('count', 'asc')
+            ->first();
+    }
+
     public static function getCanOrder()
     {
         $packages = Package::where('will_delivery_at', '>=', Carbon::now()->startOfDay())

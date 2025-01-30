@@ -45,6 +45,9 @@ class PresetProductFactory extends Factory
             'package_id' => $package->id,
             'product_id' => $product->id,
             'option_id' => $option->id,
+
+            'reason_request_cancel' => '이래서 취소했어요',
+            'reason_deny_cancel' => '이래서 취소요청해요.',
         ];
     }
 }

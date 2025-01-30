@@ -24,69 +24,89 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         $method = $this->route()->getActionMethod();
+        $admin = strpos($this->route()->getPrefix(), 'admin') !== false;
 
-        switch ($method){
-            case 'index':
-                return [
-                    'started_at' => 'nullable|string|max:500',
-                    'finished_at' => 'nullable|string|max:500',
-                    'word' => 'nullable|string|max:500',
-                ];
+        if($admin){
+            switch ($method){
+                case 'index':
+                    return [
+                        'word' => ['nullable', 'string', 'max:500']
+                    ];
 
-            case 'store':
-                return [
-                    'presets' => 'required|array|max:100',
-                ];
+                case 'store':
+                    return [
+                        '' => []
+                    ];
 
-            case 'update':
-                $data = [
-                    'buyer_contact' => ['required','string','max:500'],
-                    'buyer_email' => ['required','string','max:500'],
-                    'buyer_name' => ['required','string','max:500'],
+                case 'update':
+                    return [
+                        '' => []
+                    ];
 
-                    'delivery_name' => ['required','string','max:500'],
-                    'delivery_contact' => ['required','string','max:500'],
-                    'delivery_address' => ['required','string','max:500'],
-                    'delivery_address_detail' => ['required','string','max:500'],
-                    'delivery_address_zipcode' => ['required','string','max:500'],
-                    'delivery_requirement' => ['nullable','string','max:500'],
+                case 'destroy':
+                    return [
+                        'ids' => ['required', 'array'],
+                    ];
 
-                    'point_use' => ['required','integer'],
+                default:
+                    return [];
+            }
+        }else{
+            switch ($method){
+                case 'index':
+                    return [
+                        'started_at' => 'nullable|string|max:500',
+                        'finished_at' => 'nullable|string|max:500',
+                        'word' => 'nullable|string|max:500',
+                        'has_column' => 'nullable|string|max:500',
+                        'states' => 'nullable|array',
+                    ];
 
-                    'pay_method_id' => ['required', 'integer'],
-                ];
+                case 'store':
+                    return [
+                        'presets' => 'required|array|max:100',
+                    ];
 
-                return $data;
+                case 'update':
+                    $data = [
+                        'buyer_contact' => ['required','string','max:500'],
+                        'buyer_email' => ['required','string','max:500'],
+                        'buyer_name' => ['required','string','max:500'],
 
-            case 'complete':
-                return [
-                    "imp_uid" => "required|string|max:50000",
-                    "merchant_uid" => "required|string|max:50000",
-                ];
+                        'delivery_name' => ['required','string','max:500'],
+                        'delivery_contact' => ['required','string','max:500'],
+                        'delivery_address' => ['required','string','max:500'],
+                        'delivery_address_detail' => ['required','string','max:500'],
+                        'delivery_address_zipcode' => ['required','string','max:500'],
+                        'delivery_requirement' => ['nullable','string','max:500'],
 
-            case 'showByGuest':
-                return [
-                    'merchant_uid' => 'nullable|string|max:500',
-                    'buyer_contact' => 'required|string|max:500',
-                    'buyer_name' => 'required|string|max:500'
-                ];
+                        'point_use' => ['required','integer'],
 
-            case 'bill':
-                return [
-                    'merchant_uid' => 'required|string|max:500'
-                ];
+                        'pay_method_id' => ['required', 'integer'],
+                    ];
 
-            default:
-                return [];
+                    return $data;
+
+                case 'complete':
+                    return [
+                        "imp_uid" => "required|string|max:50000",
+                        "merchant_uid" => "required|string|max:50000",
+                    ];
+
+                default:
+                    return [];
+            }
         }
     }
 
     public function bodyParameters()
     {
         return [
+            'has_column' => ['description' => '<span class="point">특정데이터 보유여부 (package_id - 꾸러미 | product_id - 직거래 장터)</span>'],
             'started_at' => ['description' => '<span class="point">시작일자</span>'],
             'finished_at' => ['description' => '<span class="point">종료일자</span>'],
             'word' => ['description' => '<span class="point">검색어</span>'],
+            'states' => ['description' => '<span class="point">상태목록 (PresetProduct의 상태 목록)</span>'],
             'presets' => ['description' => '<span class="point">상품조합목록</span>'],
             'buyer_name' => ['description' => '<span class="point">주문자 이름</span>'],
             'buyer_email' => ['description' => '<span class="point">주문자 이메일</span>'],

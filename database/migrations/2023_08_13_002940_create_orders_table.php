@@ -64,6 +64,8 @@ class CreateOrdersTable extends Migration
             $table->string("refund_account")->nullable()->comment('환불계좌 계좌번호');
             $table->text("reason_refund")->nullable()->comment('환불사유');
 
+            $table->dateTime("success_at")->nullable()->comment('결제성공일자');
+
             $table->timestamps();
         });
     }

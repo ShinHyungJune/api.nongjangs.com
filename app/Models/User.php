@@ -486,4 +486,27 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
         return $nextGrade->min_price - $this->total_order_price;
     }
+
+    public function getCurrentPackagePresetProduct()
+    {
+        $ongoingPackage = Package::getOngoing();
+
+        // 출고의 대상회차가 현재 진행중인 회차라면
+        if($ongoingPackage){
+            $presetProduct = $this->presetProducts()->where('package_id', $ongoingPackage->id)->first();
+
+            if($presetProduct)
+                return $presetProduct;
+        }
+
+        // 패키지설정의 구독여부가 꺼져있다면 (active 0) null을 리턴
+        // 가장 최근애를 가져오면 되지않나? 싶지만 과거 구매이력 있을 경우 계속 걔가 떠있을거임, 근데 마이페이지에서는 이미 지난건만 있고 비활성 상태면 다시 구독하라고 권장하는 ui 필요
+        $packageSetting = $this->packageSetting;
+
+        if(!$packageSetting || !$packageSetting->active)
+            return null;
+
+        // 가장 최근 꾸러미 출고 리턴
+        return $this->presetProducts()->orderBy('id', 'desc')->whereHas('package')->first();
+    }
 }

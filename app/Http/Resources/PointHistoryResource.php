@@ -24,6 +24,7 @@ class PointHistoryResource extends JsonResource
             'type' => $this->type,
             'increase' => $this->increase,
             'point_leave' => $this->point_leave,
+            'pointModel' => $this->pointModel ? PointResource::make($this->pointModel) : '',
             'point' => $this->point,
             'memo' => $this->memo,
 

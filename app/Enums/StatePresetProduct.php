@@ -47,15 +47,15 @@ final class StatePresetProduct
     {
         return [
             self::BEFORE_PAYMENT,
+            self::WAIT,
             self::READY,
-            self::CONFIRM_PROTOTYPE,
+            self::WILL_OUT,
             self::ONGOING_DELIVERY,
             self::DELIVERED,
             self::CONFIRMED,
             self::CANCEL,
-            self::ONGOING_REFUND,
-            self::FINISH_REFUND,
-            self::DENY_REFUND,
+            self::REQUEST_CANCEL,
+            self::DENY_CANCEL,
         ];
     }
 }

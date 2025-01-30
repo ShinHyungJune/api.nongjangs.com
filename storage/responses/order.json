@@ -1,0 +1,32 @@
+{
+  "id": "고유번호",
+  "merchant_uid": "주문번호",
+
+  "buyer_name": "주문자 이름",
+  "buyer_contact": "주문자 연락처",
+
+  "delivery_name": "수령자 이름",
+  "delivery_contact": "수령자 연락처",
+  "delivery_address": "주소",
+  "delivery_address_detail": "상세주소",
+  "delivery_address_zipcode": "우편번호",
+  "delivery_requirement": "배송요청사항",
+
+  "point_use": "사용 적립금",
+  /*"price_products": "",
+  "price_products_discount": "",
+  "price_delivery": "",
+  "price_coupon_discount": "",*/
+
+  "price": "결제금액",
+  "state": "주문상태",
+  "reason": "사유",
+
+  "pay_method_name": "결제수단명",
+
+  "vbank_num": "가상계좌 계좌번호",
+  "vbank_name": "가상계좌 은행명",
+  "vbank_date": "가상계좌 만료일자",
+
+  "format_success_at": "주문성공일자"
+}
