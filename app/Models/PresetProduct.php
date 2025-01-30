@@ -8,6 +8,7 @@ use App\Enums\StatePresetProduct;
 use App\Enums\TypeDiscount;
 use App\Enums\TypeOption;
 use App\Enums\TypePackage;
+use App\Enums\TypePackageChangeHistory;
 use App\Enums\TypePointHistory;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -66,11 +67,16 @@ class PresetProduct extends Model
                         $user->givePoint($point, TypePointHistory::PRESET_PRODUCT_CONFIRM, $presetProduct);
 
                         // 등급업 처리 필요
-                        $nextGrade = Grade::where('level', $user->grade->level + 1)->first();
+                        $grades = Grade::orderBy('level', 'desc')
+                            ->where('level', '>', $user->grade->level)
+                            ->cursor();
 
-                        // 다음 등급이 있고 && 등급업을 위한 조건들을 이미 충족했을 때
-                        if ($nextGrade && ($user->count_package_for_next_grade <= 0 || $user->price_for_next_grade <= 0)) {
-                            $user->update(['grade_id' => $nextGrade->id]);
+                        foreach($grades as $grade){
+                            if ($user->total_order_price >= $grade->min_price || $user->total_order_count_package >= $grade->min_count_package) {
+                                $user->update(['grade_id' => $grade->id]);
+
+                                break;
+                            }
                         }
                     }
                 }
@@ -411,9 +417,11 @@ class PresetProduct extends Model
         return $result;
     }
 
-    public function changePackage($package)
+    public function changePackage($package, $type)
     {
         $packageSetting = $this->preset->user->packageSetting;
+
+        $originPackageId = $this->package_id;
 
         $this->update([
             'package_id' => $package->id,
@@ -423,6 +431,13 @@ class PresetProduct extends Model
             'package_active' => $this->package_active,
             'package_type' => $this->package_type,
             'package_price' => $this->package_type == TypePackage::BUNGLE ? $package->price_bungle : $package->price_single,
+        ]);
+
+        PackageChangeHistory::create([
+            'preset_product_id' => $this->id,
+            'origin_package_id' => $originPackageId,
+            'user_id' => $this->preset->user_id,
+            'type'=> $type
         ]);
     }
 }

@@ -13,6 +13,7 @@ use App\Models\Grade;
 use App\Models\Material;
 use App\Models\Order;
 use App\Models\Package;
+use App\Models\PackageChangeHistory;
 use App\Models\PackageSetting;
 use App\Models\Preset;
 use App\Models\PresetProduct;
@@ -359,6 +360,24 @@ class PresetProductsTest extends TestCase
     public function 취소요청을_취소할_수_있다()
     {
         // 취소하면 원래 상태로 되돌려야함 (state_origin 컬럼 추가 필요)
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $presetProduct = \App\Models\PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'state' => StatePresetProduct::WILL_OUT,
+        ]);
+
+        $item = $this->json('patch', '/api/presetProducts/requestCancel/' . $presetProduct->id, [
+            'reason_request_cancel' => '요청사유',
+        ])->assertStatus(200);
+
+        $item = $this->json('patch', '/api/presetProducts/recoverCancel/' . $presetProduct->id, [
+
+        ])->assertStatus(200);
+
+        $this->assertEquals(StatePresetProduct::WILL_OUT, $presetProduct->refresh()->state);
     }
 
     /** @test */
@@ -461,7 +480,6 @@ class PresetProductsTest extends TestCase
     /** @test */
     public function 구매확정이_되면_사용자의_등급이_갱신된다()
     {
-
         $preset = Preset::factory()->create(['user_id' => $this->user->id]);
 
         $presetProduct = PresetProduct::factory()->create([
@@ -469,12 +487,12 @@ class PresetProductsTest extends TestCase
             'state' => StatePresetProduct::DELIVERED,
         ]);
 
-        $grade = Grade::factory()->create(['ratio_refund' => 0.1]);
+        $this->grade->update(['ratio_refund' => 0.1]);
 
-        $nextGrade = Grade::factory()->create(['level' => $grade->level + 1, 'min_price' => $presetProduct->price - 1]);
+        $nextGrade = Grade::factory()->create(['level' => $this->grade->level + 1, 'min_price' => $presetProduct->price - 1]);
 
         $this->user->update([
-            'grade_id' => $grade->id,
+            'grade_id' => $this->grade->id,
         ]);
 
 
@@ -739,7 +757,7 @@ class PresetProductsTest extends TestCase
 
         $this->json('patch', '/api/presetProducts/materials/'.$presetProduct->id, [
             'materials' => $materials
-        ])->decodeResponseJson(403);
+        ])->assertStatus(403);
     }
 
     /** @test */
@@ -876,6 +894,67 @@ class PresetProductsTest extends TestCase
     - 해당 출고에 당기기 가능한 패키지가 있어야함
     - 당길 경우 대상회차가 현재주문가능회차로 변경됨
     - 배송당기기 히스토리가 생성됨*/
+        $packages = Package::get();
+
+        foreach($packages as $package){
+            $package->presetProducts()->delete();
+
+            $package->delete();
+        }
+
+        $currentPackage = Package::factory()->create([
+            'count' => 1,
+            'start_pack_wait_at' => Carbon::now()->subDays(4),
+            'finish_pack_wait_at' => Carbon::now()->subDays(3),
+            'start_pack_at' => Carbon::now()->subDays(2),
+            'finish_pack_at' => Carbon::now()->subDays(1),
+            'start_delivery_ready_at' => Carbon::now()->subDays(2),
+            'finish_delivery_ready_at' => Carbon::now()->addDays(4),
+            'start_will_out_at' => Carbon::now()->addDays(4),
+            'finish_will_out_at' => Carbon::now()->addDays(4),
+            'will_delivery_at' => Carbon::now()->addDays(4),
+        ]);
+        $futurePackage = Package::factory()->create([
+            'count' => 2,
+            'start_pack_wait_at' => Carbon::now()->addWeeks(1),
+            'finish_pack_wait_at' => Carbon::now()->addWeeks(2),
+            'start_pack_at' => Carbon::now()->addWeeks(2),
+            'finish_pack_at' => Carbon::now()->addWeeks(2),
+            'start_delivery_ready_at' => Carbon::now()->addWeeks(2),
+            'finish_delivery_ready_at' => Carbon::now()->addWeeks(2),
+            'start_will_out_at' => Carbon::now()->addWeeks(2),
+            'finish_will_out_at' => Carbon::now()->addWeeks(2),
+            'will_delivery_at' => Carbon::now()->addWeeks(2),
+        ]);
+        $moreFuturePackage = Package::factory()->create([
+            'count' => 3,
+            'start_pack_wait_at' => Carbon::now()->addWeeks(4),
+            'finish_pack_wait_at' => Carbon::now()->addWeeks(4),
+            'start_pack_at' => Carbon::now()->addWeeks(4),
+            'finish_pack_at' => Carbon::now()->addWeeks(4),
+            'start_delivery_ready_at' => Carbon::now()->addWeeks(4),
+            'finish_delivery_ready_at' => Carbon::now()->addWeeks(4),
+            'start_will_out_at' => Carbon::now()->addWeeks(4),
+            'finish_will_out_at' => Carbon::now()->addWeeks(4),
+            'will_delivery_at' => Carbon::now()->addWeeks(4),
+        ]);
+
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $this->user->presetProducts()->delete();
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'package_id' => $futurePackage->id,
+            'package_count' => $futurePackage->count,
+        ]);
+
+        $item = $this->json('patch', '/api/presetProducts/fast/'.$presetProduct->id)->decodeResponseJson()['data'];
+
+        $this->assertEquals($currentPackage->id, $item['package']['id']);
+        $this->assertEquals(1, PackageChangeHistory::count());
     }
 
     /** @test */
@@ -884,6 +963,67 @@ class PresetProductsTest extends TestCase
         /*- 출고가 결제대기중이어야함
     - 미룰 경우 대상회차가 현재회차의 바로 다음회차로 변경됨
     - 배송미루기 히스토리가 생성됨*/
+        $packages = Package::get();
+
+        foreach($packages as $package){
+            $package->presetProducts()->delete();
+
+            $package->delete();
+        }
+
+        $currentPackage = Package::factory()->create([
+            'count' => 1,
+            'start_pack_wait_at' => Carbon::now()->subDays(4),
+            'finish_pack_wait_at' => Carbon::now()->subDays(3),
+            'start_pack_at' => Carbon::now()->subDays(2),
+            'finish_pack_at' => Carbon::now()->subDays(1),
+            'start_delivery_ready_at' => Carbon::now()->subDays(2),
+            'finish_delivery_ready_at' => Carbon::now()->addDays(4),
+            'start_will_out_at' => Carbon::now()->addDays(4),
+            'finish_will_out_at' => Carbon::now()->addDays(4),
+            'will_delivery_at' => Carbon::now()->addDays(4),
+        ]);
+        $futurePackage = Package::factory()->create([
+            'count' => 2,
+            'start_pack_wait_at' => Carbon::now()->addWeeks(1),
+            'finish_pack_wait_at' => Carbon::now()->addWeeks(2),
+            'start_pack_at' => Carbon::now()->addWeeks(2),
+            'finish_pack_at' => Carbon::now()->addWeeks(2),
+            'start_delivery_ready_at' => Carbon::now()->addWeeks(2),
+            'finish_delivery_ready_at' => Carbon::now()->addWeeks(2),
+            'start_will_out_at' => Carbon::now()->addWeeks(2),
+            'finish_will_out_at' => Carbon::now()->addWeeks(2),
+            'will_delivery_at' => Carbon::now()->addWeeks(2),
+        ]);
+        $moreFuturePackage = Package::factory()->create([
+            'count' => 3,
+            'start_pack_wait_at' => Carbon::now()->addWeeks(4),
+            'finish_pack_wait_at' => Carbon::now()->addWeeks(4),
+            'start_pack_at' => Carbon::now()->addWeeks(4),
+            'finish_pack_at' => Carbon::now()->addWeeks(4),
+            'start_delivery_ready_at' => Carbon::now()->addWeeks(4),
+            'finish_delivery_ready_at' => Carbon::now()->addWeeks(4),
+            'start_will_out_at' => Carbon::now()->addWeeks(4),
+            'finish_will_out_at' => Carbon::now()->addWeeks(4),
+            'will_delivery_at' => Carbon::now()->addWeeks(4),
+        ]);
+
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $this->user->presetProducts()->delete();
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'package_id' => $futurePackage->id,
+            'package_count' => $futurePackage->count,
+        ]);
+
+        $item = $this->json('patch', '/api/presetProducts/late/'.$presetProduct->id)->decodeResponseJson()['data'];
+
+        $this->assertEquals($moreFuturePackage->id, $item['package']['id']);
+        $this->assertEquals(1, PackageChangeHistory::count());
     }
 
     // 후순위
@@ -916,7 +1056,6 @@ class PresetProductsTest extends TestCase
     /** @test */
     public function 자동결제를_실패하면_세번까지_재시도한다()
     {
-
 
     }
 

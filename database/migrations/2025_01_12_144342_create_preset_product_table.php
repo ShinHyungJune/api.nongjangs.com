@@ -10,7 +10,8 @@ return new class extends Migration {
     {
         Schema::create('preset_product', function (Blueprint $table) {
             $table->id();
-            $table->string('state')->default(StatePresetProduct::BEFORE_PAYMENT)->comment('상태');
+            $table->integer('state')->default(StatePresetProduct::BEFORE_PAYMENT)->comment('상태');
+            $table->integer('state_origin')->nullable()->comment('원래 상태');
             $table->foreignId('preset_id')->constrained('presets')->onDelete('cascade');
             $table->foreignId('product_id')->nullable()->constrained('products');
             $table->foreignId('package_id')->nullable()->constrained('packages');

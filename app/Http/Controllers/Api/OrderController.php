@@ -61,7 +61,7 @@ class OrderController extends ApiController
 
         if($request->has_column)
             $items = $items->whereHas('presetProducts', function ($query) use($request){
-                $query->whereNotNull('has_column');
+                $query->whereNotNull($request->has_column);
             });
 
         if($request->states)

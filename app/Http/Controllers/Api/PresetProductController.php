@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\StatePresetProduct;
+use App\Enums\TypePackageChangeHistory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PresetProductRequest;
 use App\Http\Resources\OrderResource;
@@ -131,8 +132,29 @@ class PresetProductController extends ApiController
 
         $result = $presetProduct->update([
             'state' => StatePresetProduct::REQUEST_CANCEL,
+            'state_origin' => $presetProduct->state,
             'request_cancel_at' => Carbon::now(),
             'reason_request_cancel' => $request->reason_request_cancel,
+        ]);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
+    /** 취소요청 번복
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function recoverCancel(PresetProduct $presetProduct, PresetProductRequest $request)
+    {
+        if($presetProduct->preset->user_id != auth()->id())
+            return $this->respondForbidden('권한이 없습니다.');
+
+        if($presetProduct->state != StatePresetProduct::REQUEST_CANCEL)
+            return $this->respondForbidden('취소요청 상태일 때만 취소를 회수할 수 있습니다.');
+
+        $presetProduct->update([
+            'state' => $presetProduct->state_origin,
         ]);
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
@@ -196,7 +218,7 @@ class PresetProductController extends ApiController
         if(!$presetProduct->can_fast_package)
             return $this->respondForbidden('당기기를 할 수 없습니다.');
 
-        $presetProduct->changePackage($presetProduct->can_fast_package);
+        $presetProduct->changePackage($presetProduct->can_fast_package, TypePackageChangeHistory::FAST);
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
@@ -211,7 +233,7 @@ class PresetProductController extends ApiController
         if(!$presetProduct->can_late_package)
             return $this->respondForbidden('미루기를 할 수 없습니다.');
 
-        $presetProduct->changePackage($presetProduct->can_late_package);
+        $presetProduct->changePackage($presetProduct->can_late_package, TypePackageChangeHistory::LATE);
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }

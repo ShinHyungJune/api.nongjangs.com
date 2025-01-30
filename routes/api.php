@@ -222,6 +222,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/presetProducts/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "show"]);
     Route::patch("/presetProducts/fast/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "fast"]);
     Route::patch("/presetProducts/late/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "late"]);
+    Route::patch("/presetProducts/recoverCancel/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "recoverCancel"]);
     Route::patch("/presetProducts/materials/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "updateMaterials"]);
     Route::patch("/presetProducts/requestCancel/{presetProduct}",[\App\Http\Controllers\Api\PresetProductController::class, 'requestCancel']);
     Route::patch("/presetProducts/cancel/{presetProduct}",[\App\Http\Controllers\Api\PresetProductController::class, 'cancel']);
