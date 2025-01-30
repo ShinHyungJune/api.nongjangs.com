@@ -78,8 +78,9 @@ class PackageSettingRequest extends FormRequest
                         'unlike_material_ids' => ['nullable', 'array'],
                         'name' => ['nullable', 'string', 'max:100'],
                         'active' => ['nullable', 'boolean'],
+                        'reason' => ['nullable', 'string', 'max:5000'],
+                        'and_so_on' => ['nullable', 'string', 'max:5000'],
                     ];
-
 
                 default:
                     return [];
@@ -111,6 +112,12 @@ class PackageSettingRequest extends FormRequest
             ],
             'name' => [
                 'description' => '<span class="point">꾸러미 이름</span>',
+            ],
+            'reason' => [
+                'description' => '<span class="point">중단사유</span>',
+            ],
+            'and_so_on' => [
+                'description' => '<span class="point">중단사유 기타 직접입력</span>',
             ],
 
             // 늘 쓰이는 애들

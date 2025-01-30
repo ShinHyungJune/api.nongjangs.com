@@ -13,7 +13,7 @@ use Carbon\Carbon;
 
 class PackageSettingController extends ApiController
 {
-    /** 생성
+    /** 목록
      * @group 사용자
      * @subgroup PackageSetting(꾸러미 기본설정)
      * @responseFile storage/responses/packageSetting.json
