@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 
 class PointHistoryController extends ApiController
 {
-    /**
-     * @group PointHistory(포인트 내역)
+    /** 목록
+     * @group 사용자
+     * @subgroup PointHistory(포인트 내역)
      * @responseFile storage/responses/pointHistories.json
      */
     public function index(PointHistoryRequest $request)

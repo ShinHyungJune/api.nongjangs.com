@@ -401,7 +401,7 @@ class UserController extends ApiController
      */
     public function updateAlwaysUsePointForPackage(UserRequest $request)
     {
-        auth()->user()->update(['always_use_coupon_for_package' => $request->always_use_coupon_for_package]);
+        auth()->user()->update(['always_use_point_for_package' => $request->always_use_point_for_package]);
 
         return $this->respondSuccessfully();
     }

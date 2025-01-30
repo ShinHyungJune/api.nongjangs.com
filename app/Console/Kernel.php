@@ -8,7 +8,7 @@ use App\Console\Commands\AlertWaitPrototype;
 use App\Console\Commands\CancelCampaigns;
 use App\Console\Commands\CheckBirthday;
 use App\Console\Commands\CheckDeliveryState;
-use App\Console\Commands\ConfirmPresets;
+use App\Console\Commands\ConfirmPresetProducts;
 use App\Console\Commands\GetSupportBusiness;
 use App\Console\Commands\Sample;
 use App\Console\Commands\CreateApplicationHistory;
@@ -27,12 +27,13 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        ConfirmPresets::class,
+        ConfirmPresetProducts::class,
         AlertDeliveryStart::class,
         AlertReviewNeed::class,
         CheckDeliveryState::class,
         AlertWaitPrototype::class,
         CheckBirthday::class,
+        ConfirmPresetProducts::class,
     ];
 
     /**
