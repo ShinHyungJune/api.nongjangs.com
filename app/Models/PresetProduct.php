@@ -53,22 +53,24 @@ class PresetProduct extends Model
             }
 
             if($prevState != StatePresetProduct::CONFIRMED && $presetProduct->state == StatePresetProduct::CONFIRMED){
-                if($user && $user->grade) {
-                    $point = floor($presetProduct->price * $user->grade->ratio_refund);
-
-                    $user->givePoint($point, TypePointHistory::PRESET_PRODUCT_CONFIRM, $presetProduct);
-
+                if($user) {
                     $user->update([
                         'total_order_price' => $user->total_order_price + $presetProduct->price,
                         'total_order_count_package' => $presetProduct->package_id ? $user->total_order_count_package + 1 : $user->total_order_count_package,
                     ]);
 
-                    // 등급업 처리 필요
-                    $nextGrade = Grade::where('level', $user->grade->level + 1)->first();
+                    if($user->grade) {
+                        $point = floor($presetProduct->price * $user->grade->ratio_refund);
 
-                    // 다음 등급이 있고 && 등급업을 위한 조건들을 이미 충족했을 때
-                    if($nextGrade && ($user->count_package_for_next_grade <= 0 || $user->price_for_next_grade <= 0)){
-                        $user->update(['grade_id' => $nextGrade->id]);
+                        $user->givePoint($point, TypePointHistory::PRESET_PRODUCT_CONFIRM, $presetProduct);
+
+                        // 등급업 처리 필요
+                        $nextGrade = Grade::where('level', $user->grade->level + 1)->first();
+
+                        // 다음 등급이 있고 && 등급업을 위한 조건들을 이미 충족했을 때
+                        if ($nextGrade && ($user->count_package_for_next_grade <= 0 || $user->price_for_next_grade <= 0)) {
+                            $user->update(['grade_id' => $nextGrade->id]);
+                        }
                     }
                 }
 

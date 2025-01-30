@@ -23,36 +23,6 @@ class UserResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function getCountPackageForNextGradeAttribute()
-    {
-        $grade = $this->grade;
-
-        if(!$grade)
-            return 0;
-
-        $nextGrade = Grade::where('level', $grade->level + 1)->first();
-
-        if(!$nextGrade)
-            return 0;
-
-        return $nextGrade->min_count_package - $this->total_order_count_package;
-    }
-
-    public function getPriceForNextGradeAttribute()
-    {
-        $grade = $this->grade;
-
-        if(!$grade)
-            return 0;
-
-        $nextGrade = Grade::where('level', $grade->level + 1)->first();
-
-        if(!$nextGrade)
-            return 0;
-
-        return $nextGrade->min_price - $this->total_order_price;
-    }
-
     public function toArray($request)
     {
         return [

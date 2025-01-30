@@ -14,6 +14,7 @@ use App\Console\Commands\Sample;
 use App\Console\Commands\CreateApplicationHistory;
 use App\Console\Commands\GetApplicationReaction;
 use App\Console\Commands\RemoveOldPoint;
+use App\Console\Commands\TakeExpiredPoints;
 use App\Jobs\CheckDeliveryStateJob;
 use App\Models\SupportBusiness;
 use Illuminate\Console\Scheduling\Schedule;
@@ -27,13 +28,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        ConfirmPresetProducts::class,
         AlertDeliveryStart::class,
-        AlertReviewNeed::class,
-        CheckDeliveryState::class,
-        AlertWaitPrototype::class,
         CheckBirthday::class,
+        CheckDeliveryState::class,
         ConfirmPresetProducts::class,
+        TakeExpiredPoints::class,
     ];
 
     /**

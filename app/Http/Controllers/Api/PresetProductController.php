@@ -155,4 +155,18 @@ class PresetProductController extends ApiController
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
+
+    /** 현재 사용자가 모니터링해야할 꾸러미출고
+     * @group 사용자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function currentPackage(PresetProductRequest $request)
+    {
+        // 출고의 대상회차가 현재 진행중인 회차라면
+
+        // ㅇ
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
 }
