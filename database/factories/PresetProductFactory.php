@@ -36,7 +36,7 @@ class PresetProductFactory extends Factory
             'option_price' => $option->price,
             'option_type' => $option->type,
 
-            'package_setting_active' => rand(0,1),
+            'package_active' => rand(0,1),
             'package_type' => $package->type,
             'package_name' => "야채꾸러미",
             'package_count' => $package->count,
