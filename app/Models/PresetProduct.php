@@ -256,7 +256,7 @@ class PresetProduct extends Model
         if($priceMin > $priceTotal)
             return ['success' => false, 'message' => '최소 금액을 충족하지 못했습니다.'];
 
-        $this->materials()->delete();
+        $this->materials()->sync([]);
 
         foreach($materials as $materialData){
             $packageMaterial = $package->packageMaterials()->where('material_id', $materialData['id'])->first();
