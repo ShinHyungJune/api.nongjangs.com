@@ -250,7 +250,7 @@ class PresetProduct extends Model
             if(!$packageMaterial)
                 return ['success' => false, 'message' => '해당 회차에 소속된 품목만을 추가할 수 있습니다.'];
 
-            $priceTotal += ($packageMaterial->count * $packageMaterial->price);
+            $priceTotal += ($materialData['count'] * $packageMaterial->price);
         }
 
         if($priceMin > $priceTotal)
@@ -272,7 +272,7 @@ class PresetProduct extends Model
                     'price_origin' => $packageMaterial->price_origin,
                     'unit' => $packageMaterial->unit,
                     'value' => $packageMaterial->value,
-                    'count' => $packageMaterial->count,
+                    'count' => $materialData['count'],
                     'type' => $packageMaterial->type,
                 ]);
             }
