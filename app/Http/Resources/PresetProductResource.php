@@ -94,6 +94,9 @@ class PresetProductResource extends JsonResource
             'can_cancel' => $this->can_cancel,
             'can_request_cancel' => $this->can_request_cancel,
             'can_update_materials' => $this->can_update_materials,
+
+            'count_review' => $this->count_review,
+            'count_vegetable_story' => $this->count_vegetable_story,
             /*'preset' => new PresetResource($this->whenLoaded('preset')),
             'product' => new ProductResource($this->whenLoaded('product')),
             'option' => new OptionResource($this->whenLoaded('option')),

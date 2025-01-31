@@ -10,6 +10,16 @@ use Carbon\Carbon;
 
 class PackageController extends ApiController
 {
+    /** 상세
+     * @group 사용자
+     * @subgroup Package(꾸러미)
+     * @responseFile storage/responses/package.json
+     */
+    public function show(Package $package)
+    {
+        return $this->respondSuccessfully(PackageResource::make($package));
+    }
+
     /** 현재 구매 가능한 꾸러미 회차 상세
      * @group 사용자
      * @subgroup Package(꾸러미)

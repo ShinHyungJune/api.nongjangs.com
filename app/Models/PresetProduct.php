@@ -440,4 +440,20 @@ class PresetProduct extends Model
             'type'=> $type
         ]);
     }
+
+    public function getCountReviewAttribute()
+    {
+        if(!auth()->user())
+            return 0;
+
+        return auth()->user()->reviews()->where('preset_product_id', $this->id)->count();
+    }
+
+    public function getCountVegetableStoryAttribute()
+    {
+        if(!auth()->user())
+            return 0;
+
+        return auth()->user()->vegetableStories()->where('preset_product_id', $this->id)->count();
+    }
 }

@@ -128,6 +128,7 @@ Route::get("/categories", [\App\Http\Controllers\Api\CategoryController::class, 
 
 Route::get("/packages/canOrder", [\App\Http\Controllers\Api\PackageController::class, "canOrder"]);
 Route::get("/packages/current", [\App\Http\Controllers\Api\PackageController::class, "current"]);
+Route::get("/packages/{package}", [\App\Http\Controllers\Api\PackageController::class, "show"]);
 
 Route::get("/banners", [\App\Http\Controllers\Api\BannerController::class, "index"]);
 Route::get("/pops", [\App\Http\Controllers\Api\PopController::class, "index"]);

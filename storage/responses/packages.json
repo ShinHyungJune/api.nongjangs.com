@@ -38,9 +38,11 @@
           "type": "구성품목 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글 | 3 - CAN_SELECT 선택가능)",
           "format_type_package_material": "표시용",
           "count": "구성품목 수량",
+          "value": "구성품목 값",
           "unit": "구성품목 단위",
           "price_origin": "구성품목 정가",
           "price":"구성품목 판매가",
+          "ratio_discount": "할인률",
           "tags": "구성품목 태그 목록"
         }
       ],
