@@ -23,6 +23,7 @@ class PackageMaterialResource extends JsonResource
             'type' => $this->type,
             'format_type' => TypePackageMaterial::getLabel($this->type),
             'count' => $this->count,
+            'value' => $this->value,
             'unit' => $this->unit,
             'price_origin' => $this->price_origin,
             'price' => $this->price,
