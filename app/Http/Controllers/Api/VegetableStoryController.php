@@ -98,16 +98,7 @@ class VegetableStoryController extends ApiController
         if(isset(VegetableStory::$points[$countPointHistories])){
             $point = VegetableStory::$points[$countPointHistories];
 
-            auth()->user()->update(['point' => $point + auth()->user()->point]);
-
-            auth()->user()->pointHistories()->create([
-                'point_current' => auth()->user()->point,
-                'point' => $point,
-                'increase' => 1,
-                'type' => TypePointHistory::VEGETABLE_STORY_CREATED,
-                'memo' => ($countPointHistories + 1)
-            ]);
-
+            auth()->user()->givePoint($point, TypePointHistory::VEGETABLE_STORY_CREATED, $vegetableStory);
         }
 
         return $this->respondSuccessfully(VegetableStoryResource::make($vegetableStory));

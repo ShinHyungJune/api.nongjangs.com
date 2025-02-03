@@ -30,14 +30,7 @@ class Review extends Model implements HasMedia
             if(!$prevBest && $review->best && $review->user){
                 $point = Review::$pointBest;
 
-                $review->user->update(['point' => $point]);
-
-                $review->user->pointHistories()->create([
-                    'point_current' => $review->user->point,
-                    'point' => $point,
-                    'increase' => 1,
-                    'type' => TypePointHistory::BEST_REVIEW_UPDATED,
-                ]);
+                $review->user->givePoint($point, TypePointHistory::BEST_REVIEW_UPDATED, $review);
             }
         });
     }

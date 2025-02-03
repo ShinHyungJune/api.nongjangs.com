@@ -11,6 +11,7 @@ use App\Models\CouponGroup;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CouponController extends ApiController
 {
@@ -24,14 +25,12 @@ class CouponController extends ApiController
         $items = auth()->user()->coupons()->where('use', 0);
 
         if($request->order_by == 'value')
-            $items = $items->with([
-                'couponGroup' => function($query){
-                    $query->orderBy('value', 'desc');
-                }
-            ]);
+            $items = $items->join('coupon_groups', 'coupons.coupon_group_id', '=', 'coupon_groups.id')
+                ->orderBy('coupon_groups.value', 'desc')
+                ->select('coupons.*');
 
-        if($request->created_at)
-            $items = $items->orderBy('created_at', 'desc');
+        if($request->order_by == 'created_at')
+            $items = $items->orderBy($request->order_by, 'desc');
 
         $items = $items->latest()->paginate(100);
 

@@ -105,16 +105,8 @@ class Order extends Model
 
             $this->createFirstOrderCoupon();
 
-            if($this->point_use){
-                $user->update(['point' => $user->point - $this->point_use]);
-
-                $user->pointHistories()->create([
-                    'point_current' => $user->point,
-                    'point' => $this->point_use,
-                    'type' => TypePointHistory::ORDER_CREATED,
-                    'increase' => 0,
-                ]);
-            }
+            if($this->point_use)
+                $user->takePoint($this->point_use, TypePointHistory::ORDER_CREATED, $this);
 
             /*$coupon = $this->coupon;
 

@@ -24,7 +24,7 @@ class CommentResource extends JsonResource
                 'nickname' => "알 수 없는 사용자"
             ],
             'description' => $this->description,
-            'commentable' => $commentable,
+            'commentable' => $commentable ?? "",
 
             'count_like' => $this->count_like,
             'is_like' => $this->is_like,

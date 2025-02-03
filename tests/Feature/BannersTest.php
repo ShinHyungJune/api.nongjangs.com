@@ -58,7 +58,7 @@ class BannersTest extends TestCase
     public function 타입별_목록을_조회할_수_있다()
     {
         $includeBanners = Banner::factory()->count(5)->create([
-            'type' => TypeBanner::DYNAMIC,
+            'type' => TypeBanner::PRODUCT,
             'started_at' => Carbon::now()->subDay(),
             'finished_at' => Carbon::now()->addDay(),
         ]);
@@ -70,7 +70,7 @@ class BannersTest extends TestCase
         ]);
 
         $items = $this->json('get', '/api/banners', [
-            'type' => TypeBanner::DYNAMIC
+            'type' => TypeBanner::PRODUCT
         ])->decodeResponseJson()['data'];
 
         $this->assertEquals(count($includeBanners), count($items));

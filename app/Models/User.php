@@ -409,10 +409,10 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         ]);
     }
 
-    public function takePoint($point, $type, $relationModel = null, $pointModel)
+    public function takePoint($point, $type, $relationModel = null, $pointModel = null)
     {
         return \DB::transaction(function () use ($point, $type, $relationModel, $pointModel) {
-            // 특정 포인트에서만 차감
+            // 특정 포인트에서만 차감하고싶을 때
             if ($pointModel) {
                 $pointModel->update([
                     'point' => $pointModel->point - $point

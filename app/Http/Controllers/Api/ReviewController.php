@@ -87,16 +87,7 @@ class ReviewController extends ApiController
 
         $point = $photo ? Review::$pointPhoto : Review::$pointText;
 
-        auth()->user()->update([
-            'point' => auth()->user()->point + $point,
-        ]);
-
-        auth()->user()->pointHistories()->create([
-            'point_current' => auth()->user()->point,
-            'point' => $point,
-            'increase' => 1,
-            'type' => $photo ? TypePointHistory::PHOTO_REVIEW_CREATED : TypePointHistory::TEXT_REVIEW_CREATED,
-        ]);
+        auth()->user()->givePoint($point, $photo ? TypePointHistory::PHOTO_REVIEW_CREATED : TypePointHistory::TEXT_REVIEW_CREATED, $review);
 
         return $this->respondSuccessfully(ReviewResource::make($review));
     }
