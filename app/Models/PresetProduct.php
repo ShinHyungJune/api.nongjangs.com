@@ -178,13 +178,20 @@ class PresetProduct extends Model
         }
 
         if($this->package){
-            // 일단 초기는 이렇게 잡았는데 상품구성에 따라 가격 달라져야함
+            $total = 0;
+
+            $materials = $this->materials;
+
+            foreach($materials as $material){
+                $total += ($material->pivot->price * $material->pivot->count);
+            }
+
+            $this->products_price = $total;
+
             if($this->package->type == TypePackage::SINGLE) {
-                $this->products_price = $this->package->price_single;
                 $this->price = $this->package->price_single - $this->price_coupon - $this->point;
             }
             if($this->package->type == TypePackage::BUNGLE) {
-                $this->products_price = $this->package->price_bungle;
                 $this->price = $this->package->price_bungle - $this->price_coupon - $this->point;
             }
 
@@ -460,5 +467,10 @@ class PresetProduct extends Model
             return 0;
 
         return auth()->user()->vegetableStories()->where('preset_product_id', $this->id)->count();
+    }
+
+    public function getFormatRefundMethodAttribute()
+    {
+        return "개발대기";
     }
 }

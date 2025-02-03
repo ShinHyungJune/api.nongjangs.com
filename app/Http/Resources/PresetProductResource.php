@@ -103,6 +103,7 @@ class PresetProductResource extends JsonResource
 
             'count_review' => $this->count_review,
             'count_vegetable_story' => $this->count_vegetable_story,
+            'format_refund_method' => $this->format_refund_method,
             /*'preset' => new PresetResource($this->whenLoaded('preset')),
             'product' => new ProductResource($this->whenLoaded('product')),
             'option' => new OptionResource($this->whenLoaded('option')),
