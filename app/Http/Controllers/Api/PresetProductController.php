@@ -9,7 +9,9 @@ use App\Http\Requests\PresetProductRequest;
 use App\Http\Resources\OrderResource;
 use App\Http\Resources\PackageResource;
 use App\Http\Resources\PresetProductResource;
+use App\Jobs\CheckDeliveryStateJob;
 use App\Models\Coupon;
+use App\Models\DeliveryTracker;
 use App\Models\Order;
 use App\Models\PresetProduct;
 use Carbon\Carbon;
@@ -236,5 +238,12 @@ class PresetProductController extends ApiController
         $presetProduct->changePackage($presetProduct->can_late_package, TypePackageChangeHistory::LATE);
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
+    public function updateDelivery(PresetProduct $presetProduct)
+    {
+        dispatch(new CheckDeliveryStateJob($presetProduct));
+
+        return $this->respondSuccessfully();
     }
 }

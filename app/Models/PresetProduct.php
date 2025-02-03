@@ -10,6 +10,7 @@ use App\Enums\TypeOption;
 use App\Enums\TypePackage;
 use App\Enums\TypePackageChangeHistory;
 use App\Enums\TypePointHistory;
+use App\Jobs\CheckDeliveryStateJob;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,6 +38,7 @@ class PresetProduct extends Model
 
         self::updated(function (PresetProduct $presetProduct) {
             $user = User::withTrashed()->find($presetProduct->preset->user_id);
+
 
             // 주문취소 시 반환처리
             $prevState = $presetProduct->getOriginal('state');
@@ -82,6 +84,11 @@ class PresetProduct extends Model
                 }
 
             }
+
+            $prevDeliveryNumber = $presetProduct->getOriginal('delivery_number');
+
+            if($prevDeliveryNumber != $presetProduct->delivery_number)
+                dispatch(new CheckDeliveryStateJob($presetProduct));
         });
     }
 
@@ -472,5 +479,29 @@ class PresetProduct extends Model
     public function getFormatRefundMethodAttribute()
     {
         return "개발대기";
+    }
+
+    public function getDeliveryTrackerCallbackUrl()
+    {
+        return config("app.url")."/api/presetProducts/delivery/".$this->id;
+    }
+
+    public function getFormatDeliveryTracksAttribute()
+    {
+        if(!$this->delivery_tracks)
+            return [];
+
+        $items = json_decode($this->delivery_tracks);
+
+        $result = [];
+
+        foreach($items as $item){
+            $result[] = [
+                'name' => $item['node']['status']['name'],
+                'description' => $items['node']['description'],
+            ];
+        }
+
+        return $result;
     }
 }
