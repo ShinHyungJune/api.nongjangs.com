@@ -491,14 +491,15 @@ class PresetProduct extends Model
         if(!$this->delivery_tracks)
             return [];
 
-        $items = json_decode($this->delivery_tracks);
+        $items = json_decode($this->delivery_tracks, true);
 
         $result = [];
 
         foreach($items as $item){
             $result[] = [
                 'name' => $item['node']['status']['name'],
-                'description' => $items['node']['description'],
+                'description' => $item['node']['description'],
+                'date' => Carbon::make($item['node']['time'])->format('m/d H:i'),
             ];
         }
 

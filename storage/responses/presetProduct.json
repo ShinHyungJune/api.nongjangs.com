@@ -63,5 +63,17 @@
   "can_update_materials": "품목구성 변경가능여부",
   "count_review": "작성한 리뷰수",
   "count_vegetable_story": "작성한 채소이야기수",
-  "format_refund_method" : "환불수단"
+  "format_refund_method" : "환불수단",
+  "format_delivery_tracks": [
+    {
+      "date": "날짜",
+      "name" : "배송상태",
+      "description" : "배송상태 설명"
+    },
+    {
+      "date": "날짜",
+      "name" : "배송상태",
+      "description" : "배송상태 설명"
+    }
+  ]
 }
