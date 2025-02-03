@@ -396,9 +396,81 @@ class Order extends Model
         return $this->hasOne(Coupon::class);
     }*/
 
-    public function getPriceProductsDiscountAttribute()
+    public function getPriceProductsAttribute()
     {
-        return $this->presetProducts()->sum('products_price');
+        $total = 0;
+
+        $presetProducts = $this->presetProducts()->cursor();
+
+        foreach($presetProducts as $presetProduct){
+            if($presetProduct->product_id){
+                if($presetProduct->option_type == TypeOption::REQUIRED)
+                    $total += $presetProduct->product_price + $presetProduct->option_price;
+
+                if($presetProduct->option_type == TypeOption::ADDITIONAL)
+                    $total += $presetProduct->option_price;
+            }
+
+            if($presetProduct->package_id){
+                $materials = $presetProduct->materials;
+
+                foreach($materials as $material){
+                    $total += $material->pivot->price;
+                }
+            }
+        }
+
+        return $total;
+    }
+
+    public function getPriceOriginProductsAttribute()
+    {
+        $total = 0;
+
+        $presetProducts = $this->presetProducts()->cursor();
+
+        foreach($presetProducts as $presetProduct){
+            if($presetProduct->product_id){
+                if($presetProduct->option_type == TypeOption::REQUIRED)
+                    $total += $presetProduct->product_price_origin + $presetProduct->option_price;
+
+                if($presetProduct->option_type == TypeOption::ADDITIONAL)
+                    $total += $presetProduct->option_price;
+            }
+
+            if($presetProduct->package_id){
+                $materials = $presetProduct->materials;
+
+                foreach($materials as $material){
+                   $total += $material->pivot->price_origin;
+                }
+            }
+        }
+
+        return $total;
+    }
+
+    public function getPriceDiscountProductsAttribute()
+    {
+        return $this->price_origin_products - $this->price_products;
+    }
+
+    public function getPriceDeliveryAttribute()
+    {
+        $total = 0;
+
+        $presets = $this->presets()->cursor();
+
+        foreach($presets as $preset){
+            $total += $preset->price_delivery;
+        }
+
+        return $total;
+    }
+
+    public function getPriceCouponAttribute()
+    {
+        return $this->presetProducts()->sum('price_coupon');
     }
 
     public function getFormatProductsAttribute()
@@ -414,5 +486,16 @@ class Order extends Model
         }
 
         return Arr::getArrayToString($items);
+    }
+
+    public function getFormatPayMethodAttribute()
+    {
+        // 가상계좌일 경우
+
+        // 신용카드일 경우
+
+        // 간편결제일 경우
+
+        return $this->pay_method_name;
     }
 }

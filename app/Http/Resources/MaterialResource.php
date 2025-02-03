@@ -28,7 +28,7 @@ class MaterialResource extends JsonResource
             'price' => $this->pivot ? $this->pivot->price : '',
             'price_origin' => $this->pivot ? $this->pivot->price_origin : '',
             'value' => $this->pivot ? $this->pivot->value : '',
-            'ratio_refund' => $this->pivot ? floor((($this->pivot->price_origin - $this->pivot->price) / 100)) : '',
+            'ratio_discount' => $this->pivot ? floor((($this->pivot->price_origin - $this->pivot->price) / 100)) : '',
             'unit' => $this->pivot ? $this->pivot->unit : '',
             'count' => $this->pivot ? $this->pivot->count : '',
         ];

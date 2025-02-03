@@ -37,13 +37,14 @@ class OrderResource extends JsonResource
             'delivery_address_zipcode' => $this->delivery_address_zipcode,
             'delivery_requirement' => $this->delivery_requirement,
 
-            'point_use' => $this->point_use,
-            /*'price_products' => $this->price_products,
-            'price_products_discount' => $this->price_products_discount,
+            'price_products' => $this->price_products,
+            'price_discount_products' => $this->price_discount_products,
+            'price_origin_products' => $this->price_origin_products,
             'price_delivery' => $this->price_delivery,
-            'price_coupon_discount' => $this->price_coupon_discount,*/
-
+            'price_coupon' => $this->price_coupon,
+            'point_use' => $this->point_use,
             'price' => $this->price,
+
             'state' => $this->state,
             'memo' => $this->memo,
             'reason' => $this->reason,
@@ -53,6 +54,7 @@ class OrderResource extends JsonResource
             'pay_method_name' => $this->pay_method_name,
             'pay_method_pg' => $this->pay_method_pg,
             'pay_method_method' => $this->pay_method_method,
+            'format_pay_method' => $this->format_pay_method,
 
             'vbank_num' => $this->vbank_num,
             'vbank_name' => $this->vbank_name,

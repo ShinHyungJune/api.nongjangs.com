@@ -14,16 +14,18 @@
 
   "point_use": "사용 적립금",
   "presetProducts": "출고목록",
-  /*"price_products": "",
-  "price_products_discount": "",
-  "price_delivery": "",
-  "price_coupon_discount": "",*/
+  "price_products": "상품 판매가 합계",
+  "price_discount_products": "상품 할인 금액",
+  "price_origin_products": "상품 정가 합계",
+  "price_delivery": "배송비",
+  "price_coupon": "쿠폰 할인 금액",
 
   "price": "결제금액",
   "state": "주문상태",
   "reason": "사유",
 
   "pay_method_name": "결제수단명",
+  "format_pay_method": "표시용 결제수단명",
 
   "vbank_num": "가상계좌 계좌번호",
   "vbank_name": "가상계좌 은행명",
