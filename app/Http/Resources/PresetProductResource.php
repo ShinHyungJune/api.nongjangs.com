@@ -47,7 +47,7 @@ class PresetProductResource extends JsonResource
                 'price' => $this->package_price,
                 'type' => $this->package_type,
                 'active' => $this->package_active,
-                'format_will_delivery_at' => $this->package_will_delivery_at ? Carbon::make($this->package_will_delivery_at)->format('Y.m.d') : '',
+                'format_will_delivery_at' => $this->package_will_delivery_at ? Carbon::make($this->package_will_delivery_at)->format('Y.m.d'). '(' . Carbon::make($this->package_will_delivery_at)->isoFormat('ddd') . ')' : '',
                 'format_type' => TypePackage::getLabel($this->package_type),
                 'tags' => $this->package ? TagResource::collection($this->package->tags) : [],
             ] : '',
@@ -89,11 +89,11 @@ class PresetProductResource extends JsonResource
             'format_materials' => Arr::getArrayToString($this->materials->pluck('title')->toArray()),
             'canLatePackage' => $this->canLatePackage ? [
                 'id' => $this->canLatePackage->id,
-                'format_will_delivery_at' => Carbon::make($this->canLatePackage->will_delivery_at)->format('Y.m.d'),
+                'format_will_delivery_at' => Carbon::make($this->canLatePackage->will_delivery_at)->format('Y.m.d'). '(' . Carbon::make($this->canLatePackage->will_delivery_at)->isoFormat('ddd') . ')',
             ] : '',
             'canFastPackage' => $this->canFastPackage ? [
                 'id' => $this->canFastPackage->id,
-                'format_will_delivery_at' => Carbon::make($this->canFastPackage->will_delivery_at)->format('Y.m.d'),
+                'format_will_delivery_at' => Carbon::make($this->canFastPackage->will_delivery_at)->format('Y.m.d'). '(' . Carbon::make($this->canFastPackage->will_delivery_at)->isoFormat('ddd') . ')',
             ] : '',
             'can_confirm' => $this->can_confirm,
             'can_review' => $this->can_review,
