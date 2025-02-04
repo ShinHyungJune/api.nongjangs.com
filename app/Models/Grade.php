@@ -45,7 +45,10 @@ class Grade extends Model implements HasMedia
         if(!$nextLevel)
             return 0;
 
-        return 0;
+        if(!auth()->user())
+            return 0;
+
+        return $nextLevel->min_count_package - auth()->user()->total_order_count_package;
     }
 
     public function getNeedPriceForNextLevelAttribute()
@@ -55,6 +58,9 @@ class Grade extends Model implements HasMedia
         if(!$nextLevel)
             return 0;
 
-        return 0;
+        if(!auth()->user())
+            return 0;
+
+        return $nextLevel->min_price - auth()->user()->total_order_price;
     }
 }
