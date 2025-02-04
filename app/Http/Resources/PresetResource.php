@@ -25,7 +25,7 @@ class PresetResource extends JsonResource
             'price_coupon' => $this->price_coupon,
             'count_option_required' => $this->count_option_required,
             'count_option_additional' => $this->count_option_additional,
-            'presetProducts' => PresetProductMiniResource::collection($this->presetProducts),
+            'presetProducts' => PresetProductResource::collection($this->presetProducts),
             'order' => $this->order ? [
                 'id' => $this->order->id,
                 'merchant_uid' => $this->merchant_uid,
