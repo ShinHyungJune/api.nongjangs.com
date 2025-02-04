@@ -296,6 +296,7 @@ class Order extends Model
 
         $this->update([
             'price' => $price,
+            'point_use' => $point,
             /*'price_products' => $priceProducts,
             'price_delivery' => $priceDelivery,
             'point_use' => $point,
