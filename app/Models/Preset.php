@@ -81,27 +81,61 @@ class Preset extends Model
     
     public function getPriceAttribute()
     {
-        return $this->presetProducts()->sum('price');
-    }
-
-    public function getPriceDiscountAttribute()
-    {
-        $presetProducts = $this->presetProducts;
-
         $total = 0;
 
+        $presetProducts = $this->presetProducts()->cursor();
+
         foreach($presetProducts as $presetProduct){
-            $option = $presetProduct->option;
+            if($presetProduct->product_id){
+                if($presetProduct->option_type == TypeOption::REQUIRED)
+                    $total += $presetProduct->product_price + $presetProduct->option_price;
 
-            // 필수상품일때만 상품에 대한 할인가가 합산되어야함
-            if($option->type == TypeOption::REQUIRED) {
-                $price = $presetProduct->product_price_origin - $presetProduct->product_price;
+                if($presetProduct->option_type == TypeOption::ADDITIONAL)
+                    $total += $presetProduct->option_price;
+            }
 
-                $total += $price * $presetProduct->count;
+            if($presetProduct->package_id){
+                $materials = $presetProduct->materials;
+
+                foreach($materials as $material){
+                    $total += $material->pivot->price;
+                }
             }
         }
 
         return $total;
+    }
+
+    public function getPriceOriginAttribute()
+    {
+        $total = 0;
+
+        $presetProducts = $this->presetProducts()->cursor();
+
+        foreach($presetProducts as $presetProduct){
+            if($presetProduct->product_id){
+                if($presetProduct->option_type == TypeOption::REQUIRED)
+                    $total += $presetProduct->product_price_origin + $presetProduct->option_price;
+
+                if($presetProduct->option_type == TypeOption::ADDITIONAL)
+                    $total += $presetProduct->option_price;
+            }
+
+            if($presetProduct->package_id){
+                $materials = $presetProduct->materials;
+
+                foreach($materials as $material){
+                    $total += $material->pivot->price_origin;
+                }
+            }
+        }
+
+        return $total;
+    }
+
+    public function getPriceDiscountAttribute()
+    {
+        return $this->price_origin_products - $this->price_products;
     }
 
     public function getPriceCouponAttribute()
