@@ -147,37 +147,51 @@ class OrderController extends ApiController
                 ->orWhere("state", StateOrder::BEFORE_PAYMENT);
         })->where("merchant_uid", $impOrder["merchant_uid"])->first();
 
-        if(!$order)
-            return abort(404);
+        DB::beginTransaction();
 
-        if($order->price != $impOrder["amount"])
-            return abort(403);
+        try {
+            if(!$order)
+                return abort(404);
 
-        switch ($impOrder["status"]){
-            case "ready": // 가상계좌 발급
-                $vbankNum = $impOrder["vbank_num"];
-                $vbankDate = Carbon::parse($impOrder["vbank_date"])->format("Y-m-d H:i");
-                $vbankName = $impOrder["vbank_name"];
+            if($order->price != $impOrder["amount"])
+                return abort(403);
 
-                // OrderObserver 사용
-                $order->update([
-                    "imp_uid" => $request->imp_uid,
-                    "state" => StateOrder::WAIT,
-                    "vbank_num" => $vbankNum,
-                    "vbank_date" => $vbankDate,
-                    "vbank_name" => $vbankName
-                ]);
+            switch ($impOrder["status"]){
+                case "ready": // 가상계좌 발급
+                    $vbankNum = $impOrder["vbank_num"];
+                    $vbankDate = Carbon::parse($impOrder["vbank_date"])->format("Y-m-d H:i");
+                    $vbankName = $impOrder["vbank_name"];
 
-                $result = ["success" => 1, "message"=>"가상계좌 발급이 완료되었습니다. ${vbankName}/ ${vbankNum} / ${vbankDate}"];
+                    // OrderObserver 사용
+                    $order->update([
+                        "imp_uid" => $request->imp_uid,
+                        "state" => StateOrder::WAIT,
+                        "vbank_num" => $vbankNum,
+                        "vbank_date" => $vbankDate,
+                        "vbank_name" => $vbankName
+                    ]);
 
-                break;
-            case "paid": // 결제완료
-                // OrderObserver 사용
-                $order->update(["imp_uid" => $request->imp_uid, "state" => StateOrder::SUCCESS]);
+                    $result = ["success" => 1, "message"=>"가상계좌 발급이 완료되었습니다. ${vbankName}/ ${vbankNum} / ${vbankDate}"];
 
-                $result = ["success" => 1, "message"=> "결제가 완료되었습니다."];
+                    break;
+                case "paid": // 결제완료
+                    // OrderObserver 사용
+                    $order->update(["imp_uid" => $request->imp_uid, "state" => StateOrder::SUCCESS]);
 
-                break;
+                    $result = ["success" => 1, "message"=> "결제가 완료되었습니다."];
+
+                    break;
+            }
+
+            DB::commit();
+        }catch(\Exception $e) {
+            // Iamport::cancel($accessToken, $request->imp_uid);
+            $order->update(['reason' => $e->getMessage()]);
+
+            // $order->update(["state" => StateOrder::BEFORE_PAYMENT]);
+            $result = ["success" => 0, "message"=> "결제를 실패하였습니다."];
+
+            DB::rollBack();
         }
 
         $order = Order::where("merchant_uid", $request->merchant_uid)->first();
