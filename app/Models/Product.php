@@ -92,7 +92,7 @@ class Product extends Model implements HasMedia
 
     public function getRatioDiscountAttribute()
     {
-        return floor( ($this->price_origin  - $this->price) * 100);
+        return floor( ($this->price_origin  - $this->price) / 100) * 100;
     }
 
     public function getAverageReviewAttribute()

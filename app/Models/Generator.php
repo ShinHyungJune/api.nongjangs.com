@@ -22,6 +22,8 @@ class Generator extends Model
 
         $uuid = str_pad($uuid, $length, '0', STR_PAD_LEFT);
 
+        $uuid = substr($uuid,0,$length);
+
         if($model->where($column, $uuid)->first())
             return Generator::createUuid($model);
 
