@@ -15,7 +15,7 @@ class CountResource extends JsonResource
             'sum_store' => $this->sum_store,
             'count_review' => $this->count_review,
             'count_review_package' => $this->count_review_pacakage,
-            'average_score_review_package' => $this->average_score_review_package,
+            'average_score_review_package' => $this->average_score_review_package ? round($this->average_score_review_package, 1) : $this->average_score_review_package,
             'count_vegetable_story' => $this->count_vegetable_story,
         ];
     }
