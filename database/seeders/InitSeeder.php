@@ -1892,7 +1892,7 @@ class InitSeeder extends Seeder
                 "method" => "easy",
                 "name" => "간편결제",
                 "commission" => "7",
-                "external" => 1,
+                "external" => 0,
             ],
             [
                 "pg" => "html5_inicis",

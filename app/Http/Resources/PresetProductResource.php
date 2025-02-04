@@ -27,6 +27,9 @@ class PresetProductResource extends JsonResource
             'format_cancel_at' => $this->cancel_at ? Carbon::make($this->cancel_at)->format('Y.m.d H:i') : '',
             'format_request_cancel_at' => $this->request_cancel_at ? Carbon::make($this->request_cancel_at)->format('Y.m.d H:i') : '',
 
+            'order' => $this->preset->order ? [
+                'id' => $this->preset->order->id,
+            ] : '',
             'product' => $this->product_id ? [
                 'id' => $this->product_id,
                 'img' => $this->product ? $this->product->img : '',
