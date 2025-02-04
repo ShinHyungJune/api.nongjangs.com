@@ -19,7 +19,7 @@ class PresetController extends ApiController
     {
         $preset = auth()->user()->presets()->create();
 
-        $result = $preset->attachProducts($request->all());
+        $result = $preset->attachProducts($request->all(), $request->package_id ? auth()->user()->packageSetting() : null);
 
         if(!$result['success'])
             return $this->respondForbidden($result['message']);
