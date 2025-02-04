@@ -421,7 +421,7 @@ class PresetProduct extends Model
             if(config('app.env') != 'testing'){
                 $accessToken = Iamport::getAccessToken();
 
-                $result = Iamport::cancel($accessToken, $this->imp_uid, $this->price);
+                $result = Iamport::cancel($accessToken, $this->preset->order->imp_uid, $this->price);
 
                 if(!$result["response"])
                     return ["success" => false, "message" => $result["message"]];
