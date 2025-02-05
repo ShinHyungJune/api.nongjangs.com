@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->text("transaction_id")->nullable()->unique()->index()->comment('주문번호 (포트원)');
+            $table->text("transaction_id")->nullable()->unique()->comment('주문번호 (포트원)');
             $table->string("payment_id")->nullable()->unique()->index()->comment('주문번호');
 
             // 주문자
