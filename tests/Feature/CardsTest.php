@@ -51,7 +51,19 @@ class CardsTest extends TestCase
     /** @test */
     public function 사용자는_카드를_생성할_수_있다()
     {
+        $this->form = [
+            "number" => "5181850042604502",
+            "expiry_year" => "29",
+            "expiry_month" => "09",
+            "birth_or_business_number" => "950403",
+            "password" => "07"
+        ];
 
+        $item = $this->json('post', '/api/cards', $this->form)->decodeResponseJson()['data'];
+
+        $card = Card::find($item['id']);
+
+        $this->assertNotNull($card->billing_key);
     }
 
     /** @test */

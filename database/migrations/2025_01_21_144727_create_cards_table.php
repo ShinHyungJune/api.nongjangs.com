@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('password')->comment('비밀번호');
             $table->string('name')->nullable()->comment('카드사명');
             $table->string('birth_or_business_number')->nullable()->comment('생년월일 또는 사업자번호');
-            $table->text('billingKey')->nullable()->comment('빌링키');
+            $table->text('billing_key')->nullable()->comment('빌링키');
             $table->string('color')->comment('색깔')->default('#000');
             $table->timestamps();
         });

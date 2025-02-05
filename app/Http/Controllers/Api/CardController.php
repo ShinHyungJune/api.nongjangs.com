@@ -24,10 +24,19 @@ class CardController extends ApiController
 
     public function store(CardRequest $request)
     {
+        $prevCard = auth()->user()->cards()
+            ->where('card_number', $request->card_number)
+            ->where('cvc', $request->cvc)
+            ->first();
+
+        if($prevCard)
+            return $this->respondForbidden('이미 등록되어있는 카드입니다.');
+
         $response = Http::withHeaders([
             'Authorization' => 'PortOne ' . config('iamport.secret'),
             'Content-Type' => 'application/json',
-        ])->post('https://api.portone.io/billing-keys', [
+        ])->withoutVerifying()
+            ->post('https://api.portone.io/billing-keys', [
             'storeId' => config('iamport.store_id'),
             'channelKey' => config('iamport.channel_key'),
             'customer' => [
@@ -49,15 +58,14 @@ class CardController extends ApiController
             ],
         ]);
 
+        $result = $response->json();
+
+        if(!isset($result['billingKeyInfo']))
+            return $this->respondForbidden(isset($result['pgMessage']) ? $result['pgMessage'] : '카드등록에 실패하였습니다. 카드정보를 확인해주세요.');
+
+        $data['billing_key'] = $result['billingKeyInfo']['billingKey'];
+
         $data = $request->validated();
-
-        $prevCard = auth()->user()->cards()
-            ->where('card_number', $request->card_number)
-            ->where('cvc', $request->cvc)
-            ->first();
-
-        if($prevCard)
-            return $this->respondForbidden('이미 등록되어있는 카드입니다.');
 
         $card = auth()->user()->cards()->create($data);
 

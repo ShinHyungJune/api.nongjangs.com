@@ -178,6 +178,8 @@ Route::middleware(['auth'])->group(function () {
     Route::patch("/vegetableStories/{vegetableStory}", [\App\Http\Controllers\Api\VegetableStoryController::class, 'update']);
 
     Route::get("/cards", [\App\Http\Controllers\Api\CardController::class, 'index']);
+    Route::post("/cards", [\App\Http\Controllers\Api\CardController::class, 'store']);
+
     Route::get("/carts", [\App\Http\Controllers\Api\CartController::class, 'index']);
     Route::post("/carts", [\App\Http\Controllers\Api\CartController::class, 'store']);
     Route::delete("/carts", [\App\Http\Controllers\Api\CartController::class, 'destroy']);

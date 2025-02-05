@@ -34,7 +34,7 @@ final class StatePresetProduct
             self::ONGOING_DELIVERY => "배송중",
             self::DELIVERED => "배송완료",
             self::CONFIRMED => "구매확정",
-            self::CANCEL => "취소",
+            self::CANCEL => "주문취소",
             self::REQUEST_CANCEL => "취소요청",
             self::DENY_CANCEL => "취쇼요청반려",
 
