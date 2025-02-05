@@ -20,24 +20,20 @@ class CardRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'user_id' => ['required', 'exists:users'],
-                        'card_number' => ['required'],
-                        'expiry' => ['required'],
-                        'birth' => ['required'],
+                        'number' => ['required'],
+                        'expiryYear' => ['required'],
+                        'expiryMonth' => ['required'],
+                        'birthOrBusinessRegistrationNumber' => ['required'],
                         'password' => ['required'],
-                        'name' => ['required'],
-                        'billingKey' => ['required'],
                     ];
 
                 case 'update':
                     return [
-                        'user_id' => ['required', 'exists:users'],
-                        'card_number' => ['required'],
-                        'expiry' => ['required'],
-                        'birth' => ['required'],
+                        'number' => ['required'],
+                        'expiryYear' => ['required'],
+                        'expiryMonth' => ['required'],
+                        'birthOrBusinessRegistrationNumber' => ['required'],
                         'password' => ['required'],
-                        'name' => ['required'],
-                        'billingKey' => ['required'],//
                     ];
 
                 case 'destroy':

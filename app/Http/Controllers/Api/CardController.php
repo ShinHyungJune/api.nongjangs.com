@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CardRequest;
 use App\Http\Resources\CardResource;
 use App\Models\Card;
+use Illuminate\Support\Facades\Http;
 
 class CardController extends ApiController
 {
@@ -23,7 +24,43 @@ class CardController extends ApiController
 
     public function store(CardRequest $request)
     {
-        return new CardResource(Card::create($request->validated()));
+        $response = Http::withHeaders([
+            'Authorization' => 'PortOne ' . config('iamport.secret'),
+            'Content-Type' => 'application/json',
+        ])->post('https://api.portone.io/billing-keys', [
+            'storeId' => config('iamport.store_id'),
+            'channelKey' => config('iamport.channel_key'),
+            'customer' => [
+                'id' => (string) auth()->id(),
+                'email' => auth()->user()->email,
+                'name' => ['full' => auth()->user()->nickname],
+                'phoneNumber' => auth()->user()->contact,
+            ],
+            'method' => [
+                'card' => [
+                    'credential' => [
+                        'number' => $request->card_number,
+                        'expiryYear' => '29',
+                        'expiryMonth' => '09',
+                        'birthOrBusinessRegistrationNumber' => '950403',
+                        'passwordTwoDigits' => '07',
+                    ],
+                ],
+            ],
+        ]);
+        $data = $request->validated();
+
+        $prevCard = auth()->user()->cards()
+            ->where('card_number', $request->card_number)
+            ->where('cvc', $request->cvc)
+            ->first();
+
+        if($prevCard)
+            return $this->respondForbidden('이미 등록되어있는 카드입니다.');
+
+        $card = auth()->user()->cards()->create($data);
+
+        return $this->respondSuccessfully(CardResource::make($card));
     }
 
 
