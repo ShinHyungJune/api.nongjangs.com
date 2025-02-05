@@ -26,7 +26,7 @@ class CardController extends ApiController
     public function store(CardRequest $request)
     {
         $prevCard = auth()->user()->cards()
-            ->where('birth_or_business_number', $request->business_number)
+            ->where('birth_or_business_number', $request->birth_or_business_number)
             ->where('number', $request->number)
             ->first();
 

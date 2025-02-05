@@ -305,7 +305,10 @@ return [
         'coupon_id' => '쿠폰',
         'reason_request_cancel' => '요청사유',
         'presets' => '상품목록',
-        'delivery_id' => '배송지'
+        'delivery_id' => '배송지',
+        "expiry_year" => "만료년도",
+        "expiry_month" => "만료월",
+        "birth_or_business_number" => "생년월일 / 사업자번호",
     ],
 
 ];
