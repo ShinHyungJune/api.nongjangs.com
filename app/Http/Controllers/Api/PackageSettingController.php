@@ -90,16 +90,6 @@ class PackageSettingController extends ApiController
         if($request->type_package)
             $packageSetting->update(['type_package' => $request->type_package]);
 
-        if(is_array($request->unlike_material_ids)) {
-            $materials = [];
-
-            foreach($request->unlike_material_ids as $id){
-                $materials[$id] = ['unlike' => 1];
-            }
-
-            $packageSetting->materials()->sync($materials);
-        }
-
         if($request->delivery_id) {
             $delivery = Delivery::find($request->delivery_id);
 
@@ -129,6 +119,26 @@ class PackageSettingController extends ApiController
                 'memo' => $request->memo ?? null,
             ]);
         }
+
+        return $this->respondSuccessfully(PackageSettingResource::make($packageSetting));
+    }
+
+    /** 수정
+     * @group 사용자
+     * @subgroup PackageSetting(꾸러미 기본설정)
+     * @responseFile storage/responses/packageSetting.json
+     */
+    public function updateUnlikeMaterials(PackageSettingRequest $request, PackageSetting $packageSetting)
+    {
+        $materials = [];
+
+        if(is_array($request->unlike_material_ids)) {
+            foreach($request->unlike_material_ids as $id){
+                $materials[$id] = ['unlike' => 1];
+            }
+        }
+
+        $packageSetting->materials()->sync($materials);
 
         return $this->respondSuccessfully(PackageSettingResource::make($packageSetting));
     }

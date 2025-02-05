@@ -167,6 +167,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "index"]);
     Route::post("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "store"]);
     Route::patch("/packageSettings/{packageSetting}", [\App\Http\Controllers\Api\PackageSettingController::class, "update"]);
+    Route::patch("/packageSettings/unlikeMaterials/{packageSetting}", [\App\Http\Controllers\Api\PackageSettingController::class, "updateUnlikeMaterials"]);
 
     Route::post("/comments", [\App\Http\Controllers\Api\CommentController::class, 'store']);
     Route::patch("/comments/{comment}", [\App\Http\Controllers\Api\CommentController::class, 'update']);
