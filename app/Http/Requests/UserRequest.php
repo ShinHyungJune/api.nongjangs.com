@@ -6,6 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
+    protected $userId;
+
+    protected function prepareForValidation()
+    {
+        $this->userId = auth()->id();
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -89,8 +96,8 @@ class UserRequest extends FormRequest
                     return [
                         'password' => 'nullable|string|min:8|max:500|confirmed',
                         'name' => 'nullable|string|max:500',
-                        'contact' => 'nullable|string|max:500|unique:users,contact,'.auth()->id(),
-                        'nickname' => 'nullable|string|max:500|unique:users,nickname,'.auth()->id(),
+                        'contact' => 'nullable|string|max:500|unique:users,contact,'.$this->userId,
+                        'nickname' => 'nullable|string|max:500|unique:users,nickname,'.$this->userId,
                         'message' => 'nullable|string|max:500',
                         'birth' => 'nullable|date',
                         'count_family' => 'nullable|integer',
