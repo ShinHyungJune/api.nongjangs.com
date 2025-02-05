@@ -21,18 +21,18 @@ class CardRequest extends FormRequest
                 case 'store':
                     return [
                         'number' => ['required'],
-                        'expiryYear' => ['required'],
-                        'expiryMonth' => ['required'],
-                        'birthOrBusinessRegistrationNumber' => ['required'],
+                        'expiry_year' => ['required'],
+                        'expiry_month' => ['required'],
+                        'birth_or_business_number' => ['required'],
                         'password' => ['required'],
                     ];
 
                 case 'update':
                     return [
                         'number' => ['required'],
-                        'expiryYear' => ['required'],
-                        'expiryMonth' => ['required'],
-                        'birthOrBusinessRegistrationNumber' => ['required'],
+                        'expiry_year' => ['required'],
+                        'expiry_month' => ['required'],
+                        'birth_or_business_number' => ['required'],
                         'password' => ['required'],
                     ];
 

@@ -39,15 +39,16 @@ class CardController extends ApiController
             'method' => [
                 'card' => [
                     'credential' => [
-                        'number' => $request->card_number,
-                        'expiryYear' => '29',
-                        'expiryMonth' => '09',
-                        'birthOrBusinessRegistrationNumber' => '950403',
-                        'passwordTwoDigits' => '07',
+                        'number' => $request->number,
+                        'expiryYear' => $request->expiry_year,
+                        'expiryMonth' => $request->expiry_month,
+                        'birthOrBusinessRegistrationNumber' => $request->birth_or_business_number,
+                        'passwordTwoDigits' => $request->password,
                     ],
                 ],
             ],
         ]);
+
         $data = $request->validated();
 
         $prevCard = auth()->user()->cards()
