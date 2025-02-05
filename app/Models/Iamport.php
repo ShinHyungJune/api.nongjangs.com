@@ -81,4 +81,62 @@ class Iamport extends Model
 
         return true;
     }
+
+    public function createBillingKey($data, $user)
+    {
+        $response = Http::withHeaders([
+            'Authorization' => 'PortOne ' . config('iamport.secret'),
+            'Content-Type' => 'application/json',
+        ])->withoutVerifying()
+            ->post('https://api.portone.io/billing-keys', [
+                'storeId' => config('iamport.store_id'),
+                'channelKey' => config('iamport.channel_key'),
+                'customer' => [
+                    'id' => (string) $user->id,
+                    'email' => $user->email,
+                    'name' => ['full' => $user->nickname],
+                    'phoneNumber' => $user->contact,
+                ],
+                'method' => [
+                    'card' => [
+                        'credential' => [
+                            'number' => $data['number'],
+                            'expiryYear' => $data['expiry_year'],
+                            'expiryMonth' => $data['expiry_month'],
+                            'birthOrBusinessRegistrationNumber' => $data['birth_or_business_number'],
+                            'passwordTwoDigits' => $data['password'],
+                        ],
+                    ],
+                ],
+            ]);
+
+        $result = $response->json();
+
+        if(!isset($result['billingKeyInfo']))
+            return [
+                'message' => isset($result['pgMessage']) ? $result['pgMessage'] : '카드등록에 실패하였습니다. 카드정보를 확인해주세요.',
+                'success' => false,
+            ];
+
+        return [
+            'success' => true,
+            'data' => $result['billingKeyInfo']['billingKey']
+        ];
+    }
+
+    public function getBillingKeyInformation($billingKey)
+    {
+        $response = Http::withHeaders([
+            'Authorization' => 'PortOne ' . config('iamport.secret'),
+            'Content-Type' => 'application/json',
+        ])->withoutVerifying()
+            ->get('https://api.portone.io/billing-keys/'.$billingKey, [
+                'storeId' => config('iamport.store_id'),
+                'billingKey' => $billingKey,
+            ]);
+
+        return [
+            'success' => true
+        ];
+    }
 }

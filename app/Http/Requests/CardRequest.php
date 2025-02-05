@@ -76,14 +76,17 @@ class CardRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'card_number' => [
+            'number' => [
                 'description' => '<span class="point">카드번호</span>',
             ],
-            'expiry' => [
-                'description' => '<span class="point">만료일자</span>',
+            'expiry_month' => [
+                'description' => '<span class="point">만료월</span>',
             ],
-            'birth' => [
-                'description' => '<span class="point">생년월일</span>',
+            'expiry_year' => [
+                'description' => '<span class="point">만료년도</span>',
+            ],
+            'birth_or_business_number' => [
+                'description' => '<span class="point">생년월일 / 사업자등록번호</span>',
             ],
             'password' => [
                 'description' => '<span class="point">비밀번호</span>',

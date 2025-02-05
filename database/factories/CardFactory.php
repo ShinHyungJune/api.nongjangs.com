@@ -16,12 +16,13 @@ class CardFactory extends Factory
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'card_number' => $this->faker->word(),
-            'expiry' => $this->faker->word(),
-            'birth' => $this->faker->word(),
+            'number' => $this->faker->word(),
+            'expiry_month' => $this->faker->word(),
+            'expiry_year' => $this->faker->word(),
+            'birth_or_business_number' => $this->faker->word(),
             'password' => bcrypt($this->faker->password()),
             'name' => $this->faker->name(),
-            'billingKey' => $this->faker->word(),
+            'billing_key' => $this->faker->word(),
 
             'user_id' => User::factory(),
         ];

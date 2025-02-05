@@ -433,13 +433,13 @@ class InitSeeder extends Seeder
         Card::factory()->create([
             'user_id' => $this->user->id,
             'name' => '신한카드',
-            'card_number' => '9754123458769998',
+            'number' => '9754123458769998',
         ]);
 
         Card::factory()->create([
             'user_id' => $this->user->id,
             'name' => '현대카드',
-            'card_number' => '4856789411145555',
+            'number' => '4856789411145555',
         ]);
     }
 
