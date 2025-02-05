@@ -105,8 +105,40 @@ class Order extends Model
 
             $this->createFirstOrderCoupon();
 
-            if($this->point_use)
+            if($this->point_use) {
                 $user->takePoint($this->point_use, TypePointHistory::ORDER_CREATED, $this);
+
+                // 포인트 분배
+                $totalPrice = $this->presetProducts()->sum('price');
+                $totalPoint = $this->point_use;
+
+                $distributedPoints = [];
+                $allocatedPoints = 0; // 배분된 포인트 합계
+
+                $presetProducts = $this->presetProducts;
+
+                foreach ($presetProducts as $index => $presetProduct) {
+                    if ($index == count($presetProducts) - 1) {
+                        // 마지막 아이템은 남은 포인트를 몰아줌
+                        $distributedPoints[] = $totalPoint - $allocatedPoints;
+                    } else {
+                        // 비율에 맞게 배분 후 소수점 버림
+                        $point = floor(($presetProduct->price / $totalPrice) * $totalPoint);
+                        $distributedPoints[] = $point;
+                        $allocatedPoints += $point;
+                    }
+                }
+
+                // $presetProduct에 point 추가
+                foreach ($presetProducts as $index => $presetProduct) {
+                    $presetProduct->point = $distributedPoints[$index];
+
+                    $presetProduct = $presetProduct->calculatePrice();
+
+                    $presetProduct->save();
+                }
+            }
+
 
             /*$coupon = $this->coupon;
 
@@ -124,6 +156,7 @@ class Order extends Model
             ]);
         }
     }
+
 
     // 포인트내역, 쿠폰내역 롤백
     public function rollback()
