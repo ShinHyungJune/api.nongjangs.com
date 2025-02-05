@@ -18,6 +18,7 @@ class CreatePayMethodsTable extends Migration
             $table->string("pg")->nullable();
             $table->string("method")->nullable();
             $table->string("name")->nullable();
+            $table->text('channel_key')->nullable()->comment('채널키');
             $table->integer("commission")->nullable();
             $table->boolean("used")->default(true);
             $table->boolean('external')->default(1)->comment('외부결제수단 여부');

@@ -36,7 +36,7 @@ class Card extends Model
 
     public function getRandomColor()
     {
-        $color = $this->colors[rand(0, count($this->colors))];
+        $color = $this->colors[rand(0, count($this->colors) - 1)];
 
         $user = User::withTrashed()->find($this->user_id);
 

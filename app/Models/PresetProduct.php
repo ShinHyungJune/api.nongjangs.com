@@ -419,11 +419,9 @@ class PresetProduct extends Model
             $user = User::withTrashed()->find($this->preset->user_id);
 
             if(config('app.env') != 'testing'){
-                $accessToken = Iamport::getAccessToken();
+                $result = Iamport::cancel($this->preset->order->payment_id, $this->price);
 
-                $result = Iamport::cancel($accessToken, $this->preset->order->imp_uid, $this->price);
-
-                if(!$result["response"])
+                if(!$result["success"])
                     return ["success" => false, "message" => $result["message"]];
             }
 

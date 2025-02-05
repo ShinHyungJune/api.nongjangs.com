@@ -16,8 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->string("imp_uid")->unique()->nullable()->comment('주문번호 (아임포트)');
-            $table->string("merchant_uid")->nullable()->unique()->index()->comment('주문번호 (내부)');
+            $table->text("transaction_id")->nullable()->unique()->index()->comment('주문번호 (포트원)');
+            $table->string("payment_id")->nullable()->unique()->index()->comment('주문번호');
 
             // 주문자
             $table->foreignId("user_id")->nullable()->constrained('users')->onDelete('cascade');
@@ -30,6 +30,18 @@ class CreateOrdersTable extends Migration
             $table->string("pay_method_name")->nullable()->comment('결제수단명');
             $table->string("pay_method_pg")->nullable()->comment('결제수단 pg');
             $table->string("pay_method_method")->nullable()->comment('결제수단 방법');
+            $table->boolean("pay_method_external")->nullable()->comment('결제수단 내부결제여부');
+            $table->string("pay_method_channel_key")->nullable()->comment('결제수단 채널키');
+
+            // 카드정보
+            $table->string('card_number')->nullable()->comment('카드번호');
+            $table->string('card_expiry_year')->nullable()->comment('만료년도');
+            $table->string('card_expiry_month')->nullable()->comment('만료월');
+            $table->string('card_password')->nullable()->comment('비밀번호');
+            $table->string('card_name')->nullable()->comment('카드사명');
+            $table->string('card_birth_or_business_number')->nullable()->comment('생년월일 또는 사업자번호');
+            $table->text('card_billing_key')->nullable()->comment('빌링키');
+            $table->string('card_color')->nullable()->comment('색깔')->default('#000');
 
             // 가상계좌
             $table->string("vbank_num")->nullable()->comment('가상계좌 계좌번호');

@@ -50,6 +50,7 @@ class PresetProductResource extends JsonResource
                 'price' => $this->package_price,
                 'type' => $this->package_type,
                 'active' => $this->package_active,
+                'format_start_pack_at' => $this->start_pack_at ? Carbon::make($this->start_pack_at)->format('Y.m.d'). '(' . Carbon::make($this->start_pack_at)->isoFormat('ddd') . ')' : '',
                 'format_will_delivery_at' => $this->package_will_delivery_at ? Carbon::make($this->package_will_delivery_at)->format('Y.m.d'). '(' . Carbon::make($this->package_will_delivery_at)->isoFormat('ddd') . ')' : '',
                 'format_type' => TypePackage::getLabel($this->package_type),
                 'tags' => $this->package ? TagResource::collection($this->package->tags) : [],

@@ -298,8 +298,8 @@ class Preset extends Model
                     'package_count' => $package->count,
                     'package_will_delivery_at' => $package->will_delivery_at,
                     'package_active' => $packageSetting->active,
-                    'package_type' => $packageSetting->type,
-                    'package_price' => $packageSetting->type == TypePackage::BUNGLE ? $package->price_bungle : $package->price_single,
+                    'package_type' => $packageSetting->type_package,
+                    'package_price' => $packageSetting->type_package == TypePackage::BUNGLE ? $package->price_bungle : $package->price_single,
                 ]);
             }
             // 모든 작업이 정상적으로 완료되면 트랜잭션 커밋

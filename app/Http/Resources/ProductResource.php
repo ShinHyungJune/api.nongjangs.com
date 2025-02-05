@@ -24,7 +24,7 @@ class ProductResource extends JsonResource
             'requiredOptions' => OptionResource::collection($this->options()->where('type', TypeOption::REQUIRED)->get()),
             'additionalOptions' => OptionResource::collection($this->options()->where('type', TypeOption::ADDITIONAL)->get()),
             'ratio_discount' => $this->ratio_discount,
-            'average_review' => $this->average_review,
+            'average_review' => round($this->average_review, 1),
             'count_review' => $this->count_review,
             'tags' => TagResource::collection($this->tags),
 

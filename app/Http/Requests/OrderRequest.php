@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\PayMethod;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderRequest extends FormRequest
@@ -85,12 +86,18 @@ class OrderRequest extends FormRequest
                         'pay_method_id' => ['required', 'integer'],
                     ];
 
+                    $payMethod = PayMethod::find($this->get('pay_method_id'));
+
+                    if(!$payMethod->external)
+                        $data = array_merge($data, [
+                            'card_id' => 'required|integer'
+                        ]);
+
                     return $data;
 
                 case 'complete':
                     return [
-                        "imp_uid" => "required|string|max:50000",
-                        "merchant_uid" => "required|string|max:50000",
+                        "paymentId" => "required|string|max:50000",
                     ];
 
                 default:

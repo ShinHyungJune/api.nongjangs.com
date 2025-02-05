@@ -20,7 +20,7 @@ class OrderResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'merchant_uid' => $this->merchant_uid,
+            'payment_id' => $this->payment_id,
 
             'user_id' => $this->user_id,
             'user_name' => $this->user_name,
@@ -54,6 +54,8 @@ class OrderResource extends JsonResource
             'pay_method_name' => $this->pay_method_name,
             'pay_method_pg' => $this->pay_method_pg,
             'pay_method_method' => $this->pay_method_method,
+            'pay_method_channel_key' => $this->pay_method_channel_key,
+            'pay_method_external' => $this->pay_method_external,
             'format_pay_method' => $this->format_pay_method,
 
             'vbank_num' => $this->vbank_num,

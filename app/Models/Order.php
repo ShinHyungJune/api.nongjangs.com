@@ -316,7 +316,6 @@ class Order extends Model
             ]);
         }
 
-
         $price = $pricePresets - $point;
 
         if($price < self::$minPrice)
@@ -326,6 +325,18 @@ class Order extends Model
             ];
 
         $payMethod = PayMethod::find($data['pay_method_id']);
+        $card = null;
+
+        if(!$payMethod->external){
+            $card = Card::find($data['card_id']);
+
+            if($card && $card->user_id != auth()->id()){
+                return [
+                    'success' => false,
+                    'message' => '자신의 카드로만 주문할 수 있습니다.'
+                ];
+            }
+        }
 
         $this->update([
             'price' => $price,
@@ -335,12 +346,23 @@ class Order extends Model
             'point_use' => $point,
             'price_coupon_discount' => $priceCouponDiscount,*/
 
-            'merchant_uid' => 'ORD-' . $this->id.Carbon::now()->format('Hisv'),
+            'card_number' => $card ? $card->number : null,
+            'card_expiry_year' => $card ? $card->expiry_year : null,
+            'card_expiry_month' => $card ? $card->expiry_month : null,
+            'card_password' => $card ? $card->password : null,
+            'card_name' => $card ? $card->name : null,
+            'card_birth_or_business_number' => $card ? $card->birth_or_business_number : null,
+            'card_billing_key' => $card ? $card->billing_key : null,
+            'card_color' => $card ? $card->color : null,
+
+            'payment_id' => $this->id.Carbon::now()->format('Hisv'),
             'pay_method_id' => $payMethod->id,
             'pay_method_pg' => $payMethod->pg,
             'pay_method_method' => $payMethod->method,
             'pay_method_name' => $payMethod->name,
             'pay_method_commission' => $payMethod->commission,
+            'pay_method_channel_key' => $payMethod->channel_key,
+            'pay_method_external' => $payMethod->external,
 
             'buyer_name' => auth()->user()->name ?? auth()->user()->nickname,
             'buyer_email' => auth()->user()->email,
@@ -360,6 +382,11 @@ class Order extends Model
         return [
             'success' => true,
         ];
+    }
+
+    public function payMethod()
+    {
+        return $this->belongsTo(PayMethod::class);
     }
 
     public function presets()
