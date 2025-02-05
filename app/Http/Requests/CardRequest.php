@@ -20,6 +20,7 @@ class CardRequest extends FormRequest
 
                 case 'store':
                     return [
+                        'name' => ['required'],
                         'number' => ['required'],
                         'expiry_year' => ['required'],
                         'expiry_month' => ['required'],
@@ -29,6 +30,7 @@ class CardRequest extends FormRequest
 
                 case 'update':
                     return [
+                        'name' => ['required'],
                         'number' => ['required'],
                         'expiry_year' => ['required'],
                         'expiry_month' => ['required'],
