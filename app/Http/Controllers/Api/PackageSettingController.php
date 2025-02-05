@@ -90,7 +90,7 @@ class PackageSettingController extends ApiController
         if($request->type_package)
             $packageSetting->update(['type_package' => $request->type_package]);
 
-        if($request->unlike_material_ids) {
+        if(is_array($request->unlike_material_ids)) {
             $materials = [];
 
             foreach($request->unlike_material_ids as $id){

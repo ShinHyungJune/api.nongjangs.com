@@ -167,6 +167,16 @@ class UserController extends ApiController
                 }
             }
 
+            if($socialUser->email){
+                $user = User::where('email', $socialUser->email)->first();
+
+                if($user){
+                    $message = "이미 해당 이메일로 가입된 이력이 있습니다.";
+
+                    return redirect(config("app.client_url") . "/?message=" . $message);
+                }
+            }
+
             $data = json_encode([
                 "id" => $socialUser->id,
                 "platform" => $social,
