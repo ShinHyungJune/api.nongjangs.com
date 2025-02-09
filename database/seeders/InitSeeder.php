@@ -502,7 +502,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '적근대',
+                        'title' => '피망',
                         'img' => '/images/material1.png',
 
                         'pivot' => [
@@ -515,7 +515,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '적근대',
+                        'title' => '당근',
                         'img' => '/images/material1.png',
 
                         'pivot' => [
@@ -543,7 +543,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '청경채',
+                        'title' => '샐러리',
                         'img' => '/images/material2.png',
 
                         'pivot' => [
@@ -556,7 +556,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '청경채',
+                        'title' => '감자',
                         'img' => '/images/material2.png',
 
                         'pivot' => [
@@ -584,7 +584,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '쪽파',
+                        'title' => '병아리콩',
                         'img' => '/images/material1.png',
 
                         'pivot' => [
@@ -597,7 +597,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '쪽파',
+                        'title' => '비트',
                         'img' => '/images/material1.png',
 
                         'pivot' => [
@@ -625,7 +625,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '브로콜리',
+                        'title' => '토마토',
                         'img' => '/images/material4.png',
 
                         'pivot' => [
@@ -638,7 +638,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '브로콜리',
+                        'title' => '블루베리',
                         'img' => '/images/material4.png',
 
                         'pivot' => [
@@ -666,7 +666,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '양상추',
+                        'title' => '상추',
                         'img' => '/images/material5.png',
 
                         'pivot' => [
@@ -679,22 +679,22 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '양상추',
+                        'title' => '오이',
                         'img' => '/images/material5.png',
 
                         'pivot' => [
                             'type' => TypePackageMaterial::BUNGLE,
                             'value' => 240,
                             'unit' => 'g',
-                            'price_origin' => 8100,
-                            'price' => 8100
+                            'price_origin' => 3600,
+                            'price' => 3600
                         ],
                     ],
 
 
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '상추',
+                        'title' => '검은콩',
                         'img' => '/images/material6.png',
 
                         'pivot' => [
@@ -707,7 +707,7 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '상추',
+                        'title' => '치아씨드',
                         'img' => '/images/material6.png',
 
                         'pivot' => [
@@ -720,15 +720,15 @@ class InitSeeder extends Seeder
                     ],
                     [
                         'type' => TypeMaterial::PACKAGE,
-                        'title' => '상추',
+                        'title' => '대파',
                         'img' => '/images/material6.png',
 
                         'pivot' => [
                             'type' => TypePackageMaterial::BUNGLE,
                             'value' => 240,
                             'unit' => 'g',
-                            'price_origin' => 8100,
-                            'price' => 8100
+                            'price_origin' => 3600,
+                            'price' => 3600
                         ],
                     ],
                 ],
