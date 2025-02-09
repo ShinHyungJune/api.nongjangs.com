@@ -482,6 +482,8 @@ class InitSeeder extends Seeder
             'will_delivery_at' => $willDeliveryAt,
         ]);
 
+        $packages = Package::get();
+
         $categories = [
             [
                 'title' => '근채류',
