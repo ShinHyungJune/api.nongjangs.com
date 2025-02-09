@@ -173,6 +173,7 @@ class InitSeeder extends Seeder
         DB::table("product_tag")->truncate();
         DB::table("recipe_tag")->truncate();
         DB::table("farm_story_tag")->truncate();
+        DB::table("package_setting_material")->truncate();
         DB::table("package_material")->truncate();
         DB::table("package_material_tag")->truncate();
         DB::table("media")->truncate();
