@@ -498,8 +498,8 @@ class InitSeeder extends Seeder
                             'type' => TypePackageMaterial::SINGLE,
                             'value' => 120,
                             'unit' => 'g',
-                            'price_origin' => 4500,
-                            'price' => 4500
+                            'price_origin' => 5500,
+                            'price' => 5500
                         ],
                     ],
                     [
