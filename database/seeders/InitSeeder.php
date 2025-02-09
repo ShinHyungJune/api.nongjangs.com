@@ -686,8 +686,8 @@ class InitSeeder extends Seeder
                             'type' => TypePackageMaterial::BUNGLE,
                             'value' => 240,
                             'unit' => 'g',
-                            'price_origin' => 3600,
-                            'price' => 3600
+                            'price_origin' => 8100,
+                            'price' => 8100
                         ],
                     ],
 
@@ -727,8 +727,8 @@ class InitSeeder extends Seeder
                             'type' => TypePackageMaterial::BUNGLE,
                             'value' => 240,
                             'unit' => 'g',
-                            'price_origin' => 3600,
-                            'price' => 3600
+                            'price_origin' => 8100,
+                            'price' => 8100
                         ],
                     ],
                 ],
