@@ -176,6 +176,7 @@ class InitSeeder extends Seeder
         DB::table("package_setting_material")->truncate();
         DB::table("package_material")->truncate();
         DB::table("package_material_tag")->truncate();
+        DB::table("material_preset_product")->truncate();
         DB::table("media")->truncate();
         DB::statement("SET foreign_key_checks=1");
 
