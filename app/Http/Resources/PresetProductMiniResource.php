@@ -37,6 +37,8 @@ class PresetProductMiniResource extends JsonResource
                 'name' => $this->package_name,
                 'price' => $this->package_price,
                 'type' => $this->package_type,
+                'price_single' => $package ? $package->price_single : '',
+                'price_bungle' => $package ? $package->price_bungle : '',
                 'format_type' => TypePackage::getLabel($this->package_type),
                 'format_start_pack_at' => $package && $package->start_pack_at ? Carbon::make($package->start_pack_at)->format('Y.m.d'). '(' . Carbon::make($package->start_pack_at)->isoFormat('ddd') . ')' : '',
                 'format_will_delivery_at' => $package && $package->package_will_delivery_at ? Carbon::make($package->package_will_delivery_at)->format('Y.m.d'). '(' . Carbon::make($package->package_will_delivery_at)->isoFormat('ddd') . ')' : '',
