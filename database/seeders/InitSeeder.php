@@ -495,7 +495,7 @@ class InitSeeder extends Seeder
                             'value' => 120,
                             'unit' => 'g',
                             'price_origin' => 4500,
-                            'price' => 1800
+                            'price' => 4500
                         ],
                     ],
                     [
@@ -536,7 +536,7 @@ class InitSeeder extends Seeder
                             'value' => 500,
                             'unit' => 'g',
                             'price_origin' => 4500,
-                            'price' => 1800
+                            'price' => 4500
                         ],
                     ],
                     [
@@ -562,7 +562,7 @@ class InitSeeder extends Seeder
                             'value' => 500,
                             'unit' => 'g',
                             'price_origin' => 4600,
-                            'price' => 3600
+                            'price' => 4600
                         ],
                     ],
 
@@ -603,7 +603,7 @@ class InitSeeder extends Seeder
                             'value' => 240,
                             'unit' => 'g',
                             'price_origin' => 10900,
-                            'price' => 10000
+                            'price' => 10900
                         ],
                     ],
 
@@ -1461,7 +1461,7 @@ class InitSeeder extends Seeder
                 'started_at' => Carbon::now()->subDays(1),
                 'finished_at' => Carbon::now()->addDays(3),
             ],
-            [
+            /*[
                 'type' => TypeBanner::MAIN,
                 'title' => '작은 농장에서 온 큰 행복,
 당신의 일상에 녹아들다',
@@ -1474,7 +1474,7 @@ class InitSeeder extends Seeder
                 'color_button' => '#FF9224',
                 'started_at' => Carbon::now()->subDays(1),
                 'finished_at' => Carbon::now()->addDays(3),
-            ],
+            ],*/
 
             [
                 'type' => TypeBanner::FARM_STORY,
@@ -1511,15 +1511,15 @@ class InitSeeder extends Seeder
 당신의 일상에 녹아들다',
                 'subtitle' => '',
                 'url' => '/packages/select',
-                'pc' => $this->bannerImages[0],
-                'mobile' => $this->bannerImages[0],
+                'pc' => $this->bannerImages[1],
+                'mobile' => $this->bannerImages[1],
                 'button' => '여정 시작하기',
-                'color_text' => 'black',
-                'color_button' => '#308929',
+                'color_text' => 'white',
+                'color_button' => '#FF9224',
                 'started_at' => Carbon::now()->subDays(1),
                 'finished_at' => Carbon::now()->addDays(3),
             ],
-            [
+            /*[
                 'type' => TypeBanner::PACKAGE,
                 'title' => '작은 농장에서 온 큰 행복,
 당신의 일상에 녹아들다',
@@ -1532,7 +1532,7 @@ class InitSeeder extends Seeder
                 'color_button' => '#FF9224',
                 'started_at' => Carbon::now()->subDays(1),
                 'finished_at' => Carbon::now()->addDays(3),
-            ],
+            ],*/
 
             [
                 'type' => TypeBanner::PRODUCT,
@@ -1548,7 +1548,7 @@ class InitSeeder extends Seeder
                 'started_at' => Carbon::now()->subDays(1),
                 'finished_at' => Carbon::now()->addDays(3),
             ],
-            [
+            /*[
                 'type' => TypeBanner::PRODUCT,
                 'title' => '작은 농장에서 온 큰 행복,
 당신의 일상에 녹아들다',
@@ -1561,7 +1561,7 @@ class InitSeeder extends Seeder
                 'color_button' => '#FF9224',
                 'started_at' => Carbon::now()->subDays(1),
                 'finished_at' => Carbon::now()->addDays(3),
-            ],
+            ],*/
         ];
 
         foreach($items as $item){
