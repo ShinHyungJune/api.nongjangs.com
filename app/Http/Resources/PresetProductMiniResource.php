@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Enums\DeliveryCompany;
 use App\Enums\TypeOption;
 use App\Enums\TypePackage;
+use App\Models\Package;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,6 +19,8 @@ class PresetProductMiniResource extends JsonResource
      */
     public function toArray($request)
     {
+        $package = Package::find($this->package_id);
+
         return [
             'id' => $this->id,
             'price' => $this->price,
@@ -35,6 +38,8 @@ class PresetProductMiniResource extends JsonResource
                 'price' => $this->package_price,
                 'type' => $this->package_type,
                 'format_type' => TypePackage::getLabel($this->package_type),
+                'format_start_pack_at' => $package && $package->start_pack_at ? Carbon::make($package->start_pack_at)->format('Y.m.d'). '(' . Carbon::make($package->start_pack_at)->isoFormat('ddd') . ')' : '',
+                'format_will_delivery_at' => $package && $package->package_will_delivery_at ? Carbon::make($package->package_will_delivery_at)->format('Y.m.d'). '(' . Carbon::make($package->package_will_delivery_at)->isoFormat('ddd') . ')' : '',
             ] : '',
             'option' => [
                 'id' => $this->option_id,
