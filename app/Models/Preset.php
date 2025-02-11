@@ -86,7 +86,8 @@ class Preset extends Model
         $presetProducts = $this->presetProducts()->cursor();
 
         foreach($presetProducts as $presetProduct){
-            if($presetProduct->product_id){
+            $total += $presetProduct->price;
+            /*if($presetProduct->product_id){
                 if($presetProduct->option_type == TypeOption::REQUIRED)
                     $total += $presetProduct->product_price + $presetProduct->option_price;
 
@@ -100,7 +101,7 @@ class Preset extends Model
                 foreach($materials as $material){
                     $total += $material->pivot->price;
                 }
-            }
+            }*/
         }
 
         return $total;
