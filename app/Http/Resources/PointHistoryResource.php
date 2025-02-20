@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Enums\TypePointHistory;
+use App\Models\Coupon;
 use App\Models\Point;
 use App\Models\User;
 use Carbon\Carbon;
@@ -18,6 +19,8 @@ class PointHistoryResource extends JsonResource
         if($this->point_historiable_type == Point::class)
             $pointHistoriable = PointResource::make($pointHistoriable);
 
+        $point = $this->hasOne(Point::class)->first();
+
         return [
             'id' => $this->id,
 
@@ -27,6 +30,8 @@ class PointHistoryResource extends JsonResource
             'pointModel' => $this->pointModel ? PointResource::make($this->pointModel) : '',
             'point' => $this->point,
             'memo' => $this->memo,
+            'start_expired_at' => $point ? Carbon::make($point->created_at)->format('y-m-d') : '',
+            'finish_expired_at' => $point ? Carbon::make($point->expired_at)->format('y-m-d') : '',
 
             'format_increase' => $this->format_increase,
             'pointHistoriable' => $pointHistoriable,

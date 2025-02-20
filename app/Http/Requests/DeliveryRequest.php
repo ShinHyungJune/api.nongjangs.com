@@ -15,7 +15,8 @@ class DeliveryRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        'word' => ['nullable', 'string', 'max:500']
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'user_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':
@@ -90,8 +91,8 @@ class DeliveryRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'user_id' => [
+                'description' => '<span class="point">사용자 고유번호</span>',
             ],
 
             // 늘 쓰이는 애들

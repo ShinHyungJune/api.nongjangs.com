@@ -31,6 +31,22 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::delete("/examples", [\App\Http\Controllers\Api\Admin\ExampleController::class, "destroy"]);
     Route::resource("/examples", \App\Http\Controllers\Api\Admin\ExampleController::class);
 
+    Route::delete("/reports", [\App\Http\Controllers\Api\Admin\ReportController::class, "destroy"]);
+    Route::resource("/reports", \App\Http\Controllers\Api\Admin\ReportController::class);
+
+    Route::delete("/pointHistories", [\App\Http\Controllers\Api\Admin\PointHistoryController::class, "destroy"]);
+    Route::resource("/pointHistories", \App\Http\Controllers\Api\Admin\PointHistoryController::class);
+
+    Route::delete("/memos", [\App\Http\Controllers\Api\Admin\MemoController::class, "destroy"]);
+    Route::resource("/memos", \App\Http\Controllers\Api\Admin\MemoController::class);
+
+    Route::delete("/deliveries", [\App\Http\Controllers\Api\Admin\DeliveryController::class, "destroy"]);
+    Route::resource("/deliveries", \App\Http\Controllers\Api\Admin\DeliveryController::class);
+
+    Route::delete("/coupons", [\App\Http\Controllers\Api\Admin\CouponController::class, "destroy"]);
+    Route::resource("/coupons", \App\Http\Controllers\Api\Admin\CouponController::class);
+
+
     Route::resource("/banners", \App\Http\Controllers\Api\Admin\BannerController::class)->except(['destroy']);
     Route::delete("/banners", [\App\Http\Controllers\Api\Admin\BannerController::class, "destroy"]);
 
@@ -55,6 +71,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/notices", \App\Http\Controllers\Api\Admin\NoticeController::class)->except(['destroy']);
     Route::delete("/notices", [\App\Http\Controllers\Api\Admin\NoticeController::class, "destroy"]);
 
+    Route::post("/users/export", [\App\Http\Controllers\Api\Admin\UserController::class, "export"]);
     Route::resource("/users", \App\Http\Controllers\Api\Admin\UserController::class)->except(['destroy', 'store', 'update']);
     Route::delete("/users", [\App\Http\Controllers\Api\Admin\UserController::class, "destroy"]);
 

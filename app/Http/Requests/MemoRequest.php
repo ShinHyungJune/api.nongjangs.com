@@ -4,31 +4,30 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReportRequest extends FormRequest
+class MemoRequest extends FormRequest
 {
     public function rules(): array
     {
         $method = $this->route()->getActionMethod();
         $admin = strpos($this->route()->getPrefix(), 'admin') !== false;
 
-        if ($admin) {
-            switch ($method) {
+        if($admin){
+            switch ($method){
                 case 'index':
                     return [
-                        'user_id' => ['nullable', 'integer'],
-                        'word' => ['nullable', 'string', 'max:500'],
+                        'target_user_id' => ['required', 'integer'],
+                        'word' => ['nullable', 'string', 'max:500']
                     ];
 
                 case 'store':
                     return [
-                        'report_category_id' => ['required', 'exists:report_categories'],
-                        'description' => ['nullable'],
+                        'target_user_id' => ['required', 'integer'],
+                        'description' => ['required', 'string', 'max:5000'],
                     ];
 
                 case 'update':
                     return [
-                        'report_category_id' => ['required', 'exists:report_categories'],
-                        'description' => ['nullable'],//
+                        '' => []
                     ];
 
                 case 'destroy':
@@ -39,19 +38,16 @@ class ReportRequest extends FormRequest
                 default:
                     return [];
             }
-        } else {
-            switch ($method) {
+        }else{
+            switch ($method){
                 case 'index':
                     return [
-                        '' => []
+
                     ];
 
                 case 'store':
                     return [
-                        'report_category_id' => ['required', 'integer'],
-                        'reportable_id' => ['required', 'integer'],
-                        'reportable_type' => ['required', 'string', 'max:500'],
-                        'description' => ['required', 'string', 'max:50000'],
+                        '' => []
                     ];
 
                 case 'update':
@@ -66,21 +62,17 @@ class ReportRequest extends FormRequest
         }
     }
 
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     public function bodyParameters()
     {
         return [
             // 이 모델만 쓰이는 애들
-            'user_id' => [
-                'description' => '<span class="point">사용자 고유번호</span>',
-            ],
-            'report_category_id' => [
-                'description' => '<span class="point">신고유형 고유번호</span>',
-            ],
-            'reportable_id' => [
-                'description' => '<span class="point">신고대상 고유번호</span>',
-            ],
-            'reportable_type' => [
-                'description' => '<span class="point">신고대상 모델명 (App\Models\Product - 상품 | App\Models\Review - 리뷰 | App\Models\Comment - 댓글 | App\Models\VegetableStory - 채소이야기 | App\Models\Recipe 레시피)</span>',
+            'target_user_id' => [
+                'description' => '<span class="point">대상 고유번호</span>',
             ],
             'description' => [
                 'description' => '<span class="point">내용</span>',
@@ -103,11 +95,5 @@ class ReportRequest extends FormRequest
                 // 'example' => '',
             ],
         ];
-    }
-
-
-    public function authorize(): bool
-    {
-        return true;
     }
 }

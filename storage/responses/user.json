@@ -18,6 +18,8 @@
   "nickname": "닉네임",
 
 
+  "point": "보유 적립금",
+  "point_use": "총 사용 적립금",
   "packageSetting (패키지 설정값)": {
     "id": "고유번호",
     "type_package": "패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)",
@@ -33,10 +35,13 @@
   "count_alarm": "안읽은 알람수",
   "count_package" : "누적 정기구독수",
   "count_ongoing_preset_product" : "진행중인 주문/배송수",
-  "count_coupon": "보유쿠폰수",
+  "count_coupon": "사용가능 보유쿠폰수",
+  "count_total_coupon": "전체 쿠폰수 (사용 + 미사용)",
 
-  "point": "보유 적립금",
-  "point_use": "총 사용 적립금",
+  "count_package_for_next_grade" : "다음 등급 레벨업까지 남은 회차수",
+  "price_for_next_grade" : "다음 등급 레벨업까지 남은 구매액",
+  "total_order_price" : "누적구매액",
+  "total_order_count_package" : "누적구매회차",
 
   "format_created_at": "표시용 생성일자"
 }

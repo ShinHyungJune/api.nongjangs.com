@@ -30,13 +30,18 @@ class PointHistoryRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
-                        'word' => ['nullable', 'string', 'max:500']
+                        'start_expired_at' => ['nullable', 'date'],
+                        'finish_expired_at' => ['nullable', 'date'],
+                        'user_id' => ['nullable', 'integer'],
+                        'word' => ['nullable', 'string', 'max:500'],
                     ];
 
                 case 'store':
                     return [
-                        'point' => ['required', 'integer', 'min:1'],
                         'user_id' => ['required', 'integer'],
+                        'increase' => ['required', 'boolean'],
+                        'point' => ['required', 'integer', 'min:1'],
+                        'memo' => ['required', 'string', 'max:500'],
                     ];
 
                 case 'update':
@@ -79,6 +84,21 @@ class PointHistoryRequest extends FormRequest
     public function bodyParameters()
     {
         return [
+            'user_id' => [
+                'description' => '<span class="point">사용자 고유번호</span>',
+            ],
+            'point' => [
+                'description' => '<span class="point">포인트</span>',
+            ],
+            'memo' => [
+                'description' => '<span class="point">메모</span>',
+            ],
+            'start_expired_at' => [
+                'description' => '<span class="point">유효기간 시작일자</span>',
+            ],
+            'finish_expired_at' => [
+                'description' => '<span class="point">유효기간 종료일자</span>',
+            ],
             'increase' => [
                 'description' => '<span class="point">증감여부 (1 - 증가 | 0 - 감소)</span>',
             ],

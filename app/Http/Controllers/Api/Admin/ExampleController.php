@@ -30,8 +30,7 @@ class ExampleController extends ApiController
 
     /** 상세
      * @group 관리자
-     * @subgroup 모델명
-     * @priority 1
+     * @subgroup 모델명(한글명)
      * @responseFile storage/responses/example.json
      */
     public function show(Example $example)
@@ -41,8 +40,7 @@ class ExampleController extends ApiController
 
     /** 생성
      * @group 관리자
-     * @subgroup 모델명
-     * @priority 1
+     * @subgroup 모델명(한글명)
      * @responseFile storage/responses/example.json
      */
     public function store(ExampleRequest $request)
@@ -60,8 +58,7 @@ class ExampleController extends ApiController
 
     /** 수정
      * @group 관리자
-     * @subgroup 모델명
-     * @priority 1
+     * @subgroup 모델명(한글명)
      * @responseFile storage/responses/example.json
      */
     public function update(ExampleRequest $request, Example $example)
@@ -91,8 +88,7 @@ class ExampleController extends ApiController
 
     /** 삭제
      * @group 관리자
-     * @subgroup 모델명
-     * @priority 1
+     * @subgroup 모델명(한글명)
      */
     public function destroy(ExampleRequest $request)
     {

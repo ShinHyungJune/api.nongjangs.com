@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\StateReport;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -12,6 +13,9 @@ class ReportResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'state' => $this->state,
+            'format_state' => StateReport::getLabel($this->state),
+
             'description' => $this->description,
 
             'report_category_id' => $this->report_category_id,

@@ -9,6 +9,7 @@ use App\Enums\TypeOption;
 use App\Enums\TypePackage;
 use App\Models\Arr;
 use App\Models\Package;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,6 +19,8 @@ class PresetProductResource extends JsonResource
     public function toArray($request)
     {
         $package = Package::find($this->package_id);
+
+        $user = User::withTrashed()->find($this->preset->user_id);
 
         return [
             'id' => $this->id,
@@ -30,8 +33,18 @@ class PresetProductResource extends JsonResource
             'format_cancel_at' => $this->cancel_at ? Carbon::make($this->cancel_at)->format('Y.m.d H:i') : '',
             'format_request_cancel_at' => $this->request_cancel_at ? Carbon::make($this->request_cancel_at)->format('Y.m.d H:i') : '',
 
+            'user' => $user ? [
+                'id' => $user->id,
+                'name' => $user->name,
+                'grade' => $user->grade ? [
+                    'id' => $user->grade->id,
+                    'level' => $user->grade->level,
+                    'title' => $user->grade->title,
+                ] : '',
+            ] : '',
             'order' => $this->preset->order ? [
                 'id' => $this->preset->order->id,
+                'merchant_uid' => $this->preset->order->merchant_uid,
             ] : '',
             'product' => $this->product_id ? [
                 'id' => $this->product_id,

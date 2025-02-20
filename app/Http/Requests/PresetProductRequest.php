@@ -15,7 +15,11 @@ class PresetProductRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        'word' => ['nullable', 'string', 'max:500']
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'has_column' => ['nullable', 'string', 'max:500'],
+                        'type_package' => ['nullable', 'integer'],
+                        'state' => ['nullable', 'integer'],
+                        'states' => ['nullable', 'array'],
                     ];
 
                 case 'store':
@@ -98,6 +102,18 @@ class PresetProductRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
+            'has_column' => [
+                'description' => '<span class="point">해당 컬럼데이터 보유여부 (package_id - 꾸러미 상품 | product_id - 직거래상품)</span>',
+            ],
+            'type_package' => [
+                'description' => '<span class="point">꾸러미 유형(1 - SINGLE 싱글 | 2 - BUNGLE 벙글)</span>',
+            ],
+            'state' => [
+                'description' => '<span class="point">상태 (StatePresetProduct)</span>',
+            ],
+            'states' => [
+                'description' => '<span class="point">상태 목록 (StatePresetProduct 목록)</span>',
+            ],
             'can_review' => [
                 'description' => '<span class="point">후기 작성가능여부</span>',
             ],

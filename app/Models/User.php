@@ -6,6 +6,8 @@ use App\Enums\MomentCouponGroup;
 use App\Enums\SocialPlatform;
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
+use App\Enums\StateQna;
+use App\Enums\StateReport;
 use App\Enums\TypeCouponGroup;
 use App\Enums\TypePointHistory;
 use App\Models\임시\Product;
@@ -267,9 +269,21 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         return $this->coupons()->where('use', 0)->count();
     }
 
+    public function getCountTotalCouponAttribute()
+    {
+        return $this->coupons()->count();
+    }
+
     public function getCountPackageAttribute()
     {
         return $this->presetProducts()->whereNotNull('package_id')
+            ->where('state', '!=', StatePresetProduct::BEFORE_PAYMENT)
+            ->count();
+    }
+
+    public function getCountProductAttribute()
+    {
+        return $this->presetProducts()->whereNotNull('product_id')
             ->where('state', '!=', StatePresetProduct::BEFORE_PAYMENT)
             ->count();
     }
@@ -391,7 +405,7 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         return $this->hasMany(Point::class);
     }
 
-    public function givePoint($point, $type, $relationModel = null)
+    public function givePoint($point, $type, $relationModel = null, $memo = null)
     {
         $pointModel = $this->points()->create([
             'point' => $point
@@ -406,10 +420,11 @@ class User extends Authenticatable implements HasMedia, JWTSubject
             'point_historiable_type' => $relationModel ? get_class($relationModel) : null,
             'point_historiable_id' => $relationModel ? $relationModel->id : null,
             'user_id' => $this->id,
+            'memo' => $memo,
         ]);
     }
 
-    public function takePoint($point, $type, $relationModel = null, $pointModel = null)
+    public function takePoint($point, $type, $relationModel = null, $pointModel = null, $memo = null)
     {
         return \DB::transaction(function () use ($point, $type, $relationModel, $pointModel) {
             // 특정 포인트에서만 차감하고싶을 때
@@ -508,5 +523,29 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
         // 가장 최근 꾸러미 출고 리턴
         return $this->presetProducts()->orderBy('id', 'desc')->whereHas('package')->first();
+    }
+
+    public function getCountRecommendedAttribute()
+    {
+        return User::where('code_recommend', $this->code)->count();
+    }
+
+    public function getCountReportAttribute()
+    {
+        return $this->reports()->count();
+    }
+    public function getCountFinishReportAttribute()
+    {
+        return $this->reports()->whereIn('state', [StateReport::FINISH, StateReport::HIDE])->count();
+    }
+
+    public function getCountQnaAttribute()
+    {
+        return $this->qnas()->count();
+    }
+
+    public function getCountAnswerQnaAttribute()
+    {
+        return $this->qnas()->where('state', StateQna::FINISH)->count();
     }
 }

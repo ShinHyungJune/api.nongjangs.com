@@ -18,7 +18,9 @@
       "always_use_point_for_package": "꾸러미 결제 시 적립금 자동사용여부",
       "message": "프로필 메시지",
       "nickname": "닉네임",
-
+      "refund_owner" : "환불계좌 예금주",
+      "refund_bank" : "환불계좌 은행명",
+      "refund_account" : "환불계좌 계좌번호",
 
       "point": "보유 적립금",
       "point_use": "총 사용 적립금",
@@ -31,20 +33,35 @@
           "name": "카드사명",
           "number": "카드번호"
         },
-        "delivery":"배송지 객체",
+        "delivery":"배송지 객체"
       },
       "count_cart": "장바구니에 담긴 상품조합수",
       "count_alarm": "안읽은 알람수",
+      "count_product" : "누적 직거래장터수",
       "count_package" : "누적 정기구독수",
       "count_ongoing_preset_product" : "진행중인 주문/배송수",
-      "count_coupon": "보유쿠폰수",
+      "count_coupon": "사용가능 보유쿠폰수",
+      "count_total_coupon": "전체 쿠폰수 (사용 + 미사용)",
+      "count_report": "전체 신고수",
+      "count_finish_report": "처리완료 신고수",
+      "count_qna" : "전체 문의수",
+      "count_finish_qna" : "답변완료 문의수",
+      "delivery" : {
+        "id" : "고유번호",
+        "address": "주소",
+        "address_detail" : "상세주소"
+      },
 
       "count_package_for_next_grade" : "다음 등급 레벨업까지 남은 회차수",
       "price_for_next_grade" : "다음 등급 레벨업까지 남은 구매액",
       "total_order_price" : "누적구매액",
       "total_order_count_package" : "누적구매회차",
 
-      "format_created_at": "표시용 생성일자"
+      "recommendUser": "추천인 정보 객체 (사용자 객체랑 형태 동일)",
+      "count_recommended": "추천 받은수",
+
+      "format_created_at": "표시용 생성일자",
+      "format_deleted_at": "표시용 탈퇴일자"
     }
   ],
   "meta": {

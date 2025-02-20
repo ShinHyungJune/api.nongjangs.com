@@ -4,6 +4,8 @@
       "id": "고유번호",
       "type": "유형",
       "increase": "증감여부 (1 - 증가 | 0 - 감소)",
+      "start_expired_at (null 주의)": "만료일 시작일자",
+      "finish_expired_at (null 주의)": "만료일 종료일자",
       "pointModel": "관련 포인트 객체",
       "point": "포인트",
       "point_leave": "남은 포인트",

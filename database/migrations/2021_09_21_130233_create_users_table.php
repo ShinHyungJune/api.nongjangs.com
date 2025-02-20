@@ -16,6 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
 
+            $table->boolean("active")->default(1)->comment('활성여부');
+
             $table->text('delivery_requirement')->nullable()->comment('배송요청사항');
             $table->foreignId('grade_id')->nullable()->comment('등급')->constrained('grades');
             $table->string('code')->nullable()->comment('고유 코드');
@@ -28,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string("contact")->nullable()->comment("연락처");
 
             $table->boolean("agree_promotion")->default(false)->comment('혜택수신동의');
-            $table->string('code_recommend')->nullable()->comment('추천인코드');
+            $table->string('code_recommend')->nullable()->comment('추천인코드')->index();
 
             $table->text('reason')->comment('탈퇴사유')->nullable();
             $table->text('and_so_on')->comment('기타 탈퇴사유')->nullable();
@@ -41,6 +43,10 @@ class CreateUsersTable extends Migration
             $table->boolean('always_use_point_for_package')->default(1)->comment('꾸러미 결제 시 적립금 자동사용여부');
             $table->text('message')->nullable()->comment('프로필 메시지');
             $table->string('nickname')->nullable()->comment('닉네임');
+
+            $table->string('refund_bank')->nullable()->comment('환불계좌 은행명');
+            $table->string('refund_account')->nullable()->comment('환불계좌 계좌번호');
+            $table->string('refund_owner')->nullable()->comment('환불계좌 예금주');
 
             $table->boolean("admin")->default(false);
             $table->boolean("master")->default(false);

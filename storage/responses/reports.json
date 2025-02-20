@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "state": "상태 (1 - WAIT 미처리 | 2 - FINISH 정상 | 3 - HIDE 숨김)",
+      "format_state": "표시용",
+
+      "description" : "내용",
+      "report_category_id": "신고카테고리 고유번호",
+      "reportCategory": {
+        "id" : "고유번호",
+        "title" : "제목"
+      },
+      "format_created_at": "표시용 생성일자"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

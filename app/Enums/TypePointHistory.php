@@ -21,6 +21,8 @@ final class TypePointHistory
     const VEGETABLE_STORY_CREATED = 8;
     const PRESET_PRODUCT_CONFIRM = 9; 
     const EXPIRED = 10;
+    const ADMIN_GIVE = 11;
+    const ADMIN_TAKE = 12;
 
     public static function getValues()
     {
@@ -35,6 +37,8 @@ final class TypePointHistory
             self::VEGETABLE_STORY_CREATED,
             self::PRESET_PRODUCT_CONFIRM,
             self::EXPIRED,
+            self::ADMIN_GIVE,
+            self::ADMIN_TAKE,
         ];
     }
 
@@ -51,6 +55,8 @@ final class TypePointHistory
             self::VEGETABLE_STORY_CREATED => "채소이야기 작성",
             self::PRESET_PRODUCT_CONFIRM => "구매확정",
             self::EXPIRED => "유효기간만료",
+            self::ADMIN_GIVE => "관리자 지급",
+            self::ADMIN_TAKE => "관리자 차감",
 
             "" => "",
         ];
