@@ -29,7 +29,9 @@ class PresetProductController extends ApiController
         });
 
         if($request->user_id)
-            $items = $items->where('user_id', $request->user_id);
+            $items = $items->whereHas('preset', function ($query) use($request){
+                $query->where('user_id', $request->user_id);
+            });
 
         if($request->state)
             $items = $items->where('state', $request->state);
