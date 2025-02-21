@@ -28,6 +28,15 @@ class PresetProductController extends ApiController
                 });
         });
 
+        if($request->state)
+            $items = $items->where('state', $request->state);
+
+        if($request->states)
+            $items = $items->whereIn('state', $request->states);
+
+        if($request->has_column)
+            $items = $items->whereNotNull($request->has_column);
+
         $items = $items->latest()->paginate(25);
 
         return PresetProductResource::collection($items);

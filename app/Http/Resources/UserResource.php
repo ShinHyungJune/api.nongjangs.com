@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use App\Enums\StateOrder;
+use App\Enums\StatePackage;
+use App\Enums\TypePackage;
 use App\Enums\TypeUser;
 use App\Models\Delivery;
 use App\Models\Grade;
@@ -28,6 +30,8 @@ class UserResource extends JsonResource
             $recommendUser = User::withTrashed()->where('code', $this->code_recommend)->first();
 
         $delivery = $this->deliveries()->where('main', 1)->first();
+
+        $currentPackagePresetProduct = $this->getCurrentPackagePresetProduct();
 
         return [
             "id" => $this->id,
@@ -62,6 +66,14 @@ class UserResource extends JsonResource
 
             "point" => $this->point,
             'point_use' => $this->point_use,
+            'currentPackagePresetProduct' => $currentPackagePresetProduct ? [
+                'id' => $currentPackagePresetProduct->id,
+                'package' => [
+                    'id' => $currentPackagePresetProduct->package_id,
+                    'count' => $currentPackagePresetProduct->package_count,
+                ],
+            ] : '',
+
             'packageSetting' => $this->packageSetting ? PackageSettingMiniResource::make($this->packageSetting) : '',
             'count_product' => $this->count_product,
             'count_package' => $this->count_package,

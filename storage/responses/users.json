@@ -24,6 +24,13 @@
 
       "point": "보유 적립금",
       "point_use": "총 사용 적립금",
+      "currentPackagePresetProduct (현재 구독중인 꾸러미 회차 출고)": {
+        "id": "고유번호",
+        "package": {
+          "id": "고유번호",
+          "count": "회차"
+        }
+      },
       "packageSetting (패키지 설정값)": {
         "id": "고유번호",
         "type_package": "패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)",
