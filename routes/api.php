@@ -75,7 +75,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::delete("/notices", [\App\Http\Controllers\Api\Admin\NoticeController::class, "destroy"]);
 
     Route::post("/users/export", [\App\Http\Controllers\Api\Admin\UserController::class, "export"]);
-    Route::resource("/users", \App\Http\Controllers\Api\Admin\UserController::class)->except(['destroy', 'store', 'update']);
+    Route::resource("/users", \App\Http\Controllers\Api\Admin\UserController::class)->except(['destroy', 'store']);
     Route::delete("/users", [\App\Http\Controllers\Api\Admin\UserController::class, "destroy"]);
     Route::get("/users/counts/{user}", [\App\Http\Controllers\Api\Admin\UserController::class, "counts"]);
 
