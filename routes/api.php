@@ -58,6 +58,9 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     // Route::resource("/recommendCategories", \App\Http\Controllers\Api\Admin\RecommendCategoryController::class)->except(['destroy']);
     // Route::delete("/recommendCategories", [\App\Http\Controllers\Api\Admin\RecommendCategoryController::class, "destroy"]);
 
+    Route::resource("/presetProducts", \App\Http\Controllers\Api\Admin\PresetProductController::class)->except(['destroy']);
+    Route::delete("/presetProducts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "destroy"]);
+
     Route::resource("/couponGroups", \App\Http\Controllers\Api\Admin\CouponGroupController::class)->except(['destroy']);
     Route::delete("/couponGroups", [\App\Http\Controllers\Api\Admin\CouponGroupController::class, "destroy"]);
 
