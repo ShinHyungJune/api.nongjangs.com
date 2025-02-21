@@ -17,6 +17,7 @@ class PresetProductRequest extends FormRequest
                     return [
                         'word' => ['nullable', 'string', 'max:500'],
                         'has_column' => ['nullable', 'string', 'max:500'],
+                        'user_id' => ['nullable', 'integer'],
                         'type_package' => ['nullable', 'integer'],
                         'state' => ['nullable', 'integer'],
                         'states' => ['nullable', 'array'],
@@ -107,6 +108,9 @@ class PresetProductRequest extends FormRequest
             ],
             'type_package' => [
                 'description' => '<span class="point">꾸러미 유형(1 - SINGLE 싱글 | 2 - BUNGLE 벙글)</span>',
+            ],
+            'user_id' => [
+                'description' => '<span class="point">사용자 고유번호</span>',
             ],
             'state' => [
                 'description' => '<span class="point">상태 (StatePresetProduct)</span>',
