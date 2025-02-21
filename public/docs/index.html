@@ -947,6 +947,13 @@
                                                             삭제
                                                         </div>
                                                     </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-GETapi-admin-users-counts--user_id-">
+                                                        <div title="통계" id="toc-item--GETapi-admin-users-counts--user_id-"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            통계
+                                                        </div>
+                                                    </a>
                                                                                             </div>
                                                                             </div>
                                                                     <div class="expandable">
@@ -9498,13 +9505,6 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;refund_account&quot;: &quot;환불계좌 계좌번호&quot;,
             &quot;point&quot;: &quot;보유 적립금&quot;,
             &quot;point_use&quot;: &quot;총 사용 적립금&quot;,
-            &quot;currentPackagePresetProduct (현재 구독중인 꾸러미 회차 출고)&quot;: {
-                &quot;id&quot;: &quot;고유번호&quot;,
-                &quot;package&quot;: {
-                    &quot;id&quot;: &quot;고유번호&quot;,
-                    &quot;count&quot;: &quot;회차&quot;
-                }
-            },
             &quot;packageSetting (패키지 설정값)&quot;: {
                 &quot;id&quot;: &quot;고유번호&quot;,
                 &quot;type_package&quot;: &quot;패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)&quot;,
@@ -9785,6 +9785,153 @@ You can switch the language used with the tabs at the top right (or from the nav
                                                     
                     
 
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-GETapi-admin-users-counts--user_id-">
+                    통계
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://api.nongjangs.com.test/api/admin/users/counts/{user_id}"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: green;"
+                        >
+                            GET
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://api.nongjangs.com.test</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/admin/users/counts/{user_id}</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">URL Parameters</h3>
+
+                            <div class="sl-text-sm">
+                                                                    <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">user_id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p>The ID of the user.</p>
+        </div>
+                
+    </div>
+</div>
+                                                            </div>
+                        </div>
+                    
+
+                    
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-GETapi-admin-users-counts--user_id--toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('GETapi-admin-users-counts--user_id-', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-GETapi-admin-users-counts--user_id- example-response-GETapi-admin-users-counts--user_id--0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+    &quot;data&quot;: [
+        {
+            &quot;count_ongoing_order&quot;: &quot;주문수&quot;,
+            &quot;total_order_price&quot;: &quot;누적 결제금액&quot;,
+            &quot;current_package_count&quot;: &quot;꾸러미 회차&quot;,
+            &quot;count_product&quot;: &quot;직거래 장터&quot;,
+            &quot;count_request_cancel&quot;: &quot;취소요청&quot;,
+            &quot;sum_cancel_price&quot;: &quot;누적 취소/환불금액&quot;,
+            &quot;count_cancel&quot;: &quot;누적 취소&quot;,
+            &quot;count_stop_history&quot;: &quot;누적 꾸러미 미루기&quot;,
+            &quot;count_review&quot;: &quot;전체 후기&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;total&quot;: &quot;총 개수&quot;,
+        &quot;current_page&quot;: &quot;현재 페이지&quot;,
+        &quot;last_page&quot;: &quot;마지막 페이지&quot;
+    }
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
                             </div>
     </div>
 </div>
@@ -29374,7 +29521,7 @@ You can switch the language used with the tabs at the top right (or from the nav
                                                                                                                                                                         
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;nongjangs.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 15 limit 1)&quot;,
+    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;nongjangs.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 11 limit 1)&quot;,
     &quot;exception&quot;: &quot;Illuminate\\Database\\QueryException&quot;,
     &quot;file&quot;: &quot;D:\\project\\api.nongjangs.com\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php&quot;,
     &quot;line&quot;: 712,

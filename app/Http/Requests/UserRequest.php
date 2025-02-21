@@ -35,6 +35,8 @@ class UserRequest extends FormRequest
 
         if($admin){
             switch ($method){
+
+
                 case 'index':
                     return [
                         'ids' => ['nullable', 'array'],

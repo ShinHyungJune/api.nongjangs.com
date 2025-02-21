@@ -31,8 +31,6 @@ class UserResource extends JsonResource
 
         $delivery = $this->deliveries()->where('main', 1)->first();
 
-        $currentPackagePresetProduct = $this->getCurrentPackagePresetProduct();
-
         return [
             "id" => $this->id,
             "active" => $this->active,
@@ -66,13 +64,7 @@ class UserResource extends JsonResource
 
             "point" => $this->point,
             'point_use' => $this->point_use,
-            'currentPackagePresetProduct' => $currentPackagePresetProduct ? [
-                'id' => $currentPackagePresetProduct->id,
-                'package' => [
-                    'id' => $currentPackagePresetProduct->package_id,
-                    'count' => $currentPackagePresetProduct->package_count,
-                ],
-            ] : '',
+
 
             'packageSetting' => $this->packageSetting ? PackageSettingMiniResource::make($this->packageSetting) : '',
             'count_product' => $this->count_product,

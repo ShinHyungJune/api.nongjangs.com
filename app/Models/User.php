@@ -548,4 +548,9 @@ class User extends Authenticatable implements HasMedia, JWTSubject
     {
         return $this->qnas()->where('state', StateQna::FINISH)->count();
     }
+
+    public function stopHistories()
+    {
+        return $this->hasMany(StopHistory::class);
+    }
 }

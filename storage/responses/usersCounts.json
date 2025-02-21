@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "count_ongoing_order": "주문수",
+      "total_order_price": "누적 결제금액",
+      "current_package_count": "꾸러미 회차",
+      "count_product": "직거래 장터",
+      "count_request_cancel": "취소요청",
+      "sum_cancel_price": "누적 취소/환불금액",
+      "count_cancel": "누적 취소",
+      "count_stop_history": "누적 꾸러미 미루기",
+
+      "count_review": "전체 후기"
+
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}
