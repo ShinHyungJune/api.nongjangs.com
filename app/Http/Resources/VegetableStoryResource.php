@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -10,6 +11,8 @@ class VegetableStoryResource extends JsonResource
 {
     public function toArray($request)
     {
+        $user = User::withTrashed()->find($this->user_id);
+
         return [
             'id' => $this->id,
             'description' => $this->description,
@@ -20,9 +23,14 @@ class VegetableStoryResource extends JsonResource
             'preset_product_id' => $this->preset_product_id,
             'recipe_id' => $this->recipe_id,
 
-            'user' => $this->user ? [
-                'id' => $this->user->id,
-                'nickname' => $this->user->nickname,
+            'user' => $user ? [
+                'id' => $user->id,
+                'nickname' => $user->nickname,
+                'grade' => $user->grade ? [
+                    'id' => $user->grade->id,
+                    'level' => $user->grade->level,
+                    'title' => $user->grade->title,
+                ] : '',
             ] : '',
             'package' => $this->package ? [
                 'id' => $this->package->id,
@@ -50,6 +58,8 @@ class VegetableStoryResource extends JsonResource
             'count_like' => $this->count_like,
             'count_bookmark' => $this->count_bookmark,
             'count_comment' => $this->count_comment,
+
+            'count_preset_product_create' => $this->count_preset_product_create,
             'is_like' => $this->is_like,
             'is_bookmark' => $this->is_bookmark,
             'format_created_at' => Carbon::make($this->created_at)->format('Y.m.d'),

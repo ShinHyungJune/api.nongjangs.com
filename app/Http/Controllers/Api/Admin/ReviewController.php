@@ -15,20 +15,33 @@ class ReviewController extends ApiController
     /** 목록
      * @group 관리자
      * @subgroup Review(리뷰)
-     * @priority 13
      * @responseFile storage/responses/reviews.json
      */
     public function index(ReviewRequest $request)
     {
         $items = Review::where(function($query) use($request){
-            $query->whereHas('user', function ($query) use($request){
-                $query->where('name', 'LIKE' ,'%'.$request->word.'%');
-            })->orWhereHas('product', function ($query) use($request){
-                $query->where('title', 'LIKE' ,'%'.$request->word.'%');
-            });
+            $query->whereHas('order', function ($query) use($request){
+                $query->where('payment_id', 'LIKE' ,'%'.$request->word.'%');
+            })->orWhere('description', 'LIKE' ,'%'.$request->word.'%');
         });
 
-        $items = $items->latest()->paginate(10);
+        if($request->user_id)
+            $items = $items->where('user_id', $request->user_id);
+
+        if($request->has_column)
+            $items = $items->whereNotNull($request->has_column);
+
+        if(isset($request->best))
+            $items = $items->where('best', $request->best);
+
+        if(isset($request->reply)){
+            if($request->reply)
+                $items = $items->whereNotNull('reply');
+            else
+                $items = $items->whereNull('reply');
+        }
+
+        $items = $items->latest()->paginate(25);
 
         return ReviewResource::collection($items);
     }
@@ -36,7 +49,6 @@ class ReviewController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Review(리뷰)
-     * @priority 13
      * @responseFile storage/responses/review.json
      */
     public function show(Review $review)
@@ -47,7 +59,6 @@ class ReviewController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Review(리뷰)
-     * @priority 13
      * @responseFile storage/responses/review.json
      */
     public function store(ReviewRequest $request)
@@ -66,7 +77,6 @@ class ReviewController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Review(리뷰)
-     * @priority 13
      * @responseFile storage/responses/review.json
      */
     public function update(ReviewRequest $request, Review $review)
@@ -97,7 +107,6 @@ class ReviewController extends ApiController
     /** 삭제
      * @group 관리자
      * @subgroup Review(리뷰)
-     * @priority 13
      */
     public function destroy(ReviewRequest $request)
     {

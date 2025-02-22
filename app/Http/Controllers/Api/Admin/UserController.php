@@ -39,12 +39,12 @@ class UserController extends ApiController
 
             'count_review' => $user->reviews()->count(),
             'count_review_best' => $user->reviews()->where('best', 1)->count(),
-            /*'count_review_package' => $user->reviews()->whereHas('presetProduct', function ($query){
-                $query->wheere
-            })->count(),
-            'count_review_package_answer' => $user->reviews()->where('best', 1)->count(),*/
-
-
+            'count_review_package' => $user->reviews()->whereNotNull('package_id')->count(),
+            'count_review_package_reply' => $user->reviews()->whereNotNull('package_id')->whereNotNull('reply')->count(),
+            'count_review_product' => $user->reviews()->whereNotNull('product_id')->count(),
+            'count_review_product_reply' => $user->reviews()->whereNotNull('product_id')->whereNotNull('reply')->count(),
+            'count_vegetable_story' => $user->vegetableStories()->count(),
+            'count_can_vegetable_story' => $user->presetProducts()->where('state', StatePresetProduct::CONFIRMED)->count() * 3,
         ];
 
         return $this->respondSuccessfully($counts);

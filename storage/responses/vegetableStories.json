@@ -10,7 +10,8 @@
       "recipe_id": "레시피 고유번호",
       "user": {
         "id": "고유번호",
-        "nickname" : "닉네임"
+        "nickname" : "닉네임",
+        "grade": "등급 객체"
       },
       "package": {
         "id": "고유번호",
@@ -37,6 +38,7 @@
       "count_like": "좋아요수",
       "count_bookmark": "북마크수",
       "count_comment": "댓글수",
+      "count_preset_product_create": "해당 이용선택에 작성한 횟수 (이용횟수)",
       "is_like": "좋아요여부",
       "is_bookmark": "북마크여부",
       "format_display" : "표시용 라벨",

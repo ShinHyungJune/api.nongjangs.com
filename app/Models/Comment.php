@@ -39,4 +39,14 @@ class Comment extends Model
     {
         return $this->morphTo();
     }
+
+    public function reports()
+    {
+        return $this->morphMany(Report::class, 'reportable');
+    }
+
+    public function getCountReportAttribute()
+    {
+        return $this->reports()->count();
+    }
 }

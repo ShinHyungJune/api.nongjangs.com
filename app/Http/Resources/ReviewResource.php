@@ -29,6 +29,11 @@ class ReviewResource extends JsonResource
             'user' => $user ? [
                 'id' => $user->id,
                 'nickname' => $user->nickname,
+                'grade' => $user->grade ? [
+                    'id' => $user->grade->id,
+                    'level' => $user->grade->level,
+                    'title' => $user->grade->title,
+                ] : ''
             ] : '',
             'product_id' => $this->product_id,
             'product' => $this->product ? ProductMiniResource::make($this->product) : "",

@@ -91,6 +91,12 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/products", \App\Http\Controllers\Api\Admin\ProductController::class)->except(['destroy']);
     Route::delete("/products", [\App\Http\Controllers\Api\Admin\ProductController::class, "destroy"]);
 
+    Route::resource("/vegetableStories", \App\Http\Controllers\Api\Admin\VegetableStoryController::class)->except(['destroy']);
+    Route::delete("/vegetableStories", [\App\Http\Controllers\Api\Admin\VegetableStoryController::class, "destroy"]);
+
+    Route::resource("/comments", \App\Http\Controllers\Api\Admin\CommentController::class)->except(['destroy']);
+    Route::delete("/comments", [\App\Http\Controllers\Api\Admin\CommentController::class, "destroy"]);
+
     Route::resource("/reviews", \App\Http\Controllers\Api\Admin\ReviewController::class)->except(['destroy']);
     Route::delete("/reviews", [\App\Http\Controllers\Api\Admin\ReviewController::class, "destroy"]);
 

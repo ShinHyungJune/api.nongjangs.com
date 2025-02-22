@@ -7,7 +7,11 @@
       "point": "받은 적립금",
       "user": {
         "id": "고유번호",
-        "nickname": "닉네임"
+        "nickname": "닉네임",
+        "grade": {
+          "id": "고유번호",
+          "level" : "레벨"
+        }
       },
       "product": "상품 객체",
       "package": "패키지 객체",

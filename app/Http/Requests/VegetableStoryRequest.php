@@ -15,6 +15,7 @@ class VegetableStoryRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
+                        'user_id' => ['nullable', 'integer'],
                         'word' => ['nullable', 'string', 'max:500']
                     ];
 

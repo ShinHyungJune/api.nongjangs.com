@@ -30,7 +30,11 @@ class ReviewRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
-                        'word' => ['nullable', 'string', 'max:500']
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'user_id' => ['nullable', 'integer'],
+                        'has_column' => ['nullable', 'string', 'max:500'],
+                        'best' => ['nullable', 'boolean'],
+                        'reply' => ['nullable', 'boolean'],
                     ];
 
                 case 'store':
@@ -96,7 +100,11 @@ class ReviewRequest extends FormRequest
 
     public function bodyParameters()
     {
+
         return [
+            'reply' => [
+                'description' => '<span class="point">답변완료여부 (1 - 완료 | 0 - 미완료)</span>',
+            ],
             'hide' => [
                 'description' => '<span class="point">가림여부</span>',
             ],

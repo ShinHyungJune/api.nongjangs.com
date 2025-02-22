@@ -143,4 +143,11 @@ class VegetableStory extends Model implements HasMedia
 
         return "";
     }
+
+    public function getCountPresetProductCreateAttribute()
+    {
+        $user = User::withTrashed()->find($this->user_id);
+
+        return $user->vegetableStories()->where('preset_product_id', $this->preset_product_id)->count();
+    }
 }

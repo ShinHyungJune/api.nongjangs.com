@@ -3,14 +3,21 @@
     {
       "count_ongoing_order": "주문수",
       "total_order_price": "누적 결제금액",
-      "current_package_count": "꾸러미 회차",
-      "count_product": "직거래 장터",
-      "count_request_cancel": "취소요청",
+      "current_package_count": "현재 꾸러미 회차수",
+      "count_product": "구매한 직거래 장터수",
+      "count_request_cancel": "취소요청수",
       "sum_cancel_price": "누적 취소/환불금액",
-      "count_cancel": "누적 취소",
-      "count_stop_history": "누적 꾸러미 미루기",
+      "count_cancel": "누적 취소수",
+      "count_stop_history": "누적 꾸러미 미루기수",
 
-      "count_review": "전체 후기"
+      "count_review": "전체 후기수",
+      "count_review_best": "베스트 후기수",
+      "count_review_package": "전체 꾸러미 리뷰수",
+      "count_review_package_reply": "답변완료된 꾸러미 리뷰수",
+      "count_review_product": "전체 직거래장터 리뷰수",
+      "count_review_product_reply": "답변완료된 직거래장터 리뷰수",
+      "count_vegetable_story": "작성한 채소일기수",
+      "count_can_vegetable_story": "작성가능 채소일기수"
 
     }
   ],

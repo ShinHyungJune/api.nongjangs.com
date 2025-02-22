@@ -4,12 +4,14 @@
       "id": "고유번호",
       "user": {
         "id": "고유번호",
-        "nickname": "닉네임"
+        "nickname": "닉네임",
+        "grade": "등급 객체"
       },
       "commentable": "댓글 대상 정보 객체",
       "description": "내용",
       "count_like": "좋아요수",
       "is_like": "좋아요 여부",
+      "count_report": "신고수",
       "format_created_at": "표시용 생성일자",
     }
   ],
