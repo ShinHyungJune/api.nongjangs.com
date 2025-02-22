@@ -31,6 +31,14 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::delete("/examples", [\App\Http\Controllers\Api\Admin\ExampleController::class, "destroy"]);
     Route::resource("/examples", \App\Http\Controllers\Api\Admin\ExampleController::class);
 
+    Route::patch("/banners/{banner}/up", [\App\Http\Controllers\Api\Admin\BannerController::class, "up"]);
+    Route::patch("/banners/{banner}/down", [\App\Http\Controllers\Api\Admin\BannerController::class, "down"]);
+    Route::resource("/banners", \App\Http\Controllers\Api\Admin\BannerController::class);
+
+    Route::patch("/pops/{pop}/up", [\App\Http\Controllers\Api\Admin\PopController::class, "up"]);
+    Route::patch("/pops/{pop}/down", [\App\Http\Controllers\Api\Admin\PopController::class, "down"]);
+    Route::resource("/pops", \App\Http\Controllers\Api\Admin\PopController::class);
+
     Route::delete("/reports", [\App\Http\Controllers\Api\Admin\ReportController::class, "destroy"]);
     Route::resource("/reports", \App\Http\Controllers\Api\Admin\ReportController::class);
 
@@ -58,12 +66,20 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     // Route::resource("/recommendCategories", \App\Http\Controllers\Api\Admin\RecommendCategoryController::class)->except(['destroy']);
     // Route::delete("/recommendCategories", [\App\Http\Controllers\Api\Admin\RecommendCategoryController::class, "destroy"]);
 
+    Route::resource("/tags", \App\Http\Controllers\Api\Admin\TagController::class)->except(['destroy']);
+    Route::delete("/tags", [\App\Http\Controllers\Api\Admin\TagController::class, "destroy"]);
+
+    Route::resource("/materials", \App\Http\Controllers\Api\Admin\MaterialController::class)->except(['destroy']);
+    Route::delete("/materials", [\App\Http\Controllers\Api\Admin\MaterialController::class, "destroy"]);
+
     Route::resource("/presetProducts", \App\Http\Controllers\Api\Admin\PresetProductController::class)->except(['destroy']);
     Route::delete("/presetProducts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "destroy"]);
 
     Route::resource("/couponGroups", \App\Http\Controllers\Api\Admin\CouponGroupController::class)->except(['destroy']);
     Route::delete("/couponGroups", [\App\Http\Controllers\Api\Admin\CouponGroupController::class, "destroy"]);
 
+    Route::get("/count", [\App\Http\Controllers\Api\Admin\CountController::class, 'show']);
+    Route::post("/counts", [\App\Http\Controllers\Api\Admin\CountController::class, 'store']);
 
     Route::resource("/events", \App\Http\Controllers\Api\Admin\EventController::class)->except(['destroy']);
     Route::delete("/events", [\App\Http\Controllers\Api\Admin\EventController::class, "destroy"]);

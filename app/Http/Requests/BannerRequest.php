@@ -37,6 +37,7 @@ class BannerRequest extends FormRequest
 
                 case 'store':
                     return [
+                        'type' => ['required', 'integer'],
                         'pc' => ['nullable', 'array'],
                         'mobile' => ['nullable', 'array'],
                         'title' => ['required', 'string', 'max:500'],
@@ -51,6 +52,7 @@ class BannerRequest extends FormRequest
 
                 case 'update':
                     return [
+                        'type' => ['required', 'integer'],
                         'pc' => ['nullable', 'array'],
                         'mobile' => ['nullable', 'array'],
                         'title' => ['required', 'string', 'max:500'],

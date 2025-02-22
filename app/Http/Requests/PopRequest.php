@@ -25,7 +25,8 @@ class PopRequest extends FormRequest
                         'open' => ['boolean'],
                         'started_at' => ['required', 'date'],
                         'finished_at' => ['required', 'date'],
-                        'order' => ['required', 'integer'],
+                        'files' => ['required', 'array'],
+                        // 'order' => ['required', 'integer'],
                     ];
 
                 case 'update':
@@ -35,7 +36,7 @@ class PopRequest extends FormRequest
                         'open' => ['boolean'],
                         'started_at' => ['required', 'date'],
                         'finished_at' => ['required', 'date'],
-                        'order' => ['required', 'integer'],//
+                        'files' => ['required', 'array'],
                     ];
 
                 case 'destroy':

@@ -15,7 +15,8 @@ class MaterialRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        'word' => ['nullable', 'string', 'max:500']
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'type' => ['nullable', 'integer'],
                     ];
 
                 case 'store':

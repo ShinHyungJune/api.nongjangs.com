@@ -48,7 +48,12 @@ class UserRequest extends FormRequest
 
                 case 'store':
                     return [
-
+                        'email' => ['required','email','max:500','unique:users'],
+                        'name' => ['required','string','max:500'],
+                        'password' => ['required','string','max:500','confirmed'],
+                        'contact' => ['required','string','max:500','unique:users'],
+                        'admin' => ['required', 'boolean'],
+                        'master' => ['required', 'boolean'],
                     ];
 
                 case 'update':
@@ -167,6 +172,12 @@ class UserRequest extends FormRequest
     public function bodyParameters()
     {
         return [
+            "master" => [
+                "description" => "<span class='point'>최고관리자 여부</span>"
+            ],
+            "admin" => [
+                "description" => "<span class='point'>관리자 여부</span>"
+            ],
             "has_column" => [
                 "description" => "<span class='point'>해당 컬럼 보유여부 (deleted_at - 탈퇴일자, 탈퇴한 사람만 보고싶을 때)</span>"
             ],

@@ -15,19 +15,16 @@ class BannerController extends ApiController
     /** 목록
      * @group 관리자
      * @subgroup Banner(배너)
-     * @priority 1
      * @responseFile storage/responses/banners.json
      */
     public function index(BannerRequest $request)
     {
-        $items = Banner::where(function($query) use($request){
-            $query->where("title", "LIKE", "%".$request->word."%");
-        });
+        $items = new Banner();
 
         if($request->type)
             $items = $items->where('type', $request->type);
 
-        $items = $items->orderBy('id', 'asc')->latest()->paginate(30);
+        $items = $items->orderBy('order', 'asc')->latest()->paginate(30);
 
         return BannerResource::collection($items);
     }
@@ -35,7 +32,6 @@ class BannerController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Banner(배너)
-     * @priority 1
      * @responseFile storage/responses/banner.json
      */
     public function show(Banner $banner)
@@ -46,7 +42,6 @@ class BannerController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Banner(배너)
-     * @priority 1
      * @responseFile storage/responses/banner.json
      */
     public function store(BannerRequest $request)
@@ -65,7 +60,6 @@ class BannerController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Banner(배너)
-     * @priority 1
      * @responseFile storage/responses/banner.json
      */
     public function update(BannerRequest $request, Banner $banner)
@@ -96,11 +90,48 @@ class BannerController extends ApiController
     /** 삭제
      * @group 관리자
      * @subgroup Banner(배너)
-     * @priority 1
      */
-    public function destroy(BannerRequest $request)
+    public function destroy(Banner $banner)
     {
-        Banner::whereIn('id', $request->ids)->delete();
+        $banner->delete();
+
+        return $this->respondSuccessfully();
+    }
+
+    /** 앞순서로 변경
+     * @group 관리자
+     * @subgroup Banner(팝업)
+     */
+    public function up(Banner $banner, Request $request)
+    {
+        $prevOrder = $banner->order;
+
+        $target = Banner::orderBy('order', 'desc')->where('id', '!=', $banner->id)->where('order', '<=', $banner->order)->first();
+
+        if($target) {
+            $changeOrder = $target->order == $banner->order ? $banner->order - 1 : $target->order;
+            $banner->update(["order" => $changeOrder]);
+            $target->update(["order" => $prevOrder]);
+        }
+
+        return $this->respondSuccessfully();
+    }
+
+    /** 뒷순서로 변경
+     * @group 관리자
+     * @subgroup Banner(팝업)
+     */
+    public function down(Banner $banner, Request $request)
+    {
+        $prevOrder = $banner->order;
+
+        $target = Banner::orderBy("order", "asc")->where("id", "!=", $banner->id)->where("order", ">=", $banner->order)->first();
+
+        if($target) {
+            $changeOrder = $target->order == $banner->order ? $banner->order + 1 : $target->order;
+            $banner->update(["order" => $changeOrder]);
+            $target->update(["order" => $prevOrder]);
+        }
 
         return $this->respondSuccessfully();
     }

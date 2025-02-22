@@ -20,32 +20,16 @@ class PackageRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'count' => ['required', 'integer'],
-                        'will_delivery_at' => ['nullable', 'date'],
                         'tax' => ['boolean'],
-                        'start_pack_wait_at' => ['nullable', 'date'],
-                        'finish_pack_wait_at' => ['nullable', 'date'],
-                        'start_pack_at' => ['nullable', 'date'],
-                        'finish_pack_at' => ['nullable', 'date'],
-                        'start_delivery_ready_at' => ['nullable', 'date'],
-                        'finish_delivery_ready_at' => ['nullable', 'date'],
-                        'start_will_out_at' => ['nullable', 'date'],
-                        'finish_will_out_at' => ['nullable', 'date'],
+                        'recipe_ids' => ['nullabe', 'array'],
+                        'materials' => ['required', 'array', 'max:500'],
                     ];
 
                 case 'update':
                     return [
-                        'count' => ['required', 'integer'],
-                        'will_delivery_at' => ['nullable', 'date'],
                         'tax' => ['boolean'],
-                        'start_pack_wait_at' => ['nullable', 'date'],
-                        'finish_pack_wait_at' => ['nullable', 'date'],
-                        'start_pack_at' => ['nullable', 'date'],
-                        'finish_pack_at' => ['nullable', 'date'],
-                        'start_delivery_ready_at' => ['nullable', 'date'],
-                        'finish_delivery_ready_at' => ['nullable', 'date'],
-                        'start_will_out_at' => ['nullable', 'date'],
-                        'finish_will_out_at' => ['nullable', 'date'],//
+                        'recipe_ids' => ['nullabe', 'array'],
+                        'materials' => ['required', 'array', 'max:500'],
                     ];
 
                 case 'destroy':
@@ -84,10 +68,15 @@ class PackageRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'recipe_ids' => [
+                'description' => '<span class="point">레시피 고유 번호 목록</span>',
             ],
-
+            'tax' => [
+                'description' => '<span class="point">과세여부 (1 - 과세 | 0 - 면세)</span>',
+            ],
+            'materials' => [
+                'description' => '<span class="point">품목 목록 [{id:고유번호, type: 1 - 싱글 | 2 - 벙글 | 3 - 선택가능, count: 개수, unit: 단위, price: 판매가, price_origin: 정가, tag_ids: 태그 고유번호목록}]</span>',
+            ],
             // 늘 쓰이는 애들
             'word' => [
                 'description' => '<span class="point">검색어</span>',

@@ -63,6 +63,9 @@ class UserController extends ApiController
                 ->orWhere("email", "LIKE", "%".$request->word."%");
         });
 
+        if(isset($request->admin))
+            $items = $items->where('admin', $request->admin);
+
         if(isset($request->agree_promotion))
             $items = $items->where('agree_promotion', $request->agree_promotion);
 
@@ -103,15 +106,14 @@ class UserController extends ApiController
         return $this->respondSuccessfully();
     }
 
-
-    /** 수정
+    /** 생성
      * @group 관리자
      * @subgroup User(사용자)
      * @responseFile storage/responses/user.json
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request)
     {
-        $user->update($request->validated());
+        $user = User::create($request->validated());
 
         return $this->respondSuccessfully(UserResource::make($user));
     }
