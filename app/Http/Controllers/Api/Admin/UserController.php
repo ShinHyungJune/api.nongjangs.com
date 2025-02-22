@@ -74,6 +74,9 @@ class UserController extends ApiController
         if($request->code_recommend)
             $items = $items->where('code_recommend', $request->code_recommend);
 
+        if($request->has_column)
+            $items = $items->whereNotNull($request->has_column);
+
         $items = $items->latest()->paginate(25);
 
         return UserResource::collection($items);
@@ -127,6 +130,9 @@ class UserController extends ApiController
 
         if($request->ids)
             $items = $items->whereIn('id', $request->ids);
+
+        if($request->has_column)
+            $items = $items->whereNotNull($request->has_column);
 
         $items = $items->get();
 

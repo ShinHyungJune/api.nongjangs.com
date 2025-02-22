@@ -3,6 +3,11 @@
     {
       "id": "고유번호",
       "title": "제목",
+      "user": {
+        "id": "고유번호",
+        "nickname" : "닉네임",
+        "grade": "등급 객체"
+      },
       "description": "내용",
       "qnaCategory": "qna 유형 객체",
       "imgs": "이미지 목록",

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ReportResource;
 use App\Http\Requests\ReportRequest;
 use App\Models\Report;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,12 +22,22 @@ class ReportController extends ApiController
     {
         $items = new Report();
 
-        if($request->user_id)
-            $items = $items->whereHas('reportable', function ($query) use($request){
-                $query->where('user_id', $request->user_id);
+        if($request->word)
+            $items = $items->where(function (Builder $query) use($request) {
+                $query->whereHas('user', function ($query) use ($request){
+                    $query->where('name', 'LIKE', '%'.$request->word."%");
+                })->orWhere('description', 'LIKE', '%'.$request->word.'%');
             });
 
-        $items = $items->latest()->paginate(10);
+        if($request->target_user_id)
+            $items = $items->whereHas('reportable', function ($query) use($request){
+                $query->where('user_id', $request->target_user_id);
+            });
+
+        if($request->user_id)
+            $items = $items->where('user_id', $request->user_id);
+
+        $items = $items->latest()->paginate(25);
 
         return ReportResource::collection($items);
     }

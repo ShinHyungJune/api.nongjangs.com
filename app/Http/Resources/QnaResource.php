@@ -21,7 +21,13 @@ class QnaResource extends JsonResource
                 'id' => $user->id,
                 'ids' => $user->ids,
                 'name' => $user->name,
+                'nickname' => $user->nickname,
                 'contact' => $user->contact,
+                'grade' => $user->grade ? [
+                    'id' => $user->grade->id,
+                    'level' => $user->grade->level,
+                    'title' => $user->grade->title,
+                ] : '',
             ] : '',
             'qna_category_id' => $this->qna_category_id,
             'qnaCategory' => QnaCategoryResource::make($this->qnaCategory),

@@ -167,6 +167,9 @@ class UserRequest extends FormRequest
     public function bodyParameters()
     {
         return [
+            "has_column" => [
+                "description" => "<span class='point'>해당 컬럼 보유여부 (deleted_at - 탈퇴일자, 탈퇴한 사람만 보고싶을 때)</span>"
+            ],
             "ids" => [
                 "description" => "<span class='point'>선택된 고유번호 목록</span>"
             ],

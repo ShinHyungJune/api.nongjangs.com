@@ -15,7 +15,8 @@ class BookmarkRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-
+                        'user_id' => ['nullable', 'integer'],
+                        'bookmarkable_type' => ['nullable', 'string', 'max:500'],
                     ];
 
                 case 'store':
@@ -65,6 +66,9 @@ class BookmarkRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
+            'user_id' => [
+                'description' => '<span class="point">사용자 고유번호</span>',
+            ],
             'bookmarkable_id' => [
                 'description' => '<span class="point">북마크 대상 고유번호</span>',
             ],

@@ -26,6 +26,7 @@ class VegetableStoryResource extends JsonResource
             'user' => $user ? [
                 'id' => $user->id,
                 'nickname' => $user->nickname,
+                'name' => $user->name,
                 'grade' => $user->grade ? [
                     'id' => $user->grade->id,
                     'level' => $user->grade->level,

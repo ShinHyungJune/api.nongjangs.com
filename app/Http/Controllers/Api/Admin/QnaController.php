@@ -17,16 +17,14 @@ class QnaController extends ApiController
     /** 목록
      * @group 관리자
      * @subgroup Qna(문의사항)
-     * @priority 11
      * @responseFile storage/responses/qnas.json
      */
     public function index(QnaRequest $request)
     {
-        $items = Qna::whereHas('user', function ($query) use($request){
-            $query->where('email', 'LIKE', '%'.$request->word.'%')
-                ->orWhere('name', 'LIKE', '%'.$request->word.'%')
-                ->orWhere('contact', 'LIKE', '%'.$request->word.'%');
-        });
+        $items = new Qna();
+
+        if($request->user_id)
+            $items = $items->where('user_id', $request->user_id);
 
         if($request->state == StateAnswer::WAIT)
             $items = $items->where('answer', null);
@@ -34,7 +32,7 @@ class QnaController extends ApiController
         if($request->state == StateAnswer::FINISH)
             $items = $items->where('answer', '!=', null);
 
-        $items = $items->latest()->paginate(10);
+        $items = $items->latest()->paginate(25);
 
         return QnaResource::collection($items);
     }
@@ -42,7 +40,6 @@ class QnaController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Qna(문의사항)
-     * @priority 11
      * @responseFile storage/responses/qna.json
      */
     public function show(Qna $qna)
@@ -53,7 +50,6 @@ class QnaController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Qna(문의사항)
-     * @priority 11
      * @responseFile storage/responses/qna.json
      */
     public function update(QnaRequest $request, Qna $qna)
@@ -87,7 +83,6 @@ class QnaController extends ApiController
     /** 삭제
      * @group 관리자
      * @subgroup Qna(문의사항)
-     * @priority 11
      */
     public function destroy(QnaRequest $request)
     {

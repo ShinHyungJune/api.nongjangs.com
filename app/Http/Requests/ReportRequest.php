@@ -15,6 +15,7 @@ class ReportRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
+                        'target_user_id' => ['nullable', 'integer'],
                         'user_id' => ['nullable', 'integer'],
                         'word' => ['nullable', 'string', 'max:500'],
                     ];
@@ -70,8 +71,11 @@ class ReportRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
+            'target_user_id' => [
+                'description' => '<span class="point">신고대상 사용자 고유번호</span>',
+            ],
             'user_id' => [
-                'description' => '<span class="point">사용자 고유번호</span>',
+                'description' => '<span class="point">신고한 사용자 고유번호</span>',
             ],
             'report_category_id' => [
                 'description' => '<span class="point">신고유형 고유번호</span>',

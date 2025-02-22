@@ -30,7 +30,8 @@ class QnaRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
-                        'word' => ['nullable', 'string', 'max:500']
+                        'user_id' => ['nullable', 'integer', 'max:500'],
+                        'word' => ['nullable', 'string', 'max:500'],
                     ];
 
                 case 'store':
@@ -84,8 +85,12 @@ class QnaRequest extends FormRequest
     public function bodyParameters()
     {
         return [
-            'email' => [
-                'qna_category_id' => '<span class="point">문의카테고리 고유번호</span>',
+            'user_id' => [
+                'description' => '<span class="point">사용자 고유번호</span>',
+                // 'example' => '',
+            ],
+            'qna_category_id' => [
+                'description' => '<span class="point">문의카테고리 고유번호</span>',
                 // 'example' => '',
             ],
             'title' => [

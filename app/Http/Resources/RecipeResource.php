@@ -27,6 +27,7 @@ class RecipeResource extends JsonResource
             'user' =>  $user ? [
                 'id' => $user->id,
                 'nickname' => $user->nickname,
+                'name' => $user->name,
             ] : '',
             'img' => $this->img,
             'imgs' => $this->imgs,
