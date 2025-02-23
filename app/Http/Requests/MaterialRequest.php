@@ -21,18 +21,20 @@ class MaterialRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'type' => ['required'],
-                        'category_id' => ['required', 'exists:categories'],
-                        'title' => ['required'],
-                        'description' => ['required'],
+                        'type' => ['required', 'integer'],
+                        'category_id' => ['required'. 'integer'],
+                        'title' => ['required', 'string', 'max:500'],
+                        'descriptions' => ['nullable', 'array'],
+                        'files' => ['nullable', 'array'],
                     ];
 
                 case 'update':
                     return [
-                        'type' => ['required'],
-                        'category_id' => ['required', 'exists:categories'],
-                        'title' => ['required'],
-                        'description' => ['required'],
+                        'type' => ['required', 'integer'],
+                        'category_id' => ['required'. 'integer'],
+                        'title' => ['required', 'string', 'max:500'],
+                        'descriptions' => ['nullable', 'array'],
+                        'files' => ['nullable', 'array'],
                     ];
 
                 case 'destroy':
@@ -74,6 +76,16 @@ class MaterialRequest extends FormRequest
             'type' => [
                 'description' => '<span class="point">1 - FARM_STORY 농가이야기 | 2 - RECIPE 레시피 | 3 - VEGETABLE_STORY 채소이야기 | 4 - PRODUCT 직거래장터 | 5 - PACKAGE 꾸러미</span>',
             ],
+            'category_id' => [
+                'description' => '<span class="point">카테고리 고유번호</span>',
+            ],
+            'title' => [
+                'description' => '<span class="point">제목</span>',
+            ],
+            'descriptions' => [
+                'description' => '<span class="point">내용 목록</span>',
+            ],
+
 
             // 늘 쓰이는 애들
             'word' => [

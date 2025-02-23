@@ -48,9 +48,15 @@ class BannerController extends ApiController
     {
         $createdItem = Banner::create($request->all());
 
-        if(is_array($request->file("files"))){
-            foreach($request->file("files") as $file){
-                $createdItem->addMedia($file["file"])->toMediaCollection("img", "s3");
+        if(is_array($request->file("pc"))){
+            foreach($request->file("pc") as $file){
+                $createdItem->addMedia($file["file"])->toMediaCollection("pc", "s3");
+            }
+        }
+
+        if(is_array($request->file("mobile"))){
+            foreach($request->file("mobile") as $file){
+                $createdItem->addMedia($file["file"])->toMediaCollection("mobile", "s3");
             }
         }
 
@@ -66,11 +72,11 @@ class BannerController extends ApiController
     {
         $banner->update($request->all());
 
-        if($request->files_remove_ids){
-            $medias = $banner->getMedia("img");
+        if($request->pc_remove_ids){
+            $medias = $banner->getMedia("pc");
 
             foreach($medias as $media){
-                foreach($request->files_remove_ids as $id){
+                foreach($request->pc_remove_ids as $id){
                     if((int) $media->id == (int) $id){
                         $media->delete();
                     }
@@ -78,9 +84,27 @@ class BannerController extends ApiController
             }
         }
 
-        if(is_array($request->file("files"))){
-            foreach($request->file("files") as $file){
-                $banner->addMedia($file["file"])->toMediaCollection("img", "s3");
+        if($request->mobile_remove_ids){
+            $medias = $banner->getMedia("mobile");
+
+            foreach($medias as $media){
+                foreach($request->mobile_remove_ids as $id){
+                    if((int) $media->id == (int) $id){
+                        $media->delete();
+                    }
+                }
+            }
+        }
+
+        if(is_array($request->file("pc"))){
+            foreach($request->file("pc") as $file){
+                $banner->addMedia($file["file"])->toMediaCollection("pc", "s3");
+            }
+        }
+
+        if(is_array($request->file("mobile"))){
+            foreach($request->file("mobile") as $file){
+                $banner->addMedia($file["file"])->toMediaCollection("mobile", "s3");
             }
         }
 

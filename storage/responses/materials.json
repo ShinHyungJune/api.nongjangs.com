@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "img": "이미지 객체",
+      "category_id": "카테고리 고유번호",
+      "category (소분류)": {
+        "id": "고유번호",
+        "title": "제목",
+        "category (대분류)": {
+          "id": "고유번호",
+          "title": "제목"
+        }
+      },
+      "type": "유형",
+      "format_type": "표시용 유형",
+      "title": "제목",
+      "descriptions": "설명",
+      "format_descriptions": "표시용 설명"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

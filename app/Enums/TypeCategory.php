@@ -19,7 +19,7 @@ final class TypeCategory
         $items = [
             '' => '',
             self::PRODUCT => "직거래 상품",
-            self::PACKAGE => "패키지 구독상품",
+            self::PACKAGE => "꾸러미",
         ];
 
         return $items[$value];

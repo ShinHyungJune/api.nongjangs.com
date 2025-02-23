@@ -32,6 +32,19 @@ class PackageRequest extends FormRequest
                         'materials' => ['required', 'array', 'max:500'],
                     ];
 
+                case 'updateSchedule':
+                    return [
+                        'will_delivery_at' => ['required','date'],
+                        'start_pack_wait_at' => ['required','date'],
+                        'finish_pack_wait_at' => ['required','date'],
+                        'start_pack_at' => ['required','date'],
+                        'finish_pack_at' => ['required','date'],
+                        'start_delivery_ready_at' => ['required','date'],
+                        'finish_delivery_ready_at' => ['required','date'],
+                        'start_will_out_at' => ['required','date'],
+                        'finish_will_out_at' => ['required','date'],
+                    ];
+
                 case 'destroy':
                     return [
                         'ids' => ['required', 'array'],
@@ -68,6 +81,34 @@ class PackageRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
+            'will_delivery_at' => [
+                'description' => '<span class="point">도착예정일</span>',
+            ],
+            'start_pack_wait_at' => [
+                'description' => '<span class="point">구성대기 시작일</span>',
+            ],
+            'finish_pack_wait_at' => [
+                'description' => '<span class="point">구성대기 종료일</span>',
+            ],
+            'start_pack_at' => [
+                'description' => '<span class="point">품목구성 시작일</span>',
+            ],
+            'finish_pack_at' => [
+                'description' => '<span class="point">품목구성 종료일</span>',
+            ],
+            'start_delivery_ready_at' => [
+                'description' => '<span class="point">배송준비 시작일</span>',
+            ],
+            'finish_delivery_ready_at' => [
+                'description' => '<span class="point">배송준비 종료일</span>',
+            ],
+            'start_will_out_at' => [
+                'description' => '<span class="point">출고예정 시작일</span>',
+            ],
+            'finish_will_out_at' => [
+                'description' => '<span class="point">출고예정 종료일</span>',
+            ],
+
             'recipe_ids' => [
                 'description' => '<span class="point">레시피 고유 번호 목록</span>',
             ],

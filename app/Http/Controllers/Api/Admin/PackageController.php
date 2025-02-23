@@ -117,6 +117,21 @@ class PackageController extends ApiController
         return $this->respondSuccessfully(PackageResource::make($package));
     }
 
+    /** 배송일정 수정
+     * @group 관리자
+     * @subgroup Package(꾸러미)
+     * @responseFile storage/responses/package.json
+     */
+    public function updateSchedule(PackageRequest $request, Package $package)
+    {
+        if($package->start_pack_at <= Carbon::now())
+            return $this->respondForbidden('이미 품목구성이 시작된 꾸러미입니다.');
+
+        $package->update($request->validated());
+
+        return $this->respondSuccessfully(PackageResource::make($package));
+    }
+
     /** 삭제
      * @group 관리자
      * @subgroup Package(꾸러미)

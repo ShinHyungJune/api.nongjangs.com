@@ -15,7 +15,6 @@ class CategoryController extends ApiController
     /** 목록
      * @group 관리자
      * @subgroup Category(카테고리)
-     * @priority 2
      * @responseFile storage/responses/categories.json
      */
     public function index(CategoryRequest $request)
@@ -24,7 +23,15 @@ class CategoryController extends ApiController
             $query->where("title", "LIKE", "%".$request->word."%");
         });
 
-        $items = $items->orderBy('order', 'asc')->paginate(10);
+        if($request->type)
+            $items = $items->where('type', $request->type);
+
+        if($request->category_id)
+            $items = $items->where('category_id', $request->category_id);
+        else
+            $items = $items->whereNull('category_id');
+
+        $items = $items->orderBy('order', 'asc')->paginate(25);
 
         return CategoryResource::collection($items);
     }
@@ -32,7 +39,6 @@ class CategoryController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Category(카테고리)
-     * @priority 2
      * @responseFile storage/responses/category.json
      */
     public function show(Category $category)
@@ -43,7 +49,6 @@ class CategoryController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Category(카테고리)
-     * @priority 2
      * @responseFile storage/responses/category.json
      */
     public function store(CategoryRequest $request)
@@ -62,7 +67,6 @@ class CategoryController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Category(카테고리)
-     * @priority 2
      * @responseFile storage/responses/category.json
      */
     public function update(CategoryRequest $request, Category $category)
@@ -93,7 +97,6 @@ class CategoryController extends ApiController
     /** 삭제
      * @group 관리자
      * @subgroup Category(카테고리)
-     * @priority 2
      */
     public function destroy(CategoryRequest $request)
     {

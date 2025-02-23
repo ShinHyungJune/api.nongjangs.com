@@ -30,22 +30,23 @@ class CategoryRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
-                        'word' => ['nullable', 'string', 'max:500']
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'type' => ['nullable', 'integer'],
+                        'category_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':
                     return [
-                        'hide' => ['required', 'boolean'],
+                        'type' => ['required', 'integer'],
+                        'category_id' => ['nullable', 'integer'],
                         'title' => ['required', 'string', 'max:500'],
-                        'files' => ['nullable', 'array'],
                     ];
 
                 case 'update':
                     return [
-                        'hide' => ['required', 'boolean'],
+                        'type' => ['required', 'integer'],
+                        'category_id' => ['nullable', 'integer'],
                         'title' => ['required', 'string', 'max:500'],
-                        'files' => ['nullable', 'array'],
-                        'files_remove_ids' => ['nullable', 'array'],
                     ];
 
                 case 'destroy':
@@ -82,6 +83,15 @@ class CategoryRequest extends FormRequest
                 'description' => '<span class="point">검색어</span>',
                 // 'example' => '',
             ],
+            'type' => [
+                'description' => '<span class="point">유형 (1 - PRODUCT 직거래상품 | 2 - PACKAGE - 꾸러미)</span>',
+                // 'example' => '',
+            ],
+            'category_id' => [
+                'description' => '<span class="point">대분류 카테고리 고유번호 (소분류 카테고리 생성할 때 사용)</span>',
+                // 'example' => '',
+            ],
+
 
             'title' => [
                 'description' => '<span class="point">제목</span>',
