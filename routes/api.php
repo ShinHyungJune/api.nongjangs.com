@@ -138,6 +138,9 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/refunds", \App\Http\Controllers\Api\Admin\RefundController::class)->except(['destroy']);
     Route::delete("/refunds", [\App\Http\Controllers\Api\Admin\RefundController::class, "destroy"]);
 
+    Route::resource("/bookmarks", \App\Http\Controllers\Api\Admin\BookmarkController::class)->except(['destroy']);
+    Route::delete("/bookmarks", [\App\Http\Controllers\Api\Admin\BookmarkController::class, "destroy"]);
+
     Route::resource("/pointHistories", \App\Http\Controllers\Api\Admin\PointHistoryController::class)->except(['destroy']);
     Route::delete("/pointHistories", [\App\Http\Controllers\Api\Admin\PointHistoryController::class, "destroy"]);
 
