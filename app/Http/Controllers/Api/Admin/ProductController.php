@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
-use App\Models\Color;
-use App\Models\Size;
-use App\Models\임시\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends ApiController
@@ -15,7 +13,6 @@ class ProductController extends ApiController
     /** 목록
      * @group 관리자
      * @subgroup Product(상품)
-     * @priority 12
      * @responseFile storage/responses/products.json
      */
     public function index(ProductRequest $request)
@@ -110,7 +107,6 @@ class ProductController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Product(상품)
-     * @priority 12
      * @responseFile storage/responses/product.json
      */
     public function update(ProductRequest $request, Product $product)
@@ -237,7 +233,6 @@ class ProductController extends ApiController
     /** 삭제
      * @group 관리자
      * @subgroup Product(상품)
-     * @priority 12
      */
     public function destroy(ProductRequest $request)
     {
