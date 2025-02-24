@@ -34,7 +34,7 @@ class DeliveryController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Delivery(배송지)
-     * @responseFile storage/responses/delivery.json
+     * @responseFile storage/responses/deliveries.json
      */
     public function show(Delivery $delivery)
     {
@@ -43,8 +43,8 @@ class DeliveryController extends ApiController
 
     /** 생성
      * @group 관리자
-     * @subgroup Delivery
-     * @responseFile storage/responses/delivery.json
+     * @subgroup Delivery(배송지)
+     * @responseFile storage/responses/deliveries.json
      */
     public function store(DeliveryRequest $request)
     {
@@ -61,8 +61,8 @@ class DeliveryController extends ApiController
 
     /** 수정
      * @group 관리자
-     * @subgroup Delivery
-     * @responseFile storage/responses/delivery.json
+     * @subgroup Delivery(배송지)
+     * @responseFile storage/responses/deliveries.json
      */
     public function update(DeliveryRequest $request, Delivery $delivery)
     {
@@ -91,7 +91,7 @@ class DeliveryController extends ApiController
 
     /** 삭제
      * @group 관리자
-     * @subgroup Delivery
+     * @subgroup Delivery(배송지)
      */
     public function destroy(DeliveryRequest $request)
     {
