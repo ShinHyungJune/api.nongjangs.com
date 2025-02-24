@@ -49,7 +49,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/memos", \App\Http\Controllers\Api\Admin\MemoController::class);
 
     Route::delete("/deliveries", [\App\Http\Controllers\Api\Admin\DeliveryController::class, "destroy"]);
-    Route::resource("/deliveries", \App\Http\Controllers\Api\Admin\DeliveryController::class);
+    Route::resource("/deliveries", \App\Http\Controllers\Api\Admin\DeliveryController::class)->except(['destroy']);
 
     Route::delete("/coupons", [\App\Http\Controllers\Api\Admin\CouponController::class, "destroy"]);
     Route::resource("/coupons", \App\Http\Controllers\Api\Admin\CouponController::class);

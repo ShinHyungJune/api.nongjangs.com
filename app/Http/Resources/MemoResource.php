@@ -22,7 +22,7 @@ class MemoResource extends JsonResource
                 'name' => $user->name
             ] : '',
 
-            'format_created_at' => $this->created_at ? Carbon::make($this->created_at)->format('y-m-d H:i'),
+            'format_created_at' => $this->created_at ? Carbon::make($this->created_at)->format('y-m-d H:i') : "",
         ];
     }
 }

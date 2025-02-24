@@ -12,7 +12,7 @@ use Inertia\Inertia;
 
 class DeliveryController extends ApiController
 {
-    /** 목록지
+    /** 목록
      * @group 관리자
      * @subgroup Delivery(배송지)
      * @responseFile storage/responses/deliveries.json
