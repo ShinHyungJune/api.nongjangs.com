@@ -44,6 +44,7 @@ class UserRequest extends FormRequest
                         'agree_promotion' => ['nullable', 'boolean'],
                         'subscribe' => ['nullable', 'boolean'],
                         'code_recommend' => ['nullable', 'integer'],
+                        'has_column' => ['nullable', 'string', 'max:500'],
                     ];
 
                 case 'store':
