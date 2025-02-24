@@ -24,8 +24,10 @@ class ReportController extends ApiController
 
         if($request->word)
             $items = $items->where(function (Builder $query) use($request) {
-                $query->whereHas('user', function ($query) use ($request){
-                    $query->where('name', 'LIKE', '%'.$request->word."%");
+                $query->whereHas('reportable', function($query) use($request){
+                    $query->whereHas('user', function ($query) use ($request){
+                        $query->where('name', 'LIKE', '%'.$request->word."%");
+                    });
                 })->orWhere('description', 'LIKE', '%'.$request->word.'%');
             });
 
