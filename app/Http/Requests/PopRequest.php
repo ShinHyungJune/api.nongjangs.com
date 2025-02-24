@@ -36,7 +36,7 @@ class PopRequest extends FormRequest
                         'open' => ['boolean'],
                         'started_at' => ['required', 'date'],
                         'finished_at' => ['required', 'date'],
-                        'files' => ['required', 'array'],
+                        'files' => ['nullable', 'array'],
                     ];
 
                 case 'destroy':
