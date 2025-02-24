@@ -24,16 +24,12 @@ use Milon\Barcode\DNS1D;
 /*Route::get("/test", [\App\Http\Controllers\Api\Admin\SurveyController::class, "export"]);*/
 
 Route::get("/test", function (){
-    dd(User::first()->presetProducts()->where('state', StatePresetProduct::CONFIRMED)->whereDoesntHave('review')->count());
+    $response = \Illuminate\Support\Facades\Http::post('http://localhost/api/login', [
+        'email' => 'test@naver.com',
+        'password' => 'test@naver.com',
+    ]);
 
-    // 권한 얻기
-    $accessToken = Iamport::getAccessToken();
-
-    // 주문조회
-    $result = Iamport::checkReceipt($accessToken, "imp_848442604799");
-
-    dd($result);
-
+    dd($response->body());
 });
 
 Route::post("/users/import",function (Request $request){
