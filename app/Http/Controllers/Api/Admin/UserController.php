@@ -111,9 +111,21 @@ class UserController extends ApiController
      * @subgroup User(사용자)
      * @responseFile storage/responses/user.json
      */
-    public function update(UserRequest $request)
+    public function store(UserRequest $request)
     {
         $user = User::create($request->validated());
+
+        return $this->respondSuccessfully(UserResource::make($user));
+    }
+
+    /** 수정
+     * @group 관리자
+     * @subgroup User(사용자)
+     * @responseFile storage/responses/user.json
+     */
+    public function update(UserRequest $request, User $user)
+    {
+        $user = $user->update($request->validated());
 
         return $this->respondSuccessfully(UserResource::make($user));
     }
