@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Http\Controllers\Api\Admin;
@@ -21,7 +22,7 @@ class VegetableStoryController extends ApiController
     {
         $items = VegetableStory::where(function($query) use($request){
             $query->whereHas('presetProduct', function ($query) use($request){
-                $query->where('preset', function ($query) use($request){
+                $query->whereHas('preset', function ($query) use($request){
                     $query->whereHas('order', function ($query) use($request){
                         $query->where('payment_id', 'LIKE' ,'%'.$request->word.'%');
                     });

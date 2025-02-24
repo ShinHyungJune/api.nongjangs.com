@@ -20,8 +20,10 @@ class ReviewController extends ApiController
     public function index(ReviewRequest $request)
     {
         $items = Review::where(function($query) use($request){
-            $query->whereHas('order', function ($query) use($request){
-                $query->where('payment_id', 'LIKE' ,'%'.$request->word.'%');
+            $query->whereHas('presetProduct',function ($query) use($request){
+                $query->whereHas('order', function ($query) use($request) {
+                    $query->where('payment_id', 'LIKE', '%' . $request->word . '%');
+                });
             })->orWhere('description', 'LIKE' ,'%'.$request->word.'%');
         });
 

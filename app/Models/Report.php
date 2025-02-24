@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Models;
@@ -15,5 +16,10 @@ class Report extends Model
     public function reportCategory(): BelongsTo
     {
         return $this->belongsTo(ReportCategory::class);
+    }
+
+    public function reportable()
+    {
+        return $this->morphTo();
     }
 }
