@@ -26,7 +26,7 @@ class UserResource extends JsonResource
     {
         $recommendUser = null;
 
-        if($request->code_recommend)
+        if($this->code_recommend)
             $recommendUser = User::withTrashed()->where('code', $this->code_recommend)->first();
 
         $delivery = $this->deliveries()->where('main', 1)->first();

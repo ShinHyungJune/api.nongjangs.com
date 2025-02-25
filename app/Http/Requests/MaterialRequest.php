@@ -17,6 +17,7 @@ class MaterialRequest extends FormRequest
                     return [
                         'word' => ['nullable', 'string', 'max:500'],
                         'type' => ['nullable', 'integer'],
+                        'category_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':

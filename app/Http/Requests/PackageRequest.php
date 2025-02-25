@@ -22,7 +22,7 @@ class PackageRequest extends FormRequest
                     return [
                         'tax' => ['boolean'],
                         'recipe_ids' => ['nullabe', 'array'],
-                        'materials' => ['required', 'array', 'max:500'],
+                        'packageMaterials' => ['required', 'array', 'max:500'],
                     ];
 
                 case 'update':
@@ -116,7 +116,7 @@ class PackageRequest extends FormRequest
                 'description' => '<span class="point">과세여부 (1 - 과세 | 0 - 면세)</span>',
             ],
             'materials' => [
-                'description' => '<span class="point">품목 목록 [{id:고유번호, type: 1 - 싱글 | 2 - 벙글 | 3 - 선택가능, count: 개수, unit: 단위, price: 판매가, price_origin: 정가, tag_ids: 태그 고유번호목록}]</span>',
+                'description' => '<span class="point">연결품목 목록 [{id:고유번호(수정일때만 넘기기), material_id: 품목 고유번호, type: 1 - 싱글 | 2 - 벙글 | 3 - 선택가능, count: 재고수, value: 값(50g -> 50), unit: 단위(50g -> g), price: 판매가, price_origin: 정가, tag_ids: 태그 고유번호목록}]</span>',
             ],
             // 늘 쓰이는 애들
             'word' => [

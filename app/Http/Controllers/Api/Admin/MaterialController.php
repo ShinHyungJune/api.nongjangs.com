@@ -26,6 +26,9 @@ class MaterialController extends ApiController
         if($request->type)
             $items = $items->where('type', $request->type);
 
+        if($request->category_id)
+            $items = $items->where('category_id', $request->category_id);
+
         $items = $items->latest()->paginate(25);
 
         return MaterialResource::collection($items);

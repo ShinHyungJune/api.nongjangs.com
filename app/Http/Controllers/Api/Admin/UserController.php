@@ -125,7 +125,7 @@ class UserController extends ApiController
      */
     public function update(UserRequest $request, User $user)
     {
-        $user = $user->update($request->validated());
+        $user->update($request->validated());
 
         return $this->respondSuccessfully(UserResource::make($user));
     }

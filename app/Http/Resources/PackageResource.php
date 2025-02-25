@@ -12,6 +12,7 @@ class PackageResource extends JsonResource
 {
     public function toArray($request)
     {
+
         return [
             'id' => $this->id,
             'count' => $this->count,
@@ -39,6 +40,7 @@ class PackageResource extends JsonResource
             'price_bungle' => $this->price_bungle,
             'state' => $this->state,
             'format_state' => StatePackage::getLabel($this->state),
+            'recipes' => $this->recipes->pluck("id", "title")->toArray(),
         ];
     }
 }

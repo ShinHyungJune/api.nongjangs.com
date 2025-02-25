@@ -8,6 +8,7 @@ use App\Http\Resources\PackageResource;
 use App\Http\Requests\PackageRequest;
 use App\Models\Package;
 use App\Models\PackageMaterial;
+use App\Models\PresetProduct;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -49,13 +50,10 @@ class PackageController extends ApiController
     {
         $createdItem = Package::create($request->validated());
 
-        foreach($request->materials as $material){
-            $packageMaterial = PackageMaterial::create(array_merge([
+        foreach($request->packageMaterials as $packageMaterial){
+            PackageMaterial::create(array_merge([
                 'package_id' => $createdItem->id,
-                'material_id' => $material['id'],
-            ], $material));
-
-            $packageMaterial->tags()->sync($material['tag_ids']);
+            ], $packageMaterial));
         }
 
         if($request->recipe_ids)
@@ -84,14 +82,23 @@ class PackageController extends ApiController
 
         $package->materials()->delete();
 
-        foreach($request->materials as $material){
-            $packageMaterial = PackageMaterial::create(array_merge([
-                'package_id' => $package->id,
-                'material_id' => $material['id'],
-            ], $material));
+        $ids = [];
 
-            $packageMaterial->tags()->sync($material['tag_ids']);
+        foreach($request->packageMaterials as $packageMaterial){
+            $ids[] = $packageMaterial['id'];
+
+            if($packageMaterial['id'])
+                PackageMaterial::find($packageMaterial['id'])->update($packageMaterial);
+            else {
+                $createdPackageMaterial = PackageMaterial::create(array_merge([
+                    'package_id' => $package->id,
+                ], $packageMaterial));
+
+                $ids[] = $createdPackageMaterial->id;
+            }
         }
+
+        PackageMaterial::where('package_id', $package->id)->whereNotIn('id', $ids)->delete();
 
         if($request->recipe_ids)
             $package->recipes()->sync($request->recipe_ids);
@@ -138,6 +145,13 @@ class PackageController extends ApiController
      */
     public function destroy(PackageRequest $request)
     {
+        $packages = Package::whereIn('id', $request->ids)->get();
+
+        foreach($packages as $package){
+            if($package->presetProducts()->count() > 0)
+                return $this->respondForbidden("[고유번호 : {$package->id}] 해당 꾸러미에 대해 주문시도한 내역이 있어 삭제할 수 없습니다.");
+        }
+
         Package::whereIn('id', $request->ids)->delete();
 
         return $this->respondSuccessfully();
