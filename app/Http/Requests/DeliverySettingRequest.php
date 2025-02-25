@@ -78,8 +78,29 @@ class DeliverySettingRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'type_delivery' => [
+                'description' => '<span class="point">배송유형 (1 - FREE 무료배송 | 2 - EACH 개별배송)</span>',
+            ],
+            'delivery_company' => [
+                'description' => '<span class="point">택배사 (1 - CJ CJ | 2 - POST 우체국 | 3 - HANJIN 한진)</span>',
+            ],
+            'type_delivery_price' => [
+                'description' => '<span class="point">배송비 유형 (1 - STATIC 고정배송비 | 2 - CONDITIONAL 조건 무료배송 | 3 - PRICE_BY_COUNT 수량별 차등 배송비)</span>',
+            ],
+            'price_delivery' => [
+                'description' => '<span class="point">배송비</span>',
+            ],
+            'prices_delivery' => [
+                'description' => '<span class="point">수량별 차등 배송비 목록 [{count: 구매수량, price: 배송비}]</span>',
+            ],
+            'min_price_for_free_delivery_price' => [
+                'description' => '<span class="point">무료배송 최소주문금액</span>',
+            ],
+            'can_delivery_far_place' => [
+                'description' => '<span class="point">제주/도서산간 배송 가능여부</span>',
+            ],
+            'delivery_price_far_place' => [
+                'description' => '<span class="point">제주/도서산간 배송 추가배송비</span>',
             ],
 
             // 늘 쓰이는 애들

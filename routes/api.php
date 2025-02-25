@@ -152,6 +152,9 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/projects", \App\Http\Controllers\Api\Admin\ProjectController::class)->except(['destroy']);
     Route::delete("/projects", [\App\Http\Controllers\Api\Admin\ProjectController::class, "destroy"]);
 
+    Route::get("/deliverySetting", [\App\Http\Controllers\Api\Admin\DeliverySettingController::class, "show"]);
+    Route::resource("/deliverySettings", \App\Http\Controllers\Api\Admin\DeliverySettingController::class)->except(['destroy', 'show', 'index']);
+
 });
 
 Route::post("/login", [\App\Http\Controllers\Api\UserController::class, "login"]);
