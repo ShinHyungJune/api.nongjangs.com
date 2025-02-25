@@ -13,6 +13,7 @@ class OptionResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'product_id' => $this->product_id,
             'type' => $this->type,
             'format_type' => TypeOption::getLabel($this->type),
             'state' => $this->state,
