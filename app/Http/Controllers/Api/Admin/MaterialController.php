@@ -48,6 +48,8 @@ class MaterialController extends ApiController
      */
     public function store(MaterialRequest $request)
     {
+        $request['descriptions'] = json_encode($request->descriptions);
+
         $createdItem = Material::create($request->all());
 
         if(is_array($request->file("files"))){
@@ -66,6 +68,8 @@ class MaterialController extends ApiController
      */
     public function update(MaterialRequest $request, Material $material)
     {
+        $request['descriptions'] = json_encode($request->descriptions);
+
         $material->update($request->all());
 
         if($request->files_remove_ids){
