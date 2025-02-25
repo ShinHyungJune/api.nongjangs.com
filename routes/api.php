@@ -96,7 +96,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
 
     Route::post("/users/export", [\App\Http\Controllers\Api\Admin\UserController::class, "export"]);
     Route::resource("/users", \App\Http\Controllers\Api\Admin\UserController::class)->except(['destroy']);
-    Route::delete("/users", [\App\Http\Controllers\Api\Admin\UserController::class, "destroy"]);
+    Route::delete("/users/{user}", [\App\Http\Controllers\Api\Admin\UserController::class, "destroy"]);
     Route::get("/users/counts/{user}", [\App\Http\Controllers\Api\Admin\UserController::class, "counts"]);
 
     // Route::resource("/estimates", \App\Http\Controllers\Api\Admin\EstimateController::class)->except(['destroy', 'store', 'update']);
