@@ -88,6 +88,9 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/events", \App\Http\Controllers\Api\Admin\EventController::class)->except(['destroy']);
     Route::delete("/events", [\App\Http\Controllers\Api\Admin\EventController::class, "destroy"]);
 
+    Route::resource("/farms", \App\Http\Controllers\Api\Admin\FarmController::class)->except(['destroy']);
+    Route::delete("/farms", [\App\Http\Controllers\Api\Admin\FarmController::class, "destroy"]);
+
     Route::resource("/faqs", \App\Http\Controllers\Api\Admin\FaqController::class)->except(['destroy']);
     Route::delete("/faqs", [\App\Http\Controllers\Api\Admin\FaqController::class, "destroy"]);
 

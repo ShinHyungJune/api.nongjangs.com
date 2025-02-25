@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "title": "제목",
+      "city_id": "시도 고유번호",
+      "county_id": "시군구 고유번호",
+      "county": "시군구 객체"
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}
