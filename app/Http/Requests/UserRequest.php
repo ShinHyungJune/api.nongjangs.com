@@ -51,7 +51,7 @@ class UserRequest extends FormRequest
                     return [
                         'email' => ['required','email','max:500','unique:users'],
                         'name' => ['required','string','max:500'],
-                        'password' => ['required','string','max:500','confirmed'],
+                        'password' => ['required','string','max:500'],
                         'contact' => ['required','string','max:500','unique:users'],
                         'admin' => ['required', 'boolean'],
                         'master' => ['required', 'boolean'],
