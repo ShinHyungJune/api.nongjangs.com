@@ -15,7 +15,7 @@ class CountController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Count(누적농산물_농사수)
-     * @responseFile storage/responses/count.json
+     * @responseFile storage/responses/counts.json
      */
     public function show(Count $count)
     {
@@ -25,7 +25,7 @@ class CountController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Count(누적농산물_농사수)
-     * @responseFile storage/responses/count.json
+     * @responseFile storage/responses/counts.json
      */
     public function store(CountRequest $request)
     {
