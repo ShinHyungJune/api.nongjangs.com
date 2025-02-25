@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "sum_weight": "누적 농산물수",
+      "sum_store": "누적 농가수",
+      "count_review": "전체 리뷰수",
+      "count_review_package": "꾸러미 리뷰수",
+      "average_score_review_package": "꾸러미 평균리뷰 점수",
+      "count_vegetable_story": "채소이야기수",
+
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

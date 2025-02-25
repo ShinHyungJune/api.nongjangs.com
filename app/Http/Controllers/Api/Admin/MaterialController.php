@@ -34,7 +34,7 @@ class MaterialController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Material(품목)
-     * @responseFile storage/responses/material.json
+     * @responseFile storage/responses/materials.json
      */
     public function show(Material $material)
     {
@@ -44,7 +44,7 @@ class MaterialController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Material(품목)
-     * @responseFile storage/responses/material.json
+     * @responseFile storage/responses/materials.json
      */
     public function store(MaterialRequest $request)
     {
@@ -62,7 +62,7 @@ class MaterialController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Material(품목)
-     * @responseFile storage/responses/material.json
+     * @responseFile storage/responses/materials.json
      */
     public function update(MaterialRequest $request, Material $material)
     {

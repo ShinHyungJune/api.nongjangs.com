@@ -31,4 +31,9 @@ class Point extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function pointHistories()
+    {
+        return $this->hasMany(PointHistory::class);
+    }
 }

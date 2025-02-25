@@ -28,12 +28,12 @@ class PointHistoryController extends ApiController
             $items = $items->where('user_id', $request->user_id);
 
         if($request->start_expired_at)
-            $items = $items->whereHas('point', function ($query) use($request){
+            $items = $items->whereHas('pointModel', function ($query) use($request){
                 $query->where('expired_at', '>=', Carbon::make($request->start_expired_at)->startOfDay());
             });
 
         if($request->finish_expired_at)
-            $items = $items->whereHas('point', function ($query) use($request){
+            $items = $items->whereHas('pointModel', function ($query) use($request){
                 $query->where('expired_at', '<=', Carbon::make($request->finish_expired_at)->endOfDay());
             });
 
