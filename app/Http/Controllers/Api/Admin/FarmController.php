@@ -23,6 +23,9 @@ class FarmController extends ApiController
             $query->where("title", "LIKE", "%".$request->word."%");
         });
 
+        if($request->county_id)
+            $items = $items->where('county_id', $request->county_id);
+
         $items = $items->latest()->paginate($request->take ?? 50);
 
         return FarmResource::collection($items);
@@ -45,7 +48,7 @@ class FarmController extends ApiController
      */
     public function store(FarmRequest $request)
     {
-        $createdItem = Farm::create($request->all());
+        $createdItem = Farm::create($request->validated());
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
@@ -63,7 +66,7 @@ class FarmController extends ApiController
      */
     public function update(FarmRequest $request, Farm $farm)
     {
-        $farm->update($request->all());
+        $farm->update($request->validated());
 
         if($request->files_remove_ids){
             $medias = $farm->getMedia("img");

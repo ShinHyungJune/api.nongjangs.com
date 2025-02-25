@@ -20,14 +20,12 @@ class FarmRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'city_id' => ['required', 'exists:cities'],
                         'county_id' => ['required', 'exists:counties'],
                         'title' => ['required'],
                     ];
 
                 case 'update':
                     return [
-                        'city_id' => ['required', 'exists:cities'],
                         'county_id' => ['required', 'exists:counties'],
                         'title' => ['required'],//
                     ];
@@ -68,8 +66,11 @@ class FarmRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'example' => [
-                'description' => '<span class="point"></span>',
+            'county_id' => [
+                'description' => '<span class="point">시군구 고유번호</span>',
+            ],
+            'title' => [
+                'description' => '<span class="point">제목</span>',
             ],
 
             // 늘 쓰이는 애들
