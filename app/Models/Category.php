@@ -28,6 +28,11 @@ class Category extends Model implements HasMedia
         });
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function materials()
     {
         return $this->hasMany(Material::class);
