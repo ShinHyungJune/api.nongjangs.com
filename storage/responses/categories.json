@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "type": "유형",
+      "category_id": "대분류 고유번호",
+      "category": "대분류 (null 주의)",
+      "format_type": "표시용 유형",
+      "order": "순서",
+      "title": "제목",
+      "materials": "품목 목록",
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

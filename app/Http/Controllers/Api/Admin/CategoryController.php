@@ -39,7 +39,7 @@ class CategoryController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Category(카테고리)
-     * @responseFile storage/responses/category.json
+     * @responseFile storage/responses/categories.json
      */
     public function show(Category $category)
     {
@@ -49,7 +49,7 @@ class CategoryController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Category(카테고리)
-     * @responseFile storage/responses/category.json
+     * @responseFile storage/responses/categories.json
      */
     public function store(CategoryRequest $request)
     {
@@ -67,7 +67,7 @@ class CategoryController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Category(카테고리)
-     * @responseFile storage/responses/category.json
+     * @responseFile storage/responses/categories.json
      */
     public function update(CategoryRequest $request, Category $category)
     {
