@@ -1406,8 +1406,8 @@
                                                         </div>
                                                     </a>
                                                                                                     <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
-                                                       href="#-DELETEapi-admin-users">
-                                                        <div title="삭제" id="toc-item--DELETEapi-admin-users"
+                                                       href="#-DELETEapi-admin-users--id-">
+                                                        <div title="삭제" id="toc-item--DELETEapi-admin-users--id-"
                                                              class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
                                                             삭제
                                                         </div>
@@ -12378,8 +12378,10 @@ You can switch the language used with the tabs at the top right (or from the nav
         <div class="sl-flex sl-items-center sl-max-w-full">
                                         <div class="sl-flex sl-items-baseline sl-text-base">
                     <div class="sl-font-mono sl-font-semibold sl-mr-2">category_id</div>
-                                            <span class="sl-truncate sl-text-muted">string</span>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
                                     </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
                                     </div>
                 <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
             <p><span class="point">카테고리 고유번호</span>.</p>
@@ -12831,8 +12833,10 @@ You can switch the language used with the tabs at the top right (or from the nav
         <div class="sl-flex sl-items-center sl-max-w-full">
                                         <div class="sl-flex sl-items-baseline sl-text-base">
                     <div class="sl-font-mono sl-font-semibold sl-mr-2">category_id</div>
-                                            <span class="sl-truncate sl-text-muted">string</span>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
                                     </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
                                     </div>
                 <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
             <p><span class="point">카테고리 고유번호</span>.</p>
@@ -17719,14 +17723,14 @@ You can switch the language used with the tabs at the top right (or from the nav
         <div class="sl-relative">
             <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
                 <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
-                    id="-DELETEapi-admin-users">
+                    id="-DELETEapi-admin-users--id-">
                     삭제
                 </h2>
             </div>
         </div>
 
         <div class="sl-relative">
-            <div title="https://localhost/api/admin/users"
+            <div title="https://localhost/api/admin/users/{id}"
                      class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
                 >
                                             <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
@@ -17737,7 +17741,7 @@ You can switch the language used with the tabs at the top right (or from the nav
                                         <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
                         <div dir="rtl"
                              class="sl-overflow-x-hidden sl-truncate sl-text-muted">https://localhost</div>
-                        <div class="sl-flex-1 sl-font-semibold">/api/admin/users</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/admin/users/{id}</div>
                     </div>
 
                                     </div>
@@ -17751,6 +17755,37 @@ You can switch the language used with the tabs at the top right (or from the nav
                 <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
                     
 
+                                            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+                            <h3 class="sl-text-2xl sl-leading-snug sl-font-prose">URL Parameters</h3>
+
+                            <div class="sl-text-sm">
+                                                                    <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
+                    <span class="sl-ml-2 sl-text-warning">required</span>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p>The ID of the user.</p>
+        </div>
+                
+    </div>
+</div>
+                                                            </div>
+                        </div>
                     
 
                     
@@ -39191,7 +39226,7 @@ You can switch the language used with the tabs at the top right (or from the nav
                                                                                                                                                                         
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;test.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 15 limit 1)&quot;,
+    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;test.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 14 limit 1)&quot;,
     &quot;exception&quot;: &quot;Illuminate\\Database\\QueryException&quot;,
     &quot;file&quot;: &quot;/Users/shinhyungjune/project/api.nongjangs.com/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
     &quot;line&quot;: 712,
