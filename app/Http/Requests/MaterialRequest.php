@@ -22,7 +22,7 @@ class MaterialRequest extends FormRequest
                 case 'store':
                     return [
                         'type' => ['required', 'integer'],
-                        'category_id' => ['required'. 'integer'],
+                        'category_id' => ['required', 'integer'],
                         'title' => ['required', 'string', 'max:500'],
                         'descriptions' => ['nullable', 'array'],
                         'files' => ['nullable', 'array'],
