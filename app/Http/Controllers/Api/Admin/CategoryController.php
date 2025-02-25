@@ -105,6 +105,10 @@ class CategoryController extends ApiController
         return $this->respondSuccessfully();
     }
 
+    /** 순서변경(up)
+     * @group 관리자
+     * @subgroup Category(카테고리)
+     */
     public function up(Category $category)
     {
         $prevOrder = $category->order;
@@ -120,6 +124,10 @@ class CategoryController extends ApiController
         return $this->respondSuccessfully();
     }
 
+    /** 순서변경(down)
+     * @group 관리자
+     * @subgroup Category(카테고리)
+     */
     public function down(Category $category)
     {
         $prevOrder = $category->order;
