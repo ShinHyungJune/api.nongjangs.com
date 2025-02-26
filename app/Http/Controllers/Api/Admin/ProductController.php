@@ -53,13 +53,15 @@ class ProductController extends ApiController
      */
     public function store(ProductRequest $request)
     {
+        $request['tags'] = $request->tags ?? [];
+
         if($request->prices_delivery){
             $request['prices_delivery'] = json_encode($request->prices_delivery);
         }
 
         $createdItem = Product::create($request->validated());
 
-        $createdItem->tags()->sync($request->tag_ids);
+        $createdItem->tags()->sync(array_column($request->tags, 'id'));
 
         if($request->requiredOptions){
             foreach($request->requiredOptions as $option){
@@ -93,12 +95,14 @@ class ProductController extends ApiController
      */
     public function update(ProductRequest $request, Product $product)
     {
+        $request['tags'] = $request->tags ?? [];
+
         if($request->prices_delivery)
             $request['prices_delivery'] = json_encode($request->prices_delivery);
 
         $product->update($request->validated());
 
-        $product->tags()->sync($request->tag_ids);
+        $product->tags()->sync(array_column($request->tags, 'id'));
 
         $optionIds = [];
 

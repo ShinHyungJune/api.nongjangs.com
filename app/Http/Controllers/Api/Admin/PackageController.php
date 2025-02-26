@@ -50,14 +50,16 @@ class PackageController extends ApiController
     {
         $createdItem = Package::create($request->validated());
 
+        $request['recipes'] = $request->recipes ?? [];
+
         foreach($request->packageMaterials as $packageMaterial){
             PackageMaterial::create(array_merge([
                 'package_id' => $createdItem->id,
             ], $packageMaterial));
         }
 
-        if($request->recipe_ids)
-            $createdItem->recipes()->sync($request->recipe_ids);
+        if($request->recipes)
+            $createdItem->recipes()->sync(array_column($request->recipes, 'id'));
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
@@ -75,6 +77,8 @@ class PackageController extends ApiController
      */
     public function update(PackageRequest $request, Package $package)
     {
+        $request['recipes'] = $request->recipes ?? [];
+
         if($package->start_pack_at <= Carbon::now())
             return $this->respondForbidden('제품 구성을 변경할 수 있는 기간이 지났습니다.');
 
@@ -100,8 +104,8 @@ class PackageController extends ApiController
 
         PackageMaterial::where('package_id', $package->id)->whereNotIn('id', $ids)->delete();
 
-        if($request->recipe_ids)
-            $package->recipes()->sync($request->recipe_ids);
+        if($request->recipes)
+            $package->recipes()->sync(array_column($request->recipes, 'id'));
 
         if($request->files_remove_ids){
             $medias = $package->getMedia("img");

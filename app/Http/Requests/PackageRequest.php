@@ -21,14 +21,14 @@ class PackageRequest extends FormRequest
                 case 'store':
                     return [
                         'tax' => ['boolean'],
-                        'recipe_ids' => ['nullabe', 'array'],
+                        'recipes' => ['nullable', 'array'],
                         'packageMaterials' => ['required', 'array', 'max:500'],
                     ];
 
                 case 'update':
                     return [
                         'tax' => ['boolean'],
-                        'recipe_ids' => ['nullabe', 'array'],
+                        'recipes' => ['nullable', 'array'],
                         'materials' => ['required', 'array', 'max:500'],
                     ];
 
@@ -109,8 +109,8 @@ class PackageRequest extends FormRequest
                 'description' => '<span class="point">출고예정 종료일</span>',
             ],
 
-            'recipe_ids' => [
-                'description' => '<span class="point">레시피 고유 번호 목록</span>',
+            'recipes' => [
+                'description' => '<span class="point">레시피 목록 [{id:고유번호}]</span>',
             ],
             'tax' => [
                 'description' => '<span class="point">과세여부 (1 - 과세 | 0 - 면세)</span>',

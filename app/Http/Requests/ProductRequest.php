@@ -26,7 +26,7 @@ class ProductRequest extends FormRequest
                         'title' => ['required'],
                         'farm_id' => ['required', 'integer'],
                         'county_id' => ['required', 'exists:counties'],
-                        'tag_ids' => ['nullable', 'array'],
+                        'tags' => ['nullable', 'array'],
                         'price' => ['required', 'integer'],
                         'price_origin' => ['required', 'integer'],
                         'need_tax' => ['boolean'],
@@ -57,7 +57,7 @@ class ProductRequest extends FormRequest
                         'title' => ['required'],
                         'farm_id' => ['required', 'integer'],
                         'county_id' => ['required', 'exists:counties'],
-                        'tag_ids' => ['nullable', 'array'],
+                        'tags' => ['nullable', 'array'],
                         'price' => ['required', 'integer'],
                         'price_origin' => ['required', 'integer'],
                         'need_tax' => ['boolean'],
@@ -207,7 +207,9 @@ class ProductRequest extends FormRequest
             'description' => [
                 'description' => '<span class="point">상품 상세</span>',
             ],
-
+            'tags' => [
+                'description' => '<span class="point">태그 목록 [{id:고유번호}]</span>',
+            ],
 
             // 늘 쓰이는 애들
             'ids' => [
