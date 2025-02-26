@@ -155,6 +155,9 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::get("/deliverySetting", [\App\Http\Controllers\Api\Admin\DeliverySettingController::class, "show"]);
     Route::resource("/deliverySettings", \App\Http\Controllers\Api\Admin\DeliverySettingController::class)->except(['index', 'show', 'update', 'destroy']);
 
+    Route::resource("/recipes", \App\Http\Controllers\Api\Admin\RecipeController::class)->except(['destroy']);
+    Route::delete("/recipes", [\App\Http\Controllers\Api\Admin\RecipeController::class, "destroy"]);
+
 });
 
 Route::post("/login", [\App\Http\Controllers\Api\UserController::class, "login"]);
