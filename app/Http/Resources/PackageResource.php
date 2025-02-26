@@ -40,7 +40,7 @@ class PackageResource extends JsonResource
             'price_bungle' => $this->price_bungle,
             'state' => $this->state,
             'format_state' => StatePackage::getLabel($this->state),
-            'recipes' => $this->recipes()->select(['recipe.id', 'recipes.title'])->get()->toArray(),
+            'recipes' => $this->recipes()->select(['recipes.id', 'recipes.title'])->get()->toArray(),
         ];
     }
 }
