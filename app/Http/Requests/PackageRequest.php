@@ -29,7 +29,7 @@ class PackageRequest extends FormRequest
                     return [
                         'tax' => ['boolean'],
                         'recipes' => ['nullable', 'array'],
-                        'materials' => ['required', 'array', 'max:500'],
+                        'packageMaterials' => ['required', 'array', 'max:500'],
                     ];
 
                 case 'updateSchedule':
