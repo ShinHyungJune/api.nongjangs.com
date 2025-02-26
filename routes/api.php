@@ -82,6 +82,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::get("/count", [\App\Http\Controllers\Api\Admin\CountController::class, 'show']);
     Route::post("/counts", [\App\Http\Controllers\Api\Admin\CountController::class, 'store']);
 
+    Route::patch("/packages/schedule/{package}", [\App\Http\Controllers\Api\Admin\PackageController::class, 'updateSchedule']);
     Route::resource("/packages", \App\Http\Controllers\Api\Admin\PackageController::class)->except(['destroy']);
     Route::delete("/packages", [\App\Http\Controllers\Api\Admin\PackageController::class, "destroy"]);
 
