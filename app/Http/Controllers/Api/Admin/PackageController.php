@@ -103,7 +103,7 @@ class PackageController extends ApiController
                 $ids[] = $createdPackageMaterial->id;
             }
 
-            $createPackageMaterial->tags()->sync(array_column($packageMaterial['tags'], 'id'));
+            $createdPackageMaterial->tags()->sync(array_column($packageMaterial['tags'], 'id'));
         }
 
         PackageMaterial::where('package_id', $package->id)->whereNotIn('id', $ids)->delete();
