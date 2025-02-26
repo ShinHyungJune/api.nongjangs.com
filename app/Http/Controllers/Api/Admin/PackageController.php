@@ -84,8 +84,6 @@ class PackageController extends ApiController
 
         $package->update($request->validated());
 
-        $package->materials()->delete();
-
         $ids = [];
 
         foreach($request->packageMaterials as $packageMaterial){
