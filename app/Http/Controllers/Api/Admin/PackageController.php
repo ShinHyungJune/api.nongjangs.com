@@ -53,9 +53,11 @@ class PackageController extends ApiController
         $request['recipes'] = $request->recipes ?? [];
 
         foreach($request->packageMaterials as $packageMaterial){
-            PackageMaterial::create(array_merge([
+            $createPackageMaterial = PackageMaterial::create(array_merge([
                 'package_id' => $createdItem->id,
             ], $packageMaterial));
+
+            $createPackageMaterial->tags()->sync(array_column($packageMaterial['tags'], 'id'));
         }
 
         if($request->recipes)
@@ -90,7 +92,9 @@ class PackageController extends ApiController
             $ids[] = $packageMaterial['id'];
 
             if($packageMaterial['id'])
-                PackageMaterial::find($packageMaterial['id'])->update($packageMaterial);
+                $createdPackageMaterial = PackageMaterial::find($packageMaterial['id']);
+
+                $createdPackageMaterial->update($packageMaterial);
             else {
                 $createdPackageMaterial = PackageMaterial::create(array_merge([
                     'package_id' => $package->id,
@@ -98,6 +102,8 @@ class PackageController extends ApiController
 
                 $ids[] = $createdPackageMaterial->id;
             }
+
+            $createPackageMaterial->tags()->sync(array_column($packageMaterial['tags'], 'id'));
         }
 
         PackageMaterial::where('package_id', $package->id)->whereNotIn('id', $ids)->delete();
