@@ -16,14 +16,14 @@ class Package extends Model
 
     protected $casts = [
         'will_delivery_at' => 'date',
-        'start_pack_wait_at' => 'date',
-        'finish_pack_wait_at' => 'date',
-        'start_pack_at' => 'date',
-        'finish_pack_at' => 'date',
-        'start_delivery_ready_at' => 'date',
-        'finish_delivery_ready_at' => 'date',
-        'start_will_out_at' => 'date',
-        'finish_will_out_at' => 'date',
+        'start_pack_wait_at' => 'datetime',
+        'finish_pack_wait_at' => 'datetime',
+        'start_pack_at' => 'datetime',
+        'finish_pack_at' => 'datetime',
+        'start_delivery_ready_at' => 'datetime',
+        'finish_delivery_ready_at' => 'datetime',
+        'start_will_out_at' => 'datetime',
+        'finish_will_out_at' => 'datetime',
     ];
 
     protected static function boot()
