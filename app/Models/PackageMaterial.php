@@ -9,6 +9,8 @@ class PackageMaterial extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     protected $table = 'package_material';
 
     public function tags()
