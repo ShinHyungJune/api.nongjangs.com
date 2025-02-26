@@ -154,6 +154,9 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/farms", \App\Http\Controllers\Api\Admin\FarmController::class)->except(['destroy']);
     Route::delete("/farms", [\App\Http\Controllers\Api\Admin\FarmController::class, "destroy"]);
 
+    Route::resource("/projects", \App\Http\Controllers\Api\Admin\ProjectController::class)->except(['destroy']);
+    Route::delete("/projects", [\App\Http\Controllers\Api\Admin\ProjectController::class, "destroy"]);
+
 
 });
 
