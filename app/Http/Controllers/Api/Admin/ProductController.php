@@ -25,7 +25,7 @@ class ProductController extends ApiController
                 ->orWhereHas('farm', function ($query) use ($request){
                     $query->where('title', 'LIKE', '%'.$request->word.'%');
                 });
-        })->orderBy('order', 'asc');
+        }));
 
         if ($request->category_id)
             $items = $items->where('category_id', $request->category_id);
@@ -39,7 +39,7 @@ class ProductController extends ApiController
      * @group 관리자
      * @subgroup Product(상품)
      * @priority 12
-     * @responseFile storage/responses/product.json
+     * @responseFile storage/responses/products.json
      */
     public function show(Product $product)
     {
@@ -49,7 +49,7 @@ class ProductController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Product(상품)
-     * @responseFile storage/responses/product.json
+     * @responseFile storage/responses/products.json
      */
     public function store(ProductRequest $request)
     {
@@ -91,7 +91,7 @@ class ProductController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Product(상품)
-     * @responseFile storage/responses/product.json
+     * @responseFile storage/responses/products.json
      */
     public function update(ProductRequest $request, Product $product)
     {
