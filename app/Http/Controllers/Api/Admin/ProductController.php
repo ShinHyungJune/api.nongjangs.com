@@ -108,7 +108,7 @@ class ProductController extends ApiController
 
         if($request->requiredOptions){
             foreach($request->requiredOptions as $option){
-                if($option['id']){
+                if(isset($option['id'])){
                     $optionIds[] = $option['id'];
 
                     Option::find($option['id'])->update($option);
@@ -124,7 +124,7 @@ class ProductController extends ApiController
 
         if($request->additionalOptions){
             foreach($request->additionalOptions as $option){
-                if($option['id']){
+                if(isset($option['id'])){
                     $optionIds[] = $option['id'];
 
                     Option::find($option['id'])->update($option);

@@ -72,6 +72,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/materials", \App\Http\Controllers\Api\Admin\MaterialController::class)->except(['destroy']);
     Route::delete("/materials", [\App\Http\Controllers\Api\Admin\MaterialController::class, "destroy"]);
 
+    Route::patch("/presetProducts/schedule/{packageSetting}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'updateSchedule']);
     Route::resource("/presetProducts", \App\Http\Controllers\Api\Admin\PresetProductController::class)->except(['destroy']);
     Route::delete("/presetProducts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "destroy"]);
 
@@ -81,15 +82,11 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::get("/count", [\App\Http\Controllers\Api\Admin\CountController::class, 'show']);
     Route::post("/counts", [\App\Http\Controllers\Api\Admin\CountController::class, 'store']);
 
-    Route::patch("/packages/schedule/{package}", [\App\Http\Controllers\Api\Admin\PackageController::class, 'updateSchedule']);
     Route::resource("/packages", \App\Http\Controllers\Api\Admin\PackageController::class)->except(['destroy']);
     Route::delete("/packages", [\App\Http\Controllers\Api\Admin\PackageController::class, "destroy"]);
 
     Route::resource("/events", \App\Http\Controllers\Api\Admin\EventController::class)->except(['destroy']);
     Route::delete("/events", [\App\Http\Controllers\Api\Admin\EventController::class, "destroy"]);
-
-    Route::resource("/farms", \App\Http\Controllers\Api\Admin\FarmController::class)->except(['destroy']);
-    Route::delete("/farms", [\App\Http\Controllers\Api\Admin\FarmController::class, "destroy"]);
 
     Route::resource("/faqs", \App\Http\Controllers\Api\Admin\FaqController::class)->except(['destroy']);
     Route::delete("/faqs", [\App\Http\Controllers\Api\Admin\FaqController::class, "destroy"]);
@@ -98,7 +95,8 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::delete("/notices", [\App\Http\Controllers\Api\Admin\NoticeController::class, "destroy"]);
 
     Route::post("/users/export", [\App\Http\Controllers\Api\Admin\UserController::class, "export"]);
-    Route::resource("/users", \App\Http\Controllers\Api\Admin\UserController::class);
+    Route::resource("/users", \App\Http\Controllers\Api\Admin\UserController::class)->except(['destroy']);
+    Route::delete("/users/{user}", [\App\Http\Controllers\Api\Admin\UserController::class, "destroy"]);
     Route::get("/users/counts/{user}", [\App\Http\Controllers\Api\Admin\UserController::class, "counts"]);
 
     // Route::resource("/estimates", \App\Http\Controllers\Api\Admin\EstimateController::class)->except(['destroy', 'store', 'update']);
@@ -149,14 +147,6 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/pointHistories", \App\Http\Controllers\Api\Admin\PointHistoryController::class)->except(['destroy']);
     Route::delete("/pointHistories", [\App\Http\Controllers\Api\Admin\PointHistoryController::class, "destroy"]);
 
-    Route::resource("/projects", \App\Http\Controllers\Api\Admin\ProjectController::class)->except(['destroy']);
-    Route::delete("/projects", [\App\Http\Controllers\Api\Admin\ProjectController::class, "destroy"]);
-
-    Route::get("/deliverySetting", [\App\Http\Controllers\Api\Admin\DeliverySettingController::class, "show"]);
-    Route::resource("/deliverySettings", \App\Http\Controllers\Api\Admin\DeliverySettingController::class)->except(['index', 'show', 'update', 'destroy']);
-
-    Route::resource("/recipes", \App\Http\Controllers\Api\Admin\RecipeController::class)->except(['destroy']);
-    Route::delete("/recipes", [\App\Http\Controllers\Api\Admin\RecipeController::class, "destroy"]);
 
 });
 

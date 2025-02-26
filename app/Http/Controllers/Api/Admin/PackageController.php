@@ -94,7 +94,7 @@ class PackageController extends ApiController
         foreach($request->packageMaterials as $packageMaterial){
             $ids[] = $packageMaterial['id'];
 
-            if($packageMaterial['id']) {
+            if(isset($packageMaterial['id'])) {
                 $createdPackageMaterial = PackageMaterial::find($packageMaterial['id']);
 
                 $createdPackageMaterial->update($packageMaterial);
