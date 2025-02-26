@@ -25,7 +25,7 @@ class ProductController extends ApiController
                 ->orWhereHas('farm', function ($query) use ($request){
                     $query->where('title', 'LIKE', '%'.$request->word.'%');
                 });
-        }));
+        });
 
         if ($request->category_id)
             $items = $items->where('category_id', $request->category_id);
