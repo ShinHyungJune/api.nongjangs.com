@@ -91,11 +91,11 @@ class PackageController extends ApiController
         foreach($request->packageMaterials as $packageMaterial){
             $ids[] = $packageMaterial['id'];
 
-            if($packageMaterial['id'])
+            if($packageMaterial['id']) {
                 $createdPackageMaterial = PackageMaterial::find($packageMaterial['id']);
 
                 $createdPackageMaterial->update($packageMaterial);
-            else {
+            }else {
                 $createdPackageMaterial = PackageMaterial::create(array_merge([
                     'package_id' => $package->id,
                 ], $packageMaterial));
