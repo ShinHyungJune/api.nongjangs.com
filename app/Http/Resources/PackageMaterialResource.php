@@ -18,6 +18,7 @@ class PackageMaterialResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'material_id' => $this->material_id,
             'material' => MaterialResource::make($this->material),
             'img' => $this->img ?? '',
             'type' => $this->type,
