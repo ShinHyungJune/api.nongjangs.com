@@ -53,7 +53,7 @@ class ProductRequest extends FormRequest
                     return [
                         'state' => ['required', 'integer'],
                         'category_id' => ['required', 'integer'],
-                        'files' => ['required'],
+                        'files' => ['nullable'],
                         'title' => ['required'],
                         'farm_id' => ['required', 'integer'],
                         'county_id' => ['required', 'integer'],
