@@ -22,9 +22,12 @@ class PackageController extends ApiController
      */
     public function index(PackageRequest $request)
     {
-        $items = Package::whereHas('materials', function($query) use($request){
-            $query->where("title", "LIKE", "%".$request->word."%");
-        });
+        $items = new Package();
+
+        if($request->word)
+            $items = $items->whereHas('materials', function($query) use($request){
+                $query->where("title", "LIKE", "%".$request->word."%");
+            });
 
         $items = $items->latest()->paginate(25);
 
