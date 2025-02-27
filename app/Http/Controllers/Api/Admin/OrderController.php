@@ -14,10 +14,11 @@ use Inertia\Inertia;
 
 class OrderController extends ApiController
 {
+
+
     /** 목록
      * @group 관리자
      * @subgroup Order(주문)
-     * @priority 17
      * @responseFile storage/responses/orders.json
      */
     public function index(OrderRequest $request)
@@ -45,7 +46,6 @@ class OrderController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Order(주문)
-     * @priority 17
      * @responseFile storage/responses/order.json
      */
     public function show(Order $order)
@@ -56,7 +56,6 @@ class OrderController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Order(주문)
-     * @priority 17
      * @responseFile storage/responses/order.json
      */
     public function store(OrderRequest $request)
@@ -75,7 +74,6 @@ class OrderController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Order(주문)
-     * @priority 17
      * @responseFile storage/responses/order.json
      */
     public function update(OrderRequest $request, Order $order)
@@ -106,7 +104,6 @@ class OrderController extends ApiController
     /** 삭제
      * @group 관리자
      * @subgroup Order(주문)
-     * @priority 17
      */
     public function destroy(OrderRequest $request)
     {

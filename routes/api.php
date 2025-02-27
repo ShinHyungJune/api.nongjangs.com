@@ -72,6 +72,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/materials", \App\Http\Controllers\Api\Admin\MaterialController::class)->except(['destroy']);
     Route::delete("/materials", [\App\Http\Controllers\Api\Admin\MaterialController::class, "destroy"]);
 
+    Route::get("/presetProducts/counts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'counts']);
     Route::patch("/presetProducts/schedule/{packageSetting}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'updateSchedule']);
     Route::resource("/presetProducts", \App\Http\Controllers\Api\Admin\PresetProductController::class)->except(['destroy']);
     Route::delete("/presetProducts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "destroy"]);

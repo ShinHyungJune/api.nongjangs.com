@@ -21,6 +21,10 @@ class PresetProductRequest extends FormRequest
                         'type_package' => ['nullable', 'integer'],
                         'state' => ['nullable', 'integer'],
                         'states' => ['nullable', 'array'],
+
+                        'package_id' => ['nullable', 'integer'],
+                        'started_at' => ['nullable', 'date'],
+                        'finished_at' => ['nullable', 'date'],
                     ];
 
                 case 'store':
@@ -132,6 +136,15 @@ class PresetProductRequest extends FormRequest
             ],
             'coupon_id' => [
                 'description' => '<span class="point">쿠폰고유번호</span>',
+            ],
+            'package_id' => [
+                'description' => '<span class="point">회차 고유번호</span>',
+            ],
+            'started_at' => [
+                'description' => '<span class="point">시작일자</span>',
+            ],
+            'finished_at' => [
+                'description' => '<span class="point">종료일자</span>',
             ],
 
             // 늘 쓰이는 애들

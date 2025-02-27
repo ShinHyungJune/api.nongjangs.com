@@ -34,10 +34,16 @@ class PresetProduct extends Model
 
         self::updating(function (PresetProduct $presetProduct) {
             $presetProduct = $presetProduct->calculatePrice();
+
+            $prevDeliveryNumber = $presetProduct->delivery_number;
+
+            if(!$prevDeliveryNumber && $presetProduct->delivery_number)
+                $presetProduct->delivery_started_at = Carbon::now();
         });
 
         self::updated(function (PresetProduct $presetProduct) {
             $user = User::withTrashed()->find($presetProduct->preset->user_id);
+
 
 
             // 주문취소 시 반환처리

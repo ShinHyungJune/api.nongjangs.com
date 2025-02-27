@@ -2,16 +2,43 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Enums\StateOrder;
+use App\Enums\StatePresetProduct;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderRequest;
+use App\Http\Resources\OrderResource;
+use App\Http\Resources\PackageResource;
 use App\Http\Resources\PresetProductResource;
 use App\Http\Requests\PresetProductRequest;
+use App\Models\Order;
+use App\Models\Package;
 use App\Models\PresetProduct;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class PresetProductController extends ApiController
 {
+    /** 통계
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     * @responseFile storage/responses/presetProductsCounts.json
+     */
+    public function counts(PresetProductRequest $request)
+    {
+        $currentPackage = Package::getCanOrder();
+
+        $result = [
+            'currentPackage' => PackageResource::make($currentPackage),
+            'count_current_preset_product' => $currentPackage ? PresetProduct::whereNotIn('state', [StatePresetProduct::BEFORE_PAYMENT, StatePresetProduct::CANCEL])->where('package_id', $currentPackage->id)->count() : 0,
+
+        ];
+
+        return $this->respondSuccessfully($result);
+    }
+
+
     /** 목록
      * @group 관리자
      * @subgroup PresetProduct(출고)
@@ -23,9 +50,12 @@ class PresetProductController extends ApiController
             $query->where("product_title", "LIKE", "%".$request->word."%")
                 ->orWhereHas("preset", function ($query) use($request){
                    $query->whereHas('order', function ($query) use ($request){
-                       $query->where("payment_id","LIKE", "%".$request->word."%");
+                       $query->where("payment_id","LIKE", "%".$request->word."%")
+                           ->orWhere("user_name", "LIKE", "%".$request->word."%")
+                           ->orWhere("user_email", "LIKE", "%".$request->word."%")
+                           ->orWhere("user_contact", "LIKE", "%".$request->word."%");
                    });
-                });
+                })->orWhere('delivery_number', "LIKE", "%".$request->word."%");
         });
 
         if($request->user_id)
@@ -42,7 +72,23 @@ class PresetProductController extends ApiController
         if($request->has_column)
             $items = $items->whereNotNull($request->has_column);
 
-        $items = $items->latest()->paginate(25);
+        //
+        if($request->type_package)
+            $items = $items->where('package_type', $request->type_package);
+
+        if($request->package_id)
+            $items = $items->where('package_id', $request->package_id);
+
+        if($request->started_at)
+            $items = $items->where('created_at', '>=', Carbon::make($this->started_at)->startOfDay());
+
+        if($request->finished_at)
+            $items = $items->where('created_at', '<=', Carbon::make($this->finished_at)->endOfDay());
+
+        $request['order_by'] = $request->order_by ?? 'created_at';
+        $request['align'] = $request->align ?? 'desc';
+
+        $items = $items->orderBy($request->order_by, $request->align)->paginate(25);
 
         return PresetProductResource::collection($items);
     }
