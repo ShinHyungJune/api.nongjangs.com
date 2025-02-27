@@ -146,6 +146,12 @@ class PresetProductRequest extends FormRequest
             'finished_at' => [
                 'description' => '<span class="point">종료일자</span>',
             ],
+            'align' => [
+                'description' => '<span class="point">정렬 (desc - 내림차순 | asc - 오름차순)</span>',
+            ],
+            'order_by' => [
+                'description' => '<span class="point">정렬기준 (created_at - 날짜순)</span>',
+            ],
 
             // 늘 쓰이는 애들
             'word' => [
