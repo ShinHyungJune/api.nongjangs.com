@@ -395,6 +395,28 @@ class PresetProduct extends Model
         return 0;
     }
 
+    public function getAdminCancelAttribute()
+    {
+        if(!auth()->user())
+            return 0;
+
+        if(!auth()->user()->admin)
+            return 0;
+
+        if(in_array($this->state, [
+            StatePresetProduct::WILL_OUT,
+            StatePresetProduct::ONGOING_DELIVERY,
+            StatePresetProduct::DELIVERED,
+            StatePresetProduct::CONFIRMED,
+            StatePresetProduct::CANCEL,
+            StatePresetProduct::REQUEST_CANCEL,
+            StatePresetProduct::DENY_CANCEL,
+        ])) {
+            return 0;
+        }
+
+        return 1;
+    }
     public function getCanCancelAttribute()
     {
         if(!auth()->user())

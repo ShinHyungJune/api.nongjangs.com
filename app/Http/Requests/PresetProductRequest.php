@@ -78,6 +78,18 @@ class PresetProductRequest extends FormRequest
                         'option_type' => ['required', 'integer'],//
                     ];
 
+                case 'updateDeliveryAddress':
+                    return [
+                        'delivery_address' => ['required', 'string', 'max:500'],
+                        'delivery_address_detail' => ['required', 'string', 'max:500'],
+                        'delivery_address_zipcode' => ['required', 'string', 'max:500'],
+                    ];
+
+                case 'updateState':
+                    return [
+                        'state' => ['required', 'integer'],
+                    ];
+
                 case 'willOut':
                     return [
                         'ids' => ['required', 'array'],

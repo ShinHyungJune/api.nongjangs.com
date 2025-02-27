@@ -219,6 +219,17 @@ class PresetProductController extends ApiController
         return $this->respondSuccessfully();
     }
 
+    /** 상태 변경
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     */
+    public function updateState(PresetProduct $presetProduct, PresetProductRequest $request)
+    {
+        $presetProduct->update($request->validated());
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
     /** 삭제
      * @group 관리자
      * @subgroup PresetProduct(출고)
@@ -265,5 +276,23 @@ class PresetProductController extends ApiController
         Excel::import(new PresetProductsImport, $request->file('file'));
 
         return $this->respondSuccessfully();
+    }
+
+    /** 취소
+     * @group 관리자
+     * @subgroup PresetProduct(출고상품)
+     * @responseFile storage/responses/presetProduct.json
+     */
+    public function cancel(PresetProduct $presetProduct)
+    {
+        if(!$presetProduct->admin_can_cancel)
+            return $this->respondForbidden('취소 불가능한 상태입니다.');
+
+        $result = $presetProduct->cancel();
+
+        if(!$result['success'])
+            return $this->respondForbidden($result['message']);
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
 }
