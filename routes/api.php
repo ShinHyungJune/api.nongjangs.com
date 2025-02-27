@@ -73,6 +73,9 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::delete("/materials", [\App\Http\Controllers\Api\Admin\MaterialController::class, "destroy"]);
 
     Route::get("/presetProducts/counts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'counts']);
+    Route::post("/presetProducts/export", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'export']);
+    Route::post("/presetProducts/import", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'import']);
+    Route::patch("/presetProducts/willOut", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'willOut']);
     Route::patch("/presetProducts/schedule/{packageSetting}", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'updateSchedule']);
     Route::resource("/presetProducts", \App\Http\Controllers\Api\Admin\PresetProductController::class)->except(['destroy']);
     Route::delete("/presetProducts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, "destroy"]);

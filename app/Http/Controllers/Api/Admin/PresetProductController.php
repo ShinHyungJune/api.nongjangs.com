@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Admin;
 
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
+use App\Exports\PresetProductsExport;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
@@ -11,49 +12,30 @@ use App\Http\Resources\OrderResource;
 use App\Http\Resources\PackageResource;
 use App\Http\Resources\PresetProductResource;
 use App\Http\Requests\PresetProductRequest;
+use App\Imports\PresetProductsImport;
+use App\Models\Download;
 use App\Models\Order;
 use App\Models\Package;
 use App\Models\PresetProduct;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PresetProductController extends ApiController
 {
-    /** 통계
-     * @group 관리자
-     * @subgroup PresetProduct(출고)
-     * @responseFile storage/responses/presetProductsCounts.json
-     */
-    public function counts(PresetProductRequest $request)
-    {
-        $currentPackage = Package::getCanOrder();
-
-        $result = [
-            'currentPackage' => $currentPackage ? PackageResource::make($currentPackage) : '',
-            'count_current_preset_product' => $currentPackage ? PresetProduct::whereNotIn('state', [StatePresetProduct::BEFORE_PAYMENT, StatePresetProduct::CANCEL])->where('package_id', $currentPackage->id)->count() : 0,
-        ];
-
-        return $this->respondSuccessfully($result);
-    }
-
-
-    /** 목록
-     * @group 관리자
-     * @subgroup PresetProduct(출고)
-     * @responseFile storage/responses/presetProducts.json
-     */
-    public function index(PresetProductRequest $request)
+    public function filter(Request $request)
     {
         $items = PresetProduct::where(function($query) use($request){
             $query->where("product_title", "LIKE", "%".$request->word."%")
                 ->orWhereHas("preset", function ($query) use($request){
-                   $query->whereHas('order', function ($query) use ($request){
-                       $query->where("payment_id","LIKE", "%".$request->word."%")
-                           ->orWhere("user_name", "LIKE", "%".$request->word."%")
-                           ->orWhere("user_email", "LIKE", "%".$request->word."%")
-                           ->orWhere("user_contact", "LIKE", "%".$request->word."%");
-                   });
+                    $query->whereHas('order', function ($query) use ($request){
+                        $query->where("payment_id","LIKE", "%".$request->word."%")
+                            ->orWhere("user_name", "LIKE", "%".$request->word."%")
+                            ->orWhere("user_email", "LIKE", "%".$request->word."%")
+                            ->orWhere("user_contact", "LIKE", "%".$request->word."%");
+                    });
                 })->orWhere('delivery_number', "LIKE", "%".$request->word."%");
         });
 
@@ -83,6 +65,38 @@ class PresetProductController extends ApiController
 
         if($request->finished_at)
             $items = $items->where('created_at', '<=', Carbon::make($request->finished_at)->endOfDay());
+
+        if($request->ids)
+            $items = $items->whereIn('id', $request->ids);
+
+        return $items;
+    }
+    /** 통계
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     * @responseFile storage/responses/presetProductsCounts.json
+     */
+    public function counts(PresetProductRequest $request)
+    {
+        $currentPackage = Package::getCanOrder();
+
+        $result = [
+            'currentPackage' => $currentPackage ? PackageResource::make($currentPackage) : '',
+            'count_current_preset_product' => $currentPackage ? PresetProduct::whereNotIn('state', [StatePresetProduct::BEFORE_PAYMENT, StatePresetProduct::CANCEL])->where('package_id', $currentPackage->id)->count() : 0,
+        ];
+
+        return $this->respondSuccessfully($result);
+    }
+
+
+    /** 목록
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     * @responseFile storage/responses/presetProducts.json
+     */
+    public function index(PresetProductRequest $request)
+    {
+        $items = $this->filter($request);
 
         $request['order_by'] = $request->order_by ?? 'created_at';
         $request['align'] = $request->align ?? 'desc';
@@ -150,6 +164,19 @@ class PresetProductController extends ApiController
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
 
+    /** 출고예정처리
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     */
+    public function willOut(PresetProductRequest $request)
+    {
+        PresetProduct::where('state', StatePresetProduct::READY)->whereIn('id', $request->ids)->update([
+            'state' => StatePresetProduct::WAIT
+        ]);
+
+        return $this->respondSuccessfully();
+    }
+
     /** 삭제
      * @group 관리자
      * @subgroup PresetProduct(출고)
@@ -157,6 +184,43 @@ class PresetProductController extends ApiController
     public function destroy(PresetProductRequest $request)
     {
         PresetProduct::whereIn('id', $request->ids)->delete();
+
+        return $this->respondSuccessfully();
+    }
+
+    /** 엑셀다운
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     */
+    public function export(PresetProductRequest $request)
+    {
+        $max = 30000;
+
+        $download = Download::create();
+
+        $path = $download->id."/"."출고.xlsx";
+
+        $items = $this->filter($request);
+
+        if($items->count() > $max)
+            return $this->respondForbidden("{$max}개 이하로 개수를 조정해주세요.");
+
+        $items = $items->get();
+
+        Excel::store(new PresetProductsExport($items), $path, "s3");
+
+        $url = Storage::disk("s3")->url($path);
+
+        return $this->respondSuccessfully($url);
+    }
+
+    /** 송장등록
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     */
+    public function import(PresetProductRequest $request)
+    {
+        Excel::import(new PresetProductsImport, $request->file('file'));
 
         return $this->respondSuccessfully();
     }

@@ -13,6 +13,25 @@ class PresetProductRequest extends FormRequest
 
         if ($admin) {
             switch ($method) {
+                case 'import':
+                    return [
+                        'file' => ['required'],
+                    ];
+
+                case 'export':
+                    return [
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'has_column' => ['nullable', 'string', 'max:500'],
+                        'user_id' => ['nullable', 'integer'],
+                        'type_package' => ['nullable', 'integer'],
+                        'state' => ['nullable', 'integer'],
+                        'states' => ['nullable', 'array'],
+
+                        'package_id' => ['nullable', 'integer'],
+                        'started_at' => ['nullable', 'date'],
+                        'finished_at' => ['nullable', 'date'],
+                    ];
+
                 case 'index':
                     return [
                         'word' => ['nullable', 'string', 'max:500'],
@@ -57,6 +76,11 @@ class PresetProductRequest extends FormRequest
                         'option_title' => ['required'],
                         'option_price' => ['required', 'integer'],
                         'option_type' => ['required', 'integer'],//
+                    ];
+
+                case 'willOut':
+                    return [
+                        'ids' => ['required', 'array'],
                     ];
 
                 case 'destroy':
@@ -159,6 +183,10 @@ class PresetProductRequest extends FormRequest
             ],
             'ids' => [
                 'description' => '<span class="point">선택한 대상들의 고유번호 목록</span>',
+                // 'example' => '',
+            ],
+            'file' => [
+                'description' => '<span class="point">파일 객체</span>',
                 // 'example' => '',
             ],
             'files' => [
