@@ -72,6 +72,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/materials", \App\Http\Controllers\Api\Admin\MaterialController::class)->except(['destroy']);
     Route::delete("/materials", [\App\Http\Controllers\Api\Admin\MaterialController::class, "destroy"]);
 
+    Route::get("/presetProducts/materials", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'materials']);
     Route::get("/presetProducts/counts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'counts']);
     Route::post("/presetProducts/export", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'export']);
     Route::post("/presetProducts/import", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'import']);

@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "고유번호",
+      "title": "제목",
+      "type": "유형",
+      "count": "개수",
+      "value": "값",
+      "unit": "단위",
+    }
+  ],
+  "meta": {
+    "total": "총 개수",
+    "current_page": "현재 페이지",
+    "last_page": "마지막 페이지"
+  }
+}

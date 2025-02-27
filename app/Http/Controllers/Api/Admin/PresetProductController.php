@@ -71,6 +71,48 @@ class PresetProductController extends ApiController
 
         return $items;
     }
+
+    /** 품목 목록(출고해야할 품목 목록 조회용)
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     * @responseFile storage/responses/presetProductsMaterials.json
+     */
+    public function materials(PresetProductRequest $request)
+    {
+        $package = Package::find($request->package_id);
+
+        $presetProducts = $package->presetProducts()
+            ->whereNotIn('state', [StatePresetProduct::BEFORE_PAYMENT,StatePresetProduct::CANCEL])
+            ->get();
+
+        $items = [];
+
+        foreach($presetProducts as $presetProduct){
+            $materials = $presetProduct->materials;
+
+            foreach($materials as $material){
+                $index = collect($items)->search(function($item) use ($material){
+                    return $item['id'] == $material->id;
+                });
+
+                if($index !== false){
+                    $items[$index]['count'] += $material->pivot->count;
+                }else{
+                    $items[] = [
+                        'id' => $material->id,
+                        'title' => $material->title,
+                        'type' => $material->pivot->type,
+                        'unit' => $material->pivot->unit,
+                        'count' => $material->pivot->count,
+                        'value' => $material->pivot->value,
+                    ];
+                }
+            }
+        }
+
+        return $this->respondSuccessfully($items);
+    }
+
     /** 통계
      * @group 관리자
      * @subgroup PresetProduct(출고)
