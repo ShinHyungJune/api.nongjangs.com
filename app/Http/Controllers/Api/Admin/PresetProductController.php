@@ -80,10 +80,10 @@ class PresetProductController extends ApiController
             $items = $items->where('package_id', $request->package_id);
 
         if($request->started_at)
-            $items = $items->where('created_at', '>=', Carbon::make($this->started_at)->startOfDay());
+            $items = $items->where('created_at', '>=', Carbon::make($request->started_at)->startOfDay());
 
         if($request->finished_at)
-            $items = $items->where('created_at', '<=', Carbon::make($this->finished_at)->endOfDay());
+            $items = $items->where('created_at', '<=', Carbon::make($request->finished_at)->endOfDay());
 
         $request['order_by'] = $request->order_by ?? 'created_at';
         $request['align'] = $request->align ?? 'desc';
