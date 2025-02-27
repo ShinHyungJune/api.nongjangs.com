@@ -22,6 +22,7 @@ class CategoryResource extends JsonResource
             'order' => $this->order,
             'title' => $this->title,
             'materials' => MaterialResource::collection($this->materials),
+            'categories' => CategoryResource::collection($this->categories),
         ];
     }
 }
