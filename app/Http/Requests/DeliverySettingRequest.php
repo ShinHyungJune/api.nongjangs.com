@@ -24,8 +24,8 @@ class DeliverySettingRequest extends FormRequest
                         'delivery_company' => ['required', 'integer'],
                         'type_delivery_price' => ['required', 'integer'],
                         'price_delivery' => ['required', 'integer'],
-                        'prices_delivery' => ['required'],
-                        'min_price_for_free_delivery_price' => ['required', 'integer'],
+                        'prices_delivery' => ['nullable'],
+                        'min_price_for_free_delivery_price' => ['nullable', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
                         'delivery_price_far_place' => ['nullable', 'integer'],
                         'ranges_far_place' => ['nullable', 'array'],
@@ -37,8 +37,8 @@ class DeliverySettingRequest extends FormRequest
                         'delivery_company' => ['required', 'integer'],
                         'type_delivery_price' => ['required', 'integer'],
                         'price_delivery' => ['required', 'integer'],
-                        'prices_delivery' => ['required'],
-                        'min_price_for_free_delivery_price' => ['required', 'integer'],
+                        'prices_delivery' => ['nullable'],
+                        'min_price_for_free_delivery_price' => ['nullable', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
                         'delivery_price_far_place' => ['nullable', 'integer'],//
                         'ranges_far_place' => ['nullable', 'array'],//

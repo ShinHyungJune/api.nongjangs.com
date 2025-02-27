@@ -160,8 +160,6 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::get("/deliverySetting", [\App\Http\Controllers\Api\Admin\DeliverySettingController::class, 'show']);
     Route::resource("/deliverySettings", \App\Http\Controllers\Api\Admin\DeliverySettingController::class)->except(['show', 'destroy']);
     Route::delete("/deliverySettings", [\App\Http\Controllers\Api\Admin\DeliverySettingController::class, "destroy"]);
-
-
 });
 
 Route::post("/login", [\App\Http\Controllers\Api\UserController::class, "login"]);
