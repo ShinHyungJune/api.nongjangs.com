@@ -15,7 +15,6 @@ class DeliverySettingController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup DeliverySetting(배송설정)
-     * @responseFile storage/responses/deliverySetting.json
      */
     public function show()
     {
@@ -27,7 +26,6 @@ class DeliverySettingController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup DeliverySetting(배송설정)
-     * @responseFile storage/responses/deliverySetting.json
      */
     public function store(DeliverySettingRequest $request)
     {

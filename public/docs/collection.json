@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "9700892d-834c-422a-9222-0b39925e4568",
+        "_postman_id": "275ee667-9038-4946-ad3c-1a327d7c6484",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -86,7 +86,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"qna_category_id\":9,\"title\":\"jctjuhru\",\"description\":\"Voluptate consequuntur odio in minus est.\"}"
+                                    "raw": "{\"qna_category_id\":11,\"title\":\"yhqmirzibt\",\"description\":\"Occaecati autem corporis nobis provident.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -114,7 +114,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "3",
+                                            "value": "6",
                                             "description": "The ID of the qna."
                                         }
                                     ]
@@ -210,7 +210,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"pdfpuwkxa\"}"
+                                    "raw": "{\"word\":\"ytgmnuyytasvgfo\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -276,7 +276,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "aut",
+                                            "value": "nihil",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -319,7 +319,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "necessitatibus",
+                                            "value": "accusamus",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -365,7 +365,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "aut",
+                                            "value": "et",
                                             "description": "The ID of the example."
                                         }
                                     ]
@@ -410,7 +410,7 @@
                                         {
                                             "id": "banner_id",
                                             "key": "banner_id",
-                                            "value": "3",
+                                            "value": "19",
                                             "description": "The ID of the banner."
                                         }
                                     ]
@@ -446,7 +446,7 @@
                                         {
                                             "id": "banner_id",
                                             "key": "banner_id",
-                                            "value": "7",
+                                            "value": "4",
                                             "description": "The ID of the banner."
                                         }
                                     ]
@@ -498,7 +498,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":9,\"word\":\"dnacxcuisbxqvtpiews\"}"
+                                    "raw": "{\"type\":7,\"word\":\"odz\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -536,7 +536,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":1,\"title\":\"qnwlhcgorjrobfb\",\"subtitle\":\"yvmvokhvpbfhedrmwhltvz\",\"url\":\"http:\\\/\\\/heaney.org\\\/aliquid-debitis-aperiam-quibusdam-ducimus-odio-beatae-laboriosam.html\",\"button\":\"npotrwgyifmtjfuyqddboqb\",\"color_text\":\"xlshcqjbuywpmem\",\"color_button\":\"wjpgemqfoi\",\"started_at\":\"2025-02-27T13:11:18\",\"finished_at\":\"2025-02-27T13:11:18\"}"
+                                    "raw": "{\"type\":18,\"title\":\"ropkizkjwksxtzfhtgyyvkgqx\",\"subtitle\":\"rsazooejqeruajo\",\"url\":\"http:\\\/\\\/mante.com\\\/nisi-ullam-tempore-et-laborum-eveniet-tempora\",\"button\":\"gz\",\"color_text\":\"gipthihjvbpg\",\"color_button\":\"nxyfsgbuldtsfpavg\",\"started_at\":\"2025-02-27T13:23:32\",\"finished_at\":\"2025-02-27T13:23:32\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -564,7 +564,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "15",
+                                            "value": "11",
                                             "description": "The ID of the banner."
                                         }
                                     ]
@@ -607,7 +607,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "1",
+                                            "value": "9",
                                             "description": "The ID of the banner."
                                         }
                                     ]
@@ -625,7 +625,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":5,\"title\":\"rkgowoptgqmhqapwbwojj\",\"subtitle\":\"tdiihzjs\",\"url\":\"http:\\\/\\\/marquardt.com\\\/consequatur-sint-repudiandae-dicta-eaque-ducimus-quia\",\"button\":\"gwtgfrmxdaxkcpeiprjj\",\"color_text\":\"tyrmvsmqvn\",\"color_button\":\"pqxjyhnqticndid\",\"started_at\":\"2025-02-27T13:11:22\",\"finished_at\":\"2025-02-27T13:11:22\"}"
+                                    "raw": "{\"type\":10,\"title\":\"meqptvgv\",\"subtitle\":\"ohtwq\",\"url\":\"https:\\\/\\\/www.osinski.info\\\/in-harum-asperiores-eum-aperiam-quis\",\"button\":\"zfrwoflitq\",\"color_text\":\"klwipymbkwkbviotksxvu\",\"color_button\":\"lygkseftgplstryqmrugh\",\"started_at\":\"2025-02-27T13:23:36\",\"finished_at\":\"2025-02-27T13:23:36\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -653,7 +653,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "3",
+                                            "value": "19",
                                             "description": "The ID of the banner."
                                         }
                                     ]
@@ -723,7 +723,7 @@
                                         {
                                             "id": "pop_id",
                                             "key": "pop_id",
-                                            "value": "11",
+                                            "value": "3",
                                             "description": "The ID of the pop."
                                         }
                                     ]
@@ -759,7 +759,7 @@
                                         {
                                             "id": "pop_id",
                                             "key": "pop_id",
-                                            "value": "19",
+                                            "value": "4",
                                             "description": "The ID of the pop."
                                         }
                                     ]
@@ -805,7 +805,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"yixdqhyuotopjbwsrixi\"}"
+                                    "raw": "{\"word\":\"rruywzftdb\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -843,7 +843,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"title\":\"rerum\",\"open\":false,\"started_at\":\"2025-02-27T13:11:28\",\"finished_at\":\"2025-02-27T13:11:28\",\"files\":[]}"
+                                    "raw": "{\"title\":\"qui\",\"open\":true,\"started_at\":\"2025-02-27T13:23:42\",\"finished_at\":\"2025-02-27T13:23:42\",\"files\":[]}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -871,7 +871,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "2",
+                                            "value": "10",
                                             "description": "The ID of the pop."
                                         }
                                     ]
@@ -914,7 +914,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "3",
+                                            "value": "13",
                                             "description": "The ID of the pop."
                                         }
                                     ]
@@ -932,7 +932,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"title\":\"explicabo\",\"open\":false,\"started_at\":\"2025-02-27T13:11:32\",\"finished_at\":\"2025-02-27T13:11:32\"}"
+                                    "raw": "{\"title\":\"fugiat\",\"open\":false,\"started_at\":\"2025-02-27T13:23:46\",\"finished_at\":\"2025-02-27T13:23:46\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -960,7 +960,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "13",
+                                            "value": "9",
                                             "description": "The ID of the pop."
                                         }
                                     ]
@@ -1046,7 +1046,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"target_user_id\":14,\"user_id\":15,\"word\":\"jztpgdaithrjzmx\"}"
+                                    "raw": "{\"target_user_id\":17,\"user_id\":5,\"word\":\"thx\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1074,7 +1074,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "1",
+                                            "value": "9",
                                             "description": "The ID of the report."
                                         }
                                     ]
@@ -1129,7 +1129,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"start_expired_at\":\"2025-02-27T13:11:41\",\"finish_expired_at\":\"2025-02-27T13:11:41\",\"user_id\":14,\"word\":\"cq\"}"
+                                    "raw": "{\"start_expired_at\":\"2025-02-27T13:23:54\",\"finish_expired_at\":\"2025-02-27T13:23:54\",\"user_id\":18,\"word\":\"apgxzbvqkrrwwlsencdko\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1167,7 +1167,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"user_id\":15,\"increase\":false,\"point\":4,\"memo\":\"lejortpolesk\"}"
+                                    "raw": "{\"user_id\":2,\"increase\":true,\"point\":48,\"memo\":\"dahtywm\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1211,7 +1211,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"target_user_id\":3,\"word\":\"wakquxzbwwzu\"}"
+                                    "raw": "{\"target_user_id\":19,\"word\":\"wichhberbxbzucngxnksubty\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1249,7 +1249,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"target_user_id\":19,\"description\":\"Quia quisquam beatae eveniet natus et amet.\"}"
+                                    "raw": "{\"target_user_id\":1,\"description\":\"Facilis est quia vero aliquid.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1324,7 +1324,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"gtkaeuojulcsyhglt\",\"user_id\":19}"
+                                    "raw": "{\"word\":\"mfcemdxfhljfjxtdjdmgpx\",\"user_id\":15}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1352,7 +1352,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "1",
+                                            "value": "11",
                                             "description": "The ID of the delivery."
                                         }
                                     ]
@@ -1442,7 +1442,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"user_id\":18,\"word\":\"uun\"}"
+                                    "raw": "{\"user_id\":4,\"word\":\"fqbqmypikdzvbhfprfoklif\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1508,7 +1508,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "19",
+                                            "value": "20",
                                             "description": "The ID of the coupon."
                                         }
                                     ]
@@ -1551,7 +1551,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "12",
+                                            "value": "8",
                                             "description": "The ID of the coupon."
                                         }
                                     ]
@@ -1597,7 +1597,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "1",
+                                            "value": "18",
                                             "description": "The ID of the coupon."
                                         }
                                     ]
@@ -1642,7 +1642,7 @@
                                         {
                                             "id": "category_id",
                                             "key": "category_id",
-                                            "value": "13",
+                                            "value": "2",
                                             "description": "The ID of the category."
                                         }
                                     ]
@@ -1678,7 +1678,7 @@
                                         {
                                             "id": "category_id",
                                             "key": "category_id",
-                                            "value": "1",
+                                            "value": "4",
                                             "description": "The ID of the category."
                                         }
                                     ]
@@ -1724,7 +1724,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"qjfxjisqsgcuozqrsinrgukuv\",\"type\":11,\"category_id\":7}"
+                                    "raw": "{\"word\":\"dddcs\",\"type\":19,\"category_id\":15}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1762,7 +1762,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":1,\"category_id\":20,\"title\":\"ijpknyeyewibpgghfux\"}"
+                                    "raw": "{\"type\":1,\"category_id\":16,\"title\":\"wioyqvhahpb\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1790,7 +1790,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "18",
+                                            "value": "6",
                                             "description": "The ID of the category."
                                         }
                                     ]
@@ -1833,7 +1833,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "18",
+                                            "value": "1",
                                             "description": "The ID of the category."
                                         }
                                     ]
@@ -1851,7 +1851,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":20,\"category_id\":1,\"title\":\"c\"}"
+                                    "raw": "{\"type\":13,\"category_id\":2,\"title\":\"mfmdkdv\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1926,7 +1926,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"ceykaomvgx\",\"type\":14}"
+                                    "raw": "{\"word\":\"hemgtnwzjnrowlnkvnr\",\"type\":15}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1964,7 +1964,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":\"eos\",\"title\":\"non\",\"open\":false,\"order\":2}"
+                                    "raw": "{\"type\":\"quo\",\"title\":\"ut\",\"open\":false,\"order\":13}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -1992,7 +1992,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "13",
+                                            "value": "19",
                                             "description": "The ID of the tag."
                                         }
                                     ]
@@ -2035,7 +2035,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "12",
+                                            "value": "6",
                                             "description": "The ID of the tag."
                                         }
                                     ]
@@ -2053,7 +2053,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":\"et\",\"title\":\"voluptas\",\"open\":true,\"order\":2}"
+                                    "raw": "{\"type\":\"consequuntur\",\"title\":\"odio\",\"open\":false,\"order\":4}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2128,7 +2128,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"ndavtaldbtpbbyigxnsxoxnc\",\"type\":16,\"category_id\":20}"
+                                    "raw": "{\"word\":\"gfajmyusdsazxmor\",\"type\":12,\"category_id\":20}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2166,7 +2166,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":20,\"category_id\":12,\"title\":\"teaepecbhpskzv\"}"
+                                    "raw": "{\"type\":8,\"category_id\":20,\"title\":\"ag\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2194,7 +2194,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "10",
+                                            "value": "9",
                                             "description": "The ID of the material."
                                         }
                                     ]
@@ -2237,7 +2237,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "8",
+                                            "value": "20",
                                             "description": "The ID of the material."
                                         }
                                     ]
@@ -2255,7 +2255,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":1,\"category_id\":20,\"title\":\"xfuzygwfdzxeorkeqpxfhqj\"}"
+                                    "raw": "{\"type\":19,\"category_id\":12,\"title\":\"kcwyronlicowx\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2330,7 +2330,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"hj\",\"has_column\":\"rqmbkiwobubpfhkcbczfofswr\",\"user_id\":18,\"type_package\":13,\"state\":5}"
+                                    "raw": "{\"word\":\"kuspaxvjbf\",\"has_column\":\"ajtsslet\",\"user_id\":7,\"type_package\":6,\"state\":20}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2358,7 +2358,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "15",
+                                            "value": "1",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -2448,7 +2448,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"nnube\"}"
+                                    "raw": "{\"word\":\"xltenyurqhdvl\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2476,7 +2476,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "4",
+                                            "value": "13",
                                             "description": "The ID of the couponGroup."
                                         }
                                     ]
@@ -2601,7 +2601,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"sum_weight\":7,\"sum_store\":14}"
+                                    "raw": "{\"sum_weight\":11,\"sum_store\":10}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2635,7 +2635,7 @@
                                         {
                                             "id": "package_id",
                                             "key": "package_id",
-                                            "value": "20",
+                                            "value": "10",
                                             "description": "The ID of the package."
                                         }
                                     ]
@@ -2653,7 +2653,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"will_delivery_at\":\"2025-02-27T13:12:18\",\"start_pack_wait_at\":\"2025-02-27T13:12:18\",\"finish_pack_wait_at\":\"2025-02-27T13:12:18\",\"start_pack_at\":\"2025-02-27T13:12:18\",\"finish_pack_at\":\"2025-02-27T13:12:18\",\"start_delivery_ready_at\":\"2025-02-27T13:12:18\",\"finish_delivery_ready_at\":\"2025-02-27T13:12:18\",\"start_will_out_at\":\"2025-02-27T13:12:18\",\"finish_will_out_at\":\"2025-02-27T13:12:18\"}"
+                                    "raw": "{\"will_delivery_at\":\"2025-02-27T13:24:31\",\"start_pack_wait_at\":\"2025-02-27T13:24:31\",\"finish_pack_wait_at\":\"2025-02-27T13:24:31\",\"start_pack_at\":\"2025-02-27T13:24:31\",\"finish_pack_at\":\"2025-02-27T13:24:31\",\"start_delivery_ready_at\":\"2025-02-27T13:24:31\",\"finish_delivery_ready_at\":\"2025-02-27T13:24:31\",\"start_will_out_at\":\"2025-02-27T13:24:31\",\"finish_will_out_at\":\"2025-02-27T13:24:31\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2691,7 +2691,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"yazapgqmlpangkxcvmmhas\"}"
+                                    "raw": "{\"word\":\"vxruqajcirrcmdzjxdanstw\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2757,7 +2757,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "5",
+                                            "value": "16",
                                             "description": "The ID of the package."
                                         }
                                     ]
@@ -2800,7 +2800,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "18",
+                                            "value": "5",
                                             "description": "The ID of the package."
                                         }
                                     ]
@@ -2930,7 +2930,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"uwwykvelukcuh\"}"
+                                    "raw": "{\"word\":\"lbwrtew\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2968,7 +2968,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"faq_category_id\":11,\"title\":\"ueneihuyvyylrzgatznivwnzt\",\"description\":\"Autem voluptatem corporis quisquam eveniet sit aut amet.\"}"
+                                    "raw": "{\"faq_category_id\":2,\"title\":\"liolguqjrrpjcbulzaqoltaob\",\"description\":\"Et est asperiores vel in saepe perspiciatis dolore.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -2996,7 +2996,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "9",
+                                            "value": "19",
                                             "description": "The ID of the faq."
                                         }
                                     ]
@@ -3039,7 +3039,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "6",
+                                            "value": "12",
                                             "description": "The ID of the faq."
                                         }
                                     ]
@@ -3057,7 +3057,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"faq_category_id\":15,\"title\":\"kwyvjuelrg\",\"description\":\"Autem magni culpa quae et nam error in.\"}"
+                                    "raw": "{\"faq_category_id\":14,\"title\":\"sctoxpx\",\"description\":\"Qui odio aliquam quaerat ad corporis et quasi.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3197,7 +3197,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"ohiqrgipblpfyt\",\"agree_promotion\":false,\"subscribe\":false,\"code_recommend\":18,\"has_column\":\"ujlpfbsrfgaz\"}"
+                                    "raw": "{\"word\":\"b\",\"agree_promotion\":false,\"subscribe\":false,\"code_recommend\":18,\"has_column\":\"qgeum\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3235,7 +3235,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"email\":\"bogisich.mabel@example.org\",\"name\":\"hggqkofiijvmbvzvo\",\"password\":\"I+avkBCR\",\"contact\":\"okpqbqldjvme\",\"admin\":false,\"master\":false}"
+                                    "raw": "{\"email\":\"vernie.bechtelar@example.net\",\"name\":\"tjis\",\"password\":\"3:|F{5E~i.J\\\\\",\"contact\":\"lxmxxlnezjupihw\",\"admin\":false,\"master\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3263,7 +3263,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "3",
+                                            "value": "16",
                                             "description": "The ID of the user."
                                         }
                                     ]
@@ -3306,7 +3306,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "11",
+                                            "value": "18",
                                             "description": "The ID of the user."
                                         }
                                     ]
@@ -3324,7 +3324,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"nickname\":\"juuixhwkchcmqxisyezadq\",\"birth\":\"2025-02-27T13:12:35\",\"count_family\":13,\"refund_account\":\"vgtbcjdjpceassbharfgker\",\"refund_bank\":\"vca\",\"refund_owner\":\"iqlfwxxfgjh\",\"agree_promotion\":true,\"active\":true}"
+                                    "raw": "{\"nickname\":\"xwfvbanecfophvnd\",\"birth\":\"2025-02-27T13:24:47\",\"count_family\":9,\"refund_account\":\"dvfqujrzdwyrl\",\"refund_bank\":\"oelxhuptymbsgyq\",\"refund_owner\":\"inrxwvopaw\",\"agree_promotion\":true,\"active\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3352,7 +3352,7 @@
                                         {
                                             "id": "user_id",
                                             "key": "user_id",
-                                            "value": "17",
+                                            "value": "7",
                                             "description": "The ID of the user."
                                         }
                                     ]
@@ -3388,7 +3388,7 @@
                                         {
                                             "id": "user_id",
                                             "key": "user_id",
-                                            "value": "5",
+                                            "value": "3",
                                             "description": "The ID of the user."
                                         }
                                     ]
@@ -3447,7 +3447,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"user_id\":18,\"word\":\"efnapquazpchwscowdgxtl\"}"
+                                    "raw": "{\"user_id\":20,\"word\":\"juwvkdubncypefhxg\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3475,7 +3475,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "20",
+                                            "value": "5",
                                             "description": "The ID of the qna."
                                         }
                                     ]
@@ -3536,7 +3536,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"answer\":\"cylnkyl\"}"
+                                    "raw": "{\"answer\":\"uawdf\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3611,7 +3611,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"lhrzswnmuhjbmatkdkueotyob\"}"
+                                    "raw": "{\"word\":\"cjvzeyvoxpvenfdsuy\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3639,7 +3639,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "6",
+                                            "value": "5",
                                             "description": "The ID of the recipe."
                                         }
                                     ]
@@ -3729,7 +3729,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"yolwnsgjncsnzumtrpuz\"}"
+                                    "raw": "{\"word\":\"tcczotpqfudclpqbwl\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3767,7 +3767,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"state\":17,\"category_id\":2,\"files\":\"quis\",\"title\":\"dicta\",\"farm_id\":8,\"county_id\":5,\"price\":19,\"price_origin\":1,\"need_tax\":true,\"can_use_coupon\":false,\"can_use_point\":true,\"count\":15,\"type_delivery\":4,\"delivery_company\":17,\"type_delivery_price\":9,\"price_delivery\":13,\"min_price_for_free_delivery_price\":5,\"can_delivery_far_place\":true,\"delivery_price_far_place\":16,\"delivery_company_refund\":4,\"delivery_price_refund\":12,\"description\":\"consequatur\"}"
+                                    "raw": "{\"state\":20,\"category_id\":5,\"files\":\"et\",\"title\":\"cumque\",\"farm_id\":18,\"county_id\":17,\"price\":11,\"price_origin\":14,\"need_tax\":false,\"can_use_coupon\":true,\"can_use_point\":false,\"count\":12,\"type_delivery\":9,\"delivery_company\":2,\"type_delivery_price\":2,\"price_delivery\":1,\"min_price_for_free_delivery_price\":18,\"can_delivery_far_place\":true,\"delivery_price_far_place\":14,\"delivery_company_refund\":18,\"delivery_price_refund\":16,\"description\":\"quis\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3795,7 +3795,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "9",
+                                            "value": "8",
                                             "description": "The ID of the product."
                                         }
                                     ]
@@ -3838,7 +3838,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "4",
+                                            "value": "12",
                                             "description": "The ID of the product."
                                         }
                                     ]
@@ -3856,7 +3856,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"state\":15,\"category_id\":12,\"title\":\"tenetur\",\"farm_id\":11,\"county_id\":2,\"price\":2,\"price_origin\":1,\"need_tax\":false,\"can_use_coupon\":true,\"can_use_point\":false,\"count\":8,\"type_delivery\":12,\"delivery_company\":11,\"type_delivery_price\":1,\"price_delivery\":15,\"min_price_for_free_delivery_price\":6,\"can_delivery_far_place\":true,\"delivery_price_far_place\":7,\"delivery_company_refund\":5,\"delivery_price_refund\":20,\"description\":\"temporibus\"}"
+                                    "raw": "{\"state\":11,\"category_id\":3,\"title\":\"error\",\"farm_id\":17,\"county_id\":7,\"price\":20,\"price_origin\":5,\"need_tax\":false,\"can_use_coupon\":true,\"can_use_point\":false,\"count\":18,\"type_delivery\":16,\"delivery_company\":19,\"type_delivery_price\":2,\"price_delivery\":1,\"min_price_for_free_delivery_price\":6,\"can_delivery_far_place\":true,\"delivery_price_far_place\":2,\"delivery_company_refund\":18,\"delivery_price_refund\":10,\"description\":\"voluptatibus\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3931,7 +3931,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"user_id\":8,\"word\":\"wesznhginvm\"}"
+                                    "raw": "{\"user_id\":13,\"word\":\"blztgvsifptgjycf\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -3959,7 +3959,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "11",
+                                            "value": "16",
                                             "description": "The ID of the vegetableStory."
                                         }
                                     ]
@@ -4049,7 +4049,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"user_id\":17,\"word\":\"zwboqatepdwdv\"}"
+                                    "raw": "{\"user_id\":14,\"word\":\"spqbuagugdwgtkb\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -4077,7 +4077,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "14",
+                                            "value": "17",
                                             "description": "The ID of the comment."
                                         }
                                     ]
@@ -4167,7 +4167,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"hnaghtjeyofniwm\",\"user_id\":17,\"has_column\":\"xizsvrctvspzevxqp\",\"best\":true,\"reply\":false}"
+                                    "raw": "{\"word\":\"cntzxodwcsbidoawbkzuibe\",\"user_id\":11,\"has_column\":\"gozzbqhij\",\"best\":true,\"reply\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -4230,7 +4230,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "16",
+                                            "value": "17",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -4273,7 +4273,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "4",
+                                            "value": "1",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -4291,7 +4291,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":5,\"best\":false,\"score\":2,\"description\":\"Eveniet ipsa impedit sunt sapiente.\",\"hide\":true}"
+                                    "raw": "{\"product_id\":15,\"best\":true,\"score\":2,\"description\":\"Eum minus iusto enim ex repudiandae doloremque.\",\"hide\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -4366,7 +4366,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"umnvxtjtivxhiqjlzshvjv\"}"
+                                    "raw": "{\"word\":\"z\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -4432,7 +4432,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "13",
+                                            "value": "16",
                                             "description": "The ID of the order."
                                         }
                                     ]
@@ -4475,7 +4475,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "6",
+                                            "value": "11",
                                             "description": "The ID of the order."
                                         }
                                     ]
@@ -4602,7 +4602,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"user_id\":8,\"bookmarkable_type\":\"lhac\"}"
+                                    "raw": "{\"user_id\":2,\"bookmarkable_type\":\"hjtcurxsuzcsgtmqoof\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -4665,7 +4665,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "5",
+                                            "value": "12",
                                             "description": "The ID of the bookmark."
                                         }
                                     ]
@@ -4708,7 +4708,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "7",
+                                            "value": "14",
                                             "description": "The ID of the bookmark."
                                         }
                                     ]
@@ -4798,7 +4798,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"uxnvivbhmphnskiz\"}"
+                                    "raw": "{\"word\":\"rgyhowvwux\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -4826,7 +4826,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "20",
+                                            "value": "16",
                                             "description": "The ID of the farm."
                                         }
                                     ]
@@ -4916,7 +4916,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"wcxty\"}"
+                                    "raw": "{\"word\":\"ptldbowtlqitnefsbftvkj\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -4954,7 +4954,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":17,\"files\":[],\"started_at\":\"2025-02-27T13:13:22\",\"finished_at\":\"2025-02-27T13:13:22\",\"count_goal\":11,\"count_participate\":17}"
+                                    "raw": "{\"product_id\":16,\"files\":[],\"started_at\":\"2025-02-27T13:25:35\",\"finished_at\":\"2025-02-27T13:25:35\",\"count_goal\":3,\"count_participate\":11}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -4982,7 +4982,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "14",
+                                            "value": "16",
                                             "description": "The ID of the project."
                                         }
                                     ]
@@ -5025,7 +5025,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "14",
+                                            "value": "3",
                                             "description": "The ID of the project."
                                         }
                                     ]
@@ -5043,7 +5043,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":1,\"files\":[],\"started_at\":\"2025-02-27T13:13:27\",\"finished_at\":\"2025-02-27T13:13:27\",\"count_goal\":6,\"count_participate\":11}"
+                                    "raw": "{\"product_id\":12,\"files\":[],\"started_at\":\"2025-02-27T13:25:39\",\"finished_at\":\"2025-02-27T13:25:39\",\"count_goal\":7,\"count_participate\":16}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5091,6 +5091,43 @@
                             "response": []
                         }
                     ]
+                },
+                {
+                    "name": "DeliverySetting(\ubc30\uc1a1\uc124\uc815)",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "\uc0dd\uc131",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/admin\/deliverySettings",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/admin\/deliverySettings"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"type_delivery\":4,\"delivery_company\":2,\"type_delivery_price\":19,\"price_delivery\":1,\"prices_delivery\":\"possimus\",\"min_price_for_free_delivery_price\":17,\"can_delivery_far_place\":true,\"delivery_price_far_place\":17}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
                 }
             ]
         },
@@ -5124,7 +5161,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"token\":\"pjwwaqdnbzxa\",\"ids\":\"hmpwxgd\",\"password\":\"w~_RYWr\"}"
+                                    "raw": "{\"token\":\"rixaqiawzpa\",\"ids\":\"lsesjvkhqdbiuwikko\",\"password\":\"|G>oB)51\\\"?Qubi^Y\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5162,7 +5199,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"social_id\":\"rgbaibdcrmzgz\",\"social_platform\":\"enawncwhgrukwjhxbqsafucu\",\"email\":\"schneider.savanah@example.org\",\"password\":\"X7H,}xIbndnr86Vln-i*\",\"name\":\"vxptphlktwcjbmx\",\"contact\":\"ofvbjjhicrdclwujqfgceprl\",\"agree_promotion\":true}"
+                                    "raw": "{\"social_id\":\"rsdbpzuciuwyvgxdcgokvrecj\",\"social_platform\":\"modxndekbdivxsf\",\"email\":\"pollich.mustafa@example.net\",\"password\":\"qyS7E#x*<|ZJ<W*2R\\\\+\",\"name\":\"aej\",\"contact\":\"cqzhmgak\",\"agree_promotion\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5200,7 +5237,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"email\":\"floyd88@example.org\",\"contact\":\"zhsfugyupfnhgznxzmoenixbp\",\"password\":\"2t@_\\\\CisJR3K@|a'\"}"
+                                    "raw": "{\"email\":\"nienow.chloe@example.com\",\"contact\":\"fbrdkineajov\",\"password\":\"?a'k%,_f#J2i=bX$mr\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5231,7 +5268,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"rjovp\"}"
+                                    "raw": "{\"contact\":\"tejhpxvtnliiojoep\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5304,7 +5341,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"password\":\"80C48gf|-\",\"name\":\"jxhluiymyftltpcwqxno\",\"contact\":\"hy\",\"nickname\":\"oyskhlxouktc\",\"message\":\"uqtbrysz\",\"birth\":\"2025-02-27T13:14:11\",\"count_family\":18,\"agree_promotion\":false}"
+                                    "raw": "{\"password\":\"y0)`:8hm4\\\\;\",\"name\":\"htidkzmieybm\",\"contact\":\"qzofcndaqwkqocos\",\"nickname\":\"pat\",\"message\":\"btaewnvcojjcjoo\",\"birth\":\"2025-02-27T13:26:24\",\"count_family\":20,\"agree_promotion\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5342,7 +5379,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"always_use_coupon_for_package\":true}"
+                                    "raw": "{\"always_use_coupon_for_package\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5373,7 +5410,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"always_use_point_for_package\":false}"
+                                    "raw": "{\"always_use_point_for_package\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5404,7 +5441,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"code_recommend\":\"bettgoj\"}"
+                                    "raw": "{\"code_recommend\":\"mxtqrvacgkhbcxcvqfeigi\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5435,7 +5472,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"password\":\"Wdy`xnMK*qK8)W`L#z\",\"password_new\":\"ohfwggwpv\"}"
+                                    "raw": "{\"password\":\"LV2WPbghg3KHg\",\"password_new\":\"igqzawcvefokpuhejd\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5466,7 +5503,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"reason\":\"rvoobkxvgatchtauposrsbdk\",\"and_so_on\":\"yghercgjgohnihar\"}"
+                                    "raw": "{\"reason\":\"hdxlgfynbskfxovmxjnxo\",\"and_so_on\":\"duetkdrznc\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5531,7 +5568,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"msybl\"}"
+                                    "raw": "{\"contact\":\"ofkjhuqwcgt\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5575,7 +5612,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"ids\":\"dfwtrungkujvor\",\"contact\":\"qvkxdzvjbsmrwrutnscx\",\"password\":\"u\\\/Ymc<b\"}"
+                                    "raw": "{\"ids\":\"jlebnhhfymhyeolveys\",\"contact\":\"yjeqvatxhpqgf\",\"password\":\"6<=D\\\/av.YIgG5\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5653,7 +5690,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"take\":15,\"order_by\":\"srcwfabhqorcnxtptwei\",\"align\":\"mwzlvnwpklnfcoupqartnmzk\",\"has_column\":\"qjvirdkhns\",\"product_id\":8,\"package_id\":3,\"best\":false,\"type\":11,\"user_id\":9,\"photo\":false}"
+                                    "raw": "{\"take\":3,\"order_by\":\"jnuzvnztjv\",\"align\":\"lnojmhlgcmjopfucqduqka\",\"has_column\":\"wzlhfydnqvjnseivn\",\"product_id\":18,\"package_id\":9,\"best\":false,\"type\":8,\"user_id\":17,\"photo\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5681,7 +5718,7 @@
                                         {
                                             "id": "review_id",
                                             "key": "review_id",
-                                            "value": "20",
+                                            "value": "7",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -5734,7 +5771,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"preset_product_id\":20,\"description\":\"Eum animi cumque recusandae quae soluta magnam deleniti.\",\"score\":4}"
+                                    "raw": "{\"preset_product_id\":13,\"description\":\"Deleniti magni unde nesciunt rerum reprehenderit dolores dolorum.\",\"score\":4}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5762,7 +5799,7 @@
                                         {
                                             "id": "review_id",
                                             "key": "review_id",
-                                            "value": "2",
+                                            "value": "4",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -5780,7 +5817,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"description\":\"Aut repudiandae doloribus veniam fugiat sed voluptatem vel.\",\"score\":4}"
+                                    "raw": "{\"description\":\"Cum excepturi cupiditate doloribus ea id sunt consequuntur.\",\"score\":5}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5808,7 +5845,7 @@
                                         {
                                             "id": "review_id",
                                             "key": "review_id",
-                                            "value": "1",
+                                            "value": "4",
                                             "description": "The ID of the review."
                                         }
                                     ]
@@ -5860,7 +5897,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"faq_category_id\":15,\"word\":\"bengstkbfiderdhvkpq\"}"
+                                    "raw": "{\"faq_category_id\":6,\"word\":\"htwzccs\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -5929,7 +5966,7 @@
                                         {
                                             "id": "package_id",
                                             "key": "package_id",
-                                            "value": "19",
+                                            "value": "4",
                                             "description": "The ID of the package."
                                         }
                                     ]
@@ -5988,7 +6025,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":1}"
+                                    "raw": "{\"type\":6}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6076,7 +6113,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"type\":13,\"word\":\"aut\"}"
+                                    "raw": "{\"type\":6,\"word\":\"distinctio\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6120,7 +6157,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"swcnex\",\"order_by\":\"wrwscfaxvglagltcu\",\"package_id\":15,\"except_package_id\":14,\"is_bookmark\":true}"
+                                    "raw": "{\"word\":\"svleymnjop\",\"order_by\":\"kmkwztubhqvxwobzaaaf\",\"package_id\":5,\"except_package_id\":20,\"is_bookmark\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6148,7 +6185,7 @@
                                         {
                                             "id": "recipe_id",
                                             "key": "recipe_id",
-                                            "value": "10",
+                                            "value": "6",
                                             "description": "The ID of the recipe."
                                         }
                                     ]
@@ -6207,7 +6244,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"order_by\":\"yrqyyf\",\"word\":\"vhjxjygrhmylsjdtpvfycycd\",\"farm_id\":11,\"exclude_farm_id\":1,\"internal\":false}"
+                                    "raw": "{\"order_by\":\"wsggiojomxydkcfuoey\",\"word\":\"ihwiggbfyljobcrgbfuqoscw\",\"farm_id\":8,\"exclude_farm_id\":2,\"internal\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6235,7 +6272,7 @@
                                         {
                                             "id": "farmStory_id",
                                             "key": "farmStory_id",
-                                            "value": "16",
+                                            "value": "13",
                                             "description": "The ID of the farmStory."
                                         }
                                     ]
@@ -6294,7 +6331,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"word\":\"br\",\"order_by\":\"ksxvjoytwarqhob\"}"
+                                    "raw": "{\"word\":\"euunpcawmph\",\"order_by\":\"fhamfanwcrcgwpfzr\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6322,7 +6359,7 @@
                                         {
                                             "id": "product_id",
                                             "key": "product_id",
-                                            "value": "5",
+                                            "value": "2",
                                             "description": "The ID of the product."
                                         }
                                     ]
@@ -6422,7 +6459,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":4,\"order_by\":\"zujwnxsekoa\",\"can_download\":10}"
+                                    "raw": "{\"product_id\":18,\"order_by\":\"fvetxshgwbezyzlhrte\",\"can_download\":19}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6466,7 +6503,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"nyivgyfjxgwgscykblsfckv\"}"
+                                    "raw": "{\"contact\":\"cyknwwazslpdrm\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6497,7 +6534,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"contact\":\"llvksquthfstfqnvg\",\"number\":\"rdoxpfnaguimdf\"}"
+                                    "raw": "{\"contact\":\"lumsqmohucklqbvdjk\",\"number\":\"edipw\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6534,7 +6571,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"order_by\":\"lnvjxetk\",\"user_id\":9,\"word\":\"ncoqlvwveqvlvoee\",\"has_column\":\"zoidrsmbrefuuwjpecqfhd\",\"package_id\":9,\"recipe_id\":9}"
+                                    "raw": "{\"order_by\":\"hejuckrague\",\"user_id\":16,\"word\":\"jvbz\",\"has_column\":\"ucqpmixdaue\",\"package_id\":8,\"recipe_id\":8}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6562,7 +6599,7 @@
                                         {
                                             "id": "vegetableStory_id",
                                             "key": "vegetableStory_id",
-                                            "value": "3",
+                                            "value": "19",
                                             "description": "The ID of the vegetableStory."
                                         }
                                     ]
@@ -6615,7 +6652,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"imgs\":[],\"preset_product_id\":12,\"description\":\"Enim aut odit at doloribus rerum aperiam eos nihil.\",\"recipe_id\":10}"
+                                    "raw": "{\"imgs\":[],\"preset_product_id\":4,\"description\":\"Repellendus aut fugit vero voluptatem ut dolorem recusandae.\",\"recipe_id\":6}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6679,7 +6716,7 @@
                                         {
                                             "id": "vegetableStory_id",
                                             "key": "vegetableStory_id",
-                                            "value": "4",
+                                            "value": "17",
                                             "description": "The ID of the vegetableStory."
                                         }
                                     ]
@@ -6697,7 +6734,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"imgs\":[],\"description\":\"Qui voluptatem sed est quaerat placeat culpa.\",\"recipe_id\":13}"
+                                    "raw": "{\"imgs\":[],\"description\":\"Ab atque dolorum optio qui omnis nam eaque.\",\"recipe_id\":8}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6741,7 +6778,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"user_id\":14}"
+                                    "raw": "{\"user_id\":18}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6779,7 +6816,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"commentable_id\":14,\"commentable_type\":\"gnwyjyhnrnolwgrcig\",\"description\":\"Eaque reprehenderit quis doloribus eos.\"}"
+                                    "raw": "{\"commentable_id\":19,\"commentable_type\":\"mxyjassegbjqyecxalywvjkqb\",\"description\":\"Molestiae ab unde quod possimus laboriosam.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6807,7 +6844,7 @@
                                         {
                                             "id": "comment_id",
                                             "key": "comment_id",
-                                            "value": "12",
+                                            "value": "14",
                                             "description": "The ID of the comment."
                                         }
                                     ]
@@ -6825,7 +6862,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"description\":\"Placeat id repellat rerum maxime ratione qui.\"}"
+                                    "raw": "{\"description\":\"Provident dolorem at assumenda quidem suscipit.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -6853,7 +6890,7 @@
                                         {
                                             "id": "comment_id",
                                             "key": "comment_id",
-                                            "value": "20",
+                                            "value": "6",
                                             "description": "The ID of the comment."
                                         }
                                     ]
@@ -6987,7 +7024,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"report_category_id\":7,\"reportable_id\":15,\"reportable_type\":\"krvdvicplzmru\",\"description\":\"Maiores incidunt placeat sed suscipit aspernatur nemo et.\"}"
+                                    "raw": "{\"report_category_id\":20,\"reportable_id\":7,\"reportable_type\":\"eszoxxm\",\"description\":\"Beatae porro dolor nobis occaecati.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -7059,7 +7096,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"card_id\":20,\"delivery_id\":7,\"type_package\":6,\"term_week\":10,\"active\":false}"
+                                    "raw": "{\"card_id\":20,\"delivery_id\":5,\"type_package\":2,\"term_week\":17,\"active\":false}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -7105,7 +7142,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"card_id\":11,\"delivery_id\":4,\"type_package\":2,\"term_week\":14,\"name\":\"fdgkzxybjivdwytkja\",\"active\":true,\"reason\":\"pkfhjwbdaisvwwgalfchkccls\",\"and_so_on\":\"xkoferwcmakdsdbsilwyycrm\"}"
+                                    "raw": "{\"card_id\":5,\"delivery_id\":13,\"type_package\":17,\"term_week\":3,\"name\":\"umwlsxvozrcbbpahsfl\",\"active\":true,\"reason\":\"hebth\",\"and_so_on\":\"uyusr\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -7133,7 +7170,7 @@
                                         {
                                             "id": "packageSetting_id",
                                             "key": "packageSetting_id",
-                                            "value": "7",
+                                            "value": "17",
                                             "description": "The ID of the packageSetting."
                                         }
                                     ]
@@ -7233,7 +7270,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"preset_id\":8}"
+                                    "raw": "{\"preset_id\":14}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -7295,7 +7332,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"preset_id\":14,\"count\":26}"
+                                    "raw": "{\"preset_id\":2,\"count\":65}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -7437,7 +7474,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "10",
+                                            "value": "7",
                                             "description": "The ID of the qna."
                                         }
                                     ]
@@ -7455,7 +7492,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"qna_category_id\":4,\"title\":\"kaiwludyzmnajhdgnng\",\"description\":\"Odio rerum quod velit dolore quia consequuntur nihil.\"}"
+                                    "raw": "{\"qna_category_id\":5,\"title\":\"ibrwrpynjt\",\"description\":\"Ducimus libero nobis beatae voluptatem reprehenderit quae.\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -7476,7 +7513,7 @@
                                         {
                                             "id": "id",
                                             "key": "id",
-                                            "value": "16",
+                                            "value": "13",
                                             "description": "The ID of the qna."
                                         }
                                     ]
@@ -7528,7 +7565,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"started_at\":\"tmqyjpqbourgirwgfoydgp\",\"finished_at\":\"jlxjeetwciyge\",\"word\":\"pevhcrstgxgcho\",\"has_column\":\"blqyduis\"}"
+                                    "raw": "{\"started_at\":\"rjbaugujuqvrocaagbt\",\"finished_at\":\"ghacajzsstx\",\"word\":\"rahnylpwiypfdkgqaaqyeyk\",\"has_column\":\"gihidbrap\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -7594,7 +7631,7 @@
                                         {
                                             "id": "order_id",
                                             "key": "order_id",
-                                            "value": "6",
+                                            "value": "10",
                                             "description": "The ID of the order."
                                         }
                                     ]
@@ -7637,7 +7674,7 @@
                                         {
                                             "id": "order_id",
                                             "key": "order_id",
-                                            "value": "2",
+                                            "value": "15",
                                             "description": "The ID of the order."
                                         }
                                     ]
@@ -7696,7 +7733,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"package_id\":6,\"options\":[{\"id\":12,\"count\":75}]}"
+                                    "raw": "{\"package_id\":4,\"options\":[{\"id\":2,\"count\":16}]}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -7724,7 +7761,7 @@
                                         {
                                             "id": "preset_id",
                                             "key": "preset_id",
-                                            "value": "3",
+                                            "value": "12",
                                             "description": "The ID of the preset."
                                         }
                                     ]
@@ -7849,7 +7886,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "1",
+                                            "value": "13",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -7892,7 +7929,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "13",
+                                            "value": "14",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -7978,7 +8015,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "14",
+                                            "value": "7",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -8021,7 +8058,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "12",
+                                            "value": "9",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -8039,7 +8076,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"materials\":[{\"id\":17,\"count\":73}]}"
+                                    "raw": "{\"materials\":[{\"id\":7,\"count\":26}]}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -8067,7 +8104,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "17",
+                                            "value": "3",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -8085,7 +8122,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"reason_request_cancel\":\"umskiuicqvyhe\"}"
+                                    "raw": "{\"reason_request_cancel\":\"dvtu\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -8113,7 +8150,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "4",
+                                            "value": "1",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -8156,7 +8193,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "8",
+                                            "value": "1",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -8174,7 +8211,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"coupon_id\":14}"
+                                    "raw": "{\"coupon_id\":1}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -8202,7 +8239,7 @@
                                         {
                                             "id": "presetProduct_id",
                                             "key": "presetProduct_id",
-                                            "value": "3",
+                                            "value": "19",
                                             "description": "The ID of the presetProduct."
                                         }
                                     ]
@@ -8261,7 +8298,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"increase\":false}"
+                                    "raw": "{\"increase\":true}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -8346,7 +8383,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"product_id\":19,\"order_by\":\"oegdsizutfv\"}"
+                                    "raw": "{\"product_id\":2,\"order_by\":\"sx\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -8421,7 +8458,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"likeable_id\":\"facere\",\"likeable_type\":\"numquam\"}"
+                                    "raw": "{\"likeable_id\":\"hic\",\"likeable_type\":\"asperiores\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -8458,7 +8495,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"bookmarkable_type\":\"eptdyqpdcsxiinwrv\"}"
+                                    "raw": "{\"bookmarkable_type\":\"zezjzqszjmhmponynvkacgm\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -8496,7 +8533,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"bookmarkable_id\":15,\"bookmarkable_type\":\"dmthkzivwrncskbbzy\"}"
+                                    "raw": "{\"bookmarkable_id\":18,\"bookmarkable_type\":\"gjtxdmmizewzkxdazlszl\"}"
                                 },
                                 "description": "",
                                 "auth": {
@@ -8581,7 +8618,7 @@
                                 {
                                     "id": "order_id",
                                     "key": "order_id",
-                                    "value": "19",
+                                    "value": "11",
                                     "description": "The ID of the order."
                                 }
                             ]
@@ -8627,7 +8664,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"paymentId\":\"evhiruwzkmh\"}"
+                            "raw": "{\"paymentId\":\"prkywdoqt\"}"
                         },
                         "description": "",
                         "auth": {
@@ -8658,7 +8695,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"paymentId\":\"eiurrd\"}"
+                            "raw": "{\"paymentId\":\"doquovk\"}"
                         },
                         "description": "",
                         "auth": {
@@ -8689,7 +8726,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"quo\",\"number\":\"esse\",\"expiry_year\":\"molestiae\",\"expiry_month\":\"provident\",\"birth_or_business_number\":\"consequatur\",\"password\":\"corporis\"}"
+                            "raw": "{\"name\":\"et\",\"number\":\"nostrum\",\"expiry_year\":\"aut\",\"expiry_month\":\"voluptas\",\"birth_or_business_number\":\"qui\",\"password\":\"voluptatem\"}"
                         },
                         "description": "",
                         "auth": {
