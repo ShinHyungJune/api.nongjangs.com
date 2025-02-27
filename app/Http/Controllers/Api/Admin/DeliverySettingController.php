@@ -31,8 +31,8 @@ class DeliverySettingController extends ApiController
     {
         $deliverySetting = DeliverySetting::first();
 
-        $request['prices_delivery'] = $request->prices_delivery ? json_encode($this->prices_delivery) : [];
-        $request['ranges_far_place'] = $request->ranges_far_place ? json_encode($this->ranges_far_place) : [];
+        $request['prices_delivery'] = $request->prices_delivery ? json_encode($request->prices_delivery) : [];
+        $request['ranges_far_place'] = $request->ranges_far_place ? json_encode($request->ranges_far_place) : [];
 
         if($deliverySetting)
             $deliverySetting->update($request->validated());
