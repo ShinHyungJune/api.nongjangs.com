@@ -18,8 +18,11 @@ class MemoController extends ApiController
     {
         $items = new Memo();
 
-        if($request->target_user_id)
-            $items = $items->where('target_user_id', $request->target_user_id);
+        if($request->memoable_id)
+            $items = $items->where('memoable_id', $request->memoable_id);
+
+        if($request->memoable_type)
+            $items = $items->where('memoable_type', $request->memoable_type);
 
         $items = $items->latest()->paginate(12);
 

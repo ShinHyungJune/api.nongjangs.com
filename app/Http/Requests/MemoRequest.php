@@ -15,13 +15,15 @@ class MemoRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
-                        'target_user_id' => ['required', 'integer'],
+                        'memoable_id' => ['required', 'integer'],
+                        'memoable_type' => ['required', 'string', 'max:500'],
                         'word' => ['nullable', 'string', 'max:500']
                     ];
 
                 case 'store':
                     return [
-                        'target_user_id' => ['required', 'integer'],
+                        'memoable_id' => ['required', 'integer'],
+                        'memoable_type' => ['required', 'string', 'max:500'],
                         'description' => ['required', 'string', 'max:5000'],
                     ];
 
@@ -71,8 +73,11 @@ class MemoRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
-            'target_user_id' => [
+            'memoable_id' => [
                 'description' => '<span class="point">대상 고유번호</span>',
+            ],
+            'memoable_type' => [
+                'description' => '<span class="point">대상 모델명 (App\Models\User - 사용자 | App\Models\PresetProduct - 출고)</span>',
             ],
             'description' => [
                 'description' => '<span class="point">내용</span>',

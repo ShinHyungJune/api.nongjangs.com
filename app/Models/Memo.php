@@ -17,8 +17,8 @@ class Memo extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function targetUser(): BelongsTo
+    public function memoable()
     {
-        return $this->belongsTo(User::class, 'target_user_id');
+        return $this->morphTo();
     }
 }

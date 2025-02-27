@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('memos', function (Blueprint $table) {
             $table->id();
+            $table->morphs('memoable');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('target_user_id')->constrained('users')->onDelete('cascade');
             $table->text('description')->nullable();
             $table->timestamps();
         });
