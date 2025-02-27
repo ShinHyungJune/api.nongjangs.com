@@ -31,13 +31,15 @@ class DeliverySettingController extends ApiController
     {
         $deliverySetting = DeliverySetting::first();
 
-        $request['prices_delivery'] = $request->prices_delivery ? json_encode($request->prices_delivery) : [];
-        $request['ranges_far_place'] = $request->ranges_far_place ? json_encode($request->ranges_far_place) : [];
+        $data = $request->validated();
+
+        $data['prices_delivery'] = $request->prices_delivery ? json_encode($request->prices_delivery) : [];
+        $data['ranges_far_place'] = $request->ranges_far_place ? json_encode($request->ranges_far_place) : [];
 
         if($deliverySetting)
-            $deliverySetting->update($request->validated());
+            $deliverySetting->update($data);
         else
-            $deliverySetting = DeliverySetting::create($request->validated());
+            $deliverySetting = DeliverySetting::create($data);
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
