@@ -28,6 +28,7 @@ class DeliverySettingRequest extends FormRequest
                         'min_price_for_free_delivery_price' => ['required', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
                         'delivery_price_far_place' => ['nullable', 'integer'],
+                        'ranges_far_place' => ['nullable', 'array'],
                     ];
 
                 case 'update':
@@ -40,6 +41,7 @@ class DeliverySettingRequest extends FormRequest
                         'min_price_for_free_delivery_price' => ['required', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
                         'delivery_price_far_place' => ['nullable', 'integer'],//
+                        'ranges_far_place' => ['nullable', 'array'],//
                     ];
 
                 case 'destroy':
@@ -101,6 +103,9 @@ class DeliverySettingRequest extends FormRequest
             ],
             'delivery_price_far_place' => [
                 'description' => '<span class="point">제주/도서산간 배송 추가배송비</span>',
+            ],
+            'ranges_far_place' => [
+                'description' => '<span class="point">제주/도서산간 지역 설정 (["zipcode_start" => "", "zipcode_end" => ""]</span>',
             ],
 
             // 늘 쓰이는 애들
