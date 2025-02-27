@@ -125,6 +125,17 @@ class PresetProductController extends ApiController
         $result = [
             'currentPackage' => $currentPackage ? PackageResource::make($currentPackage) : '',
             'count_current_preset_product' => $currentPackage ? PresetProduct::whereNotIn('state', [StatePresetProduct::BEFORE_PAYMENT, StatePresetProduct::CANCEL])->where('package_id', $currentPackage->id)->count() : 0,
+
+            'count_ready' => PresetProduct::where('state', StatePresetProduct::READY)->count(),
+            'count_will_out' => PresetProduct::where('state', StatePresetProduct::WILL_OUT)->count(),
+            'count_ongoing_delivery' => PresetProduct::where('state', StatePresetProduct::ONGOING_DELIVERY)->count(),
+            'count_wait' => PresetProduct::where('state', StatePresetProduct::WAIT)->count(),
+            'count_delivered' => PresetProduct::whereIn('state', [StatePresetProduct::DELIVERED, StatePresetProduct::CONFIRMED])->count(),
+
+            'count_request_cancel' => PresetProduct::where('state', StatePresetProduct::REQUEST_CANCEL)->count(),
+            'count_cancel' => PresetProduct::where('state', StatePresetProduct::CANCEL)->count(),
+            'sum_price_cancel_day' => PresetProduct::whereDate('cancel_at', Carbon::now()->format('Y-m-d'))->where('state', StatePresetProduct::CANCEL)->sum('price'),
+            'sum_price_cancel_month' => PresetProduct::whereMonth('cancel_at', Carbon::now()->month)->where('state', StatePresetProduct::CANCEL)->sum('price'),
         ];
 
         return $this->respondSuccessfully($result);
@@ -225,6 +236,11 @@ class PresetProductController extends ApiController
      */
     public function updateState(PresetProduct $presetProduct, PresetProductRequest $request)
     {
+        if($request->state == StatePresetProduct::DENY_CANCEL)
+            $request->validate([
+                'reason_deny_cancel' => 'required|string|max:500'
+            ]);
+
         $presetProduct->update($request->validated());
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));

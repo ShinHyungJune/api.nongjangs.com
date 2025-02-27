@@ -13673,6 +13673,12 @@ You can switch the language used with the tabs at the top right (or from the nav
   &quot;meta&quot;: {
     &quot;currentPackage&quot;: &quot;이번회차(객체) - 해당 객체의 count가 이번 회차&quot;,
     &quot;count_current_preset_product&quot;: &quot;이번회차 주문건수&quot;,
+
+    &quot;count_ready&quot;: &quot;배송준비 수&quot;,
+    &quot;count_will_out&quot;: &quot;출고예정 수&quot;,
+    &quot;count_ongoing_delivery&quot;: &quot;결제대기 수&quot;,
+    &quot;count_wait&quot;: &quot;배송중 수&quot;,
+    &quot;count_delivered&quot;: &quot;배송완료 수&quot;,
   }
 }</code></pre>
                                                                             </div>
@@ -14178,6 +14184,32 @@ You can switch the language used with the tabs at the top right (or from the nav
                                     </div>
                 <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
             <p><span class="point">상태 (StatePresetProduct)</span>.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">reason_deny_cancel</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">요청반려사유</span>. Must not be greater than 500 characters.</p>
         </div>
                 
     </div>
@@ -45102,7 +45134,7 @@ You can switch the language used with the tabs at the top right (or from the nav
                                                                                                                                                                         
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;test.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 15 limit 1)&quot;,
+    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;test.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 5 limit 1)&quot;,
     &quot;exception&quot;: &quot;Illuminate\\Database\\QueryException&quot;,
     &quot;file&quot;: &quot;/Users/shinhyungjune/project/api.nongjangs.com/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
     &quot;line&quot;: 712,

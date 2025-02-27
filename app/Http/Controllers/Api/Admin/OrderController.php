@@ -14,8 +14,6 @@ use Inertia\Inertia;
 
 class OrderController extends ApiController
 {
-
-
     /** 목록
      * @group 관리자
      * @subgroup Order(주문)

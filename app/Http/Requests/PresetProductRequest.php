@@ -88,6 +88,7 @@ class PresetProductRequest extends FormRequest
                 case 'updateState':
                     return [
                         'state' => ['required', 'integer'],
+                        'reason_deny_cancel' => ['nullable', 'string', 'max:500'],
                     ];
 
                 case 'willOut':
@@ -192,6 +193,9 @@ class PresetProductRequest extends FormRequest
             ],
             'order_by' => [
                 'description' => '<span class="point">정렬기준 (created_at - 날짜순)</span>',
+            ],
+            'reason_deny_cancel' => [
+                'description' => '<span class="point">요청반려사유</span>',
             ],
 
             // 늘 쓰이는 애들
