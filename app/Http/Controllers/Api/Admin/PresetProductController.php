@@ -30,9 +30,8 @@ class PresetProductController extends ApiController
         $currentPackage = Package::getCanOrder();
 
         $result = [
-            'currentPackage' => PackageResource::make($currentPackage),
+            'currentPackage' => $currentPackage ? PackageResource::make($currentPackage) : '',
             'count_current_preset_product' => $currentPackage ? PresetProduct::whereNotIn('state', [StatePresetProduct::BEFORE_PAYMENT, StatePresetProduct::CANCEL])->where('package_id', $currentPackage->id)->count() : 0,
-
         ];
 
         return $this->respondSuccessfully($result);
