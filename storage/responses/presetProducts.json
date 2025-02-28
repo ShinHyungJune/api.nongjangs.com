@@ -10,7 +10,8 @@
       "format_request_cancel_at": "표시용 주문취소 요청일자",
       "order": {
         "id": "고유번호",
-        "merchant_uid": "주문번호"
+        "merchant_uid": "주문번호",
+        "pay_method_name": "결제수단",
       },
       "user": {
           "id" : "고유번호",
