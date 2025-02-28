@@ -33,7 +33,7 @@ class PresetProductsExport implements FromCollection, WithHeadings, WithMapping,
         $result = [
             $item->id,
             $item->format_state,
-            $item->product->uuid,
+            $item->product ? $item->product->uuid : '-',
             $item->preset->order->payment_id,
             $item->preset->order->success_at,
             $item->delivery_company ? DeliveryCompany::getLabel($item->delivery_company) : '',
