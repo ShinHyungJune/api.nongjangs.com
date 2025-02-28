@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Admin;
 
 use App\Enums\StateOrder;
 use App\Enums\StatePresetProduct;
+use App\Exports\MaterialsExport;
 use App\Exports\PresetProductsExport;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
@@ -25,7 +26,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PresetProductController extends ApiController
 {
-    public function filter(Request $request)
+    public function filter(PresetProductRequest $request)
     {
         $items = PresetProduct::where(function($query) use($request){
             $query->where("product_title", "LIKE", "%".$request->word."%")
@@ -72,12 +73,7 @@ class PresetProductController extends ApiController
         return $items;
     }
 
-    /** 품목 목록(출고해야할 품목 목록 조회용)
-     * @group 관리자
-     * @subgroup PresetProduct(출고)
-     * @responseFile storage/responses/presetProductsMaterials.json
-     */
-    public function materials(PresetProductRequest $request)
+    public function filterMaterials(PresetProductRequest $request)
     {
         $package = Package::find($request->package_id);
 
@@ -110,7 +106,39 @@ class PresetProductController extends ApiController
             }
         }
 
+        return $items;
+    }
+
+    /** 품목 목록(출고해야할 품목 목록 조회용)
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     * @responseFile storage/responses/presetProductsMaterials.json
+     */
+    public function materials(PresetProductRequest $request)
+    {
+        $items = $this->filterMaterials($request);
+
         return $this->respondSuccessfully($items);
+    }
+
+    /** 품목 목록(출고해야할 품목 목록 조회용)
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     * @responseFile storage/responses/presetProductsMaterials.json
+     */
+    public function exportMaterials(PresetProductRequest $request)
+    {
+        $download = Download::create();
+
+        $path = $download->id."/"."품목.xlsx";
+
+        $items = $this->filterMaterials($request);
+
+        Excel::store(new MaterialsExport($items), $path, "s3");
+
+        $url = Storage::disk("s3")->url($path);
+
+        return $this->respondSuccessfully($url);
     }
 
     /** 통계

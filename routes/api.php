@@ -73,6 +73,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::delete("/materials", [\App\Http\Controllers\Api\Admin\MaterialController::class, "destroy"]);
 
     Route::get("/presetProducts/materials", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'materials']);
+    Route::post("/presetProducts/materials/export", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'exportMaterials']);
     Route::get("/presetProducts/counts", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'counts']);
     Route::post("/presetProducts/export", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'export']);
     Route::post("/presetProducts/import", [\App\Http\Controllers\Api\Admin\PresetProductController::class, 'import']);
