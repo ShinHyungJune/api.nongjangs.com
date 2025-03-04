@@ -101,6 +101,11 @@ class PresetProductRequest extends FormRequest
                         'package_id' => ['required', 'integer'],
                     ];
 
+                case 'exportMaterials':
+                    return [
+                        'package_id' => ['required', 'integer'],
+                    ];
+
                 case 'destroy':
                     return [
                         'ids' => ['required', 'array'],

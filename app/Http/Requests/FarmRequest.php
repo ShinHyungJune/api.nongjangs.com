@@ -20,13 +20,13 @@ class FarmRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'county_id' => ['required', 'exists:counties'],
+                        'county_id' => ['required', 'integer'],
                         'title' => ['required'],
                     ];
 
                 case 'update':
                     return [
-                        'county_id' => ['required', 'exists:counties'],
+                        'county_id' => ['required', 'integer'],
                         'title' => ['required'],//
                     ];
 

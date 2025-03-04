@@ -32,7 +32,7 @@ class ProjectRequest extends FormRequest
                 case 'update':
                     return [
                         'product_id' => ['required', 'integer'],
-                        'files' => ['required', 'array'],
+                        'files' => ['nullable', 'array'],
                         'started_at' => ['required', 'date'],
                         'finished_at' => ['required', 'date'],
                         'count_goal' => ['required', 'integer'],

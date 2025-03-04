@@ -34,7 +34,7 @@ class CountController extends ApiController
         if(!$count)
             $count = Count::create($request->validated());
         else
-            $count = $count->update($request->validated());
+            $count->update($request->validated());
 
         return $this->respondSuccessfully(CountResource::make($count));
     }

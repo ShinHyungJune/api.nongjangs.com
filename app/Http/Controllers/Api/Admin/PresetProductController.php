@@ -121,7 +121,7 @@ class PresetProductController extends ApiController
         return $this->respondSuccessfully($items);
     }
 
-    /** 품목 목록(출고해야할 품목 목록 조회용)
+    /** 품목 목록 엑셀 다운로드(출고해야할 품목 목록 조회용)
      * @group 관리자
      * @subgroup PresetProduct(출고)
      * @responseFile storage/responses/presetProductsMaterials.json
@@ -245,6 +245,18 @@ class PresetProductController extends ApiController
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
 
+    /** 배송지 수정
+     * @group 관리자
+     * @subgroup PresetProduct(출고)
+     * @responseFile storage/responses/presetProducts.json
+     */
+    public function updateDeliveryAddress(PresetProductRequest $request, PresetProduct $presetProduct)
+    {
+        $presetProduct->update($request->validated());
+
+        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
+    }
+
     /** 출고예정처리
      * @group 관리자
      * @subgroup PresetProduct(출고)
@@ -324,7 +336,7 @@ class PresetProductController extends ApiController
 
     /** 취소
      * @group 관리자
-     * @subgroup PresetProduct(출고상품)
+     * @subgroup PresetProduct(출고)
      * @responseFile storage/responses/presetProduct.json
      */
     public function cancel(PresetProduct $presetProduct)

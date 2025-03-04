@@ -15,7 +15,7 @@ class ProjectController extends ApiController
 {
     /** 목록
      * @group 관리자
-     * @subgroup Project(project)
+     * @subgroup Project(농가프로젝트)
      * @responseFile storage/responses/projects.json
      */
     public function index(ProjectRequest $request)
@@ -41,7 +41,7 @@ class ProjectController extends ApiController
 
     /** 상세
      * @group 관리자
-     * @subgroup Project(project)
+     * @subgroup Project(농가프로젝트)
      * @responseFile storage/responses/project.json
      */
     public function show(Project $project)
@@ -51,7 +51,7 @@ class ProjectController extends ApiController
 
     /** 생성
      * @group 관리자
-     * @subgroup Project(project)
+     * @subgroup Project(농가프로젝트)
      * @responseFile storage/responses/project.json
      */
     public function store(ProjectRequest $request)
@@ -71,7 +71,7 @@ class ProjectController extends ApiController
 
     /** 수정
      * @group 관리자
-     * @subgroup Project(project)
+     * @subgroup Project(농가프로젝트)
      * @responseFile storage/responses/project.json
      */
     public function update(ProjectRequest $request, Project $project)
@@ -103,7 +103,7 @@ class ProjectController extends ApiController
 
     /** 삭제
      * @group 관리자
-     * @subgroup Project(project)
+     * @subgroup Project(농가프로젝트)
      */
     public function destroy(ProjectRequest $request)
     {
