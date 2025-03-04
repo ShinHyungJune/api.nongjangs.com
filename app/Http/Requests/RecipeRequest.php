@@ -20,22 +20,22 @@ class RecipeRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'user_id' => ['required', 'exists:users'],
                         'title' => ['required'],
-                        'description' => ['nullable'],
-                        'materials' => ['nullable'],
-                        'seasonings' => ['nullable'],
-                        'ways' => ['nullable'],
+                        'description' => ['nullable', 'array'],
+                        'materials' => ['nullable', 'array'],
+                        'seasonings' => ['nullable', 'array'],
+                        'ways' => ['nullable', 'array'],
+                        'tags' => ['nullable', 'array'],
                     ];
 
                 case 'update':
                     return [
-                        'user_id' => ['required', 'exists:users'],
                         'title' => ['required'],
-                        'description' => ['nullable'],
-                        'materials' => ['nullable'],
-                        'seasonings' => ['nullable'],
-                        'ways' => ['nullable'],//
+                        'description' => ['nullable', 'array'],
+                        'materials' => ['nullable', 'array'],
+                        'seasonings' => ['nullable', 'array'],
+                        'ways' => ['nullable', 'array'],
+                        'tags' => ['nullable', 'array'],
                     ];
 
                 case 'destroy':
@@ -96,6 +96,24 @@ class RecipeRequest extends FormRequest
             ],
             'is_bookmark' => [
                 'description' => '<span class="point">북마크 여부 (1 - 내가 북마크한것만 보기)</span>',
+            ],
+            'title' => [
+                'description' => '<span class="point">제목</span>',
+            ],
+            'description' => [
+                'description' => '<span class="point">내용</span>',
+            ],
+            'materials' => [
+                'description' => '<span class="point">필수재료 목록 [{title: "당근", count: "1개"}]</span>',
+            ],
+            'seasonings' => [
+                'description' => '<span class="point">양념(간) 목록 [{title: "당근", count: "1개"}]</span>',
+            ],
+            'ways' => [
+                'description' => '<span class="point">레시피 순서 목록 ["당근을 썰어요"]</span>',
+            ],
+            'tags' => [
+                'description' => '<span class="point">태그 목록 [{id:"고유번호"}]</span>',
             ],
 
             // 늘 쓰이는 애들

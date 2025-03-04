@@ -20,7 +20,8 @@ class RecipeController extends ApiController
     public function index(RecipeRequest $request)
     {
         $items = Recipe::where(function($query) use($request){
-            $query->where("title", "LIKE", "%".$request->word."%");
+            $query->where("title", "LIKE", "%".$request->word."%")
+                ->orWhere('materials', 'LIKE', '%'.$request->word.'%');
         });
 
         $items = $items->latest()->paginate(25);
@@ -45,7 +46,7 @@ class RecipeController extends ApiController
      */
     public function store(RecipeRequest $request)
     {
-        $createdItem = Recipe::create($request->all());
+        $createdItem = Recipe::create($request->validated());
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){

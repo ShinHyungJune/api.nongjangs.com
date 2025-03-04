@@ -45,7 +45,7 @@ class ExampleController extends ApiController
      */
     public function store(ExampleRequest $request)
     {
-        $createdItem = Example::create($request->all());
+        $createdItem = Example::create($request->validated());
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
@@ -63,7 +63,7 @@ class ExampleController extends ApiController
      */
     public function update(ExampleRequest $request, Example $example)
     {
-        $example->update($request->all());
+        $example->update($request->validated());
 
         if($request->files_remove_ids){
             $medias = $example->getMedia("img");
