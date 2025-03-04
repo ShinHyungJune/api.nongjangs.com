@@ -31,9 +31,9 @@ class MaterialsExport implements FromCollection, WithHeadings, WithMapping, Shou
     public function map($item) :array
     {
         $result = [
-            $item->pivot->type ? TypePackageMaterial::getLabel($item->pivot->type) : '',
-            $item->title." ".$item->value.$item->unit,
-            $item->pivot->count,
+            $item['type'] ? TypePackageMaterial::getLabel($item['type']) : '',
+            $item['title']." ".$item['value'].$item['unit'],
+            $item['count'],
         ];
 
         return $result;
