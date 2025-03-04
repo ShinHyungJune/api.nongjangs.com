@@ -99,4 +99,16 @@ class TagController extends ApiController
 
         return $this->respondSuccessfully();
     }
+
+    /** 선택 노출
+     * @group 관리자
+     * @subgroup Tag(태그)
+     * @responseFile storage/responses/tags.json
+     */
+    public function open(TagRequest $request)
+    {
+        Tag::whereIn('id', $request->ids)->update(['open' => 1]);
+
+        return $this->respondSuccessfully();
+    }
 }

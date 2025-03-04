@@ -66,6 +66,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     // Route::resource("/recommendCategories", \App\Http\Controllers\Api\Admin\RecommendCategoryController::class)->except(['destroy']);
     // Route::delete("/recommendCategories", [\App\Http\Controllers\Api\Admin\RecommendCategoryController::class, "destroy"]);
 
+    Route::patch("/tags/open", [\App\Http\Controllers\Api\Admin\TagController::class, "open"]);
     Route::resource("/tags", \App\Http\Controllers\Api\Admin\TagController::class)->except(['destroy']);
     Route::delete("/tags", [\App\Http\Controllers\Api\Admin\TagController::class, "destroy"]);
 

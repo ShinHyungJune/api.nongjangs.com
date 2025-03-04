@@ -13,6 +13,11 @@ class TagRequest extends FormRequest
 
         if ($admin) {
             switch ($method) {
+                case 'open':
+                    return [
+                        'ids' => ['nullable', 'array'],
+                    ];
+
                 case 'index':
                     return [
                         'word' => ['nullable', 'string', 'max:500'],
