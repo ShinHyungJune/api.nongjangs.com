@@ -21,7 +21,7 @@ class RecipeRequest extends FormRequest
                 case 'store':
                     return [
                         'title' => ['required'],
-                        'description' => ['nullable', 'array'],
+                        'description' => ['nullable', 'string', 'max:5000'],
                         'materials' => ['nullable', 'array'],
                         'seasonings' => ['nullable', 'array'],
                         'ways' => ['nullable', 'array'],
@@ -31,7 +31,7 @@ class RecipeRequest extends FormRequest
                 case 'update':
                     return [
                         'title' => ['required'],
-                        'description' => ['nullable', 'array'],
+                        'description' => ['nullable', 'string', 'max:5000'],
                         'materials' => ['nullable', 'array'],
                         'seasonings' => ['nullable', 'array'],
                         'ways' => ['nullable', 'array'],
