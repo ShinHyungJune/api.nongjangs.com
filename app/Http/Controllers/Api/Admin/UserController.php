@@ -77,8 +77,8 @@ class UserController extends ApiController
         if($request->code_recommend)
             $items = $items->where('code_recommend', $request->code_recommend);
 
-        if($request->has_column)
-            $items = $items->whereNotNull($request->has_column);
+        if($request->has_column){}
+            $items = $items->withTrashed()->whereNotNull($request->has_column);
 
         $items = $items->latest()->paginate(25);
 
