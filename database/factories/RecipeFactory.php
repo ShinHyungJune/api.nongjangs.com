@@ -50,39 +50,78 @@ class RecipeFactory extends Factory
         ];
 
         $materials = [
-            json_encode(["된장", "두부", "양파", "애호박", "버섯", "대파"]),
-            json_encode(["김치", "돼지고기", "두부", "양파", "대파", "청양고추"]),
-            json_encode(["소고기", "양파", "대파", "마늘", "간장", "설탕", "참기름"]),
-            json_encode(["삼겹살", "상추", "쌈장", "마늘", "고추"]),
-            json_encode(["김치", "밥", "참기름", "계란", "대파", "간장"]),
-            json_encode(["계란", "당근", "대파", "소금", "후추"]),
-            json_encode(["당면", "시금치", "표고버섯", "소고기", "간장", "참기름", "마늘"]),
-            json_encode(["오징어", "부침가루", "대파", "청양고추", "마늘", "간장"]),
-            json_encode(["밥", "시금치", "당근", "오이", "계란", "고추장", "참기름"]),
-            json_encode(["소갈비", "당근", "감자", "대파", "간장", "설탕", "마늘"]),
-            json_encode(["밥", "양파", "간장", "참기름", "대파", "계란"]),
-            json_encode(["순두부", "고춧가루", "대파", "마늘", "두부", "간장"]),
-            json_encode(["떡", "어묵", "고추장", "양파", "대파", "마늘"]),
-            json_encode(["오징어", "양파", "청양고추", "마늘", "고추장", "간장"]),
-            json_encode(["닭고기", "고추장", "고춧가루", "양배추", "대파", "마늘", "참기름"])
+            json_encode([
+                ["title" => "된장", "count" => "2T"],
+                ["title" => "두부", "count" => "1모"],
+                ["title" => "양파", "count" => "1개"],
+                ["title" => "애호박", "count" => "1/2개"],
+                ["title" => "버섯", "count" => "50g"],
+                ["title" => "대파", "count" => "1대"]
+            ]),
+            json_encode([
+                ["title" => "김치", "count" => "200g"],
+                ["title" => "돼지고기", "count" => "150g"],
+                ["title" => "두부", "count" => "1/2모"],
+                ["title" => "양파", "count" => "1개"],
+                ["title" => "대파", "count" => "1대"],
+                ["title" => "청양고추", "count" => "1개"]
+            ]),
+            json_encode([
+                ["title" => "소고기", "count" => "150g"],
+                ["title" => "양파", "count" => "1개"],
+                ["title" => "대파", "count" => "1대"],
+                ["title" => "마늘", "count" => "1T"],
+                ["title" => "간장", "count" => "2T"],
+                ["title" => "설탕", "count" => "1T"],
+                ["title" => "참기름", "count" => "1T"]
+            ]),
+            json_encode([
+                ["title" => "삼겹살", "count" => "200g"],
+                ["title" => "상추", "count" => "5장"],
+                ["title" => "쌈장", "count" => "2T"],
+                ["title" => "마늘", "count" => "3쪽"],
+                ["title" => "고추", "count" => "1개"]
+            ]),
+            json_encode([
+                ["title" => "김치", "count" => "150g"],
+                ["title" => "밥", "count" => "1공기"],
+                ["title" => "참기름", "count" => "1T"],
+                ["title" => "계란", "count" => "1개"],
+                ["title" => "대파", "count" => "1대"],
+                ["title" => "간장", "count" => "1T"]
+            ]),
         ];
 
         $seasonings = [
-            json_encode(["된장", "고춧가루", "마늘", "간장"]),
-            json_encode(["고춧가루", "된장", "마늘", "간장"]),
-            json_encode(["간장", "설탕", "참기름", "마늘"]),
-            json_encode(["소금", "후추", "참기름"]),
-            json_encode(["간장", "참기름", "설탕", "후추"]),
-            json_encode(["소금", "후추"]),
-            json_encode(["간장", "참기름", "소금", "후추"]),
-            json_encode(["간장", "고추가루", "소금"]),
-            json_encode(["고추장", "간장", "참기름"]),
-            json_encode(["간장", "설탕", "마늘", "참기름"]),
-            json_encode(["간장", "참기름", "소금", "후추"]),
-            json_encode(["고추장", "간장", "설탕"]),
-            json_encode(["고추장", "간장", "설탕"]),
-            json_encode(["고추장", "간장", "설탕", "고춧가루"]),
-            json_encode(["고추장", "간장", "설탕", "참기름"])
+            json_encode([
+                ["title" => "된장", "count" => "2T"],
+                ["title" => "고춧가루", "count" => "1T"],
+                ["title" => "마늘", "count" => "1T"],
+                ["title" => "간장", "count" => "1T"]
+            ]),
+            json_encode([
+                ["title" => "고춧가루", "count" => "1T"],
+                ["title" => "된장", "count" => "1T"],
+                ["title" => "마늘", "count" => "1T"],
+                ["title" => "간장", "count" => "1T"]
+            ]),
+            json_encode([
+                ["title" => "간장", "count" => "2T"],
+                ["title" => "설탕", "count" => "1T"],
+                ["title" => "참기름", "count" => "1T"],
+                ["title" => "마늘", "count" => "1T"]
+            ]),
+            json_encode([
+                ["title" => "소금", "count" => "1/2t"],
+                ["title" => "후추", "count" => "약간"],
+                ["title" => "참기름", "count" => "1T"]
+            ]),
+            json_encode([
+                ["title" => "간장", "count" => "1T"],
+                ["title" => "참기름", "count" => "1T"],
+                ["title" => "설탕", "count" => "1/2T"],
+                ["title" => "후추", "count" => "약간"]
+            ]),
         ];
 
         $ways = [
