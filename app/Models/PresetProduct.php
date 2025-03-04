@@ -337,6 +337,9 @@ class PresetProduct extends Model
 
         $canOrderPackage = Package::getCanOrder();
 
+        if(!$canOrderPackage)
+            return null;
+
         if($canOrderPackage->count < $currentPackagePresetProduct->package_count)
             return $canOrderPackage;
 

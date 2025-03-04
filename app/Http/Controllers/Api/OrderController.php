@@ -140,14 +140,13 @@ class OrderController extends ApiController
         return $this->respondSuccessfully([
             'order' => OrderResource::make($order),
             "m_redirect_url" => config("app.url")."/api/orders/complete/mobile",
-            "storeId" => config("iamport.store_id"), // 가맹점 상점아이디
+            "imp_code" => config("iamport.imp_code"), // 가맹점 상점아이디
         ]);
     }
 
     // 결제검증(OrderObserver 사용)
     public function complete(OrderRequest $request)
     {
-
         $path = $request->path();
 
         if(strpos($path, 'webhook') !== false)
