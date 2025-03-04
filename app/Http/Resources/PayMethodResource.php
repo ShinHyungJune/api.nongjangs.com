@@ -22,6 +22,7 @@ class PayMethodResource extends JsonResource
             'commission' => $this->commission,
             'used' => $this->used,
             'external' => $this->external,
+            'channel_key' => $this->channel_key,
         ];
     }
 }

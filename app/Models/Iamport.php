@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class Iamport extends Model
 {
@@ -139,11 +140,16 @@ class Iamport extends Model
 
         $result = $response->json();
 
-        if(!isset($result['payment']['pgTxId']))
+        if(!isset($result['payment']['pgTxId'])) {
+            Log::notice($order->payMethod->channel_key);
+            Log::notice($card->billing_key);
+            Log::notice($result);
+
             return [
                 'message' => isset($result['message']) ? $result['message'] : '결제에 실패하였습니다.',
                 'success' => false,
             ];
+        }
 
         return [
             'success' => true,

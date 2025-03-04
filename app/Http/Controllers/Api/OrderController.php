@@ -15,6 +15,7 @@ use App\Models\PayMethod;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends ApiController
 {
@@ -212,6 +213,7 @@ class OrderController extends ApiController
             // Iamport::cancel($accessToken, $request->imp_uid);
             $order->update(['reason' => $e->getMessage()]);
 
+            Log::notice(json_encode($e->getMessage()));
             // $order->update(["state" => StateOrder::BEFORE_PAYMENT]);
             $result = ["success" => 0, "message"=> "결제를 실패하였습니다."];
 

@@ -25,7 +25,19 @@ class CardController extends ApiController
 
     public function store(CardRequest $request)
     {
-        $prevCard = auth()->user()->cards()
+        $result = Iamport::getOrder($request->payment_id);
+
+        if(!$result['success'])
+            return $this->respondForbidden($result['message']);
+
+        $card = auth()->user()->cards()->create([
+            'billing_key' => $result['data']['billingKey'],
+            'name' => $request->name,
+        ]);
+
+        return $this->respondSuccessfully(CardResource::make($card));
+
+        /* $prevCard = auth()->user()->cards()
             ->where('birth_or_business_number', $request->birth_or_business_number)
             ->where('number', $request->number)
             ->first();
@@ -48,7 +60,7 @@ class CardController extends ApiController
 
         $card = auth()->user()->cards()->create($data);
 
-        return $this->respondSuccessfully(CardResource::make($card));
+        return $this->respondSuccessfully(CardResource::make($card)); */
     }
 
 

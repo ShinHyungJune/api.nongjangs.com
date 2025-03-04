@@ -347,11 +347,12 @@ class Order extends Model
             'price_coupon_discount' => $priceCouponDiscount,*/
 
             'card_number' => $card ? $card->number : null,
-            'card_expiry_year' => $card ? $card->expiry_year : null,
+            'card_name' => $card ? $card->name : null,
+            /* 'card_expiry_year' => $card ? $card->expiry_year : null,
             'card_expiry_month' => $card ? $card->expiry_month : null,
             'card_password' => $card ? $card->password : null,
-            'card_name' => $card ? $card->name : null,
             'card_birth_or_business_number' => $card ? $card->birth_or_business_number : null,
+            */
             'card_billing_key' => $card ? $card->billing_key : null,
             'card_color' => $card ? $card->color : null,
 

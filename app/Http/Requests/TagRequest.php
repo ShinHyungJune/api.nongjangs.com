@@ -45,6 +45,16 @@ class TagRequest extends FormRequest
                         'ids' => ['required', 'array'],
                     ];
 
+                case 'up':
+                    return [
+                        'type' => ['required', 'integer'],
+                    ];
+
+                case 'down':
+                    return [
+                        'type' => ['required', 'integer'],
+                    ];
+
                 default:
                     return [];
             }

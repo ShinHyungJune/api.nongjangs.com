@@ -116,7 +116,7 @@ class TagController extends ApiController
      * @group 관리자
      * @subgroup Tag(태그)
      */
-    public function up(Request $request, Tag $tag)
+    public function up(TagRequest $request, Tag $tag)
     {
         $prevOrder = $tag->order;
 
@@ -135,7 +135,7 @@ class TagController extends ApiController
      * @group 관리자
      * @subgroup Tag(태그)
      */
-    public function down(Request $request, Tag $tag)
+    public function down(TagRequest $request, Tag $tag)
     {
         $prevOrder = $tag->order;
 

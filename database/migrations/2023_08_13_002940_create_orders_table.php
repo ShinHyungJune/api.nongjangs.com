@@ -34,12 +34,8 @@ class CreateOrdersTable extends Migration
             $table->string("pay_method_channel_key")->nullable()->comment('결제수단 채널키');
 
             // 카드정보
+            $table->string('card_name')->nullable()->comment('카드별칭');
             $table->string('card_number')->nullable()->comment('카드번호');
-            $table->string('card_expiry_year')->nullable()->comment('만료년도');
-            $table->string('card_expiry_month')->nullable()->comment('만료월');
-            $table->string('card_password')->nullable()->comment('비밀번호');
-            $table->string('card_name')->nullable()->comment('카드사명');
-            $table->string('card_birth_or_business_number')->nullable()->comment('생년월일 또는 사업자번호');
             $table->text('card_billing_key')->nullable()->comment('빌링키');
             $table->string('card_color')->nullable()->comment('색깔')->default('#000');
 

@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+Route::get("/imp", [\App\Http\Controllers\Api\ImpController::class, "index"]);
 Route::post("/images", [\App\Http\Controllers\Api\ImageController::class, "store"]);
 Route::post("/imageUpload", [\App\Http\Controllers\Api\ImageController::class, "store"]);
 

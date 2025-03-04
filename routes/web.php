@@ -24,12 +24,11 @@ use Milon\Barcode\DNS1D;
 /*Route::get("/test", [\App\Http\Controllers\Api\Admin\SurveyController::class, "export"]);*/
 
 Route::get("/test", function (){
-    $response = \Illuminate\Support\Facades\Http::post('http://localhost/api/login', [
-        'email' => 'test@naver.com',
-        'password' => 'test@naver.com',
-    ]);
+    $iamport = new Iamport();
 
-    dd($response->body());
+    $result = $iamport->getBillingKeyInformation("billing-d3d0610e-8cc1-409c-b7ce-7f6e2e020aab");
+
+    dd($result);
 });
 
 Route::post("/users/import",function (Request $request){
