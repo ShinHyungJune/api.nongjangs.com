@@ -30,7 +30,6 @@ class TagRequest extends FormRequest
                         'title' => ['required'],
                         'color' => ['nullable'],
                         'open' => ['boolean'],
-                        'order' => ['required', 'integer'],
                     ];
 
                 case 'update':
@@ -39,7 +38,6 @@ class TagRequest extends FormRequest
                         'title' => ['required'],
                         'color' => ['nullable'],
                         'open' => ['boolean'],
-                        'order' => ['required', 'integer'],//
                     ];
 
                 case 'destroy':
