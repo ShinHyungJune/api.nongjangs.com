@@ -11,6 +11,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\Download;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
@@ -126,6 +127,9 @@ class UserController extends ApiController
     public function update(UserRequest $request, User $user)
     {
         $user->update($request->validated());
+
+        if($request->password)
+            $user->update(['password'=> Hash::make($request->passwrod)]);
 
         return $this->respondSuccessfully(UserResource::make($user));
     }

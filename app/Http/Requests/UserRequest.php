@@ -67,6 +67,11 @@ class UserRequest extends FormRequest
                         'refund_owner' => ['nullable', 'string', 'max:500'],
                         'agree_promotion' => ['nullable', 'boolean'],
                         'active' => ['nullable', 'boolean'],
+
+                        'master' => 'nullable',
+                        'name' => 'nullable|string|max:500',
+                        'email' => 'nullable|email|max:500|unique:users,email,'.$this->userId,
+                        'contact' => 'nullable|string|max:500|unique:users,contact,'.$this->userId,
                     ];
 
                 case 'destroy':
