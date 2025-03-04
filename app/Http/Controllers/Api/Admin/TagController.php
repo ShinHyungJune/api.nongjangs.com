@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\TagResource;
 use App\Http\Requests\TagRequest;
 use App\Models\Tag;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -108,6 +109,44 @@ class TagController extends ApiController
     public function open(TagRequest $request)
     {
         Tag::whereIn('id', $request->ids)->update(['open' => 1]);
+
+        return $this->respondSuccessfully();
+    }
+
+    /** 순서변경(up)
+     * @group 관리자
+     * @subgroup Tag(태그)
+     */
+    public function up(Request $request, Tag $tag)
+    {
+        $prevOrder = $tag->order;
+
+        $target = Tag::where('type', $request->type)->orderBy('order', 'desc')->where('id', '!=', $tag->id)->where('order', '<=', $tag->order)->first();
+
+        if($target) {
+            $changeOrder = $target->order == $tag->order ? $tag->order - 1 : $target->order;
+            $tag->update(["order" => $changeOrder]);
+            $target->update(["order" => $prevOrder]);
+        }
+
+        return $this->respondSuccessfully();
+    }
+
+    /** 순서변경(down)
+     * @group 관리자
+     * @subgroup Tag(태그)
+     */
+    public function down(Request $request, Tag $tag)
+    {
+        $prevOrder = $tag->order;
+
+        $target = Tag::where('type', $request->type)->orderBy("order", "asc")->where("id", "!=", $tag->id)->where("order", ">=", $tag->order)->first();
+
+        if($target) {
+            $changeOrder = $target->order == $tag->order ? $tag->order + 1 : $target->order;
+            $tag->update(["order" => $changeOrder]);
+            $target->update(["order" => $prevOrder]);
+        }
 
         return $this->respondSuccessfully();
     }
