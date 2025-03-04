@@ -30,7 +30,8 @@ class QnaRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
-                        'user_id' => ['nullable', 'integer', 'max:500'],
+                        'qna_category_id' => ['nullable', 'integer'],
+                        'user_id' => ['nullable', 'integer'],
                         'word' => ['nullable', 'string', 'max:500'],
                     ];
 

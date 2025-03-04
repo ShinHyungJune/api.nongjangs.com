@@ -1789,6 +1789,13 @@
 
                                                                                     <div class="children" style="display: none;">
                                                                                                     <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
+                                                       href="#-GETapi-admin-reviews-counts">
+                                                        <div title="통계" id="toc-item--GETapi-admin-reviews-counts"
+                                                             class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
+                                                            통계
+                                                        </div>
+                                                    </a>
+                                                                                                    <a class="ElementsTableOfContentsItem sl-block sl-no-underline"
                                                        href="#-GETapi-admin-reviews">
                                                         <div title="목록" id="toc-item--GETapi-admin-reviews"
                                                              class="sl-flex sl-items-center sl-h-md sl-pr-4 sl-pl-12 sl-bg-canvas-100 hover:sl-bg-canvas-200 sl-cursor-pointer sl-select-none">
@@ -12156,31 +12163,6 @@ You can switch the language used with the tabs at the top right (or from the nav
 </div>
 
             </div>
-    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
-        <style>
-    .sl-prose.sl-markdown-viewer p {
-        color:transparent;
-    }
-    .sl-prose.sl-markdown-viewer .point {
-        font-size:14px; font-weight:bold; color:navy;
-    }
-</style>
-<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
-    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
-    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
-        <div class="sl-flex sl-items-center sl-max-w-full">
-                                        <div class="sl-flex sl-items-baseline sl-text-base">
-                    <div class="sl-font-mono sl-font-semibold sl-mr-2">order</div>
-                                            <span class="sl-truncate sl-text-muted">integer</span>
-                                    </div>
-                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
-                    <span class="sl-ml-2 sl-text-warning">required</span>
-                                    </div>
-                
-    </div>
-</div>
-
-            </div>
                             </div>
                         </div>
                     
@@ -12567,31 +12549,6 @@ You can switch the language used with the tabs at the top right (or from the nav
                 <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
             <p><span class="point">노출여부 (1 - 노출 | 0 - 미노출)</span>.</p>
         </div>
-                
-    </div>
-</div>
-
-            </div>
-    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
-        <style>
-    .sl-prose.sl-markdown-viewer p {
-        color:transparent;
-    }
-    .sl-prose.sl-markdown-viewer .point {
-        font-size:14px; font-weight:bold; color:navy;
-    }
-</style>
-<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
-    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
-    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
-        <div class="sl-flex sl-items-center sl-max-w-full">
-                                        <div class="sl-flex sl-items-baseline sl-text-base">
-                    <div class="sl-font-mono sl-font-semibold sl-mr-2">order</div>
-                                            <span class="sl-truncate sl-text-muted">integer</span>
-                                    </div>
-                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
-                    <span class="sl-ml-2 sl-text-warning">required</span>
-                                    </div>
                 
     </div>
 </div>
@@ -21006,12 +20963,38 @@ You can switch the language used with the tabs at the top right (or from the nav
     <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
         <div class="sl-flex sl-items-center sl-max-w-full">
                                         <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">qna_category_id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">문의카테고리 고유번호</span>.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
                     <div class="sl-font-mono sl-font-semibold sl-mr-2">user_id</div>
                                             <span class="sl-truncate sl-text-muted">integer</span>
                                     </div>
                                     </div>
                 <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
-            <p><span class="point">사용자 고유번호</span>. Must not be greater than 500.</p>
+            <p><span class="point">사용자 고유번호</span>.</p>
         </div>
                 
     </div>
@@ -21896,11 +21879,11 @@ You can switch the language used with the tabs at the top right (or from the nav
         <div class="sl-flex sl-items-center sl-max-w-full">
                                         <div class="sl-flex sl-items-baseline sl-text-base">
                     <div class="sl-font-mono sl-font-semibold sl-mr-2">description</div>
-                                            <span class="sl-truncate sl-text-muted">object</span>
+                                            <span class="sl-truncate sl-text-muted">string</span>
                                     </div>
                                     </div>
                 <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
-            <p><span class="point">내용</span>.</p>
+            <p><span class="point">내용</span>. Must not be greater than 5000 characters.</p>
         </div>
                 
     </div>
@@ -22376,11 +22359,11 @@ You can switch the language used with the tabs at the top right (or from the nav
         <div class="sl-flex sl-items-center sl-max-w-full">
                                         <div class="sl-flex sl-items-baseline sl-text-base">
                     <div class="sl-font-mono sl-font-semibold sl-mr-2">description</div>
-                                            <span class="sl-truncate sl-text-muted">object</span>
+                                            <span class="sl-truncate sl-text-muted">string</span>
                                     </div>
                                     </div>
                 <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
-            <p><span class="point">내용</span>.</p>
+            <p><span class="point">내용</span>. Must not be greater than 5000 characters.</p>
         </div>
                 
     </div>
@@ -25106,6 +25089,10 @@ You can switch the language used with the tabs at the top right (or from the nav
                 &quot;nickname&quot;: &quot;닉네임&quot;,
                 &quot;grade&quot;: &quot;등급 객체&quot;
             },
+            &quot;presetProduct&quot;: {
+                &quot;id&quot;: &quot;고유번호&quot;,
+                &quot;format_title&quot;: &quot;표시용 제목&quot;
+            },
             &quot;package&quot;: {
                 &quot;id&quot;: &quot;고유번호&quot;,
                 &quot;count&quot;: &quot;회차&quot;,
@@ -25521,6 +25508,58 @@ You can switch the language used with the tabs at the top right (or from the nav
 </div>
 
             </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">commentable_id</div>
+                                            <span class="sl-truncate sl-text-muted">integer</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">대상 고유번호</span>.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">commentable_type</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p><span class="point">대상 모델명 (App\Models\VegetableStory - 채소이야기)</span>. Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
                             </div>
                         </div>
                     
@@ -25846,6 +25885,116 @@ You can switch the language used with the tabs at the top right (or from the nav
         <div class="sl-relative">
             <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
                 <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
+                    id="-GETapi-admin-reviews-counts">
+                    통계
+                </h2>
+            </div>
+        </div>
+
+        <div class="sl-relative">
+            <div title="http://localhost/api/admin/reviews/counts"
+                     class="sl-stack sl-stack--horizontal sl-stack--3 sl-inline-flex sl-flex-row sl-items-center sl-max-w-full sl-font-mono sl-py-2 sl-pr-4 sl-bg-canvas-50 sl-rounded-lg"
+                >
+                                            <div class="sl-text-lg sl-font-semibold sl-px-2.5 sl-py-1 sl-text-on-primary sl-rounded-lg"
+                             style="background-color: green;"
+                        >
+                            GET
+                        </div>
+                                        <div class="sl-flex sl-overflow-x-hidden sl-text-lg sl-select-all">
+                        <div dir="rtl"
+                             class="sl-overflow-x-hidden sl-truncate sl-text-muted">http://localhost</div>
+                        <div class="sl-flex-1 sl-font-semibold">/api/admin/reviews/counts</div>
+                    </div>
+
+                                    </div>
+        </div>
+
+        
+    </div>
+    <div class="sl-flex">
+        <div data-testid="two-column-left" class="sl-flex-1 sl-w-0">
+            <div class="sl-stack sl-stack--vertical sl-stack--10 sl-flex sl-flex-col sl-items-stretch">
+                <div class="sl-stack sl-stack--vertical sl-stack--8 sl-flex sl-flex-col sl-items-stretch">
+                    
+
+                    
+
+                    
+                    
+                                    </div>
+            </div>
+        </div>
+
+        <div data-testid="two-column-right" class="sl-relative sl-w-2/5 sl-ml-16" style="max-width: 600px; width:50%; margin-left:20px;">
+            <div class="sl-stack sl-stack--vertical sl-stack--6 sl-flex sl-flex-col sl-items-stretch">
+
+                                                    
+                    
+
+                                            <div class="sl-panel sl-outline-none sl-w-full sl-rounded-lg">
+                            <div class="sl-panel__titlebar sl-flex sl-items-center sl-relative focus:sl-z-10 sl-text-base sl-leading-none sl-pr-3 sl-pl-4 sl-bg-canvas-200 sl-text-body sl-border-input focus:sl-border-primary sl-select-none">
+                                <div class="sl-flex sl-flex-1 sl-items-center sl-py-2">
+                                    <div class="sl--ml-2">
+                                        <div class="sl-h-sm sl-text-base sl-font-medium sl-px-1.5 sl-text-muted sl-rounded sl-border-transparent sl-border">
+                                            <div class="sl-mb-2 sl-inline-block">Example response:</div>
+                                            <div class="sl-mb-2 sl-inline-block">
+                                                <select
+                                                        class="example-response-GETapi-admin-reviews-counts-toggle sl-text-base"
+                                                        aria-label="Response sample"
+                                                        onchange="switchExampleResponse('GETapi-admin-reviews-counts', event.target.value);">
+                                                                                                            <option value="0">200</option>
+                                                                                                    </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                        class="sl-button sl-h-sm sl-text-base sl-font-medium sl-px-1.5 hover:sl-bg-canvas-50 active:sl-bg-canvas-100 sl-text-muted hover:sl-text-body focus:sl-text-body sl-rounded sl-border-transparent sl-border disabled:sl-opacity-70">
+                                    <div class="sl-mx-0">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy"
+                                             class="svg-inline--fa fa-copy fa-fw fa-sm sl-icon" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                  d="M384 96L384 0h-112c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48H464c26.51 0 48-21.49 48-48V128h-95.1C398.4 128 384 113.6 384 96zM416 0v96h96L416 0zM192 352V128h-144c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h192c26.51 0 48-21.49 48-48L288 416h-32C220.7 416 192 387.3 192 352z"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+                                                            <div class="sl-panel__content-wrapper sl-bg-canvas-100 example-response-GETapi-admin-reviews-counts example-response-GETapi-admin-reviews-counts-0"
+                                     style=" "
+                                >
+                                    <div class="sl-panel__content sl-p-0">                                                                                                                                
+                                            <pre><code style="max-height: 300px;"
+                                                       class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
+  &quot;package 꾸러미&quot;: {
+    &quot;average_score&quot;: &quot;평균 별점&quot;,
+    &quot;count&quot;: &quot;전체 후기 수&quot;,
+    &quot;count_best&quot;: &quot;베스트 후기&quot;,
+    &quot;count_wait&quot;: &quot;답변대기&quot;,
+  },
+  &quot;product 직거래상품&quot;: {
+    &quot;average_score&quot;: &quot;평균 별점&quot;,
+    &quot;count&quot;: &quot;전체 후기 수&quot;,
+    &quot;count_best&quot;: &quot;베스트 후기&quot;,
+    &quot;count_wait&quot;: &quot;답변대기&quot;,
+  }
+}</code></pre>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                            </div>
+    </div>
+</div>
+
+                    <style>
+    pre code.hljs {
+        max-height:unset !important;
+    }
+</style>
+<div class="sl-stack sl-stack--vertical sl-stack--8 HttpOperation sl-flex sl-flex-col sl-items-stretch sl-w-full">
+    <div class="sl-stack sl-stack--vertical sl-stack--5 sl-flex sl-flex-col sl-items-stretch">
+        <div class="sl-relative">
+            <div class="sl-stack sl-stack--horizontal sl-stack--5 sl-flex sl-flex-row sl-items-center">
+                <h2 class="sl-text-3xl sl-leading-tight sl-font-prose sl-text-heading sl-mt-5 sl-mb-1"
                     id="-GETapi-admin-reviews">
                     목록
                 </h2>
@@ -26088,6 +26237,7 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;is_bookmark&quot;: &quot;북마크여부&quot;,
             &quot;count_like&quot;: &quot;좋아요수&quot;,
             &quot;count_bookmark&quot;: &quot;북마크수&quot;,
+            &quot;count_report&quot;: &quot;신고수&quot;,
             &quot;format_created_at&quot;: &quot;표시용 생성일자&quot;
         }
     ],
@@ -26194,30 +26344,44 @@ You can switch the language used with the tabs at the top right (or from the nav
                                     <div class="sl-panel__content sl-p-0">                                                                                                                                
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;id&quot;: &quot;고유번호&quot;,
-    &quot;best&quot;: &quot;베스트 여부&quot;,
-    &quot;score&quot;: &quot;점수&quot;,
-    &quot;point&quot;: &quot;받은 적립금&quot;,
-    &quot;user&quot;: {
-        &quot;id&quot;: &quot;고유번호&quot;,
-        &quot;nickname&quot;: &quot;닉네임&quot;
-    },
-    &quot;product&quot;: &quot;상품 객체&quot;,
-    &quot;package&quot;: &quot;패키지 객체&quot;,
-    &quot;presetProduct&quot;: &quot;출고상품 객체정보&quot;,
-    &quot;reply&quot;: &quot;관리자 답변&quot;,
-    &quot;reply_at&quot;: &quot;관리자 답변일자&quot;,
-    &quot;format_reply_at&quot;: &quot;표시용 답변일자&quot;,
-    &quot;img&quot;: &quot;대표이미지 객체&quot;,
-    &quot;imgs&quot;: &quot;이미지 목록&quot;,
-    &quot;photo&quot;: &quot;포토리뷰여부&quot;,
-    &quot;hide&quot;: &quot;숨김여부&quot;,
-    &quot;format_display&quot;: &quot;표시용 라벨 (ex. 꾸러미 3회차, 귤 1박스)&quot;,
-    &quot;is_like&quot;: &quot;좋아요여부&quot;,
-    &quot;is_bookmark&quot;: &quot;북마크여부&quot;,
-    &quot;count_like&quot;: &quot;좋아요수&quot;,
-    &quot;count_bookmark&quot;: &quot;북마크수&quot;,
-    &quot;format_created_at&quot;: &quot;표시용 생성일자&quot;
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: &quot;고유번호&quot;,
+            &quot;best&quot;: &quot;베스트 여부&quot;,
+            &quot;score&quot;: &quot;점수&quot;,
+            &quot;point&quot;: &quot;받은 적립금&quot;,
+            &quot;user&quot;: {
+                &quot;id&quot;: &quot;고유번호&quot;,
+                &quot;nickname&quot;: &quot;닉네임&quot;,
+                &quot;grade&quot;: {
+                    &quot;id&quot;: &quot;고유번호&quot;,
+                    &quot;level&quot;: &quot;레벨&quot;
+                }
+            },
+            &quot;product&quot;: &quot;상품 객체&quot;,
+            &quot;package&quot;: &quot;패키지 객체&quot;,
+            &quot;presetProduct&quot;: &quot;출고상품 객체정보&quot;,
+            &quot;reply&quot;: &quot;관리자 답변&quot;,
+            &quot;reply_at&quot;: &quot;관리자 답변일자&quot;,
+            &quot;format_reply_at&quot;: &quot;표시용 답변일자&quot;,
+            &quot;img&quot;: &quot;대표이미지 객체&quot;,
+            &quot;imgs&quot;: &quot;이미지 목록&quot;,
+            &quot;photo&quot;: &quot;포토리뷰여부&quot;,
+            &quot;hide&quot;: &quot;숨김여부&quot;,
+            &quot;format_display&quot;: &quot;표시용 라벨 (ex. 꾸러미 3회차, 귤 1박스)&quot;,
+            &quot;is_like&quot;: &quot;좋아요여부&quot;,
+            &quot;is_bookmark&quot;: &quot;북마크여부&quot;,
+            &quot;count_like&quot;: &quot;좋아요수&quot;,
+            &quot;count_bookmark&quot;: &quot;북마크수&quot;,
+            &quot;count_report&quot;: &quot;신고수&quot;,
+            &quot;format_created_at&quot;: &quot;표시용 생성일자&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;total&quot;: &quot;총 개수&quot;,
+        &quot;current_page&quot;: &quot;현재 페이지&quot;,
+        &quot;last_page&quot;: &quot;마지막 페이지&quot;
+    }
 }</code></pre>
                                                                             </div>
                                 </div>
@@ -26347,30 +26511,44 @@ You can switch the language used with the tabs at the top right (or from the nav
                                     <div class="sl-panel__content sl-p-0">                                                                                                                                
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;id&quot;: &quot;고유번호&quot;,
-    &quot;best&quot;: &quot;베스트 여부&quot;,
-    &quot;score&quot;: &quot;점수&quot;,
-    &quot;point&quot;: &quot;받은 적립금&quot;,
-    &quot;user&quot;: {
-        &quot;id&quot;: &quot;고유번호&quot;,
-        &quot;nickname&quot;: &quot;닉네임&quot;
-    },
-    &quot;product&quot;: &quot;상품 객체&quot;,
-    &quot;package&quot;: &quot;패키지 객체&quot;,
-    &quot;presetProduct&quot;: &quot;출고상품 객체정보&quot;,
-    &quot;reply&quot;: &quot;관리자 답변&quot;,
-    &quot;reply_at&quot;: &quot;관리자 답변일자&quot;,
-    &quot;format_reply_at&quot;: &quot;표시용 답변일자&quot;,
-    &quot;img&quot;: &quot;대표이미지 객체&quot;,
-    &quot;imgs&quot;: &quot;이미지 목록&quot;,
-    &quot;photo&quot;: &quot;포토리뷰여부&quot;,
-    &quot;hide&quot;: &quot;숨김여부&quot;,
-    &quot;format_display&quot;: &quot;표시용 라벨 (ex. 꾸러미 3회차, 귤 1박스)&quot;,
-    &quot;is_like&quot;: &quot;좋아요여부&quot;,
-    &quot;is_bookmark&quot;: &quot;북마크여부&quot;,
-    &quot;count_like&quot;: &quot;좋아요수&quot;,
-    &quot;count_bookmark&quot;: &quot;북마크수&quot;,
-    &quot;format_created_at&quot;: &quot;표시용 생성일자&quot;
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: &quot;고유번호&quot;,
+            &quot;best&quot;: &quot;베스트 여부&quot;,
+            &quot;score&quot;: &quot;점수&quot;,
+            &quot;point&quot;: &quot;받은 적립금&quot;,
+            &quot;user&quot;: {
+                &quot;id&quot;: &quot;고유번호&quot;,
+                &quot;nickname&quot;: &quot;닉네임&quot;,
+                &quot;grade&quot;: {
+                    &quot;id&quot;: &quot;고유번호&quot;,
+                    &quot;level&quot;: &quot;레벨&quot;
+                }
+            },
+            &quot;product&quot;: &quot;상품 객체&quot;,
+            &quot;package&quot;: &quot;패키지 객체&quot;,
+            &quot;presetProduct&quot;: &quot;출고상품 객체정보&quot;,
+            &quot;reply&quot;: &quot;관리자 답변&quot;,
+            &quot;reply_at&quot;: &quot;관리자 답변일자&quot;,
+            &quot;format_reply_at&quot;: &quot;표시용 답변일자&quot;,
+            &quot;img&quot;: &quot;대표이미지 객체&quot;,
+            &quot;imgs&quot;: &quot;이미지 목록&quot;,
+            &quot;photo&quot;: &quot;포토리뷰여부&quot;,
+            &quot;hide&quot;: &quot;숨김여부&quot;,
+            &quot;format_display&quot;: &quot;표시용 라벨 (ex. 꾸러미 3회차, 귤 1박스)&quot;,
+            &quot;is_like&quot;: &quot;좋아요여부&quot;,
+            &quot;is_bookmark&quot;: &quot;북마크여부&quot;,
+            &quot;count_like&quot;: &quot;좋아요수&quot;,
+            &quot;count_bookmark&quot;: &quot;북마크수&quot;,
+            &quot;count_report&quot;: &quot;신고수&quot;,
+            &quot;format_created_at&quot;: &quot;표시용 생성일자&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;total&quot;: &quot;총 개수&quot;,
+        &quot;current_page&quot;: &quot;현재 페이지&quot;,
+        &quot;last_page&quot;: &quot;마지막 페이지&quot;
+    }
 }</code></pre>
                                                                             </div>
                                 </div>
@@ -26478,34 +26656,6 @@ You can switch the language used with the tabs at the top right (or from the nav
     <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
         <div class="sl-flex sl-items-center sl-max-w-full">
                                         <div class="sl-flex sl-items-baseline sl-text-base">
-                    <div class="sl-font-mono sl-font-semibold sl-mr-2">product_id</div>
-                                            <span class="sl-truncate sl-text-muted">integer</span>
-                                    </div>
-                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
-                    <span class="sl-ml-2 sl-text-warning">required</span>
-                                    </div>
-                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
-            <p><span class="point">상품 고유번호</span>.</p>
-        </div>
-                
-    </div>
-</div>
-
-            </div>
-    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
-        <style>
-    .sl-prose.sl-markdown-viewer p {
-        color:transparent;
-    }
-    .sl-prose.sl-markdown-viewer .point {
-        font-size:14px; font-weight:bold; color:navy;
-    }
-</style>
-<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
-    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
-    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
-        <div class="sl-flex sl-items-center sl-max-w-full">
-                                        <div class="sl-flex sl-items-baseline sl-text-base">
                     <div class="sl-font-mono sl-font-semibold sl-mr-2">best</div>
                                             <span class="sl-truncate sl-text-muted">boolean</span>
                                     </div>
@@ -26531,70 +26681,14 @@ You can switch the language used with the tabs at the top right (or from the nav
     <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
         <div class="sl-flex sl-items-center sl-max-w-full">
                                         <div class="sl-flex sl-items-baseline sl-text-base">
-                    <div class="sl-font-mono sl-font-semibold sl-mr-2">score</div>
-                                            <span class="sl-truncate sl-text-muted">integer</span>
-                                    </div>
-                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
-                    <span class="sl-ml-2 sl-text-warning">required</span>
-                                    </div>
-                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
-            <p><span class="point">점수</span>. Must be at least 1. Must not be greater than 5.</p>
-        </div>
-                
-    </div>
-</div>
-
-            </div>
-    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
-        <style>
-    .sl-prose.sl-markdown-viewer p {
-        color:transparent;
-    }
-    .sl-prose.sl-markdown-viewer .point {
-        font-size:14px; font-weight:bold; color:navy;
-    }
-</style>
-<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
-    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
-    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
-        <div class="sl-flex sl-items-center sl-max-w-full">
-                                        <div class="sl-flex sl-items-baseline sl-text-base">
-                    <div class="sl-font-mono sl-font-semibold sl-mr-2">description</div>
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">reply</div>
                                             <span class="sl-truncate sl-text-muted">string</span>
                                     </div>
                                     <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
                     <span class="sl-ml-2 sl-text-warning">required</span>
                                     </div>
                 <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
-            <p><span class="point">내용</span>. Must not be greater than 50000 characters.</p>
-        </div>
-                
-    </div>
-</div>
-
-            </div>
-    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
-        <style>
-    .sl-prose.sl-markdown-viewer p {
-        color:transparent;
-    }
-    .sl-prose.sl-markdown-viewer .point {
-        font-size:14px; font-weight:bold; color:navy;
-    }
-</style>
-<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
-    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
-    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
-        <div class="sl-flex sl-items-center sl-max-w-full">
-                                        <div class="sl-flex sl-items-baseline sl-text-base">
-                    <div class="sl-font-mono sl-font-semibold sl-mr-2">hide</div>
-                                            <span class="sl-truncate sl-text-muted">boolean</span>
-                                    </div>
-                                    <div class="sl-flex-1 sl-h-px sl-mx-3"></div>
-                    <span class="sl-ml-2 sl-text-warning">required</span>
-                                    </div>
-                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
-            <p><span class="point">가림여부</span>.</p>
+            <p><span class="point">답변완료여부 (1 - 완료 | 0 - 미완료)</span>. Must not be greater than 50000 characters.</p>
         </div>
                 
     </div>
@@ -26648,30 +26742,44 @@ You can switch the language used with the tabs at the top right (or from the nav
                                     <div class="sl-panel__content sl-p-0">                                                                                                                                
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;id&quot;: &quot;고유번호&quot;,
-    &quot;best&quot;: &quot;베스트 여부&quot;,
-    &quot;score&quot;: &quot;점수&quot;,
-    &quot;point&quot;: &quot;받은 적립금&quot;,
-    &quot;user&quot;: {
-        &quot;id&quot;: &quot;고유번호&quot;,
-        &quot;nickname&quot;: &quot;닉네임&quot;
-    },
-    &quot;product&quot;: &quot;상품 객체&quot;,
-    &quot;package&quot;: &quot;패키지 객체&quot;,
-    &quot;presetProduct&quot;: &quot;출고상품 객체정보&quot;,
-    &quot;reply&quot;: &quot;관리자 답변&quot;,
-    &quot;reply_at&quot;: &quot;관리자 답변일자&quot;,
-    &quot;format_reply_at&quot;: &quot;표시용 답변일자&quot;,
-    &quot;img&quot;: &quot;대표이미지 객체&quot;,
-    &quot;imgs&quot;: &quot;이미지 목록&quot;,
-    &quot;photo&quot;: &quot;포토리뷰여부&quot;,
-    &quot;hide&quot;: &quot;숨김여부&quot;,
-    &quot;format_display&quot;: &quot;표시용 라벨 (ex. 꾸러미 3회차, 귤 1박스)&quot;,
-    &quot;is_like&quot;: &quot;좋아요여부&quot;,
-    &quot;is_bookmark&quot;: &quot;북마크여부&quot;,
-    &quot;count_like&quot;: &quot;좋아요수&quot;,
-    &quot;count_bookmark&quot;: &quot;북마크수&quot;,
-    &quot;format_created_at&quot;: &quot;표시용 생성일자&quot;
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: &quot;고유번호&quot;,
+            &quot;best&quot;: &quot;베스트 여부&quot;,
+            &quot;score&quot;: &quot;점수&quot;,
+            &quot;point&quot;: &quot;받은 적립금&quot;,
+            &quot;user&quot;: {
+                &quot;id&quot;: &quot;고유번호&quot;,
+                &quot;nickname&quot;: &quot;닉네임&quot;,
+                &quot;grade&quot;: {
+                    &quot;id&quot;: &quot;고유번호&quot;,
+                    &quot;level&quot;: &quot;레벨&quot;
+                }
+            },
+            &quot;product&quot;: &quot;상품 객체&quot;,
+            &quot;package&quot;: &quot;패키지 객체&quot;,
+            &quot;presetProduct&quot;: &quot;출고상품 객체정보&quot;,
+            &quot;reply&quot;: &quot;관리자 답변&quot;,
+            &quot;reply_at&quot;: &quot;관리자 답변일자&quot;,
+            &quot;format_reply_at&quot;: &quot;표시용 답변일자&quot;,
+            &quot;img&quot;: &quot;대표이미지 객체&quot;,
+            &quot;imgs&quot;: &quot;이미지 목록&quot;,
+            &quot;photo&quot;: &quot;포토리뷰여부&quot;,
+            &quot;hide&quot;: &quot;숨김여부&quot;,
+            &quot;format_display&quot;: &quot;표시용 라벨 (ex. 꾸러미 3회차, 귤 1박스)&quot;,
+            &quot;is_like&quot;: &quot;좋아요여부&quot;,
+            &quot;is_bookmark&quot;: &quot;북마크여부&quot;,
+            &quot;count_like&quot;: &quot;좋아요수&quot;,
+            &quot;count_bookmark&quot;: &quot;북마크수&quot;,
+            &quot;count_report&quot;: &quot;신고수&quot;,
+            &quot;format_created_at&quot;: &quot;표시용 생성일자&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;total&quot;: &quot;총 개수&quot;,
+        &quot;current_page&quot;: &quot;현재 페이지&quot;,
+        &quot;last_page&quot;: &quot;마지막 페이지&quot;
+    }
 }</code></pre>
                                                                             </div>
                                 </div>
@@ -34160,6 +34268,7 @@ You can switch the language used with the tabs at the top right (or from the nav
             &quot;is_bookmark&quot;: &quot;북마크여부&quot;,
             &quot;count_like&quot;: &quot;좋아요수&quot;,
             &quot;count_bookmark&quot;: &quot;북마크수&quot;,
+            &quot;count_report&quot;: &quot;신고수&quot;,
             &quot;format_created_at&quot;: &quot;표시용 생성일자&quot;
         }
     ],
@@ -38157,6 +38266,10 @@ You can switch the language used with the tabs at the top right (or from the nav
                 &quot;id&quot;: &quot;고유번호&quot;,
                 &quot;nickname&quot;: &quot;닉네임&quot;,
                 &quot;grade&quot;: &quot;등급 객체&quot;
+            },
+            &quot;presetProduct&quot;: {
+                &quot;id&quot;: &quot;고유번호&quot;,
+                &quot;format_title&quot;: &quot;표시용 제목&quot;
             },
             &quot;package&quot;: {
                 &quot;id&quot;: &quot;고유번호&quot;,

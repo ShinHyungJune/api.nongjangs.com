@@ -53,6 +53,7 @@ class ReviewResource extends JsonResource
             'is_bookmark' => $this->is_bookmark,
             'count_like' => $this->count_like,
             'count_bookmark' => $this->count_bookmark,
+            'count_report' => $this->count_report,
             'format_created_at' => Carbon::make($this->created_at)->format('Y.m.d'),
         ];
     }

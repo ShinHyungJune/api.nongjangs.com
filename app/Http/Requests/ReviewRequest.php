@@ -44,11 +44,8 @@ class ReviewRequest extends FormRequest
 
                 case 'update':
                     return [
-                        'product_id' => ['required', 'integer'],
                         'best' => ['required', 'boolean'],
-                        'score' => ['required', 'integer', 'min:1', 'max:5'],
-                        'description' => ['required', 'string', 'max:50000'],
-                        'hide' => ['required', 'boolean'],
+                        'reply' => ['required', 'string', 'max:50000'],
                     ];
 
                 case 'destroy':

@@ -13,6 +13,10 @@
         "nickname" : "닉네임",
         "grade": "등급 객체"
       },
+      "presetProduct": {
+        "id": "고유번호",
+        "format_title": "표시용 제목"
+      },
       "package": {
         "id": "고유번호",
         "count":"회차",

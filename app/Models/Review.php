@@ -107,6 +107,16 @@ class Review extends Model implements HasMedia
         return $this->bookmarks()->count();
     }
 
+    public function getCountReportsAttribute()
+    {
+        return $this->reports()->count();
+    }
+
+    public function reports()
+    {
+        return $this->morphMany(Report::class, 'reportable');
+    }
+
     public function getFormatDisplayAttribute()
     {
         $presetProduct = $this->presetProduct;

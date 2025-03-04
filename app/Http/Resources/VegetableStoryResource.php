@@ -33,6 +33,10 @@ class VegetableStoryResource extends JsonResource
                     'title' => $user->grade->title,
                 ] : '',
             ] : '',
+            'presetProduct' => $this->presetProduct ? [
+                'id' => $this->presetProduct->id,
+                'format_title' => $this->presetProduct->format_title,
+            ] : '',
             'package' => $this->package ? [
                 'id' => $this->package->id,
                 'count' => $this->package->count,

@@ -4,14 +4,32 @@ namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReviewRequest;
 use App\Http\Resources\VegetableStoryResource;
 use App\Http\Requests\VegetableStoryRequest;
+use App\Models\Review;
 use App\Models\VegetableStory;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class VegetableStoryController extends ApiController
 {
+    /** 통계
+     * @group 관리자
+     * @subgroup VegetableStory(채소이야기)
+     * @responseFile storage/responses/vegetableStoriesCounts.json
+     */
+    public function counts(ReviewRequest $request)
+    {
+        $item = [
+            'count' => VegetableStory::count(),
+            'count_package' => VegetableStory::whereNotNull('package_id')->count(),
+            'count_product' => VegetableStory::whereNotNull('product_id')->count(),
+        ];
+
+        return $this->respondSuccessfully($item);
+    }
+
     /** 목록
      * @group 관리자
      * @subgroup VegetableStory(채소이야기)
@@ -24,7 +42,7 @@ class VegetableStoryController extends ApiController
                 $query->whereHas('preset', function ($query) use($request){
                     $query->whereHas('order', function ($query) use($request){
                         $query->where('payment_id', 'LIKE' ,'%'.$request->word.'%');
-                    });
+                    })->orWhere('user_name', 'LIKE', '%'.$request->word.'%');
                 });
             })->orWhere('description', 'LIKE' ,'%'.$request->word.'%');
         });

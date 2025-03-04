@@ -16,7 +16,9 @@ class CommentRequest extends FormRequest
                 case 'index':
                     return [
                         'user_id' => ['nullable', 'integer'],
-                        'word' => ['nullable', 'string', 'max:500']
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'commentable_id' => ['nullable', 'integer'],
+                        'commentable_type' => ['nullable', 'string', 'max:500'],
                     ];
 
                 case 'store':

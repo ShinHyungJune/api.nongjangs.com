@@ -133,6 +133,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/comments", \App\Http\Controllers\Api\Admin\CommentController::class)->except(['destroy']);
     Route::delete("/comments", [\App\Http\Controllers\Api\Admin\CommentController::class, "destroy"]);
 
+    Route::get("/reviews/counts", [\App\Http\Controllers\Api\Admin\ReviewController::class, 'counts']);
     Route::resource("/reviews", \App\Http\Controllers\Api\Admin\ReviewController::class)->except(['destroy']);
     Route::delete("/reviews", [\App\Http\Controllers\Api\Admin\ReviewController::class, "destroy"]);
 

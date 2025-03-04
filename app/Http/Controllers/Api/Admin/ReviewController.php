@@ -7,11 +7,38 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ReviewResource;
 use App\Http\Requests\ReviewRequest;
 use App\Models\Review;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ReviewController extends ApiController
 {
+    /** 통계
+     * @group 관리자
+     * @subgroup Review(리뷰)
+     * @responseFile storage/responses/reviewsCounts.json
+     */
+    public function counts(ReviewRequest $request)
+    {
+        $item = [
+            'package' => [
+                'average_score' => Review::whereNotNull('package_id')->average('score'),
+                'count' => Review::whereNotNull('package_id')->count(),
+                'count_best' => Review::whereNotNull('package_id')->where('best', 1)->count(),
+                'count_wait' => Review::whereNotNull('package_id')->where('answer', null)->count(),
+            ],
+
+            'product' => [
+                'average_score' => Review::whereNotNull('product_id')->average('score'),
+                'count' => Review::whereNotNull('product_id')->count(),
+                'count_best' => Review::whereNotNull('product_id')->where('best', 1)->count(),
+                'count_wait' => Review::whereNotNull('product_id')->where('answer', null)->count(),
+            ],
+        ];
+
+        return $this->respondSuccessfully($item);
+    }
+
     /** 목록
      * @group 관리자
      * @subgroup Review(리뷰)
@@ -24,7 +51,7 @@ class ReviewController extends ApiController
                 $query->whereHas('preset', function ($query) use ($request){
                     $query->whereHas('order', function ($query) use($request) {
                         $query->where('payment_id', 'LIKE', '%' . $request->word . '%');
-                    });
+                    })->orWhere('user_name', 'LIKE', '%'.$request->word.'%');
                 });
             })->orWhere('description', 'LIKE' ,'%'.$request->word.'%');
         });
@@ -53,7 +80,7 @@ class ReviewController extends ApiController
     /** 상세
      * @group 관리자
      * @subgroup Review(리뷰)
-     * @responseFile storage/responses/review.json
+     * @responseFile storage/responses/reviews.json
      */
     public function show(Review $review)
     {
@@ -63,7 +90,7 @@ class ReviewController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Review(리뷰)
-     * @responseFile storage/responses/review.json
+     * @responseFile storage/responses/reviews.json
      */
     public function store(ReviewRequest $request)
     {
@@ -81,11 +108,13 @@ class ReviewController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Review(리뷰)
-     * @responseFile storage/responses/review.json
+     * @responseFile storage/responses/reviews.json
      */
     public function update(ReviewRequest $request, Review $review)
     {
-        $review->update($request->all());
+        $review->update(array_merge($request->validated(), [
+            'reply_at' => Carbon::now()
+        ]));
 
         if($request->files_remove_ids){
             $medias = $review->getMedia("imgs");
