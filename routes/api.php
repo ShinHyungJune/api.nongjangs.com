@@ -115,8 +115,8 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/qnas", \App\Http\Controllers\Api\Admin\QnaController::class)->except(['destroy', 'store']);
     Route::delete("/qnas", [\App\Http\Controllers\Api\Admin\QnaController::class, "destroy"]);
 
-    Route::resource("/recipes", \App\Http\Controllers\Api\Admin\RecipeController::class)->except(['destroy', 'store']);
     Route::delete("/recipes", [\App\Http\Controllers\Api\Admin\RecipeController::class, "destroy"]);
+    Route::resource("/recipes", \App\Http\Controllers\Api\Admin\RecipeController::class)->except(['destroy']);
 
     Route::patch("/products/active", [\App\Http\Controllers\Api\Admin\ProductController::class, "updateActive"]);
     Route::patch("/products/up/{product}", [\App\Http\Controllers\Api\Admin\ProductController::class, "up"]);

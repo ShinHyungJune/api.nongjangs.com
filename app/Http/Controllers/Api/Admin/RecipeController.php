@@ -42,7 +42,7 @@ class RecipeController extends ApiController
     /** 생성
      * @group 관리자
      * @subgroup Recipe(레시피)
-     * @responseFile storage/responses/recipe.json
+     * @responseFile storage/responses/recipes.json
      */
     public function store(RecipeRequest $request)
     {
@@ -72,7 +72,7 @@ class RecipeController extends ApiController
     /** 수정
      * @group 관리자
      * @subgroup Recipe(레시피)
-     * @responseFile storage/responses/recipe.json
+     * @responseFile storage/responses/recipes.json
      */
     public function update(RecipeRequest $request, Recipe $recipe)
     {
@@ -110,7 +110,7 @@ class RecipeController extends ApiController
         return $this->respondSuccessfully(RecipeResource::make($recipe));
     }
 
-    /** 삭제피
+    /** 삭제
      * @group 관리자
      * @subgroup Recipe(레시피)
      */
