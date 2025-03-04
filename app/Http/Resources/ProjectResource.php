@@ -22,7 +22,7 @@ class ProjectResource extends JsonResource
             'product_id' => $this->product_id,
 
             'tags' => TagResource::collection($this->tags),
-            'product' => $this->project ? ProductResource::make($this->product) : '',
+            'product' => $this->product ? ProductResource::make($this->product) : '',
             'img' => $this->img ?? '',
             'state' => $this->state,
             'format_state' => StateProject::getLabel($this->state),
