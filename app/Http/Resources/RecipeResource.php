@@ -20,7 +20,7 @@ class RecipeResource extends JsonResource
             'description' => $this->description,
             'materials' => $this->materials ? json_decode($this->materials) : [],
             'seasonings' => $this->seasonings ? json_decode($this->seasonings) : [],
-            'ways' => $this->ways,
+            'ways' => $this->ways ? json_decode($this->ways) : [],
             'count_view' => $this->count_view,
             'created_at' => $this->created_at,
 
