@@ -2,6 +2,7 @@
   "data": [
     {
       "id": "고유번호",
+      "user": "사용자 객체정보",
       "faq_category_id": "faq카테고리 고유번호",
       "faqCategory": "faq카테고리 객체",
       "title": "제목",

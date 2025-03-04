@@ -32,6 +32,9 @@ class QnaController extends ApiController
         if($request->state == StateAnswer::FINISH)
             $items = $items->where('answer', '!=', null);
 
+        if($request->qna_category_id)
+            $items = $items->where('qna_category_id', '!=', $request->qna_category_id);
+
         $items = $items->latest()->paginate(25);
 
         return QnaResource::collection($items);

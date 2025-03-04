@@ -36,7 +36,7 @@ class FaqController extends ApiController
      * @group 관리자
      * @subgroup Faq(자주묻는질문)
      * @priority 5
-     * @responseFile storage/responses/faq.json
+     * @responseFile storage/responses/faqs.json
      */
     public function show(Faq $faq)
     {
@@ -47,11 +47,13 @@ class FaqController extends ApiController
      * @group 관리자
      * @subgroup Faq(자주묻는질문)
      * @priority 5
-     * @responseFile storage/responses/faq.json
+     * @responseFile storage/responses/faqs.json
      */
     public function store(FaqRequest $request)
     {
-        $createdItem = Faq::create($request->all());
+        $createdItem = Faq::create(array_merge($request->validated(), [
+            'user_id' => auth()->id(),
+        ]));
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
@@ -66,11 +68,13 @@ class FaqController extends ApiController
      * @group 관리자
      * @subgroup Faq(자주묻는질문)
      * @priority 5
-     * @responseFile storage/responses/faq.json
+     * @responseFile storage/responses/faqs.json
      */
     public function update(FaqRequest $request, Faq $faq)
     {
-        $faq->update($request->all());
+        $faq->update(array_merge($request->validated(), [
+            'user_id' => auth()->id(),
+        ]));
 
         if($request->files_remove_ids){
             $medias = $faq->getMedia("img");
