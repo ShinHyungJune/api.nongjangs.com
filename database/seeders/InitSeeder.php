@@ -1893,34 +1893,34 @@ class InitSeeder extends Seeder
     {
         $payMethods = [
             [
-                "pg" => "inicis_v2",
+                "pg" => "danal_tpay",
                 "method" => "EASY",
                 "name" => "간편결제",
                 "commission" => "7",
                 "external" => 0,
-                "channel_key" => "channel-key-5f6ba22a-871c-4862-b882-a45eec8f8e52",
+                "channel_key" => "channel-key-06b7aa84-f6d8-4266-99eb-d52b9d51ae15",
             ],
             [
-                "pg" => "inicis_v2",
+                "pg" => "danal_tpay",
                 "method" => "CARD",
                 "name" => "신용카드",
                 "commission" => "7",
-                "channel_key" => "channel-key-5f6ba22a-871c-4862-b882-a45eec8f8e52",
+                "channel_key" => "channel-key-06b7aa84-f6d8-4266-99eb-d52b9d51ae15",
             ],
             [
-                "pg" => "inicis_v2",
+                "pg" => "danal_tpay",
                 "method" => "MOBILE",
                 "name" => "휴대폰",
                 "commission" => "7",
-                "channel_key" => "channel-key-5f6ba22a-871c-4862-b882-a45eec8f8e52",
+                "channel_key" => "channel-key-06b7aa84-f6d8-4266-99eb-d52b9d51ae15",
             ],
             [
-                "pg" => "inicis_v2",
+                "pg" => "danal_tpay",
                 "method" => "TRANSFER",
                 "name" => "계좌이체",
                 "commission" => "7",
                 "used" => 0,
-                "channel_key" => "channel-key-5f6ba22a-871c-4862-b882-a45eec8f8e52",
+                "channel_key" => "channel-key-06b7aa84-f6d8-4266-99eb-d52b9d51ae15",
             ],
         ];
 
