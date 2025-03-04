@@ -134,7 +134,7 @@ class PresetProductController extends ApiController
 
         $items = $this->filterMaterials($request);
 
-        Excel::store(new MaterialsExport($items), $path, "s3");
+        Excel::store(new MaterialsExport(collect($items)), $path, "s3");
 
         $url = Storage::disk("s3")->url($path);
 
