@@ -89,6 +89,8 @@ class PresetProductRequest extends FormRequest
                     return [
                         'state' => ['required', 'integer'],
                         'reason_deny_cancel' => ['nullable', 'string', 'max:500'],
+                        'delivery_number' => ['nullable', 'string', 'max:500'],
+                        'delivery_company' => ['nullable', 'string', 'max:500'],
                     ];
 
                 case 'willOut':

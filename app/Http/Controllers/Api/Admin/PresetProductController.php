@@ -264,7 +264,7 @@ class PresetProductController extends ApiController
     public function willOut(PresetProductRequest $request)
     {
         PresetProduct::where('state', StatePresetProduct::READY)->whereIn('id', $request->ids)->update([
-            'state' => StatePresetProduct::WAIT
+            'state' => StatePresetProduct::WILL_OUT
         ]);
 
         return $this->respondSuccessfully();

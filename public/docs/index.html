@@ -14368,6 +14368,58 @@ You can switch the language used with the tabs at the top right (or from the nav
 </div>
 
             </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">delivery_number</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p>Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
+    <div class="expandable sl-text-sm sl-border-l sl-ml-px">
+        <style>
+    .sl-prose.sl-markdown-viewer p {
+        color:transparent;
+    }
+    .sl-prose.sl-markdown-viewer .point {
+        font-size:14px; font-weight:bold; color:navy;
+    }
+</style>
+<div class="sl-flex sl-relative sl-max-w-full sl-py-2 sl-pl-3">
+    <div class="sl-w-1 sl-mt-2 sl-mr-3 sl--ml-3 sl-border-t"></div>
+    <div class="sl-stack sl-stack--vertical sl-stack--1 sl-flex sl-flex-1 sl-flex-col sl-items-stretch sl-max-w-full sl-ml-2 ">
+        <div class="sl-flex sl-items-center sl-max-w-full">
+                                        <div class="sl-flex sl-items-baseline sl-text-base">
+                    <div class="sl-font-mono sl-font-semibold sl-mr-2">delivery_company</div>
+                                            <span class="sl-truncate sl-text-muted">string</span>
+                                    </div>
+                                    </div>
+                <div class="sl-prose sl-markdown-viewer" style="font-size: 12px;">
+            <p>Must not be greater than 500 characters.</p>
+        </div>
+                
+    </div>
+</div>
+
+            </div>
                             </div>
                         </div>
                     
@@ -14799,14 +14851,29 @@ You can switch the language used with the tabs at the top right (or from the nav
                                     <div class="sl-panel__content sl-p-0">                                                                                                                                
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;id&quot;: &quot;고유번호&quot;,
-    &quot;state&quot;: &quot;상태 (1 - BEFORE_PAYMENT 결제전 | 2 - WAIT 결제대기 | 3 - READY 배송준비 | 4 - WILL_OUT 출고예정 | 5 - ONGOING_DELIVERY 배송중 | 6 - DELIVERED 배송완료 | 7 - CONFIRMED 구매확정 | 8 - CANCEL 주문취소 | 9 - REQUEST_CANCEL 취소요청 | 10 - DENY_REFUND 취소요청반려)&quot;,
-    &quot;price&quot;: &quot;결제금액&quot;,
-    &quot;reason_request_cancel&quot;: &quot;취소요청사유&quot;,
-    &quot;reason_deny_cancel&quot;: &quot;취소요청 반려사유&quot;,
-    &quot;format_cancel_at&quot;: &quot;표시용 주문취소 일자&quot;,
-    &quot;format_request_cancel_at&quot;: &quot;표시용 주문취소 요청일자&quot;,
-    &quot;product&quot;: {
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;고유번호&quot;,
+      &quot;state&quot;: &quot;상태 (1 - BEFORE_PAYMENT 결제전 | 2 - WAIT 결제대기 | 3 - READY 배송준비 | 4 - WILL_OUT 출고예정 | 5 - ONGOING_DELIVERY 배송중 | 6 - DELIVERED 배송완료 | 7 - CONFIRMED 구매확정 | 8 - CANCEL 주문취소 | 9 - REQUEST_CANCEL 취소요청 | 10 - DENY_REFUND 취소요청반려)&quot;,
+      &quot;price&quot;: &quot;결제금액&quot;,
+      &quot;reason_request_cancel&quot;: &quot;취소요청사유&quot;,
+      &quot;reason_deny_cancel&quot;: &quot;취소요청 반려사유&quot;,
+      &quot;format_cancel_at&quot;: &quot;표시용 주문취소 일자&quot;,
+      &quot;format_request_cancel_at&quot;: &quot;표시용 주문취소 요청일자&quot;,
+      &quot;order&quot;: {
+        &quot;id&quot;: &quot;고유번호&quot;,
+        &quot;merchant_uid&quot;: &quot;주문번호&quot;,
+        &quot;pay_method_name&quot;: &quot;결제수단&quot;,
+      },
+      &quot;user&quot;: {
+          &quot;id&quot; : &quot;고유번호&quot;,
+          &quot;grade&quot; : {
+            &quot;id&quot;: &quot;고유번호&quot;,
+            &quot;level&quot;: &quot;레벨&quot;,
+            &quot;title&quot;: &quot;등급명&quot;
+          },
+      },
+      &quot;product&quot;: {
         &quot;id&quot;: &quot;고유번호&quot;,
         &quot;img&quot;: &quot;이미지 객체&quot;,
         &quot;title&quot;: &quot;제목&quot;,
@@ -14814,16 +14881,17 @@ You can switch the language used with the tabs at the top right (or from the nav
         &quot;price_origin&quot;: &quot;정가&quot;,
         &quot;requiredOptions&quot;: &quot;필수옵션목록&quot;,
         &quot;additionalOptions&quot;: &quot;추가옵션목록&quot;,
-        &quot;tags&quot;: &quot;태그 목록&quot;
-    },
-    &quot;products_price&quot;: &quot;상품 총 가격&quot;,
-    &quot;option&quot;: {
+        &quot;tags&quot; : &quot;태그 목록&quot;
+      },
+      &quot;products_price&quot;: &quot;상품 총 가격&quot;,
+      &quot;option&quot;: {
         &quot;id&quot;: &quot;고유번호&quot;,
         &quot;title&quot;: &quot;제목&quot;,
         &quot;price&quot;: &quot;가격&quot;,
         &quot;type&quot;: &quot;유형 (1 - REQUIRED 필수 | 2 - ADDITIONAL 추가)&quot;
-    },
-    &quot;package&quot;: {
+      },
+
+      &quot;package&quot;: {
         &quot;id&quot;: &quot;고유번호&quot;,
         &quot;name&quot;: &quot;이름&quot;,
         &quot;count&quot;: &quot;회차&quot;,
@@ -14832,47 +14900,57 @@ You can switch the language used with the tabs at the top right (or from the nav
         &quot;format_will_delivery_at&quot;: &quot;표시용 도착예정일&quot;,
         &quot;type&quot;: &quot;패키지 유형 (1 - SINGLE 싱글 | 2 - BUNGLE 벙글)&quot;,
         &quot;format_type&quot;: &quot;표시용 유형&quot;,
-        &quot;tags&quot;: &quot;태그 목록&quot;
-    },
-    &quot;price_coupon&quot;: &quot;쿠폰적용가격&quot;,
-    &quot;point&quot;: &quot;포인트&quot;,
-    &quot;count&quot;: &quot;개수&quot;,
-    &quot;delivery_name&quot;: &quot;수령자명&quot;,
-    &quot;delivery_contact&quot;: &quot;연락처&quot;,
-    &quot;delivery_address&quot;: &quot;주소&quot;,
-    &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
-    &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
-    &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
-    &quot;delivery_number&quot;: &quot;운송장번호&quot;,
-    &quot;delivery_company&quot;: &quot;택배사&quot;,
-    &quot;format_delivery_company&quot;: &quot;표시용 택배사&quot;,
-    &quot;delivery_at&quot;: &quot;배송완료일자&quot;,
-    &quot;format_title&quot;: &quot;표시용 제목&quot;,
-    &quot;format_created_at&quot;: &quot;구매일자&quot;,
-    &quot;materials&quot;: &quot;구성품목 목록&quot;,
-    &quot;format_materials&quot;: &quot;표시용 구성품목 목록&quot;,
-    &quot;canLatePackage&quot;: &quot;미루기 가능한 회차 객체 (null주의)&quot;,
-    &quot;canFastPackage&quot;: &quot;당기기 가능한 회차 객체 (null주의)&quot;,
-    &quot;can_confirm&quot;: &quot;구매확정 가능여부&quot;,
-    &quot;can_review&quot;: &quot;리뷰작성 가능여부&quot;,
-    &quot;can_cancel&quot;: &quot;주문취소 가능여부&quot;,
-    &quot;can_request_cancel&quot;: &quot;취소신청 가능여부&quot;,
-    &quot;can_update_materials&quot;: &quot;품목구성 변경가능여부&quot;,
-    &quot;count_review&quot;: &quot;작성한 리뷰수&quot;,
-    &quot;count_vegetable_story&quot;: &quot;작성한 채소이야기수&quot;,
-    &quot;format_refund_method&quot;: &quot;환불수단&quot;,
-    &quot;format_delivery_tracks&quot;: [
+        &quot;tags&quot; : &quot;태그 목록&quot;
+      },
+
+      &quot;price_coupon&quot;: &quot;쿠폰적용가격&quot;,
+      &quot;point&quot;: &quot;포인트&quot;,
+      &quot;count&quot;: &quot;개수&quot;,
+      &quot;delivery_name&quot;: &quot;수령자명&quot;,
+      &quot;delivery_contact&quot;: &quot;연락처&quot;,
+      &quot;delivery_address&quot;: &quot;주소&quot;,
+      &quot;delivery_address_detail&quot;: &quot;상세주소&quot;,
+      &quot;delivery_address_zipcode&quot;: &quot;우편번호&quot;,
+      &quot;delivery_requirement&quot;: &quot;배송요청사항&quot;,
+      &quot;delivery_number&quot;: &quot;운송장번호&quot;,
+      &quot;delivery_company&quot;: &quot;택배사&quot;,
+      &quot;format_delivery_company&quot;: &quot;표시용 택배사&quot;,
+      &quot;delivery_at&quot;: &quot;배송완료일자&quot;,
+      &quot;delivery_started_at&quot;: &quot;발송처리일자&quot;,
+      &quot;format_title&quot;: &quot;표시용 제목&quot;,
+      &quot;format_created_at&quot;: &quot;구매일자&quot;,
+
+      &quot;materials&quot; : &quot;구성품목 목록&quot;,
+      &quot;format_materials&quot; : &quot;표시용 구성품목 목록&quot;,
+      &quot;canLatePackage&quot;: &quot;미루기 가능한 회차 객체 (null주의)&quot;,
+      &quot;canFastPackage&quot;: &quot;당기기 가능한 회차 객체 (null주의)&quot;,
+      &quot;can_confirm&quot;: &quot;구매확정 가능여부&quot;,
+      &quot;can_review&quot;: &quot;리뷰작성 가능여부&quot;,
+      &quot;can_cancel&quot; : &quot;주문취소 가능여부&quot;,
+      &quot;can_request_cancel&quot;: &quot;취소신청 가능여부&quot;,
+      &quot;can_update_materials&quot;: &quot;품목구성 변경가능여부&quot;,
+      &quot;count_review&quot;: &quot;작성한 리뷰수&quot;,
+      &quot;count_vegetable_story&quot;: &quot;작성한 채소이야기수&quot;,
+      &quot;format_refund_method&quot; : &quot;환불수단&quot;,
+      &quot;format_delivery_tracks&quot;: [
         {
-            &quot;date&quot;: &quot;날짜&quot;,
-            &quot;name&quot;: &quot;배송상태&quot;,
-            &quot;description&quot;: &quot;배송상태 설명&quot;
+          &quot;date&quot;: &quot;날짜&quot;,
+          &quot;name&quot; : &quot;배송상태&quot;,
+          &quot;description&quot; : &quot;배송상태 설명&quot;
         },
         {
-            &quot;date&quot;: &quot;날짜&quot;,
-            &quot;name&quot;: &quot;배송상태&quot;,
-            &quot;description&quot;: &quot;배송상태 설명&quot;
+          &quot;date&quot;: &quot;날짜&quot;,
+          &quot;name&quot; : &quot;배송상태&quot;,
+          &quot;description&quot; : &quot;배송상태 설명&quot;
         }
-    ]
+      ]
+    }
+  ],
+  &quot;meta&quot;: {
+    &quot;total&quot;: &quot;총 개수&quot;,
+    &quot;current_page&quot;: &quot;현재 페이지&quot;,
+    &quot;last_page&quot;: &quot;마지막 페이지&quot;
+  }
 }</code></pre>
                                                                             </div>
                                 </div>
@@ -45959,7 +46037,7 @@ You can switch the language used with the tabs at the top right (or from the nav
                                                                                                                                                                         
                                             <pre><code style="max-height: 300px;"
                                                        class="language-json sl-overflow-x-auto sl-overflow-y-auto">{
-    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;nongjangs.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 17 limit 1)&quot;,
+    &quot;message&quot;: &quot;SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;nongjangs.notices&#039; doesn&#039;t exist (SQL: select * from `notices` where `id` = 19 limit 1)&quot;,
     &quot;exception&quot;: &quot;Illuminate\\Database\\QueryException&quot;,
     &quot;file&quot;: &quot;D:\\project\\api.nongjangs.com\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php&quot;,
     &quot;line&quot;: 712,
