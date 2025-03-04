@@ -15,23 +15,26 @@ class FarmStoryRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        'word' => ['nullable', 'string', 'max:500']
+                        'word' => ['nullable', 'string', 'max:500'],
+                        'farm_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':
                     return [
-                        'farm_id' => ['required', 'exists:factories'],
-                        'title' => ['required'],
-                        'description' => ['required'],
+                        'farm_id' => ['required', 'integer'],
+                        'title' => ['required', 'string', 'max:500'],
+                        'description' => ['required', 'string', 'max:50000'],
                         'internal' => ['required', 'boolean'],
+                        'tags' => ['nullable', 'array'],
                     ];
 
                 case 'update':
                     return [
-                        'farm_id' => ['required', 'exists:factories'],
-                        'title' => ['required'],
-                        'description' => ['required'],
+                        'farm_id' => ['required', 'integer'],
+                        'title' => ['required', 'string', 'max:500'],
+                        'description' => ['required', 'string', 'max:50000'],
                         'internal' => ['required', 'boolean'],
+                        'tags' => ['nullable', 'array'],
                     ];
 
                 case 'destroy':
@@ -78,8 +81,8 @@ class FarmStoryRequest extends FormRequest
             'order_by' => [
                 'description' => '<span class="point">정렬기준 (count_like - 추천수 | created_at - 등록일자)</span>',
             ],
-            'tag_ids' => [
-                'description' => '<span class="point">관련태그 고유번호 목록</span>',
+            'tags' => [
+                'description' => '<span class="point">관련태그 목록</span>',
             ],
             'farm_id' => [
                 'description' => '<span class="point">농가 고유번호 (특정 농가의 글만 보고싶을 때)</span>',
@@ -94,7 +97,7 @@ class FarmStoryRequest extends FormRequest
                 'description' => '<span class="point">내용</span>',
             ],
             'internal' => [
-                'description' => '<span class="point">내부(농장스) 글 여부</span>',
+                'description' => '<span class="point">내부(농장스) 글 여부 -> 기본 0으로 보내기</span>',
             ],
 
             // 늘 쓰이는 애들

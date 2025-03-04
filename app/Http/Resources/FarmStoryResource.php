@@ -24,7 +24,11 @@ class FarmStoryResource extends JsonResource
             'img' => $this->img ?? '',
             'farm' => FarmResource::make($this->farm),
             'tags' => TagResource::collection($this->tags),
-            'user' => $user ? UserResource::make($user) : '',
+            'user' => $user ? [
+                'id' => $user->id,
+                'name' => $user->name,
+                'nickname' => $user->nickname,
+            ] : '',
             'count_like' => $this->likes()->count(),
             'is_like' => $this->is_like,
             'internal' => $this->internal,
