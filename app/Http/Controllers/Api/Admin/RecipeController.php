@@ -46,7 +46,19 @@ class RecipeController extends ApiController
      */
     public function store(RecipeRequest $request)
     {
-        $createdItem = Recipe::create($request->validated());
+        $request['tags'] = $request->tags ?? [];
+        $request['materials'] = $request->materials ?? [];
+        $request['seasonings'] = $request->seasonings ?? [];
+        $request['ways'] = $request->ways ?? [];
+
+        $createdItem = Recipe::create(array_merge($request->validated(), [
+            'user_id' => auth()->id(),
+            'materials' => json_encode($request->materials),
+            'seasonings' => json_encode($request->seasonings),
+            'ways' => json_encode($request->ways),
+        ]));
+
+        $createdItem->tags()->sync(array_column($request->tags, 'id'));
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
@@ -64,7 +76,18 @@ class RecipeController extends ApiController
      */
     public function update(RecipeRequest $request, Recipe $recipe)
     {
-        $recipe->update($request->all());
+        $request['tags'] = $request->tags ?? [];
+        $request['materials'] = $request->materials ?? [];
+        $request['seasonings'] = $request->seasonings ?? [];
+        $request['ways'] = $request->ways ?? [];
+
+        $recipe->update(array_merge($request->validated(), [
+            'materials' => json_encode($request->materials),
+            'seasonings' => json_encode($request->seasonings),
+            'ways' => json_encode($request->ways),
+        ]));
+
+        $recipe->tags()->sync(array_column($request->tags, 'id'));
 
         if($request->files_remove_ids){
             $medias = $recipe->getMedia("img");

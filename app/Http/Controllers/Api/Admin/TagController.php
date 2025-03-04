@@ -48,7 +48,7 @@ class TagController extends ApiController
      */
     public function store(TagRequest $request)
     {
-        $createdItem = Tag::create($request->all());
+        $createdItem = Tag::create($request->validated());
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
@@ -66,7 +66,7 @@ class TagController extends ApiController
      */
     public function update(TagRequest $request, Tag $tag)
     {
-        $tag->update($request->all());
+        $tag->update($request->validated());
 
         if($request->files_remove_ids){
             $medias = $tag->getMedia("img");

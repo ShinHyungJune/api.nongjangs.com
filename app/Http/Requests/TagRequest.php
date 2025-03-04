@@ -81,6 +81,16 @@ class TagRequest extends FormRequest
             'type' => [
                 'description' => '<span class="point">1 - FARM_STORY 농가이야기 | 2 - RECIPE 레시피 | 3 - VEGETABLE_STORY 채소이야기 | 4 - PRODUCT 직거래장터 | 5 - PACKAGE 꾸러미</span>',
             ],
+            'title' => [
+                'description' => '<span class="point">제목</span>',
+            ],
+            'color' => [
+                'description' => '<span class="point">색상 (HEXCODE 형식 -> ex. #EF5151)</span>',
+            ],
+            'open' => [
+                'description' => '<span class="point">노출여부 (1 - 노출 | 0 - 미노출)</span>',
+            ],
+      
             // 늘 쓰이는 애들
             'word' => [
                 'description' => '<span class="point">검색어</span>',
