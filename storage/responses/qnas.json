@@ -8,6 +8,11 @@
         "nickname" : "닉네임",
         "grade": "등급 객체"
       },
+      "answerUser 답변자": {
+        "id": "고유번호",
+        "nickname" : "닉네임",
+        "name": "이름"
+      },
       "description": "내용",
       "qnaCategory": "qna 유형 객체",
       "imgs": "이미지 목록",

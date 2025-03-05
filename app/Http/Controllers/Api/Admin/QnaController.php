@@ -59,7 +59,8 @@ class QnaController extends ApiController
     {
         $qna->update([
             'answer' => $request->answer,
-            'answered_at' => Carbon::now()
+            'answered_at' => Carbon::now(),
+            'answer_user_id' => auth()->id(),
         ]);
 
         if($request->files_remove_ids){
