@@ -62,7 +62,7 @@ class RecipeController extends ApiController
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
-                $createdItem->addMedia($file["file"])->toMediaCollection("img", "s3");
+                $createdItem->addMedia($file["file"])->toMediaCollection("imgs", "s3");
             }
         }
 
@@ -90,7 +90,7 @@ class RecipeController extends ApiController
         $recipe->tags()->sync(array_column($request->tags, 'id'));
 
         if($request->files_remove_ids){
-            $medias = $recipe->getMedia("img");
+            $medias = $recipe->getMedia("imgs");
 
             foreach($medias as $media){
                 foreach($request->files_remove_ids as $id){
@@ -103,7 +103,7 @@ class RecipeController extends ApiController
 
         if(is_array($request->file("files"))){
             foreach($request->file("files") as $file){
-                $recipe->addMedia($file["file"])->toMediaCollection("img", "s3");
+                $recipe->addMedia($file["file"])->toMediaCollection("imgs", "s3");
             }
         }
 

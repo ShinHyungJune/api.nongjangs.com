@@ -33,7 +33,7 @@ class QnaController extends ApiController
             $items = $items->where('answer', '!=', null);
 
         if($request->qna_category_id)
-            $items = $items->where('qna_category_id', '!=', $request->qna_category_id);
+            $items = $items->where('qna_category_id', '=', $request->qna_category_id);
 
         $items = $items->latest()->paginate(25);
 
