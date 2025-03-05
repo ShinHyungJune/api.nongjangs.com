@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Enums\StateCouponGroup;
 use App\Enums\StateOrder;
+use App\Enums\StateProject;
 use App\Enums\TargetCouponGroup;
+use App\Enums\TypeExpire;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -81,5 +84,29 @@ class CouponGroup extends Model
     public function coupons()
     {
         return $this->hasMany(Coupon::class);
+    }
+
+    public function getCountUseAttribute()
+    {
+        return $this->coupons()->where('use', 1)->count();
+    }
+
+    public function getCountHasAttribute()
+    {
+        return $this->coupons()->count();
+    }
+
+    public function getStateAttribute()
+    {
+        if($this->type_expired == TypeExpire::FROM_DOWNLOAD)
+            return StateCouponGroup::ONGOING;
+
+        if($this->started_at > Carbon::now())
+            return StateCouponGroup::WAIT;
+
+        if($this->started_at <= Carbon::now() && $this->finished_at >= Carbon::now())
+            return StateCouponGroup::ONGOING;
+
+        return StateCouponGroup::FINISH;
     }
 }

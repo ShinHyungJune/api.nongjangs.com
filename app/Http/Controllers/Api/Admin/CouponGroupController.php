@@ -14,8 +14,7 @@ class CouponGroupController extends ApiController
 {
     /** 목록
      * @group 관리자
-     * @subgroup CouponGroup(쿠폰)
-     * @priority 12
+     * @subgroup CouponGroup(쿠폰그룹)
      * @responseFile storage/responses/couponGroups.json
      */
     public function index(CouponGroupRequest $request)
@@ -24,16 +23,15 @@ class CouponGroupController extends ApiController
             $query->where("title", "LIKE", "%".$request->word."%");
         });
 
-        $items = $items->latest()->paginate(30);
+        $items = $items->latest()->paginate(25);
 
         return CouponGroupResource::collection($items);
     }
 
     /** 상세
      * @group 관리자
-     * @subgroup CouponGroup(쿠폰)
-     * @priority 12
-     * @responseFile storage/responses/couponGroup.json
+     * @subgroup CouponGroup(쿠폰그룹)
+     * @responseFile storage/responses/couponGroups.json
      */
     public function show(CouponGroup $couponGroup)
     {
@@ -42,9 +40,8 @@ class CouponGroupController extends ApiController
 
     /** 생성
      * @group 관리자
-     * @subgroup CouponGroup(쿠폰)
-     * @priority 12
-     * @responseFile storage/responses/couponGroup.json
+     * @subgroup CouponGroup(쿠폰그룹)
+     * @responseFile storage/responses/couponGroups.json
      */
     public function store(CouponGroupRequest $request)
     {
@@ -61,9 +58,8 @@ class CouponGroupController extends ApiController
 
     /** 수정
      * @group 관리자
-     * @subgroup CouponGroup(쿠폰)
-     * @priority 12
-     * @responseFile storage/responses/couponGroup.json
+     * @subgroup CouponGroup(쿠폰그룹)
+     * @responseFile storage/responses/couponGroups.json
      */
     public function update(CouponGroupRequest $request, CouponGroup $couponGroup)
     {
@@ -92,8 +88,7 @@ class CouponGroupController extends ApiController
 
     /** 삭제
      * @group 관리자
-     * @subgroup CouponGroup(쿠폰)
-     * @priority 12
+     * @subgroup CouponGroup(쿠폰그룹)
      */
     public function destroy(CouponGroupRequest $request)
     {

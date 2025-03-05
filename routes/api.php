@@ -128,6 +128,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::resource("/products", \App\Http\Controllers\Api\Admin\ProductController::class)->except(['destroy']);
     Route::delete("/products", [\App\Http\Controllers\Api\Admin\ProductController::class, "destroy"]);
 
+    Route::get("/vegetableStories/counts", [\App\Http\Controllers\Api\Admin\VegetableStoryController::class, 'counts']);
     Route::resource("/vegetableStories", \App\Http\Controllers\Api\Admin\VegetableStoryController::class)->except(['destroy']);
     Route::delete("/vegetableStories", [\App\Http\Controllers\Api\Admin\VegetableStoryController::class, "destroy"]);
 
@@ -177,6 +178,12 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::get("/deliverySetting", [\App\Http\Controllers\Api\Admin\DeliverySettingController::class, 'show']);
     Route::resource("/deliverySettings", \App\Http\Controllers\Api\Admin\DeliverySettingController::class)->except(['show', 'destroy']);
     Route::delete("/deliverySettings", [\App\Http\Controllers\Api\Admin\DeliverySettingController::class, "destroy"]);
+
+    Route::get('/grades', [\App\Http\Controllers\Api\Admin\GradeController::class, "index"]);
+
+    Route::get("/couponGroups", [\App\Http\Controllers\Api\Admin\CouponGroupController::class, 'show']);
+    Route::resource("/couponGroups", \App\Http\Controllers\Api\Admin\CouponGroupController::class)->except(['show', 'destroy']);
+
 });
 
 Route::post("/login", [\App\Http\Controllers\Api\UserController::class, "login"]);
@@ -242,6 +249,7 @@ Route::get("/presetProducts/delivery/{presetProduct}", [\App\Http\Controllers\Ap
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/reports', [\App\Http\Controllers\Api\ReportController::class, "store"]);
+
 
     Route::get("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "index"]);
     Route::post("/packageSettings", [\App\Http\Controllers\Api\PackageSettingController::class, "store"]);

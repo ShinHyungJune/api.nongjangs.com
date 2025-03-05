@@ -48,6 +48,10 @@ class CouponGroupResource extends JsonResource
                 'title' => $this->grade->title,
                 'level' => $this->grade->level,
             ] : '',
+
+            'count_use' => $this->count_use,
+            'count_has' => $this->count_has,
+
             'format_created_at' => Carbon::make($this->created_at)->format('Y.m.d'),
         ];
     }
