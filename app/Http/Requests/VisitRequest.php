@@ -9,8 +9,7 @@ class VisitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['nullable', 'exists:users'],
-            'ip' => ['required'],
+
         ];
     }
 

@@ -1,0 +1,33 @@
+{
+  "count_preset_product_ready": "배송준비수",
+  "count_preset_product_wait": "결제대기수",
+  "count_preset_product_request_cancel": "취소요청수",
+  "count_qna": "1:1 문의수",
+  "count_review": "후기수",
+  "visits 방문자 현황": {
+    "days 일별": [
+      {
+        "count": "수",
+        "title": "제목"
+      },
+    ],
+    "months 월별": [
+      {
+        "count": "수",
+        "title": "제목"
+      },
+    ]
+  },
+  "totalCounts 기간별 분석": [
+    {
+      "title": "제목",
+      "count_order": "주문수",
+      "sum_order_price": "매출액",
+      "count_visit": "방문자수",
+      "count_user_create": "가입수",
+      "count_order_package": "꾸러미 주문수",
+      "count_order_product": "직거래상품 주문수",
+      "count_preset_product_request_cancel": "취소요청수",
+    }
+  ],
+}

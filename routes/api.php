@@ -184,6 +184,7 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::get("/couponGroups", [\App\Http\Controllers\Api\Admin\CouponGroupController::class, 'show']);
     Route::resource("/couponGroups", \App\Http\Controllers\Api\Admin\CouponGroupController::class)->except(['show', 'destroy']);
 
+    Route::get('/dashboard', [\App\Http\Controllers\Api\Admin\DashboardController::class, "matrix"]);
 });
 
 Route::post("/login", [\App\Http\Controllers\Api\UserController::class, "login"]);
@@ -204,6 +205,8 @@ Route::get("/events", [\App\Http\Controllers\Api\EventController::class, "index"
 Route::get("/events/{event}", [\App\Http\Controllers\Api\EventController::class, "show"]);
 
 Route::get("/faqs", [\App\Http\Controllers\Api\FaqController::class, "index"]);
+
+Route::post("/visits", [\App\Http\Controllers\Api\VisitController::class, "store"]);
 
 Route::get("/notices", [\App\Http\Controllers\Api\NoticeController::class, "index"]);
 Route::get("/notices/{notice}", [\App\Http\Controllers\Api\NoticeController::class, "show"]);
