@@ -50,8 +50,9 @@ class ReviewController extends ApiController
             $query->whereHas('presetProduct',function ($query) use($request){
                 $query->whereHas('preset', function ($query) use ($request){
                     $query->whereHas('order', function ($query) use($request) {
-                        $query->where('payment_id', 'LIKE', '%' . $request->word . '%');
-                    })->orWhere('user_name', 'LIKE', '%'.$request->word.'%');
+                        $query->where('payment_id', 'LIKE', '%' . $request->word . '%')
+                            ->orWhere('user_name', 'LIKE', '%'.$request->word.'%');
+                    });
                 });
             })->orWhere('description', 'LIKE' ,'%'.$request->word.'%');
         });
