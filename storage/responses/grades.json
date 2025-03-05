@@ -3,11 +3,14 @@
     {
       "id": "고유번호",
       "img": "이미지 객체",
-      "level": "",
-      "title": "",
-      "ratio_refund": "",
-      "min_count_package": "",
-
+      "level": "레벨",
+      "title": "제목",
+      "ratio_refund": "적립률",
+      "min_count_package": "최소이용주문수",
+      "min_price": ""최소결제금액,
+      "need_count_package_for_next_level": "레벨업까지 필요한 꾸러미 주문수",
+      "need_price_for_next_level": "레벨업까지 필요한 금액",
+      "couponGroup": "쿠폰그룹 객체",
     }
   ],
   "meta": {

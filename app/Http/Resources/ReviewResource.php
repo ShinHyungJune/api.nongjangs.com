@@ -14,6 +14,7 @@ class ReviewResource extends JsonResource
     public function toArray($request)
     {
         $user = User::withTrashed()->find($this->user_id);
+        $replyUser = User::withTrashed()->find($this->reply_user_id);
 
         /*$name = $user->name;
 
@@ -35,6 +36,11 @@ class ReviewResource extends JsonResource
                     'level' => $user->grade->level,
                     'title' => $user->grade->title,
                 ] : ''
+            ] : '',
+            'replyUser' => $replyUser ? [
+                'id' => $replyUser->id,
+                'name' => $replyUser->name,
+                'nickname' => $replyUser->nickname,
             ] : '',
             'product_id' => $this->product_id,
             'product' => $this->product ? ProductMiniResource::make($this->product) : "",

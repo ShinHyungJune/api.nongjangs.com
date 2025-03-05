@@ -114,7 +114,8 @@ class ReviewController extends ApiController
     public function update(ReviewRequest $request, Review $review)
     {
         $review->update(array_merge($request->validated(), [
-            'reply_at' => Carbon::now()
+            'reply_at' => Carbon::now(),
+            'reply_user_id' => auth()->id(),
         ]));
 
         if($request->files_remove_ids){

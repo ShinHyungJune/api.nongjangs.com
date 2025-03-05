@@ -49,6 +49,14 @@ class CouponGroupResource extends JsonResource
                 'level' => $this->grade->level,
             ] : '',
 
+            'products' => $this->products->map(function ($product) {
+                return [
+                    'id' => $product->id,
+                    'title' => $product->title,
+                    'img' => $product->img ?? '',
+                ];
+            }),
+
             'count_use' => $this->count_use,
             'count_has' => $this->count_has,
 

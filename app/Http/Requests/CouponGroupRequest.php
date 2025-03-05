@@ -20,6 +20,7 @@ class CouponGroupRequest extends FormRequest
 
                 case 'store':
                     return [
+                        'products' => ['nullable', 'array'],
                         'title' => ['required'],
                         'moment' => ['nullable', 'integer'],
                         'type' => ['required', 'integer'],
@@ -40,6 +41,7 @@ class CouponGroupRequest extends FormRequest
 
                 case 'update':
                     return [
+                        'products' => ['nullable', 'array'],
                         'title' => ['required'],
                         'moment' => ['nullable', 'integer'],
                         'type' => ['required', 'integer'],
@@ -111,9 +113,6 @@ class CouponGroupRequest extends FormRequest
             'target' => [
                 'description' => '<span class="point">발급대상 (1 - ALL 전체회원 | 2 - GRADE 고객등급 | 3 - ORDER_HISTORY 구매이력 | 4 - PERSONAL 개인회원)</span>',
             ],
-            'grade_id' => [
-                'description' => '<span class="point">등급</span>',
-            ],
             'min_order' => [
                 'description' => '<span class="point">최소 구매이력수 (최근 3개월 n회 구매한 사람에게만 적용하는 쿠폰)</span>',
             ],
@@ -142,8 +141,11 @@ class CouponGroupRequest extends FormRequest
                 'description' => '<span class="point">유효기간(다운로드일 기준)</span>',
             ],
 
-            'product_id' => [
-                'description' => '<span class="point">상품 고유번호</span>',
+            'grade_id' => [
+                'description' => '<span class="point">등급 고유번호</span>',
+            ],
+            'products' => [
+                'description' => '<span class="point">상품 목록</span>',
             ],
             'order_by' => [
                 'description' => '<span class="point">value - 할인값 | created_at - 등록순</span>',
