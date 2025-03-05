@@ -52,7 +52,7 @@ class VegetableStoryController extends ApiController
             $items = $items->where('user_id', $request->user_id);
 
         if($request->has_column)
-            $items = $items->where('has_column', $request->has_column);
+            $items = $items->whereNotNull( $request->has_column);
 
         $items = $items->latest()->paginate(25);
 
