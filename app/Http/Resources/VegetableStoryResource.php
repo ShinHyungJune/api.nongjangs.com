@@ -33,10 +33,7 @@ class VegetableStoryResource extends JsonResource
                     'title' => $user->grade->title,
                 ] : '',
             ] : '',
-            'presetProduct' => $this->presetProduct ? [
-                'id' => $this->presetProduct->id,
-                'format_title' => $this->presetProduct->format_title,
-            ] : '',
+            'presetProduct' => $this->presetProduct ? PresetProductMiniResource::make($this->presetProduct) : '',
             'package' => $this->package ? [
                 'id' => $this->package->id,
                 'count' => $this->package->count,
@@ -61,6 +58,7 @@ class VegetableStoryResource extends JsonResource
             'tags' => TagResource::collection($this->tags),
             'tag_ids' => $this->tags->pluck('id')->toArray(),
             'count_like' => $this->count_like,
+            'count_report' => $this->count_report,
             'count_bookmark' => $this->count_bookmark,
             'count_comment' => $this->count_comment,
 

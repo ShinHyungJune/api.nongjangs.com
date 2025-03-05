@@ -98,6 +98,11 @@ class VegetableStory extends Model implements HasMedia
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function reports()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function getCountLikeAttribute()
     {
         return $this->likes()->count();
@@ -111,6 +116,11 @@ class VegetableStory extends Model implements HasMedia
     public function getCountCommentAttribute()
     {
         return $this->comments()->count();
+    }
+
+    public function getCountReportsAttribute()
+    {
+        return $this->reports()->count();
     }
 
     public function getIsLikeAttribute()
