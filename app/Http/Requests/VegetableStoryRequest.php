@@ -16,6 +16,7 @@ class VegetableStoryRequest extends FormRequest
                 case 'index':
                     return [
                         'user_id' => ['nullable', 'integer'],
+                        'has_column' => ['nullable', 'string', 'max:500'],
                         'word' => ['nullable', 'string', 'max:500']
                     ];
 
