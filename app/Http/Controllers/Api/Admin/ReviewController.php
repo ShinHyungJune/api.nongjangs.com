@@ -25,14 +25,14 @@ class ReviewController extends ApiController
                 'average_score' => Review::whereNotNull('package_id')->average('score'),
                 'count' => Review::whereNotNull('package_id')->count(),
                 'count_best' => Review::whereNotNull('package_id')->where('best', 1)->count(),
-                'count_wait' => Review::whereNotNull('package_id')->where('answer', null)->count(),
+                'count_wait' => Review::whereNotNull('package_id')->where('reply', null)->count(),
             ],
 
             'product' => [
                 'average_score' => Review::whereNotNull('product_id')->average('score'),
                 'count' => Review::whereNotNull('product_id')->count(),
                 'count_best' => Review::whereNotNull('product_id')->where('best', 1)->count(),
-                'count_wait' => Review::whereNotNull('product_id')->where('answer', null)->count(),
+                'count_wait' => Review::whereNotNull('product_id')->where('reply', null)->count(),
             ],
         ];
 
