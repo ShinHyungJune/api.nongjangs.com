@@ -19,12 +19,15 @@ class CommentController extends ApiController
      */
     public function index(CommentRequest $request)
     {
-        $items = Comment::where(function($query) use($request){
-            $query->where("description", "LIKE", "%".$request->word."%")
-                ->whereHas('user',function ($query) use($request){
-                    $query->where('nickname', "%".$request->word."%");
-                });
-        });
+        $items = new Comment();
+
+        if($request->word)
+            $items->where(function($query) use($request){
+                $query->where("description", "LIKE", "%".$request->word."%")
+                    ->whereHas('user',function ($query) use($request){
+                        $query->where('nickname', "%".$request->word."%");
+                    });
+            });
 
         if($request->user_id)
             $items = $items->where('user_id', $request->user_id);
