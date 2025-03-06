@@ -30,6 +30,7 @@ class CouponRequest extends FormRequest
             switch ($method){
                 case 'index':
                     return [
+                        'coupon_group_id' => ['nullable', 'integer'],
                         'user_id' => ['nullable', 'integer'],
                         'word' => ['nullable', 'string', 'max:500']
                     ];
@@ -82,6 +83,9 @@ class CouponRequest extends FormRequest
     {
         return [
             // 이 모델만 쓰이는 애들
+            'coupon_group_id' => [
+                'description' => '<span class="point">쿠폰그룹 고유번호</span>',
+            ],
             'user_id' => [
                 'description' => '<span class="point">사용자 고유번호</span>',
             ],

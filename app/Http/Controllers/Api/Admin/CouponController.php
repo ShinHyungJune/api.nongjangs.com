@@ -24,6 +24,9 @@ class CouponController extends ApiController
         if($request->user_id)
             $items = $items->where('user_id', $request->user_id);
 
+        if($request->coupon_group_id)
+            $items = $items->where('coupon_group_id', $request->coupon_group_id);
+
         $items = $items->latest()->paginate(10);
 
         return CouponResource::collection($items);
