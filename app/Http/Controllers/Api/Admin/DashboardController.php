@@ -58,7 +58,7 @@ class DashboardController extends ApiController
         $items = [];
 
         for($i = $startDate; $i<=$finishDate; $i++){
-            $date = (clone $date)->setDate($i);
+            $date = (clone $date)->setDate(Carbon::now()->year, Carbon::now()->month, $i);
 
             $items[] = [
                 'title' => $date->format('y-m-d'),
