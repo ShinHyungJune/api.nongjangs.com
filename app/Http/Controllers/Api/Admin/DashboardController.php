@@ -123,7 +123,7 @@ class DashboardController extends ApiController
             'count' => Visit::where('created_at', '>=', (clone $date)->startOfDay())
                 ->where('created_at', '<=', (clone $date)->endOfDay())
                 ->count(),
-            'title' => $date->format('m.d') . '(' . __('date.' . $date->isoFormat('ddd')) . ')',
+            'title' => $date->format('m.d') . '(' .$date->isoFormat('ddd') . ')',
         ];
     }
 
@@ -133,7 +133,7 @@ class DashboardController extends ApiController
             'count' => Visit::where('created_at', '>=', (clone $date)->startOfMonth()->startOfDay())
                 ->where('created_at', '<=', (clone $date)->endOfMonth()->endOfDay())
                 ->count(),
-            'title' => $date->format('m.d') . '(' . __('date.' . $date->isoFormat('ddd')) . ')',
+            'title' => $date->format('m.d') . '(' . $date->isoFormat('ddd'). ')',
         ];
     }
 }
