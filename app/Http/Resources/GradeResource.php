@@ -6,7 +6,7 @@ use App\Models\CouponGroup;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \App\Models\Grade */
-class GradeResource extends JsonResource
+class DeliverySettingource extends JsonResource
 {
     public function toArray($request)
     {
@@ -20,7 +20,10 @@ class GradeResource extends JsonResource
             'min_price' => $this->min_price,
             'need_count_package_for_next_level' => $this->need_count_package_for_next_level,
             'need_price_for_next_level' => $this->need_price_for_next_level,
-            'couponGroup' => $this->couponGroup ? CouponGroupResource::make($this->couponGroup) : '',
+            'couponGroup' => $this->couponGroup ? [
+                'id' => $this->couponGroup->id,
+                'title' => $this->couponGroup->title,
+            ] : '',
         ];
     }
 }
