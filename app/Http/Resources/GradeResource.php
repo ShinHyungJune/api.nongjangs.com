@@ -6,7 +6,7 @@ use App\Models\CouponGroup;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \App\Models\Grade */
-class DeliverySettingource extends JsonResource
+class GradeResource extends JsonResource
 {
     public function toArray($request)
     {
