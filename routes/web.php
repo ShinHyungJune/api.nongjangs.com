@@ -26,7 +26,7 @@ use Milon\Barcode\DNS1D;
 Route::get("/test", function (){
     $iamport = new Iamport();
 
-    $result = $iamport->getBillingKeyInformation("billing-d3d0610e-8cc1-409c-b7ce-7f6e2e020aab");
+    $result = $iamport->getBillingKeyOrder("payment-326fe18a-88de-4770-b51d-1a99d3f2");
 
     dd($result);
 });

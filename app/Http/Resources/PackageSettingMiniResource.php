@@ -28,11 +28,14 @@ class PackageSettingMiniResource extends JsonResource
             'retry' => $this->retry,
 
             'card_id' => $this->card_id,
-            'card' => $this->card ? CardResource::make($this->card) : '',
+            'card' => $this->card ? [
+                'id' => $this->card->id,
+                'title' => $this->card->title,
+            ] : '',
             'delivery_id' => $this->delivery_id,
             'delivery' => $this->delivery ? DeliveryResource::make($this->delivery) : '',
             'first_package_id' => $this->first_package_id,
-            'format_unlike_materials' => Arr::getArrayToString($this->materials()->wherePivot('unlike', 1)->pluck("title")->toArray()),
+            // 'format_unlike_materials' => Arr::getArrayToString($this->materials()->wherePivot('unlike', 1)->pluck("title")->toArray()),
             'format_created_at' => Carbon::make($this->created_at)->format('Y-m-d'),
         ];
     }

@@ -20,7 +20,7 @@ class OrderFactory extends Factory
         $payMethod = PayMethod::inRandomOrder()->first();
 
         return [
-            'payment_id' => $this->faker->unique()->uuid,
+            'merchant_uid' => $this->faker->unique()->uuid,
             'user_id' => $user ? $user->id : User::factory()->create()->id,
             'user_name' => $this->faker->userName(),
             'user_email' => $this->faker->unique()->safeEmail(),

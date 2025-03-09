@@ -132,10 +132,16 @@ class OrderController extends ApiController
         if($order->payMethod->external == 0){
             $card = Card::find($request->card_id);
 
-            $result = $iamport->payByBillingKey($order, $card, auth()->user());
+            $result = $iamport->payByBillingKey($order, $card);
 
             if(!$result['success'])
                 return $this->respondForbidden($result['message']);
+
+            $order->update(['imp_uid' => $result['data']['imp_uid']]);
+
+            return $this->respondSuccessfully([
+                'order' => OrderResource::make($order)
+            ]);
         }
 
         return $this->respondSuccessfully([
@@ -148,24 +154,28 @@ class OrderController extends ApiController
     // 결제검증(OrderObserver 사용)
     public function complete(OrderRequest $request)
     {
+        $iamport = new Iamport();
+
         $path = $request->path();
 
         if(strpos($path, 'webhook') !== false)
             sleep(3); // 3초 대기 (중복방지)
 
         // 주문조회
-        $result = Iamport::getOrder($request->paymentId);
-        
+        $result = $iamport->getOrder($request->imp_uid);
+
         if(!$result['success'])
             return $this->respondForbidden($result['message']);
 
-        $data = $result['data'];
+        $impOrder = $result['data'];
 
 
         $order = Order::where(function($query){
             $query->where("state", StateOrder::WAIT)
                 ->orWhere("state", StateOrder::BEFORE_PAYMENT);
-        })->where("payment_id", $data["id"])->first();
+        })->where("merchant_uid", $impOrder["merchant_uid"])
+            ->first();
+
 
         DB::beginTransaction();
 
@@ -173,10 +183,10 @@ class OrderController extends ApiController
             if(!$order)
                 return abort(404);
 
-            if($order->price != $data["amount"]['total'])
+            if($order->price != $impOrder["amount"])
                 return abort(403);
 
-            switch ($data["status"]){
+            switch ($impOrder["status"]){
                 case "ready":
                     // 가상계좌 발급 (해당 부분 리뉴얼해야함)
                     /*$vbankNum = $impOrder["vbank_num"];
@@ -195,17 +205,10 @@ class OrderController extends ApiController
                     $result = ["success" => 1, "message"=>"가상계좌 발급이 완료되었습니다. ${vbankName}/ ${vbankNum} / ${vbankDate}"];
 
                     break;*/
-                case "PAID": // 결제완료
-                    // OrderObserver 사용
-                    $order->update(["transaction_id" => $data['transactionId'], "state" => StateOrder::SUCCESS]);
+                case "paid": // 결제완료
+                    $order->update(["imp_uid" => $request->imp_uid, "state" => StateOrder::SUCCESS]);
 
-                    break;
-
-                case "FAILED": // 결제실패
-                    // OrderObserver 사용
-                    $order->update(["transaction_id" => $data['transactionId'], "reason" => $data['failure']['reason']]);
-
-                    break;
+                break;
             }
 
             DB::commit();
@@ -220,7 +223,7 @@ class OrderController extends ApiController
             DB::rollBack();
         }
 
-        $order = Order::where("payment_id", $request->paymentId)->first();
+        $order = Order::where("imp_uid", $request->imp_uid)->first();
 
         // 모바일 결제 redirect가 필요할 경우
         if(strpos($request->path(), "mobile"))

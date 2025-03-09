@@ -25,14 +25,16 @@ class CardController extends ApiController
 
     public function store(CardRequest $request)
     {
-        $result = Iamport::getOrder($request->payment_id);
+        $iamport = new Iamport();
+
+        $result = $iamport->getBillingKeyOrder($request->customer_uid);
 
         if(!$result['success'])
             return $this->respondForbidden($result['message']);
 
         $card = auth()->user()->cards()->create([
-            'billing_key' => $result['data']['billingKey'],
-            'name' => $request->name,
+            'billing_key' => $request->customer_uid,
+            'name' => "[{$result['data']['card_name']}] ".$request->name,
         ]);
 
         return $this->respondSuccessfully(CardResource::make($card));

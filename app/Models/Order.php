@@ -356,7 +356,7 @@ class Order extends Model
             'card_billing_key' => $card ? $card->billing_key : null,
             'card_color' => $card ? $card->color : null,
 
-            'payment_id' => $this->id.Carbon::now()->format('Hisv'),
+            'merchant_uid' => $this->id.Carbon::now()->format('Hisv'),
             'pay_method_id' => $payMethod->id,
             'pay_method_pg' => $payMethod->pg,
             'pay_method_method' => $payMethod->method,

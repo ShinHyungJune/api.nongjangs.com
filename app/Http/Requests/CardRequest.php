@@ -55,7 +55,7 @@ class CardRequest extends FormRequest
 
                 case 'store':
                     return [
-                        'payment_id' => ['required','string','max:500'],
+                        'customer_uid' => ['required','string','max:500'],
                         'name' => ['required','string','max:500'],
                         /*
                         'name' => ['required'],

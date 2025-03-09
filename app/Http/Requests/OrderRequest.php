@@ -97,7 +97,7 @@ class OrderRequest extends FormRequest
 
                 case 'complete':
                     return [
-                        "paymentId" => "required|string|max:50000",
+                        "imp_uid" => "required|string|max:50000",
                     ];
 
                 default:

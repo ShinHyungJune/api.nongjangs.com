@@ -26,7 +26,7 @@ class PresetProductMiniResource extends JsonResource
             'price' => $this->price,
             'order' => $this->preset->order ? [
                 'id' => $this->preset->order->id,
-                'payment_id' => $this->preset->order->payment_id,
+                'merchant_uid' => $this->preset->order->merchant_uid,
                 'pay_method_name' => $this->preset->order_pay_method_name,
             ] : '',
             'product' => $this->product_id ? [

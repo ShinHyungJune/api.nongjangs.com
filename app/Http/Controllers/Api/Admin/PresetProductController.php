@@ -32,7 +32,7 @@ class PresetProductController extends ApiController
             $query->where("product_title", "LIKE", "%".$request->word."%")
                 ->orWhereHas("preset", function ($query) use($request){
                     $query->whereHas('order', function ($query) use ($request){
-                        $query->where("payment_id","LIKE", "%".$request->word."%")
+                        $query->where("merchant_uid","LIKE", "%".$request->word."%")
                             ->orWhere("user_name", "LIKE", "%".$request->word."%")
                             ->orWhere("user_email", "LIKE", "%".$request->word."%")
                             ->orWhere("user_contact", "LIKE", "%".$request->word."%");
