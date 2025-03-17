@@ -21,8 +21,10 @@ use App\Models\PresetProduct;
 use App\Models\Prototype;
 use App\Models\RecommendCategory;
 use App\Models\Size;
+use App\Models\User;
 use App\Models\임시\Product;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class TestSeeder extends Seeder
 {
@@ -55,7 +57,8 @@ class TestSeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()->count(10)->create();
+        User::where('email')->update(['password' => Hash::make('test@naver.com')]);
+
         /*$products = Product::where('product_id', null)->latest()->cursor();
 
         $index = 1;
