@@ -211,7 +211,7 @@ class UserController extends ApiController
                 return redirect(config("app.client_url") . "/users/create?success=0&message=" . $message);
             }*/
 
-            return redirect(config("app.client_url") . "/users/create?socialUser=".$data);
+            return redirect(config("app.client_url") . "/users/create?socialUser=".$data.'&redirect='.$redirectPath);
         }
 
         $token = JWTAuth::fromUser($user);
