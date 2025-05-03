@@ -145,13 +145,18 @@ class UserController extends ApiController
     }
 
 
-    public function openSocialLoginPop($social)
+    public function openSocialLoginPop($social, Request $request)
     {
+        if ($request->has('redirect'))
+            session(['redirect' => $request->query('redirect')]);
+
         return Socialite::driver($social)->stateless()->redirect();
     }
 
     public function socialLogin(Request $request, $social)
     {
+        $redirectPath = session()->pull('redirect', '');
+
         $socialUser = Socialite::driver($social)->stateless()->user();
 
         $user = User::where("social_id", $socialUser->id)->where("social_platform", $social)->first();
@@ -197,7 +202,7 @@ class UserController extends ApiController
 
                 $token = JWTAuth::fromUser($user);
 
-                return redirect(config("app.client_url")."/login?token=".$token);
+                return redirect(config("app.client_url")."/login?token=".$token.'&redirect='.$redirectPath);
             }
 
             /*if($user) {
@@ -211,7 +216,7 @@ class UserController extends ApiController
 
         $token = JWTAuth::fromUser($user);
 
-        return redirect(config("app.client_url")."/login?token=".$token);
+        return redirect(config("app.client_url")."/login?token=".$token.'&redirect='.$redirectPath);
     }
 
     /** 수정

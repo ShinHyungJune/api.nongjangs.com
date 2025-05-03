@@ -1388,6 +1388,9 @@ class InitSeeder extends Seeder
         foreach($farmStories as $farmStory){
             $tags = Tag::inRandomOrder()->take(6)->get();
 
+            if(count($tags) == 0)
+                $tags = Tag::factory()->count(6)->create();
+
             $farmStory->tags()->attach($tags->pluck("id"));
 
             if(config("app.env") != 'local'){
