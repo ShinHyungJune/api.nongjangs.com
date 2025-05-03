@@ -46,7 +46,7 @@ final class TypePointHistory
     {
         $items = [
             self::USER_RECOMMENDED => "추천인 추천받음",
-            self::USER_RECOMMEND => "추천인 추천함",
+            self::USER_RECOMMEND => "추천인 추천",
             self::ORDER_CREATED => "주문",
             self::PRESET_PRODUCT_CANCLE => "주문취소",
             self::PHOTO_REVIEW_CREATED => "포토리뷰 작성",

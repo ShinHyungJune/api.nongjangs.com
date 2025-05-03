@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('faq_category_id')->constrained('faq_categories')->onDelete('cascade');
             $table->string('title')->comment('제목');
             $table->text('description')->nullable()->comment('내용');

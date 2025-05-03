@@ -57,6 +57,7 @@ return new class extends Migration {
             $table->text('reason_deny_cancel')->nullable()->comment('취소요청 반려사유');
 
             $table->boolean('alert_pack')->default(0)->comment('품목구성 알림여부');
+            $table->date('delivery_started_at')->nullable()->comment('발송처리일');
 
             $table->timestamps();
         });

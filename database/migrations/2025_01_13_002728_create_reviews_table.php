@@ -15,6 +15,7 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('reply_user_id')->nullable()->comment('답변자')->constrained('users')->onDelete('cascade');
             $table->boolean('photo')->default(0)->comment('사진리뷰여부');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('package_id')->nullable()->constrained('packages')->onDelete('cascade');

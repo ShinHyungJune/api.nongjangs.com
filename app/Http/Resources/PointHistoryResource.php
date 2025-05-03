@@ -19,7 +19,7 @@ class PointHistoryResource extends JsonResource
         if($this->point_historiable_type == Point::class)
             $pointHistoriable = PointResource::make($pointHistoriable);
 
-        $point = $this->hasOne(Point::class)->first();
+        $point = $this->belongsTo(Point::class)->first();
 
         return [
             'id' => $this->id,

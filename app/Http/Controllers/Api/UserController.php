@@ -309,7 +309,7 @@ class UserController extends ApiController
         if(!$user)
             return $this->respondForbidden('유효하지 않은 추천인 코드입니다.');
 
-        if(!$user->id == auth()->id())
+        if($user->id == auth()->id())
             return $this->respondForbidden('자기 자신을 추천할 수 없습니다.');
 
         if(auth()->user()->code_recommend)
@@ -318,6 +318,7 @@ class UserController extends ApiController
         $point = User::$recommendPoint;
 
         auth()->user()->givePoint($point, TypePointHistory::USER_RECOMMEND, $user);
+
         $user->givePoint($point, TypePointHistory::USER_RECOMMENDED, auth()->user());
 
         $user->update(['code_recommend' => $request->code_recommend]);

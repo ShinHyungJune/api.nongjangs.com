@@ -22,7 +22,7 @@ class VegetableStoryController extends ApiController
     {
         $items = VegetableStory::withCount('likes as count_like');
 
-        $request['order_by'] = $request->order_by ?? 'count_like';
+        $request['order_by'] = $request->order_by ?? 'created_at';
 
         if($request->user_id)
             $items = $items->where('user_id', $request->user_id);

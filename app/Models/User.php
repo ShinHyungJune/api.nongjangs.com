@@ -90,12 +90,23 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         self::creating(function ($model){
             $grade = Grade::orderBy('level', 'asc')->first();
             $model->grade_id = $grade ? $grade->id : null;
-            $model->code = Generator::createUuid($model, 6, 'code');
+            $model->code = $model->nicknames[rand(0, count($model->nicknames) - 1)].Generator::createUuid($model, 6, 'code');
             $model->nickname = $model->nicknames[rand(0, count($model->nicknames) - 1)].$model->code;
         });
 
         self::created(function ($model){
             $model->cart()->create();
+
+            if($model->grade){
+                $couponGroup = CouponGroup::where('grade_id', $model->grade->id)->where('moment', MomentCouponGroup::GRADE)->first();
+
+                if($couponGroup){
+                    Coupon::create([
+                        'user_id' => $model->id,
+                        'coupon_group_id' => $couponGroup->id,
+                    ]);
+                }
+            }
         });
 
         self::updated(function ($model){

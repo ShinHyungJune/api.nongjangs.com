@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('title')->comment('제목');
             $table->unsignedBigInteger('price')->comment('가격');
             $table->unsignedBigInteger('count')->comment('재고')->default(99999);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
