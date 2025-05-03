@@ -114,6 +114,11 @@ class OrderController extends ApiController
         if(!auth()->user() && $order->guest_id != $request->guest_id)
             return $this->respondForbidden();
 
+        if($request->is_save_delivery_requirement)
+            auth()->user()->update([
+                'delivery_requirement' => $request->delivery_requirement
+            ]);
+
         if($order->state != StateOrder::BEFORE_PAYMENT)
             return $this->respondForbidden('결제준비중인 주문건에 대해서만 결제요청을 할 수 있습니다.');
 
