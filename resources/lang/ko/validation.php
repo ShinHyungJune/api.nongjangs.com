@@ -81,7 +81,7 @@ return [
     'max' => [
         'numeric' => ':attribute (은)는 :max를 초과할 수 없습니다.',
         'file' => ':attribute (은)는 :max kilobytes를 초과할 수 없습니다.',
-        'string' => 'The :attribute must not be greater than :max characters.',
+        'string' => ':attribute (은)는 :max 자를 초과할 수 없습니다.',
         'array' => 'The :attribute must not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
