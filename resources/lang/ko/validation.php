@@ -309,6 +309,7 @@ return [
         "expiry_year" => "만료년도",
         "expiry_month" => "만료월",
         "birth_or_business_number" => "생년월일 / 사업자번호",
+        "farm_id" => "농가"
     ],
 
 ];
