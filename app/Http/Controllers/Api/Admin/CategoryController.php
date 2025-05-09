@@ -26,9 +26,12 @@ class CategoryController extends ApiController
         if($request->type)
             $items = $items->where('type', $request->type);
 
+
         if($request->category_id)
             $items = $items->where('category_id', $request->category_id);
-        else
+        else if($request->is_sub_category){
+            $items = $items->whereNotNull('category_id');
+        } else
             $items = $items->whereNull('category_id');
 
         $items = $items->orderBy('order', 'asc')->paginate(25);
