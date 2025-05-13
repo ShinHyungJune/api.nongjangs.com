@@ -51,7 +51,7 @@ class FarmStoryController extends ApiController
         $request['tags'] = $request->tags ?? [];
 
         $createdItem = FarmStory::create(array_merge($request->validated(), [
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ]));
 
         $createdItem->tags()->sync(array_column($request->tags, 'id'));

@@ -200,6 +200,12 @@ return [
         "description" => "내용",
         "url" => "URL",
 
+        "count" => '수량',
+        "files" => "파일",
+        "price_delivery" => "배송비",
+        "min_price_for_free_delivery_price" => "무료배송 최소주문금액",
+        "delivery_company_refund" => "반품배송사",
+        "delivery_price_refund" => "반품배송비",
         "sale_id" => "매물",
         "will_purchase_at" => "구입예정일",
         "region" => "지역",
