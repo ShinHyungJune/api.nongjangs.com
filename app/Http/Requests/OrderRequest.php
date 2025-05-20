@@ -95,6 +95,16 @@ class OrderRequest extends FormRequest
 
                     return $data;
 
+                case 'updateDelivery':
+                    return [
+                        'delivery_name' => ['required','string','max:500'],
+                        'delivery_contact' => ['required','string','max:500'],
+                        'delivery_address' => ['required','string','max:500'],
+                        'delivery_address_detail' => ['required','string','max:500'],
+                        'delivery_address_zipcode' => ['required','string','max:500'],
+                        'delivery_requirement' => ['nullable','string','max:500'],
+                    ];
+
                 case 'complete':
                     return [
                         "imp_uid" => "required|string|max:50000",

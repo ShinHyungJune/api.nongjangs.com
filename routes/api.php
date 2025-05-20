@@ -298,6 +298,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get("/orders",[\App\Http\Controllers\Api\OrderController::class, 'index']);
     Route::post("/orders",[\App\Http\Controllers\Api\OrderController::class, 'store']);
+    Route::patch("/orders/delivery/{order}",[\App\Http\Controllers\Api\OrderController::class, 'updateDelivery']);
     Route::get("/orders/calculatePriceDelivery/{order}",[\App\Http\Controllers\Api\OrderController::class, 'calculatePriceDelivery']);
 
 
