@@ -25,6 +25,13 @@ class Product extends Model implements HasMedia
 
         self::creating(function ($model){
             $model->uuid = Generator::createUuid($model, 10);
+
+            $farm = Farm::find($model->farm_id);
+
+            if($farm){
+                $model->city_id = $farm->city_id;
+                $model->county_id = $farm->county_id;
+            }
         });
     }
 
