@@ -67,7 +67,7 @@ class ProductFactory extends Factory
             'prices_delivery' => "[]",
             'min_price_for_free_delivery_price' => rand(50000, 100000),
             'can_delivery_far_place' => $this->faker->boolean(),
-            'delivery_price_far_place' => $this->faker->randomNumber(),
+            // 'delivery_price_far_place' => $this->faker->randomNumber(),
             'delivery_company_refund' => $this->faker->randomNumber(),
             'delivery_price_refund' => $this->faker->randomNumber(),
             'delivery_address_refund' => $this->faker->address(),

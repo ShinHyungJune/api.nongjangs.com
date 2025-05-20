@@ -27,7 +27,7 @@ class DeliverySettingRequest extends FormRequest
                         'prices_delivery' => ['nullable'],
                         'min_price_for_free_delivery_price' => ['nullable', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
-                        'delivery_price_far_place' => ['nullable', 'integer'],
+                        // 'delivery_price_far_place' => ['nullable', 'integer'],
                         'ranges_far_place' => ['nullable', 'array'],
                     ];
 
@@ -40,7 +40,7 @@ class DeliverySettingRequest extends FormRequest
                         'prices_delivery' => ['nullable'],
                         'min_price_for_free_delivery_price' => ['nullable', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
-                        'delivery_price_far_place' => ['nullable', 'integer'],//
+                        // 'delivery_price_far_place' => ['nullable', 'integer'],//
                         'ranges_far_place' => ['nullable', 'array'],//
                     ];
 
@@ -101,11 +101,11 @@ class DeliverySettingRequest extends FormRequest
             'can_delivery_far_place' => [
                 'description' => '<span class="point">제주/도서산간 배송 가능여부</span>',
             ],
-            'delivery_price_far_place' => [
+            /*'delivery_price_far_place' => [
                 'description' => '<span class="point">제주/도서산간 배송 추가배송비</span>',
-            ],
+            ],*/
             'ranges_far_place' => [
-                'description' => '<span class="point">제주/도서산간 지역 설정 (["zipcode_start" => "", "zipcode_end" => ""]</span>',
+                'description' => '<span class="point">제주/도서산간 지역 설정 (["zipcode_start" => "", "zipcode_end" => "", "price" => ""]</span>',
             ],
 
             // 늘 쓰이는 애들

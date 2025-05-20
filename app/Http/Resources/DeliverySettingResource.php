@@ -25,7 +25,7 @@ class DeliverySettingResource extends JsonResource
             'ranges_far_place' => $this->ranges_far_place ? json_decode($this->ranges_far_place) : [],
             'min_price_for_free_delivery_price' => $this->min_price_for_free_delivery_price,
             'can_delivery_far_place' => $this->can_delivery_far_place,
-            'delivery_price_far_place' => $this->delivery_price_far_place,
+            // 'delivery_price_far_place' => $this->delivery_price_far_place,
         ];
     }
 }

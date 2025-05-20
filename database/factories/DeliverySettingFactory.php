@@ -22,7 +22,7 @@ class DeliverySettingFactory extends Factory
             'prices_delivery' => $this->faker->word(),
             'min_price_for_free_delivery_price' => $this->faker->randomNumber(),
             'can_delivery_far_place' => $this->faker->boolean(),
-            'delivery_price_far_place' => $this->faker->randomNumber(),
+            // 'delivery_price_far_place' => $this->faker->randomNumber(),
         ];
     }
 }

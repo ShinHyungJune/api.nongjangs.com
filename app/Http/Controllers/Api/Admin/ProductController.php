@@ -53,13 +53,14 @@ class ProductController extends ApiController
      */
     public function store(ProductRequest $request)
     {
-        $request['tags'] = $request->tags ?? [];
 
-        if($request->prices_delivery){
-            $request['prices_delivery'] = json_encode($request->prices_delivery);
-        }
+        $data = $request->validated();
 
-        $createdItem = Product::create($request->validated());
+        $data['tags'] = $request->tags ?? [];
+        $data['prices_delivery'] = $request->prices_delivery ? json_encode($request->prices_delivery) : json_encode([]);
+        $data['ranges_far_place'] = $request->ranges_far_place ? json_encode($request->ranges_far_place) : json_encode([]);
+
+        $createdItem = Product::create($data);
 
         $createdItem->tags()->sync(array_column($request->tags, 'id'));
 
@@ -97,10 +98,12 @@ class ProductController extends ApiController
     {
         $request['tags'] = $request->tags ?? [];
 
-        if($request->prices_delivery)
-            $request['prices_delivery'] = json_encode($request->prices_delivery);
+        $data = $request->validated();
 
-        $product->update($request->validated());
+        $data['prices_delivery'] = $request->prices_delivery ? json_encode($request->prices_delivery) : json_encode([]);
+        $data['ranges_far_place'] = $request->ranges_far_place ? json_encode($request->ranges_far_place) : json_encode([]);
+
+        $product->update($data);
 
         $product->tags()->sync(array_column($request->tags, 'id'));
 

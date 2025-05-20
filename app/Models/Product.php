@@ -122,14 +122,4 @@ class Product extends Model implements HasMedia
         return $this->hasMany(Option::class);
     }
 
-    public function getFormatRangesFarPlaceAttribute()
-    {
-        if(!$this->ranges_far_place)
-            return [];
-
-        $items = $this->json_decode($this->ranges_far_place);
-
-        return $items;
-    }
-
 }

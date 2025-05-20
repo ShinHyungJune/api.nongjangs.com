@@ -42,7 +42,7 @@ class ProductRequest extends FormRequest
                         'prices_delivery' => ['nullable'],
                         'min_price_for_free_delivery_price' => ['required', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
-                        'delivery_price_far_place' => ['required', 'integer'],
+                        'delivery_prices_far_place' => ['nullable', 'array'],
                         'delivery_company_refund' => ['required', 'integer'],
                         'delivery_price_refund' => ['required', 'integer'],
                         'delivery_address_refund' => ['nullable'],
@@ -73,7 +73,7 @@ class ProductRequest extends FormRequest
                         'prices_delivery' => ['nullable'],
                         'min_price_for_free_delivery_price' => ['required', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
-                        'delivery_price_far_place' => ['required', 'integer'],
+                        'delivery_prices_far_place' => ['nullable', 'array'],
                         'delivery_company_refund' => ['required', 'integer'],
                         'delivery_price_refund' => ['required', 'integer'],
                         'delivery_address_refund' => ['nullable'],
@@ -192,9 +192,9 @@ class ProductRequest extends FormRequest
             'can_delivery_far_place' => [
                 'description' => '<span class="point">제주/도서산간 배송 가능여부</span>',
             ],
-            'delivery_price_far_place' => [
+            /*'delivery_price_far_place' => [
                 'description' => '<span class="point">제주/도서산간 배송 추가배송비</span>',
-            ],
+            ],*/
             'delivery_company_refund' => [
                 'description' => '<span class="point">반품 택배사 (1 - CJ CJ | 2 - POST 우체국 | 3 - HANJIN 한진)</span>',
             ],
