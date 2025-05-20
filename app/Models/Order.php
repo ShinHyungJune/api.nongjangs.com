@@ -265,30 +265,13 @@ class Order extends Model
         ];
     }
 
-    // 맞춤결제여부
-    public function isCustomOrder()
-    {
-        $countTotal = $this->presetProducts()->whereHas('product', function ($query){
-            $query->whereNull('product_id'); // 추가상품은 제외
-        })->count();
-
-        $countCustom = $this->presetProducts()->whereHas('product', function ($query){
-            $query->whereNull('product_id') // 추가상품은 제외
-                ->where('custom', 1);
-        })->count();
-
-        if($countCustom > 0 && $countCustom == $countTotal)
-            return true;
-
-        return false;
-    }
-
     public function attempt($data, $guestId = null)
     {
         $presets = $this->presets;
 
         $pricePresets = 0;
         $point = $data['point_use'];
+
 
         if($point > 0 && auth()->user()->point < $point)
             return [
@@ -297,12 +280,10 @@ class Order extends Model
             ];
 
         foreach($presets as $preset){
+            $result = $preset->checkCanOrder($data);
 
-            if(!$preset->can_order)
-                return [
-                    'success' => false,
-                    'message' => '주문할 수 없습니다. 관리자에게 문의해주세요.'
-                ];
+            if(!$result['success'])
+                return $result;
 
             $pricePresets += $preset->price;
 

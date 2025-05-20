@@ -8,6 +8,8 @@ use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\PayMethod;
 use App\Models\Preset;
+use App\Models\PresetProduct;
+use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -40,6 +42,7 @@ class OrdersTest extends TestCase
             'buyer_address' => "123",
             'buyer_address_detail' => "123",
             'buyer_address_zipcode' => "123",
+            'buyer_email' => "123@naver.com",
 
             'delivery_name' => "123",
             'delivery_contact' => "123",
@@ -51,6 +54,36 @@ class OrdersTest extends TestCase
             'point_use' => 0,
             'pay_method_id' => $this->payMethod->id,
         ];
+    }
+
+    public function createOrder($products)
+    {
+        $product = Product::factory()->create([
+            'can_delivery_far_place' => 0,
+            'ranges_far_place' => json_encode([
+                [
+                    'title' => '불가지역',
+                    'zipcode_start' => '10000',
+                    'zipcode_end' => '20000',
+                    'price' => 1000,
+                ]
+            ])
+        ]);
+
+        $order = Order::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+            'order_id' => $order->id,
+        ]);
+
+        foreach($products as $product){
+            $this->attachProduct($preset, $product, 1);
+        }
+
+        return $order;
     }
 
     public function attachProduct($preset, $product, $count = 1, $option = null)
@@ -68,6 +101,7 @@ class OrdersTest extends TestCase
             'option_type' => $option->type,
         ]);
     }
+
 
     /** @test */
     public function 데이터를_생성할_수_있다()
@@ -800,5 +834,56 @@ point_use default 0 사용한 마일리지
         ])->assertStatus(403);
     }
 
+
+
+    /** @test */
+    public function 제주도서산간불가_상품이_포함되어있고_배송지가_제주도서산간지역이라면_결제시도할_수_없다()
+    {
+        $product = Product::factory()->create([
+            'can_delivery_far_place' => 0,
+            'ranges_far_place' => json_encode([
+                [
+                    'title' => '불가지역',
+                    'zipcode_start' => 100,
+                    'zipcode_end' => 500,
+                    'price' => 1000,
+                ]
+            ])
+        ]);
+
+        $order = $this->createOrder([
+            $product
+        ]);
+
+        $this->form['delivery_address_zipcode'] = "400";
+
+        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(403);
+
+
+        $this->form['delivery_address_zipcode'] = "501";
+
+        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(200);
+    }
+
+
+    /** @test */
+    public function 배송지를_수정할_수_있다()
+    {
+
+    }
+
+
+    /** @test */
+    public function 배송지를_수정하면_관련_상품조합들의_배송비가_계산된다()
+    {
+
+    }
+
+
+    /** @test */
+    public function 제주도서산간지역이라면_우편번호에_따라_설정된_배송비가_추가된다()
+    {
+
+    }
 
 }

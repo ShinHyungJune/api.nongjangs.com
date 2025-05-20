@@ -95,7 +95,7 @@ class ApiController extends Controller
 
     public function respondSuccessfully($data = null, $message = "성공적으로 처리되었습니다.")
     {
-        return $this->respond([
+        return $this->setStatusCode(200)->respond([
             "success" => true,
             "data" => $data,
             "message" => $message

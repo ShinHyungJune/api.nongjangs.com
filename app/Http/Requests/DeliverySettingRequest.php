@@ -105,7 +105,7 @@ class DeliverySettingRequest extends FormRequest
                 'description' => '<span class="point">제주/도서산간 배송 추가배송비</span>',
             ],*/
             'ranges_far_place' => [
-                'description' => '<span class="point">제주/도서산간 지역 설정 (["zipcode_start" => "", "zipcode_end" => "", "price" => ""]</span>',
+                'description' => '<span class="point">제주/도서산간 지역 설정 (["title" => "", "zipcode_start" => "", "zipcode_end" => "", "price" => ""]</span>',
             ],
 
             // 늘 쓰이는 애들

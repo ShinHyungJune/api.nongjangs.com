@@ -24,17 +24,77 @@ class Preset extends Model
     // 구매가능여부
     public function getCanOrderAttribute()
     {
+        $result = $this->checkCanOrder();
+
+        return $result['success'];
+    }
+
+    public function checkCanOrder($data)
+    {
         if(!auth()->user())
-            return 0;
+            return [
+                'success' => 0,
+                'message' => '로그인 후 결제시도 가능합니다'
+            ];
 
 
         if(auth()->id() != $this->user_id)
-            return 0;
+            return [
+                'success' => 0,
+                'message' => '자신의 주문건만 결제시도 가능합니다.'
+            ];
 
         if($this->order && $this->order->state != StateOrder::BEFORE_PAYMENT)
-            return 0;
+            return [
+                'success' => 0,
+                'message' => '주문준비 상태의 주문건만 결제시도할 수 있습니다.'
+            ];
 
-        return 1;
+        $result = $this->checkCanDeliveryFarPlace($data['delivery_address_zipcode']);
+
+        if(!$result['success'])
+            return $result;
+
+        return [
+            'success' => 1,
+        ];
+    }
+
+    // 제주도서산간 배송 가능여부
+    public function checkCanDeliveryFarPlace($zipcode)
+    {
+        $cantDeliveryProduct = null;
+
+        $presetProducts = $this->presetProducts;
+
+        foreach($presetProducts as $presetProduct){
+            $product = $presetProduct->product;
+
+            if(!$product->can_delivery_far_place){
+                $rangesFarPlace = json_decode($product->ranges_far_place, true);
+
+                foreach($rangesFarPlace as $range){
+                    $zipcodeStart = (int) $range['zipcode_start'];
+                    $zipcodeEnd = (int) $range['zipcode_end'];
+
+                    if($zipcode >= $zipcodeStart && $zipcode <= $zipcodeEnd){
+                        $cantDeliveryProduct = $product;
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        if($cantDeliveryProduct)
+            return [
+                'success' => 0,
+                'message' => $cantDeliveryProduct->title." 상품은 해당 주소로 배송 불가능합니다. 고객센터에 상품명 및 주소와 함께 문의해주세요.",
+            ];
+
+        return [
+            'success' => 1,
+        ];
     }
 
     // 필수옵션개수

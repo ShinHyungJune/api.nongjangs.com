@@ -192,9 +192,9 @@ class ProductRequest extends FormRequest
             'can_delivery_far_place' => [
                 'description' => '<span class="point">제주/도서산간 배송 가능여부</span>',
             ],
-            /*'delivery_price_far_place' => [
-                'description' => '<span class="point">제주/도서산간 배송 추가배송비</span>',
-            ],*/
+            'ranges_far_place' => [
+                'description' => '<span class="point">제주/도서산간 지역 설정 (["title" => "", "zipcode_start" => "", "zipcode_end" => "", "price" => ""]</span>',
+            ],
             'delivery_company_refund' => [
                 'description' => '<span class="point">반품 택배사 (1 - CJ CJ | 2 - POST 우체국 | 3 - HANJIN 한진)</span>',
             ],
