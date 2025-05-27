@@ -172,4 +172,10 @@ class ProductsTest extends TestCase
             $prevItem = $item;
         }
     }
+
+    /** @test */
+    public function 데이터에서_품절여부를_조회할_수_있다()
+    {
+
+    }
 }

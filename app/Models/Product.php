@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TypeOption;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -122,4 +123,13 @@ class Product extends Model implements HasMedia
         return $this->hasMany(Option::class);
     }
 
+    public function getEmptyAttribute()
+    {
+        $countRequiredOptions = $this->options()->where('type', TypeOption::REQUIRED)->sum('count');
+
+        if($countRequiredOptions == 0)
+            return 1;
+
+        return 0;
+    }
 }

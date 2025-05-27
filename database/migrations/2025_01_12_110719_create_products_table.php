@@ -25,7 +25,6 @@ return new class extends Migration {
             $table->boolean('need_tax')->comment('과세여부')->default(0);
             $table->boolean('can_use_coupon')->comment('쿠폰사용 가능여부')->default(1);
             $table->boolean('can_use_point')->comment('적립금사용 가능여부')->default(1);
-            $table->unsignedBigInteger('count')->comment('재고')->default(99999);
             $table->unsignedBigInteger('count_order')->comment('주문수')->default(0);
             $table->integer('type_delivery')->comment('배송유형')->default(TypeDelivery::FREE);
             $table->integer('delivery_company')->comment('택배사')->default(DeliveryCompany::CJ);

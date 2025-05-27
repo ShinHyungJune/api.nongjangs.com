@@ -5,6 +5,7 @@ namespace Tests\Feature;
 
 use App\Enums\StateOrder;
 use App\Models\Coupon;
+use App\Models\Option;
 use App\Models\Order;
 use App\Models\PayMethod;
 use App\Models\Preset;
@@ -58,18 +59,6 @@ class OrdersTest extends TestCase
 
     public function createOrder($products)
     {
-        $product = Product::factory()->create([
-            'can_delivery_far_place' => 0,
-            'ranges_far_place' => json_encode([
-                [
-                    'title' => '불가지역',
-                    'zipcode_start' => '10000',
-                    'zipcode_end' => '20000',
-                    'price' => 1000,
-                ]
-            ])
-        ]);
-
         $order = Order::factory()->create([
             'user_id' => $this->user->id,
         ]);
@@ -661,6 +650,44 @@ point_use default 0 사용한 마일리지
         출고상품가격비율에 맞게 포인트가 배분되어야함 (단순히 n빵하면 값이 안맞으니까 반복문 돌려서 포인트 분배를 하되, 마지막 출고애한테는 남은 포인트 전부를 넘기는식으로 해야됨)
         배분하면서 presetProduct의 price도 갱신되어야함
         ***/
+    }
+
+    public function attachProduct($preset, $product, $count = 1, $option = null)
+    {
+        $option = $option ?? \App\Models\Option::factory()->create();
+
+        $preset->products()->attach($product->id, [
+            'product_title' => $product->title,
+            'product_price' => $product->price,
+            'product_price_origin' => $product->price_origin,
+            'count' => $count,
+            'price' => $product->price,
+            'option_id' => $option->id,
+            'option_price' => $option->price,
+            'option_type' => $option->type,
+        ]);
+    }
+    /** @test */
+    public function 주문이_결제대기_또는_성공상태가_되면_재고수가_줄어든다()
+    {
+        $product = Product::factory()->create();
+
+        $count = 2;
+
+        $option = Option::factory()->create([
+            'product_id' => $product->id,
+            'count' => $count,
+        ]);
+
+        $order = $this->createOrder([
+
+        ]);
+
+        $order->presetProducts()->update(['option_id' => $option->id]);
+
+        $option
+
+        $this->assertEquals(0, $this->user->validCoupons()->count());
     }
 
     /** @test */
