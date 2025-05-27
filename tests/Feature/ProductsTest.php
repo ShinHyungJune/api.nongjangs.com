@@ -2,6 +2,7 @@
 
 
 use App\Enums\StateProduct;
+use App\Models\Option;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\Tag;
@@ -176,6 +177,17 @@ class ProductsTest extends TestCase
     /** @test */
     public function 데이터에서_품절여부를_조회할_수_있다()
     {
+        $product = Product::factory()->create();
 
+        $option = Option::factory()->create([
+            'product_id' => $product->id,
+            'count' => 1
+        ]);
+
+        $this->assertEquals(0, $product->empty);
+
+        $option->update(['count' => 0]);
+
+        $this->assertEquals(1, $product->fresh()->empty);
     }
 }

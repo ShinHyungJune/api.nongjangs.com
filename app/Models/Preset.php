@@ -29,7 +29,7 @@ class Preset extends Model
         return $result['success'];
     }
 
-    public function checkCanOrder($data)
+    public function checkCanOrder($data = [])
     {
         if(!auth()->user())
             return [
@@ -50,10 +50,12 @@ class Preset extends Model
                 'message' => '주문준비 상태의 주문건만 결제시도할 수 있습니다.'
             ];
 
-        $result = $this->checkCanDeliveryFarPlace($data['delivery_address_zipcode']);
+        if(isset($data['delivery_address_zipcode'])) {
+            $result = $this->checkCanDeliveryFarPlace($data['delivery_address_zipcode']);
 
-        if(!$result['success'])
-            return $result;
+            if (!$result['success'])
+                return $result;
+        }
 
         return [
             'success' => 1,
@@ -131,7 +133,10 @@ class Preset extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot([
+            'option_id',
+            'count',
+        ]);
     }
 
     public function getPriceDeliveryAttribute()

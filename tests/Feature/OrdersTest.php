@@ -672,7 +672,7 @@ point_use default 0 사용한 마일리지
 
 
     /** @test */
-    public function 주문이_결제대기_또는_성공상태가_되면_재고수가_줄어든다()
+    public function 주문이_성공상태가_되면_수가_줄어든다()
     {
         $product = Product::factory()->create();
 
@@ -690,9 +690,9 @@ point_use default 0 사용한 마일리지
             ]
         ]);
 
-        $order->presetProducts()->update(['option_id' => $option->id]);
+        $order->update(['state' => StateOrder::SUCCESS]);
 
-        $this->assertEquals(0, $this->user->validCoupons()->count());
+        $this->assertEquals($count - 1, $option->fresh()->count);
     }
 
     /** @test */

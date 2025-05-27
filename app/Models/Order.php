@@ -204,6 +204,17 @@ class Order extends Model
 
                 foreach($products as $product){
                     $product->update(['count_order' => $product->count_order + 1]);
+
+                    $option = Option::find($product->pivot->option_id);
+
+                    if($option) {
+                        $count = $option->count - $product->pivot->count;
+
+                        if($count < 0)
+                            $count = 0;
+
+                        $option->update(['count' => $count]);
+                    }
                 }
             }
         }

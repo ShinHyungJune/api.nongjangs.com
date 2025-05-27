@@ -59,7 +59,6 @@ class ProductFactory extends Factory
             'need_tax' => $this->faker->boolean(),
             'can_use_coupon' => 1,
             'can_use_point' => 1,
-            'count' => 9999999999999,
             'type_delivery' => TypeDelivery::FREE,
             'delivery_company' => DeliveryCompany::CJ,
             'type_delivery_price' => TypeDeliveryPrice::STATIC,

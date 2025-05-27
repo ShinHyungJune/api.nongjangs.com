@@ -63,6 +63,7 @@ class ProductResource extends JsonResource
             'category' => $this->category ? CategoryResource::make($this->category) : '',
             'farm' => $this->farm ? FarmResource::make($this->farm) : '',
             'county' => $this->county ? CountyResource::make($this->county) : '',
+            'empty' => $this->empty,
 
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
