@@ -59,48 +59,50 @@ class OrdersTest extends TestCase
         ];
     }
 
-    public function createOrder($products = [])
+    public function createOrder($items = [])
     {
-        if(count($products) == 0) {
-            $products[] = Product::factory()->create([
-                'can_delivery_far_place' => 0,
-                'ranges_far_place' => json_encode([
-                    [
-                        'title' => '불가지역',
-                        'zipcode_start' => '10000',
-                        'zipcode_end' => '20000',
-                        'price' => 1000,
-                    ]
+        if(count($items) == 0) {
+            $items[] = [
+                'product' => Product::factory()->create([
+                    'can_delivery_far_place' => 0,
+                    'ranges_far_place' => json_encode([
+                        [
+                            'title' => '불가지역',
+                            'zipcode_start' => '10000',
+                            'zipcode_end' => '20000',
+                            'price' => 1000,
+                        ]
+                    ])
                 ])
-            ]);
+            ];
         }
 
         $order = Order::factory()->create([
             'user_id' => $this->user->id,
         ]);
 
-        foreach($products as $product){
+        foreach($items as $item){
             $preset = Preset::factory()->create([
                 'user_id' => $this->user->id,
                 'order_id' => $order->id,
             ]);
 
-            $this->attachProduct($preset, $product, 1);
+            $this->attachProduct($preset, $item, 1);
         }
 
         return $order;
     }
 
-    public function attachProduct($preset, $product, $count = 1, $option = null)
+    public function attachProduct($preset, $item, $count = 1)
     {
-        $option = $option ?? \App\Models\Option::factory()->create();
+        $option = $item['option'] ?? \App\Models\Option::factory()->create();
 
-        $preset->products()->attach($product->id, [
-            'product_title' => $product->title,
-            'product_price' => $product->price,
-            'product_price_origin' => $product->price_origin,
+        $preset->products()->attach($item['product']->id, [
+            'product_title' => $item['product']->title,
+            'product_price' => $item['product']->price,
+            'product_price_origin' => $item['product']->price_origin,
             'count' => $count,
-            'price' => $product->price,
+            'price' => $item['product']->price,
             'option_id' => $option->id,
             'option_price' => $option->price,
             'option_type' => $option->type,
@@ -668,21 +670,7 @@ point_use default 0 사용한 마일리지
         ***/
     }
 
-    public function attachProduct($preset, $product, $count = 1, $option = null)
-    {
-        $option = $option ?? \App\Models\Option::factory()->create();
 
-        $preset->products()->attach($product->id, [
-            'product_title' => $product->title,
-            'product_price' => $product->price,
-            'product_price_origin' => $product->price_origin,
-            'count' => $count,
-            'price' => $product->price,
-            'option_id' => $option->id,
-            'option_price' => $option->price,
-            'option_type' => $option->type,
-        ]);
-    }
     /** @test */
     public function 주문이_결제대기_또는_성공상태가_되면_재고수가_줄어든다()
     {
@@ -696,7 +684,10 @@ point_use default 0 사용한 마일리지
         ]);
 
         $order = $this->createOrder([
-
+            [
+                'product' => $product,
+                'option' => $option,
+            ]
         ]);
 
         $order->presetProducts()->update(['option_id' => $option->id]);
