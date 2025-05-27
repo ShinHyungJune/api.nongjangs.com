@@ -701,8 +701,6 @@ point_use default 0 사용한 마일리지
 
         $order->presetProducts()->update(['option_id' => $option->id]);
 
-        $option
-
         $this->assertEquals(0, $this->user->validCoupons()->count());
     }
 
