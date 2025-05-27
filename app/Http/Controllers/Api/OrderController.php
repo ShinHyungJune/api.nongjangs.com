@@ -156,6 +156,43 @@ class OrderController extends ApiController
         ]);
     }
 
+    /** 수정(주소지 변경 -> 배송비 계산용)
+     * @group 사용자
+     * @subgroup Order(주문)
+     * @responseFile storage/responses/order.json
+     */
+    public function updateDelivery(Order $order, OrderRequest $request)
+    {
+        if(auth()->user() && $order->user_id != auth()->id())
+            return $this->respondForbidden();
+
+        if(!auth()->user() && $order->guest_id != $request->guest_id)
+            return $this->respondForbidden();
+
+        if($order->state != StateOrder::BEFORE_PAYMENT)
+            return $this->respondForbidden('결제준비중인 주문건에 대해서만 처리할 수 있습니다.');
+
+        $result = DB::transaction(function () use($order, $request){
+            $order->update($request->validated());
+
+            $presets = $order->presets;
+
+            foreach($presets as $preset){
+                $presetProducts = $preset->presetProducts;
+
+                foreach($presetProducts as $presetProduct){
+                    $presetProduct->update($request->validated());
+                }
+
+                $preset->update([
+                    'price_delivery' => $preset->calculatePriceDelivery()
+                ]);
+            }
+        });
+
+        return $this->respondSuccessfully(new OrderResource($order));
+    }
+
     // 결제검증(OrderObserver 사용)
     public function complete(OrderRequest $request)
     {

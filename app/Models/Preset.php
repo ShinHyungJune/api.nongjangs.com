@@ -235,14 +235,14 @@ class Preset extends Model
                     $priceDelivery = $product->price_delivery;
 
                 if($product->type_delivery_price == TypeDeliveryPrice::CONDITIONAL){
-                    if($this->price >= $this->min_price_for_free_delivery_price)
+                    if($this->price >= $product->min_price_for_free_delivery_price)
                         $priceDelivery = 0;
                     else
                         $priceDelivery = $product->price_delivery;
                 }
 
                 if($product->type_delivery_price == TypeDeliveryPrice::PRICE_BY_COUNT){
-                    $prices = json_decode($this->prices_delivery);
+                    $prices = json_decode($product->prices_delivery);
 
                     usort($prices, function ($a, $b) {
                         if ($a['count'] == $b['count'])
@@ -262,8 +262,8 @@ class Preset extends Model
 
                 $priceDeliveryFarPlace = 0;
 
-                if($this->order && $this->delivery_address_zipcode && $this->ranges_far_place){
-                    $rangesFarPlace = json_decode($this->ranges_far_place);
+                if($this->order && $this->order->delivery_address_zipcode && $product->ranges_far_place){
+                    $rangesFarPlace = json_decode($product->ranges_far_place ?? [], true);
 
                     foreach($rangesFarPlace as $range){
                         if($range['zipcode_start'] <= $this->order->delivery_address_zipcode && $range['zipcode_end'] >= $this->order->delivery_address_zipcode){

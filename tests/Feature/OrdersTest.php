@@ -4,6 +4,8 @@
 namespace Tests\Feature;
 
 use App\Enums\StateOrder;
+use App\Enums\TypeDelivery;
+use App\Enums\TypeDeliveryPrice;
 use App\Models\Coupon;
 use App\Models\Option;
 use App\Models\Order;
@@ -57,18 +59,32 @@ class OrdersTest extends TestCase
         ];
     }
 
-    public function createOrder($products)
+    public function createOrder($products = [])
     {
+        if(count($products) == 0) {
+            $products[] = Product::factory()->create([
+                'can_delivery_far_place' => 0,
+                'ranges_far_place' => json_encode([
+                    [
+                        'title' => '불가지역',
+                        'zipcode_start' => '10000',
+                        'zipcode_end' => '20000',
+                        'price' => 1000,
+                    ]
+                ])
+            ]);
+        }
+
         $order = Order::factory()->create([
             'user_id' => $this->user->id,
         ]);
 
-        $preset = Preset::factory()->create([
-            'user_id' => $this->user->id,
-            'order_id' => $order->id,
-        ]);
-
         foreach($products as $product){
+            $preset = Preset::factory()->create([
+                'user_id' => $this->user->id,
+                'order_id' => $order->id,
+            ]);
+
             $this->attachProduct($preset, $product, 1);
         }
 
@@ -897,20 +913,49 @@ point_use default 0 사용한 마일리지
     public function 배송지를_수정할_수_있다()
     {
 
+        $order = $this->createOrder();
+
+        $this->json('patch', '/api/orders/'.$order->id, $this->form)->assertStatus(200);
     }
 
 
     /** @test */
     public function 배송지를_수정하면_관련_상품조합들의_배송비가_계산된다()
     {
+        $productFarPlace = Product::factory()->create([
+            'can_delivery_far_place' => 1,
+            'ranges_far_place' => json_encode([
+                [
+                    'title' => '불가지역',
+                    'zipcode_start' => 100,
+                    'zipcode_end' => 500,
+                    'price' => 1000,
+                ]
+            ]),
+            'price_delivery' => 2000,
+            'type_delivery' => TypeDelivery::EACH,
+            'type_delivery_price' => TypeDeliveryPrice::STATIC,
+        ]);
 
+        $productEach = Product::factory()->create([
+            'price_delivery' => 3000,
+            'type_delivery' => TypeDelivery::EACH,
+            'type_delivery_price' => TypeDeliveryPrice::STATIC,
+        ]);
+
+        $order = $this->createOrder([
+            $productFarPlace,
+            $productEach,
+        ]);
+
+        $this->form['delivery_address_zipcode'] = "400";
+
+        $this->json('patch', '/api/orders/delivery/'.$order->id, $this->form)->assertStatus(200);
+
+        $priceTotal = $order->presets()->sum('price_delivery');
+
+        $this->assertEquals(6000, $priceTotal);
     }
 
-
-    /** @test */
-    public function 제주도서산간지역이라면_우편번호에_따라_설정된_배송비가_추가된다()
-    {
-
-    }
 
 }
