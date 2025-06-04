@@ -49,7 +49,7 @@ class Iamport extends Model
 
         if(!isset($result['cancellation'])) {
             Log::info('주문취소실패', [
-                'data' => $result,
+                'data' => $response->body(),
             ]);
 
             return [
