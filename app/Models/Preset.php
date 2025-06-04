@@ -72,7 +72,7 @@ class Preset extends Model
         foreach($presetProducts as $presetProduct){
             $product = $presetProduct->product;
 
-            if(!$product->can_delivery_far_place){
+            if($product->can_delivery_far_place){
                 $rangesFarPlace = json_decode($product->ranges_far_place, true);
 
                 foreach($rangesFarPlace as $range){
