@@ -35,7 +35,9 @@ class PresetProductResource extends JsonResource
 
             'user' => $user ? [
                 'id' => $user->id,
+                'email' => $user->email,
                 'name' => $user->name,
+                'contact' => $user->contact,
                 'grade' => $user->grade ? [
                     'id' => $user->grade->id,
                     'level' => $user->grade->level,
