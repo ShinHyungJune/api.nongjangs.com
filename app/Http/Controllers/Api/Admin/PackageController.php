@@ -84,7 +84,7 @@ class PackageController extends ApiController
     {
         $request['recipes'] = $request->recipes ?? [];
 
-        if($package->start_pack_at <= Carbon::now())
+        if($package->start_pack_at && $package->start_pack_at <= Carbon::now())
             return $this->respondForbidden('제품 구성을 변경할 수 있는 기간이 지났습니다.');
 
         $package->update($request->validated());
