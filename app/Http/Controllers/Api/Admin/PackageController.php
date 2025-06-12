@@ -142,7 +142,7 @@ class PackageController extends ApiController
      */
     public function updateSchedule(PackageRequest $request, Package $package)
     {
-        if($package->start_pack_at <= Carbon::now())
+        if($package->start_pack_at && $package->start_pack_at <= Carbon::now())
             return $this->respondForbidden('이미 품목구성이 시작된 꾸러미입니다.');
 
         $package->update($request->validated());
