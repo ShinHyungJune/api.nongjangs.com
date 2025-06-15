@@ -47,11 +47,16 @@ class Iamport extends Model
 
         $result = $response->json();
 
-        if(!isset($result['cancellation']))
+        if(!isset($result['cancellation'])) {
+            Log::info('주문취소실패', [
+                'data' => $response->body(),
+            ]);
+
             return [
                 'message' => "주문취소에 실패하였습니다.",
                 'success' => false,
             ];
+        }
 
         if(isset($result['message']))
             return [
