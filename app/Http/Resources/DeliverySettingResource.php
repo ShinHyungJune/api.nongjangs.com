@@ -14,10 +14,9 @@ class DeliverySettingResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'deliveryCompany' => $this->deliveryCompany,
             'type_delivery' => $this->type_delivery,
             'format_type_delivery' => TypeDelivery::getLabel($this->type_delivery),
-            'delivery_company' => $this->delivery_company,
-            'format_delivery_company' => DeliveryCompany::getLabel($this->delivery_company),
             'type_delivery_price' => $this->type_delivery_price,
             'format_type_delivery_price' => TypeDeliveryPrice::getLabel($this->type_delivery_price),
             'price_delivery' => $this->price_delivery,

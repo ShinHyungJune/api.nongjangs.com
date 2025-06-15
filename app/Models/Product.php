@@ -132,4 +132,14 @@ class Product extends Model implements HasMedia
 
         return 0;
     }
+
+    public function deliveryCompany()
+    {
+        return $this->belongsTo(DeliveryCompany::class, 'delivery_company_id');
+    }
+
+    public function deliveryCompanyRefund()
+    {
+        return $this->belongsTo(DeliveryCompany::class, 'delivery_company_refund_id');
+    }
 }

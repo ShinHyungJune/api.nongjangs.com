@@ -148,6 +148,7 @@ class InitSeeder extends Seeder
         PointHistory::truncate();
         Order::truncate();
         PayMethod::truncate();
+        \App\Models\DeliveryCompany::truncate();
 
         /*Category::truncate();
         PayMethod::truncate();
@@ -189,6 +190,7 @@ class InitSeeder extends Seeder
         $this->createFarms();
         $this->createFarmStories();
         $this->createCategories();
+        $this->createDeliveryCompanies();
         $this->createProducts();
         $this->createProject();
         $this->createTags();
@@ -736,7 +738,7 @@ class InitSeeder extends Seeder
                 ],
             ],
         ];
-        
+
         $tag1 = Tag::create(['type' => TypeTag::PACKAGE, 'title' => '무농약']);
         $tag2 = Tag::create(['type' => TypeTag::PACKAGE, 'title' => '세척']);
 
@@ -961,16 +963,13 @@ class InitSeeder extends Seeder
                 'need_tax' => 0,
                 'can_use_coupon' => 1,
                 'can_use_point' => 1,
-                'count' => 100000,
                 'type_delivery' => TypeDelivery::FREE,
-                'delivery_company' => DeliveryCompany::CJ,
                 'type_delivery_price' => TypeDeliveryPrice::STATIC,
                 'price_delivery' => 3000,
                 'prices_delivery' => "[]",
                 'min_price_for_free_delivery_price' => 50000,
                 'can_delivery_far_place' => 1,
                 // 'delivery_price_far_place' => 3000,
-                'delivery_company_refund' => DeliveryCompany::CJ,
                 'delivery_price_refund' => 3000,
                 'delivery_address_refund' => '서울특별시 강남구 143 43',
                 'description' => "
@@ -1032,16 +1031,13 @@ class InitSeeder extends Seeder
                 'need_tax' => 0,
                 'can_use_coupon' => 1,
                 'can_use_point' => 1,
-                'count' => 100000,
                 'type_delivery' => TypeDelivery::FREE,
-                'delivery_company' => DeliveryCompany::CJ,
                 'type_delivery_price' => TypeDeliveryPrice::STATIC,
                 'price_delivery' => 3000,
                 'prices_delivery' => "[]",
                 'min_price_for_free_delivery_price' => 50000,
                 'can_delivery_far_place' => 1,
                 // 'delivery_price_far_place' => 3000,
-                'delivery_company_refund' => DeliveryCompany::CJ,
                 'delivery_price_refund' => 3000,
                 'delivery_address_refund' => '서울특별시 강남구 143 43',
                 'description' => "
@@ -1103,16 +1099,13 @@ class InitSeeder extends Seeder
                 'need_tax' => 0,
                 'can_use_coupon' => 1,
                 'can_use_point' => 1,
-                'count' => 100000,
                 'type_delivery' => TypeDelivery::FREE,
-                'delivery_company' => DeliveryCompany::CJ,
                 'type_delivery_price' => TypeDeliveryPrice::STATIC,
                 'price_delivery' => 3000,
                 'prices_delivery' => "[]",
                 'min_price_for_free_delivery_price' => 50000,
                 'can_delivery_far_place' => 1,
                 // 'delivery_price_far_place' => 3000,
-                'delivery_company_refund' => DeliveryCompany::CJ,
                 'delivery_price_refund' => 3000,
                 'delivery_address_refund' => '서울특별시 강남구 143 43',
                 'description' => "
@@ -1126,13 +1119,13 @@ class InitSeeder extends Seeder
                 <br/>
                 <img src='https://api.nongjangs.com/images/%ED%91%9C%EA%B3%A0%EB%B2%84%EC%84%AF/5.png' />
                 <br/>
-                
+
                 ",
             ],
         ];
 
         foreach($items as $item){
-            $product = Product::create(\Arr::except($item, ['imgs', 'requiredOptions', 'tags']));
+            $product = Product::factory()->create(\Arr::except($item, ['imgs', 'requiredOptions', 'tags']));
 
             foreach($item['requiredOptions'] as $option){
                 $product->options()->create($option);
@@ -1930,6 +1923,40 @@ class InitSeeder extends Seeder
         foreach($payMethods as $payMethod){
             PayMethod::create($payMethod);
         }
+    }
+
+    public function createDeliveryCompanies()
+    {
+        // Create delivery companies based on the enum values
+        \App\Models\DeliveryCompany::create([
+            'title' => '대한통운',
+            'code' => 'kr.cjlogistics',
+        ]);
+
+        \App\Models\DeliveryCompany::create([
+            'title' => '롯데택배',
+            'code' => 'kr.lotte',
+        ]);
+
+        \App\Models\DeliveryCompany::create([
+            'title' => '우체국',
+            'code' => 'kr.epost',
+        ]);
+
+        \App\Models\DeliveryCompany::create([
+            'title' => '한진택배',
+            'code' => 'kr.hanjin',
+        ]);
+
+        \App\Models\DeliveryCompany::create([
+            'title' => '로젠택배',
+            'code' => 'kr.logen',
+        ]);
+
+        \App\Models\DeliveryCompany::create([
+            'title' => '경동택배',
+            'code' => 'kr.kdexp',
+        ]);
     }
 
 }

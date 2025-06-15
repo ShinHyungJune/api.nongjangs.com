@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Enums\DeliveryCompany;
 use App\Enums\StateProduct;
 use App\Enums\TypeDelivery;
 use App\Enums\TypeDeliveryPrice;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\County;
+use App\Models\DeliveryCompany;
 use App\Models\Farm;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -60,14 +60,14 @@ class ProductFactory extends Factory
             'can_use_coupon' => 1,
             'can_use_point' => 1,
             'type_delivery' => TypeDelivery::FREE,
-            'delivery_company' => DeliveryCompany::CJ,
+            'delivery_company_id' => DeliveryCompany::inRandomOrder()->first()->id ?? DeliveryCompany::factory()->create()->id,
             'type_delivery_price' => TypeDeliveryPrice::STATIC,
             'price_delivery' => 3000,
             'prices_delivery' => "[]",
             'min_price_for_free_delivery_price' => rand(50000, 100000),
             'can_delivery_far_place' => $this->faker->boolean(),
             // 'delivery_price_far_place' => $this->faker->randomNumber(),
-            'delivery_company_refund' => $this->faker->randomNumber(),
+            'delivery_company_refund_id' => DeliveryCompany::inRandomOrder()->first()->id ?? DeliveryCompany::factory()->create()->id,
             'delivery_price_refund' => $this->faker->randomNumber(),
             'delivery_address_refund' => $this->faker->address(),
             'description' => "

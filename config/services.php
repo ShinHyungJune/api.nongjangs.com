@@ -74,5 +74,10 @@ return [
 
     'gong_gong' => [
         'key' => env('GONG_GONG_KEY', 'sQFVwueQbqWZjMG0EzzVt3B0m04Fk2uSdJgzkiOb77GIMzvfJUicNcv9jmgcikJJ4cxxwTKsy2EsS1M1E1gKJg%3D%3D')
-    ]
+    ],
+
+    'tracker' => [
+        'client_id' => env('TRACKER_CLIENT_ID', '6im9psfll4m0u7k3vedk870ufj'),
+        'secret' => env('TRACKER_SECRET', '17a92jve0gin53jl4bmimu6o5fk8rftnaen10v0mokagdo2s6th1'),
+    ],
 ];

@@ -32,6 +32,9 @@ Route::middleware("admin")->prefix("/admin")->group(function () {
     Route::delete("/examples", [\App\Http\Controllers\Api\Admin\ExampleController::class, "destroy"]);
     Route::resource("/examples", \App\Http\Controllers\Api\Admin\ExampleController::class);
 
+    Route::resource("/deliveryCompanies", \App\Http\Controllers\Api\Admin\DeliveryCompanyController::class)->except(['destroy']);
+    Route::delete("/deliveryCompanies", [\App\Http\Controllers\Api\Admin\DeliveryCompanyController::class, "destroy"]);
+
     Route::patch("/banners/{banner}/up", [\App\Http\Controllers\Api\Admin\BannerController::class, "up"]);
     Route::patch("/banners/{banner}/down", [\App\Http\Controllers\Api\Admin\BannerController::class, "down"]);
     Route::resource("/banners", \App\Http\Controllers\Api\Admin\BannerController::class);
@@ -345,7 +348,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/orders/{order}",[\App\Http\Controllers\Api\OrderController::class, 'show']);
     Route::post("/orders",[\App\Http\Controllers\Api\OrderController::class, 'store']);
 });
-
-
-
-

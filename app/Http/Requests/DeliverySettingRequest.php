@@ -21,7 +21,7 @@ class DeliverySettingRequest extends FormRequest
                 case 'store':
                     return [
                         'type_delivery' => ['required', 'integer'],
-                        'delivery_company' => ['required', 'integer'],
+                        'delivery_company_id' => ['required', 'integer'],
                         'type_delivery_price' => ['required', 'integer'],
                         'price_delivery' => ['required', 'integer'],
                         'prices_delivery' => ['nullable'],
@@ -34,7 +34,7 @@ class DeliverySettingRequest extends FormRequest
                 case 'update':
                     return [
                         'type_delivery' => ['required', 'integer'],
-                        'delivery_company' => ['required', 'integer'],
+                        'delivery_company_id' => ['required', 'integer'],
                         'type_delivery_price' => ['required', 'integer'],
                         'price_delivery' => ['required', 'integer'],
                         'prices_delivery' => ['nullable'],

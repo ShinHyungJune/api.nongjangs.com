@@ -534,4 +534,9 @@ class PresetProduct extends Model
 
         return $result;
     }
+
+    public function deliveryCompany()
+    {
+        return $this->belongsTo(DeliveryCompany::class);
+    }
 }

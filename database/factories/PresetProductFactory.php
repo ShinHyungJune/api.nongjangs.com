@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Enums\StatePresetProduct;
 use App\Enums\TypePackage;
 use App\Models\Coupon;
+use App\Models\DeliveryCompany;
 use App\Models\Option;
 use App\Models\Package;
 use App\Models\Preset;
@@ -52,6 +53,7 @@ class PresetProductFactory extends Factory
             'delivery_address_detail' => $this->faker->name,
             'delivery_address_zipcode' => "20120",
             'delivery_requirement' => '배송요청사항예시',
+            'delivery_company_id' => DeliveryCompany::inRandomOrder()->first()->id ?? DeliveryCompany::factory()->create()->id,
 
             'reason_request_cancel' => '이래서 취소했어요',
             'reason_deny_cancel' => '이래서 취소요청해요.',

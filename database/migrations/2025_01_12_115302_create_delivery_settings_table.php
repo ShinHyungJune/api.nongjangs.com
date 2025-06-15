@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('delivery_settings', function (Blueprint $table) {
             $table->id();
             $table->integer('type_delivery')->comment('배송유형')->default(TypeDelivery::FREE);
-            $table->integer('delivery_company')->comment('택배사')->default(DeliveryCompany::CJ);
+            $table->foreignId('delivery_company_id')->comment('택배사')->constrained('delivery_companies')->cascadeOnDelete('set null');;
             $table->integer('type_delivery_price')->comment('배송비 유형')->default(TypeDeliveryPrice::STATIC);
             $table->unsignedBigInteger('price_delivery')->comment('배송비')->nullable();
             $table->text('prices_delivery')->nullable()->comment('수량별 차등 배송비');

@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->foreignId('package_id')->nullable()->constrained('packages');
             $table->foreignId('option_id')->nullable()->constrained('options');
             $table->foreignId('coupon_id')->nullable()->constrained('coupons');
+            $table->foreignId('delivery_company_id')->comment('택배사')->constrained('delivery_companies')->cascadeOnDelete('set null');;
 
             $table->unsignedBigInteger('price')->default(0)->comment('최종가격');
             $table->string('package_name')->nullable()->comment('꾸러미 이름');
@@ -45,7 +46,6 @@ return new class extends Migration {
             $table->string('delivery_address_zipcode')->nullable()->comment('우편번호');
             $table->text('delivery_requirement')->nullable()->comment('배송요청사항');
             $table->string('delivery_number')->nullable()->comment('운송장번호');
-            $table->integer('delivery_company')->nullable()->comment('택배사');
             $table->date('delivery_at')->nullable()->comment('배송완료일자');
             $table->text('delivery_tracks')->nullable()->comment('배송추적');
 
