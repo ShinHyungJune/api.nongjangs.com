@@ -8,6 +8,7 @@ use App\Http\Requests\CouponRequest;
 use App\Http\Resources\CouponResource;
 use App\Models\Coupon;
 use App\Models\CouponGroup;
+use App\Models\Preset;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,7 +23,10 @@ class CouponController extends ApiController
      */
     public function index(CouponRequest $request)
     {
-        $items = auth()->user()->coupons()->where('use', 0);
+        if($request->preset_id)
+            $preset = Preset::find($request->preset_id);
+
+        $items = auth()->user()->canUseCoupons($preset ?? null);
 
         if($request->order_by == 'value')
             $items = $items->join('coupon_groups', 'coupons.coupon_group_id', '=', 'coupon_groups.id')

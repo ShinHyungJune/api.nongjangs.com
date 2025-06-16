@@ -50,9 +50,6 @@ class PresetProduct extends Model
             $prevState = $presetProduct->getOriginal('state');
 
             if($prevState != StatePresetProduct::CANCEL && $presetProduct->state == StatePresetProduct::CANCEL){
-                if($presetProduct->coupon)
-                    $presetProduct->coupon->update(['use' => 0]);
-
                 if($presetProduct->point && $user)
                     $user->givePoint($presetProduct->point, TypePointHistory::PRESET_PRODUCT_CANCLE, $presetProduct);
 
@@ -118,10 +115,6 @@ class PresetProduct extends Model
         return $this->belongsTo(Option::class);
     }
 
-    public function coupon(): BelongsTo
-    {
-        return $this->belongsTo(Coupon::class);
-    }
 
     public function getCanReviewAttribute()
     {
@@ -185,7 +178,7 @@ class PresetProduct extends Model
 
             $this->products_price = $total;
 
-            $this->price = $total - $this->price_coupon - $this->point;
+            $this->price = $total - $this->point;
 
             return $this;
         }
@@ -202,10 +195,10 @@ class PresetProduct extends Model
             $this->products_price = $total;
 
             if($this->package->type == TypePackage::SINGLE) {
-                $this->price = $this->package->price_single - $this->price_coupon - $this->point;
+                $this->price = $this->package->price_single - $this->point;
             }
             if($this->package->type == TypePackage::BUNGLE) {
-                $this->price = $this->package->price_bungle - $this->price_coupon - $this->point;
+                $this->price = $this->package->price_bungle - $this->point;
             }
 
             return $this;
@@ -214,23 +207,6 @@ class PresetProduct extends Model
         return $this;
     }
 
-    public function calculatePriceCoupon(Coupon $coupon)
-    {
-        $couponGroup = $coupon->couponGroup;
-
-        $priceDiscount = 0;
-
-        if($couponGroup->type_discount == TypeDiscount::NUMBER)
-            $priceDiscount = $couponGroup->value;
-
-        if($couponGroup->type_discount == TypeDiscount::RATIO)
-            $priceDiscount = floor($this->price / 100 * $coupon->value);
-
-        if($couponGroup->max_price_discount < $priceDiscount)
-            $priceDiscount = $couponGroup->max_price_discount;
-
-        return $priceDiscount;
-    }
 
     public function getFormatTitleAttribute()
     {

@@ -150,6 +150,15 @@ class Order extends Model
                 ]);
             }*/
 
+            // 주문이 결제대기 또는 성공상태가 되면 쿠폰은 사용처리된다
+            $presets = $this->presets()->cursor();
+
+            foreach($presets as $preset) {
+                if($preset->coupon) {
+                    $preset->coupon->update(['use' => 1]);
+                }
+            }
+
             // 장바구니에서 삭제
             $this->presets()->update([
                 'cart_id' => null,
@@ -170,6 +179,7 @@ class Order extends Model
                 $user->pointHistories()->create([
                     'point_current' => $user->point,
                     'point' => $this->point_use,
+                    'point_leave' => $user->point,
                     'type' => TypePointHistory::PRESET_PRODUCT_CANCLE,
                     'increase'=>1,
                 ]);
@@ -184,6 +194,14 @@ class Order extends Model
                     'type' => TypeCouponHistory::ORDER_CANCLED,
                     'increase'=>1,
                 ]);
+            }
+
+            // 주문 취소 시 사용했던 쿠폰들 반환처리
+            $presets = $this->presets()->cursor();
+            foreach($presets as $preset) {
+                if($preset->coupon) {
+                    $preset->coupon->update(['use' => 0]);
+                }
             }
         }
     }
@@ -282,7 +300,7 @@ class Order extends Model
 
         $pricePresets = 0;
         $point = $data['point_use'];
-
+        $priceCoupon = 0;
 
         if($point > 0 && auth()->user()->point < $point)
             return [
@@ -297,6 +315,7 @@ class Order extends Model
                 return $result;
 
             $pricePresets += $preset->price;
+            $priceCoupon += $preset->price_coupon;
 
             $preset->presetProducts()->update([
                 'delivery_name' => $data['delivery_name'],
@@ -308,7 +327,7 @@ class Order extends Model
             ]);
         }
 
-        $price = $pricePresets - $point;
+        $price = $pricePresets - $point - $priceCoupon;
 
         if($price < self::$minPrice)
             return [
@@ -516,7 +535,7 @@ class Order extends Model
 
     public function getPriceCouponAttribute()
     {
-        return $this->presetProducts()->sum('price_coupon');
+        return $this->presets()->sum('price_coupon');
     }
 
     public function getFormatProductsAttribute()

@@ -51,33 +51,6 @@ class PresetProductController extends ApiController
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
 
-    /** 쿠폰적용
-     * @group 사용자
-     * @subgroup PresetProduct(출고상품)
-     * @responseFile storage/responses/presetProduct.json
-     */
-    public function updateCoupon(PresetProductRequest $request, PresetProduct $presetProduct)
-    {
-        if(!$presetProduct->preset->can_order)
-            return $this->respondForbidden('쿠폰을 적용할 수 없습니다.');
-
-        $coupon = Coupon::find($request->coupon_id);
-
-        $coupons = auth()->user()->canUseCoupons($presetProduct);
-
-        if(!$coupons->where('coupons.id', $coupon->id)->first())
-            return $this->respondForbidden('해당 상품에 적용할 수 없는 쿠폰입니다.');
-
-        if(!$presetProduct->product->can_use_coupon)
-            return $this->respondForbidden('쿠폰적용불가 상품입니다.');
-
-        $presetProduct->update([
-            'coupon_id' => $coupon->id,
-            'price_coupon' => $presetProduct->calculatePriceCoupon($coupon),
-        ]);
-
-        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
-    }
 
     /** 현재 대상 꾸러미 회차출고 상세
      * @group 사용자

@@ -90,6 +90,10 @@ class PresetRequest extends FormRequest
                         '' => []
                     ];
 
+                case 'updateCoupon':
+                    return [
+                        'coupon_id' => ['nullable', 'exists:coupons,id'],
+                    ];
 
                 default:
                     return [];

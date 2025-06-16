@@ -230,24 +230,37 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         return $this->hasMany(Coupon::class);
     }
 
-    public function canUseCoupons($presetProduct = null)
+    public function canUseCoupons($preset = null)
     {
         $items = $this->coupons()->where('use', 0)
-            ->whereHas('couponGroup', function ($query) use ($presetProduct) {
-                $query->where(function ($query) use ($presetProduct) {
+            ->whereHas('couponGroup', function ($query) use ($preset) {
+                $query->where(function ($query) use ($preset) {
                     $query->whereIn('type', [TypeCouponGroup::ALL, TypeCouponGroup::DELIVERY])
-                        ->orWhere(function ($query) use ($presetProduct){
+                        ->orWhere(function ($query) use ($preset){
                             $query->where('type', TypeCouponGroup::PRODUCT)
-                                ->where(function ($query) use($presetProduct){
+                                ->where(function ($query) use($preset){
                                     $query->where('all_product', 1)
-                                        ->orWhereHas('products', function ($query) use ($presetProduct) {
-                                            $query->where('products.id', $presetProduct->product_id);
+                                        ->orWhereHas('products', function ($query) use ($preset) {
+                                            if($preset){
+                                                // Get all product IDs from the preset's presetProducts
+                                                $productIds = $preset->presetProducts()->whereNotNull('product_id')->pluck('product_id')->toArray();
+                                                if (!empty($productIds)) {
+                                                    $query->whereIn('products.id', $productIds);
+                                                }
+                                            }
                                         });
                                 });
                         });
-                })->where('min_price_order', '<=', $presetProduct->products_price)
-                    ->where('started_at', '<=', Carbon::now())
-                    ->where('finished_at', '>=', Carbon::now());
+                });
+
+                if ($preset) {
+                    $query->where('min_price_order', '<=', $preset->price)
+                        ->where('started_at', '<=', Carbon::now())
+                        ->where('finished_at', '>=', Carbon::now());
+                } else {
+                    $query->where('started_at', '<=', Carbon::now())
+                        ->where('finished_at', '>=', Carbon::now());
+                }
             });
 
         return $items;
@@ -277,7 +290,8 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
     public function getCountCouponAttribute()
     {
-        return $this->coupons()->where('use', 0)->count();
+        return $this->canUseCoupons()->count();
+        //return $this->coupons()->where('use', 0)->count();
     }
 
     public function getCountTotalCouponAttribute()

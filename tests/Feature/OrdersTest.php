@@ -95,6 +95,10 @@ class OrdersTest extends TestCase
 
     public function attachProduct($preset, $item, $count = 1)
     {
+        if (!isset($item['product'])) {
+            $item = ['product' => $item];
+        }
+
         $option = $item['option'] ?? \App\Models\Option::factory()->create();
 
         $preset->products()->attach($item['product']->id, [
@@ -182,11 +186,12 @@ point_use default 0 사용한 마일리지
 
         $coupon->update(['ratio_discount' => 10]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\Product::factory()->create(['price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
             'order_id' => $order->id,
+            'coupon_id' => $coupon->id,
         ]);
 
         $this->attachProduct($preset, $product);
@@ -195,11 +200,41 @@ point_use default 0 사용한 마일리지
 
         $this->json('patch', '/api/orders/' . $order->id, $this->form)->assertStatus(200);
 
+        $order->update(['state' => StateOrder::SUCCESS]);
+
         $order->refresh();
 
-        $this->assertEquals($coupon->id, $order->coupon->id);
+        $this->assertEquals($coupon->id, $preset->refresh()->coupon_id);
+        $this->assertEquals(1, $coupon->refresh()->use);
+    }
 
-        $this->assertEquals(true, false);
+    /** @test */
+    public function 주문이_성공상태가_되면_쿠폰은_사용처리된다()
+    {
+        $order = \App\Models\Order::factory()->create([
+            'user_id' => $this->user->id,
+            'state' => \App\Enums\StateOrder::BEFORE_PAYMENT,
+        ]);
+
+        $coupon = Coupon::factory()->create([
+            'user_id' => $this->user->id,
+            'use' => 0,
+        ]);
+
+        $preset = \App\Models\Preset::factory()->create([
+            'user_id' => $this->user->id,
+            'order_id' => $order->id,
+            'coupon_id' => $coupon->id,
+        ]);
+
+        $product = \App\Models\Product::factory()->create(['price' => 10000]);
+        $this->attachProduct($preset, $product);
+
+        // 주문 상태를 SUCCESS로 변경
+        $order->update(['state' => \App\Enums\StateOrder::SUCCESS]);
+
+        // 쿠폰의 use 플래그가 1로 설정되었는지 확인
+        $this->assertEquals(1, $coupon->refresh()->use);
     }
 
     /** @test */
@@ -236,7 +271,7 @@ point_use default 0 사용한 마일리지
             'user_id' => $this->user->id,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 0]);
+        $product = \App\Models\Product::factory()->create();
 
         $this->attachProduct($preset, $product);
 
@@ -260,7 +295,7 @@ point_use default 0 사용한 마일리지
             'state' => \App\Enums\StateOrder::BEFORE_PAYMENT,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\Product::factory()->create(['price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -284,7 +319,7 @@ point_use default 0 사용한 마일리지
             'state' => \App\Enums\StateOrder::BEFORE_PAYMENT,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\Product::factory()->create(['price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -306,7 +341,7 @@ point_use default 0 사용한 마일리지
             'state' => \App\Enums\StateOrder::BEFORE_PAYMENT,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => \App\Models\Order::$minPrice - 1]);
+        $product = \App\Models\Product::factory()->create(['price' => \App\Models\Order::$minPrice - 1]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -330,7 +365,7 @@ point_use default 0 사용한 마일리지
 
         $coupon->update(['ratio_discount' => 10]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\Product::factory()->create(['price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,
@@ -362,7 +397,7 @@ point_use default 0 사용한 마일리지
             'order_id' => \App\Models\Order::factory()->create(['state' => \App\Enums\StateOrder::SUCCESS])->id,
         ]);
 
-        $product = \App\Models\Product::factory()->create(['open' => 1, 'price' => 10000]);
+        $product = \App\Models\Product::factory()->create(['price' => 10000]);
 
         $preset = \App\Models\Preset::factory()->create([
             'user_id' => $this->user->id,

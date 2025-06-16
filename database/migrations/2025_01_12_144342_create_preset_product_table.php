@@ -16,8 +16,7 @@ return new class extends Migration {
             $table->foreignId('product_id')->nullable()->constrained('products');
             $table->foreignId('package_id')->nullable()->constrained('packages');
             $table->foreignId('option_id')->nullable()->constrained('options');
-            $table->foreignId('coupon_id')->nullable()->constrained('coupons');
-            $table->foreignId('delivery_company_id')->comment('택배사')->constrained('delivery_companies')->cascadeOnDelete('set null');;
+            $table->foreignId('delivery_company_id')->nullable()->comment('택배사')->constrained('delivery_companies')->cascadeOnDelete('set null');;
 
             $table->unsignedBigInteger('price')->default(0)->comment('최종가격');
             $table->string('package_name')->nullable()->comment('꾸러미 이름');
@@ -35,10 +34,9 @@ return new class extends Migration {
             $table->string('option_title')->nullable()->comment('옵션명');
             $table->unsignedBigInteger('option_price')->nullable()->comment('옵션가격');
             $table->integer('option_type')->nullable()->comment('옵션유형');
-            $table->unsignedBigInteger('price_coupon')->comment('쿠폰적용금액')->default(0);
             $table->unsignedBigInteger('point')->comment('배분된 적립금')->default(0);
 
-     
+
             $table->string('delivery_name')->nullable()->comment('수취인 이름');
             $table->string('delivery_contact')->nullable()->comment('수취인 연락처');
             $table->string('delivery_address')->nullable()->comment('주소');

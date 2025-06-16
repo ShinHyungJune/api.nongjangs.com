@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\StateOrder;
 use App\Enums\TypeDelivery;
 use App\Enums\TypeDeliveryPrice;
+use App\Enums\TypeDiscount;
 use App\Enums\TypeOption;
 use App\Enums\TypePackage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -72,7 +73,7 @@ class Preset extends Model
         foreach($presetProducts as $presetProduct){
             $product = $presetProduct->product;
 
-            if($product->can_delivery_far_place){
+            if($product->can_delivery_far_place && $product->ranges_far_place){
                 $rangesFarPlace = json_decode($product->ranges_far_place, true);
 
                 foreach($rangesFarPlace as $range){
@@ -126,6 +127,11 @@ class Preset extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function coupon(): BelongsTo
+    {
+        return $this->belongsTo(Coupon::class);
+    }
+
     public function presetProducts()
     {
         return $this->hasMany(PresetProduct::class);
@@ -143,7 +149,7 @@ class Preset extends Model
     {
         return $this->calculatePriceDelivery();
     }
-    
+
     public function getPriceAttribute()
     {
         $total = 0;
@@ -204,23 +210,28 @@ class Preset extends Model
         return $this->price_origin_products - $this->price_products;
     }
 
-    public function getPriceCouponAttribute()
+    public function calculatePriceCoupon(Coupon $coupon)
     {
-        $presetProducts = $this->presetProducts;
+        $couponGroup = $coupon->couponGroup;
 
-        $total = 0;
+        $priceDiscount = 0;
 
-        foreach($presetProducts as $presetProduct){
-            $total += $presetProduct->price_coupon;
-        }
+        if($couponGroup->type_discount == TypeDiscount::NUMBER)
+            $priceDiscount = $couponGroup->value;
 
-        return $total;
+        if($couponGroup->type_discount == TypeDiscount::RATIO)
+            $priceDiscount = floor($this->price / 100 * $coupon->value);
+
+        if($couponGroup->max_price_discount < $priceDiscount)
+            $priceDiscount = $couponGroup->max_price_discount;
+
+        return $priceDiscount;
     }
 
     // 배송비 포함
     public function getPriceTotalAttribute()
     {
-        return $this->price + $this->price_delivery;
+        return $this->price + $this->price_delivery - $this->price_coupon;
     }
 
 

@@ -35,6 +35,8 @@ class PresetProductMiniResource extends JsonResource
                 'title' => $this->product_title,
                 'price' => $this->product_price,
                 'price_origin' => $this->product_price_origin,
+                'requiredOptions' => $this->product ? OptionResource::collection($this->product->options()->where('type', TypeOption::REQUIRED)->get()) : [],
+                'additionalOptions' => $this->product ? OptionResource::collection($this->product->options()->where('type', TypeOption::ADDITIONAL)->get()) : [],
             ] : '',
             'package' => $this->package_id ? [
                 'id' => $this->package_id,
