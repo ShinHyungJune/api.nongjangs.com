@@ -31,7 +31,7 @@ class PackageController extends ApiController
             }
         }
 
-        $items = $items->orderBy('order', 'asc')->paginate(30);
+        $items = $items->orderBy('count', 'asc')->paginate(30);
 
         return PackageResource::collection($items);
     }
