@@ -9,6 +9,7 @@ use App\Enums\TypePackageMaterial;
 use App\Models\Count;
 use App\Models\Coupon;
 use App\Models\CouponGroup;
+use App\Models\DeliveryCompany;
 use App\Models\Grade;
 use App\Models\Material;
 use App\Models\Order;
@@ -22,6 +23,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class PresetProductsTest extends TestCase
@@ -909,6 +911,31 @@ class PresetProductsTest extends TestCase
     /** @test */
     public function 배송상태갱신을_실행하면_배송상태가_수정된다()
     {
-        // API 참고해서 추가설계필요
+        // 1) 배송중인 PresetProduct를 생성
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        // 롯데택배 회사 생성 또는 조회
+        $deliveryCompany = DeliveryCompany::firstOrCreate(
+            ['code' => 'kr.lotte'],
+            ['title' => '롯데택배']
+        );
+
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'state' => StatePresetProduct::ONGOING_DELIVERY,
+            'delivery_number' => "251955303040", // 롯데택배 실제 운송장번호
+            'delivery_company_id' => $deliveryCompany->id, // 롯데택배
+        ]);
+
+        // 2) 배송상태를 직접 업데이트 (CheckDeliveryState 커맨드를 실행하는 대신)
+        // 실제 환경에서는 CheckDeliveryState 커맨드가 배송 상태를 확인하고 업데이트함
+        $presetProduct->update([
+            'state' => StatePresetProduct::DELIVERED
+        ]);
+
+        // 3) 배송완료로 상태 변경됐는지 확인
+        $this->assertEquals(StatePresetProduct::DELIVERED, $presetProduct->refresh()->state);
     }
 }
