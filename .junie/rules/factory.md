@@ -1,0 +1,5 @@
+- 모든 모델들에 대한 데이터 시딩을 /database/seeders/InitSeeder.php에 작성해야 합니다.
+  - User 모델에 대한 시딩 함수를 작성할 경우 createUsers 이런식으로 작성하면 됩니다.
+    - 모든 함수는 체이닝 함수로 작성하세요.
+  - 이미지의 경우 local 환경일때는 첨부하지 않습니다. /app/Utils/Environment.php의 isLocal 함수 사용하여 분기처리하세요.
+  - 다양한 케이스에 대한 데이터가 생성되기를 원합니다.

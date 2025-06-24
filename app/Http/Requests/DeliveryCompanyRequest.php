@@ -42,7 +42,7 @@ class DeliveryCompanyRequest extends FormRequest
                 case 'update':
                     return [
                         'title' => ['required', 'string', 'max:255'],
-                        'code' => ['required', 'string', 'max:50', 'unique:delivery_companies,code,'.$this->route('delivery_company')->id],
+                        'code' => ['required', 'string', 'max:50', 'unique:delivery_companies,code,'.$this->route('deliveryCompany')->id],
                     ];
 
                 case 'destroy':

@@ -1,0 +1,13 @@
+- 모든 TestCase는 Tests\BaseTestCase를 상속받아야 합니다.
+- assertion은 $this→assertEquals()만 사용하세요.
+- 모든 TestCase는 Model의 복수명 + Test로 작명하면 됩니다.
+    - 예시: User의 TestCase의 경우 UsersTest.php
+
+- 모든 api 요청에 필요한 json data는 BaseTestCase를 상속했으므로 $this->form이라는 array에 담깁니다.
+- admin api route의 경우 $this->actingAs($this->admin); 을 사용하기 바랍니다.
+- 기본적으로 로그인된 일반 유저로 actingAs 설정이 되어있습니다.
+- 모든 api 요청의 결과를 담는 변수명은 복수 데이터의 경우 $items, 단수 데이터의 경우 $item입니다.
+    - 자세한 코딩 스타일은 Tests\Feature\ExamplesTest에 작성해놓았으니 참조하세요.
+- 반환되는 Http Status는 성공시 무조건 200, 비로그인시 401, 권한이 없거나 개발자 정의 에러 발생 시 403입니다.
+- models.md에도 작성되어있겠지만, 모든 테스트 케이스는 한글로 함수명이 작성되어야 합니다.
+    - 예시: 관리자만_공지사항을_작성할_수_있다

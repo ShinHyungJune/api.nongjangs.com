@@ -1,0 +1,26 @@
+- UserController를 만들 시, AuthController는 따로 필요하지 않습니다.
+    - UserController 내부에 login 등 AuthController에 들어갈 함수를 정의하면 됩니다.
+- admin 권한을 요구하는 컨트롤러는 Http\Controllers\Api\Admin\ 경로에 작성하세요.
+- admin 권한을 요구하지 않는 컨트롤러는 Http\Controllers\Api\ 경로에 작성하세요.
+- 모든 Controller 들은 ApiController를 상속받아야 합니다.
+- 컨트롤러에서 에러 발생 시
+    - 에러 발생 시 $this->respondForbidden($message); 를 사용하여야 합니다.
+    - 성공 처리 시 $this->respondSuccessfully($message); 를 사용하여야 합니다.
+
+- 페이지네이션 유의사항
+    - 파라미터
+        - take
+            - 페이지 사이즈입니다.
+            - 기본값은 20입니다. $request->take ?? 20 으로 사용하면 됩니다.
+        - word
+            - 검색어입니다.
+            - 검색 시에는 반드시 like 절을 사용하세요.
+        - order_by
+            - created_at, updated_at 등의 문자열이 값으로 옵니다.
+            - order_by 값이 없을 경우 latest()로 정렬합니다.
+        - align
+            - order_by 값이 있을 경우 정렬하는 방향을 결정합니다
+            - asc, desc 문자열이 옵니다.
+
+    - Resource::collection($items); 로 마지막에 리턴하는 것이 마무리입니다.
+        - Collection으로 내보낼 경우 $this->respondSuccessfully()로 감싸서 내보내서는 안됩니다.

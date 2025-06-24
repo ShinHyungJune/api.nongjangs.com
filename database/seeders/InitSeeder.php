@@ -66,6 +66,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use ReflectionClass;
 
 class InitSeeder extends Seeder
 {
@@ -106,81 +107,11 @@ class InitSeeder extends Seeder
      */
     public function run()
     {
+        $this->truncateTables();
+
         DB::statement("SET foreign_key_checks=0");
 
-        Grade::truncate();
-        User::truncate();
-        Banner::truncate();
-        Pop::truncate();
-        Count::truncate();
-        City::truncate();
-        County::truncate();
-        Tag::truncate();
-        Recipe::truncate();
-        Farm::truncate();
-        Pop::truncate();
-        Bookmark::truncate();
-        Like::truncate();
-        FarmStory::truncate();
-        Grade::truncate();
-        Category::truncate();
-        Product::truncate();
-        Project::truncate();
-        CouponGroup::truncate();
-        Coupon::truncate();
-        Option::truncate();
-        ReportCategory::truncate();
-        Tag::truncate();
-        Package::truncate();
-        Card::truncate();
-        Material::truncate();
-        Review::truncate();
-        PresetProduct::truncate();
-        VegetableStory::truncate();
-        PackageSetting::truncate();
-        QnaCategory::truncate();
-        Qna::truncate();
-        FaqCategory::truncate();
-        Faq::truncate();
-        Comment::truncate();
-        Bookmark::truncate();
-        Point::truncate();
-        PointHistory::truncate();
-        Order::truncate();
-        PayMethod::truncate();
-        \App\Models\DeliveryCompany::truncate();
-
-        /*Category::truncate();
-        PayMethod::truncate();
-        Product::truncate();
-        Faq::truncate();
-        Qna::truncate();
-        Notice::truncate();
-        PayMethod::truncate();
-        CouponGroup::truncate();
-        Coupon::truncate();
-        PointHistory::truncate();
-        CouponHistory::truncate();
-        Faq::truncate();
-        Event::truncate();
-        Preset::truncate();
-        Review::truncate();
-        Order::truncate();
-        PresetProduct::truncate();*/
-
-        DB::table("package_recipe")->truncate();
-        DB::table("coupon_group_user")->truncate();
-        DB::table("coupon_group_product")->truncate();
-        DB::table("product_tag")->truncate();
-        DB::table("recipe_tag")->truncate();
-        DB::table("farm_story_tag")->truncate();
-        DB::table("package_setting_material")->truncate();
-        DB::table("package_material")->truncate();
-        DB::table("package_material_tag")->truncate();
-        DB::table("material_preset_product")->truncate();
-        DB::table("media")->truncate();
-        DB::statement("SET foreign_key_checks=1");
-
+        $this->createDeliveryCompanies();
         $this->createGrades();
         $this->createUsers();
         $this->createBanners();
@@ -190,7 +121,6 @@ class InitSeeder extends Seeder
         $this->createFarms();
         $this->createFarmStories();
         $this->createCategories();
-        $this->createDeliveryCompanies();
         $this->createProducts();
         $this->createProject();
         $this->createTags();
@@ -210,7 +140,65 @@ class InitSeeder extends Seeder
         $this->createBookmarks();
         $this->createPointHistories();
     }
+    private function truncateTables(): void
+    {
+        DB::statement('SET foreign_key_checks=0');
 
+        DB::table('media')->truncate();
+
+        $modelFiles = glob(app_path('Models/*.php'));
+
+        $modelsToTruncate = [];
+
+        foreach ($modelFiles as $file) {
+            $className = $this->getClassNameFromFile($file);
+            if (!$className) {
+                continue;
+            }
+
+            try {
+                $reflection = new ReflectionClass($className);
+
+                // Eloquent 모델인지 확인
+                if ($reflection->isSubclassOf(\Illuminate\Database\Eloquent\Model::class) &&
+                    !$reflection->isAbstract()) {
+                    $model = $reflection->newInstance();
+                    $table = $model->getTable();
+                    $modelsToTruncate[$table] = $className;
+                }
+            } catch (\Exception $e) {
+                \Log::warning("Skipping {$className}: " . $e->getMessage());
+                continue;
+            }
+        }
+
+        foreach ($modelsToTruncate as $className) {
+            try {
+                $reflection = new ReflectionClass($className);
+                $model = $reflection->newInstance();
+                $table = $model->getTable();
+
+                DB::table($table)->truncate();
+                \Log::info("Truncated table: {$table}");
+            } catch (\Exception $e) {
+                \Log::error("Failed to truncate {$className}: " . $e->getMessage());
+            }
+        }
+
+        DB::statement('SET foreign_key_checks=1');
+    }
+
+    private function getClassNameFromFile(string $file): ?string
+    {
+        $relativePath = str_replace(app_path('Models/'), '', $file);
+        $className = 'App\\Models\\' . str_replace('/', '\\', substr($relativePath, 0, -4));
+
+        if (!class_exists($className)) {
+            return null;
+        }
+
+        return $className;
+    }
     public function createBookmarks()
     {
         $recipes = Recipe::inRandomOrder()->take(5)->get();

@@ -18,6 +18,7 @@ class DeliveryCompanyResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'code' => $this->code,
+            'use' => $this->use,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

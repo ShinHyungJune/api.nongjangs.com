@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->string('code');
+            $table->boolean('use')->default(1)->comment('사용여부');
             $table->timestamps();
         });
     }

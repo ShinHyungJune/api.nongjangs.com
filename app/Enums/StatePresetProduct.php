@@ -36,7 +36,7 @@ final class StatePresetProduct
             self::CONFIRMED => "구매확정",
             self::CANCEL => "주문취소",
             self::REQUEST_CANCEL => "취소요청",
-            self::DENY_CANCEL => "취쇼요청반려",
+            self::DENY_CANCEL => "취소요청반려",
 
         ];
 

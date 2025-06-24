@@ -22,6 +22,9 @@ class DeliveryCompanyController extends ApiController
             $items = $items->where('title', 'like', '%' . $request->word . '%')
                           ->orWhere('code', 'like', '%' . $request->word . '%');
 
+        if(isset($request->use))
+            $items = $items->where('use', $request->use);
+
         $items = $items->latest()->paginate(30);
 
         return DeliveryCompanyResource::collection($items);

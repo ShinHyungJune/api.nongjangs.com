@@ -1,0 +1,8 @@
+- api.php에 코딩 스타일을 제시해놓았습니다. admin, auth 외에 다른 middleware 및 group은 사용하지 마세요.
+    - 권한이 필요없는 api route는 group 외부에 아무데나 작성합니다.
+- 사용 가능한 Http Method는 GET, POST, PATCH, DELETE 입니다.
+    - PUT Method는 사용하지 않습니다. 대신 PATCH를 사용하세요.
+- 너무 Restful 하지 않아도 됩니다. 즉 아래와 같이 api url을 작성해주세요.
+    - 로그인의 경우, UserController의 login 메서드 사용, 따라서
+        - /api/users/login
+- Route::resource는 사용하지 말 것. 명시적으로 ::get, ::post, ::patch, ::delete 사용해야 합니다.

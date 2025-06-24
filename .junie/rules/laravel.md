@@ -1,0 +1,19 @@
+- Service Layer는 사용하지 않습니다. 재사용 가능한 business logic은 model 내부 메서드로 정의합니다.
+    - 가능한 getAttribute accessor를 사용하세요.
+- Laravel에서 제공하는 기능 중 Policy는 사용하지 않습니다. 당신이 만들어야하는 파일 목록은 다음과 같습니다.
+    - Migration
+    - Controller
+        - App\Http\Controllers\Admin\ExampleController를 참조하여 작성하세요
+    - Database factory
+        - 모든 Factory는 Database\Factories\BaseFactory를 상속받아야 합니다.
+    - Form Request
+        - App\Http\Requests\ExampleRequest 를 참조하여 작성하세요.
+    - Json Resource
+        - App\Http\Resources\BaseResource 를 상속받아야 합니다.
+- Type, State 접두사가 들어가는 컬럼은 abstract class enum을 상속받아서 사용합니다.
+    - App\Enums\ExampleEnum 를 참고하여 작성하세요.
+    - Enum의 이름은 TypeUser.php, StateUser.php 이런 식으로 작성하면 됩니다.
+- models.md에서 제시되지 않은 business logic은 하드 코딩 후 주석처리 하세요.
+    - 개발자가 따로 작성할 것입니다.
+    - models.md에 해당 business logic이 작성되어있다면 당신이 작성하세요.
+- 모든 전화번호 값은 하이픈(-)이 제거된 상태로 DB에 저장되어야 합니다.

@@ -7,11 +7,13 @@ use App\Enums\TypePointHistory;
 use App\Jobs\CheckDeliveryStateJob;
 use App\Models\PointHistory;
 use App\Models\Preset;
+use App\Models\PresetProduct;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use ParagonIE\Sodium\Core\Poly1305\State;
 
 class CheckDeliveryState extends Command
 {
@@ -36,6 +38,10 @@ class CheckDeliveryState extends Command
      */
     public function handle()
     {
-        dispatch(new CheckDeliveryStateJob());
+        PresetProduct::where('state', StatePresetProduct::ONGOING_DELIVERY)->chunk(300, function ($presetProducts){
+            foreach($presetProducts as $presetProduct){
+                dispatch(new CheckDeliveryStateJob($presetProduct));
+            }
+        });
     }
 }

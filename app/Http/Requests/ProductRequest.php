@@ -51,6 +51,8 @@ class ProductRequest extends FormRequest
                 case 'update':
                     return [
                         'state' => ['required', 'integer'],
+                        'delivery_company_id' => ['required', 'integer'],
+                        'refund_delivery_company_id' => ['required', 'integer'],
                         'category_id' => ['required', 'integer'],
                         'files' => ['nullable'],
                         'title' => ['required'],
@@ -65,14 +67,12 @@ class ProductRequest extends FormRequest
                         'requiredOptions' => ['nullable', 'array'],
                         'additionalOptions' => ['nullable', 'array'],
                         'type_delivery' => ['required', 'integer'],
-                        'delivery_company' => ['required', 'integer'],
                         'type_delivery_price' => ['required', 'integer'],
                         'price_delivery' => ['required', 'integer'],
                         'prices_delivery' => ['nullable'],
                         'min_price_for_free_delivery_price' => ['required', 'integer'],
                         'can_delivery_far_place' => ['boolean'],
                         'delivery_prices_far_place' => ['nullable', 'array'],
-                        'delivery_company_refund' => ['required', 'integer'],
                         'delivery_price_refund' => ['required', 'integer'],
                         'delivery_address_refund' => ['nullable'],
                         'description' => ['required'],
