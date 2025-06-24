@@ -445,18 +445,20 @@ class InitSeeder extends Seeder
 
     public function createPackage($week = 0)
     {
-        $willDeliveryAt = \Illuminate\Support\Carbon::now()->addWeeks($week)->startOfWeek()->addDays(4);
+        // 현재 날짜에서 최소 2일 이후부터 시작하도록 설정 (getCanOrders 메서드와 호환되도록)
+        $baseDate = Carbon::now()->addDays(3); // 최소 2일 이후보다 더 여유있게 3일 이후부터 시작
+        $willDeliveryAt = (clone $baseDate)->addWeeks($week)->startOfWeek()->addDays(4);
 
         Package::factory()->create([
             'count' => Package::count() + 1,
             'start_pack_wait_at' => (clone $willDeliveryAt)->addDays(1)->setHour(0)->setMinutes(0),
-            'finish_pack_wait_at' => \Illuminate\Support\Carbon::now()->addWeeks($week)->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
-            'start_pack_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
-            'finish_pack_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
-            'start_delivery_ready_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
-            'finish_delivery_ready_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
-            'start_will_out_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
-            'finish_will_out_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(3)->setHour(18)->setMinutes(0),
+            'finish_pack_wait_at' => (clone $baseDate)->addWeeks($week)->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
+            'start_pack_at' => (clone $baseDate)->addWeeks($week)->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
+            'finish_pack_at' => (clone $baseDate)->addWeeks($week)->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
+            'start_delivery_ready_at' => (clone $baseDate)->addWeeks($week)->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
+            'finish_delivery_ready_at' => (clone $baseDate)->addWeeks($week)->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
+            'start_will_out_at' => (clone $baseDate)->addWeeks($week)->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
+            'finish_will_out_at' => (clone $baseDate)->addWeeks($week)->startOfWeek()->addDays(3)->setHour(18)->setMinutes(0),
             'will_delivery_at' => $willDeliveryAt,
         ]);
     }

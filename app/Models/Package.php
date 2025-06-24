@@ -113,7 +113,7 @@ class Package extends Model
 
         return $findPackage;
     }
-    
+
     public static function getCanOrders()
     {
         return Package::where('will_delivery_at', '>=', Carbon::now()->addDays(2)->setHour(9)->setMinutes(0)->setSeconds(0));
