@@ -140,7 +140,12 @@ class InitSeeder extends Seeder
         $this->createComments();
         $this->createBookmarks();
         $this->createPointHistories();
-        $this->createTestPackagePurchase();
+
+        // test@naver.com 사용자에 대한 패키지 구매 생성
+        $this->user = User::where('email', 'test@naver.com')->first();
+        if ($this->user) {
+            $this->createTestPackagePurchase();
+        }
     }
     private function truncateTables(): void
     {
