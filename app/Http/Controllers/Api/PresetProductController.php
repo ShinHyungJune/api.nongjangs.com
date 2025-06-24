@@ -13,8 +13,10 @@ use App\Jobs\CheckDeliveryStateJob;
 use App\Models\Coupon;
 use App\Models\DeliveryTracker;
 use App\Models\Order;
+use App\Models\Package;
 use App\Models\PresetProduct;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class PresetProductController extends ApiController
 {
@@ -183,32 +185,25 @@ class PresetProductController extends ApiController
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }
 
-    /** 당기기
+    /** 일정변경
      * @group 사용자
      * @subgroup PresetProduct(출고상품)
      * @responseFile storage/responses/presetProduct.json
      */
-    public function fast(PresetProduct $presetProduct)
+    public function change(PresetProduct $presetProduct, PresetProductRequest $request)
     {
-        if(!$presetProduct->can_fast_package)
-            return $this->respondForbidden('당기기를 할 수 없습니다.');
+        $package = Package::getCanOrders()->where('id', $request->package_id)->first();
 
-        $presetProduct->changePackage($presetProduct->can_fast_package, TypePackageChangeHistory::FAST);
+        if(!$package) {
+            Log::info('패키지 변경불가', [
+                'package_id' => $request->package_id,
+                'presetProduct' => $presetProduct
+            ]);
 
-        return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
-    }
+            return $this->respondForbidden('변경 가능한 패키지가 아닙니다.');
+        }
 
-    /** 미루기
-     * @group 사용자
-     * @subgroup PresetProduct(출고상품)
-     * @responseFile storage/responses/presetProduct.json
-     */
-    public function late(PresetProduct $presetProduct)
-    {
-        if(!$presetProduct->can_late_package)
-            return $this->respondForbidden('미루기를 할 수 없습니다.');
-
-        $presetProduct->changePackage($presetProduct->can_late_package, TypePackageChangeHistory::LATE);
+        $presetProduct->changePackage($package, $package->count >= $presetProduct->package->count ? TypePackageChangeHistory::LATE : TypePackageChangeHistory::FAST);;
 
         return $this->respondSuccessfully(PresetProductResource::make($presetProduct));
     }

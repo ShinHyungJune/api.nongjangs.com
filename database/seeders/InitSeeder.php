@@ -18,6 +18,7 @@ use App\Enums\TypeExpire;
 use App\Enums\TypeMaterial;
 use App\Enums\TypeOption;
 use App\Enums\TypePackageMaterial;
+use App\Enums\TypePackage;
 use App\Enums\TypePointHistory;
 use App\Enums\TypeTag;
 use App\Models\Banner;
@@ -139,6 +140,7 @@ class InitSeeder extends Seeder
         $this->createComments();
         $this->createBookmarks();
         $this->createPointHistories();
+        $this->createTestPackagePurchase();
     }
     private function truncateTables(): void
     {
@@ -436,41 +438,30 @@ class InitSeeder extends Seeder
         ]);
     }
 
+    public function createPackage($week = 0)
+    {
+        $willDeliveryAt = \Illuminate\Support\Carbon::now()->addWeeks($week)->startOfWeek()->addDays(4);
+
+        Package::factory()->create([
+            'count' => Package::count() + 1,
+            'start_pack_wait_at' => (clone $willDeliveryAt)->addDays(1)->setHour(0)->setMinutes(0),
+            'finish_pack_wait_at' => \Illuminate\Support\Carbon::now()->addWeeks($week)->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
+            'start_pack_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
+            'finish_pack_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
+            'start_delivery_ready_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
+            'finish_delivery_ready_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
+            'start_will_out_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
+            'finish_will_out_at' => Carbon::now()->addWeeks($week)->startOfWeek()->addDays(3)->setHour(18)->setMinutes(0),
+            'will_delivery_at' => $willDeliveryAt,
+        ]);
+    }
+
     public function createPackages()
     {
-        $packages = Package::factory()->count(2)->create();
-
-        $willDeliveryAt = \Illuminate\Support\Carbon::now()->addWeek()->startOfWeek()->addDays(4);
-
-        Package::factory()->create([
-            'count' => 1,
-        ]);
-
-        Package::factory()->create([
-            'count' => 2,
-            'start_pack_wait_at' => (clone $willDeliveryAt)->addDays(1)->setHour(0)->setMinutes(0),
-            'finish_pack_wait_at' => \Illuminate\Support\Carbon::now()->addWeek()->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
-            'start_pack_at' => Carbon::now()->addWeek()->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
-            'finish_pack_at' => Carbon::now()->addWeek()->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
-            'start_delivery_ready_at' => Carbon::now()->addWeek()->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
-            'finish_delivery_ready_at' => Carbon::now()->addWeek()->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
-            'start_will_out_at' => Carbon::now()->addWeek()->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
-            'finish_will_out_at' => Carbon::now()->addWeek()->startOfWeek()->addDays(3)->setHour(18)->setMinutes(0),
-            'will_delivery_at' => $willDeliveryAt,
-        ]);
-
-        Package::factory()->create([
-            'count' => 3,
-            'start_pack_wait_at' => (clone $willDeliveryAt)->addDays(2)->setHour(0)->setMinutes(0),
-            'finish_pack_wait_at' => \Illuminate\Support\Carbon::now()->addWeeks(2)->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
-            'start_pack_at' => Carbon::now()->addWeeks(2)->startOfWeek()->addDays(0)->setHour(16)->setMinutes(0),
-            'finish_pack_at' => Carbon::now()->addWeeks(2)->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
-            'start_delivery_ready_at' => Carbon::now()->addWeeks(2)->startOfWeek()->addDays(1)->setHour(9)->setMinutes(0),
-            'finish_delivery_ready_at' => Carbon::now()->addWeeks(2)->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
-            'start_will_out_at' => Carbon::now()->addWeeks(2)->startOfWeek()->addDays(2)->setHour(18)->setMinutes(0),
-            'finish_will_out_at' => Carbon::now()->addWeeks(2)->startOfWeek()->addDays(3)->setHour(18)->setMinutes(0),
-            'will_delivery_at' => $willDeliveryAt,
-        ]);
+        $this->createPackage(0);
+        $this->createPackage(1);
+        $this->createPackage(2);
+        $this->createPackage(3);
 
         $packages = Package::get();
 
@@ -1945,6 +1936,103 @@ class InitSeeder extends Seeder
             'title' => '경동택배',
             'code' => 'kr.kdexp',
         ]);
+    }
+
+    /**
+     * test@naver.com 계정에 패키지 구매건 하나를 생성한다
+     * 미루기, 당기기 테스트를 위한 데이터
+     */
+    public function createTestPackagePurchase()
+    {
+        // 성공한 주문 생성
+        $order = Order::create([
+            'user_id' => $this->user->id,
+            'state' => StateOrder::SUCCESS,
+            'price' => 0, // 초기값
+            'success_at' => now(), // 결제 성공 시간
+        ]);
+
+        // 사용자의 프리셋 찾기 또는 생성
+        $preset = Preset::where('user_id', $this->user->id)->first();
+
+        if (!$preset) {
+            $preset = Preset::create([
+                'user_id' => $this->user->id,
+                'title' => '기본 프리셋',
+                'order_id' => $order->id, // 주문 연결
+            ]);
+        } else {
+            // 기존 프리셋에 주문 연결
+            $preset->update(['order_id' => $order->id]);
+        }
+
+        // 사용자의 PackageSetting 찾기 또는 생성
+        $packageSetting = PackageSetting::where('user_id', $this->user->id)->first();
+
+        if (!$packageSetting) {
+            $packageSetting = PackageSetting::create([
+                'user_id' => $this->user->id,
+                'type_package' => TypePackage::BUNGLE,
+                'term_week' => 3,
+                'active' => 1,
+                'name' => '테스트 꾸러미',
+            ]);
+        } else {
+            // 기존 PackageSetting이 있으면 active를 1로 설정
+            $packageSetting->update(['active' => 1]);
+        }
+
+        // 현재 진행 중인 패키지 찾기
+        $package = Package::getOngoing();
+
+        // 진행 중인 패키지가 없으면 첫 번째 패키지 사용
+        if (!$package) {
+            $package = Package::where('count', 1)->first();
+
+            // 패키지가 "ongoing"으로 인식되도록 날짜 설정
+            $package->update([
+                'start_pack_wait_at' => Carbon::now()->subDay(),
+                'will_delivery_at' => Carbon::now()->addDays(7),
+            ]);
+        }
+
+        // 기존 패키지 구매건 중 현재 패키지와 동일한 것만 삭제
+        // 다른 패키지 구매건은 유지
+        PresetProduct::where('preset_id', $preset->id)
+            ->where('package_id', $package->id)
+            ->delete();
+
+        // 새 패키지 구매건 생성
+        $presetProduct = PresetProduct::create([
+            'preset_id' => $preset->id,
+            'package_id' => $package->id,
+            'state' => StatePresetProduct::WAIT,
+            'package_name' => $packageSetting->name,
+            'package_count' => $package->count,
+            'package_price' => $packageSetting->type_package == TypePackage::BUNGLE ? $package->price_bungle : $package->price_single,
+            'package_will_delivery_at' => $package->will_delivery_at,
+            'package_active' => 1, // 활성 상태로 설정
+            'package_type' => $packageSetting->type_package,
+        ]);
+
+        // 주문 가격 업데이트
+        $order->update([
+            'price' => $packageSetting->type_package == TypePackage::BUNGLE ? $package->price_bungle : $package->price_single,
+        ]);
+
+        // 패키지 재료 추가
+        $packageMaterials = $package->packageMaterials;
+
+        foreach ($packageMaterials as $packageMaterial) {
+            $presetProduct->materials()->attach($packageMaterial->material_id, [
+                'price' => $packageMaterial->price,
+                'price_origin' => $packageMaterial->price_origin,
+                'unit' => $packageMaterial->unit,
+                'value' => $packageMaterial->value,
+                'count' => 1, // 기본 수량
+                'type' => $packageMaterial->type,
+            ]);
+        }
     }
 
 }

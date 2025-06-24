@@ -57,7 +57,9 @@ class PackageRequest extends FormRequest
             switch ($method) {
                 case 'index':
                     return [
-                        '' => []
+                        'can_late' => ['nullable', 'boolean'], // 미루기 가능여부
+                        'can_fast' => ['nullable', 'boolean'], // 당기기 가능여부
+                        'preset_product_id' => ['nullable', 'integer'],
                     ];
 
                 case 'store':

@@ -218,6 +218,7 @@ Route::get("/notices/{notice}", [\App\Http\Controllers\Api\NoticeController::cla
 Route::get("/categories", [\App\Http\Controllers\Api\CategoryController::class, "index"]);
 // Route::get("/recommendCategories", [\App\Http\Controllers\Api\RecommendCategoryController::class, "index"]);
 
+Route::get("/packages", [\App\Http\Controllers\Api\PackageController::class, "index"]);
 Route::get("/packages/canOrder", [\App\Http\Controllers\Api\PackageController::class, "canOrder"]);
 Route::get("/packages/current", [\App\Http\Controllers\Api\PackageController::class, "current"]);
 Route::get("/packages/{package}", [\App\Http\Controllers\Api\PackageController::class, "show"]);
@@ -321,8 +322,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/presetProducts", [\App\Http\Controllers\Api\PresetProductController::class, "index"]);
     Route::get("/presetProducts/currentPackage", [\App\Http\Controllers\Api\PresetProductController::class, "currentPackage"]);
     Route::get("/presetProducts/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "show"]);
-    Route::patch("/presetProducts/fast/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "fast"]);
-    Route::patch("/presetProducts/late/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "late"]);
+    Route::patch("/presetProducts/change/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "change"]);
     Route::patch("/presetProducts/recoverCancel/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "recoverCancel"]);
     Route::patch("/presetProducts/materials/{presetProduct}", [\App\Http\Controllers\Api\PresetProductController::class, "updateMaterials"]);
     Route::patch("/presetProducts/requestCancel/{presetProduct}",[\App\Http\Controllers\Api\PresetProductController::class, 'requestCancel']);

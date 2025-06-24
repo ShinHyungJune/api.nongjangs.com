@@ -112,14 +112,6 @@ class PresetProductResource extends JsonResource
 
             'materials' => MaterialResource::collection($this->materials),
             'format_materials' => Arr::getArrayToString($this->materials->pluck('title')->toArray()),
-            'canLatePackage' => $this->canLatePackage ? [
-                'id' => $this->canLatePackage->id,
-                'format_will_delivery_at' => Carbon::make($this->canLatePackage->will_delivery_at)->format('Y.m.d'). '(' . Carbon::make($this->canLatePackage->will_delivery_at)->isoFormat('ddd') . ')',
-            ] : '',
-            'canFastPackage' => $this->canFastPackage ? [
-                'id' => $this->canFastPackage->id,
-                'format_will_delivery_at' => Carbon::make($this->canFastPackage->will_delivery_at)->format('Y.m.d'). '(' . Carbon::make($this->canFastPackage->will_delivery_at)->isoFormat('ddd') . ')',
-            ] : '',
             'can_confirm' => $this->can_confirm,
             'can_review' => $this->can_review,
             'can_cancel' => $this->can_cancel,

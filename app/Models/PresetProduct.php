@@ -282,45 +282,6 @@ class PresetProduct extends Model
         return ['success' => true, 'message' => ''];
     }
 
-    public function getCanLatePackageAttribute()
-    {
-        $user = User::withTrashed()->find($this->preset->user_id);
-
-        $currentPackagePresetProduct = $user->getCurrentPackagePresetProduct();
-
-        if(!$currentPackagePresetProduct)
-            return null;
-
-        if($currentPackagePresetProduct->state != StatePresetProduct::BEFORE_PAYMENT)
-            return null;
-
-        $nextPackage = Package::orderBy('count', 'asc')->where('count', '>', $currentPackagePresetProduct->package_count)->first();
-
-        return $nextPackage;
-    }
-
-    public function getCanFastPackageAttribute()
-    {
-        $user = User::withTrashed()->find($this->preset->user_id);
-
-        $currentPackagePresetProduct = $user->getCurrentPackagePresetProduct();
-
-        if(!$currentPackagePresetProduct)
-            return null;
-
-        if($currentPackagePresetProduct->state != StatePresetProduct::BEFORE_PAYMENT)
-            return null;
-
-        $canOrderPackage = Package::getCanOrder();
-
-        if(!$canOrderPackage)
-            return null;
-
-        if($canOrderPackage->count < $currentPackagePresetProduct->package_count)
-            return $canOrderPackage;
-
-        return null;
-    }
 
     public function getCanConfirmAttribute()
     {

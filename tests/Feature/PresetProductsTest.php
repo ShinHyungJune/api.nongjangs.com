@@ -666,67 +666,121 @@ class PresetProductsTest extends TestCase
     }
 
     /** @test */
-    public function 출고에서_미루기_및_당기기_가능한_패키지를_조회할_수_있다()
+    public function 특정_출고기준_미루기_가능한_패키지목록을_조회할_수_있다()
     {
+        // 기존 패키지 삭제
         $packages = Package::get();
-
         foreach($packages as $package){
             $package->presetProducts()->delete();
-
             $package->delete();
         }
 
+        // 테스트용 패키지 생성 (회차별로 3개)
         $currentPackage = Package::factory()->create([
             'count' => 1,
-            'start_pack_wait_at' => Carbon::now()->subDays(4),
-            'finish_pack_wait_at' => Carbon::now()->subDays(3),
-            'start_pack_at' => Carbon::now()->subDays(2),
-            'finish_pack_at' => Carbon::now()->subDays(1),
-            'start_delivery_ready_at' => Carbon::now()->subDays(2),
-            'finish_delivery_ready_at' => Carbon::now()->addDays(4),
-            'start_will_out_at' => Carbon::now()->addDays(4),
-            'finish_will_out_at' => Carbon::now()->addDays(4),
-            'will_delivery_at' => Carbon::now()->addDays(4),
-        ]);
-        $futurePackage = Package::factory()->create([
-            'count' => 2,
-            'start_pack_wait_at' => Carbon::now()->addWeeks(1),
-            'finish_pack_wait_at' => Carbon::now()->addWeeks(2),
-            'start_pack_at' => Carbon::now()->addWeeks(2),
-            'finish_pack_at' => Carbon::now()->addWeeks(2),
-            'start_delivery_ready_at' => Carbon::now()->addWeeks(2),
-            'finish_delivery_ready_at' => Carbon::now()->addWeeks(2),
-            'start_will_out_at' => Carbon::now()->addWeeks(2),
-            'finish_will_out_at' => Carbon::now()->addWeeks(2),
-            'will_delivery_at' => Carbon::now()->addWeeks(2),
-        ]);
-        $moreFuturePackage = Package::factory()->create([
-            'count' => 3,
-            'start_pack_wait_at' => Carbon::now()->addWeeks(4),
-            'finish_pack_wait_at' => Carbon::now()->addWeeks(4),
-            'start_pack_at' => Carbon::now()->addWeeks(4),
-            'finish_pack_at' => Carbon::now()->addWeeks(4),
-            'start_delivery_ready_at' => Carbon::now()->addWeeks(4),
-            'finish_delivery_ready_at' => Carbon::now()->addWeeks(4),
-            'start_will_out_at' => Carbon::now()->addWeeks(4),
-            'finish_will_out_at' => Carbon::now()->addWeeks(4),
-            'will_delivery_at' => Carbon::now()->addWeeks(4),
+            'will_delivery_at' => Carbon::now()->addDays(7),
         ]);
 
+        $futurePackage = Package::factory()->create([
+            'count' => 2,
+            'will_delivery_at' => Carbon::now()->addDays(14),
+        ]);
+
+        $moreFuturePackage = Package::factory()->create([
+            'count' => 3,
+            'will_delivery_at' => Carbon::now()->addDays(21),
+        ]);
+
+        // 프리셋 및 프리셋 상품 생성
         $preset = Preset::factory()->create([
             'user_id' => $this->user->id,
         ]);
 
-        $this->user->presetProducts()->delete();
+        $presetProduct = PresetProduct::factory()->create([
+            'preset_id' => $preset->id,
+            'package_id' => $currentPackage->id,
+            'package_count' => $currentPackage->count,
+        ]);
+
+        // 미루기 가능한 패키지 목록 조회 (현재 패키지보다 회차가 큰 패키지)
+        $response = $this->json('get', '/api/packages', [
+            'can_late' => true,
+            'preset_product_id' => $presetProduct->id
+        ]);
+
+        $items = $response->decodeResponseJson();
+
+        // 응답 확인
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertCount(2, $items['data']); // 2개의 패키지가 있어야 함 (2회차, 3회차)
+
+        // 반환된 패키지의 회차가 현재 패키지보다 큰지 확인
+        foreach ($items['data'] as $item) {
+            $this->assertGreaterThan($currentPackage->count, $item['count']);
+        }
+
+        // 회차 순서대로 정렬되어 있는지 확인
+        $this->assertEquals($futurePackage->id, $items['data'][0]['id']);
+        $this->assertEquals($moreFuturePackage->id, $items['data'][1]['id']);
+    }
+
+    /** @test */
+    public function 특정_출고기준_당기기_가능한_패키지목록을_조회할_수_있다()
+    {
+        // 기존 패키지 삭제
+        $packages = Package::get();
+        foreach($packages as $package){
+            $package->presetProducts()->delete();
+            $package->delete();
+        }
+
+        // 테스트용 패키지 생성 (회차별로 3개)
+        $earlierPackage = Package::factory()->create([
+            'count' => 1,
+            'will_delivery_at' => Carbon::now()->addDays(7),
+        ]);
+
+        $middlePackage = Package::factory()->create([
+            'count' => 2,
+            'will_delivery_at' => Carbon::now()->addDays(14),
+        ]);
+
+        $laterPackage = Package::factory()->create([
+            'count' => 3,
+            'will_delivery_at' => Carbon::now()->addDays(21),
+        ]);
+
+        // 프리셋 및 프리셋 상품 생성 (3회차 패키지 사용)
+        $preset = Preset::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
 
         $presetProduct = PresetProduct::factory()->create([
             'preset_id' => $preset->id,
-            'package_id' => $futurePackage->id,
-            'package_count' => $futurePackage->count,
+            'package_id' => $laterPackage->id,
+            'package_count' => $laterPackage->count,
         ]);
 
-        $this->assertEquals($currentPackage->id, $presetProduct->refresh()->canFastPackage->id);
-        $this->assertEquals($moreFuturePackage->id, $presetProduct->refresh()->canLatePackage->id);
+        // 당기기 가능한 패키지 목록 조회 (현재 패키지보다 회차가 작은 패키지)
+        $response = $this->json('get', '/api/packages', [
+            'can_fast' => true,
+            'preset_product_id' => $presetProduct->id
+        ]);
+
+        $items = $response->decodeResponseJson();
+
+        // 응답 확인
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertCount(2, $items['data']); // 2개의 패키지가 있어야 함 (1회차, 2회차)
+
+        // 반환된 패키지의 회차가 현재 패키지보다 작은지 확인
+        foreach ($items['data'] as $item) {
+            $this->assertLessThan($laterPackage->count, $item['count']);
+        }
+
+        // 회차 순서대로 정렬되어 있는지 확인
+        $this->assertEquals($earlierPackage->id, $items['data'][0]['id']);
+        $this->assertEquals($middlePackage->id, $items['data'][1]['id']);
     }
 
     /** @test */
@@ -793,7 +847,11 @@ class PresetProductsTest extends TestCase
             'package_count' => $futurePackage->count,
         ]);
 
-        $item = $this->json('patch', '/api/presetProducts/fast/'.$presetProduct->id)->decodeResponseJson()['data'];
+        $this->form = [
+            'package_id' => $currentPackage->id
+        ];
+
+        $item = $this->json('patch', '/api/presetProducts/change/'.$presetProduct->id, $this->form)->decodeResponseJson()['data'];
 
         $this->assertEquals($currentPackage->id, $item['package']['id']);
         $this->assertEquals(1, PackageChangeHistory::count());
@@ -862,7 +920,11 @@ class PresetProductsTest extends TestCase
             'package_count' => $futurePackage->count,
         ]);
 
-        $item = $this->json('patch', '/api/presetProducts/late/'.$presetProduct->id)->decodeResponseJson()['data'];
+        $this->form = [
+            'package_id' => $moreFuturePackage->id
+        ];
+
+        $item = $this->json('patch', '/api/presetProducts/change/'.$presetProduct->id, $this->form)->decodeResponseJson()['data'];
 
         $this->assertEquals($moreFuturePackage->id, $item['package']['id']);
         $this->assertEquals(1, PackageChangeHistory::count());

@@ -146,6 +146,11 @@ class PresetProductRequest extends FormRequest
                         'materials.*.count' => 'required|integer|min:1',
                     ];
 
+                case 'change':
+                    return [
+                        'package_id' => 'required|integer',
+                    ];
+
                 default:
                     return [];
             }
